@@ -4,7 +4,7 @@
 
 דף הנחיתה של **Rubin Project** — פתרונות BI, אוטומציה ותוכנה לעסקים.
 
-🔗 **[לאתר החי](https://amitrubin10.github.io/rubinproject/)**
+🔗 **[לאתר החי](https://www.rubinproject.com/)**
 
 ## מה יש כאן
 
