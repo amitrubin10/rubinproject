@@ -1,0 +1,11 @@
+BEGIN:VCARD
+VERSION:3.0
+N;CHARSET=UTF-8:רובין;עמית;;;
+FN;CHARSET=UTF-8:עמית רובין
+ORG;CHARSET=UTF-8:Rubin Project
+TITLE;CHARSET=UTF-8:פתרונות BI\, אוטומציה ותוכנה לעסקים
+TEL;TYPE=CELL,VOICE:+972527246200
+EMAIL;TYPE=INTERNET,WORK:amitrubin60@gmail.com
+URL:https://www.rubinproject.com
+NOTE;CHARSET=UTF-8:בינה עסקית ודשבורדים\, אוטומציה עסקית\, תוכנה בהתאמה אישית ו-AI יישומי.
+END:VCARD
