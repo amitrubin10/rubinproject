@@ -71,6 +71,14 @@ h1{font-size:31px;font-weight:900;letter-spacing:-.5px;line-height:1.1}
 .qr-wrap{margin-top:28px;background:var(--card);border:1px solid var(--border);border-radius:18px;padding:18px}
 .qr-wrap img{width:170px;margin:0 auto;border-radius:10px}
 .qr-wrap p{font-size:12.5px;color:var(--muted);margin-top:11px}
+.btn-share{background:linear-gradient(135deg,#22d3ee,#0891b2);border-color:transparent;
+  color:#04222a;font-weight:800;box-shadow:0 10px 26px rgba(34,211,238,.34)}
+.btn-share .ic{background:rgba(255,255,255,.28)}
+.btn-share .arw{color:rgba(4,34,42,.6)}
+#toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(20px);
+  background:#10b981;color:#04231a;font-weight:800;font-size:14px;padding:11px 22px;border-radius:999px;
+  opacity:0;pointer-events:none;transition:.25s;box-shadow:0 12px 30px rgba(0,0,0,.45);z-index:99}
+#toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
 footer{margin-top:24px;font-size:12px;color:#5a6478;line-height:1.8}
 footer b{color:var(--accent2)}
 </style>
@@ -127,6 +135,12 @@ footer b{color:var(--accent2)}
       <span class="tx">תיק עבודות<small>github.com/amitrubin10</small></span>
       <span class="arw">←</span>
     </a>
+
+    <a class="btn btn-share" id="shareBtn" href="https://www.rubinproject.com/card/">
+      <span class="ic">📤</span>
+      <span class="tx">שיתוף הכרטיס<small>וואטסאפ, מייל, או העתקת קישור</small></span>
+      <span class="arw">←</span>
+    </a>
   </nav>
 
   <section class="qr-wrap">
@@ -140,5 +154,31 @@ footer b{color:var(--accent2)}
   </footer>
 
 </main>
+<div id="toast">הקישור הועתק ✓</div>
+<script>
+(function(){
+  var URL_ = 'https://www.rubinproject.com/card/';
+  var btn = document.getElementById('shareBtn'), toast = document.getElementById('toast');
+  function pop(msg){ toast.textContent = msg; toast.classList.add('on');
+    setTimeout(function(){ toast.classList.remove('on'); }, 2200); }
+  btn.addEventListener('click', function(e){
+    e.preventDefault();
+    var data = { title:'עמית רובין — Rubin Project',
+                 text:'פתרונות BI, אוטומציה ותוכנה לעסקים', url:URL_ };
+    if (navigator.share) {
+      navigator.share(data).catch(function(err){
+        if (err && err.name === 'AbortError') return;      // user closed the sheet
+        copy();
+      });
+    } else { copy(); }
+  });
+  function copy(){
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(URL_).then(function(){ pop('הקישור הועתק ✓'); })
+        .catch(function(){ window.prompt('העתיקו את הקישור:', URL_); });
+    } else { window.prompt('העתיקו את הקישור:', URL_); }
+  }
+})();
+</script>
 </body>
 </html>
