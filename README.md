@@ -23,7 +23,7 @@ img/           רקעים, לוגו וצילומי מסך של הפרויקטי�
 
 ## יצירת קשר
 
-📧 amitrubin60@gmail.com · 📞 052-7246200 ·
+📧 amit@rubinproject.com · 📞 052-7246200 ·
 💼 [LinkedIn](https://www.linkedin.com/in/amit-rubin-316b83357/)
 
 </div>
