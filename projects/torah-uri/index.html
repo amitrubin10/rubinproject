@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>תורה אורי — האפליקציה ללימוד קריאה בתורה | Rubin Project</title>
+<meta name="description" content="תורה אורי — אפליקציה ללימוד קריאה בתורה בטעמים: השמעה פר-פסוק, הדגשת מילה בזמן אמת, הקלטה עצמית והשוואה חכמה למקור (קצב, מנגינה ודיוק פר-מילה). עובדת גם ללא אינטרנט.">
+<link rel="canonical" href="https://www.rubinproject.com/projects/torah-uri/">
+<link rel="icon" href="../../img/favicon.png">
+<meta property="og:site_name" content="Rubin Project">
+<meta property="og:title" content="תורה אורי — האפליקציה ללימוד קריאה בתורה">
+<meta property="og:description" content="השמעה בטעמים, הקלטה עצמית, והשוואה חכמה למקור — קצב, מנגינה ודיוק פר-מילה. עובדת גם אופליין.">
+<meta property="og:image" content="https://www.rubinproject.com/projects/img/torah-uri-og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://www.rubinproject.com/projects/torah-uri/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="he_IL">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://www.rubinproject.com/projects/img/torah-uri-og.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0e17; --bg2:#0d1322; --card:#141c2e; --card2:#1a2235; --border:#26314c;
+  --text:#e8ecf4; --muted:#8b95a8; --muted2:#5a6478;
+  --accent:#3b82f6; --accent2:#60a5fa; --cyan:#22d3ee; --success:#10b981; --warn:#f59e0b; --danger:#ef4444; --purple:#8b5cf6; --gold:#e8b84b;
+  --grad:linear-gradient(135deg,#3b82f6,#1d4ed8);
+  --grad-soft:linear-gradient(135deg,rgba(59,130,246,0.16),rgba(139,92,246,0.10));
+  --radius:18px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Heebo',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.wrap{max-width:1160px;margin:0 auto;padding:0 22px}
+.cy{color:var(--cyan)}
+.eyebrow{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:700;letter-spacing:.3px;color:var(--accent2);background:rgba(59,130,246,0.12);border:1px solid rgba(59,130,246,0.3);padding:6px 14px;border-radius:999px;margin-bottom:16px}
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:inherit;font-size:15px;font-weight:700;padding:13px 26px;border-radius:12px;cursor:pointer;border:1px solid transparent;transition:.2s;white-space:nowrap}
+.btn-primary{background:var(--grad);color:#fff;box-shadow:0 8px 26px rgba(59,130,246,0.4)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 34px rgba(59,130,246,0.55)}
+.btn-ghost{background:transparent;color:var(--text);border-color:var(--border)}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent2)}
+.btn-wa{background:#25d366;color:#0a1f12}
+.btn-wa:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(37,211,102,.4)}
+
+/* NAV */
+header.nav{position:sticky;top:0;z-index:100;background:rgba(10,14,23,0.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+.nav-in{display:flex;align-items:center;gap:18px;height:76px;padding:0 26px}
+.nav-logo{display:flex;align-items:center;gap:9px;font-size:20px;font-weight:900;letter-spacing:-.4px}
+.nav-logo img{height:50px;width:auto}
+.nav-logo .b{color:var(--accent2)}
+.nav-links{display:flex;gap:22px;font-size:14px;font-weight:500;margin-inline-start:12px}
+.nav-links a{color:var(--muted);transition:.15s}.nav-links a:hover{color:var(--text)}
+.nav-cta{display:flex;gap:10px;margin-inline-start:auto}
+.nav-cta .btn{padding:9px 18px;font-size:14px}
+.burger{display:none;background:transparent;border:1px solid var(--border);color:var(--text);font-size:20px;border-radius:10px;width:42px;height:42px;cursor:pointer;margin-inline-start:auto}
+
+/* BACK */
+.back{display:inline-flex;align-items:center;gap:6px;color:var(--muted);font-size:14px;margin-top:22px}
+.back:hover{color:var(--accent2)}
+
+/* PROJECT HERO */
+.phero{display:grid;grid-template-columns:1fr .82fr;gap:44px;align-items:center;padding:40px 0 20px}
+.phero .ico{width:80px;height:80px;border-radius:20px;box-shadow:0 12px 30px rgba(0,0,0,.5);margin-bottom:18px}
+.phero h1{font-size:clamp(34px,5vw,52px);font-weight:900;line-height:1.05;letter-spacing:-1px}
+.phero .tag{font-size:19px;color:var(--cyan);font-weight:700;margin-top:8px}
+.phero .lead{font-size:16.5px;color:#cdd6e8;margin-top:16px;max-width:520px}
+.phero .row{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+.phero-shot{justify-self:center}
+.phero-shot img{width:100%;max-width:340px;border-radius:26px;border:1px solid var(--accent2);box-shadow:0 26px 70px rgba(0,0,0,.6),0 0 70px rgba(59,130,246,.18)}
+
+/* SECTIONS */
+section{padding:44px 0}
+.alt{background:linear-gradient(180deg,var(--bg),var(--bg2))}
+.sec-head{max-width:760px;margin:0 auto 30px;text-align:center}
+.sec-head h2{font-size:clamp(24px,3vw,34px);font-weight:800;letter-spacing:-.4px}
+.sec-head p{color:var(--muted);font-size:16px;margin-top:8px}
+
+/* FEATURE GRID */
+.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.feat{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:20px}
+.feat .ic{font-size:24px;margin-bottom:8px}
+.feat h4{font-size:16.5px;margin-bottom:5px}
+.feat p{font-size:14px;color:var(--muted);line-height:1.6}
+.feat.hl{grid-column:1/-1;background:var(--grad-soft);border-color:rgba(34,211,238,.32);display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:center;padding:26px 28px}
+.feat.hl .big{font-size:40px}
+.feat.hl h4{font-size:20px}.feat.hl h4 .pill{font-size:11px;font-weight:800;background:var(--cyan);color:#042b30;padding:2px 9px;border-radius:999px;margin-inline-start:8px;vertical-align:middle}
+.feat.hl p{font-size:15px;color:#cdd6e8}
+.feat.hl .marks{display:flex;gap:16px;flex-wrap:wrap;margin-top:10px;font-size:14px;color:var(--text)}
+.chips{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:22px}
+.chip{font-size:13px;background:var(--card2);border:1px solid var(--border);border-radius:999px;padding:6px 13px;color:var(--text)}
+.chip::before{content:"✓ ";color:var(--success);font-weight:800}
+
+/* SHOWCASE */
+.showcase{display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:center;max-width:900px;margin:0 auto}
+.showcase img{width:100%;max-width:330px;border-radius:24px;border:1px solid var(--accent2);box-shadow:0 22px 60px rgba(0,0,0,.55);margin:0 auto}
+.showcase .txt h3{font-size:24px;font-weight:800;margin-bottom:10px}
+.showcase .txt p{color:#cdd6e8;font-size:15.5px}
+
+/* CTA — contact now, purchase-ready */
+.cta{background:linear-gradient(160deg,rgba(34,211,238,.08),rgba(59,130,246,.08));border:1px solid rgba(34,211,238,.28);border-radius:26px;padding:44px 34px;text-align:center;box-shadow:0 24px 60px rgba(0,0,0,.4)}
+.cta h2{font-size:clamp(24px,3.4vw,34px);font-weight:900;margin-bottom:10px}
+.cta p{color:#cdd6e8;font-size:16.5px;max-width:560px;margin:0 auto 26px}
+.cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+/* future purchase button: unhide .btn-buy when a purchase link exists */
+.btn-buy{background:var(--gold);color:#2a1e00}
+.btn-buy:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(232,184,75,.4)}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:40px 0;margin-top:20px}
+.foot-in{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;padding:0 26px}
+.foot-brand{display:flex;align-items:center;gap:12px}
+.foot-brand img{height:42px;width:auto}
+.foot-brand .bn{font-weight:900;font-size:20px}.foot-brand .bn .b{color:var(--accent2)}
+.foot-brand .tg{font-size:12.5px;color:var(--cyan)}
+.foot-copy{flex:1;text-align:center;color:var(--muted);font-size:14px;font-weight:600;min-width:220px}
+.foot-links{display:flex;gap:16px;font-size:14px;color:var(--muted);flex-wrap:wrap}
+.foot-links a:hover{color:var(--text)}
+
+@media(max-width:860px){
+  .phero{grid-template-columns:1fr;gap:26px;text-align:center;padding-top:26px}
+  .phero .ico,.phero .lead{margin-inline:auto}
+  .phero .row{justify-content:center}
+  .feat-grid{grid-template-columns:1fr 1fr}
+  .feat.hl{grid-template-columns:1fr;text-align:center}
+  .showcase{grid-template-columns:1fr;text-align:center}
+  .nav-links{display:none}
+  .foot-in{flex-direction:column;text-align:center}
+}
+@media(max-width:560px){
+  .nav-in{padding:0 14px;gap:10px}
+  .nav-logo span{display:none}
+  .nav-logo img{height:44px}
+  .nav-cta .btn{padding:8px 14px;font-size:13px}
+}
+@media(max-width:520px){ .feat-grid{grid-template-columns:1fr} }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="nav-in">
+    <a class="nav-logo" href="/"><img src="../../img/logo-reverse.png" alt="Rubin Project"><span dir="ltr">Rubin <span class="b">Project</span></span></a>
+    <nav class="nav-links">
+      <a href="/#services">שירותים</a>
+      <a href="/#portfolio">תיק עבודות</a>
+      <a href="/#creator">מי אני</a>
+      <a href="/#contact">יצירת קשר</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-primary" href="https://wa.me/972527246200" target="_blank" rel="noopener">💬 וואטסאפ</a>
+    </div>
+  </div>
+</header>
+
+<div class="wrap"><a class="back" href="/#portfolio">← חזרה לתיק העבודות</a></div>
+
+<!-- HERO -->
+<div class="wrap">
+  <div class="phero">
+    <div class="phero-txt">
+      <span class="eyebrow">📱 אפליקציה · לימוד</span>
+      <img class="ico" src="../img/torah-uri-icon.png" alt="תורה אורי">
+      <h1>תורה אורי</h1>
+      <div class="tag">האפליקציה ללימוד קריאה בתורה</div>
+      <p class="lead">לומדים לקרוא בתורה בטעמים — שומעים כל פסוק בנפרד, רואים את המילה מודגשת בזמן אמת (כמו קריוקי), מקליטים את עצמכם ומשווים למקור. עובדת גם בלי אינטרנט.</p>
+      <div class="row">
+        <a class="btn btn-primary" href="https://amitrubin10.github.io/bar_mitzva/" target="_blank" rel="noopener">▶ התנסות באפליקציה</a>
+        <a class="btn btn-ghost" href="#contact">רוצים אחת כזו?</a>
+      </div>
+    </div>
+    <div class="phero-shot"><img src="../img/torah-uri-main.png" alt="מסך האפליקציה תורה אורי"></div>
+  </div>
+</div>
+
+<!-- BASE FEATURES -->
+<section class="alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">📖 הבסיס</span>
+      <h2>כל מה שצריך כדי ללמוד לקרוא</h2>
+    </div>
+    <div class="feat-grid">
+      <div class="feat"><div class="ic">📜</div><h4>הקטע המלא</h4><p>פסוק בכל שורה, עם ניקוד וטעמים — נקי וברור.</p></div>
+      <div class="feat"><div class="ic">▶️</div><h4>השמעה פר-פסוק</h4><p>כפתור ליד כל פסוק — שומעים בדיוק אותו מתוך ההקלטה.</p></div>
+      <div class="feat"><div class="ic">🎵</div><h4>הדגשה בזמן אמת</h4><p>המילה הנקראת נצבעת תוך כדי ההשמעה — כמו קריוקי.</p></div>
+      <div class="feat"><div class="ic">⏱️</div><h4>בקרת מהירות</h4><p>«נגן הכול» ברצף, עם 0.7× / 0.85× / 1× ללימוד איטי.</p></div>
+      <div class="feat"><div class="ic">🖼️</div><h4>תמונת המקור</h4><p>הצגת תמונת הקטע המקורי לצד הטקסט.</p></div>
+      <div class="feat"><div class="ic">📲</div><h4>עובדת אופליין</h4><p>מותקנת בטלפון כאפליקציה — ופועלת גם בלי אינטרנט.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- NEW FEATURES -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">✨ מה שהוספנו</span>
+      <h2>מהאזנה — ללימוד פעיל</h2>
+      <p>הפכנו את האפליקציה מ«להאזין» ל«לתרגל ולהשתפר».</p>
+    </div>
+    <div class="feat-grid">
+      <div class="feat hl">
+        <div class="big">🔍</div>
+        <div>
+          <h4>השוואה להקלטת המקור<span class="pill">החידוש הגדול</span></h4>
+          <p>מקליטים את עצמכם — והאפליקציה משווה למקור ומראה בדיוק איפה להשתפר:</p>
+          <div class="marks"><span>⏱️ <b>קצב</b> — מהר או לאט מדי</span><span>🎼 <b>מנגינה (טעמים)</b> — תואם למקור?</span><span>🎯 <b>דיוק פר-מילה</b> — 🟢 מדויק · 🟡 כמעט · 🔴 לתרגל</span></div>
+        </div>
+      </div>
+      <div class="feat"><div class="ic">🎤</div><h4>הקלטה עצמית</h4><p>מקליטים כל פסוק, מאזינים, מקליטים מחדש ומוחקים — נשמר במכשיר גם אחרי סגירה.</p></div>
+      <div class="feat"><div class="ic">🎧</div><h4>שליטה מלאה בהאזנה</h4><p>השהיה והמשך מאותה נקודה, וכפתור «מהתחלה» לכל פסוק.</p></div>
+      <div class="feat"><div class="ic">🔤</div><h4>לימוד ללא ניקוד</h4><p>כפתור שמעלה רמה ומחליף לטקסט ללא ניקוד.</p></div>
+      <div class="feat"><div class="ic">🌗</div><h4>מסך בהיר / כהה</h4><p>בוחרים את התצוגה שנוחה לעיניים.</p></div>
+      <div class="feat"><div class="ic">🎨</div><h4>מיתוג ועיצוב חדש</h4><p>לוגו «תורה אורי», מסך פתיחה, אייקון מקצועי ומסך «כל הכבוד!» בסיום.</p></div>
+    </div>
+    <div class="chips">
+      <span class="chip">בר מצווה</span><span class="chip">קריאה בטעמים</span><span class="chip">PWA — מותקן בטלפון</span><span class="chip">אופליין</span><span class="chip">עברית מלאה</span>
+    </div>
+  </div>
+</section>
+
+<!-- SHOWCASE -->
+<section class="alt">
+  <div class="wrap">
+    <div class="showcase">
+      <img src="../img/torah-uri-app.png" alt="מסך הפתיחה של תורה אורי">
+      <div class="txt">
+        <h3>נבנתה סביב לומד אמיתי</h3>
+        <p>האפליקציה נולדה מצורך אמיתי — ללמד ילד לקרוא בתורה לבר המצווה, בכלים שהופכים תרגול חוזר לחוויה נעימה ומדויקת. כל פרט תוכנן כדי שהלימוד יהיה עצמאי, ברור ומעודד.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="contact">
+  <div class="wrap">
+    <div class="cta">
+      <h2>רוצים אפליקציה כזו לילד שלכם?</h2>
+      <p>אפשר להתאים את «תורה אורי» לכל פרשה ועלייה — או לבנות אפליקציית לימוד בהתאמה אישית. דברו איתי ונתאים בדיוק לצורך.</p>
+      <div class="cta-row">
+        <a class="btn btn-wa" href="https://wa.me/972527246200?text=%D7%94%D7%99%D7%99%20%D7%A2%D7%9E%D7%99%D7%AA%2C%20%D7%A8%D7%90%D7%99%D7%AA%D7%99%20%D7%90%D7%AA%20%D7%AA%D7%95%D7%A8%D7%94%20%D7%90%D7%95%D7%A8%D7%99%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A4%D7%A8%D7%98%D7%99%D7%9D" target="_blank" rel="noopener">💬 וואטסאפ</a>
+        <a class="btn btn-primary" href="mailto:amit@rubinproject.com?subject=תורה אורי — פנייה מהאתר">📧 מייל</a>
+        <a class="btn btn-ghost" href="https://amitrubin10.github.io/bar_mitzva/" target="_blank" rel="noopener">▶ לאפליקציה החיה</a>
+        <!-- כשיהיה לינק רכישה: <a class="btn btn-buy" href="LINK">🛒 רכישה</a> -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-in">
+    <div class="foot-brand">
+      <img src="../../img/logo-reverse.png" alt="Rubin Project">
+      <div><div class="bn" dir="ltr">Rubin <span class="b">Project</span></div>
+      <div class="tg">פתרונות BI, אוטומציה ותוכנה לעסקים</div></div>
+    </div>
+    <div class="foot-copy">הופכים נתונים להחלטות. · © Rubin Project</div>
+    <div class="foot-links">
+      <a href="/">דף הבית</a>
+      <a href="/#portfolio">תיק עבודות</a>
+      <a href="/card/">כרטיס דיגיטלי</a>
+      <a href="https://wa.me/972527246200" target="_blank" rel="noopener">וואטסאפ</a>
+      <a href="mailto:amit@rubinproject.com">amit@rubinproject.com</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
