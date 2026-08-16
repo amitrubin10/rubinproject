@@ -120,6 +120,29 @@ section{padding:46px 0}
 .story2-txt h3{font-size:28px;font-weight:800;color:var(--ink);margin:6px 0 12px;letter-spacing:-.3px}
 .story2-txt p{color:var(--muted);font-size:16.5px}
 
+/* PRICING */
+.pricewrap{display:grid;grid-template-columns:1fr 1fr;gap:26px;max-width:960px;margin:0 auto;align-items:stretch}
+.pricecard{background:#fff;border:2px solid rgba(201,154,43,.5);border-radius:24px;padding:30px 28px;box-shadow:0 18px 44px rgba(201,154,43,.16);display:flex;flex-direction:column}
+.ptop{text-align:center;border-bottom:1px solid var(--border);padding-bottom:18px;margin-bottom:18px}
+.pribbon{display:inline-block;font-size:12px;font-weight:800;color:#3a2a00;background:var(--grad-gold);padding:4px 13px;border-radius:999px;margin-bottom:12px}
+.pamount{display:flex;align-items:baseline;justify-content:center;gap:8px;direction:rtl}
+.pnum{font-size:54px;font-weight:900;color:var(--navy);letter-spacing:-1px;line-height:1}
+.pcur{font-size:30px;font-weight:800;color:var(--navy)}
+.pper{font-size:17px;font-weight:700;color:var(--muted)}
+.pdesc{margin-top:11px;font-size:15.5px;font-weight:700;color:var(--ink)}
+.plist{list-style:none;display:flex;flex-direction:column;gap:11px;margin:0 0 22px}
+.plist li{position:relative;padding-inline-start:28px;font-size:15px;color:var(--ink)}
+.plist li::before{content:"✓";position:absolute;inset-inline-start:0;top:0;color:var(--success);font-weight:900}
+.pbtn{width:100%;justify-content:center;font-size:16px;padding:15px;margin-top:auto}
+.pnote{margin-top:14px;text-align:center;font-size:13.5px;color:var(--muted)}
+.howcard{background:linear-gradient(160deg,#fbf7ee,#fff);border:1px solid var(--border);border-radius:24px;padding:30px 28px}
+.howcard h3{font-size:22px;font-weight:800;color:var(--ink);margin-bottom:20px;text-align:center}
+.steps{list-style:none;display:flex;flex-direction:column;gap:18px}
+.steps li{display:flex;gap:14px;align-items:flex-start}
+.snum{flex:none;width:36px;height:36px;border-radius:50%;background:var(--grad);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:16px;box-shadow:0 6px 16px rgba(30,58,107,.25)}
+.steps b{color:var(--ink);font-size:16px}
+.steps p{color:var(--muted);font-size:14px;margin-top:2px}
+
 /* CTA — navy band to close */
 .cta{background:linear-gradient(160deg,#22467f,#152037);border:1px solid rgba(201,154,43,.32);border-radius:26px;padding:48px 34px;text-align:center;box-shadow:0 26px 60px rgba(30,58,107,.30);color:#fff}
 .cta h2{font-size:clamp(24px,3.4vw,34px);font-weight:900;margin-bottom:10px;color:#fff}
@@ -141,6 +164,7 @@ footer{border-top:1px solid #26314c;padding:40px 0;background:#0c1119}
   .feat-grid{grid-template-columns:1fr 1fr}
   .feat.hl{grid-template-columns:1fr;text-align:center}
   .usegrid{grid-template-columns:1fr;max-width:420px}
+  .pricewrap{grid-template-columns:1fr;max-width:460px}
   .story2{grid-template-columns:1fr;text-align:center;gap:26px}
   .nav-links{display:none}
   .foot-in{flex-direction:column;text-align:center}
@@ -260,6 +284,44 @@ footer{border-top:1px solid #26314c;padding:40px 0;background:#0c1119}
         <span class="eyebrow">❤️ הסיפור</span>
         <h3>נבנתה סביב לומד אמיתי</h3>
         <p>האפליקציה נולדה מצורך אמיתי — ללמד ילד לקרוא בתורה לבר המצווה, בכלים שהופכים תרגול חוזר לחוויה נעימה ומדויקת. כל פרט תוכנן כדי שהלימוד יהיה עצמאי, ברור ומעודד — עד לקריאה מושלמת ביום הגדול.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="alt" id="price">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">💎 מחיר</span>
+      <h2>פשוט, אישי — ומוכן לבר המצווה</h2>
+      <p>קריאה אישית של הילד שלכם, בנויה בתוך האפליקציה ומוכנה להתקנה בכל מכשיר.</p>
+    </div>
+    <div class="pricewrap">
+      <!-- price card -->
+      <div class="pricecard">
+        <div class="ptop">
+          <span class="pribbon">מנוי חודשי</span>
+          <div class="pamount"><span class="pnum">119</span><span class="pcur">₪</span><span class="pper">/ לחודש</span></div>
+          <div class="pdesc">קישור בלעדי עבור הקריאה של ילדכם</div>
+        </div>
+        <ul class="plist">
+          <li>קישור פרטי ובלעדי לקריאה של הילד שלכם</li>
+          <li>מוכן להתקנה — בנייד, במחשב או בטאבלט</li>
+          <li>כל היכולות: השמעה, הקלטה עצמית והשוואה למקור</li>
+          <li>ניתן להפסיק את החיוב בכל עת</li>
+        </ul>
+        <a class="btn btn-gold pbtn" href="https://wa.me/972527246200?text=%D7%94%D7%99%D7%99%20%D7%A2%D7%9E%D7%99%D7%AA%2C%20%D7%A8%D7%90%D7%99%D7%AA%D7%99%20%D7%90%D7%AA%20%C2%AB%D7%AA%D7%95%D7%A8%D7%94%20%D7%90%D7%95%D7%A8%D7%99%C2%BB%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%94%D7%AA%D7%97%D7%99%D7%9C%20%D7%A2%D7%91%D7%95%D7%A8%20%D7%94%D7%A7%D7%A8%D7%99%D7%90%D7%94%20%D7%A9%D7%9C%20%D7%94%D7%99%D7%9C%D7%93%20%D7%A9%D7%9C%D7%99.%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A4%D7%A8%D7%98%D7%99%D7%9D." target="_blank" rel="noopener">💬 מתחילים — דברו איתי</a>
+        <div class="pnote">הילד מרגיש מוכן? ניתן להפסיק בכל עת את החיוב.</div>
+      </div>
+      <!-- how it works -->
+      <div class="howcard">
+        <h3>איך זה עובד?</h3>
+        <ol class="steps">
+          <li><span class="snum">1</span><div><b>הרב מקליט את הקריאה</b><p>הקלטה של הקטע המדויק של הילד — פרשה ועלייה.</p></div></li>
+          <li><span class="snum">2</span><div><b>אנחנו מעלים לאפליקציה</b><p>בונים את הקריאה בתוך «תורה אורי» עם כל היכולות.</p></div></li>
+          <li><span class="snum">3</span><div><b>מקבלים קישור מוכן</b><p>שולחים לכם קישור להתקנה — בנייד, במחשב או בטאבלט.</p></div></li>
+        </ol>
       </div>
     </div>
   </div>
