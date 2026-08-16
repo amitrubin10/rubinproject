@@ -362,5 +362,10 @@ footer{border-top:1px solid #26314c;padding:40px 0;background:#0c1119}
   </div>
 </footer>
 
+<script>
+  /* always open at the top on a fresh load (unless the URL points to a section) */
+  if('scrollRestoration' in history) history.scrollRestoration='manual';
+  window.addEventListener('load',function(){ if(!location.hash) window.scrollTo(0,0); });
+</script>
 </body>
 </html>
