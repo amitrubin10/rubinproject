@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>דף הבית האישי שלך — כל האינטרנט במסך אחד | Rubin Project</title>
+<meta name="description" content="דף בית אישי לדפדפן — מרכז שליטה יפהפה שנפתח בכל פעם: שעון, חיפוש, כל האתרים שלך בקטגוריות עם הלוגו האמיתי, מסגרות תמונה, רשימת משימות, מצב כהה/בהיר. מותאם אישית, פרטי לחלוטין.">
+<link rel="canonical" href="https://www.rubinproject.com/projects/homepage/">
+<link rel="icon" href="../../img/favicon.png">
+<meta property="og:site_name" content="Rubin Project">
+<meta property="og:title" content="דף הבית האישי שלך — כל האינטרנט במסך אחד">
+<meta property="og:description" content="מרכז שליטה אישי לדפדפן: האתרים שלך בקטגוריות, שעון, חיפוש, משימות — מותאם אליך ופרטי לחלוטין.">
+<meta property="og:image" content="https://www.rubinproject.com/img/og-cover.jpg">
+<meta property="og:url" content="https://www.rubinproject.com/projects/homepage/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="he_IL">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://www.rubinproject.com/img/og-cover.jpg">
+<meta name="theme-color" content="#0b0f1c">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* Personal Homepage — premium teal + indigo (distinct from the other products) */
+  --bg:#0b0f1c; --bg2:#0f1526; --card:#151c30; --card2:#1b2440; --border:#283350;
+  --ink:#e9edf6; --muted:#95a1bd; --muted2:#6b7794;
+  --accent:#2dd4bf; --accent2:#5eead4; --indigo:#7c83ff; --emerald:#34d399; --amber:#fbbf24;
+  --grad:linear-gradient(135deg,#2dd4bf,#7c83ff);
+  --grad-soft:linear-gradient(135deg,rgba(45,212,191,.14),rgba(124,131,255,.12));
+  --radius:18px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Heebo',sans-serif;background:var(--bg);color:var(--ink);line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.wrap{max-width:1160px;margin:0 auto;padding:0 22px}
+.tl{color:var(--accent)}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.eyebrow{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:700;letter-spacing:.3px;color:var(--accent2);background:rgba(45,212,191,.1);border:1px solid rgba(45,212,191,.28);padding:6px 14px;border-radius:999px;margin-bottom:16px}
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:inherit;font-size:15px;font-weight:700;padding:13px 26px;border-radius:12px;cursor:pointer;border:1px solid transparent;transition:.2s;white-space:nowrap}
+.btn-primary{background:var(--grad);color:#06231f;box-shadow:0 8px 26px rgba(45,212,191,.32)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 34px rgba(124,131,255,.4)}
+.btn-ghost{background:transparent;color:var(--ink);border-color:var(--border)}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent2)}
+.btn-wa{background:#25d366;color:#0a1f12}
+.btn-wa:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(37,211,102,.4)}
+
+/* NAV */
+header.nav{position:sticky;top:0;z-index:100;background:rgba(11,15,28,0.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;gap:18px;height:74px;padding:0 32px;max-width:none}
+.nav-start{display:flex;align-items:center;gap:24px}
+.nav-logo{display:flex;align-items:center;gap:9px;font-size:20px;font-weight:900;letter-spacing:-.4px;color:#fff}
+.nav-logo img{height:48px;width:auto}
+.nav-logo .b{color:var(--accent2)}
+.nav-links{display:flex;gap:22px;font-size:14px;font-weight:500}
+.nav-links a{color:var(--muted);transition:.15s}.nav-links a:hover{color:#fff}
+.nav-cta{display:flex;gap:10px}
+.nav-cta .btn{padding:9px 18px;font-size:14px}
+
+/* HERO */
+.phero{position:relative;text-align:center;padding:52px 0 26px;
+  background:radial-gradient(900px 420px at 50% -10%,rgba(45,212,191,.16),transparent 60%),radial-gradient(700px 380px at 85% 120%,rgba(124,131,255,.16),transparent 60%)}
+.phero .badge{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:800;color:#06231f;background:linear-gradient(135deg,#5eead4,#2dd4bf);padding:6px 16px;border-radius:999px;margin-bottom:18px;box-shadow:0 8px 22px rgba(45,212,191,.3)}
+.phero h1{font-size:clamp(32px,5vw,54px);font-weight:900;line-height:1.06;letter-spacing:-1px;background:linear-gradient(135deg,#fff,#a9f3e8 60%,#a9b0ff);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.phero .tag{font-size:20px;color:var(--accent);font-weight:800;margin-top:8px}
+.phero .lead{font-size:17px;color:#cdd6e8;margin:16px auto 0;max-width:620px}
+.phero .row{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px;justify-content:center}
+
+/* BROWSER-FRAMED SHOT (+ graceful placeholder) */
+.shotwrap{padding:22px 0 20px}
+.shot{max-width:1040px;margin:0 auto;border-radius:16px;overflow:hidden;border:1px solid var(--border);
+  box-shadow:0 30px 80px rgba(0,0,0,.6),0 0 60px rgba(45,212,191,.12)}
+.shot-bar{display:flex;align-items:center;gap:7px;padding:11px 15px;background:var(--card2);border-bottom:1px solid var(--border)}
+.shot-bar i{width:11px;height:11px;border-radius:50%;display:block}
+.shot-bar .r{background:#ff5f57}.shot-bar .y{background:#febc2e}.shot-bar .g{background:#28c840}
+.shot-bar span{margin-inline-start:12px;font-size:12px;color:var(--muted2);direction:ltr}
+.shot-body img{width:100%;display:block}
+.shot-body.empty{min-height:440px;display:flex;align-items:center;justify-content:center;
+  background:repeating-linear-gradient(45deg,var(--card),var(--card) 14px,var(--card2) 14px,var(--card2) 28px)}
+.shot-body.empty img{display:none}
+.shot-body.empty::after{content:"🖼️  צילום מסך יתווסף כאן";font-size:16px;font-weight:800;color:var(--muted)}
+.shot-cap{text-align:center;color:var(--muted);font-size:13.5px;margin-top:14px}
+
+/* SECTIONS */
+section{padding:46px 0}
+.alt{background:linear-gradient(180deg,var(--bg),var(--bg2))}
+.sec-head{max-width:780px;margin:0 auto 30px;text-align:center}
+.sec-head h2{font-size:clamp(24px,3vw,34px);font-weight:800;letter-spacing:-.4px}
+.sec-head p{color:var(--muted);font-size:16px;margin-top:8px}
+
+/* FEATURES */
+.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.feat{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:22px;transition:.2s}
+.feat:hover{border-color:rgba(94,234,212,.5);transform:translateY(-3px)}
+.feat .ic{font-size:25px;margin-bottom:9px}
+.feat h4{font-size:16.5px;margin-bottom:5px}
+.feat p{font-size:14px;color:var(--muted);line-height:1.6}
+
+/* CONTROL band */
+.ctrl{background:var(--grad-soft);border:1px solid rgba(124,131,255,.3);border-radius:22px;padding:34px 30px;max-width:1000px;margin:0 auto}
+.ctrl h3{text-align:center;font-size:22px;font-weight:800;margin-bottom:6px}
+.ctrl .sub{text-align:center;color:var(--muted);font-size:15px;margin-bottom:22px}
+.ctrl-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.ctrl-item{background:rgba(11,15,28,.4);border:1px solid var(--border);border-radius:14px;padding:20px;text-align:center}
+.ctrl-item .ic{font-size:28px;margin-bottom:8px}
+.ctrl-item h4{font-size:16px;margin-bottom:4px}
+.ctrl-item p{font-size:13.5px;color:var(--muted)}
+
+/* PILLS row (privacy / speed) */
+.pills{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;max-width:820px;margin:0 auto}
+.pill2{flex:1;min-width:220px;background:var(--card);border:1px solid var(--border);border-radius:16px;padding:20px 22px;text-align:center}
+.pill2 .ic{font-size:26px;margin-bottom:6px}
+.pill2 b{display:block;font-size:16.5px;margin-bottom:3px}
+.pill2 p{font-size:13.5px;color:var(--muted)}
+
+/* GALLERY (dark/light placeholders) */
+.gal{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:960px;margin:0 auto}
+.gal figure{text-align:center}
+.gcard{border-radius:20px;overflow:hidden;border:1px solid var(--border);box-shadow:0 20px 50px rgba(0,0,0,.5)}
+.gcard img{width:100%;display:block}
+.gcard.empty{min-height:280px;display:flex;align-items:center;justify-content:center;
+  background:repeating-linear-gradient(45deg,var(--card),var(--card) 14px,var(--card2) 14px,var(--card2) 28px)}
+.gcard.empty img{display:none}
+.gcard.empty::after{content:"🖼️ צילום מסך";font-size:14px;font-weight:700;color:var(--muted)}
+.gal figcaption{margin-top:12px;font-size:15px;font-weight:700}
+
+/* CTA */
+.cta{background:linear-gradient(160deg,rgba(45,212,191,.14),rgba(124,131,255,.1));border:1px solid rgba(45,212,191,.3);border-radius:26px;padding:48px 34px;text-align:center;box-shadow:0 26px 60px rgba(0,0,0,.4)}
+.cta h2{font-size:clamp(24px,3.4vw,34px);font-weight:900;margin-bottom:10px}
+.cta p{color:#cdd6e8;font-size:16.5px;max-width:580px;margin:0 auto 26px}
+.cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:40px 0;background:#080b16}
+.foot-in{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;padding:0 32px;max-width:1160px;margin:0 auto}
+.foot-brand{display:flex;align-items:center;gap:12px}
+.foot-brand img{height:42px;width:auto}
+.foot-brand .bn{font-weight:900;font-size:20px;color:#fff}.foot-brand .bn .b{color:var(--accent2)}
+.foot-brand .tg{font-size:12.5px;color:var(--accent)}
+.foot-copy{flex:1;text-align:center;color:var(--muted);font-size:14px;font-weight:600;min-width:220px}
+.foot-links{display:flex;gap:16px;font-size:14px;color:var(--muted);flex-wrap:wrap}
+.foot-links a:hover{color:#fff}
+
+@media(max-width:860px){
+  .feat-grid,.ctrl-grid{grid-template-columns:1fr 1fr}
+  .gal{grid-template-columns:1fr;max-width:460px}
+  .nav-links{display:none}
+  .foot-in{flex-direction:column;text-align:center}
+}
+@media(max-width:560px){
+  .nav-in{padding:0 16px;gap:10px}
+  .nav-logo span{display:none}
+  .nav-logo img{height:42px}
+  .nav-cta .btn{padding:8px 14px;font-size:13px}
+  .feat-grid,.ctrl-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="nav-in">
+    <div class="nav-start">
+      <a class="nav-logo" href="/"><img src="../../img/logo-reverse.png" alt="Rubin Project"><span dir="ltr">Rubin <span class="b">Project</span></span></a>
+      <nav class="nav-links">
+        <a href="/#services">שירותים</a>
+        <a href="/#portfolio">תיק עבודות</a>
+        <a href="/#creator">מי אני</a>
+        <a href="/#contact">יצירת קשר</a>
+      </nav>
+    </div>
+    <div class="nav-cta">
+      <a class="btn btn-primary" href="https://wa.me/972527246200" target="_blank" rel="noopener">💬 וואטסאפ</a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<header class="phero">
+  <div class="wrap">
+    <span class="badge">🏠 מוצר אישי · מותאם אליך</span>
+    <h1>דף הבית האישי שלך</h1>
+    <div class="tag">כל האינטרנט שלך — במסך אחד</div>
+    <p class="lead">נמאס לחפש כל פעם את אותם אתרים? להקליד כתובות? להתבלבל בין לשוניות? אני מעצב לך <strong>דף בית אישי</strong> — מרכז שליטה יפהפה ומהיר שנפתח בכל פעם שאתה פותח את הדפדפן. מותאם בדיוק אליך: הצבעים שלך, הלוגו שלך, האתרים שלך.</p>
+    <div class="row">
+      <a class="btn btn-primary" href="#contact">✨ רוצה דף כזה</a>
+      <a class="btn btn-ghost" href="#features">מה זה כולל?</a>
+    </div>
+  </div>
+</header>
+
+<!-- SHOT -->
+<div class="shotwrap">
+  <div class="wrap">
+    <div class="shot">
+      <div class="shot-bar"><i class="r"></i><i class="y"></i><i class="g"></i><span>הדף האישי שלי — כרטיסייה חדשה</span></div>
+      <div class="shot-body"><img src="../img/home-hero.png" alt="דף הבית האישי — שעון, חיפוש והאתרים שלך בקטגוריות" onerror="this.parentNode.classList.add('empty')"></div>
+    </div>
+    <div class="shot-cap">מרכז שליטה אחד — שעון, חיפוש, וכל האתרים שלך מסודרים בקטגוריות עם הלוגו האמיתי</div>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<section class="alt" id="features">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">✨ מה מקבלים</span>
+      <h2>הכול מסודר, יפה — ובמקום אחד</h2>
+      <p>דף אחד שמרכז את היום שלך ואת כל האתרים שאתה באמת משתמש בהם.</p>
+    </div>
+    <div class="feat-grid">
+      <div class="feat"><div class="ic">🕐</div><h4>שעון ותאריך גדולים</h4><p>שעה, תאריך עברי ולועזי — במבט אחד, ברגע שנפתח הדפדפן.</p></div>
+      <div class="feat"><div class="ic">🔎</div><h4>חיפוש גוגל מובנה</h4><p>שורת חיפוש ישר בדף — שזוכרת גם חיפושים קודמים.</p></div>
+      <div class="feat"><div class="ic">🎯</div><h4>כל האתרים בקטגוריות</h4><p>כל האתרים והאפליקציות מסודרים, עם הלוגו האמיתי של כל אחד — קליק אחד וזהו.</p></div>
+      <div class="feat"><div class="ic">🖼️</div><h4>מסגרות תמונה אישיות</h4><p>משפחה, לוגו העסק או נוף — התמונות שלך, על הדף שלך.</p></div>
+      <div class="feat"><div class="ic">✅</div><h4>רשימת משימות</h4><p>מטלות היום ישר על הדף — בלי אפליקציה נוספת.</p></div>
+      <div class="feat"><div class="ic">🌗</div><h4>מצב כהה / בהיר</h4><p>בוחרים את התצוגה שנוחה לעיניים, בכל שעה.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTROL -->
+<section>
+  <div class="wrap">
+    <div class="ctrl">
+      <h3>🙌 והכי חשוב — אתה בשליטה מלאה</h3>
+      <div class="sub">משנים ומסדרים הכול לבד, בלי לחכות למתכנת.</div>
+      <div class="ctrl-grid">
+        <div class="ctrl-item"><div class="ic">➕</div><h4>מוסיף ועורך בעצמך</h4><p>מוסיף, עורך ומחליף תמונות לקישורים — לבד, בלי קוד.</p></div>
+        <div class="ctrl-item"><div class="ic">✋</div><h4>גורר ומסדר</h4><p>גורר ומסדר קטגוריות וקישורים בדיוק איך שנוח לך.</p></div>
+        <div class="ctrl-item"><div class="ic">💾</div><h4>גיבוי בקליק</h4><p>גיבוי אחד — ומעבר קל בין מחשבים, בלי לאבד כלום.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRIVACY / SPEED -->
+<section class="alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">למה זה פשוט עובד</span>
+      <h2>מהיר, פרטי, ובכל דפדפן</h2>
+    </div>
+    <div class="pills">
+      <div class="pill2"><div class="ic">⚡</div><b>נפתח מיידית</b><p>עובד בכל דפדפן, בלי התקנות מסובכות.</p></div>
+      <div class="pill2"><div class="ic">🔒</div><b>פרטי לחלוטין</b><p>הכול נשמר אצלך במחשב — שום דבר לא עולה לענן.</p></div>
+      <div class="pill2"><div class="ic">🎨</div><b>מותאם אישית</b><p>עיצוב יוקרתי ומודרני — בצבעים ובסגנון שלך.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">🖼️ הצצה</span>
+      <h2>אותו דף — בכהה ובבהיר</h2>
+      <p>אותה נוחות בדיוק, בתצוגה שמתאימה לכם.</p>
+    </div>
+    <div class="gal">
+      <figure><div class="gcard"><img src="../img/home-dark.png" alt="דף הבית האישי — מצב כהה" onerror="this.parentNode.classList.add('empty')"></div><figcaption>🌙 מצב כהה</figcaption></figure>
+      <figure><div class="gcard"><img src="../img/home-light.png" alt="דף הבית האישי — מצב בהיר" onerror="this.parentNode.classList.add('empty')"></div><figcaption>☀️ מצב בהיר</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="contact">
+  <div class="wrap">
+    <div class="cta">
+      <h2>רוצה דף בית משלך?</h2>
+      <p>שלח לי הודעה ונתאים לך דף אישי — הצבעים שלך, הלוגו שלך, האתרים שלך. פשוט, יפה, ובשליטתך המלאה.</p>
+      <div class="cta-row">
+        <a class="btn btn-wa" href="https://wa.me/972527246200?text=%D7%94%D7%99%D7%99%20%D7%A2%D7%9E%D7%99%D7%AA%2C%20%D7%A8%D7%90%D7%99%D7%AA%D7%99%20%D7%90%D7%AA%20%D7%93%D7%A3%20%D7%94%D7%91%D7%99%D7%AA%20%D7%94%D7%90%D7%99%D7%A9%D7%99%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%93%D7%A3%20%D7%9E%D7%A9%D7%9C%D7%99" target="_blank" rel="noopener">💬 וואטסאפ</a>
+        <a class="btn btn-primary" href="mailto:amit@rubinproject.com?subject=דף הבית האישי — פנייה מהאתר">📧 מייל</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-in">
+    <div class="foot-brand">
+      <img src="../../img/logo-reverse.png" alt="Rubin Project">
+      <div><div class="bn" dir="ltr">Rubin <span class="b">Project</span></div>
+      <div class="tg">פתרונות BI, אוטומציה ותוכנה לעסקים</div></div>
+    </div>
+    <div class="foot-copy">הופכים נתונים להחלטות. · © Rubin Project</div>
+    <div class="foot-links">
+      <a href="/">דף הבית</a>
+      <a href="/#portfolio">תיק עבודות</a>
+      <a href="/card/">כרטיס דיגיטלי</a>
+      <a href="https://wa.me/972527246200" target="_blank" rel="noopener">וואטסאפ</a>
+      <a href="mailto:amit@rubinproject.com">amit@rubinproject.com</a>
+    </div>
+  </div>
+</footer>
+<script>
+  if('scrollRestoration' in history) history.scrollRestoration='manual';
+  window.addEventListener('load',function(){ if(!location.hash) window.scrollTo(0,0); });
+</script>
+</body>
+</html>

@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bot Analytics — ניתוח שירות מבוסס AI | Rubin Project</title>
+<meta name="description" content="Bot Analytics — פייפליין של סוכני AI שהופך דאטה גולמית של שירות לדשבורדים ניהוליים: סיווג נושאים, מדדי איכות, מגמות ושיעורי טיפול. דמו חי.">
+<link rel="canonical" href="https://www.rubinproject.com/projects/bot-analytics/">
+<link rel="icon" href="../../img/favicon.png">
+<meta property="og:site_name" content="Rubin Project">
+<meta property="og:title" content="Bot Analytics — ניתוח שירות מבוסס AI">
+<meta property="og:description" content="סוכני AI שהופכים דאטה גולמית של שירות לדשבורדים ניהוליים — סיווג, איכות ומגמות. דמו חי.">
+<meta property="og:image" content="https://www.rubinproject.com/img/bot-kpi.png?v=2">
+<meta property="og:url" content="https://www.rubinproject.com/projects/bot-analytics/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="he_IL">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://www.rubinproject.com/img/bot-kpi.png?v=2">
+<meta name="theme-color" content="#0c1119">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* Bot Analytics — clean light dashboard, multi-color KPI accents */
+  --bg:#f4f7fc; --bg2:#ffffff; --card:#ffffff; --card2:#eef3fa; --border:#e0e7f1;
+  --ink:#16233f; --muted:#5c6577; --muted2:#8a93a8;
+  --accent:#2563eb; --accent2:#3b82f6; --blue:#2563eb; --orange:#ef9d0b; --green:#16a34a; --red:#e11d48; --violet:#8b5cf6;
+  --grad:linear-gradient(135deg,#2563eb,#1e40af);
+  --radius:18px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Heebo',sans-serif;background:var(--bg);color:var(--ink);line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.wrap{max-width:1160px;margin:0 auto;padding:0 22px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.eyebrow{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:700;letter-spacing:.3px;color:var(--accent);background:rgba(37,99,235,.09);border:1px solid rgba(37,99,235,.22);padding:6px 14px;border-radius:999px;margin-bottom:16px}
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:inherit;font-size:15px;font-weight:700;padding:13px 26px;border-radius:12px;cursor:pointer;border:1px solid transparent;transition:.2s;white-space:nowrap}
+.btn-primary{background:var(--grad);color:#fff;box-shadow:0 8px 22px rgba(37,99,235,.28)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(37,99,235,.4)}
+.btn-ghost{background:#fff;color:var(--accent);border-color:var(--border)}
+.btn-ghost:hover{border-color:var(--accent)}
+.btn-wa{background:#25d366;color:#0a1f12}
+.btn-wa:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(37,211,102,.4)}
+.btn-lghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.4)}
+.btn-lghost:hover{border-color:#fff;background:rgba(255,255,255,.08)}
+
+/* NAV (dark) */
+header.nav{position:sticky;top:0;z-index:100;background:rgba(12,17,25,0.94);backdrop-filter:blur(14px);border-bottom:1px solid #26314c}
+.nav-in{display:flex;align-items:center;justify-content:space-between;gap:18px;height:74px;padding:0 32px;max-width:none}
+.nav-start{display:flex;align-items:center;gap:24px}
+.nav-logo{display:flex;align-items:center;gap:9px;font-size:20px;font-weight:900;letter-spacing:-.4px;color:#fff}
+.nav-logo img{height:48px;width:auto}
+.nav-logo .b{color:#60a5fa}
+.nav-links{display:flex;gap:22px;font-size:14px;font-weight:500}
+.nav-links a{color:#aeb6c6;transition:.15s}.nav-links a:hover{color:#fff}
+.nav-cta{display:flex;gap:10px}
+.nav-cta .btn{padding:9px 18px;font-size:14px}
+
+/* HERO */
+.phero{position:relative;text-align:center;padding:52px 0 30px;border-bottom:1px solid var(--border);
+  background:radial-gradient(800px 380px at 50% -10%,rgba(37,99,235,.10),transparent 60%),linear-gradient(180deg,#eef3fb,var(--bg))}
+.phero .badge{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:800;color:#fff;background:linear-gradient(135deg,#2563eb,#1e40af);padding:6px 16px;border-radius:999px;margin-bottom:18px;box-shadow:0 8px 22px rgba(37,99,235,.28)}
+.phero h1{font-size:clamp(38px,5.6vw,62px);font-weight:900;line-height:1.03;letter-spacing:-1.4px;color:var(--ink)}
+.phero .tag{font-size:20px;color:var(--accent);font-weight:800;margin-top:8px}
+.phero .lead{font-size:17px;color:#3f4a63;margin:16px auto 0;max-width:620px}
+.phero .row{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px;justify-content:center}
+.kpirow{display:flex;gap:26px;justify-content:center;flex-wrap:wrap;margin-top:30px}
+.kpi{min-width:120px}
+.kpi b{display:block;font-size:30px;font-weight:900;line-height:1}
+.kpi.b1 b{color:var(--blue)}.kpi.b2 b{color:var(--green)}.kpi.b3 b{color:var(--orange)}
+.kpi span{font-size:13px;color:var(--muted);font-weight:600}
+
+/* BROWSER-FRAMED SHOT */
+.shotwrap{padding:26px 0 20px}
+.shot{max-width:1020px;margin:0 auto;border-radius:16px;overflow:hidden;border:1px solid var(--border);
+  box-shadow:0 26px 60px rgba(22,35,63,.16)}
+.shot-bar{display:flex;align-items:center;gap:7px;padding:11px 15px;background:#e9eef6;border-bottom:1px solid var(--border)}
+.shot-bar i{width:11px;height:11px;border-radius:50%;display:block}
+.shot-bar .r{background:#ff5f57}.shot-bar .y{background:#febc2e}.shot-bar .g{background:#28c840}
+.shot-bar span{margin-inline-start:12px;font-size:12px;color:var(--muted2);direction:ltr}
+.shot img{width:100%;display:block;background:#fff}
+.shot-cap{text-align:center;color:var(--muted);font-size:13.5px;margin-top:14px}
+
+/* SECTIONS */
+section{padding:46px 0}
+.alt{background:var(--bg2)}
+.sec-head{max-width:780px;margin:0 auto 30px;text-align:center}
+.sec-head h2{font-size:clamp(24px,3vw,34px);font-weight:800;letter-spacing:-.4px;color:var(--ink)}
+.sec-head p{color:var(--muted);font-size:16px;margin-top:8px}
+
+/* CHALLENGE / SOLUTION */
+.cs{display:grid;grid-template-columns:1fr 1fr;gap:22px;max-width:960px;margin:0 auto}
+.csbox{background:#fff;border:1px solid var(--border);border-radius:18px;padding:26px;box-shadow:0 6px 18px rgba(22,35,63,.05)}
+.csbox.chal{border-top:3px solid var(--red)}
+.csbox.sol{border-top:3px solid var(--green)}
+.csbox h3{font-size:19px;font-weight:800;margin-bottom:12px;display:flex;align-items:center;gap:9px}
+.csbox.chal h3{color:#be123c}.csbox.sol h3{color:#15803d}
+.csbox ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+.csbox li{position:relative;padding-inline-start:26px;font-size:15px;color:#3f4a63}
+.csbox.chal li::before{content:"✕";position:absolute;inset-inline-start:0;color:var(--red);font-weight:800}
+.csbox.sol li::before{content:"✓";position:absolute;inset-inline-start:0;color:var(--green);font-weight:800}
+
+/* FEATURES with KPI-colored tops */
+.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.feat{background:#fff;border:1px solid var(--border);border-top:3px solid var(--accent);border-radius:14px;padding:22px;box-shadow:0 6px 18px rgba(22,35,63,.05);transition:.2s}
+.feat:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(22,35,63,.1)}
+.feat.t-blue{border-top-color:var(--blue)}.feat.t-orange{border-top-color:var(--orange)}
+.feat.t-green{border-top-color:var(--green)}.feat.t-red{border-top-color:var(--red)}.feat.t-violet{border-top-color:var(--violet)}
+.feat .ic{font-size:25px;margin-bottom:9px}
+.feat h4{font-size:16.5px;margin-bottom:5px;color:var(--ink)}
+.feat p{font-size:14px;color:var(--muted);line-height:1.6}
+.feat.hl{grid-column:1/-1;border-top:3px solid var(--blue);background:linear-gradient(135deg,rgba(37,99,235,.05),rgba(139,92,246,.06));display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:center;padding:28px}
+.feat.hl:hover{transform:none}
+.feat.hl .big{font-size:44px}
+.feat.hl h4{font-size:20px}
+.feat.hl h4 .pill{font-size:11px;font-weight:800;background:var(--grad);color:#fff;padding:2px 9px;border-radius:999px;margin-inline-start:8px;vertical-align:middle}
+.feat.hl p{font-size:15px;color:#3f4a63}
+
+/* TECH / TRUST */
+.chips{display:flex;gap:9px;flex-wrap:wrap;justify-content:center;margin-top:6px}
+.chip{font-size:13.5px;background:#fff;border:1px solid var(--border);border-radius:999px;padding:7px 15px;color:var(--ink)}
+.trust{max-width:820px;margin:0 auto;text-align:center;background:linear-gradient(160deg,rgba(37,99,235,.06),rgba(139,92,246,.06));border:1px solid rgba(37,99,235,.2);border-radius:22px;padding:36px 30px}
+.trust .k{font-size:clamp(23px,3.2vw,31px);font-weight:900;color:var(--ink)}
+.trust .k .cy{color:var(--accent)}
+.trust p{color:#3f4a63;font-size:16px;margin-top:8px}
+
+/* CTA (dark blue band) */
+.cta{background:linear-gradient(160deg,#2563eb,#1a2f6b);border:1px solid rgba(37,99,235,.4);border-radius:26px;padding:48px 34px;text-align:center;box-shadow:0 26px 60px rgba(37,99,235,.28);color:#fff}
+.cta h2{font-size:clamp(24px,3.4vw,34px);font-weight:900;margin-bottom:10px;color:#fff}
+.cta p{color:#dbe4fb;font-size:16.5px;max-width:580px;margin:0 auto 26px}
+.cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+
+/* FOOTER (dark) */
+footer{border-top:1px solid #26314c;padding:40px 0;background:#0c1119}
+.foot-in{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;padding:0 32px;max-width:1160px;margin:0 auto}
+.foot-brand{display:flex;align-items:center;gap:12px}
+.foot-brand img{height:42px;width:auto}
+.foot-brand .bn{font-weight:900;font-size:20px;color:#fff}.foot-brand .bn .b{color:#60a5fa}
+.foot-brand .tg{font-size:12.5px;color:#22d3ee}
+.foot-copy{flex:1;text-align:center;color:#8b95a8;font-size:14px;font-weight:600;min-width:220px}
+.foot-links{display:flex;gap:16px;font-size:14px;color:#8b95a8;flex-wrap:wrap}
+.foot-links a:hover{color:#fff}
+
+@media(max-width:860px){
+  .feat-grid{grid-template-columns:1fr 1fr}
+  .feat.hl{grid-template-columns:1fr;text-align:center}
+  .cs{grid-template-columns:1fr}
+  .nav-links{display:none}
+  .foot-in{flex-direction:column;text-align:center}
+}
+@media(max-width:560px){
+  .nav-in{padding:0 16px;gap:10px}
+  .nav-logo span{display:none}
+  .nav-logo img{height:42px}
+  .nav-cta .btn{padding:8px 14px;font-size:13px}
+}
+@media(max-width:520px){ .feat-grid{grid-template-columns:1fr} }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="nav-in">
+    <div class="nav-start">
+      <a class="nav-logo" href="/"><img src="../../img/logo-reverse.png" alt="Rubin Project"><span dir="ltr">Rubin <span class="b">Project</span></span></a>
+      <nav class="nav-links">
+        <a href="/#services">שירותים</a>
+        <a href="/#portfolio">תיק עבודות</a>
+        <a href="/#creator">מי אני</a>
+        <a href="/#contact">יצירת קשר</a>
+      </nav>
+    </div>
+    <div class="nav-cta">
+      <a class="btn btn-primary" href="https://wa.me/972527246200" target="_blank" rel="noopener">💬 וואטסאפ</a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<header class="phero">
+  <div class="wrap">
+    <span class="badge">🤖 פייפליין AI · דמו חי</span>
+    <h1 dir="ltr">Bot Analytics</h1>
+    <div class="tag">ניתוח שירות מבוסס AI</div>
+    <p class="lead">פייפליין של סוכני AI שהופך <strong>דאטה גולמית של שירות</strong> — שיחות בוט ופניות לקוחות — לדשבורדים ניהוליים: סיווג נושאים, מדדי איכות, מגמות ושיעורי טיפול. במקום ערימת לוגים, תמונת מצב שאפשר להחליט לפיה.</p>
+    <div class="row">
+      <a class="btn btn-primary" href="https://amitrubin10.github.io/bot-analytics-pipeline/" target="_blank" rel="noopener">▶ לדמו החי</a>
+      <a class="btn btn-ghost" href="#contact">רוצים כזה לעסק?</a>
+    </div>
+    <div class="kpirow">
+      <div class="kpi b1"><b>3,366</b><span>סך קריאות בבוט</span></div>
+      <div class="kpi b2"><b>77.3%</b><span>אחוז הצלחה (מענה תקין)</span></div>
+      <div class="kpi b3"><b>42%</b><span>טופלו בבוט ללא נציג</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- SHOT -->
+<div class="shotwrap">
+  <div class="wrap">
+    <div class="shot">
+      <div class="shot-bar"><i class="r"></i><i class="y"></i><i class="g"></i><span>bot-analytics — KPIs</span></div>
+      <img src="../../img/bot-kpi.png" alt="Bot Analytics — כרטיסי KPI: קריאות, אחוזי הצלחה, שיעורי טיפול ובעיות פתוחות">
+    </div>
+    <div class="shot-cap">דשבורד KPI — קריאות, אחוזי הצלחה, שיעורי טיפול בבוט ובעיות פתוחות, בצבעי סטטוס</div>
+  </div>
+</div>
+
+<!-- CHALLENGE / SOLUTION -->
+<section class="alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">האתגר והפתרון</span>
+      <h2>מלוגים גולמיים — לתובנות ניהוליות</h2>
+    </div>
+    <div class="cs">
+      <div class="csbox chal">
+        <h3>⚠️ לפני</h3>
+        <ul>
+          <li>אלפי שיחות בוט ופניות — בלי דרך לנתח אותן</li>
+          <li>לא ברור על מה הלקוחות פונים ואיפה נופלים</li>
+          <li>אין מדד לאיכות המענה או לשיעור הטיפול</li>
+          <li>קריאת לוגים ידנית — בלתי אפשרי בקנה מידה</li>
+        </ul>
+      </div>
+      <div class="csbox sol">
+        <h3>✅ עם Bot Analytics</h3>
+        <ul>
+          <li>סוכני AI מסווגים ומסכמים כל שיחה אוטומטית</li>
+          <li>נושאים מובילים, נקודות כשל ומגמות — ברור לעין</li>
+          <li>מדדי איכות ושיעורי טיפול, בזמן אמת</li>
+          <li>דשבורד ניהולי שמתעדכן לבד — בלי עבודה ידנית</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">היכולות</span>
+      <h2>פייפליין של סוכני AI — מקצה לקצה</h2>
+      <p>כל סוכן אחראי על שלב: איסוף, סיווג, איכות, מגמות ותצוגה.</p>
+    </div>
+    <div class="feat-grid">
+      <div class="feat hl">
+        <div class="big">🧠</div>
+        <div>
+          <h4>5 סוכני AI בשרשרת אחת<span class="pill">הליבה</span></h4>
+          <p>כל סוכן מתמחה בשלב — מיצוי הנתונים, סיווג הנושא, ניקוד איכות, זיהוי מגמות ובניית הדשבורד. יחד הם הופכים דאטה גולמית לתובנה ניהולית, אוטומטית ובאופן חוזר.</p>
+        </div>
+      </div>
+      <div class="feat t-blue"><div class="ic">🏷️</div><h4>סיווג נושאים</h4><p>כל פנייה מתויגת לפי נושא ותת-נושא — כדי לראות על מה באמת פונים.</p></div>
+      <div class="feat t-green"><div class="ic">⭐</div><h4>מדדי איכות</h4><p>ניקוד איכות המענה — מה נענה טוב, ואיפה השירות נופל.</p></div>
+      <div class="feat t-orange"><div class="ic">📈</div><h4>מגמות לאורך זמן</h4><p>זיהוי עליות, ירידות ודפוסים — מה משתנה ומתי.</p></div>
+      <div class="feat t-violet"><div class="ic">🤝</div><h4>בוט מול נציג</h4><p>שיעור הטיפול בבוט לבד מול העברה לנציג — לצמצום עומס.</p></div>
+      <div class="feat t-red"><div class="ic">🚩</div><h4>זיהוי בעיות</h4><p>סימון פניות תקועות, כשלים חוזרים ונושאים מוכי-בעיות.</p></div>
+      <div class="feat t-blue"><div class="ic">📊</div><h4>דשבורד ניהולי</h4><p>כל התובנות בכרטיסי KPI צבעוניים וברורים — מוכן להחלטה.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST -->
+<section class="alt">
+  <div class="wrap">
+    <div class="trust">
+      <div class="k">יש <span class="cy">דמו חי</span> — אפשר להתנסות עכשיו</div>
+      <p>הפייפליין רץ על נתוני דוגמה ומייצר את הדשבורד המלא בזמן אמת. אותה גישה מתחברת גם למקורות שירות אמיתיים — בוט, מוקד או CRM.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TECH -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">מאחורי הקלעים</span>
+      <h2>AI יישומי, מחובר לתפעול</h2>
+    </div>
+    <div class="chips">
+      <span class="chip">Python</span><span class="chip">סוכני LLM</span><span class="chip">סיווג ו-NLP</span><span class="chip">פייפליין נתונים</span><span class="chip">דשבורד אינטראקטיבי</span><span class="chip">דמו חי</span>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="contact">
+  <div class="wrap">
+    <div class="cta">
+      <h2>יש לכם בוט, מוקד או שירות לקוחות?</h2>
+      <p>אפשר לחבר פייפליין כמו Bot Analytics לדאטה שלכם ולקבל דשבורד ניהולי שמראה מה קורה באמת. דברו איתי ונבנה את זה סביב הצורך.</p>
+      <div class="cta-row">
+        <a class="btn btn-wa" href="https://wa.me/972527246200?text=%D7%94%D7%99%D7%99%20%D7%A2%D7%9E%D7%99%D7%AA%2C%20%D7%A8%D7%90%D7%99%D7%AA%D7%99%20%D7%90%D7%AA%20Bot%20Analytics%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A4%D7%A8%D7%98%D7%99%D7%9D" target="_blank" rel="noopener">💬 וואטסאפ</a>
+        <a class="btn btn-lghost" href="https://amitrubin10.github.io/bot-analytics-pipeline/" target="_blank" rel="noopener">▶ לדמו החי</a>
+        <a class="btn btn-lghost" href="https://github.com/amitrubin10/bot-analytics-pipeline" target="_blank" rel="noopener">↗ GitHub</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-in">
+    <div class="foot-brand">
+      <img src="../../img/logo-reverse.png" alt="Rubin Project">
+      <div><div class="bn" dir="ltr">Rubin <span class="b">Project</span></div>
+      <div class="tg">פתרונות BI, אוטומציה ותוכנה לעסקים</div></div>
+    </div>
+    <div class="foot-copy">הופכים נתונים להחלטות. · © Rubin Project</div>
+    <div class="foot-links">
+      <a href="/">דף הבית</a>
+      <a href="/#portfolio">תיק עבודות</a>
+      <a href="/card/">כרטיס דיגיטלי</a>
+      <a href="https://wa.me/972527246200" target="_blank" rel="noopener">וואטסאפ</a>
+      <a href="mailto:amit@rubinproject.com">amit@rubinproject.com</a>
+    </div>
+  </div>
+</footer>
+<script>
+  if('scrollRestoration' in history) history.scrollRestoration='manual';
+  window.addEventListener('load',function(){ if(!location.hash) window.scrollTo(0,0); });
+</script>
+</body>
+</html>

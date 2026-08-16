@@ -145,6 +145,31 @@ section{padding:64px 0;position:relative}
 .mcard .ic{font-size:26px;margin-bottom:10px}.mcard h4{font-size:16px;margin-bottom:5px}.mcard p{font-size:13px;color:var(--muted)}
 .mcard .mlink{display:inline-block;margin-top:10px;font-size:13px;color:var(--accent2);font-weight:700}
 .badge-soft{font-size:10px;font-weight:800;background:var(--card2);border:1px solid var(--border);color:var(--muted);padding:2px 7px;border-radius:6px;margin-inline-start:6px;vertical-align:middle}
+/* PORTFOLIO — category card grid */
+.cat-head{display:flex;align-items:center;gap:12px;margin:40px 0 20px}
+.cat-head:first-of-type{margin-top:8px}
+.cat-ic{font-size:24px}
+.cat-head h3{font-size:clamp(19px,2.4vw,26px);font-weight:800;white-space:nowrap}
+.cat-head .line{flex:1;height:1px;background:linear-gradient(90deg,var(--border),transparent)}
+.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.pcard{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--border);border-radius:20px;overflow:hidden;transition:.22s}
+.pcard:hover{transform:translateY(-5px);border-color:rgba(96,165,250,.55);box-shadow:0 26px 60px rgba(0,0,0,.5)}
+.pcard-img{aspect-ratio:16/9;overflow:hidden;background:var(--card2);border-bottom:1px solid var(--border)}
+.pcard-img img{width:100%;height:100%;object-fit:cover;object-position:top}
+.pcard-emoji{aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;font-size:54px;border-bottom:1px solid var(--border);background:linear-gradient(160deg,var(--card2),var(--card))}
+.pcard-body{padding:18px 20px 20px;display:flex;flex-direction:column;flex:1}
+.pcard-tag{font-size:12px;font-weight:800;color:var(--accent2);margin-bottom:7px}
+.pcard-body h4{font-size:19px;font-weight:800;margin-bottom:6px}
+.pcard-body h4 span[dir=ltr]{unicode-bidi:isolate}
+.pcard-body p{font-size:14px;color:var(--muted);line-height:1.55;flex:1}
+.pcard-foot{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:14px}
+.pcard-foot .chip{font-size:12px;padding:4px 11px}
+.pcard-foot .chip::before{content:""}
+.pcard-more{margin-inline-start:auto;color:var(--accent2);font-weight:800;font-size:14px;white-space:nowrap}
+.pcard:hover .pcard-more{text-decoration:underline}
+.cat-more{text-align:center;margin-top:34px}
+@media(max-width:860px){ .pgrid{grid-template-columns:1fr 1fr} }
+@media(max-width:560px){ .pgrid{grid-template-columns:1fr} }
 
 /* VALUE / RESULTS */
 .value{background:linear-gradient(135deg,rgba(16,185,129,.12),rgba(59,130,246,.10));border:1px solid rgba(16,185,129,.32);border-radius:26px;padding:48px 44px;text-align:center;box-shadow:0 24px 60px rgba(0,0,0,.4),0 0 70px rgba(16,185,129,.08)}
@@ -355,52 +380,93 @@ footer{border-top:1px solid var(--border);padding:40px 0;margin-top:20px}
     <div class="sec-head reveal">
       <span class="eyebrow">תיק עבודות</span>
       <h2>מערכות אמיתיות שבניתי</h2>
-      <p>מוצרים שרצים בפרודקשן, עם משתמשים אמיתיים.</p>
+      <p>לוחצים על כל פרויקט — ורואים את הסיפור המלא.</p>
     </div>
 
-    <!-- Verifix -->
-    <div class="show reveal">
-      <div class="show-head">
-        <div class="ftag">🏢 מערכת פרודקשן</div>
-        <h3>Verifix — ניהול תחזוקת מבנים</h3>
-        <p>מערכת full-stack לקריאות תקלה, תחזוקה מונעת, SLA וניהול נכסים — מוטמעת בחברת נמלי ישראל.</p>
-        <div class="show-chips"><span class="chip">Next.js</span><span class="chip">PostgreSQL</span><span class="chip">מעקב SLA</span><span class="chip">ריבוי מבנים</span></div>
-      </div>
-      <div class="show-shot"><img src="img/verifix-health.png" alt="Verifix — מד תקינות מבנה וגרפי ביצועים" loading="lazy"></div>
-      <div class="show-links"><a class="proj-link" href="https://github.com/amitrubin10/verifix-showcase" target="_blank" rel="noopener">צפייה בפרויקט ←</a></div>
+    <!-- Category: business solutions -->
+    <div class="cat-head reveal"><span class="cat-ic">🏢</span><h3>פתרונות לעסקים</h3><span class="line"></span></div>
+    <div class="pgrid">
+      <a class="pcard reveal" href="/projects/verifix/">
+        <div class="pcard-img"><img src="img/verifix-health.png" alt="Verifix — ניהול תחזוקת מבנים" loading="lazy"></div>
+        <div class="pcard-body">
+          <div class="pcard-tag">🏢 מערכת פרודקשן</div>
+          <h4><span dir="ltr">Verifix</span></h4>
+          <p>ניהול תחזוקת מבנים — קריאות שבר, אחזקה מונעת ו-SLA. רץ בפרודקשן בחברת נמלי ישראל.</p>
+          <div class="pcard-foot"><span class="chip">Next.js</span><span class="chip">SLA</span><span class="pcard-more">לפרטים ←</span></div>
+        </div>
+      </a>
+      <a class="pcard reveal" href="/projects/veribayit/">
+        <div class="pcard-img"><img src="img/veribayit-dashboard.png" alt="VeriBayit — ניהול ועד בית" loading="lazy"></div>
+        <div class="pcard-body">
+          <div class="pcard-tag">☁️ SaaS חי</div>
+          <h4><span dir="ltr">VeriBayit</span></h4>
+          <p>SaaS לניהול ועד בית שמתחבר לדף הבנק ומזהה אוטומטית מי שילם, כמה ולמה.</p>
+          <div class="pcard-foot"><span class="chip">SaaS</span><span class="chip">אינטגרציית בנק</span><span class="pcard-more">לפרטים ←</span></div>
+        </div>
+      </a>
+      <a class="pcard reveal" href="/projects/bot-analytics/">
+        <div class="pcard-img"><img src="img/bot-kpi.png" alt="Bot Analytics — ניתוח שירות AI" loading="lazy"></div>
+        <div class="pcard-body">
+          <div class="pcard-tag">🤖 פייפליין AI</div>
+          <h4><span dir="ltr">Bot Analytics</span></h4>
+          <p>סוכני AI שהופכים דאטה גולמית של שירות לדשבורדים ניהוליים — סיווג, איכות ומגמות.</p>
+          <div class="pcard-foot"><span class="chip">AI Agents</span><span class="chip">Python</span><span class="pcard-more">לפרטים ←</span></div>
+        </div>
+      </a>
+      <a class="pcard reveal" href="https://github.com/amitrubin10/whatsapp-market-intel" target="_blank" rel="noopener">
+        <div class="pcard-emoji">📡</div>
+        <div class="pcard-body">
+          <div class="pcard-tag">📊 מודיעין שוק</div>
+          <h4><span dir="ltr">WhatsApp Market Intel</span></h4>
+          <p>מודל BI למודיעין שוק למנהלים — ניתוח קבוצות של מתחרים וקול הלקוח.</p>
+          <div class="pcard-foot"><span class="chip">BI</span><span class="chip">NLP</span><span class="pcard-more">GitHub ←</span></div>
+        </div>
+      </a>
     </div>
 
-    <!-- VeriBayit -->
-    <div class="show reveal">
-      <div class="show-head">
-        <div class="ftag">☁️ SaaS חי</div>
-        <h3>VeriBayit — SaaS לניהול ועד בית</h3>
-        <p>מערכת ענן שמתחברת לדף הבנק ומזהה אוטומטית מי שילם, כמה ולמה. אתר ואפליקציה חיים.</p>
-        <div class="show-chips"><span class="chip">SaaS</span><span class="chip">אינטגרציית בנק</span><span class="chip">Supabase</span><span class="chip">RTL מלא</span></div>
-      </div>
-      <div class="show-shot"><img src="img/veribayit-dashboard.png" alt="VeriBayit — דשבורד ניהול ועד בית" loading="lazy"></div>
-      <div class="show-links"><a class="proj-link" href="https://www.veribayit.com" target="_blank" rel="noopener">לאתר החי ←</a><a class="proj-link" href="https://github.com/amitrubin10/veribayit" target="_blank" rel="noopener">GitHub ←</a></div>
+    <!-- Category: apps & products -->
+    <div class="cat-head reveal"><span class="cat-ic">📱</span><h3>אפליקציות ומוצרים</h3><span class="line"></span></div>
+    <div class="pgrid">
+      <a class="pcard reveal" href="/projects/torah-uri/">
+        <div class="pcard-emoji">🕎</div>
+        <div class="pcard-body">
+          <div class="pcard-tag">📱 אפליקציה · לימוד</div>
+          <h4>תורה אורי</h4>
+          <p>אפליקציה ללימוד קריאה בתורה בטעמים — השמעה, הקלטה עצמית והשוואה חכמה למקור.</p>
+          <div class="pcard-foot"><span class="chip">PWA</span><span class="chip">אופליין</span><span class="pcard-more">לפרטים ←</span></div>
+        </div>
+      </a>
+      <a class="pcard reveal" href="/projects/homepage/">
+        <div class="pcard-emoji">🏠</div>
+        <div class="pcard-body">
+          <div class="pcard-tag">🏠 מוצר אישי</div>
+          <h4>דף הבית האישי</h4>
+          <p>מרכז שליטה אישי לדפדפן — כל האתרים שלך בקטגוריות, שעון, משימות ומצב כהה/בהיר.</p>
+          <div class="pcard-foot"><span class="chip">מותאם אישית</span><span class="chip">פרטי</span><span class="pcard-more">לפרטים ←</span></div>
+        </div>
+      </a>
+      <a class="pcard reveal" href="https://amitrubin10.github.io/verifit/" target="_blank" rel="noopener">
+        <div class="pcard-emoji">💪</div>
+        <div class="pcard-body">
+          <div class="pcard-tag">📱 PWA · דמו חי</div>
+          <h4><span dir="ltr">Verifit</span></h4>
+          <p>אפליקציית כושר ותזונה — תוכניות אישיות ומעקב, עובדת גם אופליין.</p>
+          <div class="pcard-foot"><span class="chip">PWA</span><span class="chip">דמו</span><span class="pcard-more">לדמו ←</span></div>
+        </div>
+      </a>
+      <a class="pcard reveal" href="https://amitrubin10.github.io/veritest-showcase/" target="_blank" rel="noopener">
+        <div class="pcard-emoji">🧪</div>
+        <div class="pcard-body">
+          <div class="pcard-tag">🧪 קונספט</div>
+          <h4><span dir="ltr">Veritest</span></h4>
+          <p>אפיון מוצר לניהול בדיקות תוכנה (QA) — מצגת קונספט בשלב תכנון.</p>
+          <div class="pcard-foot"><span class="chip">QA</span><span class="chip">אפיון</span><span class="pcard-more">למצגת ←</span></div>
+        </div>
+      </a>
     </div>
 
-    <!-- Bot Analytics -->
-    <div class="show reveal">
-      <div class="show-head">
-        <div class="ftag">🤖 פייפליין AI</div>
-        <h3>Bot Analytics — ניתוח שירות מבוסס AI</h3>
-        <p>5 סוכני AI שהופכים דאטה גולמית של שירות לדשבורדים ניהוליים: סיווג נושאים, איכות ומגמות.</p>
-        <div class="show-chips"><span class="chip">AI Agents</span><span class="chip">דשבורד ניהולי</span><span class="chip">Python</span><span class="chip">דמו חי</span></div>
-      </div>
-      <div class="show-shot"><img src="img/bot-kpi.png" alt="Bot Analytics — כרטיסי KPI וגרפי מגמה" loading="lazy"></div>
-      <div class="show-links"><a class="proj-link" href="https://amitrubin10.github.io/bot-analytics-pipeline/" target="_blank" rel="noopener">לדמו החי ←</a><a class="proj-link" href="https://github.com/amitrubin10/bot-analytics-pipeline" target="_blank" rel="noopener">GitHub ←</a></div>
-    </div>
-
-    <!-- more projects -->
-    <div class="sec-head reveal" style="margin-top:56px;margin-bottom:24px"><h2 style="font-size:clamp(20px,2.6vw,30px)">עוד מהעבודה</h2></div>
-    <div class="mini">
-      <a class="mcard reveal" href="https://github.com/amitrubin10/whatsapp-market-intel" target="_blank" rel="noopener"><div class="ic">📡</div><h4>WhatsApp Market Intel</h4><p>מודל BI למודיעין שוק למנהלים — ניתוח מתחרים וקול הלקוח.</p><span class="mlink">GitHub ←</span></a>
-      <a class="mcard reveal" href="https://amitrubin10.github.io/veritest-showcase/" target="_blank" rel="noopener"><div class="ic">🧪</div><h4>Veritest <span class="badge-soft">קונספט</span></h4><p>אפיון מוצר לניהול בדיקות תוכנה (QA) — בשלב תכנון.</p><span class="mlink">למצגת ←</span></a>
-      <a class="mcard reveal" href="https://amitrubin10.github.io/verifit/" target="_blank" rel="noopener"><div class="ic">💪</div><h4>Verifit</h4><p>PWA לכושר ותזונה — תוכניות אישיות ומעקב, עובד גם אופליין.</p><span class="mlink">לדמו ←</span></a>
-      <a class="mcard reveal" href="https://github.com/amitrubin10" target="_blank" rel="noopener"><div class="ic">💻</div><h4>עוד בגיטהאב</h4><p>כל הפרויקטים, הקוד והדמואים — במקום אחד.</p><span class="mlink">לפרופיל ←</span></a>
+    <div class="cat-more reveal">
+      <a class="btn btn-ghost" href="https://github.com/amitrubin10" target="_blank" rel="noopener">💻 כל הפרויקטים ב-GitHub ←</a>
     </div>
   </div>
 </section>

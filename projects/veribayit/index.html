@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VeriBayit — SaaS לניהול ועד בית | Rubin Project</title>
+<meta name="description" content="VeriBayit — מערכת ענן חכמה לניהול ועד בית: מתחברת לדף הבנק ומזהה אוטומטית מי שילם, כמה ולמה. גבייה, נכסים, ספקים, דוחות והצבעות — אתר ואפליקציה חיים.">
+<link rel="canonical" href="https://www.rubinproject.com/projects/veribayit/">
+<link rel="icon" href="../../img/favicon.png">
+<meta property="og:site_name" content="Rubin Project">
+<meta property="og:title" content="VeriBayit — SaaS לניהול ועד בית">
+<meta property="og:description" content="מתחברת לדף הבנק ומזהה אוטומטית מי שילם, כמה ולמה. גבייה, דוחות והצבעות — אתר ואפליקציה חיים.">
+<meta property="og:image" content="https://www.rubinproject.com/img/veribayit-dashboard.png?v=2">
+<meta property="og:url" content="https://www.rubinproject.com/projects/veribayit/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="he_IL">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://www.rubinproject.com/img/veribayit-dashboard.png?v=2">
+<meta name="theme-color" content="#0a0e20">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* VeriBayit — navy + violet SaaS, with financial green/red accents */
+  --bg:#0a0e20; --bg2:#0e1330; --card:#141a38; --card2:#1a2140; --border:#28305a;
+  --ink:#e9ecf7; --muted:#9aa3c4; --muted2:#6b7398;
+  --accent:#6d8bff; --accent2:#93a7ff; --cyan:#a78bfa; --violet:#8b5cf6; --success:#34d399; --warn:#f59e0b; --red:#f87171;
+  --grad:linear-gradient(135deg,#6d8bff,#8b5cf6);
+  --grad-soft:linear-gradient(135deg,rgba(109,139,255,.16),rgba(139,92,246,.12));
+  --radius:18px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Heebo',sans-serif;background:var(--bg);color:var(--ink);line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.wrap{max-width:1160px;margin:0 auto;padding:0 22px}
+.cy{color:var(--cyan)}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.eyebrow{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:700;letter-spacing:.3px;color:var(--accent2);background:rgba(109,139,255,.12);border:1px solid rgba(109,139,255,.3);padding:6px 14px;border-radius:999px;margin-bottom:16px}
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:inherit;font-size:15px;font-weight:700;padding:13px 26px;border-radius:12px;cursor:pointer;border:1px solid transparent;transition:.2s;white-space:nowrap}
+.btn-primary{background:var(--grad);color:#fff;box-shadow:0 8px 26px rgba(109,139,255,.4)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 34px rgba(139,92,246,.5)}
+.btn-ghost{background:transparent;color:var(--ink);border-color:var(--border)}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent2)}
+.btn-wa{background:#25d366;color:#0a1f12}
+.btn-wa:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(37,211,102,.4)}
+
+/* NAV */
+header.nav{position:sticky;top:0;z-index:100;background:rgba(10,14,32,0.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;gap:18px;height:74px;padding:0 32px;max-width:none}
+.nav-start{display:flex;align-items:center;gap:24px}
+.nav-logo{display:flex;align-items:center;gap:9px;font-size:20px;font-weight:900;letter-spacing:-.4px;color:#fff}
+.nav-logo img{height:48px;width:auto}
+.nav-logo .b{color:var(--accent2)}
+.nav-links{display:flex;gap:22px;font-size:14px;font-weight:500}
+.nav-links a{color:var(--muted);transition:.15s}.nav-links a:hover{color:#fff}
+.nav-cta{display:flex;gap:10px}
+.nav-cta .btn{padding:9px 18px;font-size:14px}
+
+/* HERO */
+.phero{position:relative;text-align:center;padding:52px 0 30px;
+  background:radial-gradient(900px 420px at 50% -10%,rgba(139,92,246,.22),transparent 60%),radial-gradient(700px 380px at 15% 120%,rgba(109,139,255,.14),transparent 60%)}
+.phero .badge{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:800;color:#fff;background:linear-gradient(135deg,#8b5cf6,#6d8bff);padding:6px 16px;border-radius:999px;margin-bottom:18px;box-shadow:0 8px 22px rgba(139,92,246,.35)}
+.phero h1{font-size:clamp(40px,6vw,68px);font-weight:900;line-height:1.02;letter-spacing:-1.5px;background:linear-gradient(135deg,#fff,#c4b5ff);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.phero .tag{font-size:20px;color:var(--cyan);font-weight:700;margin-top:8px}
+.phero .lead{font-size:17px;color:#d3d8ee;margin:16px auto 0;max-width:620px}
+.phero .row{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px;justify-content:center}
+
+/* BROWSER-FRAMED SHOT */
+.shotwrap{padding:22px 0 20px}
+.shot{max-width:1080px;margin:0 auto;border-radius:16px;overflow:hidden;border:1px solid var(--border);
+  box-shadow:0 30px 80px rgba(0,0,0,.6),0 0 60px rgba(139,92,246,.16)}
+.shot-bar{display:flex;align-items:center;gap:7px;padding:11px 15px;background:var(--card2);border-bottom:1px solid var(--border)}
+.shot-bar i{width:11px;height:11px;border-radius:50%;display:block}
+.shot-bar .r{background:#ff5f57}.shot-bar .y{background:#febc2e}.shot-bar .g{background:#28c840}
+.shot-bar span{margin-inline-start:12px;font-size:12px;color:var(--muted2);direction:ltr}
+.shot img{width:100%;display:block}
+.shot-cap{text-align:center;color:var(--muted);font-size:13.5px;margin-top:14px}
+
+/* SECTIONS */
+section{padding:46px 0}
+.alt{background:linear-gradient(180deg,var(--bg),var(--bg2))}
+.sec-head{max-width:780px;margin:0 auto 30px;text-align:center}
+.sec-head h2{font-size:clamp(24px,3vw,34px);font-weight:800;letter-spacing:-.4px}
+.sec-head p{color:var(--muted);font-size:16px;margin-top:8px}
+
+/* CHALLENGE / SOLUTION */
+.cs{display:grid;grid-template-columns:1fr 1fr;gap:22px;max-width:960px;margin:0 auto}
+.csbox{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:26px}
+.csbox.chal{border-color:rgba(248,113,113,.3)}
+.csbox.sol{border-color:rgba(52,211,153,.32);background:linear-gradient(160deg,rgba(52,211,153,.06),var(--card))}
+.csbox h3{font-size:19px;font-weight:800;margin-bottom:12px;display:flex;align-items:center;gap:9px}
+.csbox.chal h3{color:#fca5a5}.csbox.sol h3{color:#6ee7b7}
+.csbox ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+.csbox li{position:relative;padding-inline-start:26px;font-size:15px;color:#d3d8ee}
+.csbox.chal li::before{content:"✕";position:absolute;inset-inline-start:0;color:#f87171;font-weight:800}
+.csbox.sol li::before{content:"✓";position:absolute;inset-inline-start:0;color:#34d399;font-weight:800}
+
+/* FEATURES */
+.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.feat{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:22px;transition:.2s}
+.feat:hover{border-color:rgba(147,167,255,.5);transform:translateY(-3px)}
+.feat .ic{font-size:25px;margin-bottom:9px}
+.feat h4{font-size:16.5px;margin-bottom:5px}
+.feat p{font-size:14px;color:var(--muted);line-height:1.6}
+.feat.hl{grid-column:1/-1;background:var(--grad-soft);border-color:rgba(139,92,246,.35);display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:center;padding:28px}
+.feat.hl:hover{transform:none}
+.feat.hl .big{font-size:44px}
+.feat.hl h4{font-size:20px}
+.feat.hl h4 .pill{font-size:11px;font-weight:800;background:var(--violet);color:#fff;padding:2px 9px;border-radius:999px;margin-inline-start:8px;vertical-align:middle}
+.feat.hl p{font-size:15px;color:#d3d8ee}
+
+/* TECH / TRUST */
+.chips{display:flex;gap:9px;flex-wrap:wrap;justify-content:center;margin-top:6px}
+.chip{font-size:13.5px;background:var(--card2);border:1px solid var(--border);border-radius:999px;padding:7px 15px;color:var(--ink)}
+.trust{max-width:820px;margin:0 auto;text-align:center;background:linear-gradient(160deg,rgba(139,92,246,.12),rgba(109,139,255,.07));border:1px solid rgba(139,92,246,.3);border-radius:22px;padding:36px 30px}
+.trust .k{font-size:clamp(24px,3.2vw,32px);font-weight:900;color:#fff}
+.trust .k .cy{color:var(--cyan)}
+.trust p{color:#d3d8ee;font-size:16px;margin-top:8px}
+
+/* CTA */
+.cta{background:linear-gradient(160deg,rgba(139,92,246,.16),rgba(109,139,255,.08));border:1px solid rgba(139,92,246,.32);border-radius:26px;padding:48px 34px;text-align:center;box-shadow:0 26px 60px rgba(0,0,0,.4)}
+.cta h2{font-size:clamp(24px,3.4vw,34px);font-weight:900;margin-bottom:10px}
+.cta p{color:#d3d8ee;font-size:16.5px;max-width:580px;margin:0 auto 26px}
+.cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:40px 0;background:#080b1a}
+.foot-in{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;padding:0 32px;max-width:1160px;margin:0 auto}
+.foot-brand{display:flex;align-items:center;gap:12px}
+.foot-brand img{height:42px;width:auto}
+.foot-brand .bn{font-weight:900;font-size:20px;color:#fff}.foot-brand .bn .b{color:var(--accent2)}
+.foot-brand .tg{font-size:12.5px;color:var(--cyan)}
+.foot-copy{flex:1;text-align:center;color:var(--muted);font-size:14px;font-weight:600;min-width:220px}
+.foot-links{display:flex;gap:16px;font-size:14px;color:var(--muted);flex-wrap:wrap}
+.foot-links a:hover{color:#fff}
+
+@media(max-width:860px){
+  .feat-grid{grid-template-columns:1fr 1fr}
+  .feat.hl{grid-template-columns:1fr;text-align:center}
+  .cs{grid-template-columns:1fr}
+  .nav-links{display:none}
+  .foot-in{flex-direction:column;text-align:center}
+}
+@media(max-width:560px){
+  .nav-in{padding:0 16px;gap:10px}
+  .nav-logo span{display:none}
+  .nav-logo img{height:42px}
+  .nav-cta .btn{padding:8px 14px;font-size:13px}
+}
+@media(max-width:520px){ .feat-grid{grid-template-columns:1fr} }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="nav-in">
+    <div class="nav-start">
+      <a class="nav-logo" href="/"><img src="../../img/logo-reverse.png" alt="Rubin Project"><span dir="ltr">Rubin <span class="b">Project</span></span></a>
+      <nav class="nav-links">
+        <a href="/#services">שירותים</a>
+        <a href="/#portfolio">תיק עבודות</a>
+        <a href="/#creator">מי אני</a>
+        <a href="/#contact">יצירת קשר</a>
+      </nav>
+    </div>
+    <div class="nav-cta">
+      <a class="btn btn-primary" href="https://wa.me/972527246200" target="_blank" rel="noopener">💬 וואטסאפ</a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<header class="phero">
+  <div class="wrap">
+    <span class="badge">☁️ SaaS חי · עם משתמשים אמיתיים</span>
+    <h1 dir="ltr">VeriBayit</h1>
+    <div class="tag">הפתרון החכם לניהול הבניין</div>
+    <p class="lead">מערכת ענן לניהול ועד בית שמתחברת ל<strong>דף הבנק</strong> ומזהה אוטומטית מי שילם, כמה ולמה — וממנה גם גבייה, נכסים, ספקים, דוחות והצבעות. אתר <strong>ואפליקציה</strong> חיים.</p>
+    <div class="row">
+      <a class="btn btn-primary" href="https://www.veribayit.com" target="_blank" rel="noopener">↗ לאתר החי</a>
+      <a class="btn btn-ghost" href="#contact">רוצים מערכת כזו?</a>
+    </div>
+  </div>
+</header>
+
+<!-- SHOT -->
+<div class="shotwrap">
+  <div class="wrap">
+    <div class="shot">
+      <div class="shot-bar"><i class="r"></i><i class="y"></i><i class="g"></i><span>veribayit.com — דשבורד</span></div>
+      <img src="../../img/veribayit-dashboard.png" alt="VeriBayit — דשבורד ניהול ועד בית: הכנסות, הוצאות, יתרת בנק והתאמות אשראי">
+    </div>
+    <div class="shot-cap">דשבורד ניהולי — הכנסות, הוצאות, יתרת בנק נוכחית והתאמות אשראי, בתמונה אחת</div>
+  </div>
+</div>
+
+<!-- CHALLENGE / SOLUTION -->
+<section class="alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">האתגר והפתרון</span>
+      <h2>ניהול ועד בית — בלי כאב הראש</h2>
+    </div>
+    <div class="cs">
+      <div class="csbox chal">
+        <h3>⚠️ לפני</h3>
+        <ul>
+          <li>מי שילם? מתאמים ידנית דף בנק מול רשימת דיירים</li>
+          <li>גבייה נגררת, ואין תמונה ברורה של חובות</li>
+          <li>הוצאות, ספקים ומסמכים מפוזרים בכל מקום</li>
+          <li>הדיירים לא רואים שקיפות — מה נכנס ומה יצא</li>
+        </ul>
+      </div>
+      <div class="csbox sol">
+        <h3>✅ עם VeriBayit</h3>
+        <ul>
+          <li>התאמת בנק אוטומטית — המערכת מזהה כל תשלום לבד</li>
+          <li>מצב גבייה חי: מי שילם, מי חייב וכמה</li>
+          <li>הכול במקום אחד — הוצאות, ספקים, דוחות ומסמכים</li>
+          <li>שקיפות מלאה לדיירים, כולל הצבעות אונליין</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">היכולות</span>
+      <h2>כל ניהול הבניין — במערכת אחת</h2>
+      <p>מהתשלום בבנק ועד ההצבעה של הדיירים.</p>
+    </div>
+    <div class="feat-grid">
+      <div class="feat hl">
+        <div class="big">🏦</div>
+        <div>
+          <h4>התאמת בנק אוטומטית<span class="pill">החידוש הגדול</span></h4>
+          <p>מחברים את דף הבנק — והמערכת מזהה לבד מי שילם, כמה ולמה, ומשייכת כל תנועה לדייר הנכון. מה שלקח שעות של התאמה ידנית קורה אוטומטית, בדיוק ובשקיפות מלאה.</p>
+        </div>
+      </div>
+      <div class="feat"><div class="ic">💰</div><h4>גבייה חכמה</h4><p>מצב גבייה חי לכל דייר — מי שילם, מי חייב, ותזכורות אוטומטיות.</p></div>
+      <div class="feat"><div class="ic">🏠</div><h4>נכסים מושכרים</h4><p>ניהול דירות ונכסים מושכרים, שוכרים ותשלומים — במקום אחד.</p></div>
+      <div class="feat"><div class="ic">⚡</div><h4>חשמל וטעינה</h4><p>מעקב וחלוקת עלויות חשמל וטעינת רכב חשמלי בין הדיירים.</p></div>
+      <div class="feat"><div class="ic">🧾</div><h4>ספקים והוצאות</h4><p>ניהול ספקים, חשבוניות והוצאות — עם דוחות ברורים.</p></div>
+      <div class="feat"><div class="ic">🗳️</div><h4>הצבעות ומסמכים</h4><p>הצבעות דיירים אונליין וארכיון מסמכים משותף ונגיש.</p></div>
+      <div class="feat"><div class="ic">📈</div><h4>דוחות ותזכורות</h4><p>דוחות תקופתיים, תזכורות אוטומטיות ותמונת מצב פיננסית מלאה.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST -->
+<section class="alt">
+  <div class="wrap">
+    <div class="trust">
+      <div class="k">מוצר <span class="cy">SaaS</span> חי — אתר ואפליקציה</div>
+      <p>לא הדגמה: מערכת ענן מלאה שרצה בפועל, עם אתר ואפליקציה, אינטגרציית בנק אמיתית ומשתמשים שמנהלים איתה את הבניין שלהם.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TECH -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">מאחורי הקלעים</span>
+      <h2>ארכיטקטורת ענן מודרנית</h2>
+    </div>
+    <div class="chips">
+      <span class="chip">SaaS מרובה-דיירים</span><span class="chip">Supabase</span><span class="chip">אינטגרציית בנק</span><span class="chip">אתר + אפליקציה</span><span class="chip">RTL מלא</span><span class="chip">התאמות אוטומטיות</span><span class="chip">הרשאות ושקיפות</span>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="contact">
+  <div class="wrap">
+    <div class="cta">
+      <h2>מנהלים בניין, ועד בית או נכסים מושכרים?</h2>
+      <p>אפשר להתאים מערכת כמו VeriBayit לצורך שלכם — גבייה, התאמות בנק, דוחות ושקיפות לדיירים. דברו איתי ונתאים בדיוק.</p>
+      <div class="cta-row">
+        <a class="btn btn-wa" href="https://wa.me/972527246200?text=%D7%94%D7%99%D7%99%20%D7%A2%D7%9E%D7%99%D7%AA%2C%20%D7%A8%D7%90%D7%99%D7%AA%D7%99%20%D7%90%D7%AA%20VeriBayit%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A4%D7%A8%D7%98%D7%99%D7%9D" target="_blank" rel="noopener">💬 וואטסאפ</a>
+        <a class="btn btn-primary" href="https://www.veribayit.com" target="_blank" rel="noopener">↗ לאתר החי</a>
+        <a class="btn btn-ghost" href="https://github.com/amitrubin10/veribayit" target="_blank" rel="noopener">↗ GitHub</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-in">
+    <div class="foot-brand">
+      <img src="../../img/logo-reverse.png" alt="Rubin Project">
+      <div><div class="bn" dir="ltr">Rubin <span class="b">Project</span></div>
+      <div class="tg">פתרונות BI, אוטומציה ותוכנה לעסקים</div></div>
+    </div>
+    <div class="foot-copy">הופכים נתונים להחלטות. · © Rubin Project</div>
+    <div class="foot-links">
+      <a href="/">דף הבית</a>
+      <a href="/#portfolio">תיק עבודות</a>
+      <a href="/card/">כרטיס דיגיטלי</a>
+      <a href="https://wa.me/972527246200" target="_blank" rel="noopener">וואטסאפ</a>
+      <a href="mailto:amit@rubinproject.com">amit@rubinproject.com</a>
+    </div>
+  </div>
+</footer>
+<script>
+  if('scrollRestoration' in history) history.scrollRestoration='manual';
+  window.addEventListener('load',function(){ if(!location.hash) window.scrollTo(0,0); });
+</script>
+</body>
+</html>
