@@ -55,13 +55,14 @@ img{max-width:100%;display:block}
 
 /* NAV (dark brand bar) */
 header.nav{position:sticky;top:0;z-index:100;background:rgba(12,17,28,0.94);backdrop-filter:blur(14px);border-bottom:1px solid #26314c}
-.nav-in{display:flex;align-items:center;gap:18px;height:74px;padding:0 26px;max-width:1160px;margin:0 auto}
+.nav-in{display:flex;align-items:center;justify-content:space-between;gap:18px;height:74px;padding:0 26px;max-width:1160px;margin:0 auto}
+.nav-start{display:flex;align-items:center;gap:24px}
 .nav-logo{display:flex;align-items:center;gap:9px;font-size:20px;font-weight:900;letter-spacing:-.4px;color:#fff}
 .nav-logo img{height:48px;width:auto}
 .nav-logo .b{color:#60a5fa}
-.nav-links{display:flex;gap:22px;font-size:14px;font-weight:500;margin-inline-start:12px}
+.nav-links{display:flex;gap:22px;font-size:14px;font-weight:500}
 .nav-links a{color:#aeb6c6;transition:.15s}.nav-links a:hover{color:#fff}
-.nav-cta{display:flex;gap:10px;margin-inline-start:auto}
+.nav-cta{display:flex;gap:10px}
 .nav-cta .btn{padding:9px 18px;font-size:14px}
 
 /* HERO — Kotel background, warm light */
@@ -158,13 +159,15 @@ footer{border-top:1px solid #26314c;padding:40px 0;background:#0c1119}
 <!-- NAV -->
 <header class="nav">
   <div class="nav-in">
-    <a class="nav-logo" href="/"><img src="../../img/logo-reverse.png" alt="Rubin Project"><span dir="ltr">Rubin <span class="b">Project</span></span></a>
-    <nav class="nav-links">
-      <a href="/#services">שירותים</a>
-      <a href="/#portfolio">תיק עבודות</a>
-      <a href="/#creator">מי אני</a>
-      <a href="/#contact">יצירת קשר</a>
-    </nav>
+    <div class="nav-start">
+      <a class="nav-logo" href="/"><img src="../../img/logo-reverse.png" alt="Rubin Project"><span dir="ltr">Rubin <span class="b">Project</span></span></a>
+      <nav class="nav-links">
+        <a href="/#services">שירותים</a>
+        <a href="/#portfolio">תיק עבודות</a>
+        <a href="/#creator">מי אני</a>
+        <a href="/#contact">יצירת קשר</a>
+      </nav>
+    </div>
     <div class="nav-cta">
       <a class="btn btn-primary" href="https://wa.me/972527246200" target="_blank" rel="noopener">💬 וואטסאפ</a>
     </div>
