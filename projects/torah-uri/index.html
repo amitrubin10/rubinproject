@@ -62,15 +62,20 @@ header.nav{position:sticky;top:0;z-index:100;background:rgba(10,14,23,0.82);back
 .back{display:inline-flex;align-items:center;gap:6px;color:var(--muted);font-size:14px;margin-top:22px}
 .back:hover{color:var(--accent2)}
 
-/* PROJECT HERO */
-.phero{display:grid;grid-template-columns:1fr .82fr;gap:44px;align-items:center;padding:40px 0 20px}
-.phero .ico{width:80px;height:80px;border-radius:20px;box-shadow:0 12px 30px rgba(0,0,0,.5);margin-bottom:18px}
-.phero h1{font-size:clamp(34px,5vw,52px);font-weight:900;line-height:1.05;letter-spacing:-1px}
-.phero .tag{font-size:19px;color:var(--cyan);font-weight:700;margin-top:8px}
-.phero .lead{font-size:16.5px;color:#cdd6e8;margin-top:16px;max-width:520px}
-.phero .row{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
-.phero-shot{justify-self:center}
-.phero-shot img{width:100%;max-width:340px;border-radius:26px;border:1px solid var(--accent2);box-shadow:0 26px 70px rgba(0,0,0,.6),0 0 70px rgba(59,130,246,.18)}
+/* PROJECT HERO — logo-led, centered */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.phero{max-width:760px;margin:0 auto;text-align:center;padding:22px 0 6px}
+.phero .applogo{width:min(300px,74vw);height:auto;margin:0 auto 4px;
+  filter:drop-shadow(0 18px 44px rgba(232,184,75,.30)) drop-shadow(0 8px 24px rgba(59,130,246,.28))}
+.phero .tag{font-size:19px;color:var(--cyan);font-weight:700;margin-top:2px}
+.phero .lead{font-size:16.5px;color:#cdd6e8;margin:16px auto 0;max-width:560px}
+.phero .row{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px;justify-content:center}
+/* APP SCREENS */
+.screens{display:flex;gap:36px;justify-content:center;flex-wrap:wrap;align-items:flex-start}
+.screens figure{text-align:center}
+.screens img{width:min(290px,74vw);border-radius:28px;border:1px solid var(--accent2);
+  box-shadow:0 26px 70px rgba(0,0,0,.6),0 0 60px rgba(59,130,246,.16)}
+.screens figcaption{margin-top:14px;font-size:15px;font-weight:700;color:var(--text)}
 
 /* SECTIONS */
 section{padding:44px 0}
@@ -94,11 +99,10 @@ section{padding:44px 0}
 .chip{font-size:13px;background:var(--card2);border:1px solid var(--border);border-radius:999px;padding:6px 13px;color:var(--text)}
 .chip::before{content:"✓ ";color:var(--success);font-weight:800}
 
-/* SHOWCASE */
-.showcase{display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:center;max-width:900px;margin:0 auto}
-.showcase img{width:100%;max-width:330px;border-radius:24px;border:1px solid var(--accent2);box-shadow:0 22px 60px rgba(0,0,0,.55);margin:0 auto}
-.showcase .txt h3{font-size:24px;font-weight:800;margin-bottom:10px}
-.showcase .txt p{color:#cdd6e8;font-size:15.5px}
+/* STORY */
+.story{max-width:720px;margin:0 auto;text-align:center}
+.story h3{font-size:26px;font-weight:800;margin:6px 0 10px;letter-spacing:-.3px}
+.story p{color:#cdd6e8;font-size:16px}
 
 /* CTA — contact now, purchase-ready */
 .cta{background:linear-gradient(160deg,rgba(34,211,238,.08),rgba(59,130,246,.08));border:1px solid rgba(34,211,238,.28);border-radius:26px;padding:44px 34px;text-align:center;box-shadow:0 24px 60px rgba(0,0,0,.4)}
@@ -121,12 +125,8 @@ footer{border-top:1px solid var(--border);padding:40px 0;margin-top:20px}
 .foot-links a:hover{color:var(--text)}
 
 @media(max-width:860px){
-  .phero{grid-template-columns:1fr;gap:26px;text-align:center;padding-top:26px}
-  .phero .ico,.phero .lead{margin-inline:auto}
-  .phero .row{justify-content:center}
   .feat-grid{grid-template-columns:1fr 1fr}
   .feat.hl{grid-template-columns:1fr;text-align:center}
-  .showcase{grid-template-columns:1fr;text-align:center}
   .nav-links{display:none}
   .foot-in{flex-direction:column;text-align:center}
 }
@@ -162,46 +162,40 @@ footer{border-top:1px solid var(--border);padding:40px 0;margin-top:20px}
 <!-- HERO -->
 <div class="wrap">
   <div class="phero">
-    <div class="phero-txt">
-      <span class="eyebrow">📱 אפליקציה · לימוד</span>
-      <img class="ico" src="../img/torah-uri-icon.png" alt="תורה אורי">
-      <h1>תורה אורי</h1>
-      <div class="tag">האפליקציה ללימוד קריאה בתורה</div>
-      <p class="lead">לומדים לקרוא בתורה בטעמים — שומעים כל פסוק בנפרד, רואים את המילה מודגשת בזמן אמת (כמו קריוקי), מקליטים את עצמכם ומשווים למקור. עובדת גם בלי אינטרנט.</p>
-      <div class="row">
-        <a class="btn btn-primary" href="https://amitrubin10.github.io/bar_mitzva/" target="_blank" rel="noopener">▶ התנסות באפליקציה</a>
-        <a class="btn btn-ghost" href="#contact">רוצים אחת כזו?</a>
-      </div>
+    <span class="eyebrow">📱 אפליקציה · לימוד קריאה בתורה</span>
+    <img class="applogo" src="../img/app-hero-light.png" alt="תורה אורי">
+    <h1 class="sr-only">תורה אורי — האפליקציה ללימוד קריאה בתורה בטעמים</h1>
+    <div class="tag">האפליקציה ללימוד קריאה בתורה</div>
+    <p class="lead">לומדים לקרוא בתורה בטעמים — שומעים כל פסוק בנפרד, רואים את המילה מודגשת בזמן אמת (כמו קריוקי), מקליטים את עצמכם ומשווים למקור. עובדת גם בלי אינטרנט.</p>
+    <div class="row">
+      <a class="btn btn-primary" href="https://amitrubin10.github.io/bar_mitzva/" target="_blank" rel="noopener">▶ התנסות באפליקציה</a>
+      <a class="btn btn-ghost" href="#contact">רוצים אחת כזו?</a>
     </div>
-    <div class="phero-shot"><img src="../img/torah-uri-main.png" alt="מסך האפליקציה תורה אורי"></div>
   </div>
 </div>
 
-<!-- BASE FEATURES -->
+<!-- APP SCREENS: light + dark -->
 <section class="alt">
   <div class="wrap">
     <div class="sec-head">
-      <span class="eyebrow">📖 הבסיס</span>
-      <h2>כל מה שצריך כדי ללמוד לקרוא</h2>
+      <span class="eyebrow">📱 מסכי האפליקציה</span>
+      <h2>מסך בהיר ומסך כהה — לבחירתכם</h2>
+      <p>אותה חוויה בדיוק, בתצוגה שנוחה לעיניים בכל שעה של היום.</p>
     </div>
-    <div class="feat-grid">
-      <div class="feat"><div class="ic">📜</div><h4>הקטע המלא</h4><p>פסוק בכל שורה, עם ניקוד וטעמים — נקי וברור.</p></div>
-      <div class="feat"><div class="ic">▶️</div><h4>השמעה פר-פסוק</h4><p>כפתור ליד כל פסוק — שומעים בדיוק אותו מתוך ההקלטה.</p></div>
-      <div class="feat"><div class="ic">🎵</div><h4>הדגשה בזמן אמת</h4><p>המילה הנקראת נצבעת תוך כדי ההשמעה — כמו קריוקי.</p></div>
-      <div class="feat"><div class="ic">⏱️</div><h4>בקרת מהירות</h4><p>«נגן הכול» ברצף, עם 0.7× / 0.85× / 1× ללימוד איטי.</p></div>
-      <div class="feat"><div class="ic">🖼️</div><h4>תמונת המקור</h4><p>הצגת תמונת הקטע המקורי לצד הטקסט.</p></div>
-      <div class="feat"><div class="ic">📲</div><h4>עובדת אופליין</h4><p>מותקנת בטלפון כאפליקציה — ופועלת גם בלי אינטרנט.</p></div>
+    <div class="screens">
+      <figure><img src="../img/torah-uri-light.png" alt="תורה אורי — מסך בהיר"><figcaption>☀️ מסך בהיר</figcaption></figure>
+      <figure><img src="../img/torah-uri-dark.png" alt="תורה אורי — מסך כהה"><figcaption>🌙 מסך כהה</figcaption></figure>
     </div>
   </div>
 </section>
 
-<!-- NEW FEATURES -->
+<!-- FEATURES (merged) -->
 <section>
   <div class="wrap">
     <div class="sec-head">
-      <span class="eyebrow">✨ מה שהוספנו</span>
-      <h2>מהאזנה — ללימוד פעיל</h2>
-      <p>הפכנו את האפליקציה מ«להאזין» ל«לתרגל ולהשתפר».</p>
+      <span class="eyebrow">✨ היכולות</span>
+      <h2>כל מה שצריך כדי ללמוד — ולהשתפר</h2>
+      <p>מהאזנה פסיבית לתרגול פעיל: שומעים, מקליטים, משווים למקור ומשתפרים.</p>
     </div>
     <div class="feat-grid">
       <div class="feat hl">
@@ -212,27 +206,29 @@ footer{border-top:1px solid var(--border);padding:40px 0;margin-top:20px}
           <div class="marks"><span>⏱️ <b>קצב</b> — מהר או לאט מדי</span><span>🎼 <b>מנגינה (טעמים)</b> — תואם למקור?</span><span>🎯 <b>דיוק פר-מילה</b> — 🟢 מדויק · 🟡 כמעט · 🔴 לתרגל</span></div>
         </div>
       </div>
-      <div class="feat"><div class="ic">🎤</div><h4>הקלטה עצמית</h4><p>מקליטים כל פסוק, מאזינים, מקליטים מחדש ומוחקים — נשמר במכשיר גם אחרי סגירה.</p></div>
-      <div class="feat"><div class="ic">🎧</div><h4>שליטה מלאה בהאזנה</h4><p>השהיה והמשך מאותה נקודה, וכפתור «מהתחלה» לכל פסוק.</p></div>
-      <div class="feat"><div class="ic">🔤</div><h4>לימוד ללא ניקוד</h4><p>כפתור שמעלה רמה ומחליף לטקסט ללא ניקוד.</p></div>
-      <div class="feat"><div class="ic">🌗</div><h4>מסך בהיר / כהה</h4><p>בוחרים את התצוגה שנוחה לעיניים.</p></div>
-      <div class="feat"><div class="ic">🎨</div><h4>מיתוג ועיצוב חדש</h4><p>לוגו «תורה אורי», מסך פתיחה, אייקון מקצועי ומסך «כל הכבוד!» בסיום.</p></div>
+      <div class="feat"><div class="ic">📜</div><h4>הקטע המלא</h4><p>פסוק בכל שורה, עם ניקוד וטעמים — נקי וברור.</p></div>
+      <div class="feat"><div class="ic">▶️</div><h4>השמעה פר-פסוק</h4><p>כפתור ליד כל פסוק — שומעים בדיוק אותו מתוך ההקלטה.</p></div>
+      <div class="feat"><div class="ic">🎵</div><h4>הדגשה בזמן אמת</h4><p>המילה הנקראת נצבעת תוך כדי ההשמעה — כמו קריוקי.</p></div>
+      <div class="feat"><div class="ic">🎤</div><h4>הקלטה עצמית</h4><p>מקליטים כל פסוק, מאזינים ומקליטים מחדש — נשמר במכשיר.</p></div>
+      <div class="feat"><div class="ic">⏱️</div><h4>בקרת מהירות</h4><p>«נגן הכול» ברצף, עם 0.7× / 0.85× / 1× ללימוד איטי.</p></div>
+      <div class="feat"><div class="ic">🎧</div><h4>שליטה בהאזנה</h4><p>השהיה והמשך מאותה נקודה, וכפתור «מהתחלה» לכל פסוק.</p></div>
+      <div class="feat"><div class="ic">🔤</div><h4>לימוד לפי רמות</h4><p>העלאת רמה מחליפה לטקסט ללא ניקוד — לתרגול מתקדם.</p></div>
+      <div class="feat"><div class="ic">🖼️</div><h4>תמונת המקור</h4><p>הצגת תמונת הקטע המקורי לצד הטקסט.</p></div>
+      <div class="feat"><div class="ic">📲</div><h4>עובדת אופליין</h4><p>מותקנת בטלפון כאפליקציה (PWA) — פועלת גם בלי אינטרנט.</p></div>
     </div>
     <div class="chips">
-      <span class="chip">בר מצווה</span><span class="chip">קריאה בטעמים</span><span class="chip">PWA — מותקן בטלפון</span><span class="chip">אופליין</span><span class="chip">עברית מלאה</span>
+      <span class="chip">בר / בת מצווה</span><span class="chip">קריאה בטעמים</span><span class="chip">PWA — מותקן בטלפון</span><span class="chip">אופליין</span><span class="chip">עברית מלאה</span>
     </div>
   </div>
 </section>
 
-<!-- SHOWCASE -->
+<!-- STORY -->
 <section class="alt">
   <div class="wrap">
-    <div class="showcase">
-      <img src="../img/torah-uri-app.png" alt="מסך הפתיחה של תורה אורי">
-      <div class="txt">
-        <h3>נבנתה סביב לומד אמיתי</h3>
-        <p>האפליקציה נולדה מצורך אמיתי — ללמד ילד לקרוא בתורה לבר המצווה, בכלים שהופכים תרגול חוזר לחוויה נעימה ומדויקת. כל פרט תוכנן כדי שהלימוד יהיה עצמאי, ברור ומעודד.</p>
-      </div>
+    <div class="story">
+      <span class="eyebrow">❤️ הסיפור</span>
+      <h3>נבנתה סביב לומד אמיתי</h3>
+      <p>האפליקציה נולדה מצורך אמיתי — ללמד ילד לקרוא בתורה לבר המצווה, בכלים שהופכים תרגול חוזר לחוויה נעימה ומדויקת. כל פרט תוכנן כדי שהלימוד יהיה עצמאי, ברור ומעודד.</p>
     </div>
   </div>
 </section>
