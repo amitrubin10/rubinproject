@@ -85,12 +85,13 @@ section{padding:46px 0}
 .sec-head p{color:var(--muted);font-size:16px;margin-top:8px}
 
 /* APP SCREENS (light + dark) + flanking bar-mitzvah photos */
-.screens{display:flex;gap:26px;justify-content:center;flex-wrap:wrap;align-items:flex-start}
+.screens{display:flex;gap:48px;justify-content:center;align-items:center;flex-wrap:wrap;max-width:1680px;margin:0 auto;padding:0 24px}
+.phones{display:flex;gap:22px;justify-content:center;flex-wrap:wrap}
 .screens figure{text-align:center}
-.screens .phone img{width:min(240px,72vw);border-radius:26px;border:3px solid #fff;
+.screens .phone img{width:min(230px,72vw);border-radius:26px;border:3px solid #fff;
   box-shadow:0 22px 50px rgba(30,58,107,.20),0 0 0 1px var(--border)}
-.screens .photo img{width:min(240px,72vw);border-radius:20px;border:1px solid var(--border);
-  box-shadow:0 22px 50px rgba(30,58,107,.24)}
+.screens .photo img{width:min(480px,88vw);height:clamp(360px,30vw,520px);object-fit:cover;
+  border-radius:22px;border:1px solid var(--border);box-shadow:0 24px 54px rgba(30,58,107,.26)}
 .screens figcaption{margin-top:14px;font-size:15px;font-weight:700;color:var(--ink)}
 
 /* FEATURE GRID */
@@ -222,12 +223,14 @@ footer{border-top:1px solid #26314c;padding:40px 0;background:#0c1119}
       <h2>מסך בהיר ומסך כהה — לבחירתכם</h2>
       <p>אותה חוויה בדיוק, בתצוגה שנוחה לעיניים בכל שעה של היום.</p>
     </div>
-    <div class="screens">
-      <figure class="photo"><img src="../img/bm-kotel-2.jpg" alt="בר מצווה בכותל — עם המשפחה"><figcaption>🎉 ביום הגדול</figcaption></figure>
+  </div>
+  <div class="screens">
+    <figure class="photo"><img src="../img/bm-kotel-2.jpg" alt="בר מצווה בכותל — עם המשפחה"><figcaption>🎉 ביום הגדול</figcaption></figure>
+    <div class="phones">
       <figure class="phone"><img src="../img/torah-uri-light.png" alt="תורה אורי — מסך בהיר"><figcaption>☀️ מסך בהיר</figcaption></figure>
       <figure class="phone"><img src="../img/torah-uri-dark.png" alt="תורה אורי — מסך כהה"><figcaption>🌙 מסך כהה</figcaption></figure>
-      <figure class="photo"><img src="../img/bm-kotel-1.jpg" alt="בר מצווה בכותל — עולים עם ספר התורה"><figcaption>📿 בדרך לכותל</figcaption></figure>
     </div>
+    <figure class="photo"><img src="../img/bm-kotel-1.jpg" alt="בר מצווה בכותל — עולים עם ספר התורה"><figcaption>📿 בדרך לכותל</figcaption></figure>
   </div>
 </section>
 
