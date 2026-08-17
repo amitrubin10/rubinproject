@@ -66,7 +66,7 @@ header.nav{position:sticky;top:0;z-index:100;background:rgba(7,13,28,0.9);backdr
 .band-bg{position:absolute;inset:0;background-size:cover;background-position:center;opacity:.9}
 .hero{position:relative;background:#060b14 url(../img/vf-hero3.jpg) top center/100% auto no-repeat}
 .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(6,11,20,.44) 52%,rgba(6,11,20,.5));z-index:1}
-.hero-content{position:relative;z-index:2;text-align:center;max-width:820px;margin:0 auto;padding:41vw 22px 12vw}
+.hero-content{position:relative;z-index:2;text-align:center;max-width:820px;margin:0 auto;padding:39vw 22px 13vw}
 .hero .badge{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:800;color:#04222a;background:linear-gradient(135deg,#22d3ee,#38bdf8);padding:7px 17px;border-radius:999px;margin-bottom:22px;box-shadow:0 8px 26px rgba(34,211,238,.35)}
 .hero h1{font-size:clamp(52px,9vw,104px);font-weight:900;line-height:.98;letter-spacing:-2px;background:linear-gradient(135deg,#fff,#9fd7ff 55%,#7ef0e0);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
 .hero .htag{font-size:clamp(19px,2.6vw,26px);color:var(--cyan);font-weight:800;margin-top:10px}
@@ -107,11 +107,11 @@ section{padding:56px 0}
 .screens2 figcaption{margin-top:12px;text-align:center;font-size:14.5px;font-weight:700}
 
 /* SPLIT (text + screenshot) */
-.split{display:grid;grid-template-columns:1.05fr 1fr;gap:36px;align-items:center;max-width:1120px;margin:0 auto;background:linear-gradient(160deg,var(--card),var(--bg2));border:1px solid var(--border);border-radius:24px;padding:30px;box-shadow:0 18px 44px rgba(0,0,0,.32)}
+.split{display:flex;align-items:center;gap:36px;max-width:1120px;margin:0 auto;background:linear-gradient(160deg,var(--card),var(--bg2));border:1px solid var(--border);border-radius:24px;padding:30px;box-shadow:0 18px 44px rgba(0,0,0,.32)}
 .split .shot{box-shadow:0 16px 40px rgba(0,0,0,.5)}
-.split.rev{grid-template-columns:1fr 1.05fr}
-.split.rev .split-txt{grid-column:2}
-.split.rev .split-shot{grid-column:1}
+.split-txt{flex:1 1 0;min-width:0}
+.split-shot{flex:1.08 1 0;min-width:0}
+.split.rev{flex-direction:row-reverse}
 .split-txt h3{font-size:clamp(22px,2.8vw,30px);font-weight:800;letter-spacing:-.3px;margin-bottom:12px}
 .split-txt p{color:#cdd8ee;font-size:16px;margin-bottom:16px}
 .chips{display:flex;gap:9px;flex-wrap:wrap}
@@ -154,7 +154,7 @@ section{padding:56px 0}
 /* CTA band */
 .cta{position:relative;background:#060b14 url(../img/vf-cta-bg.jpg) top center/100% auto no-repeat}
 .cta::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(6,11,20,.5) 58%,rgba(6,11,20,.6));z-index:1}
-.cta-content{position:relative;z-index:2;text-align:center;max-width:700px;margin:0 auto;padding:38vw 22px 7vw}
+.cta-content{position:relative;z-index:2;text-align:center;max-width:700px;margin:0 auto;padding:36vw 22px 8vw}
 .cta h2{font-size:clamp(26px,3.6vw,40px);font-weight:900;letter-spacing:-.6px;margin-bottom:12px}
 .cta p{color:#d7e0f2;font-size:17px;max-width:600px;margin:0 auto 26px}
 .cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
@@ -178,9 +178,8 @@ footer{border-top:1px solid var(--border);padding:40px 0;background:#060a16}
   .foot-in{flex-direction:column;text-align:center}
 }
 @media(max-width:720px){
-  .split,.split.rev{grid-template-columns:1fr;gap:22px;padding:22px}
-  .split .split-txt,.split.rev .split-txt{grid-column:auto;order:1}
-  .split .split-shot,.split.rev .split-shot{grid-column:auto;order:2}
+  .split,.split.rev{flex-direction:column;gap:22px;padding:22px}
+  .split-txt,.split-shot{width:100%;flex:none}
 }
 @media(max-width:560px){
   .nav-in{padding:0 16px;gap:10px}
@@ -285,7 +284,7 @@ footer{border-top:1px solid var(--border);padding:40px 0;background:#060a16}
           <div class="chips"><span class="chip">וואטסאפ רשמי (Meta)</span><span class="chip">פתיחה אוטומטית</span><span class="chip">צירוף תמונה מהטלפון</span><span class="chip">גם טופס ייעודי</span><span class="chip">בלי התקנה</span></div>
         </div>
         <div class="wa-shot">
-          <div class="shot"><div class="shot-bar"><i class="r"></i><i class="y"></i><i class="g"></i><span>verifix — חיבור וואטסאפ</span></div><img src="../img/vf-whatsapp.jpg" alt="VeriFix — חיבור וואטסאפ למערכת, קליטת תקלות אוטומטית" loading="lazy"></div>
+          <div class="shot"><div class="shot-bar"><i class="r"></i><i class="y"></i><i class="g"></i><span>verifix — חיבור וואטסאפ</span></div><img src="../img/vf-whatsapp.jpg" alt="VeriFix — חיבור וואטסאפ למערכת, קליטת תקלות אוטומטית"></div>
         </div>
       </div>
     </div>
@@ -308,7 +307,7 @@ footer{border-top:1px solid var(--border);padding:40px 0;background:#060a16}
         <p>תוכניות תחזוקה מחזוריות שמתוזמנות אוטומטית לפי נכס ותדירות — עם תזכורות שיוצרות את המשימה הבאה בזמן, כדי ששום דבר לא ייפול בין הכיסאות.</p>
         <div class="chips"><span class="chip">תזמון אוטומטי</span><span class="chip">תזכורות</span><span class="chip">לפי נכס ותדירות</span><span class="chip">סטטוס וביצוע</span></div>
       </div>
-      <div class="split-shot"><div class="shot"><div class="shot-bar"><i class="r"></i><i class="y"></i><i class="g"></i><span>verifix — אחזקה מונעת</span></div><img src="../img/vf-maintenance.jpg" alt="VeriFix — אחזקה מונעת" loading="lazy"></div></div>
+      <div class="split-shot"><div class="shot"><div class="shot-bar"><i class="r"></i><i class="y"></i><i class="g"></i><span>verifix — אחזקה מונעת</span></div><img src="../img/vf-maintenance.jpg" alt="VeriFix — אחזקה מונעת"></div></div>
     </div>
 
     <!-- ספר נכסים -->
@@ -319,7 +318,7 @@ footer{border-top:1px solid var(--border);padding:40px 0;background:#060a16}
         <p>ספר נכסים מלא עם תמונות והיסטוריה לכל מבנה ומערכת, וספר ספקים עם שיוך לקריאות ומעקב ביצוע. הכול מקושר — מהתקלה ועד הנכס והספק שטיפל.</p>
         <div class="chips"><span class="chip">ספר נכסים</span><span class="chip">ספר ספקים</span><span class="chip">תמונות והיסטוריה</span><span class="chip">שיוך לקריאות</span></div>
       </div>
-      <div class="split-shot"><div class="shot"><div class="shot-bar"><i class="r"></i><i class="y"></i><i class="g"></i><span>verifix — ספר נכסים</span></div><img src="../img/vf-assets.jpg" alt="VeriFix — ספר נכסים" loading="lazy"></div></div>
+      <div class="split-shot"><div class="shot"><div class="shot-bar"><i class="r"></i><i class="y"></i><i class="g"></i><span>verifix — ספר נכסים</span></div><img src="../img/vf-assets.jpg" alt="VeriFix — ספר נכסים"></div></div>
     </div>
 
     <!-- גיבוי -->
@@ -330,7 +329,7 @@ footer{border-top:1px solid var(--border);padding:40px 0;background:#060a16}
         <p>ייצוא גיבוי מלא של כל נתוני המערכת לקובץ אחד — מבנים, נכסים, קריאות, אחזקה מונעת, ספקים, תקציב ומשתמשים — ושחזור בקלות בכל רגע.</p>
         <div class="chips"><span class="chip">גיבוי מלא</span><span class="chip">ייצוא בלחיצה</span><span class="chip">שחזור מקובץ</span></div>
       </div>
-      <div class="split-shot"><div class="shot"><div class="shot-bar"><i class="r"></i><i class="y"></i><i class="g"></i><span>verifix — גיבוי וייצוא</span></div><img src="../img/vf-backup.jpg" alt="VeriFix — גיבוי וייצוא נתונים" loading="lazy"></div></div>
+      <div class="split-shot"><div class="shot"><div class="shot-bar"><i class="r"></i><i class="y"></i><i class="g"></i><span>verifix — גיבוי וייצוא</span></div><img src="../img/vf-backup.jpg" alt="VeriFix — גיבוי וייצוא נתונים"></div></div>
     </div>
 
     <!-- תמיכה -->
@@ -341,7 +340,7 @@ footer{border-top:1px solid var(--border);padding:40px 0;background:#060a16}
         <p>מדריכים מובנים וחיפוש לכל נושא: קריאות שבר, אחזקה מונעת, דוחות, ספקים, וואטסאפ וטפסים ועוד — כדי שכל משתמש יסתדר לבד, מהיום הראשון.</p>
         <div class="chips"><span class="chip">מדריכים לכל נושא</span><span class="chip">חיפוש חכם</span><span class="chip">התחלה מהירה</span></div>
       </div>
-      <div class="split-shot"><div class="shot"><div class="shot-bar"><i class="r"></i><i class="y"></i><i class="g"></i><span>verifix — תמיכה ועזרה</span></div><img src="../img/vf-support.jpg" alt="VeriFix — מרכז תמיכה ועזרה" loading="lazy"></div></div>
+      <div class="split-shot"><div class="shot"><div class="shot-bar"><i class="r"></i><i class="y"></i><i class="g"></i><span>verifix — תמיכה ועזרה</span></div><img src="../img/vf-support.jpg" alt="VeriFix — מרכז תמיכה ועזרה"></div></div>
     </div>
   </div>
 </section>
