@@ -85,7 +85,9 @@ section{padding:46px 0}
 .sec-head p{color:var(--muted);font-size:16px;margin-top:8px}
 
 /* APP SCREENS (light + dark) + flanking bar-mitzvah photos */
-.screens{display:flex;gap:60px;justify-content:center;align-items:center;flex-wrap:wrap;max-width:1620px;margin:0 auto;padding:0 24px}
+.screens{display:flex;gap:84px;justify-content:center;align-items:flex-end;flex-wrap:wrap;max-width:1640px;margin:0 auto;padding:0 24px}
+.screens-main{display:flex;flex-direction:column;align-items:center}
+.screens-main .sec-head{margin:0 auto 26px}
 .phones{display:flex;gap:26px;justify-content:center;flex-wrap:wrap;align-items:center}
 .screens figure{text-align:center}
 .screens .phone img{height:clamp(380px,42vw,600px);width:auto;border-radius:30px;border:3px solid #fff;
@@ -93,6 +95,11 @@ section{padding:46px 0}
 .screens .photo img{height:clamp(380px,42vw,600px);width:auto;border-radius:22px;border:1px solid var(--border);
   box-shadow:0 24px 54px rgba(30,58,107,.26)}
 .screens figcaption{margin-top:14px;font-size:15px;font-weight:700;color:var(--ink)}
+@media(max-width:980px){
+  .screens{align-items:center;gap:44px}
+  .screens .photo{order:2}
+  .screens-main{order:1}
+}
 
 /* FEATURE GRID */
 .feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
@@ -215,20 +222,20 @@ footer{border-top:1px solid #26314c;padding:40px 0;background:#0c1119}
   </div>
 </header>
 
-<!-- APP SCREENS: light + dark -->
+<!-- APP SCREENS: light + dark (left, with the heading) + one photo (right) -->
 <section class="alt">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="eyebrow">📱 מסכי האפליקציה</span>
-      <h2>מסך בהיר ומסך כהה — לבחירתכם</h2>
-      <p>אותה חוויה בדיוק, בתצוגה שנוחה לעיניים בכל שעה של היום.</p>
-    </div>
-  </div>
   <div class="screens">
     <figure class="photo"><img src="../img/bm-kotel-2.jpg" alt="בר מצווה בכותל — עם המשפחה"><figcaption>🎉 ביום הגדול</figcaption></figure>
-    <div class="phones">
-      <figure class="phone"><img src="../img/torah-uri-light.png" alt="תורה אורי — מסך בהיר"><figcaption>☀️ מסך בהיר</figcaption></figure>
-      <figure class="phone"><img src="../img/torah-uri-dark.png" alt="תורה אורי — מסך כהה"><figcaption>🌙 מסך כהה</figcaption></figure>
+    <div class="screens-main">
+      <div class="sec-head">
+        <span class="eyebrow">📱 מסכי האפליקציה</span>
+        <h2>מסך בהיר ומסך כהה — לבחירתכם</h2>
+        <p>אותה חוויה בדיוק, בתצוגה שנוחה לעיניים בכל שעה של היום.</p>
+      </div>
+      <div class="phones">
+        <figure class="phone"><img src="../img/torah-uri-light.png" alt="תורה אורי — מסך בהיר"><figcaption>☀️ מסך בהיר</figcaption></figure>
+        <figure class="phone"><img src="../img/torah-uri-dark.png" alt="תורה אורי — מסך כהה"><figcaption>🌙 מסך כהה</figcaption></figure>
+      </div>
     </div>
   </div>
 </section>
