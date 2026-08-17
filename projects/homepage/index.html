@@ -10,12 +10,12 @@
 <meta property="og:site_name" content="Rubin Project">
 <meta property="og:title" content="דף הבית האישי שלך — כל האינטרנט במסך אחד">
 <meta property="og:description" content="מרכז שליטה אישי לדפדפן: האתרים שלך בקטגוריות, שעון, חיפוש, משימות — מותאם אליך ופרטי לחלוטין.">
-<meta property="og:image" content="https://www.rubinproject.com/projects/img/homepage-og.jpg">
+<meta property="og:image" content="https://www.rubinproject.com/projects/img/homepage-og.jpg?v=3">
 <meta property="og:url" content="https://www.rubinproject.com/projects/homepage/">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="he_IL">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://www.rubinproject.com/projects/img/homepage-og.jpg">
+<meta name="twitter:image" content="https://www.rubinproject.com/projects/img/homepage-og.jpg?v=3">
 <meta name="theme-color" content="#0b0f1c">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -82,6 +82,9 @@ header.nav{position:sticky;top:0;z-index:100;background:rgba(11,15,28,0.9);backd
 .shot-body.empty img{display:none}
 .shot-body.empty::after{content:"🖼️  צילום מסך יתווסף כאן";font-size:16px;font-weight:800;color:var(--muted)}
 .shot-cap{text-align:center;color:var(--muted);font-size:13.5px;margin-top:14px}
+/* OVERVIEW graphic */
+.overview{max-width:1060px;margin:0 auto;border-radius:22px;overflow:hidden;border:1px solid var(--border);box-shadow:0 30px 70px rgba(0,0,0,.55)}
+.overview img{width:100%;display:block}
 
 /* SECTIONS */
 section{padding:46px 0}
@@ -197,7 +200,7 @@ footer{border-top:1px solid var(--border);padding:40px 0;background:#080b16}
   <div class="wrap">
     <div class="shot">
       <div class="shot-bar"><i class="r"></i><i class="y"></i><i class="g"></i><span>הדף האישי שלי — כרטיסייה חדשה</span></div>
-      <div class="shot-body"><img src="../img/home-hero.jpg" alt="דף הבית האישי — שעון, חיפוש, הפרויקטים שלך והמשימות" onerror="this.parentNode.classList.add('empty')"></div>
+      <div class="shot-body"><img src="../img/home-hero.jpg?v=2" alt="דף הבית האישי — שעון, חיפוש, הפרויקטים שלך והמשימות" onerror="this.parentNode.classList.add('empty')"></div>
     </div>
     <div class="shot-cap">מרכז שליטה אחד — שעון, חיפוש, וכל האתרים שלך מסודרים בקטגוריות עם הלוגו האמיתי</div>
   </div>
@@ -218,6 +221,19 @@ footer{border-top:1px solid var(--border);padding:40px 0;background:#080b16}
       <div class="feat"><div class="ic">🖼️</div><h4>מסגרות תמונה אישיות</h4><p>משפחה, לוגו העסק או נוף — התמונות שלך, על הדף שלך.</p></div>
       <div class="feat"><div class="ic">✅</div><h4>רשימת משימות</h4><p>מטלות היום ישר על הדף — בלי אפליקציה נוספת.</p></div>
       <div class="feat"><div class="ic">🌗</div><h4>מצב כהה / בהיר</h4><p>בוחרים את התצוגה שנוחה לעיניים, בכל שעה.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- OVERVIEW GRAPHIC -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">🖼️ מבט על</span>
+      <h2>כל היכולות — במסך אחד</h2>
+    </div>
+    <div class="overview">
+      <img src="../img/home-overview.jpg" alt="דף הבית האישי — שעון ותאריך, חיפוש חכם, אתרים בקטגוריות, משימות, תמונות אישיות ומצב כהה/בהיר" loading="lazy">
     </div>
   </div>
 </section>
