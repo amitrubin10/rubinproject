@@ -85,6 +85,7 @@ header.nav{position:sticky;top:0;z-index:100;background:rgba(11,15,28,0.9);backd
 /* OVERVIEW graphic */
 .overview{max-width:1060px;margin:0 auto;border-radius:22px;overflow:hidden;border:1px solid var(--border);box-shadow:0 30px 70px rgba(0,0,0,.55)}
 .overview img{width:100%;display:block}
+.myhome-logo{width:min(360px,76vw);height:auto;margin:0 auto 20px;display:block;border-radius:16px;filter:drop-shadow(0 16px 38px rgba(0,0,0,.55))}
 
 /* SECTIONS */
 section{padding:46px 0}
@@ -184,9 +185,8 @@ footer{border-top:1px solid var(--border);padding:40px 0;background:#080b16}
 <!-- HERO -->
 <header class="phero">
   <div class="wrap">
-    <span class="badge">🏠 מוצר אישי · מותאם אליך</span>
-    <h1>דף הבית האישי שלך</h1>
-    <div class="tag">כל האינטרנט שלך — במסך אחד</div>
+    <img class="myhome-logo" src="../img/myhome-logo.png" alt="MYHOME — דף הבית האישי שלך">
+    <h1 class="sr-only">MYHOME — דף הבית האישי שלך · כל האינטרנט שלך במסך אחד</h1>
     <p class="lead">נמאס לחפש כל פעם את אותם אתרים? להקליד כתובות? להתבלבל בין לשוניות? אני מעצב לך <strong>דף בית אישי</strong> — מרכז שליטה יפהפה ומהיר שנפתח בכל פעם שאתה פותח את הדפדפן. מותאם בדיוק אליך: הצבעים שלך, הלוגו שלך, האתרים שלך.</p>
     <div class="row">
       <a class="btn btn-primary" href="#contact">✨ רוצה דף כזה</a>
@@ -195,14 +195,10 @@ footer{border-top:1px solid var(--border);padding:40px 0;background:#080b16}
   </div>
 </header>
 
-<!-- SHOT -->
+<!-- MARKETING GRAPHIC (at the beginning) -->
 <div class="shotwrap">
   <div class="wrap">
-    <div class="shot">
-      <div class="shot-bar"><i class="r"></i><i class="y"></i><i class="g"></i><span>הדף האישי שלי — כרטיסייה חדשה</span></div>
-      <div class="shot-body"><img src="../img/home-hero.jpg?v=2" alt="דף הבית האישי — שעון, חיפוש, הפרויקטים שלך והמשימות" onerror="this.parentNode.classList.add('empty')"></div>
-    </div>
-    <div class="shot-cap">מרכז שליטה אחד — שעון, חיפוש, וכל האתרים שלך מסודרים בקטגוריות עם הלוגו האמיתי</div>
+    <div class="overview"><img src="../img/home-overview.jpg" alt="דף הבית האישי — כל היכולות במסך אחד: שעון, חיפוש, קטגוריות, משימות, תמונות ומצב כהה/בהיר"></div>
   </div>
 </div>
 
@@ -225,16 +221,32 @@ footer{border-top:1px solid var(--border);padding:40px 0;background:#080b16}
   </div>
 </section>
 
-<!-- OVERVIEW GRAPHIC -->
+<!-- MARKETING GRAPHIC 2 (personalization angle) -->
 <section>
   <div class="wrap">
     <div class="sec-head">
-      <span class="eyebrow">🖼️ מבט על</span>
-      <h2>כל היכולות — במסך אחד</h2>
+      <span class="eyebrow">🎨 מותאם אליך</span>
+      <h2>הכול בסגנון שלך — במסך אחד</h2>
     </div>
     <div class="overview">
-      <img src="../img/home-overview.jpg" alt="דף הבית האישי — שעון ותאריך, חיפוש חכם, אתרים בקטגוריות, משימות, תמונות אישיות ומצב כהה/בהיר" loading="lazy">
+      <img src="../img/home-graphic-1.jpg" alt="דף הבית האישי — שעון ותאריך, חיפוש, קטגוריות, משימות, תמונות אישיות ומצב כהה/בהיר" loading="lazy">
     </div>
+  </div>
+</section>
+
+<!-- REAL PEEK (MYHOME.png) -->
+<section class="alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">👀 הצצה לדף האמיתי</span>
+      <h2>ככה נראה הדף שאיתו אני עובד</h2>
+      <p>לא הדמיה — צילום מסך אמיתי מהדף האישי שלי, בשימוש יומיומי.</p>
+    </div>
+    <div class="shot">
+      <div class="shot-bar"><i class="r"></i><i class="y"></i><i class="g"></i><span>MYHOME — כרטיסייה חדשה</span></div>
+      <div class="shot-body"><img src="../img/home-hero.jpg?v=2" alt="דף הבית האישי — שעון, חיפוש, הפרויקטים שלך והמשימות" onerror="this.parentNode.classList.add('empty')"></div>
+    </div>
+    <div class="shot-cap">מרכז שליטה אחד — שעון, חיפוש, וכל האתרים שלך מסודרים בקטגוריות עם הלוגו האמיתי</div>
   </div>
 </section>
 
