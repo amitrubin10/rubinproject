@@ -84,11 +84,13 @@ section{padding:46px 0}
 .sec-head h2{font-size:clamp(24px,3vw,34px);font-weight:800;letter-spacing:-.4px;color:var(--ink)}
 .sec-head p{color:var(--muted);font-size:16px;margin-top:8px}
 
-/* APP SCREENS (light + dark) */
-.screens{display:flex;gap:36px;justify-content:center;flex-wrap:wrap;align-items:flex-start}
+/* APP SCREENS (light + dark) + flanking bar-mitzvah photos */
+.screens{display:flex;gap:26px;justify-content:center;flex-wrap:wrap;align-items:flex-start}
 .screens figure{text-align:center}
-.screens img{width:min(290px,74vw);border-radius:28px;border:3px solid #fff;
+.screens .phone img{width:min(240px,72vw);border-radius:26px;border:3px solid #fff;
   box-shadow:0 22px 50px rgba(30,58,107,.20),0 0 0 1px var(--border)}
+.screens .photo img{width:min(240px,72vw);border-radius:20px;border:1px solid var(--border);
+  box-shadow:0 22px 50px rgba(30,58,107,.24)}
 .screens figcaption{margin-top:14px;font-size:15px;font-weight:700;color:var(--ink)}
 
 /* FEATURE GRID */
@@ -221,8 +223,10 @@ footer{border-top:1px solid #26314c;padding:40px 0;background:#0c1119}
       <p>אותה חוויה בדיוק, בתצוגה שנוחה לעיניים בכל שעה של היום.</p>
     </div>
     <div class="screens">
-      <figure><img src="../img/torah-uri-light.png" alt="תורה אורי — מסך בהיר"><figcaption>☀️ מסך בהיר</figcaption></figure>
-      <figure><img src="../img/torah-uri-dark.png" alt="תורה אורי — מסך כהה"><figcaption>🌙 מסך כהה</figcaption></figure>
+      <figure class="photo"><img src="../img/bm-kotel-2.jpg" alt="בר מצווה בכותל — עם המשפחה"><figcaption>🎉 ביום הגדול</figcaption></figure>
+      <figure class="phone"><img src="../img/torah-uri-light.png" alt="תורה אורי — מסך בהיר"><figcaption>☀️ מסך בהיר</figcaption></figure>
+      <figure class="phone"><img src="../img/torah-uri-dark.png" alt="תורה אורי — מסך כהה"><figcaption>🌙 מסך כהה</figcaption></figure>
+      <figure class="photo"><img src="../img/bm-kotel-1.jpg" alt="בר מצווה בכותל — עולים עם ספר התורה"><figcaption>📿 בדרך לכותל</figcaption></figure>
     </div>
   </div>
 </section>
