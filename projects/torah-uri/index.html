@@ -85,14 +85,14 @@ section{padding:46px 0}
 .sec-head p{color:var(--muted);font-size:16px;margin-top:8px}
 
 /* APP SCREENS (light + dark) + flanking bar-mitzvah photos */
-.screens{display:flex;gap:84px;justify-content:center;align-items:flex-end;flex-wrap:wrap;max-width:1640px;margin:0 auto;padding:0 24px}
+.screens{display:flex;gap:120px;justify-content:center;align-items:flex-end;flex-wrap:wrap;max-width:1740px;margin:0 auto;padding:0 24px}
 .screens-main{display:flex;flex-direction:column;align-items:center}
 .screens-main .sec-head{margin:0 auto 26px}
 .phones{display:flex;gap:26px;justify-content:center;flex-wrap:wrap;align-items:center}
 .screens figure{text-align:center}
 .screens .phone img{height:clamp(380px,42vw,600px);width:auto;border-radius:30px;border:3px solid #fff;
   box-shadow:0 26px 60px rgba(30,58,107,.24),0 0 0 1px var(--border)}
-.screens .photo img{height:clamp(380px,42vw,600px);width:auto;border-radius:22px;border:1px solid var(--border);
+.screens .photo img{height:clamp(500px,54vw,782px);width:auto;border-radius:22px;border:1px solid var(--border);
   box-shadow:0 24px 54px rgba(30,58,107,.26)}
 .screens figcaption{margin-top:14px;font-size:15px;font-weight:700;color:var(--ink)}
 @media(max-width:980px){
@@ -129,6 +129,7 @@ section{padding:46px 0}
 .story2-img img{width:100%;border-radius:22px;border:1px solid var(--border);box-shadow:0 18px 44px rgba(30,58,107,.16)}
 .story2-txt h3{font-size:28px;font-weight:800;color:var(--ink);margin:6px 0 12px;letter-spacing:-.3px}
 .story2-txt p{color:var(--muted);font-size:16.5px}
+.story2-note{margin-top:16px;font-size:15px;line-height:1.7;color:var(--navy);background:rgba(201,154,43,.09);border:1px solid rgba(201,154,43,.32);border-radius:14px;padding:13px 18px}
 
 /* PRICING */
 .pricewrap{display:grid;grid-template-columns:1fr 1fr;gap:26px;max-width:960px;margin:0 auto;align-items:stretch}
@@ -225,7 +226,7 @@ footer{border-top:1px solid #26314c;padding:40px 0;background:#0c1119}
 <!-- APP SCREENS: light + dark (left, with the heading) + one photo (right) -->
 <section class="alt">
   <div class="screens">
-    <figure class="photo"><img src="../img/bm-kotel-2.jpg" alt="בר מצווה בכותל — עם המשפחה"><figcaption>🎉 ביום הגדול</figcaption></figure>
+    <figure class="photo"><img src="../img/bm-kotel-2.jpg" alt="בר מצווה בכותל — עם המשפחה"></figure>
     <div class="screens-main">
       <div class="sec-head">
         <span class="eyebrow">📱 מסכי האפליקציה</span>
@@ -296,7 +297,8 @@ footer{border-top:1px solid #26314c;padding:40px 0;background:#0c1119}
       <div class="story2-txt">
         <span class="eyebrow">❤️ הסיפור</span>
         <h3>נבנתה סביב לומד אמיתי</h3>
-        <p>האפליקציה נולדה מצורך אמיתי — ללמד ילד לקרוא בתורה לבר המצווה, בכלים שהופכים תרגול חוזר לחוויה נעימה ומדויקת. כל פרט תוכנן כדי שהלימוד יהיה עצמאי, ברור ומעודד — עד לקריאה מושלמת ביום הגדול.</p>
+        <p>האפליקציה נולדה מצורך אמיתי — ללמד את בני <strong>אורי</strong> לקרוא בתורה לבר המצווה, בכלים שהופכים תרגול חוזר לחוויה נעימה ומדויקת. כל פרט תוכנן כדי שהלימוד יהיה עצמאי, ברור ומעודד — עד לקריאה מושלמת ביום הגדול.</p>
+        <p class="story2-note">📱 ומחשבה שליוותה אותי לאורך הדרך: הילדים ממילא מחוברים לטלפון ולמחשב — «תורה אורי» הופכת את הזמן הזה למשהו חיובי ומשמעותי, שמקרב אותם לרגע הגדול שלהם.</p>
       </div>
     </div>
   </div>
