@@ -64,10 +64,9 @@ header.nav{position:sticky;top:0;z-index:100;background:rgba(7,13,28,0.9);backdr
 /* HERO band (full-bleed bg) */
 .band{position:relative;overflow:hidden}
 .band-bg{position:absolute;inset:0;background-size:cover;background-position:center;opacity:.9}
-.hero{position:relative;overflow:hidden;background:#060b14}
-.hero-bg{position:absolute;inset:0;background-image:url(../img/vf-hero3.jpg);background-size:cover;background-position:center top}
-.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 38%,rgba(6,11,20,.40) 60%,rgba(6,11,20,.58));z-index:1}
-.hero-content{position:relative;z-index:2;text-align:center;max-width:820px;margin:0 auto;padding:clamp(330px,49vh,600px) 22px clamp(96px,15vh,200px)}
+.hero{position:relative;background:#060b14 url(../img/vf-hero3.jpg) top center/100% auto no-repeat}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(6,11,20,.44) 52%,rgba(6,11,20,.5));z-index:1}
+.hero-content{position:relative;z-index:2;text-align:center;max-width:820px;margin:0 auto;padding:41vw 22px 12vw}
 .hero .badge{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:800;color:#04222a;background:linear-gradient(135deg,#22d3ee,#38bdf8);padding:7px 17px;border-radius:999px;margin-bottom:22px;box-shadow:0 8px 26px rgba(34,211,238,.35)}
 .hero h1{font-size:clamp(52px,9vw,104px);font-weight:900;line-height:.98;letter-spacing:-2px;background:linear-gradient(135deg,#fff,#9fd7ff 55%,#7ef0e0);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
 .hero .htag{font-size:clamp(19px,2.6vw,26px);color:var(--cyan);font-weight:800;margin-top:10px}
@@ -153,10 +152,9 @@ section{padding:56px 0}
 .creator p{color:#cdd8ee;font-size:16px;margin-top:14px}
 
 /* CTA band */
-.cta{position:relative;overflow:hidden;background:#060b14}
-.cta-bg{position:absolute;inset:0;background-image:url(../img/vf-cta-bg.jpg);background-size:cover;background-position:center top}
-.cta::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 44%,rgba(6,11,20,.46) 62%,rgba(6,11,20,.62));z-index:1}
-.cta-content{position:relative;z-index:2;text-align:center;max-width:700px;margin:0 auto;padding:clamp(300px,45vh,540px) 22px clamp(56px,9vh,120px)}
+.cta{position:relative;background:#060b14 url(../img/vf-cta-bg.jpg) top center/100% auto no-repeat}
+.cta::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(6,11,20,.5) 58%,rgba(6,11,20,.6));z-index:1}
+.cta-content{position:relative;z-index:2;text-align:center;max-width:700px;margin:0 auto;padding:38vw 22px 7vw}
 .cta h2{font-size:clamp(26px,3.6vw,40px);font-weight:900;letter-spacing:-.6px;margin-bottom:12px}
 .cta p{color:#d7e0f2;font-size:17px;max-width:600px;margin:0 auto 26px}
 .cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
@@ -175,12 +173,14 @@ footer{border-top:1px solid var(--border);padding:40px 0;background:#060a16}
 @media(max-width:900px){
   .pains,.feat-grid{grid-template-columns:1fr 1fr}
   .screens2{grid-template-columns:1fr;max-width:560px}
-  .split,.split.rev{grid-template-columns:1fr;gap:26px}
-  .split .split-txt,.split.rev .split-txt{grid-column:auto;order:1}
-  .split .split-shot,.split.rev .split-shot{grid-column:auto;order:2}
   .wa-in{grid-template-columns:1fr;gap:24px}
   .nav-links{display:none}
   .foot-in{flex-direction:column;text-align:center}
+}
+@media(max-width:720px){
+  .split,.split.rev{grid-template-columns:1fr;gap:22px;padding:22px}
+  .split .split-txt,.split.rev .split-txt{grid-column:auto;order:1}
+  .split .split-shot,.split.rev .split-shot{grid-column:auto;order:2}
 }
 @media(max-width:560px){
   .nav-in{padding:0 16px;gap:10px}
@@ -213,7 +213,6 @@ footer{border-top:1px solid var(--border);padding:40px 0;background:#060a16}
 
 <!-- HERO -->
 <header class="hero">
-  <div class="hero-bg"></div>
   <div class="hero-content">
     <span class="badge">🏢 מערכת פרודקשן · Full-Stack</span>
     <h1 class="sr-only">VeriFix — מערכת מלאה לניהול ואחזקת מבנים</h1>
@@ -411,7 +410,6 @@ footer{border-top:1px solid var(--border);padding:40px 0;background:#060a16}
 
 <!-- CTA -->
 <section class="cta" id="contact">
-  <div class="cta-bg"></div>
   <div class="cta-content">
     <h2>רוצים מערכת כזו לעסק שלכם?</h2>
     <p>מנהלים תחזוקה, נכסים או תפעול? נבנה יחד מערכת שמתאימה בדיוק לכם — קריאות, אחזקה מונעת, SLA, תקציב ודוחות. דברו איתי ונתחיל מאפיון קצר.</p>
