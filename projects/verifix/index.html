@@ -69,7 +69,7 @@ header.nav{position:sticky;top:0;z-index:100;background:rgba(7,13,28,0.9);backdr
 .band-bg{position:absolute;inset:0;background-size:cover;background-position:center;opacity:.9}
 .hero{position:relative;background:#070d1c url(../img/vf-hero2.jpg) top center/100% auto no-repeat}
 .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(7,13,28,.42) 74%,var(--bg) 100%);z-index:1}
-.hero-content{position:relative;z-index:2;text-align:center;max-width:820px;margin:0 auto;padding:31vw 22px 3vw;text-shadow:0 2px 12px rgba(0,0,0,.6)}
+.hero-content{position:relative;z-index:2;text-align:center;max-width:820px;margin:0 auto;padding:33vw 22px 3vw;text-shadow:0 2px 12px rgba(0,0,0,.6)}
 .hero .badge{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:800;color:#04222a;background:linear-gradient(135deg,#22d3ee,#38bdf8);padding:7px 17px;border-radius:999px;margin-bottom:22px;box-shadow:0 8px 26px rgba(34,211,238,.35)}
 .hero h1{font-size:clamp(52px,9vw,104px);font-weight:900;line-height:.98;letter-spacing:-2px;background:linear-gradient(135deg,#fff,#9fd7ff 55%,#7ef0e0);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
 .hero .htag{font-size:clamp(19px,2.6vw,26px);color:var(--cyan);font-weight:800;margin-top:10px}
@@ -108,6 +108,15 @@ section{padding:56px 0}
 .shot img{width:100%;display:block}
 .screens2{display:grid;grid-template-columns:1fr 1fr;gap:26px;max-width:1120px;margin:0 auto}
 .screens2 figcaption{margin-top:12px;text-align:center;font-size:14.5px;font-weight:700}
+.dash-main{max-width:1080px;margin:0 auto}
+.dash-sub{max-width:1000px;margin:50px auto 0;text-align:center}
+.dash-sub .tag{margin-bottom:16px}
+.dash-mob{display:flex;align-items:center;gap:44px;max-width:1020px;margin:56px auto 0}
+.dash-mob-txt{flex:1}
+.dash-mob-txt h3{font-size:26px;font-weight:800;margin:6px 0 10px}
+.dash-mob-txt p{color:#cdd8ee;font-size:16px}
+.dash-mob-img{flex:0 0 auto}
+.dash-mob-img img{width:min(330px,80vw);border-radius:24px;border:1px solid var(--border);box-shadow:0 26px 64px rgba(0,0,0,.6)}
 
 /* SPLIT (text + screenshot) */
 .split{display:flex;align-items:center;gap:34px;max-width:1280px;margin:0 auto;background:linear-gradient(160deg,var(--card),var(--bg2));border:1px solid var(--border);border-radius:24px;padding:28px;box-shadow:0 18px 44px rgba(0,0,0,.32)}
@@ -184,6 +193,7 @@ footer{border-top:1px solid var(--border);padding:40px 0;background:#060a16}
 @media(max-width:900px){
   .pains,.feat-grid{grid-template-columns:1fr 1fr}
   .screens2{grid-template-columns:1fr;max-width:560px}
+  .dash-mob{flex-direction:column;text-align:center;gap:26px}
   .wa-in{grid-template-columns:1fr;gap:24px}
   .nav-links{display:none}
   .foot-in{flex-direction:column;text-align:center}
@@ -261,15 +271,25 @@ footer{border-top:1px solid var(--border);padding:40px 0;background:#060a16}
       <div class="kpi"><b>מאות</b><span>משימות ותקלות</span></div>
       <div class="kpi"><b class="cy">SLA</b><span>במעקב מלא</span></div>
     </div>
-    <div class="screens2">
-      <figure>
-        <div class="shot"><div class="shot-bar"><i class="r"></i><i class="y"></i><i class="g"></i><span>verifix — דשבורד (בהיר)</span></div><img src="../img/vf-dash-light.jpg" alt="VeriFix — דשבורד במסך בהיר"></div>
-        <figcaption>☀️ מסך בהיר</figcaption>
-      </figure>
-      <figure>
-        <div class="shot"><div class="shot-bar"><i class="r"></i><i class="y"></i><i class="g"></i><span>verifix — דשבורד (כהה)</span></div><img src="../img/vf-dash-dark.jpg" alt="VeriFix — דשבורד במסך כהה"></div>
-        <figcaption>🌙 מסך כהה</figcaption>
-      </figure>
+    <!-- main dark dashboard (enlarged, no caption) -->
+    <div class="dash-main">
+      <div class="shot"><div class="shot-bar"><i class="r"></i><i class="y"></i><i class="g"></i><span>verifix — דשבורד</span></div><img src="../img/vf-dash-dark.jpg" alt="VeriFix — דשבורד המערכת"></div>
+    </div>
+
+    <!-- also light mode -->
+    <div class="dash-sub">
+      <span class="tag">☀️ גם במסך בהיר — לבחירתכם</span>
+      <div class="shot"><div class="shot-bar"><i class="r"></i><i class="y"></i><i class="g"></i><span>verifix — דשבורד (בהיר)</span></div><img src="../img/vf-dash-light.jpg" alt="VeriFix — דשבורד במסך בהיר"></div>
+    </div>
+
+    <!-- also mobile -->
+    <div class="dash-mob">
+      <div class="dash-mob-txt">
+        <span class="tag">📱 גם דרך הנייד</span>
+        <h3>כל המערכת בכיס</h3>
+        <p>צופים בדשבורד, פותחים קריאות ומקבלים עדכונים — ישירות מהטלפון, בכל מקום ובכל זמן.</p>
+      </div>
+      <div class="dash-mob-img"><img src="../img/vf-mobile.jpg" alt="VeriFix — צפייה וניהול מהנייד"></div>
     </div>
   </div>
 </section>
