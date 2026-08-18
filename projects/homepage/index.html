@@ -148,6 +148,18 @@ section{padding:46px 0}
 .cta p{color:#cdd6e8;font-size:16.5px;max-width:580px;margin:0 auto 26px}
 .cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
 
+/* PRICE */
+.pricebox{max-width:540px;margin:0 auto;background:var(--grad-soft);border:1px solid rgba(124,131,255,.32);border-radius:24px;padding:36px 32px;text-align:center;box-shadow:0 26px 60px rgba(0,0,0,.42)}
+.price-amount{display:flex;align-items:flex-start;justify-content:center;gap:6px;line-height:1}
+.price-amount .pnum{font-size:74px;font-weight:900;letter-spacing:-2px;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.price-amount .pcur{font-size:34px;font-weight:800;color:var(--accent2);margin-top:10px}
+.price-once{display:inline-block;font-size:13px;font-weight:800;color:#06231f;background:linear-gradient(135deg,#5eead4,#2dd4bf);padding:5px 14px;border-radius:999px;margin-bottom:14px}
+.price-sub{color:var(--muted);font-size:15px;margin-top:8px}
+.price-list{list-style:none;text-align:right;max-width:410px;margin:22px auto 0;display:grid;gap:11px}
+.price-list li{font-size:14.5px;color:#dbe3f2;position:relative;padding-inline-start:26px;line-height:1.5}
+.price-list li::before{content:"✓";position:absolute;inset-inline-start:0;color:var(--accent2);font-weight:900}
+.price-btn{margin-top:26px}
+
 /* FOOTER */
 footer{border-top:1px solid var(--border);padding:40px 0;background:#080b16}
 .foot-in{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;padding:0 32px;max-width:1160px;margin:0 auto}
@@ -324,6 +336,29 @@ footer{border-top:1px solid var(--border);padding:40px 0;background:#080b16}
     <div class="brand-banner"><img src="../img/home-banner-myhome.jpg" alt="MYHOME — הכול. במקום אחד. בדיוק בשבילך."></div>
   </div>
 </div>
+
+<!-- PRICE -->
+<section class="alt" id="price">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">💎 מחיר</span>
+      <h2>דף בית מעוצב — במחיר של כוס קפה</h2>
+      <p>עיצוב אישי מלא, מותאם בדיוק אליך — בתשלום חד-פעמי, בלי מנוי ובלי הפתעות.</p>
+    </div>
+    <div class="pricebox">
+      <span class="price-once">תשלום חד-פעמי</span>
+      <div class="price-amount"><span class="pcur">₪</span><span class="pnum">29</span></div>
+      <div class="price-sub">דף בית מעוצב ומותאם אישית — שלכם לתמיד</div>
+      <ul class="price-list">
+        <li>עיצוב אישי — הצבעים, הלוגו והאתרים שלכם</li>
+        <li>כל היכולות: קטגוריות, חיפוש, משימות, תמונות ומצב כהה/בהיר</li>
+        <li>שליטה מלאה — עורכים, גוררים, מסתירים ומגבים לבד</li>
+        <li>פרטי לחלוטין — הכול נשמר אצלכם במחשב</li>
+      </ul>
+      <a class="btn btn-primary price-btn" href="https://wa.me/972527246200?text=%D7%94%D7%99%D7%99%20%D7%A2%D7%9E%D7%99%D7%AA%2C%20%D7%A8%D7%90%D7%99%D7%AA%D7%99%20%D7%90%D7%AA%20%D7%93%D7%A3%20%D7%94%D7%91%D7%99%D7%AA%20%D7%94%D7%90%D7%99%D7%A9%D7%99%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%93%D7%A3%20%D7%9E%D7%A2%D7%95%D7%A6%D7%91%20%D7%91-29%20%E2%82%AA" target="_blank" rel="noopener">✨ רוצה דף כזה — דברו איתי</a>
+    </div>
+  </div>
+</section>
 
 <!-- CTA -->
 <section id="contact">
