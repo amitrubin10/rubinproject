@@ -85,6 +85,12 @@ header.nav{position:sticky;top:0;z-index:100;background:rgba(11,15,28,0.9);backd
 /* OVERVIEW graphic */
 .overview{max-width:1060px;margin:0 auto;border-radius:22px;overflow:hidden;border:1px solid var(--border);box-shadow:0 30px 70px rgba(0,0,0,.55)}
 .overview img{width:100%;display:block}
+/* caption overlaid inside the empty top band of a showcase image */
+.ov-titled{position:relative}
+.ov-cap{position:absolute;top:0;left:0;right:0;z-index:2;text-align:center;padding:3.4% 7% 0;pointer-events:none}
+.ov-cap h2{font-size:clamp(19px,2.5vw,32px);font-weight:800;letter-spacing:-.4px;color:#fff;text-shadow:0 2px 16px rgba(0,0,0,.55)}
+.ov-cap p{font-size:clamp(11px,1.35vw,16px);color:#dbe3f2;margin-top:5px;line-height:1.45;text-shadow:0 2px 12px rgba(0,0,0,.6)}
+.sec-head-slim{margin-bottom:18px}
 /* HERO title banner */
 .hero-banner{max-width:1000px;margin:0 auto 22px;border-radius:22px;overflow:hidden;border:1px solid var(--border);box-shadow:0 30px 80px rgba(0,0,0,.6),0 0 70px rgba(45,212,191,.14)}
 .hero-banner img{width:100%;display:block}
@@ -204,12 +210,16 @@ footer{border-top:1px solid var(--border);padding:40px 0;background:#080b16}
 <!-- SHOWCASE 1 -->
 <section>
   <div class="wrap">
-    <div class="sec-head">
+    <div class="sec-head sec-head-slim">
       <span class="eyebrow">👀 מבט מקרוב</span>
-      <h2>כל מה שחשוב לך — במסך אחד</h2>
-      <p>שעון ותאריך, חיפוש חכם, האתרים שלך בקטגוריות, תמונות אישיות, משימות — ומצב כהה או בהיר.</p>
     </div>
-    <div class="overview"><img src="../img/home-features1.jpg" alt="דף הבית האישי — שעון ותאריך, קטגוריות, תמונות אישיות, חיפוש חכם, משימות ומצב כהה/בהיר"></div>
+    <div class="overview ov-titled">
+      <div class="ov-cap">
+        <h2>כל מה שחשוב לך — במסך אחד</h2>
+        <p>שעון ותאריך, חיפוש חכם, האתרים שלך בקטגוריות, תמונות אישיות, משימות — ומצב כהה או בהיר.</p>
+      </div>
+      <img src="../img/home-features1.jpg" alt="דף הבית האישי — שעון ותאריך, קטגוריות, תמונות אישיות, חיפוש חכם, משימות ומצב כהה/בהיר">
+    </div>
   </div>
 </section>
 
@@ -234,8 +244,24 @@ footer{border-top:1px solid var(--border);padding:40px 0;background:#080b16}
   </div>
 </section>
 
-<!-- SHOWCASE 2 (personalization angle) -->
+<!-- REAL BUILD (dark, built for a user) -->
 <section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">🏠 דוגמה אמיתית</span>
+      <h2>דף בית שנבנה עבור משתמש אמיתי</h2>
+      <p>לא הדמיה — מסך בית שהרכבתי עבור משתמש: הקטגוריות שלו, האפליקציות שלו, הפרויקטים והמשימות שלו.</p>
+    </div>
+    <div class="shot">
+      <div class="shot-bar"><i class="r"></i><i class="y"></i><i class="g"></i><span>MYHOME — דף בית אישי</span></div>
+      <div class="shot-body"><img src="../img/home-real.jpg" alt="דף בית אישי אמיתי שנבנה עבור משתמש — קטגוריות, אפליקציות, פרויקטים ומשימות"></div>
+    </div>
+    <div class="shot-cap">כל משתמש מקבל דף שמותאם בדיוק אליו — התוכן, הסדר והעיצוב שלו</div>
+  </div>
+</section>
+
+<!-- SHOWCASE 2 (personalization angle) -->
+<section class="alt">
   <div class="wrap">
     <div class="sec-head">
       <span class="eyebrow">🎨 מותאם אליך</span>
@@ -247,7 +273,7 @@ footer{border-top:1px solid var(--border);padding:40px 0;background:#080b16}
 </section>
 
 <!-- LIGHT MODE (real screenshot) -->
-<section class="alt">
+<section>
   <div class="wrap">
     <div class="sec-head">
       <span class="eyebrow">☀️ גם במסך בהיר</span>
@@ -263,7 +289,7 @@ footer{border-top:1px solid var(--border);padding:40px 0;background:#080b16}
 </section>
 
 <!-- CONTROL -->
-<section>
+<section class="alt">
   <div class="wrap">
     <div class="ctrl">
       <h3>🙌 והכי חשוב — אתה בשליטה מלאה</h3>
@@ -278,7 +304,7 @@ footer{border-top:1px solid var(--border);padding:40px 0;background:#080b16}
 </section>
 
 <!-- PRIVACY / SPEED -->
-<section class="alt">
+<section>
   <div class="wrap">
     <div class="sec-head">
       <span class="eyebrow">למה זה פשוט עובד</span>
