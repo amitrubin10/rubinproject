@@ -42,15 +42,21 @@ img{max-width:100%;display:block}
 .wrap{max-width:1160px;margin:0 auto;padding:0 22px}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 .eyebrow{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:700;letter-spacing:.3px;color:var(--accent);background:rgba(37,99,235,.09);border:1px solid rgba(37,99,235,.22);padding:6px 14px;border-radius:999px;margin-bottom:16px}
-.btn{display:inline-flex;align-items:center;gap:8px;font-family:inherit;font-size:15px;font-weight:700;padding:13px 26px;border-radius:12px;cursor:pointer;border:1px solid transparent;transition:.2s;white-space:nowrap}
-.btn-primary{background:var(--grad);color:#fff;box-shadow:0 8px 22px rgba(37,99,235,.28)}
-.btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(37,99,235,.4)}
+.btn{position:relative;display:inline-flex;align-items:center;gap:8px;font-family:inherit;font-size:15px;font-weight:700;padding:13px 26px;border-radius:12px;cursor:pointer;border:1px solid transparent;transition:transform .2s,box-shadow .2s,background .2s,border-color .2s;white-space:nowrap;overflow:hidden;isolation:isolate}
+.btn::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(120deg,transparent 32%,rgba(255,255,255,.4) 50%,transparent 68%);transform:translateX(-130%)}
+.btn:hover::after{animation:sweep .75s ease}
+@keyframes sweep{to{transform:translateX(130%)}}
+.btn-primary{background:linear-gradient(135deg,#3b82f6,#2563eb 55%,#1e40af);color:#fff;box-shadow:0 8px 24px rgba(37,99,235,.42),inset 0 0 0 1px rgba(120,180,255,.35)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 38px rgba(37,99,235,.6),0 0 24px rgba(59,130,246,.55),inset 0 0 0 1px rgba(120,180,255,.5)}
 .btn-ghost{background:#fff;color:var(--accent);border-color:var(--border)}
-.btn-ghost:hover{border-color:var(--accent)}
-.btn-wa{background:#25d366;color:#0a1f12}
-.btn-wa:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(37,211,102,.4)}
-.btn-lghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.4)}
-.btn-lghost:hover{border-color:#fff;background:rgba(255,255,255,.08)}
+.btn-ghost:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:0 10px 26px rgba(37,99,235,.18)}
+.btn-wa{background:#25d366;color:#0a1f12;box-shadow:0 8px 22px rgba(37,211,102,.32)}
+.btn-wa:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(37,211,102,.5),0 0 20px rgba(37,211,102,.4)}
+.btn-lghost{background:rgba(120,170,255,.06);color:#eaf1ff;border-color:rgba(120,170,255,.5);box-shadow:inset 0 0 0 1px rgba(120,170,255,.12)}
+.btn-lghost:hover{border-color:#7cc0ff;background:rgba(59,130,246,.16);transform:translateY(-2px);box-shadow:0 0 24px rgba(59,130,246,.45),inset 0 0 0 1px rgba(120,170,255,.3)}
+/* live pulse dot */
+.livedot{width:8px;height:8px;border-radius:50%;background:#4ade80;flex-shrink:0;box-shadow:0 0 0 0 rgba(74,222,128,.7);animation:livepulse 1.9s infinite}
+@keyframes livepulse{0%{box-shadow:0 0 0 0 rgba(74,222,128,.6)}70%{box-shadow:0 0 0 9px rgba(74,222,128,0)}100%{box-shadow:0 0 0 0 rgba(74,222,128,0)}}
 
 /* NAV (dark) */
 header.nav{position:sticky;top:0;z-index:100;background:rgba(12,17,25,0.94);backdrop-filter:blur(14px);border-bottom:1px solid #26314c}
@@ -76,17 +82,30 @@ header.nav{position:sticky;top:0;z-index:100;background:rgba(12,17,25,0.94);back
   background-size:46px 46px;
   -webkit-mask-image:radial-gradient(circle at 50% 34%,#000,transparent 78%);mask-image:radial-gradient(circle at 50% 34%,#000,transparent 78%)}
 .phero .wrap{position:relative;z-index:1}
-.phero .badge{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:800;color:#fff;background:linear-gradient(135deg,#3b82f6,#1e40af);padding:6px 16px;border-radius:999px;margin-bottom:18px;box-shadow:0 8px 26px rgba(37,99,235,.45)}
-/* brand plate */
-.logo-card{display:inline-block;background:#f1f2f6;border-radius:22px;padding:26px 34px;margin:2px auto 2px;
-  box-shadow:0 24px 60px rgba(0,0,0,.42),0 0 0 1px rgba(255,255,255,.07),0 0 70px rgba(37,99,235,.3)}
-.logo-card img{width:min(340px,72vw);height:auto;display:block}
-.phero .lead{font-size:17px;color:#cdd8ef;margin:18px auto 0;max-width:620px}
+/* breathing glow behind the logo */
+.phero::after{content:"";position:absolute;left:50%;top:2%;width:560px;height:560px;max-width:90vw;transform:translateX(-50%);border-radius:50%;pointer-events:none;
+  background:radial-gradient(circle,rgba(37,99,235,.4),rgba(34,211,238,.12) 45%,transparent 66%);filter:blur(10px);animation:breathe 7s ease-in-out infinite}
+@keyframes breathe{0%,100%{opacity:.55;transform:translateX(-50%) scale(1)}50%{opacity:.9;transform:translateX(-50%) scale(1.12)}}
+/* brand plate — centered, animated gradient ring */
+.logo-card{position:relative;display:block;width:max-content;max-width:88vw;background:#f1f2f6;border-radius:22px;padding:26px 34px;margin:4px auto;
+  box-shadow:0 24px 60px rgba(0,0,0,.45),0 0 80px rgba(37,99,235,.35)}
+.logo-card::before{content:"";position:absolute;inset:-2px;border-radius:24px;padding:2px;pointer-events:none;
+  background:linear-gradient(135deg,#22d3ee,#3b82f6,#8b5cf6,#22d3ee);background-size:300% 300%;
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;
+  animation:ringhue 6s linear infinite}
+@keyframes ringhue{0%{background-position:0% 50%}100%{background-position:300% 50%}}
+.logo-card img{width:min(340px,72vw);height:auto;display:block;position:relative}
+/* badge — centered under the logo */
+.phero .badge{display:inline-flex;align-items:center;gap:9px;font-size:13px;font-weight:800;color:#eaf1ff;background:rgba(59,130,246,.14);border:1px solid rgba(120,170,255,.4);padding:7px 18px;border-radius:999px;margin-top:16px;box-shadow:0 8px 26px rgba(37,99,235,.28),inset 0 0 0 1px rgba(120,170,255,.1);backdrop-filter:blur(6px)}
+.phero .lead{font-size:17px;color:#cdd8ef;margin:20px auto 0;max-width:620px}
 .phero .row{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px;justify-content:center}
-.kpirow{display:flex;gap:26px;justify-content:center;flex-wrap:wrap;margin-top:30px}
-.kpi{min-width:120px}
+.kpirow{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:32px}
+.kpi{min-width:130px;background:rgba(255,255,255,.045);border:1px solid rgba(120,160,255,.2);border-radius:14px;padding:14px 20px;backdrop-filter:blur(5px);transition:.2s}
+.kpi:hover{border-color:rgba(120,160,255,.45);box-shadow:0 0 22px rgba(37,99,235,.25);transform:translateY(-2px)}
 .kpi b{display:block;font-size:30px;font-weight:900;line-height:1}
-.kpi.b1 b{color:#60a5fa}.kpi.b2 b{color:#4ade80}.kpi.b3 b{color:#fbbf24}
+.kpi.b1 b{color:#60a5fa;text-shadow:0 0 20px rgba(96,165,250,.6)}
+.kpi.b2 b{color:#4ade80;text-shadow:0 0 20px rgba(74,222,128,.55)}
+.kpi.b3 b{color:#fbbf24;text-shadow:0 0 20px rgba(251,191,36,.55)}
 .kpi span{font-size:13px;color:#9fb0d0;font-weight:600}
 
 /* BROWSER-FRAMED SHOT */
@@ -109,7 +128,8 @@ section{padding:46px 0}
   -webkit-mask-image:linear-gradient(180deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(180deg,transparent,#000 12%,#000 88%,transparent)}
 .alt .wrap{position:relative;z-index:1}
 .sec-head{max-width:780px;margin:0 auto 30px;text-align:center}
-.sec-head h2{font-size:clamp(24px,3vw,34px);font-weight:800;letter-spacing:-.4px;color:var(--ink)}
+.sec-head h2{font-size:clamp(24px,3vw,34px);font-weight:800;letter-spacing:-.4px;color:var(--ink);display:inline-block;position:relative;padding-bottom:12px}
+.sec-head h2::after{content:"";position:absolute;left:50%;bottom:0;transform:translateX(-50%);width:58px;height:3px;border-radius:3px;background:linear-gradient(90deg,#22d3ee,#3b82f6,#8b5cf6)}
 .sec-head p{color:var(--muted);font-size:16px;margin-top:8px}
 
 /* CHALLENGE / SOLUTION */
@@ -181,8 +201,8 @@ footer{border-top:1px solid #26314c;padding:40px 0;background:#0c1119}
 @media(max-width:520px){ .feat-grid{grid-template-columns:1fr} }
 
 /* production line under hero */
-.prodline{display:inline-flex;align-items:center;gap:9px;margin-top:22px;font-size:13.5px;font-weight:700;color:var(--ink);background:#fff;border:1px solid var(--border);border-radius:999px;padding:8px 18px;box-shadow:0 6px 18px rgba(22,35,63,.06)}
-.prodline .dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px rgba(22,163,74,.16)}
+.prodline{display:inline-flex;align-items:center;gap:9px;margin-top:24px;font-size:13.5px;font-weight:700;color:#e6ecfa;background:rgba(255,255,255,.05);border:1px solid rgba(120,170,255,.24);border-radius:999px;padding:9px 20px;backdrop-filter:blur(6px);box-shadow:0 8px 24px rgba(0,0,0,.28)}
+.prodline .dot{width:8px;height:8px;border-radius:50%;background:#4ade80;flex-shrink:0;box-shadow:0 0 0 0 rgba(74,222,128,.6);animation:livepulse 1.9s infinite}
 /* generic viz image */
 .viz{max-width:1020px;margin:0 auto;border-radius:18px;overflow:hidden;border:1px solid var(--border);box-shadow:0 26px 60px rgba(22,35,63,.16);background:#0b1020}
 .viz img{width:100%;display:block}
@@ -247,9 +267,9 @@ footer{border-top:1px solid #26314c;padding:40px 0;background:#0c1119}
 <!-- HERO -->
 <header class="phero">
   <div class="wrap">
-    <span class="badge">🤖 פייפליין AI · דמו חי</span>
     <h1 class="sr-only">Bot Analytics — ניתוח שירות מבוסס AI</h1>
     <div class="logo-card"><img src="../img/bot-logo.jpg" alt="Bot Analytics — ניתוח שירות מבוסס AI"></div>
+    <div><span class="badge"><span class="livedot"></span> פייפליין AI · דמו חי</span></div>
     <p class="lead">פייפליין של סוכני AI שהופך <strong>דאטה גולמית של שירות</strong> — שיחות בוט ופניות לקוחות — לדשבורדים ניהוליים: סיווג נושאים, מדדי איכות, מגמות ושיעורי טיפול. במקום ערימת לוגים, תמונת מצב שאפשר להחליט לפיה.</p>
     <div class="row">
       <a class="btn btn-primary" href="https://amitrubin10.github.io/bot-analytics-pipeline/" target="_blank" rel="noopener">▶ לדמו החי</a>
@@ -264,6 +284,27 @@ footer{border-top:1px solid #26314c;padding:40px 0;background:#0c1119}
   </div>
 </header>
 
+<!-- DASHBOARD what you get (payoff first) -->
+<section class="alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">התוצאה</span>
+      <h2>דשבורד ניהולי אחד — כל מה שצריך להחלטה</h2>
+      <p>קובץ HTML עצמאי, כל הגרפים ב-SVG טהור (בלי ספריות), מתפרסם בקישור קבוע ומתעדכן מדי שבוע.</p>
+    </div>
+    <div class="viz"><img src="../img/bot-boardroom.jpg" alt="צוות ניהול בוחן דשבורד תובנות AI בזמן אמת"></div>
+    <div class="viz-cap" style="margin-bottom:24px">תובנות בזמן אמת — כל השיחות מסווגות ומנוקדות, בתמונת מצב אחת שאפשר להחליט לפיה.</div>
+    <ul class="dashget">
+      <li><span class="di">📇</span><div><b>כרטיסי KPI</b> — היקף, שיעורי טיפול, אחוז הצלחה, כשלים והפניות — כל אחד עם היסטוריית 4 שבועות.</div></li>
+      <li><span class="di">🔻</span><div><b>משפך פנייה</b> — ממשתמשי הבוט, דרך מה שנסגר לבד, ועד פירוט האיכות של מה שהוסלם לנציג.</div></li>
+      <li><span class="di">📊</span><div><b>גרפי התפלגות</b> — נושאים מובילים, ואיפה הבוט מצליח מול איפה כדאי להשקיע באימון.</div></li>
+      <li><span class="di">📈</span><div><b>מגמות 4 שבועות</b> — גרף ניצוץ לכל מדד: האם הבוט משתפר לאורך זמן.</div></li>
+      <li><span class="di">🗂️</span><div><b>טבלאות אינטראקטיביות</b> — כל שיחה בעייתית לפי נושא; בלחיצה נפתחת התשובה המלאה.</div></li>
+      <li><span class="di">🔁</span><div><b>דפוסי שאלה חוזרים</b> — אשכולות חודשיים + המלצות אימון ממוקדות.</div></li>
+    </ul>
+  </div>
+</section>
+
 <!-- PIPELINE VISUAL -->
 <div class="shotwrap">
   <div class="wrap">
@@ -273,19 +314,14 @@ footer{border-top:1px solid #26314c;padding:40px 0;background:#0c1119}
 </div>
 
 <!-- CHALLENGE -->
-<section class="alt">
+<section>
   <div class="wrap">
     <div class="sec-head">
       <span class="eyebrow">האתגר והפתרון</span>
       <h2>מלוגים גולמיים — לתובנות ניהוליות</h2>
     </div>
-    <div class="painband" style="margin-bottom:26px">
-      <img src="../img/bot-pain.jpg" alt="מוקד שירות עמוס — אלפי פניות ביום, ניתוח ידני בלתי אפשרי">
-      <div class="ov"><div class="in">
-        <h3>אלפי פניות בחודש. לנתח אותן ידנית — בלתי אפשרי.</h3>
-        <p>ערימות לוגים, בלי דרך לדעת על מה פונים, איפה נופלים, ומה איכות המענה באמת.</p>
-      </div></div>
-    </div>
+    <div class="viz"><img src="../img/bot-pain.jpg" alt="מוקד שירות עמוס — אלפי פניות ביום, ניתוח ידני בלתי אפשרי"></div>
+    <div class="viz-cap" style="margin-bottom:26px"><strong style="color:var(--ink)">אלפי פניות בחודש — לנתח אותן ידנית זה בלתי אפשרי.</strong> ערימות לוגים, בלי דרך לדעת על מה פונים, איפה נופלים, ומה איכות המענה באמת.</div>
     <div class="cs">
       <div class="csbox chal">
         <h3>⚠️ לפני</h3>
@@ -310,7 +346,7 @@ footer{border-top:1px solid #26314c;padding:40px 0;background:#0c1119}
 </section>
 
 <!-- STAGES -->
-<section>
+<section class="alt">
   <div class="wrap">
     <div class="sec-head">
       <span class="eyebrow">איך זה עובד</span>
@@ -330,7 +366,7 @@ footer{border-top:1px solid #26314c;padding:40px 0;background:#0c1119}
 </section>
 
 <!-- DIFFERENTIATOR -->
-<section class="alt">
+<section>
   <div class="wrap">
     <div class="sec-head">
       <span class="eyebrow">מה שהופך את זה למדויק</span>
@@ -355,7 +391,7 @@ footer{border-top:1px solid #26314c;padding:40px 0;background:#0c1119}
 </section>
 
 <!-- FEATURES -->
-<section>
+<section class="alt">
   <div class="wrap">
     <div class="sec-head">
       <span class="eyebrow">היכולות</span>
@@ -381,27 +417,6 @@ footer{border-top:1px solid #26314c;padding:40px 0;background:#0c1119}
   </div>
 </section>
 
-<!-- DASHBOARD what you get -->
-<section class="alt">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="eyebrow">הפלט</span>
-      <h2>דשבורד ניהולי אחד — כל מה שצריך להחלטה</h2>
-      <p>קובץ HTML עצמאי, כל הגרפים ב-SVG טהור (בלי ספריות), מתפרסם בקישור קבוע ומתעדכן מדי שבוע.</p>
-    </div>
-    <ul class="dashget">
-      <li><span class="di">📇</span><div><b>כרטיסי KPI</b> — היקף, שיעורי טיפול, אחוז הצלחה, כשלים והפניות — כל אחד עם היסטוריית 4 שבועות.</div></li>
-      <li><span class="di">🔻</span><div><b>משפך פנייה</b> — ממשתמשי הבוט, דרך מה שנסגר לבד, ועד פירוט האיכות של מה שהוסלם לנציג.</div></li>
-      <li><span class="di">📊</span><div><b>גרפי התפלגות</b> — נושאים מובילים, ואיפה הבוט מצליח מול איפה כדאי להשקיע באימון.</div></li>
-      <li><span class="di">📈</span><div><b>מגמות 4 שבועות</b> — גרף ניצוץ לכל מדד: האם הבוט משתפר לאורך זמן.</div></li>
-      <li><span class="di">🗂️</span><div><b>טבלאות אינטראקטיביות</b> — כל שיחה בעייתית לפי נושא; בלחיצה נפתחת התשובה המלאה.</div></li>
-      <li><span class="di">🔁</span><div><b>דפוסי שאלה חוזרים</b> — אשכולות חודשיים + המלצות אימון ממוקדות.</div></li>
-    </ul>
-    <div class="viz" style="margin-top:26px"><img src="../img/bot-boardroom.jpg" alt="צוות ניהול בוחן דשבורד תובנות AI בזמן אמת"></div>
-    <div class="viz-cap">תובנות בזמן אמת — כל השיחות מסווגות ומנוקדות, בתמונת מצב אחת שאפשר להחליט לפיה.</div>
-  </div>
-</section>
-
 <!-- TRUST -->
 <section>
   <div class="wrap">
@@ -418,13 +433,12 @@ footer{border-top:1px solid #26314c;padding:40px 0;background:#0c1119}
 <!-- DECISIONS band -->
 <section class="alt">
   <div class="wrap">
-    <div class="painband">
-      <img src="../img/bot-decisions.jpg" alt="הנהלה מקבלת החלטות על בסיס דשבורד תובנות AI">
-      <div class="ov"><div class="in">
-        <h3>מ‘תחושות בטן’ — להחלטות מבוססות נתונים</h3>
-        <p>ישירות מהמוקד ללוח ההנהלה: מה עובד, מה נופל, ואיפה להשקיע.</p>
-      </div></div>
+    <div class="sec-head">
+      <span class="eyebrow">השורה התחתונה</span>
+      <h2>מ‘תחושות בטן’ — להחלטות מבוססות נתונים</h2>
+      <p>ישירות מהמוקד ללוח ההנהלה: מה עובד, מה נופל, ואיפה כדאי להשקיע.</p>
     </div>
+    <div class="viz"><img src="../img/bot-decisions.jpg" alt="הנהלה מקבלת החלטות על בסיס דשבורד תובנות AI"></div>
   </div>
 </section>
 
