@@ -10,12 +10,12 @@
 <meta property="og:site_name" content="Rubin Project">
 <meta property="og:title" content="Bot Analytics — ניתוח שירות מבוסס AI">
 <meta property="og:description" content="סוכני AI שהופכים דאטה גולמית של שירות לדשבורדים ניהוליים — סיווג, איכות ומגמות. דמו חי.">
-<meta property="og:image" content="https://www.rubinproject.com/img/bot-kpi.png?v=2">
+<meta property="og:image" content="https://www.rubinproject.com/projects/img/bot-og.jpg?v=3">
 <meta property="og:url" content="https://www.rubinproject.com/projects/bot-analytics/">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="he_IL">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://www.rubinproject.com/img/bot-kpi.png?v=2">
+<meta name="twitter:image" content="https://www.rubinproject.com/projects/img/bot-og.jpg?v=3">
 <meta name="theme-color" content="#0c1119">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -158,6 +158,49 @@ footer{border-top:1px solid #26314c;padding:40px 0;background:#0c1119}
   .nav-cta .btn{padding:8px 14px;font-size:13px}
 }
 @media(max-width:520px){ .feat-grid{grid-template-columns:1fr} }
+
+/* production line under hero */
+.prodline{display:inline-flex;align-items:center;gap:9px;margin-top:22px;font-size:13.5px;font-weight:700;color:var(--ink);background:#fff;border:1px solid var(--border);border-radius:999px;padding:8px 18px;box-shadow:0 6px 18px rgba(22,35,63,.06)}
+.prodline .dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px rgba(22,163,74,.16)}
+/* generic viz image */
+.viz{max-width:1020px;margin:0 auto;border-radius:18px;overflow:hidden;border:1px solid var(--border);box-shadow:0 26px 60px rgba(22,35,63,.16);background:#0b1020}
+.viz img{width:100%;display:block}
+.viz-cap{text-align:center;color:var(--muted);font-size:13.5px;margin:14px auto 0;max-width:780px;line-height:1.6}
+/* pain / decisions image band with overlay */
+.painband{position:relative;max-width:1020px;margin:0 auto;border-radius:18px;overflow:hidden;border:1px solid var(--border);box-shadow:0 20px 50px rgba(22,35,63,.16)}
+.painband img{width:100%;display:block}
+.painband .ov{position:absolute;inset:0;background:linear-gradient(90deg,rgba(9,16,32,.9),rgba(9,16,32,.55) 45%,rgba(9,16,32,.05));display:flex;align-items:center}
+.painband .ov .in{padding:0 6%;max-width:64%;color:#fff}
+.painband .ov h3{font-size:clamp(18px,2.5vw,28px);font-weight:900;margin-bottom:8px;line-height:1.15;text-shadow:0 2px 12px rgba(0,0,0,.55)}
+.painband .ov p{font-size:15px;color:#e3e9f7;text-shadow:0 2px 10px rgba(0,0,0,.5)}
+@media(max-width:640px){.painband .ov{background:linear-gradient(180deg,rgba(9,16,32,.55),rgba(9,16,32,.9))}.painband .ov .in{max-width:100%}}
+/* pipeline stage cards */
+.pipe{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin:6px 0 4px}
+.stage{background:#fff;border:1px solid var(--border);border-radius:14px;padding:18px 14px;text-align:center;box-shadow:0 6px 18px rgba(22,35,63,.05)}
+.stage .n{width:30px;height:30px;border-radius:50%;background:var(--grad);color:#fff;font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center;margin:0 auto 10px}
+.stage .si{font-size:23px;margin-bottom:6px}
+.stage h4{font-size:14.5px;color:var(--ink);margin-bottom:4px}
+.stage p{font-size:12.5px;color:var(--muted);line-height:1.5}
+@media(max-width:900px){.pipe{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.pipe{grid-template-columns:1fr}}
+/* differentiator */
+.diff{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:960px;margin:0 auto}
+.diffbox{border-radius:18px;padding:24px;border:1px solid var(--border);background:#fff;box-shadow:0 6px 18px rgba(22,35,63,.05)}
+.diffbox.good{border-top:3px solid var(--green)}
+.diffbox.bad{border-top:3px solid var(--red)}
+.diffbox .lbl{display:inline-block;font-size:12.5px;font-weight:800;padding:3px 12px;border-radius:999px;margin-bottom:10px}
+.diffbox.good .lbl{background:#dcfce7;color:#15803d}
+.diffbox.bad .lbl{background:#ffe4e6;color:#be123c}
+.diffbox h4{font-size:17px;margin-bottom:8px;color:var(--ink)}
+.diffbox p{font-size:14.5px;color:#3f4a63}
+.diffbox .ex{margin-top:12px;font-size:13px;color:var(--muted);background:var(--card2);border-radius:10px;padding:10px 12px}
+@media(max-width:760px){.diff{grid-template-columns:1fr}}
+/* dashboard what-you-get */
+.dashget{display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:960px;margin:0 auto;list-style:none}
+.dashget li{display:flex;gap:11px;align-items:flex-start;background:#fff;border:1px solid var(--border);border-radius:12px;padding:14px 16px;font-size:14px;color:#3f4a63;line-height:1.55}
+.dashget li b{color:var(--ink)}
+.dashget .di{font-size:19px;line-height:1.3;flex-shrink:0}
+@media(max-width:760px){.dashget{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -196,26 +239,31 @@ footer{border-top:1px solid #26314c;padding:40px 0;background:#0c1119}
       <div class="kpi b2"><b>77.3%</b><span>אחוז הצלחה (מענה תקין)</span></div>
       <div class="kpi b3"><b>42%</b><span>טופלו בבוט ללא נציג</span></div>
     </div>
+    <div class="prodline"><span class="dot"></span> רץ בפרודקשן · מוקד השירות של חברת ERP מובילה בישראל</div>
   </div>
 </header>
 
-<!-- SHOT -->
+<!-- PIPELINE VISUAL -->
 <div class="shotwrap">
   <div class="wrap">
-    <div class="shot">
-      <div class="shot-bar"><i class="r"></i><i class="y"></i><i class="g"></i><span>bot-analytics — KPIs</span></div>
-      <img src="../../img/bot-kpi.png" alt="Bot Analytics — כרטיסי KPI: קריאות, אחוזי הצלחה, שיעורי טיפול ובעיות פתוחות">
-    </div>
-    <div class="shot-cap">דשבורד KPI — קריאות, אחוזי הצלחה, שיעורי טיפול בבוט ובעיות פתוחות, בצבעי סטטוס</div>
+    <div class="viz"><img src="../img/bot-pipeline.jpg" alt="חמישה סוכני AI בשרשרת: מיצוי נתונים, סיווג נושאים, ניקוד איכות, זיהוי מגמות ובניית דשבורד ניהולי"></div>
+    <div class="viz-cap">מהדאטה הגולמית של השירות — שיחות בוט, פניות ולוגים — ועד דשבורד ניהולי אחד שאפשר להחליט לפיו.</div>
   </div>
 </div>
 
-<!-- CHALLENGE / SOLUTION -->
+<!-- CHALLENGE -->
 <section class="alt">
   <div class="wrap">
     <div class="sec-head">
       <span class="eyebrow">האתגר והפתרון</span>
       <h2>מלוגים גולמיים — לתובנות ניהוליות</h2>
+    </div>
+    <div class="painband" style="margin-bottom:26px">
+      <img src="../img/bot-pain.jpg" alt="מוקד שירות עמוס — אלפי פניות ביום, ניתוח ידני בלתי אפשרי">
+      <div class="ov"><div class="in">
+        <h3>אלפי פניות בחודש. לנתח אותן ידנית — בלתי אפשרי.</h3>
+        <p>ערימות לוגים, בלי דרך לדעת על מה פונים, איפה נופלים, ומה איכות המענה באמת.</p>
+      </div></div>
     </div>
     <div class="cs">
       <div class="csbox chal">
@@ -230,11 +278,56 @@ footer{border-top:1px solid #26314c;padding:40px 0;background:#0c1119}
       <div class="csbox sol">
         <h3>✅ עם Bot Analytics</h3>
         <ul>
-          <li>סוכני AI מסווגים ומסכמים כל שיחה אוטומטית</li>
+          <li>סוכני AI מסווגים ומנקדים כל שיחה — אוטומטית</li>
           <li>נושאים מובילים, נקודות כשל ומגמות — ברור לעין</li>
-          <li>מדדי איכות ושיעורי טיפול, בזמן אמת</li>
+          <li>מדדי איכות ושיעורי טיפול, מדי שבוע</li>
           <li>דשבורד ניהולי שמתעדכן לבד — בלי עבודה ידנית</li>
         </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STAGES -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">איך זה עובד</span>
+      <h2>הפייפליין — שלב אחר שלב</h2>
+      <p>חמישה סוכנים, כל אחד מתמחה בשלב אחד. הפלט של אחד הוא הקלט של הבא.</p>
+    </div>
+    <div class="pipe">
+      <div class="stage"><div class="n">1</div><div class="si">🧲</div><h4>מיצוי הנתונים</h4><p>איסוף וניקוי הדוח הגולמי — כל שיחה מסודרת ומוכנה לניתוח.</p></div>
+      <div class="stage"><div class="n">2</div><div class="si">🏷️</div><h4>סיווג נושאים</h4><p>כל פנייה מתויגת לנושא אחד — כדי לראות על מה באמת פונים.</p></div>
+      <div class="stage"><div class="n">3</div><div class="si">✔️</div><h4>ניקוד איכות</h4><p>כל תשובה: תקין / לא תקין / לא ניתן לקבוע — עם סיבה.</p></div>
+      <div class="stage"><div class="n">4</div><div class="si">🎯</div><h4>תחום ומגמות</h4><p>הפניה נכונה לנציג מול כשל אמיתי, ומגמות לאורך זמן.</p></div>
+      <div class="stage"><div class="n">5</div><div class="si">📊</div><h4>בניית הדשבורד</h4><p>KPI, משפך, גרפים וטבלאות — קובץ אחד, קישור קבוע.</p></div>
+    </div>
+    <div class="viz" style="margin-top:26px"><img src="../img/bot-flow.jpg" alt="זרימה מקצה לקצה: דאטה גולמית מרובת מקורות → חמישה סוכני AI → דשבורד ניהולי"></div>
+    <div class="viz-cap">הסיווג הוא <strong>שיפוט סמנטי פר-שיחה</strong> (הבנת כוונה — לא מילות-מפתח), מבוזר ל<strong>סוכנים מקבילים</strong>: מאות שיחות מנותחות תוך דקות, בדיוק גבוה.</div>
+  </div>
+</section>
+
+<!-- DIFFERENTIATOR -->
+<section class="alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">מה שהופך את זה למדויק</span>
+      <h2>הפניה נכונה לנציג — או כשל אמיתי?</h2>
+      <p>לא כל "אני מעביר אותך לנציג" הוא כישלון. המערכת מבדילה סמנטית בין השניים — וזה משנה לגמרי את תמונת האיכות.</p>
+    </div>
+    <div class="diff">
+      <div class="diffbox good">
+        <span class="lbl">✓ הפניה נכונה</span>
+        <h4>שאלה מחוץ-לתחום</h4>
+        <p>הבוט לא אמור לדעת — התקנה, חיוב, תלונת שירות, גישה לנתונים ספציפיים. הפנייה לנציג היא בדיוק ההתנהגות הרצויה, ולא נספרת ככשל.</p>
+        <div class="ex">דוגמה: "תחזרו אליי לגבי חידוש המנוי" ← הפניה נכונה ✓</div>
+      </div>
+      <div class="diffbox bad">
+        <span class="lbl">✕ כשל אמיתי</span>
+        <h4>שאלה בתחום</h4>
+        <p>הבוט אמור היה לענות — "איך עושים X", קוד שגיאה ספציפי, תקלה תפעולית. "לא יודע" כאן הוא פער בבסיס הידע שדורש אימון.</p>
+        <div class="ex">דוגמה: "מה המשמעות של שגיאה 403?" ← כשל שדורש אימון ✕</div>
       </div>
     </div>
   </div>
@@ -245,46 +338,71 @@ footer{border-top:1px solid #26314c;padding:40px 0;background:#0c1119}
   <div class="wrap">
     <div class="sec-head">
       <span class="eyebrow">היכולות</span>
-      <h2>פייפליין של סוכני AI — מקצה לקצה</h2>
-      <p>כל סוכן אחראי על שלב: איסוף, סיווג, איכות, מגמות ותצוגה.</p>
+      <h2>מה המערכת יודעת לעשות</h2>
+      <p>שכבת ניתוח שלמה מעל הדאטה הגולמית של השירות.</p>
     </div>
     <div class="feat-grid">
       <div class="feat hl">
         <div class="big">🧠</div>
         <div>
           <h4>5 סוכני AI בשרשרת אחת<span class="pill">הליבה</span></h4>
-          <p>כל סוכן מתמחה בשלב — מיצוי הנתונים, סיווג הנושא, ניקוד איכות, זיהוי מגמות ובניית הדשבורד. יחד הם הופכים דאטה גולמית לתובנה ניהולית, אוטומטית ובאופן חוזר.</p>
+          <p>כל סוכן מתמחה בשלב — מיצוי הנתונים, סיווג הנושא, ניקוד איכות, סיווג תחום ומגמות, ובניית הדשבורד. יחד הם הופכים דאטה גולמית לתובנה ניהולית, אוטומטית ובאופן חוזר מדי שבוע.</p>
         </div>
       </div>
-      <div class="feat t-blue"><div class="ic">🏷️</div><h4>סיווג נושאים</h4><p>כל פנייה מתויגת לפי נושא ותת-נושא — כדי לראות על מה באמת פונים.</p></div>
-      <div class="feat t-green"><div class="ic">⭐</div><h4>מדדי איכות</h4><p>ניקוד איכות המענה — מה נענה טוב, ואיפה השירות נופל.</p></div>
-      <div class="feat t-orange"><div class="ic">📈</div><h4>מגמות לאורך זמן</h4><p>זיהוי עליות, ירידות ודפוסים — מה משתנה ומתי.</p></div>
-      <div class="feat t-violet"><div class="ic">🤝</div><h4>בוט מול נציג</h4><p>שיעור הטיפול בבוט לבד מול העברה לנציג — לצמצום עומס.</p></div>
-      <div class="feat t-red"><div class="ic">🚩</div><h4>זיהוי בעיות</h4><p>סימון פניות תקועות, כשלים חוזרים ונושאים מוכי-בעיות.</p></div>
-      <div class="feat t-blue"><div class="ic">📊</div><h4>דשבורד ניהולי</h4><p>כל התובנות בכרטיסי KPI צבעוניים וברורים — מוכן להחלטה.</p></div>
+      <div class="feat t-blue"><div class="ic">🏷️</div><h4>סיווג נושאים</h4><p>כל פנייה מתויגת לנושא אחד לפי כללי עדיפות — כדי לראות על מה באמת פונים.</p></div>
+      <div class="feat t-green"><div class="ic">✔️</div><h4>ניקוד איכות מענה</h4><p>כל תשובה מסווגת תקין / לא תקין / לא ניתן לקבוע — עם סיבה מרשימה סגורה.</p></div>
+      <div class="feat t-violet"><div class="ic">🎯</div><h4>הפניה נכונה מול כשל</h4><p>הבחנה סמנטית בין הסלמה רצויה לנציג לבין פער אמיתי בבסיס הידע.</p></div>
+      <div class="feat t-orange"><div class="ic">🔻</div><h4>משפך פנייה</h4><p>מכלל משתמשי הבוט, דרך מה שנסגר לבד, ועד פירוט האיכות של מה שהוסלם.</p></div>
+      <div class="feat t-blue"><div class="ic">📈</div><h4>מגמות 4 שבועות</h4><p>גרף ניצוץ לכל מדד — האם הבוט משתפר, ואיפה יש הידרדרות.</p></div>
+      <div class="feat t-green"><div class="ic">🗂️</div><h4>טבלאות לפי נושא</h4><p>כל שיחה בעייתית זמינה; בלחיצה נפתחת תשובת הבוט המלאה.</p></div>
+      <div class="feat t-red"><div class="ic">🔁</div><h4>דפוסי שאלה חוזרים</h4><p>אשכולות חודשיים של שאלות שחוזרות — עם המלצות אימון ממוקדות.</p></div>
     </div>
   </div>
 </section>
 
-<!-- TRUST -->
+<!-- DASHBOARD what you get -->
 <section class="alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">הפלט</span>
+      <h2>דשבורד ניהולי אחד — כל מה שצריך להחלטה</h2>
+      <p>קובץ HTML עצמאי, כל הגרפים ב-SVG טהור (בלי ספריות), מתפרסם בקישור קבוע ומתעדכן מדי שבוע.</p>
+    </div>
+    <ul class="dashget">
+      <li><span class="di">📇</span><div><b>כרטיסי KPI</b> — היקף, שיעורי טיפול, אחוז הצלחה, כשלים והפניות — כל אחד עם היסטוריית 4 שבועות.</div></li>
+      <li><span class="di">🔻</span><div><b>משפך פנייה</b> — ממשתמשי הבוט, דרך מה שנסגר לבד, ועד פירוט האיכות של מה שהוסלם לנציג.</div></li>
+      <li><span class="di">📊</span><div><b>גרפי התפלגות</b> — נושאים מובילים, ואיפה הבוט מצליח מול איפה כדאי להשקיע באימון.</div></li>
+      <li><span class="di">📈</span><div><b>מגמות 4 שבועות</b> — גרף ניצוץ לכל מדד: האם הבוט משתפר לאורך זמן.</div></li>
+      <li><span class="di">🗂️</span><div><b>טבלאות אינטראקטיביות</b> — כל שיחה בעייתית לפי נושא; בלחיצה נפתחת התשובה המלאה.</div></li>
+      <li><span class="di">🔁</span><div><b>דפוסי שאלה חוזרים</b> — אשכולות חודשיים + המלצות אימון ממוקדות.</div></li>
+    </ul>
+    <div class="viz" style="margin-top:26px"><img src="../img/bot-boardroom.jpg" alt="צוות ניהול בוחן דשבורד תובנות AI בזמן אמת"></div>
+    <div class="viz-cap">תובנות בזמן אמת — כל השיחות מסווגות ומנוקדות, בתמונת מצב אחת שאפשר להחליט לפיה.</div>
+  </div>
+</section>
+
+<!-- TRUST -->
+<section>
   <div class="wrap">
     <div class="trust">
       <div class="k">יש <span class="cy">דמו חי</span> — אפשר להתנסות עכשיו</div>
       <p>הפייפליין רץ על נתוני דוגמה ומייצר את הדשבורד המלא בזמן אמת. אותה גישה מתחברת גם למקורות שירות אמיתיים — בוט, מוקד או CRM.</p>
     </div>
+    <div class="chips" style="margin-top:24px">
+      <span class="chip">Python</span><span class="chip">סוכני LLM מקבילים</span><span class="chip">שיפוט סמנטי</span><span class="chip">פייפליין נתונים</span><span class="chip">SVG טהור · קובץ יחיד</span><span class="chip">דמו חי</span>
+    </div>
   </div>
 </section>
 
-<!-- TECH -->
-<section>
+<!-- DECISIONS band -->
+<section class="alt">
   <div class="wrap">
-    <div class="sec-head">
-      <span class="eyebrow">מאחורי הקלעים</span>
-      <h2>AI יישומי, מחובר לתפעול</h2>
-    </div>
-    <div class="chips">
-      <span class="chip">Python</span><span class="chip">סוכני LLM</span><span class="chip">סיווג ו-NLP</span><span class="chip">פייפליין נתונים</span><span class="chip">דשבורד אינטראקטיבי</span><span class="chip">דמו חי</span>
+    <div class="painband">
+      <img src="../img/bot-decisions.jpg" alt="הנהלה מקבלת החלטות על בסיס דשבורד תובנות AI">
+      <div class="ov"><div class="in">
+        <h3>מ‘תחושות בטן’ — להחלטות מבוססות נתונים</h3>
+        <p>ישירות מהמוקד ללוח ההנהלה: מה עובד, מה נופל, ואיפה להשקיע.</p>
+      </div></div>
     </div>
   </div>
 </section>
