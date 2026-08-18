@@ -164,6 +164,19 @@ section{padding:46px 0}
 .statement{max-width:900px;margin:0 auto;text-align:center;background:linear-gradient(160deg,rgba(37,99,235,.07),rgba(139,92,246,.07));border:1px solid rgba(37,99,235,.22);border-radius:22px;padding:42px 32px;box-shadow:0 10px 30px rgba(22,35,63,.06)}
 .statement h2{font-size:clamp(23px,3.2vw,33px);font-weight:900;color:var(--ink);margin-bottom:10px;letter-spacing:-.4px}
 .statement p{color:#3f4a63;font-size:16.5px;max-width:640px;margin:0 auto}
+/* generic photo gradient frame */
+.pframe{max-width:1000px;margin:0 auto;border-radius:18px;padding:2.5px;background:linear-gradient(135deg,#22d3ee,#3b82f6 52%,#8b5cf6);box-shadow:0 20px 50px rgba(22,35,63,.2),0 0 34px rgba(59,130,246,.12)}
+.pframe img{width:100%;height:auto;display:block;border-radius:15px}
+/* quote form */
+.quotebox{max-width:760px;margin:0 auto;background:#fff;border:1px solid var(--border);border-radius:22px;padding:32px;box-shadow:0 20px 50px rgba(22,35,63,.1)}
+.qgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+.quotebox label{display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:700;color:var(--ink)}
+.quotebox input,.quotebox select,.quotebox textarea{font-family:inherit;font-size:15px;font-weight:400;padding:11px 13px;border:1px solid var(--border);border-radius:10px;background:#f8fafc;color:var(--ink);transition:.15s}
+.quotebox input:focus,.quotebox select:focus,.quotebox textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(37,99,235,.13);background:#fff}
+.quotebox textarea{resize:vertical}
+.qfull{margin-bottom:18px}
+.qrow{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+@media(max-width:600px){.qgrid{grid-template-columns:1fr}}
 
 /* FEATURES with KPI-colored tops */
 .feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
@@ -294,7 +307,7 @@ footer{border-top:1px solid #26314c;padding:40px 0;background:#0c1119}
     <p class="lead">פייפליין של סוכני AI שהופך <strong>דאטה גולמית של שירות</strong> — שיחות בוט ופניות לקוחות — לדשבורדים ניהוליים: סיווג נושאים, מדדי איכות, מגמות ושיעורי טיפול. במקום ערימת לוגים, תמונת מצב שאפשר להחליט לפיה.</p>
     <div class="row">
       <a class="btn btn-primary" href="https://amitrubin10.github.io/bot-analytics-pipeline/" target="_blank" rel="noopener">▶ לדמו החי</a>
-      <a class="btn btn-lghost" href="#contact">רוצים כזה לעסק?</a>
+      <a class="btn btn-lghost" href="#quote">רוצים כזה לעסק?</a>
     </div>
     <div class="kpirow">
       <div class="kpi b1"><b data-val="3366" data-dec="0" data-sep="1">0</b><span>סך קריאות בבוט</span></div>
@@ -380,7 +393,7 @@ footer{border-top:1px solid #26314c;padding:40px 0;background:#0c1119}
     <div class="viz-cap" style="margin:16px auto 36px"><strong style="color:var(--ink)">אלפי פניות בחודש — לנתח אותן ידנית זה בלתי אפשרי.</strong> ערימות לוגים, בלי דרך לדעת על מה פונים, איפה נופלים, ומה איכות המענה באמת.</div>
     <!-- AFTER: solution image + עם Bot Analytics -->
     <div class="cs-row rev">
-      <div class="cs-img"><img src="../img/bot-decisions.jpg" alt="הנהלה מקבלת החלטות על בסיס דשבורד תובנות AI"></div>
+      <div class="cs-img"><img src="../img/bot-result.jpg" alt="דשבורד ניהולי בזמן אמת — KPI, נושאים מובילים, מגמות ומשפך טיפול"></div>
       <div class="csbox sol">
         <h3>✅ עם Bot Analytics</h3>
         <ul>
@@ -486,6 +499,38 @@ footer{border-top:1px solid #26314c;padding:40px 0;background:#0c1119}
       <h2>מ‘תחושות בטן’ — להחלטות מבוססות נתונים</h2>
       <p>ישירות מהמוקד ללוח ההנהלה: מה עובד, מה נופל, ואיפה כדאי להשקיע.</p>
     </div>
+    <div class="pframe" style="margin-top:28px"><img src="../img/bot-decisions.jpg" alt="הנהלה מקבלת החלטות על בסיס דשבורד תובנות AI"></div>
+  </div>
+</section>
+
+<!-- QUOTE FORM -->
+<section id="quote">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">💬 הצעת מחיר</span>
+      <h2>רוצים כזה לעסק? קבלו הצעת מחיר</h2>
+      <p>שלחו כמה פרטים ואחזור אליכם עם הצעה מותאמת — בלי התחייבות.</p>
+    </div>
+    <form class="quotebox" onsubmit="return sendQuote(event)">
+      <div class="qgrid">
+        <label>שם מלא <input type="text" id="q-name" required placeholder="השם שלכם"></label>
+        <label>שם העסק <input type="text" id="q-biz" placeholder="שם החברה / העסק"></label>
+        <label>טלפון <input type="tel" id="q-phone" placeholder="050-0000000"></label>
+        <label>מקור השירות
+          <select id="q-src">
+            <option value="בוט">בוט</option>
+            <option value="מוקד שירות">מוקד שירות</option>
+            <option value="CRM">CRM</option>
+            <option value="אחר">אחר</option>
+          </select>
+        </label>
+      </div>
+      <label class="qfull">מה תרצו לנתח? <textarea id="q-msg" rows="3" placeholder="ספרו בקצרה על הצורך — כמות פניות, מקורות, מה חשוב לכם למדוד..."></textarea></label>
+      <div class="qrow">
+        <button type="submit" class="btn btn-primary">📩 שליחה בוואטסאפ</button>
+        <button type="button" class="btn btn-ghost" onclick="sendQuoteMail()">✉️ שליחה במייל</button>
+      </div>
+    </form>
   </div>
 </section>
 
@@ -554,6 +599,27 @@ footer{border-top:1px solid #26314c;padding:40px 0;background:#0c1119}
     document.querySelectorAll('.kpi b[data-val]').forEach(run);
   });
 })();
+</script>
+<script>
+  function qval(id){var e=document.getElementById(id);return e?e.value.trim():'';}
+  function quoteText(){
+    var n=qval('q-name'),b=qval('q-biz'),p=qval('q-phone'),s=qval('q-src'),m=qval('q-msg');
+    var t='היי עמית, אשמח להצעת מחיר ל-Bot Analytics.\n';
+    if(n)t+='שם: '+n+'\n';
+    if(b)t+='עסק: '+b+'\n';
+    if(p)t+='טלפון: '+p+'\n';
+    if(s)t+='מקור השירות: '+s+'\n';
+    if(m)t+='פרטים: '+m+'\n';
+    return t;
+  }
+  function sendQuote(ev){
+    ev.preventDefault();
+    window.open('https://wa.me/972527246200?text='+encodeURIComponent(quoteText()),'_blank','noopener');
+    return false;
+  }
+  function sendQuoteMail(){
+    window.location.href='mailto:amit@rubinproject.com?subject='+encodeURIComponent('הצעת מחיר — Bot Analytics')+'&body='+encodeURIComponent(quoteText());
+  }
 </script>
 </body>
 </html>
