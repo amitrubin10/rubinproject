@@ -58,8 +58,11 @@ header.nav{position:sticky;top:0;z-index:100;background:rgba(7,13,28,0.9);backdr
 .nav-logo .b{color:var(--accent2)}
 .nav-links{display:flex;gap:20px;font-size:14px;font-weight:600}
 .nav-links a{color:var(--muted);transition:.15s}.nav-links a:hover{color:#fff}
-.nav-cta{display:flex;gap:10px}
+.nav-cta{display:flex;gap:10px;align-items:center}
 .nav-cta .btn{padding:9px 18px;font-size:14px}
+.nav-badge{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:700;color:var(--cyan);background:rgba(34,211,238,.1);border:1px solid rgba(34,211,238,.28);padding:6px 12px;border-radius:999px;white-space:nowrap}
+.nav-badge.prod{color:#cdeafd;background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.2)}
+@media(max-width:1250px){.nav-badge{display:none}}
 
 /* HERO band (full-bleed bg) */
 .band{position:relative;overflow:hidden}
@@ -206,6 +209,8 @@ footer{border-top:1px solid var(--border);padding:40px 0;background:#060a16}
       </nav>
     </div>
     <div class="nav-cta">
+      <span class="nav-badge">🏢 מערכת פרודקשן · Full-Stack</span>
+      <span class="nav-badge prod">🚢 רצה בפרודקשן · חברת נמלי ישראל</span>
       <a class="btn btn-primary" href="https://wa.me/972527246200" target="_blank" rel="noopener">💬 וואטסאפ</a>
     </div>
   </div>
@@ -214,15 +219,9 @@ footer{border-top:1px solid var(--border);padding:40px 0;background:#060a16}
 <!-- HERO -->
 <header class="hero">
   <div class="hero-content">
-    <span class="badge">🏢 מערכת פרודקשן · Full-Stack</span>
     <h1 class="sr-only">VeriFix — מערכת מלאה לניהול ואחזקת מבנים</h1>
     <div class="htag">מערכת מלאה לניהול ואחזקת מבנים</div>
     <p class="lead">קריאות שבר, אחזקה מונעת, נכסים, תקציב ודוחות — הכול במערכת אחת. ופתיחת תקלה? מתחילה ב<strong>הודעת וואטסאפ פשוטה</strong>. מערכת full-stack שבניתי מקצה לקצה.</p>
-    <div class="trust">🚢 רצה בפרודקשן · חברת נמלי ישראל</div>
-    <div class="row">
-      <a class="btn btn-wa" href="https://wa.me/972527246200?text=%D7%94%D7%99%D7%99%20%D7%A2%D7%9E%D7%99%D7%AA%2C%20%D7%A8%D7%90%D7%99%D7%AA%D7%99%20%D7%90%D7%AA%20VeriFix%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A4%D7%A8%D7%98%D7%99%D7%9D" target="_blank" rel="noopener">💬 דברו איתי</a>
-      <a class="btn btn-lghost" href="#capabilities">מה המערכת עושה ↓</a>
-    </div>
   </div>
 </header>
 
