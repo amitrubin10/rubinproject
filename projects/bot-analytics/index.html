@@ -31,7 +31,12 @@
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:'Heebo',sans-serif;background:var(--bg);color:var(--ink);line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body{font-family:'Heebo',sans-serif;color:var(--ink);line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased;
+  background:
+    radial-gradient(820px 520px at 90% -4%,rgba(37,99,235,.08),transparent 60%),
+    radial-gradient(720px 520px at 2% 12%,rgba(139,92,246,.06),transparent 60%),
+    var(--bg);
+  background-attachment:fixed}
 a{color:inherit;text-decoration:none}
 img{max-width:100%;display:block}
 .wrap{max-width:1160px;margin:0 auto;padding:0 22px}
@@ -59,19 +64,30 @@ header.nav{position:sticky;top:0;z-index:100;background:rgba(12,17,25,0.94);back
 .nav-cta{display:flex;gap:10px}
 .nav-cta .btn{padding:9px 18px;font-size:14px}
 
-/* HERO */
-.phero{position:relative;text-align:center;padding:52px 0 30px;border-bottom:1px solid var(--border);
-  background:radial-gradient(800px 380px at 50% -10%,rgba(37,99,235,.10),transparent 60%),linear-gradient(180deg,#eef3fb,var(--bg))}
-.phero .badge{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:800;color:#fff;background:linear-gradient(135deg,#2563eb,#1e40af);padding:6px 16px;border-radius:999px;margin-bottom:18px;box-shadow:0 8px 22px rgba(37,99,235,.28)}
-.phero h1{font-size:clamp(38px,5.6vw,62px);font-weight:900;line-height:1.03;letter-spacing:-1.4px;color:var(--ink)}
-.phero .tag{font-size:20px;color:var(--accent);font-weight:800;margin-top:8px}
-.phero .lead{font-size:17px;color:#3f4a63;margin:16px auto 0;max-width:620px}
-.phero .row{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px;justify-content:center}
+/* HERO — dark technological */
+.phero{position:relative;text-align:center;padding:52px 0 40px;overflow:hidden;border-bottom:1px solid #16233f;
+  background:
+    radial-gradient(920px 460px at 50% -12%,rgba(37,99,235,.34),transparent 62%),
+    radial-gradient(680px 420px at 88% 118%,rgba(34,211,238,.16),transparent 60%),
+    radial-gradient(620px 420px at 6% 110%,rgba(139,92,246,.16),transparent 60%),
+    linear-gradient(160deg,#0a1122 0%,#0e1c39 55%,#12294f 100%)}
+.phero::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:linear-gradient(rgba(120,160,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(120,160,255,.07) 1px,transparent 1px);
+  background-size:46px 46px;
+  -webkit-mask-image:radial-gradient(circle at 50% 34%,#000,transparent 78%);mask-image:radial-gradient(circle at 50% 34%,#000,transparent 78%)}
+.phero .wrap{position:relative;z-index:1}
+.phero .badge{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:800;color:#fff;background:linear-gradient(135deg,#3b82f6,#1e40af);padding:6px 16px;border-radius:999px;margin-bottom:18px;box-shadow:0 8px 26px rgba(37,99,235,.45)}
+/* brand plate */
+.logo-card{display:inline-block;background:#f1f2f6;border-radius:22px;padding:26px 34px;margin:2px auto 2px;
+  box-shadow:0 24px 60px rgba(0,0,0,.42),0 0 0 1px rgba(255,255,255,.07),0 0 70px rgba(37,99,235,.3)}
+.logo-card img{width:min(340px,72vw);height:auto;display:block}
+.phero .lead{font-size:17px;color:#cdd8ef;margin:18px auto 0;max-width:620px}
+.phero .row{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px;justify-content:center}
 .kpirow{display:flex;gap:26px;justify-content:center;flex-wrap:wrap;margin-top:30px}
 .kpi{min-width:120px}
 .kpi b{display:block;font-size:30px;font-weight:900;line-height:1}
-.kpi.b1 b{color:var(--blue)}.kpi.b2 b{color:var(--green)}.kpi.b3 b{color:var(--orange)}
-.kpi span{font-size:13px;color:var(--muted);font-weight:600}
+.kpi.b1 b{color:#60a5fa}.kpi.b2 b{color:#4ade80}.kpi.b3 b{color:#fbbf24}
+.kpi span{font-size:13px;color:#9fb0d0;font-weight:600}
 
 /* BROWSER-FRAMED SHOT */
 .shotwrap{padding:26px 0 20px}
@@ -86,7 +102,12 @@ header.nav{position:sticky;top:0;z-index:100;background:rgba(12,17,25,0.94);back
 
 /* SECTIONS */
 section{padding:46px 0}
-.alt{background:var(--bg2)}
+.alt{background:var(--bg2);position:relative}
+.alt::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.6;
+  background-image:linear-gradient(rgba(37,99,235,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(37,99,235,.045) 1px,transparent 1px);
+  background-size:40px 40px;
+  -webkit-mask-image:linear-gradient(180deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(180deg,transparent,#000 12%,#000 88%,transparent)}
+.alt .wrap{position:relative;z-index:1}
 .sec-head{max-width:780px;margin:0 auto 30px;text-align:center}
 .sec-head h2{font-size:clamp(24px,3vw,34px);font-weight:800;letter-spacing:-.4px;color:var(--ink)}
 .sec-head p{color:var(--muted);font-size:16px;margin-top:8px}
@@ -227,12 +248,12 @@ footer{border-top:1px solid #26314c;padding:40px 0;background:#0c1119}
 <header class="phero">
   <div class="wrap">
     <span class="badge">🤖 פייפליין AI · דמו חי</span>
-    <h1 dir="ltr">Bot Analytics</h1>
-    <div class="tag">ניתוח שירות מבוסס AI</div>
+    <h1 class="sr-only">Bot Analytics — ניתוח שירות מבוסס AI</h1>
+    <div class="logo-card"><img src="../img/bot-logo.jpg" alt="Bot Analytics — ניתוח שירות מבוסס AI"></div>
     <p class="lead">פייפליין של סוכני AI שהופך <strong>דאטה גולמית של שירות</strong> — שיחות בוט ופניות לקוחות — לדשבורדים ניהוליים: סיווג נושאים, מדדי איכות, מגמות ושיעורי טיפול. במקום ערימת לוגים, תמונת מצב שאפשר להחליט לפיה.</p>
     <div class="row">
       <a class="btn btn-primary" href="https://amitrubin10.github.io/bot-analytics-pipeline/" target="_blank" rel="noopener">▶ לדמו החי</a>
-      <a class="btn btn-ghost" href="#contact">רוצים כזה לעסק?</a>
+      <a class="btn btn-lghost" href="#contact">רוצים כזה לעסק?</a>
     </div>
     <div class="kpirow">
       <div class="kpi b1"><b>3,366</b><span>סך קריאות בבוט</span></div>
