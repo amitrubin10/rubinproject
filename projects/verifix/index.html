@@ -117,6 +117,9 @@ section{padding:56px 0}
 .dash-mob-txt p{color:#cdd8ee;font-size:16px}
 .dash-mob-img{flex:0 0 auto}
 .dash-mob-img img{width:min(330px,80vw);border-radius:24px;border:1px solid var(--border);box-shadow:0 26px 64px rgba(0,0,0,.6)}
+.dash-flow{width:100%;max-width:1040px;margin:0 auto;border-radius:18px;border:1px solid var(--border);box-shadow:0 22px 54px rgba(0,0,0,.5);display:block}
+.deep-wrap{margin-top:58px}
+.deep-wrap .sec-head{margin-bottom:30px}
 
 /* SPLIT (text + screenshot) */
 .split{display:flex;align-items:center;gap:34px;max-width:1280px;margin:0 auto;background:linear-gradient(160deg,var(--card),var(--bg2));border:1px solid var(--border);border-radius:24px;padding:28px;box-shadow:0 18px 44px rgba(0,0,0,.32)}
@@ -276,6 +279,35 @@ footer{border-top:1px solid var(--border);padding:40px 0;background:#060a16}
       <div class="shot"><div class="shot-bar"><i class="r"></i><i class="y"></i><i class="g"></i><span>verifix — דשבורד</span></div><img src="../img/vf-dash-dark.jpg" alt="VeriFix — דשבורד המערכת"></div>
     </div>
 
+    <!-- files -> smart objects -->
+    <div class="dash-sub">
+      <span class="tag">🗂️ מיפוי קבצים לאובייקטים חכמים</span>
+      <img class="dash-flow" src="../img/vf-files32.jpg" alt="מיפוי קבצים לאובייקטים חכמים — Excel, PDF ומסמכים הופכים אוטומטית לנכסים מנוהלים במערכת">
+    </div>
+
+    <!-- deep dive -->
+    <div class="deep-wrap">
+      <div class="sec-head">
+        <span class="tag">🔍 צלילה לעומק</span>
+        <h2>לא רק מסכים — תמונת מצב שמדברת</h2>
+        <p>ככה המערכת הופכת נתונים לתובנה: מפת תקינות, כרטיס נכס מלא, בקרה חכמה ומלאי מבוקר.</p>
+      </div>
+      <div class="deep">
+        <figure>
+          <img src="../img/vf-info-health.jpg" alt="מפת תקינות קומתית חכמה — מבנה עם סטטוס לכל קומה, התראות ורגולציה">
+          <figcaption>🏢 מפת תקינות קומתית — כל מבנה קומה-קומה, עם התראות פגי-תוקף ודוחות רגולטוריים</figcaption>
+        </figure>
+        <figure>
+          <img src="../img/vf-info-asset.jpg" alt="כרטיס נכס דיגיטלי — Drill-Down לתעודת זהות, היסטוריה, דוחות וספקים">
+          <figcaption>📇 כרטיס נכס דיגיטלי (Drill-Down) — קליק על נכס פותח עולם שלם: זהות, היסטוריה, דוחות וספקים</figcaption>
+        </figure>
+        <figure class="sq">
+          <img src="../img/vf-info-inventory.jpg" alt="בקרת מלאי וציוד — כמות בפועל מול נדרש לכל פריט">
+          <figcaption>🧰 בקרת מלאי וציוד — כמות בפועל מול נדרש, לכל פריט, עם סטטוס תקינות</figcaption>
+        </figure>
+      </div>
+    </div>
+
     <!-- also light mode -->
     <div class="dash-sub">
       <span class="tag">☀️ גם במסך בהיר — לבחירתכם</span>
@@ -368,35 +400,6 @@ footer{border-top:1px solid var(--border);padding:40px 0;background:#060a16}
         <div class="chips"><span class="chip">מדריכים לכל נושא</span><span class="chip">חיפוש חכם</span><span class="chip">התחלה מהירה</span></div>
       </div>
       <div class="split-shot"><div class="shot"><div class="shot-bar"><i class="r"></i><i class="y"></i><i class="g"></i><span>verifix — תמיכה ועזרה</span></div><img src="../img/vf-support.jpg" alt="VeriFix — מרכז תמיכה ועזרה"></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- DEEP DIVE -->
-<section class="deepsec" id="deep">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="tag">🔍 צלילה לעומק</span>
-      <h2>לא רק מסכים — תמונת מצב שמדברת</h2>
-      <p>ככה המערכת הופכת נתונים לתובנה: מפת תקינות, כרטיס נכס מלא, בקרה חכמה ומלאי מבוקר.</p>
-    </div>
-    <div class="deep">
-      <figure>
-        <img src="../img/vf-info-health.jpg" alt="מפת תקינות קומתית חכמה — מבנה עם סטטוס לכל קומה, התראות ורגולציה">
-        <figcaption>🏢 מפת תקינות קומתית — כל מבנה קומה-קומה, עם התראות פגי-תוקף ודוחות רגולטוריים</figcaption>
-      </figure>
-      <figure>
-        <img src="../img/vf-info-asset.jpg" alt="כרטיס נכס דיגיטלי — Drill-Down לתעודת זהות, היסטוריה, דוחות וספקים">
-        <figcaption>📇 כרטיס נכס דיגיטלי (Drill-Down) — קליק על נכס פותח עולם שלם: זהות, היסטוריה, דוחות וספקים</figcaption>
-      </figure>
-      <figure>
-        <img src="../img/vf-info-files.jpg" alt="מיפוי קבצים לאובייקטים חכמים — Excel, PDF ומסמכים הופכים לנכסים מנוהלים">
-        <figcaption>🗂️ מיפוי קבצים לאובייקטים חכמים — Excel, PDF ומסמכים הופכים אוטומטית לנכסים מנוהלים במערכת</figcaption>
-      </figure>
-      <figure class="sq">
-        <img src="../img/vf-info-inventory.jpg" alt="בקרת מלאי וציוד — כמות בפועל מול נדרש לכל פריט">
-        <figcaption>🧰 בקרת מלאי וציוד — כמות בפועל מול נדרש, לכל פריט, עם סטטוס תקינות</figcaption>
-      </figure>
     </div>
   </div>
 </section>
