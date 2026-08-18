@@ -115,6 +115,13 @@ section{padding:56px 0}
 .split-txt{flex:0.82 1 0;min-width:0}
 .split-shot{flex:1.55 1 0;min-width:0}
 .split.rev{flex-direction:row-reverse}
+/* DEEP-DIVE infographics */
+.deepsec{background:radial-gradient(1100px 520px at 50% -4%,rgba(59,130,246,.08),transparent 62%),linear-gradient(180deg,var(--bg2),var(--bg))}
+.deep{max-width:1060px;margin:0 auto;display:flex;flex-direction:column;gap:38px}
+.deep figure{text-align:center}
+.deep img{width:100%;border-radius:18px;border:1px solid var(--border);box-shadow:0 22px 54px rgba(0,0,0,.5)}
+.deep figcaption{margin-top:13px;font-size:15.5px;font-weight:700;color:var(--ink)}
+.deep .sq{max-width:560px;margin:0 auto}
 .split-txt h3{font-size:clamp(22px,2.8vw,30px);font-weight:800;letter-spacing:-.3px;margin-bottom:12px}
 .split-txt p{color:#cdd8ee;font-size:16px;margin-bottom:16px}
 .chips{display:flex;gap:9px;flex-wrap:wrap}
@@ -341,6 +348,35 @@ footer{border-top:1px solid var(--border);padding:40px 0;background:#060a16}
         <div class="chips"><span class="chip">מדריכים לכל נושא</span><span class="chip">חיפוש חכם</span><span class="chip">התחלה מהירה</span></div>
       </div>
       <div class="split-shot"><div class="shot"><div class="shot-bar"><i class="r"></i><i class="y"></i><i class="g"></i><span>verifix — תמיכה ועזרה</span></div><img src="../img/vf-support.jpg" alt="VeriFix — מרכז תמיכה ועזרה"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- DEEP DIVE -->
+<section class="deepsec" id="deep">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="tag">🔍 צלילה לעומק</span>
+      <h2>לא רק מסכים — תמונת מצב שמדברת</h2>
+      <p>ככה המערכת הופכת נתונים לתובנה: מפת תקינות, כרטיס נכס מלא, בקרה חכמה ומלאי מבוקר.</p>
+    </div>
+    <div class="deep">
+      <figure>
+        <img src="../img/vf-info-health.jpg" alt="מפת תקינות קומתית חכמה — מבנה עם סטטוס לכל קומה, התראות ורגולציה">
+        <figcaption>🏢 מפת תקינות קומתית — כל מבנה קומה-קומה, עם התראות פגי-תוקף ודוחות רגולטוריים</figcaption>
+      </figure>
+      <figure>
+        <img src="../img/vf-info-asset.jpg" alt="כרטיס נכס דיגיטלי — Drill-Down לתעודת זהות, היסטוריה, דוחות וספקים">
+        <figcaption>📇 כרטיס נכס דיגיטלי (Drill-Down) — קליק על נכס פותח עולם שלם: זהות, היסטוריה, דוחות וספקים</figcaption>
+      </figure>
+      <figure>
+        <img src="../img/vf-info-generator.jpg" alt="בקרת נכס חכמה — סטטוס תפעולי, ספק שירות, משימה קרובה והתראות">
+        <figcaption>⚙️ בקרה חכמה לכל נכס — סטטוס תפעולי, ספק שירות, המשימה הקרובה והתראות אוטומטיות</figcaption>
+      </figure>
+      <figure class="sq">
+        <img src="../img/vf-info-inventory.jpg" alt="בקרת מלאי וציוד — כמות בפועל מול נדרש לכל פריט">
+        <figcaption>🧰 בקרת מלאי וציוד — כמות בפועל מול נדרש, לכל פריט, עם סטטוס תקינות</figcaption>
+      </figure>
     </div>
   </div>
 </section>
