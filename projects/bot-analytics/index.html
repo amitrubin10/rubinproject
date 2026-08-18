@@ -128,7 +128,7 @@ section{padding:46px 0}
   -webkit-mask-image:linear-gradient(180deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(180deg,transparent,#000 12%,#000 88%,transparent)}
 .alt .wrap{position:relative;z-index:1}
 .sec-head{max-width:780px;margin:0 auto 30px;text-align:center}
-.sec-head h2{font-size:clamp(24px,3vw,34px);font-weight:800;letter-spacing:-.4px;color:var(--ink);display:inline-block;position:relative;padding-bottom:12px}
+.sec-head h2{font-size:clamp(24px,3vw,34px);font-weight:800;letter-spacing:-.4px;color:var(--ink);position:relative;padding-bottom:14px}
 .sec-head h2::after{content:"";position:absolute;left:50%;bottom:0;transform:translateX(-50%);width:58px;height:3px;border-radius:3px;background:linear-gradient(90deg,#22d3ee,#3b82f6,#8b5cf6)}
 .sec-head p{color:var(--muted);font-size:16px;margin-top:8px}
 
@@ -143,6 +143,13 @@ section{padding:46px 0}
 .csbox li{position:relative;padding-inline-start:26px;font-size:15px;color:#3f4a63}
 .csbox.chal li::before{content:"✕";position:absolute;inset-inline-start:0;color:var(--red);font-weight:800}
 .csbox.sol li::before{content:"✓";position:absolute;inset-inline-start:0;color:var(--green);font-weight:800}
+/* image + text rows */
+.cs-row{display:flex;gap:26px;align-items:center;max-width:1000px;margin:0 auto}
+.cs-row.rev{flex-direction:row-reverse}
+.cs-row .cs-img{flex:1.2 1 0;border-radius:16px;overflow:hidden;border:1px solid var(--border);box-shadow:0 18px 44px rgba(22,35,63,.16)}
+.cs-row .cs-img img{width:100%;height:auto;display:block}
+.cs-row .csbox{flex:1 1 0}
+@media(max-width:760px){.cs-row,.cs-row.rev{flex-direction:column}}
 
 /* FEATURES with KPI-colored tops */
 .feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
@@ -320,9 +327,9 @@ footer{border-top:1px solid #26314c;padding:40px 0;background:#0c1119}
       <span class="eyebrow">האתגר והפתרון</span>
       <h2>מלוגים גולמיים — לתובנות ניהוליות</h2>
     </div>
-    <div class="viz"><img src="../img/bot-pain.jpg" alt="מוקד שירות עמוס — אלפי פניות ביום, ניתוח ידני בלתי אפשרי"></div>
-    <div class="viz-cap" style="margin-bottom:26px"><strong style="color:var(--ink)">אלפי פניות בחודש — לנתח אותן ידנית זה בלתי אפשרי.</strong> ערימות לוגים, בלי דרך לדעת על מה פונים, איפה נופלים, ומה איכות המענה באמת.</div>
-    <div class="cs">
+    <!-- BEFORE: pain image + לפני -->
+    <div class="cs-row">
+      <div class="cs-img"><img src="../img/bot-pain.jpg" alt="מוקד שירות עמוס — אלפי פניות ביום, ניתוח ידני בלתי אפשרי"></div>
       <div class="csbox chal">
         <h3>⚠️ לפני</h3>
         <ul>
@@ -332,6 +339,11 @@ footer{border-top:1px solid #26314c;padding:40px 0;background:#0c1119}
           <li>קריאת לוגים ידנית — בלתי אפשרי בקנה מידה</li>
         </ul>
       </div>
+    </div>
+    <div class="viz-cap" style="margin:16px auto 36px"><strong style="color:var(--ink)">אלפי פניות בחודש — לנתח אותן ידנית זה בלתי אפשרי.</strong> ערימות לוגים, בלי דרך לדעת על מה פונים, איפה נופלים, ומה איכות המענה באמת.</div>
+    <!-- AFTER: solution image + עם Bot Analytics -->
+    <div class="cs-row rev">
+      <div class="cs-img"><img src="../img/bot-decisions.jpg" alt="הנהלה מקבלת החלטות על בסיס דשבורד תובנות AI"></div>
       <div class="csbox sol">
         <h3>✅ עם Bot Analytics</h3>
         <ul>
@@ -427,18 +439,6 @@ footer{border-top:1px solid #26314c;padding:40px 0;background:#0c1119}
     <div class="chips" style="margin-top:24px">
       <span class="chip">Python</span><span class="chip">סוכני LLM מקבילים</span><span class="chip">שיפוט סמנטי</span><span class="chip">פייפליין נתונים</span><span class="chip">SVG טהור · קובץ יחיד</span><span class="chip">דמו חי</span>
     </div>
-  </div>
-</section>
-
-<!-- DECISIONS band -->
-<section class="alt">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="eyebrow">השורה התחתונה</span>
-      <h2>מ‘תחושות בטן’ — להחלטות מבוססות נתונים</h2>
-      <p>ישירות מהמוקד ללוח ההנהלה: מה עובד, מה נופל, ואיפה כדאי להשקיע.</p>
-    </div>
-    <div class="viz"><img src="../img/bot-decisions.jpg" alt="הנהלה מקבלת החלטות על בסיס דשבורד תובנות AI"></div>
   </div>
 </section>
 
