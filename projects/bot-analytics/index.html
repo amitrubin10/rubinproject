@@ -106,6 +106,8 @@ header.nav{position:sticky;top:0;z-index:100;background:rgba(12,17,25,0.94);back
 .kpi.b1 b{color:#60a5fa;text-shadow:0 0 20px rgba(96,165,250,.6)}
 .kpi.b2 b{color:#4ade80;text-shadow:0 0 20px rgba(74,222,128,.55)}
 .kpi.b3 b{color:#fbbf24;text-shadow:0 0 20px rgba(251,191,36,.55)}
+.kpi.b4 b{color:#a78bfa;text-shadow:0 0 20px rgba(167,139,250,.55)}
+.kpi.b5 b{color:#22d3ee;text-shadow:0 0 20px rgba(34,211,238,.5)}
 .kpi span{font-size:13px;color:#9fb0d0;font-weight:600}
 
 /* BROWSER-FRAMED SHOT */
@@ -283,9 +285,11 @@ footer{border-top:1px solid #26314c;padding:40px 0;background:#0c1119}
       <a class="btn btn-lghost" href="#contact">רוצים כזה לעסק?</a>
     </div>
     <div class="kpirow">
-      <div class="kpi b1"><b>3,366</b><span>סך קריאות בבוט</span></div>
-      <div class="kpi b2"><b>77.3%</b><span>אחוז הצלחה (מענה תקין)</span></div>
-      <div class="kpi b3"><b>42%</b><span>טופלו בבוט ללא נציג</span></div>
+      <div class="kpi b1"><b data-val="3366" data-dec="0" data-sep="1">0</b><span>סך קריאות בבוט</span></div>
+      <div class="kpi b2"><b data-val="77.3" data-dec="1" data-suffix="%">0</b><span>אחוז הצלחה (מענה תקין)</span></div>
+      <div class="kpi b3"><b data-val="42" data-dec="0" data-suffix="%">0</b><span>טופלו בבוט ללא נציג</span></div>
+      <div class="kpi b4"><b data-val="13" data-dec="0">0</b><span>נושאים מסווגים</span></div>
+      <div class="kpi b5"><b data-val="5" data-dec="0">0</b><span>סוכני AI בשרשרת</span></div>
     </div>
     <div class="prodline"><span class="dot"></span> רץ בפרודקשן · מוקד השירות של חברת ERP מובילה בישראל</div>
   </div>
@@ -478,6 +482,35 @@ footer{border-top:1px solid #26314c;padding:40px 0;background:#0c1119}
 <script>
   if('scrollRestoration' in history) history.scrollRestoration='manual';
   window.addEventListener('load',function(){ if(!location.hash) window.scrollTo(0,0); });
+</script>
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function fmt(v,dec,sep){
+    var s=v.toFixed(dec);
+    if(sep){var p=s.split('.');p[0]=p[0].replace(/\B(?=(\d{3})+(?!\d))/g,',');s=p.join('.');}
+    return s;
+  }
+  function run(el){
+    var val=parseFloat(el.getAttribute('data-val'))||0,
+        dec=parseInt(el.getAttribute('data-dec')||'0',10),
+        sep=el.getAttribute('data-sep')==='1',
+        suf=el.getAttribute('data-suffix')||'';
+    if(reduce){el.textContent=fmt(val,dec,sep)+suf;return;}
+    var dur=1900,start=null;
+    function ease(t){return 1-Math.pow(1-t,3);}
+    function step(ts){
+      if(start===null)start=ts;
+      var t=Math.min((ts-start)/dur,1);
+      el.textContent=fmt(val*ease(t),dec,sep)+suf;
+      if(t<1)requestAnimationFrame(step); else el.textContent=fmt(val,dec,sep)+suf;
+    }
+    requestAnimationFrame(step);
+  }
+  window.addEventListener('load',function(){
+    document.querySelectorAll('.kpi b[data-val]').forEach(run);
+  });
+})();
 </script>
 </body>
 </html>
