@@ -67,7 +67,7 @@ header.nav{position:sticky;top:0;z-index:100;background:rgba(10,16,32,0.92);back
 .nav-cta .btn{padding:9px 18px;font-size:14px}
 
 /* HERO */
-.phero{position:relative;text-align:center;padding:64px 0 50px;overflow:hidden;border-bottom:1px solid var(--border);
+.phero{position:relative;text-align:center;padding:28px 0 36px;overflow:hidden;border-bottom:1px solid var(--border);
   background:
     radial-gradient(920px 460px at 50% -12%,rgba(37,99,235,.32),transparent 62%),
     radial-gradient(680px 420px at 88% 118%,rgba(34,211,238,.14),transparent 60%),
@@ -79,24 +79,30 @@ header.nav{position:sticky;top:0;z-index:100;background:rgba(10,16,32,0.92);back
   -webkit-mask-image:radial-gradient(circle at 50% 34%,#000,transparent 78%);mask-image:radial-gradient(circle at 50% 34%,#000,transparent 78%)}
 .phero .wrap{position:relative;z-index:1}
 .phero .badge{display:inline-flex;align-items:center;gap:9px;font-size:13px;font-weight:800;color:#eaf1ff;background:rgba(59,130,246,.14);border:1px solid rgba(120,170,255,.4);padding:7px 18px;border-radius:999px;margin-bottom:24px;box-shadow:0 8px 26px rgba(37,99,235,.28);backdrop-filter:blur(6px)}
-.hook{max-width:760px;margin:0 auto 26px}
-.hook-q{font-size:clamp(19px,2.9vw,29px);font-weight:900;color:#fff;line-height:1.35;letter-spacing:-.3px}
+.hook{max-width:760px;margin:0 auto 20px}
+.hook-q{font-size:clamp(18px,2.6vw,26px);font-weight:900;color:#fff;line-height:1.35;letter-spacing:-.3px}
 .hook-q .hl{color:#22d3ee;text-shadow:0 0 24px rgba(34,211,238,.55)}
 .hook-q .sep{color:#5b7099;font-weight:400;margin:0 4px}
-.hook-q2{font-size:clamp(16px,2.1vw,21px);font-weight:700;color:#cdd8ef;line-height:1.45;margin-top:8px}
-.hook-a{display:inline-block;margin-top:14px;font-size:15px;font-weight:800;color:#eaf1ff;background:rgba(59,130,246,.16);border:1px solid rgba(120,170,255,.42);border-radius:999px;padding:7px 20px;box-shadow:0 8px 26px rgba(37,99,235,.25)}
-.logo-plate{position:relative;width:min(430px,80vw);margin:0 auto;border-radius:24px;overflow:hidden;
-  box-shadow:0 26px 70px rgba(0,0,0,.55),0 0 70px rgba(37,99,235,.4);
-  -webkit-mask-image:radial-gradient(circle at 50% 50%,#000 62%,transparent 96%);mask-image:radial-gradient(circle at 50% 50%,#000 62%,transparent 96%)}
+.hook-q2{font-size:clamp(15px,1.9vw,19px);font-weight:700;color:#cdd8ef;line-height:1.45;margin-top:8px}
+.logo-plate{position:relative;width:min(304px,68vw);margin:0 auto;border-radius:20px;overflow:hidden;
+  border:1px solid rgba(255,255,255,.9);
+  box-shadow:0 22px 58px rgba(0,0,0,.55),0 0 60px rgba(37,99,235,.32)}
 .logo-plate img{width:100%;display:block}
-.tagline{font-size:clamp(18px,2.6vw,27px);font-weight:800;color:#fff;margin-top:14px}
+/* glowing orbit ring that spins around the mark */
+.logo-plate .orbit{position:absolute;left:50%;top:41%;width:64%;height:64%;margin:-32% 0 0 -32%;pointer-events:none;
+  border-radius:50%;border:2px solid rgba(56,189,248,.85);
+  box-shadow:0 0 16px rgba(34,211,238,.85),0 0 34px rgba(34,211,238,.45),inset 0 0 16px rgba(34,211,238,.4);
+  animation:orbitspin 11s linear infinite}
+@keyframes orbitspin{from{transform:rotate(0deg) rotateX(72deg)}to{transform:rotate(360deg) rotateX(72deg)}}
+@media(prefers-reduced-motion:reduce){.logo-plate .orbit{animation:none;transform:rotate(-20deg) rotateX(72deg)}}
+.tagline{font-size:clamp(17px,2.3vw,24px);font-weight:800;color:#fff;margin-top:12px}
 .tagline .cy{color:var(--cyan);text-shadow:0 0 22px rgba(34,211,238,.55)}
-.phero .lead{font-size:17px;color:#cdd8ef;margin:18px auto 0;max-width:680px}
-.phero .row{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px;justify-content:center}
-.statrow{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:34px}
-.stat{min-width:158px;background:rgba(255,255,255,.045);border:1px solid rgba(120,160,255,.2);border-radius:14px;padding:16px 22px;backdrop-filter:blur(5px);transition:.2s}
+.phero .lead{font-size:16px;color:#cdd8ef;margin:12px auto 0;max-width:660px}
+.phero .row{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px;justify-content:center}
+.statrow{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:18px}
+.stat{min-width:150px;background:rgba(255,255,255,.045);border:1px solid rgba(120,160,255,.2);border-radius:14px;padding:13px 20px;backdrop-filter:blur(5px);transition:.2s}
 .stat:hover{border-color:rgba(120,160,255,.45);box-shadow:0 0 22px rgba(37,99,235,.25);transform:translateY(-2px)}
-.stat b{display:block;font-size:32px;font-weight:900;line-height:1}
+.stat b{display:block;font-size:29px;font-weight:900;line-height:1}
 .stat.s1 b{color:#60a5fa;text-shadow:0 0 20px rgba(96,165,250,.6)}
 .stat.s2 b{color:#22d3ee;text-shadow:0 0 20px rgba(34,211,238,.55)}
 .stat.s3 b{color:#a78bfa;text-shadow:0 0 20px rgba(167,139,250,.55)}
@@ -245,9 +251,8 @@ footer{border-top:1px solid var(--border);padding:40px 0;background:#080d18}
     <div class="hook">
       <p class="hook-q">קיבלת <span class="hl">תפקיד חדש</span>? <span class="sep">·</span> <span class="hl">עצמאי</span> שמנהל הכול לבד?</p>
       <p class="hook-q2">מרגיש שיש לך את היכולות — אבל לא מצליח לארגן את עצמך ולעמוד ביעדים?</p>
-      <p class="hook-a">יש דרך אחרת. ✦</p>
     </div>
-    <div class="logo-plate"><img src="../img/r360-logo.jpg" alt="RUBIN 360"></div>
+    <div class="logo-plate"><img src="../img/r360-logo.jpg" alt="RUBIN 360"><span class="orbit"></span></div>
     <div class="tagline">בנוי <span class="cy">נכון</span>, בדיוק בשבילך</div>
     <p class="lead">תוכנה שנבנית בדיוק בשבילך — <strong>מה-0 עד ה-100</strong>. לא מוצר מדף: כל מערכת נתפרת לפי הצרכים, התהליכים והיעדים שלך — מהאפיון ועד ההטמעה, עם השם והלוגו שלך.</p>
     <div class="row">
@@ -305,7 +310,7 @@ footer{border-top:1px solid var(--border);padding:40px 0;background:#080d18}
   <div class="wrap">
     <div class="sec-head">
       <span class="eyebrow">🧪 מקרה בוחן</span>
-      <h2>הדוגמה הכי טובה שיש לי — בניתי אחת לעצמי</h2>
+      <h2>הדוגמא הטובה ביותר — בניתי אחת לעצמי</h2>
       <p>כדי לעמוד ביעדים של תפקיד חדש, בניתי לעצמי מערכת. זו בדיוק אותה מערכת שאני בונה עבורך.</p>
     </div>
 
@@ -455,7 +460,13 @@ footer{border-top:1px solid var(--border);padding:40px 0;background:#080d18}
     function step(ts){if(start===null)start=ts;var t=Math.min((ts-start)/dur,1);el.textContent=Math.round(val*ease(t))+suf;if(t<1)requestAnimationFrame(step);else el.textContent=val+suf;}
     requestAnimationFrame(step);
   }
-  window.addEventListener('load',function(){document.querySelectorAll('.stat b[data-val]').forEach(run);});
+  function boot(){
+    var els=document.querySelectorAll('.stat b[data-val]');
+    if(!('IntersectionObserver' in window)){els.forEach(run);return;}
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){run(e.target);io.unobserve(e.target);}})},{threshold:0.5});
+    els.forEach(function(el){io.observe(el);});
+  }
+  window.addEventListener('load',boot);
 })();
 function qval(id){var e=document.getElementById(id);return e?e.value.trim():'';}
 function quoteText(){
