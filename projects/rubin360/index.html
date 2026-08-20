@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RUBIN 360 — תוכנה שנבנית בדיוק בשבילך | Rubin Project</title>
+<meta name="description" content="RUBIN 360 — בנוי נכון, בדיוק בשבילך. בניית תוכנה מותאמת אישית מה-0 עד ה-100: אפיון, בנייה, הטמעה וליווי. לא מוצר מדף — מערכת שנתפרת לצרכים שלך, עם השם והלוגו שלך.">
+<link rel="canonical" href="https://www.rubinproject.com/projects/rubin360/">
+<link rel="icon" href="../../img/favicon.png">
+<meta property="og:site_name" content="Rubin Project">
+<meta property="og:title" content="RUBIN 360 — בנוי נכון, בדיוק בשבילך">
+<meta property="og:description" content="בניית תוכנה מותאמת אישית מה-0 עד ה-100 — אפיון, בנייה, הטמעה וליווי. עם השם והלוגו שלך.">
+<meta property="og:image" content="https://www.rubinproject.com/projects/img/rubin360-og.jpg?v=1">
+<meta property="og:url" content="https://www.rubinproject.com/projects/rubin360/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="he_IL">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://www.rubinproject.com/projects/img/rubin360-og.jpg?v=1">
+<meta name="theme-color" content="#0a1020">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a1020; --bg2:#0d1526; --card:#111a30; --card2:#16223c; --border:#26334f;
+  --ink:#e9edf6; --muted:#97a3bf; --muted2:#6b7794;
+  --accent:#3b82f6; --accent2:#60a5fa; --cyan:#22d3ee; --violet:#8b5cf6; --green:#22c55e; --amber:#fbbf24;
+  --grad:linear-gradient(135deg,#3b82f6,#1e40af);
+  --radius:18px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Heebo',sans-serif;color:var(--ink);line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased;
+  background:
+    radial-gradient(820px 520px at 90% -4%,rgba(37,99,235,.12),transparent 60%),
+    radial-gradient(720px 520px at 2% 12%,rgba(139,92,246,.09),transparent 60%),
+    var(--bg);
+  background-attachment:fixed}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.wrap{max-width:1160px;margin:0 auto;padding:0 22px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.eyebrow{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:700;letter-spacing:.3px;color:var(--accent2);background:rgba(59,130,246,.12);border:1px solid rgba(59,130,246,.32);padding:6px 14px;border-radius:999px;margin-bottom:16px}
+.btn{position:relative;display:inline-flex;align-items:center;gap:8px;font-family:inherit;font-size:15px;font-weight:700;padding:13px 26px;border-radius:12px;cursor:pointer;border:1px solid transparent;transition:transform .2s,box-shadow .2s,background .2s,border-color .2s;white-space:nowrap;overflow:hidden;isolation:isolate}
+.btn::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(120deg,transparent 32%,rgba(255,255,255,.4) 50%,transparent 68%);transform:translateX(-130%)}
+.btn:hover::after{animation:sweep .75s ease}
+@keyframes sweep{to{transform:translateX(130%)}}
+.btn-primary{background:linear-gradient(135deg,#3b82f6,#2563eb 55%,#1e40af);color:#fff;box-shadow:0 8px 24px rgba(37,99,235,.42),inset 0 0 0 1px rgba(120,180,255,.35)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 38px rgba(37,99,235,.6),0 0 24px rgba(59,130,246,.55),inset 0 0 0 1px rgba(120,180,255,.5)}
+.btn-wa{background:#25d366;color:#0a1f12;box-shadow:0 8px 22px rgba(37,211,102,.32)}
+.btn-wa:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(37,211,102,.5),0 0 20px rgba(37,211,102,.4)}
+.btn-lghost{background:rgba(120,170,255,.06);color:#eaf1ff;border-color:rgba(120,170,255,.5);box-shadow:inset 0 0 0 1px rgba(120,170,255,.12)}
+.btn-lghost:hover{border-color:#7cc0ff;background:rgba(59,130,246,.16);transform:translateY(-2px);box-shadow:0 0 24px rgba(59,130,246,.45)}
+.livedot{width:8px;height:8px;border-radius:50%;background:#4ade80;flex-shrink:0;box-shadow:0 0 0 0 rgba(74,222,128,.7);animation:livepulse 1.9s infinite}
+@keyframes livepulse{0%{box-shadow:0 0 0 0 rgba(74,222,128,.6)}70%{box-shadow:0 0 0 9px rgba(74,222,128,0)}100%{box-shadow:0 0 0 0 rgba(74,222,128,0)}}
+
+/* NAV */
+header.nav{position:sticky;top:0;z-index:100;background:rgba(10,16,32,0.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;gap:18px;height:74px;padding:0 32px;max-width:none}
+.nav-start{display:flex;align-items:center;gap:24px}
+.nav-logo{display:flex;align-items:center;gap:9px;font-size:20px;font-weight:900;letter-spacing:-.4px;color:#fff}
+.nav-logo img{height:48px;width:auto}
+.nav-logo .b{color:var(--accent2)}
+.nav-links{display:flex;gap:22px;font-size:14px;font-weight:500}
+.nav-links a{color:var(--muted);transition:.15s}.nav-links a:hover{color:#fff}
+.nav-cta{display:flex;gap:10px}
+.nav-cta .btn{padding:9px 18px;font-size:14px}
+
+/* HERO */
+.phero{position:relative;text-align:center;padding:64px 0 50px;overflow:hidden;border-bottom:1px solid var(--border);
+  background:
+    radial-gradient(920px 460px at 50% -12%,rgba(37,99,235,.32),transparent 62%),
+    radial-gradient(680px 420px at 88% 118%,rgba(34,211,238,.14),transparent 60%),
+    radial-gradient(620px 420px at 6% 110%,rgba(139,92,246,.16),transparent 60%),
+    linear-gradient(160deg,#0a1020 0%,#0c1730 55%,#10203e 100%)}
+.phero::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:linear-gradient(rgba(120,160,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(120,160,255,.07) 1px,transparent 1px);
+  background-size:46px 46px;
+  -webkit-mask-image:radial-gradient(circle at 50% 34%,#000,transparent 78%);mask-image:radial-gradient(circle at 50% 34%,#000,transparent 78%)}
+.phero .wrap{position:relative;z-index:1}
+.phero .badge{display:inline-flex;align-items:center;gap:9px;font-size:13px;font-weight:800;color:#eaf1ff;background:rgba(59,130,246,.14);border:1px solid rgba(120,170,255,.4);padding:7px 18px;border-radius:999px;margin-bottom:24px;box-shadow:0 8px 26px rgba(37,99,235,.28);backdrop-filter:blur(6px)}
+.logo-plate{position:relative;width:min(430px,80vw);margin:0 auto;border-radius:24px;overflow:hidden;
+  box-shadow:0 26px 70px rgba(0,0,0,.55),0 0 70px rgba(37,99,235,.4);
+  -webkit-mask-image:radial-gradient(circle at 50% 50%,#000 62%,transparent 96%);mask-image:radial-gradient(circle at 50% 50%,#000 62%,transparent 96%)}
+.logo-plate img{width:100%;display:block}
+.tagline{font-size:clamp(18px,2.6vw,27px);font-weight:800;color:#fff;margin-top:14px}
+.tagline .cy{color:var(--cyan);text-shadow:0 0 22px rgba(34,211,238,.55)}
+.phero .lead{font-size:17px;color:#cdd8ef;margin:18px auto 0;max-width:680px}
+.phero .row{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px;justify-content:center}
+.statrow{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:34px}
+.stat{min-width:158px;background:rgba(255,255,255,.045);border:1px solid rgba(120,160,255,.2);border-radius:14px;padding:16px 22px;backdrop-filter:blur(5px);transition:.2s}
+.stat:hover{border-color:rgba(120,160,255,.45);box-shadow:0 0 22px rgba(37,99,235,.25);transform:translateY(-2px)}
+.stat b{display:block;font-size:32px;font-weight:900;line-height:1}
+.stat.s1 b{color:#60a5fa;text-shadow:0 0 20px rgba(96,165,250,.6)}
+.stat.s2 b{color:#22d3ee;text-shadow:0 0 20px rgba(34,211,238,.55)}
+.stat.s3 b{color:#a78bfa;text-shadow:0 0 20px rgba(167,139,250,.55)}
+.stat span{font-size:13px;color:#9fb0d0;font-weight:600}
+
+/* SECTIONS */
+section{padding:56px 0}
+.alt{background:linear-gradient(180deg,var(--bg),var(--bg2))}
+.sec-head{max-width:820px;margin:0 auto 34px;text-align:center}
+.sec-head h2{font-size:clamp(25px,3.2vw,36px);font-weight:800;letter-spacing:-.5px;color:#fff;position:relative;padding-bottom:14px}
+.sec-head h2::after{content:"";position:absolute;left:50%;bottom:0;transform:translateX(-50%);width:60px;height:3px;border-radius:3px;background:linear-gradient(90deg,#22d3ee,#3b82f6,#8b5cf6)}
+.sec-head p{color:var(--muted);font-size:16.5px;margin-top:10px}
+
+/* VALUE cards */
+.vgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.vcard{position:relative;background:linear-gradient(160deg,var(--card),var(--card2));border:1px solid var(--border);border-radius:16px;padding:26px 22px;transition:transform .2s,box-shadow .2s,border-color .2s;overflow:hidden}
+.vcard::before{content:"";position:absolute;left:0;right:0;top:0;height:2px;background:linear-gradient(90deg,transparent,var(--c,#3b82f6),transparent);opacity:.75}
+.vcard:hover{transform:translateY(-4px);border-color:rgba(120,160,255,.45);box-shadow:0 20px 44px rgba(0,0,0,.4),0 0 26px rgba(59,130,246,.16)}
+.vcard .ic{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;background:rgba(59,130,246,.14);border:1px solid rgba(120,160,255,.28);margin-bottom:14px}
+.vcard h4{font-size:17.5px;font-weight:800;color:#fff;margin-bottom:7px}
+.vcard p{font-size:14.5px;color:var(--muted);line-height:1.6}
+@media(max-width:860px){.vgrid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.vgrid{grid-template-columns:1fr}}
+
+/* PROCESS */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:1060px;margin:0 auto}
+.step{position:relative;background:linear-gradient(160deg,var(--card),var(--card2));border:1px solid var(--border);border-radius:16px;padding:24px 22px;transition:.2s}
+.step:hover{transform:translateY(-3px);border-color:rgba(120,160,255,.45);box-shadow:0 16px 36px rgba(0,0,0,.38),0 0 22px rgba(59,130,246,.14)}
+.step .n{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#3b82f6,#1e40af);color:#fff;font-weight:900;font-size:15px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;box-shadow:0 0 18px rgba(59,130,246,.5)}
+.step h4{font-size:16.5px;font-weight:800;color:#fff;margin-bottom:5px}
+.step p{font-size:14px;color:var(--muted);line-height:1.55}
+@media(max-width:860px){.steps{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.steps{grid-template-columns:1fr}}
+
+/* CASE STUDY */
+.case-intro{max-width:960px;margin:0 auto 30px;border-radius:22px;padding:1.5px;
+  background:linear-gradient(135deg,#22d3ee,#3b82f6 45%,#8b5cf6 70%,#22d3ee);background-size:300% 300%;
+  box-shadow:0 26px 62px rgba(0,0,0,.45),0 0 46px rgba(37,99,235,.2);animation:tphue 8s linear infinite}
+@keyframes tphue{0%{background-position:0% 50%}100%{background-position:300% 50%}}
+.case-in{position:relative;overflow:hidden;border-radius:20px;padding:34px 32px;
+  background:radial-gradient(700px 340px at 50% -14%,rgba(37,99,235,.24),transparent 62%),linear-gradient(160deg,#0a1428,#0e1c39 60%,#12294f);
+  display:flex;gap:28px;align-items:center}
+.case-in::after{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:linear-gradient(90deg,transparent,rgba(34,211,238,.8),rgba(139,92,246,.8),transparent)}
+.case-in>*{position:relative;z-index:1}
+.case-logo{flex-shrink:0;width:150px;border-radius:16px;overflow:hidden;border:1px solid rgba(120,160,255,.35);box-shadow:0 14px 34px rgba(0,0,0,.5),0 0 26px rgba(37,99,235,.3)}
+.case-logo img{width:100%;display:block}
+.case-txt h3{font-size:clamp(20px,2.6vw,27px);font-weight:900;color:#fff;margin-bottom:10px}
+.case-txt p{color:#cdd8ef;font-size:16px;margin-bottom:10px}
+.case-txt p:last-child{margin-bottom:0}
+.case-txt .hl{color:var(--cyan);font-weight:700}
+.case-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
+@media(max-width:720px){.case-in{flex-direction:column;text-align:center}.case-row{justify-content:center}}
+
+/* framed shots */
+.gframe{position:relative;max-width:1040px;margin:0 auto;border-radius:18px;padding:2.5px;background:linear-gradient(135deg,#22d3ee,#3b82f6 52%,#8b5cf6);box-shadow:0 26px 62px rgba(0,0,0,.5),0 0 46px rgba(59,130,246,.15)}
+.gframe-bar{display:flex;align-items:center;gap:7px;padding:11px 15px;background:#0f2747;border-radius:15px 15px 0 0}
+.gframe-bar i{width:11px;height:11px;border-radius:50%;display:block}
+.gframe-bar .r{background:#ff5f57}.gframe-bar .y{background:#febc2e}.gframe-bar .g{background:#28c840}
+.gframe-bar span{margin-inline-start:12px;font-size:12px;color:#9fb3d4;direction:ltr}
+.gframe-in{overflow:hidden;border-radius:0 0 15px 15px;background:#0a1020}
+.gframe-in img{width:100%;display:block}
+.viz-cap{text-align:center;color:var(--muted);font-size:13.5px;margin:14px auto 0;max-width:800px;line-height:1.6}
+
+/* WHITE LABEL band */
+.wl{position:relative;max-width:960px;margin:0 auto;border-radius:24px;padding:1.5px;
+  background:linear-gradient(135deg,#22d3ee,#3b82f6 45%,#8b5cf6 70%,#22d3ee);background-size:300% 300%;
+  box-shadow:0 30px 74px rgba(0,0,0,.5),0 0 56px rgba(37,99,235,.22);animation:tphue 8s linear infinite}
+.wl-in{position:relative;overflow:hidden;border-radius:22px;padding:44px 38px;text-align:center;
+  background:radial-gradient(780px 360px at 50% -14%,rgba(37,99,235,.26),transparent 62%),linear-gradient(160deg,#0a1428,#0e1c39 60%,#12294f)}
+.wl-in::after{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:linear-gradient(90deg,transparent,rgba(34,211,238,.8),rgba(139,92,246,.8),transparent)}
+.wl-in>*{position:relative;z-index:1}
+.wl-emblem{font-size:40px;margin-bottom:10px}
+.wl-in h2{font-size:clamp(24px,3.4vw,34px);font-weight:900;color:#fff;letter-spacing:-.5px;margin-bottom:12px}
+.wl-in p{color:#cdd8ef;font-size:16.5px;max-width:700px;margin:0 auto}
+.wl-in .tags{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:20px}
+.wl-in .tags span{font-size:13.5px;background:rgba(255,255,255,.06);border:1px solid rgba(120,160,255,.3);color:#dbe4fb;border-radius:999px;padding:7px 15px}
+
+/* QUOTE FORM */
+.techpanel{position:relative;max-width:920px;margin:0 auto;border-radius:24px;padding:1.5px;
+  background:linear-gradient(135deg,#22d3ee,#3b82f6 45%,#8b5cf6 70%,#22d3ee);background-size:300% 300%;
+  box-shadow:0 30px 74px rgba(0,0,0,.5),0 0 56px rgba(37,99,235,.22);animation:tphue 8s linear infinite}
+.techpanel-in{position:relative;overflow:hidden;border-radius:22px;padding:38px 34px;
+  background:radial-gradient(780px 360px at 50% -14%,rgba(37,99,235,.24),transparent 62%),linear-gradient(160deg,#0a1428,#0e1c39 60%,#12294f)}
+.techpanel-in::after{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:linear-gradient(90deg,transparent,rgba(34,211,238,.8),rgba(139,92,246,.8),transparent)}
+.techpanel-in>*{position:relative;z-index:1}
+.qgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+.quotebox label{display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:700;color:#dbe4fb}
+.quotebox input,.quotebox select,.quotebox textarea{font-family:inherit;font-size:15px;font-weight:400;padding:11px 13px;border:1px solid rgba(120,160,255,.28);border-radius:10px;background:rgba(255,255,255,.05);color:#eaf1ff;transition:.15s}
+.quotebox input::placeholder,.quotebox textarea::placeholder{color:#8a9ac0}
+.quotebox select option{color:#0f2747}
+.quotebox input:focus,.quotebox select:focus,.quotebox textarea:focus{outline:none;border-color:#22d3ee;box-shadow:0 0 0 3px rgba(34,211,238,.2);background:rgba(255,255,255,.09)}
+.quotebox textarea{resize:vertical}
+.qfull{margin-bottom:18px}
+.qrow{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+@media(max-width:600px){.qgrid{grid-template-columns:1fr}}
+
+/* CTA */
+.cta{position:relative;overflow:hidden;background:radial-gradient(760px 340px at 50% -10%,rgba(37,99,235,.4),transparent 60%),linear-gradient(160deg,#12285a,#0b1630 70%,#12294f);border:1px solid rgba(120,160,255,.32);border-radius:26px;padding:52px 34px;text-align:center;box-shadow:0 30px 70px rgba(0,0,0,.5),0 0 56px rgba(37,99,235,.22);color:#fff}
+.cta::before{content:"";position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(120,160,255,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(120,160,255,.08) 1px,transparent 1px);background-size:40px 40px;-webkit-mask-image:radial-gradient(circle at 50% 0%,#000,transparent 78%);mask-image:radial-gradient(circle at 50% 0%,#000,transparent 78%)}
+.cta::after{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:linear-gradient(90deg,transparent,rgba(34,211,238,.8),rgba(139,92,246,.8),transparent)}
+.cta>*{position:relative;z-index:1}
+.cta h2{font-size:clamp(24px,3.4vw,34px);font-weight:900;margin-bottom:10px;color:#fff}
+.cta p{color:#cdd8ef;font-size:16.5px;max-width:600px;margin:0 auto 26px}
+.cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:40px 0;background:#080d18}
+.foot-in{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;padding:0 32px;max-width:1160px;margin:0 auto}
+.foot-brand{display:flex;align-items:center;gap:12px}
+.foot-brand img{height:42px;width:auto}
+.foot-brand .bn{font-weight:900;font-size:20px;color:#fff}.foot-brand .bn .b{color:var(--accent2)}
+.foot-brand .tg{font-size:12.5px;color:var(--cyan)}
+.foot-copy{flex:1;text-align:center;color:var(--muted);font-size:14px;font-weight:600;min-width:220px}
+.foot-links{display:flex;gap:16px;font-size:14px;color:var(--muted);flex-wrap:wrap}
+.foot-links a:hover{color:#fff}
+
+@media(max-width:860px){.nav-links{display:none}.foot-in{flex-direction:column;text-align:center}}
+@media(max-width:560px){.nav-in{padding:0 16px;gap:10px}.nav-logo span{display:none}.nav-logo img{height:42px}.nav-cta .btn{padding:8px 14px;font-size:13px}}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="nav-in">
+    <div class="nav-start">
+      <a class="nav-logo" href="/"><img src="../../img/logo-reverse.png" alt="Rubin Project"><span dir="ltr">Rubin <span class="b">Project</span></span></a>
+      <nav class="nav-links">
+        <a href="/#services">שירותים</a>
+        <a href="/#portfolio">תיק עבודות</a>
+        <a href="/#creator">מי אני</a>
+        <a href="/#contact">יצירת קשר</a>
+      </nav>
+    </div>
+    <div class="nav-cta">
+      <a class="btn btn-primary" href="https://wa.me/972527246200" target="_blank" rel="noopener">💬 וואטסאפ</a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<header class="phero">
+  <div class="wrap">
+    <span class="badge"><span class="livedot"></span> בניית תוכנה בהתאמה אישית</span>
+    <h1 class="sr-only">RUBIN 360 — תוכנה שנבנית בדיוק בשבילך, מה-0 עד ה-100</h1>
+    <div class="logo-plate"><img src="../img/r360-logo.jpg" alt="RUBIN 360"></div>
+    <div class="tagline">בנוי <span class="cy">נכון</span>, בדיוק בשבילך</div>
+    <p class="lead">תוכנה שנבנית בדיוק בשבילך — <strong>מה-0 עד ה-100</strong>. לא מוצר מדף: כל מערכת נתפרת לפי הצרכים, התהליכים והיעדים שלך — מהאפיון ועד ההטמעה, עם השם והלוגו שלך.</p>
+    <div class="row">
+      <a class="btn btn-primary" href="#quote">✨ קבלת הצעת מחיר</a>
+      <a class="btn btn-lghost" href="#process">איך זה עובד?</a>
+    </div>
+    <div class="statrow">
+      <div class="stat s1"><b data-val="100" data-suffix="%">0</b><span>מותאם אישית</span></div>
+      <div class="stat s2"><b data-val="6">0</b><span>שלבים מאפיון להטמעה</span></div>
+      <div class="stat s3"><b data-val="10" data-suffix="+">0</b><span>מודולים לבחירה</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- WHY / VALUE -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">🎯 מה מקבלים</span>
+      <h2>לא עוד תוכנה שצריך להתאים את עצמך אליה</h2>
+      <p>רוב התוכנות מכריחות אותך לעבוד לפי הצורה שלהן. כאן זה הפוך — המערכת נבנית לפי הצורה שבה אתה עובד.</p>
+    </div>
+    <div class="vgrid">
+      <div class="vcard" style="--c:#3b82f6"><div class="ic">✂️</div><h4>נתפר לצרכים שלך</h4><p>המסכים, השדות, התהליכים והדוחות — בדיוק כפי שאתה עובד. בלי פיצ'רים מיותרים ובלי פשרות.</p></div>
+      <div class="vcard" style="--c:#22d3ee"><div class="ic">🏷️</div><h4>השם והלוגו שלך</h4><p>המערכת נושאת את המותג שלך — שם, לוגו וצבעים. היא נראית ומרגישה כאילו נבנתה בבית שלך.</p></div>
+      <div class="vcard" style="--c:#22c55e"><div class="ic">🎯</div><h4>בנויה סביב יעדים</h4><p>לא רק "לאגור מידע" — המערכת בנויה כדי לעזור לך להתקדם, לא לפספס, ולעמוד ביעדים שהוגדרו לך.</p></div>
+      <div class="vcard" style="--c:#8b5cf6"><div class="ic">🚀</div><h4>מ-0 עד ה-100</h4><p>אפיון, עיצוב, פיתוח, העלאה לאוויר, הדרכה וליווי — תהליך מלא מקצה לקצה, בלי שתצטרך לתאם בין ספקים.</p></div>
+      <div class="vcard" style="--c:#fbbf24"><div class="ic">🌱</div><h4>גדלה איתך</h4><p>מתחילים בליבה שעונה על הצורך הכי בוער — ומוסיפים מודולים ככל שהעסק או התפקיד מתפתחים.</p></div>
+      <div class="vcard" style="--c:#60a5fa"><div class="ic">🤝</div><h4>ליווי אישי</h4><p>מדבר איתך מי שבונה — בלי מוקד תמיכה ובלי מתווכים. שינויים ותוספות נעשים ישירות מולי.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="alt" id="process">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">🛠️ התהליך</span>
+      <h2>מה-0 עד ה-100 — שלב אחר שלב</h2>
+      <p>תהליך ברור ומסודר, כך שתדע בכל רגע איפה אנחנו עומדים ומה השלב הבא.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="n">1</div><h4>שיחת אפיון</h4><p>מבינים לעומק את הצורך: מה אתה עושה היום, איפה נשפך הזמן, ומה היעדים שצריך לעמוד בהם.</p></div>
+      <div class="step"><div class="n">2</div><h4>בלופרינט</h4><p>מסמך אפיון קצר וברור עם המסכים והמודולים — כדי שנאשר יחד את התמונה לפני שכותבים שורת קוד.</p></div>
+      <div class="step"><div class="n">3</div><h4>בנייה בשלבים</h4><p>בונים את המערכת בפעימות, עם עדכונים שוטפים — אתה רואה התקדמות אמיתית לאורך כל הדרך.</p></div>
+      <div class="step"><div class="n">4</div><h4>המיתוג שלך</h4><p>שם, לוגו וצבעים שלך נכנסים למערכת — היא הופכת להיות המערכת שלך, לא של מישהו אחר.</p></div>
+      <div class="step"><div class="n">5</div><h4>העלאה לאוויר והדרכה</h4><p>המערכת עולה לאוויר עם גיבויים ואבטחה, ואתה מקבל הדרכה קצרה כדי להתחיל לעבוד מיד.</p></div>
+      <div class="step"><div class="n">6</div><h4>ליווי ושיפור</h4><p>אחרי ההשקה ממשיכים — שינויים, מודולים נוספים ושיפורים לפי מה שהחיים האמיתיים מלמדים.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CASE STUDY: BPM -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">🧪 מקרה בוחן</span>
+      <h2>הדוגמה הכי טובה שיש לי — בניתי אחת לעצמי</h2>
+      <p>כדי לעמוד ביעדים של תפקיד חדש, בניתי לעצמי מערכת. זו בדיוק אותה מערכת שאני בונה עבורך.</p>
+    </div>
+
+    <div class="case-intro"><div class="case-in">
+      <div class="case-logo"><img src="../img/r360-bpm-logo.jpg" alt="BPM — הלוגו שבחרתי למערכת שלי"></div>
+      <div class="case-txt">
+        <h3>הסיפור מאחורי <span dir="ltr">BPM</span></h3>
+        <p>קיבלתי <span class="hl">תפקיד חדש בארגון</span> ואיתו יעדים שהוגדרו לי אישית. במקום לנסות להסתדר עם פתקים, אקסלים ותזכורות מפוזרות — <strong>בניתי לעצמי מערכת</strong> שתחזיק אותי על המסלול: משימות, פערים, לקוחות, דוחות ותזכורות במקום אחד.</p>
+        <p>בניתי אותה כדי <span class="hl">להצליח ולעמוד בכל היעדים</span> — והיא עושה בדיוק את זה.</p>
+        <p><strong>«BPM» הוא השם שאני בחרתי</strong> — וגם הלוגו. כל אחד בוחר את השם והלוגו שמתאימים לו; המערכת תמיד תישא את המותג שלך.</p>
+        <div class="case-row">
+          <a class="btn btn-primary" href="https://bpm-black.vercel.app/#reports" target="_blank" rel="noopener">▶ למערכת החיה</a>
+          <a class="btn btn-lghost" href="#quote">רוצה כזו לעצמי ←</a>
+        </div>
+      </div>
+    </div></div>
+
+    <div class="gframe" style="margin-top:34px">
+      <div class="gframe-bar"><i class="r"></i><i class="y"></i><i class="g"></i><span>דשבורד — תמונת מצב ניהולית</span></div>
+      <div class="gframe-in"><img src="../img/r360-shot1.jpg" alt="דשבורד תמונת מצב — מדריכים, פערים פתוחים, קטגוריות שכיחות וגרפים ניהוליים"></div>
+    </div>
+    <div class="viz-cap" style="margin-bottom:34px">תמונת מצב יומית במבט אחד — משימות להיום, פערים פתוחים, קטגוריות מובילות וגרפים ניהוליים.</div>
+
+    <div class="gframe">
+      <div class="gframe-bar"><i class="r"></i><i class="y"></i><i class="g"></i><span>דוחות — מוכנים לניתוח</span></div>
+      <div class="gframe-in"><img src="../img/r360-shot4.jpg" alt="מסך דוחות — שישה דוחות מוכנים, כל אחד מייצר Prompt עם ההקשר הרלוונטי"></div>
+    </div>
+    <div class="viz-cap" style="margin-bottom:34px">דוחות מוכנים לכל שאלה ניהולית — וכל דוח מייצר בלחיצה ניתוח בשפה טבעית.</div>
+
+    <div class="gframe">
+      <div class="gframe-bar"><i class="r"></i><i class="y"></i><i class="g"></i><span>מרכז בוט — דשבורדים ותכנים</span></div>
+      <div class="gframe-in"><img src="../img/r360-shot2.jpg" alt="מרכז בוט — דשבורד שבועי, תבנית מייל להנהלה וחומרי אימון"></div>
+    </div>
+    <div class="viz-cap" style="margin-bottom:34px">מודולים ייעודיים לפי הצורך — כאן: ריכוז דשבורדים, תבנית דיווח להנהלה וחומרי אימון.</div>
+
+    <div class="gframe">
+      <div class="gframe-bar"><i class="r"></i><i class="y"></i><i class="g"></i><span>הגדרות — גיבוי וסנכרון</span></div>
+      <div class="gframe-in"><img src="../img/r360-shot3.jpg" alt="מסך הגדרות — ייצוא גיבוי מלא, שחזור מגיבוי ושכבות הגנה"></div>
+    </div>
+    <div class="viz-cap">הנתונים שלך מוגנים — ייצוא גיבוי מלא בקליק, שחזור, וסנכרון בענן מאובטח.</div>
+  </div>
+</section>
+
+<!-- WHITE LABEL -->
+<section class="alt">
+  <div class="wrap">
+    <div class="wl"><div class="wl-in">
+      <div class="wl-emblem">🏷️</div>
+      <h2>המערכת שלך — בשם שלך, בלוגו שלך</h2>
+      <p>«BPM» זה השם שאני בחרתי למערכת שלי. שלך יכולה להיקרא אחרת לגמרי, להיראות אחרת, ולעשות דברים אחרים — כי היא נבנית סביב <strong>הצרכים שלך</strong>. אתה בוחר את השם, הלוגו והצבעים; אני בונה את המערכת שמאחוריהם.</p>
+      <div class="tags"><span>השם שלך</span><span>הלוגו שלך</span><span>הצבעים שלך</span><span>התהליכים שלך</span></div>
+    </div></div>
+  </div>
+</section>
+
+<!-- WHO IS IT FOR -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">👤 למי זה מתאים</span>
+      <h2>לכל מי שרוצה להצליח ולעמוד ביעדים</h2>
+      <p>לא משנה אם אתה עצמאי, שכיר בתפקיד חדש או מנהל צוות — מערכת נכונה עושה את ההבדל.</p>
+    </div>
+    <div class="vgrid">
+      <div class="vcard" style="--c:#3b82f6"><div class="ic">💼</div><h4>שכיר בתפקיד חדש</h4><p>קיבלת תפקיד ויעדים? מערכת שמחזיקה אותך על המסלול, מזכירה מה דחוף ומראה איפה אתה עומד.</p></div>
+      <div class="vcard" style="--c:#22c55e"><div class="ic">🧑‍💻</div><h4>עצמאי</h4><p>לקוחות, משימות, הצעות ומעקב — הכול במקום אחד, במקום להתפזר בין אקסלים ופתקים.</p></div>
+      <div class="vcard" style="--c:#8b5cf6"><div class="ic">🏢</div><h4>עסק או צוות</h4><p>תהליכי עבודה מסודרים, שקיפות מלאה על הסטטוס, ודוחות שמאפשרים להנהלה לקבל החלטות.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE FORM -->
+<section class="alt" id="quote">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">💬 הצעת מחיר</span>
+      <h2>נבנה לך מערכת משלך — קבלו הצעת מחיר</h2>
+      <p>שלחו כמה פרטים ואחזור אליכם עם הצעה מותאמת — בלי התחייבות.</p>
+    </div>
+    <div class="techpanel"><form class="quotebox techpanel-in" onsubmit="return sendQuote(event)">
+      <div class="qgrid">
+        <label>שם מלא <input type="text" id="q-name" required placeholder="השם שלכם"></label>
+        <label>שם העסק <input type="text" id="q-biz" placeholder="שם החברה / העסק (לא חובה)"></label>
+        <label>טלפון <input type="tel" id="q-phone" placeholder="050-0000000"></label>
+        <label>למי המערכת?
+          <select id="q-src">
+            <option value="שכיר בתפקיד חדש">שכיר בתפקיד חדש</option>
+            <option value="עצמאי">עצמאי</option>
+            <option value="עסק / צוות">עסק / צוות</option>
+            <option value="מנהל">מנהל</option>
+            <option value="אחר">אחר</option>
+          </select>
+        </label>
+      </div>
+      <label class="qfull">מה תרצו שהמערכת תעשה? <textarea id="q-msg" rows="3" placeholder="ספרו בקצרה על התפקיד/העסק, מה חשוב לכם לנהל ואילו יעדים צריך לעמוד בהם..."></textarea></label>
+      <div class="qrow">
+        <button type="submit" class="btn btn-primary">📩 שליחה בוואטסאפ</button>
+        <button type="button" class="btn btn-lghost" onclick="sendQuoteMail()">✉️ שליחה במייל</button>
+      </div>
+    </form></div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="contact">
+  <div class="wrap">
+    <div class="cta">
+      <h2>יש לך צורך? בוא נבנה לו מערכת</h2>
+      <p>ספר לי מה אתה מנסה להשיג — ואבנה לך תוכנה שנתפרת בדיוק סביב זה, מה-0 עד ה-100.</p>
+      <div class="cta-row">
+        <a class="btn btn-wa" href="https://wa.me/972527246200?text=%D7%94%D7%99%D7%99%20%D7%A2%D7%9E%D7%99%D7%AA%2C%20%D7%A8%D7%90%D7%99%D7%AA%D7%99%20%D7%90%D7%AA%20RUBIN%20360%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A4%D7%A8%D7%98%D7%99%D7%9D" target="_blank" rel="noopener">💬 וואטסאפ</a>
+        <a class="btn btn-lghost" href="#quote">📩 הצעת מחיר</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-in">
+    <div class="foot-brand">
+      <img src="../../img/logo-reverse.png" alt="Rubin Project">
+      <div><div class="bn" dir="ltr">Rubin <span class="b">Project</span></div>
+      <div class="tg">פתרונות BI, אוטומציה ותוכנה לעסקים</div></div>
+    </div>
+    <div class="foot-copy">הופכים נתונים להחלטות. · © Rubin Project</div>
+    <div class="foot-links">
+      <a href="/">דף הבית</a>
+      <a href="/#portfolio">תיק עבודות</a>
+      <a href="/card/">כרטיס דיגיטלי</a>
+      <a href="https://wa.me/972527246200" target="_blank" rel="noopener">וואטסאפ</a>
+      <a href="mailto:amit@rubinproject.com">amit@rubinproject.com</a>
+    </div>
+  </div>
+</footer>
+<script>
+  if('scrollRestoration' in history) history.scrollRestoration='manual';
+  window.addEventListener('load',function(){ if(!location.hash) window.scrollTo(0,0); });
+</script>
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function run(el){
+    var val=parseFloat(el.getAttribute('data-val'))||0,suf=el.getAttribute('data-suffix')||'';
+    if(reduce){el.textContent=val+suf;return;}
+    var dur=1900,start=null;
+    function ease(t){return 1-Math.pow(1-t,3);}
+    function step(ts){if(start===null)start=ts;var t=Math.min((ts-start)/dur,1);el.textContent=Math.round(val*ease(t))+suf;if(t<1)requestAnimationFrame(step);else el.textContent=val+suf;}
+    requestAnimationFrame(step);
+  }
+  window.addEventListener('load',function(){document.querySelectorAll('.stat b[data-val]').forEach(run);});
+})();
+function qval(id){var e=document.getElementById(id);return e?e.value.trim():'';}
+function quoteText(){
+  var n=qval('q-name'),b=qval('q-biz'),p=qval('q-phone'),s=qval('q-src'),m=qval('q-msg');
+  var t='היי עמית, אשמח להצעת מחיר ל-RUBIN 360.\n';
+  if(n)t+='שם: '+n+'\n';
+  if(b)t+='עסק: '+b+'\n';
+  if(p)t+='טלפון: '+p+'\n';
+  if(s)t+='למי המערכת: '+s+'\n';
+  if(m)t+='פרטים: '+m+'\n';
+  return t;
+}
+function sendQuote(ev){ev.preventDefault();window.open('https://wa.me/972527246200?text='+encodeURIComponent(quoteText()),'_blank','noopener');return false;}
+function sendQuoteMail(){window.location.href='mailto:amit@rubinproject.com?subject='+encodeURIComponent('הצעת מחיר — RUBIN 360')+'&body='+encodeURIComponent(quoteText());}
+</script>
+</body>
+</html>
