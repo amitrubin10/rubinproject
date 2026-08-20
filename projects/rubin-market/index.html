@@ -206,12 +206,9 @@ section{padding:56px 0}
 .rubin-scene{position:relative;max-width:1040px;margin:30px auto 0;border-radius:18px;overflow:hidden;
   border:1px solid var(--border);box-shadow:0 26px 62px rgba(0,0,0,.5),0 0 44px rgba(59,130,246,.14)}
 .rs-base{width:100%;display:block}
-.rs-logo{position:absolute;left:27.871%;top:13.071%;width:10.885%;
-  animation:rsglow 3.4s ease-in-out infinite}
-@keyframes rsglow{
-  0%,100%{filter:brightness(1) drop-shadow(0 0 4px rgba(56,189,248,.35))}
-  50%{filter:brightness(1.5) drop-shadow(0 0 16px rgba(56,189,248,1)) drop-shadow(0 0 34px rgba(34,211,238,.75))}
-}
+.rs-logo{position:absolute;left:27.871%;top:13.071%;width:10.885%;aspect-ratio:152/167;display:block;pointer-events:none}
+.rs-logo img{width:100%;display:block}
+.rs-logo::after{content:"";position:absolute;inset:-26%;pointer-events:none;background:conic-gradient(from 0deg,rgba(120,225,255,0) 0deg,rgba(120,225,255,0) 300deg,rgba(150,235,255,.26) 340deg,rgba(200,248,255,.5) 353deg,rgba(120,225,255,0) 360deg);animation:radarsweep 4.2s linear infinite;mix-blend-mode:screen}
 /* counting KPI numbers on the dashboard screen */
 .rubin-scene{container-type:inline-size}
 .rs-num{position:absolute;display:flex;align-items:center;justify-content:center;
@@ -220,7 +217,7 @@ section{padding:56px 0}
 .rs-num.k1{left:62.9%;top:13.9%;width:3.8%;height:2.6%;font-size:1.91cqw}
 .rs-num.k2{left:71.0%;top:12.9%;width:2.4%;height:2.3%;font-size:1.66cqw}
 .rs-num.k3{left:79.2%;top:12.2%;width:3.9%;height:2.8%;font-size:2.08cqw}
-@media(prefers-reduced-motion:reduce){.rs-logo{animation:none}}
+@media(prefers-reduced-motion:reduce){.rs-logo::after{animation:none}}
 /* ===== animated "market noise" scene ===== */
 .noise-scene{position:relative;max-width:1040px;margin:34px auto 0;border-radius:18px;overflow:hidden;
   border:1px solid var(--border);box-shadow:0 26px 62px rgba(0,0,0,.5),0 0 44px rgba(59,130,246,.14)}
@@ -395,7 +392,7 @@ footer{border-top:1px solid var(--border);padding:40px 0;background:#080d18}
 
     <div class="rubin-scene" id="rubinScene">
       <img class="rs-base" src="../img/mi-rubin-base.jpg" alt="מנהל צופה בדשבורד RUBIN MARKET על מסכים מרובים">
-      <img class="rs-logo" src="../img/mi-rubin-logo.png" alt="">
+      <span class="rs-logo"><img src="../img/mi-rubin-logo.png" alt=""></span>
       <span class="rs-num k1" data-val="18392">0</span>
       <span class="rs-num k2" data-val="152">0</span>
       <span class="rs-num k3" data-val="2784">0</span>
@@ -443,7 +440,7 @@ footer{border-top:1px solid var(--border);padding:40px 0;background:#080d18}
       <div class="gframe-bar"><i class="r"></i><i class="y"></i><i class="g"></i><span>מטריצת יכולות — מיצוב מול השוק</span></div>
       <div class="gframe-in"><img src="../img/mi-matrix.jpg" alt="מטריצת יכולות המשווה בין המערכות בשוק לאורך יכולות הליבה"></div>
     </div>
-    <div class="viz-cap" style="margin-bottom:32px">כל תא מסווג — קיים / חלקי / חסר — עם נימוק. כך רואים במבט אחד היכן סוגרים פער והיכן הוא נשאר פתוח.<br><strong style="color:var(--ink)">בתצוגה זו שמות החברה והמתחרים הוחלפו בשמות גנריים לשמירה על סודיות.</strong></div>
+    <div class="viz-cap" style="margin-bottom:32px">כל יכולת מנוקדת לכל מערכת בשוק — כך רואים במבט אחד היכן אתה מוביל, והיכן נשאר פער לסגור.<br><strong style="color:var(--ink)">בתצוגה זו שמות החברה והמתחרים הוחלפו בשמות גנריים לשמירה על סודיות.</strong></div>
     <div class="gframe">
       <div class="gframe-bar"><i class="r"></i><i class="y"></i><i class="g"></i><span>מפת מיצוב</span></div>
       <div class="gframe-in"><img src="../img/mi-map.jpg" alt="מפת מיצוב — עומק פונקציונלי מול בשלות טכנולוגית"></div>
