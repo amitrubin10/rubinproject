@@ -197,13 +197,29 @@ section{padding:56px 0}
 .censor-note{display:flex;gap:14px;align-items:flex-start;max-width:1040px;margin:0 auto;background:linear-gradient(160deg,rgba(251,191,36,.12),rgba(239,68,68,.08));border:1px solid rgba(251,191,36,.42);border-radius:16px;padding:18px 22px;font-size:15px;color:#e9edf6;line-height:1.6;box-shadow:0 10px 30px rgba(0,0,0,.3)}
 .censor-note b{color:#fbbf24}
 .censor-note .ci{font-size:22px;line-height:1.3;flex-shrink:0}
+.trend-wrap{position:relative}
+.trend-svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}
+.trend-dot{fill:rgba(125,225,255,.35);filter:drop-shadow(0 0 10px rgba(56,189,248,1))}
+.trend-dot-core{fill:#eafaff;filter:drop-shadow(0 0 8px rgba(125,225,255,1))}
+@media(prefers-reduced-motion:reduce){.trend-svg{display:none}}
 /* ===== RUBIN MARKET scene (logo animated like the hero) ===== */
 .rubin-scene{position:relative;max-width:1040px;margin:30px auto 0;border-radius:18px;overflow:hidden;
   border:1px solid var(--border);box-shadow:0 26px 62px rgba(0,0,0,.5),0 0 44px rgba(59,130,246,.14)}
 .rs-base{width:100%;display:block}
 .rs-logo{position:absolute;left:27.871%;top:13.071%;width:10.885%;
-  filter:drop-shadow(0 4px 14px rgba(37,99,235,.55));
-  animation:logofloat 6.5s ease-in-out infinite,logopulse 6.5s ease-in-out infinite}
+  animation:rsglow 3.4s ease-in-out infinite}
+@keyframes rsglow{
+  0%,100%{filter:brightness(1) drop-shadow(0 0 4px rgba(56,189,248,.35))}
+  50%{filter:brightness(1.5) drop-shadow(0 0 16px rgba(56,189,248,1)) drop-shadow(0 0 34px rgba(34,211,238,.75))}
+}
+/* counting KPI numbers on the dashboard screen */
+.rubin-scene{container-type:inline-size}
+.rs-num{position:absolute;display:flex;align-items:center;justify-content:center;
+  color:#eef3fb;font-weight:600;letter-spacing:.2px;white-space:nowrap;
+  transform:rotate(-3.1deg);text-shadow:0 1px 3px rgba(0,0,0,.55)}
+.rs-num.k1{left:62.9%;top:13.9%;width:3.8%;height:2.6%;font-size:1.91cqw}
+.rs-num.k2{left:71.0%;top:12.9%;width:2.4%;height:2.3%;font-size:1.66cqw}
+.rs-num.k3{left:79.2%;top:12.2%;width:3.9%;height:2.8%;font-size:2.08cqw}
 @media(prefers-reduced-motion:reduce){.rs-logo{animation:none}}
 /* ===== animated "market noise" scene ===== */
 .noise-scene{position:relative;max-width:1040px;margin:34px auto 0;border-radius:18px;overflow:hidden;
@@ -217,13 +233,13 @@ section{padding:56px 0}
   60%{opacity:1}
   100%{opacity:1;transform:translate3d(0,0,0) scale(1)}
 }
-.ns-bub.b1{left:29.167%;top:3.223%;width:20.833%;animation-delay:1.00s}
-.ns-bub.b2{left:51.693%;top:1.562%;width:19.206%;animation-delay:2.00s}
-.ns-bub.b3{left:43.555%;top:17.969%;width:19.466%;animation-delay:3.00s}
-.ns-bub.b4{left:52.148%;top:31.055%;width:18.424%;animation-delay:4.00s}
-.ns-bub.b5{left:16.471%;top:61.621%;width:19.857%;animation-delay:6.00s}
-.ns-bub.b6{left:16.471%;top:76.074%;width:19.987%;animation-delay:7.00s}
-.ns-bub.b7{left:47.591%;top:68.164%;width:21.094%;animation-delay:5.00s}
+.ns-bub.b1{left:29.167%;top:3.223%;width:20.833%;animation-delay:0.50s}
+.ns-bub.b2{left:51.693%;top:1.562%;width:19.206%;animation-delay:1.50s}
+.ns-bub.b3{left:43.555%;top:17.969%;width:19.466%;animation-delay:2.50s}
+.ns-bub.b4{left:52.148%;top:31.055%;width:18.424%;animation-delay:3.50s}
+.ns-bub.b5{left:16.471%;top:61.621%;width:19.857%;animation-delay:5.50s}
+.ns-bub.b6{left:16.471%;top:76.074%;width:19.987%;animation-delay:6.50s}
+.ns-bub.b7{left:47.591%;top:68.164%;width:21.094%;animation-delay:4.50s}
 @media(prefers-reduced-motion:reduce){.ns-bub{opacity:1!important;animation:none!important;transform:none!important}}
 .viz-cap{text-align:center;color:var(--muted);font-size:13.5px;margin:14px auto 0;max-width:800px;line-height:1.6}
 
@@ -380,6 +396,9 @@ footer{border-top:1px solid var(--border);padding:40px 0;background:#080d18}
     <div class="rubin-scene" id="rubinScene">
       <img class="rs-base" src="../img/mi-rubin-base.jpg" alt="מנהל צופה בדשבורד RUBIN MARKET על מסכים מרובים">
       <img class="rs-logo" src="../img/mi-rubin-logo.png" alt="">
+      <span class="rs-num k1" data-val="18392">0</span>
+      <span class="rs-num k2" data-val="152">0</span>
+      <span class="rs-num k3" data-val="2784">0</span>
     </div>
     <div class="viz-cap">שתי השכבות מתלכדות למסך אחד — מה השוק אומר, ואיפה אתה עומד מולו.</div>
 
@@ -396,7 +415,12 @@ footer{border-top:1px solid var(--border);padding:40px 0;background:#080d18}
     </div>
     <div class="gframe">
       <div class="gframe-bar"><i class="r"></i><i class="y"></i><i class="g"></i><span>דופק פעילות — מגמה שבועית</span></div>
-      <div class="gframe-in"><img src="../img/mi-trend.jpg" alt="גרף מגמה שבועית של נפח השיח בקבוצות המקצועיות"></div>
+      <div class="gframe-in trend-wrap"><img src="../img/mi-trend.jpg" alt="גרף מגמה שבועית של נפח השיח בקבוצות המקצועיות">
+        <svg class="trend-svg" viewBox="0 0 1300 387" preserveAspectRatio="none" aria-hidden="true">
+          <path id="trendPath" d="M 150.0 239.0 L 166.0 206.0 L 182.0 173.0 L 198.0 141.0 L 214.0 106.0 L 230.0 118.0 L 246.0 131.0 L 262.0 145.0 L 278.0 158.0 L 294.0 167.0 L 310.0 170.0 L 326.0 174.0 L 342.0 177.0 L 358.0 179.0 L 374.0 180.0 L 390.0 181.0 L 406.0 181.0 L 422.0 180.0 L 438.0 186.0 L 454.0 191.0 L 470.0 196.0 L 486.0 201.0 L 502.0 211.0 L 518.0 222.0 L 534.0 234.0 L 550.0 246.0 L 566.0 249.0 L 582.0 237.0 L 598.0 226.0 L 614.0 214.0 L 630.0 202.0 L 646.0 206.0 L 662.0 209.0 L 678.0 212.0 L 694.0 214.0 L 710.0 230.0 L 726.0 252.0 L 742.0 273.0 L 758.0 295.0 L 774.0 310.0 L 790.0 318.0 L 806.0 326.0 L 822.0 334.0 L 877.0 332.0 L 893.0 328.0 L 909.0 324.0 L 925.0 319.0 L 941.0 313.0 L 957.0 308.0 L 973.0 299.0 L 989.0 267.0 L 1005.0 233.0 L 1021.0 199.0 L 1037.0 162.0 L 1053.0 158.0 L 1069.0 159.0 L 1085.0 160.0 L 1101.0 161.0 L 1117.0 170.0 L 1133.0 196.0 L 1149.0 222.0 L 1165.0 248.0 L 1179.0 270.0" fill="none" stroke="rgba(120,220,255,.35)" stroke-width="2"/>
+          <circle class="trend-dot" r="7"><animateMotion dur="7s" repeatCount="indefinite" rotate="auto"><mpath href="#trendPath"/></animateMotion></circle>
+          <circle class="trend-dot-core" r="3"><animateMotion dur="7s" repeatCount="indefinite" rotate="auto"><mpath href="#trendPath"/></animateMotion></circle>
+        </svg></div>
     </div>
     <div class="viz-cap">עוצמת השיח לאורך זמן — מזהה קפיצות חריגות (השקה, תקלה, שינוי רגולציה) ברגע שהן קורות.</div>
     <div class="vgrid" style="margin-top:32px">
@@ -597,7 +621,7 @@ footer{border-top:1px solid var(--border);padding:40px 0;background:#080d18}
     requestAnimationFrame(step);
   }
   function boot(){
-    var els=document.querySelectorAll('.stat b[data-val]');
+    var els=document.querySelectorAll('.stat b[data-val], .rs-num[data-val]');
     if(!('IntersectionObserver' in window)){els.forEach(run);return;}
     var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){run(e.target);io.unobserve(e.target);}})},{threshold:0.5});
     els.forEach(function(el){io.observe(el);});
