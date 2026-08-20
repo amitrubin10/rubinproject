@@ -88,13 +88,24 @@ header.nav{position:sticky;top:0;z-index:100;background:rgba(10,16,32,0.92);back
   border:1px solid rgba(255,255,255,.9);
   box-shadow:0 22px 58px rgba(0,0,0,.55),0 0 60px rgba(37,99,235,.32)}
 .logo-plate img{width:100%;display:block}
-/* glowing orbit ring that spins around the mark */
-.logo-plate .orbit{position:absolute;left:50%;top:41%;width:64%;height:64%;margin:-32% 0 0 -32%;pointer-events:none;
-  border-radius:50%;border:2px solid rgba(56,189,248,.85);
-  box-shadow:0 0 16px rgba(34,211,238,.85),0 0 34px rgba(34,211,238,.45),inset 0 0 16px rgba(34,211,238,.4);
-  animation:orbitspin 11s linear infinite}
-@keyframes orbitspin{from{transform:rotate(0deg) rotateX(72deg)}to{transform:rotate(360deg) rotateX(72deg)}}
-@media(prefers-reduced-motion:reduce){.logo-plate .orbit{animation:none;transform:rotate(-20deg) rotateX(72deg)}}
+/* light that travels along the logo's own elliptical ring */
+.logo-plate .orbit{position:absolute;left:51.5%;top:51.4%;width:59.8%;height:23.4%;
+  transform:translate(-50%,-50%) rotate(-17.5deg);
+  border-radius:50%;overflow:hidden;pointer-events:none;
+  -webkit-mask:radial-gradient(closest-side,transparent 0 86%,#000 92%,#000 100%);
+          mask:radial-gradient(closest-side,transparent 0 86%,#000 92%,#000 100%);
+  filter:drop-shadow(0 0 5px rgba(56,189,248,.95)) drop-shadow(0 0 12px rgba(34,211,238,.6))}
+.logo-plate .orbit i{position:absolute;inset:-50%;display:block;
+  background:conic-gradient(from 0deg,
+    rgba(180,245,255,0) 0deg,
+    rgba(180,245,255,0) 292deg,
+    rgba(120,225,255,.32) 322deg,
+    rgba(225,250,255,.92) 347deg,
+    rgba(120,225,255,.28) 355deg,
+    rgba(180,245,255,0) 360deg);
+  animation:ringtravel 4.6s linear infinite}
+@keyframes ringtravel{to{transform:rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){.logo-plate .orbit i{animation:none}}
 .tagline{font-size:clamp(17px,2.3vw,24px);font-weight:800;color:#fff;margin-top:12px}
 .tagline .cy{color:var(--cyan);text-shadow:0 0 22px rgba(34,211,238,.55)}
 .phero .lead{font-size:16px;color:#cdd8ef;margin:12px auto 0;max-width:660px}
@@ -252,7 +263,7 @@ footer{border-top:1px solid var(--border);padding:40px 0;background:#080d18}
       <p class="hook-q">קיבלת <span class="hl">תפקיד חדש</span>? <span class="sep">·</span> <span class="hl">עצמאי</span> שמנהל הכול לבד?</p>
       <p class="hook-q2">מרגיש שיש לך את היכולות — אבל לא מצליח לארגן את עצמך ולעמוד ביעדים?</p>
     </div>
-    <div class="logo-plate"><img src="../img/r360-logo.jpg" alt="RUBIN 360"><span class="orbit"></span></div>
+    <div class="logo-plate"><img src="../img/r360-logo.jpg" alt="RUBIN 360"><span class="orbit"><i></i></span></div>
     <div class="tagline">בנוי <span class="cy">נכון</span>, בדיוק בשבילך</div>
     <p class="lead">תוכנה שנבנית בדיוק בשבילך — <strong>מה-0 עד ה-100</strong>. לא מוצר מדף: כל מערכת נתפרת לפי הצרכים, התהליכים והיעדים שלך — מהאפיון ועד ההטמעה, עם השם והלוגו שלך.</p>
     <div class="row">
