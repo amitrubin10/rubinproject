@@ -613,15 +613,27 @@ footer{border-top:1px solid var(--border);padding:40px 0;background:#080d18}
     var val=parseFloat(el.getAttribute('data-val'))||0,suf=el.getAttribute('data-suffix')||'',sep=val>=1000;
     if(reduce){el.textContent=fmt(val,sep)+suf;return;}
     var dur=1900,start=null;
+    el._tok=(el._tok||0)+1; var tok=el._tok;
     function ease(t){return 1-Math.pow(1-t,3);}
-    function step(ts){if(start===null)start=ts;var t=Math.min((ts-start)/dur,1);el.textContent=fmt(val*ease(t),sep)+suf;if(t<1)requestAnimationFrame(step);else el.textContent=fmt(val,sep)+suf;}
+    function step(ts){if(el._tok!==tok)return;if(start===null)start=ts;var t=Math.min((ts-start)/dur,1);el.textContent=fmt(val*ease(t),sep)+suf;if(t<1)requestAnimationFrame(step);else el.textContent=fmt(val,sep)+suf;}
     requestAnimationFrame(step);
   }
   function boot(){
-    var els=document.querySelectorAll('.stat b[data-val], .rs-num[data-val]');
-    if(!('IntersectionObserver' in window)){els.forEach(run);return;}
+    var els=document.querySelectorAll('.stat b[data-val]');
+    var sc=document.getElementById('rubinScene');
+    var nums=sc?sc.querySelectorAll('.rs-num[data-val]'):[];
+    if(!('IntersectionObserver' in window)){
+      els.forEach(run); Array.prototype.forEach.call(nums,run); return;
+    }
     var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){run(e.target);io.unobserve(e.target);}})},{threshold:0.5});
     els.forEach(function(el){io.observe(el);});
+    if(sc&&nums.length){
+      var io2=new IntersectionObserver(function(es){es.forEach(function(e){
+        if(e.isIntersecting){Array.prototype.forEach.call(nums,run);}
+        else{Array.prototype.forEach.call(nums,function(n){n._tok=(n._tok||0)+1;n.textContent='0';});}
+      })},{threshold:0.35});
+      io2.observe(sc);
+    }
   }
   window.addEventListener('load',boot);
   window.addEventListener('load',function(){
