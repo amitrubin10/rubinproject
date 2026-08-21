@@ -160,6 +160,9 @@ section{padding:64px 0;position:relative}
 .pcard:hover{transform:translateY(-5px);border-color:rgba(96,165,250,.55);box-shadow:0 26px 60px rgba(0,0,0,.5)}
 .pcard-img{aspect-ratio:16/9;overflow:hidden;background:var(--card2);border-bottom:1px solid var(--border)}
 .pcard-img img{width:100%;height:100%;object-fit:cover;object-position:top}
+.pcard-logo{aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;overflow:hidden;border-bottom:1px solid var(--border);background:radial-gradient(120% 100% at 50% 0%,rgba(59,130,246,.14),transparent 62%),linear-gradient(160deg,var(--card2),var(--card))}
+.pcard-logo img{width:100%;height:100%;object-fit:contain;padding:10px 14px;transition:transform .25s}
+.pcard:hover .pcard-logo img{transform:scale(1.05)}
 .pcard-emoji{aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;font-size:54px;border-bottom:1px solid var(--border);background:linear-gradient(160deg,var(--card2),var(--card))}
 .pcard-body{padding:18px 20px 20px;display:flex;flex-direction:column;flex:1}
 .pcard-tag{font-size:12px;font-weight:800;color:var(--accent2);margin-bottom:7px}
@@ -391,7 +394,7 @@ footer{border-top:1px solid var(--border);padding:40px 0;margin-top:20px}
     <div class="cat-head reveal"><span class="cat-ic">🏢</span><h3>פתרונות לעסקים</h3><span class="line"></span></div>
     <div class="pgrid">
       <a class="pcard reveal" href="/projects/verifix/">
-        <div class="pcard-img"><img src="img/verifix-health.png" alt="Verifix — ניהול תחזוקת מבנים" loading="lazy"></div>
+        <div class="pcard-logo"><img src="img/logo-verifix.png" alt="Verifix — ניהול תחזוקת מבנים" loading="lazy"></div>
         <div class="pcard-body">
           <div class="pcard-tag">🏢 מערכת פרודקשן</div>
           <h4><span dir="ltr">Verifix</span></h4>
@@ -400,7 +403,7 @@ footer{border-top:1px solid var(--border);padding:40px 0;margin-top:20px}
         </div>
       </a>
       <a class="pcard reveal" href="https://www.veribayit.com" target="_blank" rel="noopener">
-        <div class="pcard-img"><img src="img/veribayit-dashboard.png" alt="VeriBayit — ניהול ועד בית" loading="lazy"></div>
+        <div class="pcard-logo"><img src="img/logo-veribayit.png" alt="VeriBayit — ניהול ועד בית" loading="lazy"></div>
         <div class="pcard-body">
           <div class="pcard-tag">☁️ SaaS חי</div>
           <h4><span dir="ltr">VeriBayit</span></h4>
@@ -409,7 +412,7 @@ footer{border-top:1px solid var(--border);padding:40px 0;margin-top:20px}
         </div>
       </a>
       <a class="pcard reveal" href="/projects/bot-analytics/">
-        <div class="pcard-img"><img src="img/bot-kpi.png" alt="Bot Analytics — ניתוח שירות AI" loading="lazy"></div>
+        <div class="pcard-logo"><img src="img/logo-bot.png" alt="Bot Analytics — ניתוח שירות מבוסס AI" loading="lazy"></div>
         <div class="pcard-body">
           <div class="pcard-tag">🤖 פייפליין AI</div>
           <h4><span dir="ltr">Bot Analytics</span></h4>
@@ -418,7 +421,7 @@ footer{border-top:1px solid var(--border);padding:40px 0;margin-top:20px}
         </div>
       </a>
       <a class="pcard reveal" href="/projects/rubin-market/">
-        <div class="pcard-img"><img src="projects/img/mi-map.jpg" alt="מודיעין שוק — מיפוי ומיצוב מול השוק" loading="lazy"></div>
+        <div class="pcard-logo"><img src="img/logo-market.png" alt="RUBIN MARKET — מודיעין שוק" loading="lazy"></div>
         <div class="pcard-body">
           <div class="pcard-tag">📊 מודיעין שוק</div>
           <h4><span dir="ltr">RUBIN MARKET</span></h4>
@@ -427,7 +430,7 @@ footer{border-top:1px solid var(--border);padding:40px 0;margin-top:20px}
         </div>
       </a>
       <a class="pcard reveal" href="/projects/rubin360/">
-        <div class="pcard-img"><img src="projects/img/r360-shot1.jpg" alt="RUBIN 360 — תוכנה שנבנית בדיוק בשבילך" loading="lazy"></div>
+        <div class="pcard-logo"><img src="img/logo-rubin360.png" alt="RUBIN 360 — תוכנה בהתאמה אישית" loading="lazy"></div>
         <div class="pcard-body">
           <div class="pcard-tag">🛠️ בנייה בהתאמה אישית</div>
           <h4><span dir="ltr">RUBIN 360</span></h4>
@@ -436,7 +439,7 @@ footer{border-top:1px solid var(--border);padding:40px 0;margin-top:20px}
         </div>
       </a>
       <a class="pcard reveal" href="https://amitrubin10.github.io/veritest-showcase/" target="_blank" rel="noopener">
-        <div class="pcard-emoji">🧪</div>
+        <div class="pcard-logo"><img src="img/logo-veritest.png" alt="Veritest — ניהול בדיקות תוכנה" loading="lazy"></div>
         <div class="pcard-body">
           <div class="pcard-tag">🧪 קונספט</div>
           <h4><span dir="ltr">Veritest</span></h4>
@@ -450,7 +453,7 @@ footer{border-top:1px solid var(--border);padding:40px 0;margin-top:20px}
     <div class="cat-head reveal"><span class="cat-ic">📱</span><h3>אפליקציות ומוצרים</h3><span class="line"></span></div>
     <div class="pgrid">
       <a class="pcard reveal" href="/projects/torah-uri/">
-        <div class="pcard-emoji">🕎</div>
+        <div class="pcard-logo"><img src="img/logo-torah.png" alt="תורה אורי — לימוד קריאה בתורה" loading="lazy"></div>
         <div class="pcard-body">
           <div class="pcard-tag">📱 אפליקציה · לימוד</div>
           <h4>תורה אורי</h4>
@@ -459,7 +462,7 @@ footer{border-top:1px solid var(--border);padding:40px 0;margin-top:20px}
         </div>
       </a>
       <a class="pcard reveal" href="/projects/homepage/">
-        <div class="pcard-img"><img src="projects/img/home-hero.jpg" alt="דף הבית האישי — מרכז שליטה לדפדפן" loading="lazy"></div>
+        <div class="pcard-logo"><img src="img/logo-home.png" alt="דף הבית האישי — MYHOME" loading="lazy"></div>
         <div class="pcard-body">
           <div class="pcard-tag">🏠 מוצר אישי</div>
           <h4>דף הבית האישי</h4>
