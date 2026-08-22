@@ -160,9 +160,10 @@ section{padding:64px 0;position:relative}
 .verified-head::before{content:"";position:absolute;left:0;right:0;top:0;height:1px;
   background:linear-gradient(90deg,transparent,rgba(52,211,153,.85),rgba(59,130,246,.75),transparent)}
 .verified-head .cat-ic{font-size:30px;line-height:1}
-.verified-head .vh-txt{display:flex;flex-direction:column;gap:2px}
+.verified-head .vh-txt{display:flex;flex-direction:row;align-items:baseline;gap:14px;flex-wrap:wrap}
 .verified-head h3{font-size:clamp(21px,2.8vw,30px);line-height:1.1}
-.verified-head .cat-sub{display:block;font-size:15px;color:var(--text-2);font-weight:600;white-space:normal}
+.verified-head .cat-sub{font-size:15px;color:var(--text-2);font-weight:600;white-space:nowrap}
+@media(max-width:900px){.verified-head .cat-sub{white-space:normal}}
 .vh-badge{margin-inline-start:auto;font-size:12.5px;font-weight:800;letter-spacing:.4px;color:#6ee7b7;
   background:rgba(16,185,129,.14);border:1px solid rgba(16,185,129,.4);border-radius:999px;padding:7px 16px;white-space:nowrap}
 @media(max-width:760px){.verified-head{padding:14px 16px}.vh-badge{display:none}}
