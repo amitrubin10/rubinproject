@@ -154,6 +154,18 @@ section{padding:64px 0;position:relative}
 .cat-head:first-of-type{margin-top:8px}
 .cat-ic{font-size:24px}
 .cat-head h3{font-size:clamp(19px,2.4vw,26px);font-weight:800;white-space:nowrap}
+.verified-head{position:relative;overflow:hidden;margin:44px 0 22px;padding:18px 24px;border-radius:18px;align-items:center;
+  background:linear-gradient(160deg,rgba(16,185,129,.12),rgba(59,130,246,.09) 60%,rgba(139,92,246,.07));
+  border:1px solid rgba(16,185,129,.32);box-shadow:0 14px 40px rgba(0,0,0,.34),0 0 40px rgba(16,185,129,.10)}
+.verified-head::before{content:"";position:absolute;left:0;right:0;top:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(52,211,153,.85),rgba(59,130,246,.75),transparent)}
+.verified-head .cat-ic{font-size:30px;line-height:1}
+.verified-head .vh-txt{display:flex;flex-direction:column;gap:2px}
+.verified-head h3{font-size:clamp(21px,2.8vw,30px);line-height:1.1}
+.verified-head .cat-sub{display:block;font-size:15px;color:var(--text-2);font-weight:600;white-space:normal}
+.vh-badge{margin-inline-start:auto;font-size:12.5px;font-weight:800;letter-spacing:.4px;color:#6ee7b7;
+  background:rgba(16,185,129,.14);border:1px solid rgba(16,185,129,.4);border-radius:999px;padding:7px 16px;white-space:nowrap}
+@media(max-width:760px){.verified-head{padding:14px 16px}.vh-badge{display:none}}
 .cat-head h3 .veri{color:var(--accent2)}
 .cat-sub{font-size:13px;color:var(--muted);font-weight:600;white-space:nowrap}
 @media(max-width:700px){.cat-sub{display:none}}
@@ -301,7 +313,7 @@ footer{border-top:1px solid var(--border);padding:40px 0;margin-top:20px}
     <a class="nav-logo" href="#top"><img src="img/logo-reverse.png" alt="Rubin Project"><span dir="ltr">Rubin <span class="b">Project</span></span></a>
     <nav class="nav-links" id="navLinks">
       <a href="#services">שירותים</a>
-      <a href="#portfolio">תיק עבודות</a>
+      <a href="#portfolio">תוכנות ומוצרים</a>
       <a href="#results">מהניסיון</a>
       <a href="#creator">מי אני</a>
       <a href="#contact">יצירת קשר</a>
@@ -388,7 +400,7 @@ footer{border-top:1px solid var(--border);padding:40px 0;margin-top:20px}
 <section id="portfolio">
   <div class="wrap">
     <div class="sec-head reveal">
-      <span class="eyebrow">תיק עבודות</span>
+      <span class="eyebrow">תוכנות ומוצרים</span>
       <h2>מערכות אמיתיות שבניתי</h2>
       <p>לוחצים על כל פרויקט — ורואים את הסיפור המלא.</p>
     </div>
@@ -425,7 +437,14 @@ footer{border-top:1px solid var(--border);padding:40px 0;margin-top:20px}
       </a>
     </div>
 
-    <div class="cat-head reveal"><span class="cat-ic">✅</span><h3>סדרת <span dir="ltr"><span class="veri">Veri</span>fied</span></h3><span class="cat-sub">מערכות מאומתות מבית Rubin Project</span><span class="line"></span></div>
+    <div class="cat-head verified-head reveal" id="verified">
+      <span class="cat-ic">✅</span>
+      <div class="vh-txt">
+        <h3>סדרת <span dir="ltr"><span class="veri">Veri</span>fied</span></h3>
+        <span class="cat-sub">מערכות מאומתות מבית Rubin Project</span>
+      </div>
+      <span class="vh-badge">אמינות · דיוק · אחריות</span>
+    </div>
     <div class="pgrid">
       <a class="pcard reveal" href="/projects/verifix/">
         <div class="pcard-logo"><img src="img/logo-verifix.png" alt="Verifix — ניהול תחזוקת מבנים" loading="lazy"></div>
@@ -570,7 +589,7 @@ footer{border-top:1px solid var(--border);padding:40px 0;margin-top:20px}
     <div class="foot-copy">הופכים נתונים להחלטות.<span class="fc-sep"> · </span><span class="fc-c">© Rubin Project</span></div>
     <div class="foot-links">
       <a href="#services">שירותים</a>
-      <a href="#portfolio">תיק עבודות</a>
+      <a href="#portfolio">תוכנות ומוצרים</a>
       <a href="/card/">כרטיס דיגיטלי</a>
       <a href="https://github.com/amitrubin10" target="_blank" rel="noopener">GitHub</a>
       <a href="https://www.linkedin.com/in/amit-rubin-316b83357/" target="_blank" rel="noopener">LinkedIn</a>
