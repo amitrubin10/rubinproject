@@ -154,6 +154,8 @@ section{padding:64px 0;position:relative}
 .cat-head:first-of-type{margin-top:8px}
 .cat-ic{font-size:24px}
 .cat-head h3{font-size:clamp(19px,2.4vw,26px);font-weight:800;white-space:nowrap}
+.cat-sub{font-size:13px;color:var(--muted);font-weight:600;white-space:nowrap}
+@media(max-width:700px){.cat-sub{display:none}}
 .cat-head .line{flex:1;height:1px;background:linear-gradient(90deg,var(--border),transparent)}
 .pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 .pcard{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--border);border-radius:20px;overflow:hidden;transition:.22s}
@@ -393,24 +395,6 @@ footer{border-top:1px solid var(--border);padding:40px 0;margin-top:20px}
     <!-- Category: business solutions -->
     <div class="cat-head reveal"><span class="cat-ic">🏢</span><h3>פתרונות לעסקים</h3><span class="line"></span></div>
     <div class="pgrid">
-      <a class="pcard reveal" href="/projects/verifix/">
-        <div class="pcard-logo"><img src="img/logo-verifix.png" alt="Verifix — ניהול תחזוקת מבנים" loading="lazy"></div>
-        <div class="pcard-body">
-          <div class="pcard-tag">🏢 מערכת פרודקשן</div>
-          <h4><span dir="ltr">Verifix</span></h4>
-          <p>ניהול תחזוקת מבנים — קריאות שבר, אחזקה מונעת ו-SLA. רץ בפרודקשן בחברת נמלי ישראל.</p>
-          <div class="pcard-foot"><span class="chip">Next.js</span><span class="chip">SLA</span><span class="pcard-more">לפרטים ←</span></div>
-        </div>
-      </a>
-      <a class="pcard reveal" href="https://www.veribayit.com" target="_blank" rel="noopener">
-        <div class="pcard-logo"><img src="img/logo-veribayit.png" alt="VeriBayit — ניהול ועד בית" loading="lazy"></div>
-        <div class="pcard-body">
-          <div class="pcard-tag">☁️ SaaS חי</div>
-          <h4><span dir="ltr">VeriBayit</span></h4>
-          <p>SaaS לניהול ועד בית שמתחבר לדף הבנק ומזהה אוטומטית מי שילם, כמה ולמה.</p>
-          <div class="pcard-foot"><span class="chip">SaaS</span><span class="chip">אינטגרציית בנק</span><span class="pcard-more">לאתר החי ←</span></div>
-        </div>
-      </a>
       <a class="pcard reveal" href="/projects/bot-analytics/">
         <div class="pcard-logo"><img src="img/logo-bot.png" alt="Bot Analytics — ניתוח שירות מבוסס AI" loading="lazy"></div>
         <div class="pcard-body">
@@ -438,6 +422,28 @@ footer{border-top:1px solid var(--border);padding:40px 0;margin-top:20px}
           <div class="pcard-foot"><span class="chip">מותאם אישית</span><span class="chip">0→100</span><span class="pcard-more">לפרטים ←</span></div>
         </div>
       </a>
+    </div>
+
+    <div class="cat-head reveal"><span class="cat-ic">✅</span><h3>סדרת Veri</h3><span class="cat-sub">מערכות מאומתות מבית Rubin Project</span><span class="line"></span></div>
+    <div class="pgrid">
+      <a class="pcard reveal" href="/projects/verifix/">
+        <div class="pcard-logo"><img src="img/logo-verifix.png" alt="Verifix — ניהול תחזוקת מבנים" loading="lazy"></div>
+        <div class="pcard-body">
+          <div class="pcard-tag">🏢 מערכת פרודקשן</div>
+          <h4><span dir="ltr">Verifix</span></h4>
+          <p>ניהול תחזוקת מבנים — קריאות שבר, אחזקה מונעת ו-SLA. רץ בפרודקשן בחברת נמלי ישראל.</p>
+          <div class="pcard-foot"><span class="chip">Next.js</span><span class="chip">SLA</span><span class="pcard-more">לפרטים ←</span></div>
+        </div>
+      </a>
+      <a class="pcard reveal" href="https://www.veribayit.com" target="_blank" rel="noopener">
+        <div class="pcard-logo"><img src="img/logo-veribayit.png" alt="VeriBayit — ניהול ועד בית" loading="lazy"></div>
+        <div class="pcard-body">
+          <div class="pcard-tag">☁️ SaaS חי</div>
+          <h4><span dir="ltr">VeriBayit</span></h4>
+          <p>SaaS לניהול ועד בית שמתחבר לדף הבנק ומזהה אוטומטית מי שילם, כמה ולמה.</p>
+          <div class="pcard-foot"><span class="chip">SaaS</span><span class="chip">אינטגרציית בנק</span><span class="pcard-more">לאתר החי ←</span></div>
+        </div>
+      </a>
       <a class="pcard reveal" href="https://amitrubin10.github.io/veritest-showcase/" target="_blank" rel="noopener">
         <div class="pcard-logo"><img src="img/logo-veritest.png" alt="Veritest — ניהול בדיקות תוכנה" loading="lazy"></div>
         <div class="pcard-body">
@@ -449,7 +455,6 @@ footer{border-top:1px solid var(--border);padding:40px 0;margin-top:20px}
       </a>
     </div>
 
-    <!-- Category: apps & products -->
     <div class="cat-head reveal"><span class="cat-ic">📱</span><h3>אפליקציות ומוצרים</h3><span class="line"></span></div>
     <div class="pgrid">
       <a class="pcard reveal" href="/projects/torah-uri/">
