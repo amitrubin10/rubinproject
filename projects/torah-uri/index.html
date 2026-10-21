@@ -312,32 +312,66 @@ footer{border-top:1px solid #26314c;padding:40px 0;background:#0c1119}
       <h2>פשוט, אישי — ומוכן לבר המצווה</h2>
       <p>קריאה אישית של הילד שלכם, בנויה בתוך האפליקציה ומוכנה להתקנה בכל מכשיר.</p>
     </div>
-    <div class="pricewrap">
-      <!-- price card -->
-      <div class="pricecard">
-        <div class="ptop">
-          <span class="pribbon">מנוי חודשי</span>
-          <div class="pamount"><span class="pnum">119</span><span class="pcur">₪</span><span class="pper">/ לחודש</span></div>
-          <div class="pdesc">קישור בלעדי עבור הקריאה של ילדכם</div>
+    <style>
+      .pkgwrap{max-width:720px;margin:0 auto}
+      .pkg-group-title{text-align:center;font-size:18px;font-weight:800;color:var(--ink);margin:16px 0 12px}
+      .pkg-group-title span{display:block;font-size:13.5px;font-weight:600;color:var(--muted);margin-top:3px}
+      .pkg-cards{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+      .pkg{background:var(--card);border:1.5px solid var(--border);border-radius:18px;padding:20px 22px;text-align:center;position:relative;box-shadow:0 10px 26px rgba(30,58,107,.08)}
+      .pkg.best{border:2px solid var(--gold);box-shadow:0 14px 34px rgba(201,154,43,.20)}
+      .pkg-ribbon{position:absolute;top:-12px;left:0;right:0;margin-inline:auto;width:max-content;background:var(--grad-gold);color:#3a2a00;font-size:12px;font-weight:800;padding:4px 14px;border-radius:999px}
+      .pkg-dur{font-size:14px;color:var(--muted);font-weight:700;margin-bottom:8px}
+      .pkg-price{font-size:40px;font-weight:900;color:var(--navy);line-height:1}
+      .pkg-price .c{font-size:25px;font-weight:800;color:var(--gold);margin-inline-start:2px}
+      .pkg-extra{text-align:center;color:var(--muted);font-size:15px;margin:16px 0 4px}
+      .pkg-extra b{color:var(--ink)}
+      .pkg-cta{text-align:center;margin-top:24px}
+      .pkg-cta .btn{font-size:16px;padding:15px 34px}
+      .pkg-note{text-align:center;font-size:13.5px;color:var(--muted);margin-top:12px}
+      .howcard.below{max-width:720px;margin:28px auto 0}
+      @media(max-width:520px){.pkg-cards{grid-template-columns:1fr}}
+    </style>
+    <div class="pkgwrap">
+      <div class="pkg-group">
+        <div class="pkg-group-title">עם הקלטה אישית<span>אנחנו מקליטים את הקטע עבור הילד</span></div>
+        <div class="pkg-cards">
+          <div class="pkg">
+            <div class="pkg-dur">3 חודשי גישה + הקלטה אישית</div>
+            <div class="pkg-price"><span class="c">₪</span>350</div>
+          </div>
+          <div class="pkg best">
+            <span class="pkg-ribbon">הכי משתלם</span>
+            <div class="pkg-dur">6 חודשי גישה + הקלטה אישית</div>
+            <div class="pkg-price"><span class="c">₪</span>500</div>
+          </div>
         </div>
-        <ul class="plist">
-          <li>קישור פרטי ובלעדי לקריאה של הילד שלכם</li>
-          <li>מוכן להתקנה — בנייד, במחשב או בטאבלט</li>
-          <li>כל היכולות: השמעה, הקלטה עצמית והשוואה למקור</li>
-          <li>ניתן להפסיק את החיוב בכל עת</li>
-        </ul>
-        <a class="btn btn-gold pbtn" href="https://wa.me/972527246200?text=%D7%94%D7%99%D7%99%20%D7%A2%D7%9E%D7%99%D7%AA%2C%20%D7%A8%D7%90%D7%99%D7%AA%D7%99%20%D7%90%D7%AA%20%C2%AB%D7%AA%D7%95%D7%A8%D7%94%20%D7%90%D7%95%D7%A8%D7%99%C2%BB%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%94%D7%AA%D7%97%D7%99%D7%9C%20%D7%A2%D7%91%D7%95%D7%A8%20%D7%94%D7%A7%D7%A8%D7%99%D7%90%D7%94%20%D7%A9%D7%9C%20%D7%94%D7%99%D7%9C%D7%93%20%D7%A9%D7%9C%D7%99.%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A4%D7%A8%D7%98%D7%99%D7%9D." target="_blank" rel="noopener">💬 מתחילים — דברו איתי</a>
-        <div class="pnote">הילד מרגיש מוכן? ניתן להפסיק בכל עת את החיוב.</div>
       </div>
-      <!-- how it works -->
-      <div class="howcard">
-        <h3>איך זה עובד?</h3>
-        <ol class="steps">
-          <li><span class="snum">1</span><div><b>הרב מקליט את הקריאה</b><p>הקלטה של הקטע המדויק של הילד — פרשה ועלייה.</p></div></li>
-          <li><span class="snum">2</span><div><b>אנחנו מעלים לאפליקציה</b><p>בונים את הקריאה בתוך «תורה אורי» עם כל היכולות.</p></div></li>
-          <li><span class="snum">3</span><div><b>מקבלים קישור מוכן</b><p>שולחים לכם קישור להתקנה — בנייד, במחשב או בטאבלט.</p></div></li>
-        </ol>
+      <div class="pkg-extra">כל חודש נוסף אחרי החבילה: <b>₪65</b></div>
+      <div class="pkg-group">
+        <div class="pkg-group-title">יש לכם כבר הקלטה?<span>נהפוך אותה לאפליקציה אישית</span></div>
+        <div class="pkg-cards">
+          <div class="pkg">
+            <div class="pkg-dur">3 חודשי גישה</div>
+            <div class="pkg-price"><span class="c">₪</span>270</div>
+          </div>
+          <div class="pkg">
+            <div class="pkg-dur">6 חודשי גישה</div>
+            <div class="pkg-price"><span class="c">₪</span>420</div>
+          </div>
+        </div>
       </div>
+      <div class="pkg-cta">
+        <a class="btn btn-gold" href="https://wa.me/972527246200?text=%D7%94%D7%99%D7%99%20%D7%A2%D7%9E%D7%99%D7%AA%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A2%D7%9C%20%D7%AA%D7%95%D7%A8%D7%94%20%D7%90%D7%95%D7%A8%D7%99" target="_blank" rel="noopener">💬 לפרטים ולהרשמה</a>
+        <div class="pkg-note">בלי התחייבות, עוצרים מתי שרוצים.</div>
+      </div>
+    </div>
+    <div class="howcard below">
+      <h3>איך זה עובד?</h3>
+      <ol class="steps">
+        <li><span class="snum">1</span><div><b>הרב מקליט את הקריאה</b><p>הקלטה של הקטע המדויק של הילד, פרשה ועלייה.</p></div></li>
+        <li><span class="snum">2</span><div><b>אנחנו מעלים לאפליקציה</b><p>בונים את הקריאה בתוך «תורה אורי» עם כל היכולות.</p></div></li>
+        <li><span class="snum">3</span><div><b>מקבלים קישור מוכן</b><p>שולחים לכם קישור להתקנה בנייד, במחשב או בטאבלט.</p></div></li>
+      </ol>
     </div>
   </div>
 </section>
