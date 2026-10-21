@@ -65,6 +65,22 @@ header.nav{position:sticky;top:0;z-index:100;background:rgba(10,14,23,0.82);back
 .nav-logo .b{color:var(--accent2)}
 .nav-links{display:flex;gap:24px;font-size:14px;font-weight:500}
 .nav-links a{color:var(--muted);transition:.15s}.nav-links a:hover{color:var(--text)}
+.nav-dd{position:relative;display:flex;align-items:center}
+.nav-dd-btn{display:inline-flex;align-items:center;gap:7px;font-family:inherit;font-size:14px;font-weight:500;color:var(--muted);background:transparent;border:0;padding:0;margin:0;cursor:pointer;line-height:1;transition:.15s}
+.nav-dd-btn:hover,.nav-dd.open .nav-dd-btn{color:var(--text)}
+.nav-dd-btn img{width:23px;height:23px;object-fit:contain;flex:none;filter:drop-shadow(0 0 8px rgba(59,130,246,.5))}
+.nav-dd-chev{width:8px;height:8px;border-right:1.6px solid currentColor;border-bottom:1.6px solid currentColor;transform:translateY(-2px) rotate(45deg);transition:transform .2s;flex:none}
+.nav-dd.open .nav-dd-chev{transform:translateY(1px) rotate(225deg)}
+.nav-dd-menu{position:absolute;top:calc(100% + 15px);inset-inline-end:0;min-width:236px;z-index:120;background:linear-gradient(160deg,var(--card),var(--card2));border:1px solid var(--border);border-radius:14px;padding:7px;box-shadow:var(--shadow);opacity:0;visibility:hidden;transform:translateY(-7px);transition:opacity .18s,transform .18s,visibility .18s}
+.nav-dd.open .nav-dd-menu{opacity:1;visibility:visible;transform:none}
+.nav-dd-menu a{display:block;padding:10px 13px;border-radius:10px;transition:.15s}
+.nav-dd-menu a:hover{background:rgba(59,130,246,.14)}
+.nav-dd-menu .dd-t{display:block;font-size:14.5px;font-weight:700;color:var(--text)}
+.nav-dd-menu .dd-s{display:block;font-size:12px;color:var(--muted);margin-top:3px}
+@media(hover:hover) and (pointer:fine) and (min-width:921px){
+  .nav-dd:hover .nav-dd-menu{opacity:1;visibility:visible;transform:none}
+  .nav-dd:hover .nav-dd-chev{transform:translateY(1px) rotate(225deg)}
+}
 .nav-cta{display:flex;gap:10px;margin-inline-start:auto}
 .nav-cta .btn{padding:9px 18px;font-size:14px}
 .burger{display:none;background:transparent;border:1px solid var(--border);color:var(--text);font-size:20px;border-radius:10px;width:42px;height:42px;cursor:pointer;margin-inline-start:auto}
@@ -266,6 +282,11 @@ footer{border-top:1px solid var(--border);padding:40px 0;margin-top:20px}
   .nav-links,.nav-cta,.nav-travel{display:none}
   .burger{display:block}
   .nav-links.open{display:flex;position:absolute;top:76px;inset-inline-end:14px;flex-direction:column;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:14px 18px;gap:14px;box-shadow:var(--shadow)}
+  .nav-links.open .nav-dd{flex-direction:column;align-items:stretch;width:100%}
+  .nav-links.open .nav-dd-btn{width:100%;justify-content:flex-start}
+  .nav-links.open .nav-dd-menu{position:static;display:none;opacity:1;visibility:visible;transform:none;min-width:0;margin:11px 0 0;padding:0 11px 0 0;background:none;border:0;border-inline-start:2px solid var(--border);border-radius:0;box-shadow:none}
+  .nav-links.open .nav-dd.open .nav-dd-menu{display:block}
+  .nav-links.open .nav-dd-menu a{padding:7px 0}
 }
 @media(max-width:560px){
   .hero .sub{font-size:18px;white-space:normal}.sec-head h2{font-size:27px}.value h2{font-size:30px}
@@ -317,6 +338,19 @@ footer{border-top:1px solid var(--border);padding:40px 0;margin-top:20px}
       <a href="#portfolio">תוכנות ומוצרים</a>
       <a href="#results">מהניסיון</a>
       <a href="#creator">מי אני</a>
+      <div class="nav-dd" id="ebDd">
+        <button class="nav-dd-btn" id="ebBtn" type="button" aria-expanded="false" aria-haspopup="true" aria-controls="ebMenu">
+          <img src="img/evenbina-mark.png" alt="" aria-hidden="true">
+          <span>אבן בינה</span>
+          <i class="nav-dd-chev" aria-hidden="true"></i>
+        </button>
+        <div class="nav-dd-menu" id="ebMenu" role="menu">
+          <a href="https://evenbina.co.il/" target="_blank" rel="noopener" role="menuitem">
+            <span class="dd-t">קורס AI לנוער</span>
+            <span class="dd-s">מפתחי AI צעירים · כיתות ז עד יב</span>
+          </a>
+        </div>
+      </div>
       <a href="#contact">יצירת קשר</a>
     </nav>
     <div class="nav-travel"><img class="nav-orb" src="img/ar-logo.png" alt=""></div>
@@ -592,6 +626,7 @@ footer{border-top:1px solid var(--border);padding:40px 0;margin-top:20px}
       <a href="#services">שירותים</a>
       <a href="#portfolio">תוכנות ומוצרים</a>
       <a href="/card/">כרטיס דיגיטלי</a>
+      <a href="https://evenbina.co.il/" target="_blank" rel="noopener">אבן בינה</a>
       <a href="https://github.com/amitrubin10" target="_blank" rel="noopener">GitHub</a>
       <a href="https://www.linkedin.com/in/amit-rubin-316b83357/" target="_blank" rel="noopener">LinkedIn</a>
       <a href="https://wa.me/972527246200" target="_blank" rel="noopener">וואטסאפ 052-7246200</a>
@@ -605,6 +640,14 @@ if('scrollRestoration' in history)history.scrollRestoration='manual';
 window.addEventListener('load',function(){if(!location.hash)window.scrollTo(0,0);});
 const burger=document.getElementById('burger'),navLinks=document.getElementById('navLinks');
 burger&&burger.addEventListener('click',()=>navLinks.classList.toggle('open'));
+const ebDd=document.getElementById('ebDd'),ebBtn=document.getElementById('ebBtn');
+function ebSet(open){if(!ebDd)return;ebDd.classList.toggle('open',open);ebBtn.setAttribute('aria-expanded',open?'true':'false');}
+if(ebDd&&ebBtn){
+  ebBtn.addEventListener('click',e=>{e.stopPropagation();ebSet(!ebDd.classList.contains('open'));});
+  document.addEventListener('click',e=>{if(!ebDd.contains(e.target))ebSet(false);});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&ebDd.classList.contains('open')){ebSet(false);ebBtn.focus();}});
+  burger&&burger.addEventListener('click',()=>ebSet(false));
+}
 navLinks&&navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>navLinks.classList.remove('open')));
 // לוגו נע בשורה העליונה — מרחק המסלול מחושב לפי רוחב הפנוי בין הקישור לכפתור
 function setOrbTravel(){
