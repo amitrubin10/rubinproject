@@ -3,13 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rubin Project — פתרונות BI, אוטומציה ותוכנה לעסקים</title>
-<meta name="description" content="Rubin Project — דשבורדים ומערכות BI, אוטומציה עסקית ותוכנה בהתאמה אישית לעסקים. מתוך 20 שנות הובלת תהליכים עסקיים. הופכים נתונים להחלטות.">
+<title>Rubin Project | פתרונות BI, אוטומציה ותוכנה לעסקים</title>
+<meta name="description" content="דשבורדים ומערכות BI, אוטומציה עסקית ותוכנה בהתאמה אישית לעסקים ולארגונים, מתוך 20 שנה של הובלת תהליכים עסקיים. Rubin Project, עמית רובין.">
 <link rel="canonical" href="https://www.rubinproject.com/">
 <link rel="icon" href="img/favicon.png">
+<meta name="theme-color" content="#0b1220">
 <meta property="og:site_name" content="Rubin Project">
-<meta property="og:title" content="פתרונות BI, אוטומציה ותוכנה לעסקים — Rubin Project">
-<meta property="og:description" content="הופכים נתונים להחלטות — פתרונות BI, אוטומציה ותוכנה בהתאמה אישית, מתוך הבנה של התהליך העסקי.">
+<meta property="og:title" content="פתרונות BI, אוטומציה ותוכנה לעסקים | Rubin Project">
+<meta property="og:description" content="הנתונים כבר אצלך. דשבורדים, אוטומציה ותוכנה בהתאמה אישית, מתוך הבנה של התהליך העסקי.">
 <meta property="og:image" content="https://www.rubinproject.com/img/og-rubin-brand.jpg?v=1">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
@@ -18,648 +19,1468 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="he_IL">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="פתרונות BI, אוטומציה ותוכנה לעסקים — Rubin Project">
-<meta name="twitter:description" content="הופכים נתונים להחלטות.">
+<meta name="twitter:title" content="פתרונות BI, אוטומציה ותוכנה לעסקים | Rubin Project">
+<meta name="twitter:description" content="הנתונים כבר אצלך. אני גורם להם לדבר.">
 <meta name="twitter:image" content="https://www.rubinproject.com/img/og-rubin-brand.jpg?v=1">
+<script>document.documentElement.classList.add('js');</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700;800&family=Frank+Ruhl+Libre:wght@700;900&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#0a0e17; --bg2:#0d1322; --card:#141c2e; --card2:#1a2235; --border:#26314c;
-  --text:#e8ecf4; --muted:#8b95a8; --muted2:#5a6478;
-  --accent:#3b82f6; --accent2:#60a5fa; --accent-dk:#1d4ed8;
-  --cyan:#22d3ee; --success:#10b981; --warn:#f59e0b; --warning:#f59e0b; --danger:#ef4444; --purple:#8b5cf6;
-  --bg-2:#141c2e; --panel:#1a2235; --panel-2:#243049; --accent-2:#60a5fa;
-  --text-2:#b9c2d6; --text-muted:#8b95a8; --text-primary:#e8ecf4; --purple-bg:rgba(139,92,246,0.15);
-  --grad:linear-gradient(135deg,#3b82f6,#1d4ed8);
-  --grad-soft:linear-gradient(135deg,rgba(59,130,246,0.16),rgba(139,92,246,0.10));
-  --radius:18px; --shadow:0 18px 50px rgba(0,0,0,0.45); --shadow-img:0 26px 70px rgba(0,0,0,0.55);
+  --paper:#e8eff8; --paper-2:#dce6f3; --panel:#f3f7fc; --edge:#c9d6e8; --edge-2:#d9e3f0;
+  --ink:#0d1626; --ink-2:#2c384d; --dim:#526077;
+  --deep:#0b1220; --deep-2:#111a2c; --deep-3:#17233a; --deep-ink:#e9eff7; --deep-dim:#9aa7bd; --deep-edge:#22304a;
+  --acc:#1f5fd6; --acc-ink:#1a4fb4; --acc-2:#08637f;
+  --acc-on-deep:#6fa4ff; --acc2-on-deep:#3fc4e0;
+  --wash1:rgba(31,95,214,.09); --wash2:rgba(18,137,171,.09);
+  --live:#2fbf86;
+  --r-sm:10px; --r:16px; --r-lg:24px;
+  --shadow:0 1px 2px rgba(13,22,38,.05),0 14px 34px rgba(13,22,38,.07);
+  --shadow-lg:0 2px 6px rgba(2,6,16,.4),0 34px 80px rgba(2,6,16,.5);
+  --maxw:1200px; --gutter:clamp(18px,4.5vw,44px);
+  --fs-display:clamp(2.3rem,min(5.3vw,8vh),3.95rem); --fs-h2:clamp(1.75rem,3.3vw,2.5rem); --fs-lead:clamp(1.06rem,1.35vw,1.2rem);
+  --font-head:'Frank Ruhl Libre',Georgia,'Times New Roman',serif;
+  --font-body:'Assistant','Segoe UI',system-ui,-apple-system,sans-serif;
+  --font-mono:'JetBrains Mono','Assistant',ui-monospace,Consolas,monospace;
+  --ease:cubic-bezier(.22,1,.36,1);
+  --dip:clamp(22px,3.4vw,50px);
+  --nav-h:72px; --peek:34px;
+  --edge-x:clamp(var(--gutter),7vw,200px);
 }
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{font-family:'Heebo',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{font-family:var(--font-body);font-size:17px;line-height:1.7;background:var(--paper);color:var(--ink);overflow-x:hidden;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
 a{color:inherit;text-decoration:none}
-img{max-width:100%;display:block}
-.wrap{max-width:1220px;margin:0 auto;padding:0 22px}
-.cy{color:var(--cyan)}
-.eyebrow{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:700;letter-spacing:.3px;color:var(--accent2);background:rgba(59,130,246,0.12);border:1px solid rgba(59,130,246,0.3);padding:6px 14px;border-radius:999px;margin-bottom:18px}
-.btn{position:relative;display:inline-flex;align-items:center;gap:8px;font-family:inherit;font-size:15px;font-weight:700;padding:13px 26px;border-radius:12px;cursor:pointer;border:1px solid transparent;transition:transform .2s,box-shadow .2s,background .2s,border-color .2s;white-space:nowrap;overflow:hidden;isolation:isolate}
-.btn::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(120deg,transparent 32%,rgba(255,255,255,.4) 50%,transparent 68%);transform:translateX(-130%)}
-.btn:hover::after{animation:sweep .75s ease}
-@keyframes sweep{to{transform:translateX(130%)}}
-.btn-primary{background:linear-gradient(135deg,#3b82f6,#2563eb 55%,#1d4ed8);color:#fff;box-shadow:0 8px 24px rgba(59,130,246,.42),inset 0 0 0 1px rgba(120,180,255,.35)}
-.btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 38px rgba(59,130,246,.6),0 0 24px rgba(59,130,246,.55),inset 0 0 0 1px rgba(120,180,255,.5)}
-.btn-ghost{background:transparent;color:var(--text);border-color:var(--border)}
-.btn-ghost:hover{border-color:var(--accent);color:var(--accent2);transform:translateY(-2px);box-shadow:0 0 22px rgba(59,130,246,.28)}
-.btn-wa{background:#25d366;color:#0a1f12;box-shadow:0 8px 22px rgba(37,211,102,.32)}
-.btn-wa:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(37,211,102,.5),0 0 20px rgba(37,211,102,.4)}
-@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
-.float{animation:floaty 3.6s ease-in-out infinite}
+img,svg{display:block;max-width:100%}
+button,input,select,textarea{font:inherit;color:inherit}
+h1,h2,h3{font-family:var(--font-head);line-height:1.18;text-wrap:balance;letter-spacing:-.2px}
+p{text-wrap:pretty}
+.ico{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;flex:none}
+:focus-visible{outline:2px solid var(--acc);outline-offset:3px;border-radius:6px}
+.band-deep :focus-visible{outline-color:var(--acc-on-deep)}
+.skip{position:absolute;top:-80px;inset-inline-start:16px;z-index:300;background:var(--ink);color:#fff;padding:10px 18px;border-radius:var(--r-sm);font-weight:700;transition:top .2s}
+.skip:focus{top:12px}
+.wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter)}
 
-/* NAV */
-header.nav{position:sticky;top:0;z-index:100;background:rgba(10,14,23,0.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
-.nav-in{display:flex;align-items:center;gap:22px;height:94px;padding:0 32px;max-width:none}
-.nav-logo{display:flex;align-items:center;gap:11px;font-size:26px;font-weight:900;letter-spacing:-.5px}
-.nav-logo img{height:70px;width:auto}
-.nav-logo .b{color:var(--accent2)}
-.nav-links{display:flex;align-items:center;gap:27px;font-size:16.5px;font-weight:500}
-.nav-links a{color:var(--muted);transition:.15s}.nav-links a:hover{color:var(--text)}
+/* bands */
+.band{position:relative;padding-block:clamp(66px,8vw,108px)}
+.band-light{background:radial-gradient(42% 46% at 92% 6%,var(--wash1),transparent 64%),radial-gradient(38% 42% at 4% 96%,var(--wash2),transparent 62%),var(--paper)}
+.band-light.alt{background:radial-gradient(46% 60% at 4% 0%,var(--wash1),transparent 66%),radial-gradient(40% 50% at 96% 100%,var(--wash2),transparent 62%),var(--paper-2)}
+.band-deep{background:var(--deep);color:var(--deep-ink)}
+
+/* section heads */
+.sh{max-width:800px;margin-bottom:clamp(32px,4vw,48px)}
+.k{display:inline-flex;align-items:center;gap:10px;font-size:14px;font-weight:700;color:var(--acc-ink);margin-bottom:14px}
+.k::before{content:"";width:24px;height:2px;border-radius:2px;background:currentColor}
+.band-deep .k{color:var(--acc-on-deep)}
+.sh h2{font-size:var(--fs-h2);font-weight:700}
+.sh p{margin-top:14px;max-width:62ch;font-size:var(--fs-lead);color:var(--dim)}
+.band-deep .sh p{color:var(--deep-dim)}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;border-radius:999px;font-weight:800;font-size:15.5px;padding:12px 24px;border:1px solid transparent;cursor:pointer;white-space:nowrap;transition:transform .2s var(--ease),box-shadow .2s,background-color .2s,border-color .2s,color .2s}
+.btn .ico{width:19px;height:19px}
+.btn-solid{background:var(--acc);color:#fff;box-shadow:0 6px 18px rgba(31,95,214,.28)}
+.btn-solid:hover{background:var(--acc-ink);transform:translateY(-1px);box-shadow:0 10px 26px rgba(31,95,214,.36)}
+.btn-ghost{background:transparent;color:var(--ink);border-color:var(--edge)}
+.btn-ghost:hover{border-color:var(--acc);color:var(--acc-ink)}
+.btn-lg{font-size:16.5px;padding:15px 30px}
+.band-deep .btn-solid,.hero .btn-solid{background:var(--acc-on-deep);color:var(--deep);box-shadow:0 8px 26px rgba(111,164,255,.25)}
+.band-deep .btn-solid:hover,.hero .btn-solid:hover{background:#8db8ff}
+.band-deep .btn-ghost,.hero .btn-ghost{color:var(--deep-ink);border-color:var(--deep-edge)}
+.band-deep .btn-ghost:hover,.hero .btn-ghost:hover{border-color:var(--acc-on-deep);color:#fff}
+.tlink{display:inline-flex;align-items:center;gap:6px;font-weight:800;color:var(--acc-ink)}
+.tlink:hover{text-decoration:underline;text-underline-offset:4px}
+.band-deep .tlink{color:var(--acc-on-deep)}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:100;background:color-mix(in srgb,var(--panel) 86%,transparent);backdrop-filter:saturate(1.4) blur(14px);-webkit-backdrop-filter:saturate(1.4) blur(14px);border-bottom:1px solid var(--edge)}
+.nav-in{display:flex;align-items:center;gap:26px;height:72px;max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter)}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:19px;letter-spacing:-.3px;color:var(--ink);flex:none}
+.brand img{width:41px;height:40px}
+.brand .b{color:var(--acc)}
+.nav-links{display:flex;align-items:center;gap:24px;font-size:15.5px;font-weight:600;white-space:nowrap}
+.nav-links > a,.nav-dd-btn{color:var(--ink-2);transition:color .15s}
+.nav-links > a:hover,.nav-dd-btn:hover,.nav-dd.open .nav-dd-btn{color:var(--acc-ink)}
 .nav-dd{position:relative;display:flex;align-items:center}
-.nav-dd-btn{display:inline-flex;align-items:center;gap:9px;font-family:inherit;font-size:16.5px;font-weight:500;color:var(--muted);background:transparent;border:0;padding:0;margin:0;cursor:pointer;line-height:1;transition:.15s}
-.nav-dd-btn:hover,.nav-dd.open .nav-dd-btn{color:var(--text)}
-.nav-dd-btn img{height:40px;width:auto;object-fit:contain;flex:none;filter:drop-shadow(0 0 10px rgba(59,130,246,.55))}
-.nav-dd-chev{width:8px;height:8px;border-right:1.6px solid currentColor;border-bottom:1.6px solid currentColor;transform:translateY(-2px) rotate(45deg);transition:transform .2s;flex:none}
+.nav-dd-btn{display:inline-flex;align-items:center;gap:8px;background:none;border:0;cursor:pointer;font-weight:600;line-height:1}
+.nav-dd-btn img{width:38px;height:30px;object-fit:contain}
+.nav-dd-chev{width:7px;height:7px;border-right:1.6px solid currentColor;border-bottom:1.6px solid currentColor;transform:translateY(-2px) rotate(45deg);transition:transform .2s;flex:none}
 .nav-dd.open .nav-dd-chev{transform:translateY(1px) rotate(225deg)}
-.nav-dd-menu{position:absolute;top:calc(100% + 15px);inset-inline-end:0;min-width:236px;z-index:120;background:linear-gradient(160deg,var(--card),var(--card2));border:1px solid var(--border);border-radius:14px;padding:7px;box-shadow:var(--shadow);opacity:0;visibility:hidden;transform:translateY(-7px);transition:opacity .18s,transform .18s,visibility .18s}
+.nav-dd-menu{position:absolute;top:calc(100% + 18px);inset-inline-end:0;min-width:260px;z-index:120;background:var(--panel);border:1px solid var(--edge);border-radius:var(--r);padding:8px;box-shadow:var(--shadow),0 24px 50px rgba(13,22,38,.12);opacity:0;visibility:hidden;transform:translateY(-6px);transition:opacity .18s,transform .18s,visibility .18s}
 .nav-dd.open .nav-dd-menu{opacity:1;visibility:visible;transform:none}
-.nav-dd-menu a{display:block;padding:10px 13px;border-radius:10px;transition:.15s}
-.nav-dd-menu a:hover{background:rgba(59,130,246,.14)}
-.nav-dd-menu .dd-t{display:block;font-size:15.5px;font-weight:700;color:var(--text)}
-.nav-dd-menu .dd-s{display:block;font-size:12.5px;color:var(--muted);margin-top:3px}
-@media(hover:hover) and (pointer:fine) and (min-width:921px){
-  .nav-dd:hover .nav-dd-menu{opacity:1;visibility:visible;transform:none}
+.nav-dd-menu a,.dd-info{display:block;padding:10px 13px;border-radius:var(--r-sm)}
+.nav-dd-menu a{transition:background-color .15s}
+.nav-dd-menu a:hover{background:var(--wash1)}
+.dd-info{border-bottom:1px solid var(--edge-2);border-radius:0;margin-bottom:4px;padding-bottom:12px}
+.dd-t{display:block;font-size:15.5px;font-weight:700;color:var(--ink)}
+.dd-s{display:block;font-size:13.5px;color:var(--dim);margin-top:2px}
+@media(hover:hover) and (pointer:fine) and (min-width:1281px){
+  .nav-dd:hover .nav-dd-menu,.nav-dd:focus-within .nav-dd-menu{opacity:1;visibility:visible;transform:none}
   .nav-dd:hover .nav-dd-chev{transform:translateY(1px) rotate(225deg)}
 }
-.nav-cta{display:flex;gap:11px;margin-inline-start:auto}
-.nav-cta .btn{padding:12px 23px;font-size:15.5px}
-.burger{display:none;background:transparent;border:1px solid var(--border);color:var(--text);font-size:23px;border-radius:11px;width:48px;height:48px;cursor:pointer;margin-inline-start:auto}
+.nav-cta{display:flex;align-items:center;gap:10px;margin-inline-start:auto}
+.nav-cta .btn{padding:10px 20px;font-size:15px}
+.burger{display:none;background:none;border:1px solid var(--edge);border-radius:12px;width:46px;height:46px;cursor:pointer;align-items:center;justify-content:center;color:var(--ink)}
+.nav-wa-m{display:none}
 
-/* HERO */
-.hero{position:relative;overflow:hidden;background:#0a0e17;border-bottom:1px solid var(--border);width:100%;max-width:1340px;margin-inline:auto;aspect-ratio:1500/818;min-height:540px}
-.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center}
-.hero-cssbg{background:
-  radial-gradient(1100px 560px at 50% 6%, rgba(59,130,246,.22), transparent 62%),
-  radial-gradient(820px 520px at 84% 94%, rgba(34,211,238,.14), transparent 60%),
-  linear-gradient(180deg,#0a0e17,#0d1322);}
-.hero-cssbg::after{content:"";position:absolute;inset:0;
-  background-image:linear-gradient(rgba(96,165,250,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(96,165,250,.07) 1px,transparent 1px);
-  background-size:46px 46px;
-  -webkit-mask-image:radial-gradient(circle at 50% 38%,#000,transparent 72%);mask-image:radial-gradient(circle at 50% 38%,#000,transparent 72%);}
-.hero-mask{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,14,23,.55),rgba(10,14,23,.22) 42%,rgba(10,14,23,.72))}
-.hero-brand-tr{position:absolute;top:22px;right:26px;z-index:5}
-.hero-brand-tr img{width:104px;height:104px;filter:drop-shadow(0 8px 22px rgba(0,0,0,.55))}
-.hero-content{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-start;align-items:center;text-align:center;padding:32px 22px 50px}
-.hero-wordmark{position:absolute;left:50%;top:66%;transform:translate(-50%,-50%);width:100%}
-.hero .sub{font-size:25px;font-weight:800;color:#eef3fb;white-space:nowrap;margin:0;padding:8px 24px;background:rgba(12,22,36,.26);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-radius:14px;text-shadow:0 2px 18px rgba(0,0,0,.9)}
-.hero-wordmark .wm{font-size:74px;font-weight:900;line-height:1;letter-spacing:-1px;color:#fff;text-shadow:0 3px 28px rgba(0,0,0,.85)}
-.hero-wordmark .wm .b{color:#38bdf8}
-.hero-wordmark .wm-tag{font-size:24px;font-weight:700;color:#e6ecf7;margin-top:12px;text-shadow:0 2px 16px rgba(0,0,0,.85)}
-.hero-wordmark .wm-tag .cy{color:var(--cyan)}
-/* floating side notes */
-.fb-col{position:fixed;top:50%;transform:translateY(-50%);z-index:90;display:flex;flex-direction:column;gap:13px;width:max-content;max-width:225px;pointer-events:none}
-.fb-col.fb-left{left:24px;top:36%}
-.fb-col.fb-right{right:24px;top:64%}
-.fb-inner{background:rgba(13,19,32,.94);border:1px solid rgba(34,211,238,.5);border-radius:12px;padding:10px 14px;font-size:12.5px;color:var(--text);box-shadow:0 12px 30px rgba(0,0,0,.5);line-height:1.5}
-.fb-inner b{color:var(--cyan)}
-@media(max-width:980px){.fb-col{display:none}}
+/* hero */
+.hero{position:relative;overflow:hidden;background:radial-gradient(52% 70% at 88% 6%,rgba(18,137,171,.16),transparent 64%),radial-gradient(60% 80% at 6% 100%,rgba(31,95,214,.18),transparent 62%),var(--deep);color:var(--deep-ink);padding-block:clamp(36px,6vh,104px) calc(clamp(36px,6vh,104px) + var(--dip));min-height:calc(100vh - var(--nav-h) - var(--peek));min-height:calc(100svh - var(--nav-h) - var(--peek));display:flex;align-items:center}
+.hero::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.55;background-image:linear-gradient(var(--deep-edge) 1px,transparent 1px),linear-gradient(90deg,var(--deep-edge) 1px,transparent 1px);background-size:54px 54px;-webkit-mask-image:radial-gradient(ellipse 70% 80% at 30% 30%,#000,transparent 72%);mask-image:radial-gradient(ellipse 70% 80% at 30% 30%,#000,transparent 72%)}
+.hero-grid{position:relative;z-index:2;width:100%}
+.hero-copy{max-width:640px}
+/* במסך רחב הטקסט קרוב יותר לשוליים, והתפריט העליון מיושר לאותו קו: הלוגו מעל הכותרת */
+@media(min-width:921px){
+  .hero-grid.wrap{max-width:none;padding-inline-start:var(--edge-x)}
+  .nav-in{max-width:none;padding-inline:var(--edge-x)}
+}
+/* שורות צילומי מסך מוטות שנעות לצד הכותרת */
+.collage{position:absolute;z-index:1;top:-8%;bottom:-8%;inset-inline-end:-3%;width:var(--collage-w,60%);pointer-events:none;-webkit-mask-image:linear-gradient(to right,#000 38%,transparent 94%);mask-image:linear-gradient(to right,#000 38%,transparent 94%)}
+.collage::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,var(--deep) 0,transparent 20%,transparent 80%,var(--deep) 100%)}
+.tilt{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;gap:18px;transform:rotate(-8deg) scale(1.1)}
+.lane{overflow:hidden}
+.lane-track{display:flex;width:max-content;will-change:transform}
+.lane-group{display:flex;align-items:center;flex:none}
+.ctile{flex:none;width:clamp(190px,18vw,262px);aspect-ratio:16/10;margin-inline-end:18px;border-radius:12px;overflow:hidden;background:var(--deep-2);border:1px solid rgba(111,164,255,.2);box-shadow:0 18px 42px rgba(0,0,0,.5)}
+.ctile img{width:100%;height:100%;object-fit:cover;opacity:.88}
 
-/* SECTIONS */
-section{padding:64px 0;position:relative}
-.sec-head{text-align:center;max-width:820px;margin:0 auto 40px}
-.sec-head h2{font-size:35px;font-weight:800;letter-spacing:-.4px;margin-bottom:12px;position:relative;padding-bottom:14px}
-.sec-head h2::after{content:"";position:absolute;left:50%;bottom:0;transform:translateX(-50%);width:60px;height:3px;border-radius:3px;background:linear-gradient(90deg,#22d3ee,#3b82f6,#8b5cf6)}
-.sec-head p{font-size:17px;color:var(--muted)}
-.alt{background:linear-gradient(180deg,var(--bg),var(--bg2))}
+.hero h1{font-weight:900;color:#fff}
+.h1-k{display:block;font-family:var(--font-body);font-size:clamp(15px,1.3vw,18px);font-weight:700;letter-spacing:0;color:var(--deep-dim);margin-bottom:16px}
+.h1-main{display:block;font-size:var(--fs-display);line-height:1.08;letter-spacing:-.8px}
+.h1-main em{font-style:normal;color:var(--acc2-on-deep)}
+.hero .h1-main{font-size:clamp(2.3rem,min(5.6vw,8.4vh),4.4rem)}
+.hero-lead{margin-top:clamp(12px,2.6vh,22px);max-width:46ch;font-size:clamp(16.5px,1.5vw,20px);color:var(--deep-dim)}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:clamp(18px,3.6vh,32px)}
+.proof{display:inline-flex;align-items:center;gap:10px;margin-top:clamp(14px,3vh,28px);font-size:14.5px;font-weight:600;color:var(--deep-ink);padding:8px 14px 8px 16px;border:1px solid var(--deep-edge);border-radius:999px;background:rgba(255,255,255,.03);transition:border-color .2s}
+.proof:hover{border-color:var(--acc-on-deep)}
+.proof .dot{width:8px;height:8px;border-radius:50%;background:var(--live);box-shadow:0 0 0 4px rgba(47,191,134,.18);flex:none}
+.proof b{color:#fff}
+.frame{border-radius:14px;overflow:hidden;background:var(--deep-2);border:1px solid var(--deep-edge);box-shadow:var(--shadow-lg)}
+.frame-bar{display:flex;align-items:center;gap:7px;height:34px;padding-inline:14px;background:var(--deep-3);border-bottom:1px solid var(--deep-edge)}
+.frame-bar i{width:9px;height:9px;border-radius:50%;background:#33415c}
+.frame-bar span{margin-inline-start:auto;font-family:var(--font-mono);font-size:11.5px;color:var(--deep-dim);background:rgba(255,255,255,.04);border-radius:6px;padding:2px 10px;direction:ltr}
+.frame img{width:100%;height:auto}
+.js .hero h1,.js .hero-lead,.js .hero-actions,.js .proof{opacity:0;transform:translateY(16px);animation:rise .8s var(--ease) forwards}
+.js .hero h1{animation-delay:.08s}.js .hero-lead{animation-delay:.18s}.js .hero-actions{animation-delay:.28s}.js .proof{animation-delay:.36s}
+.js .collage{opacity:0;animation:fadein 1.6s .25s var(--ease) forwards}
+@keyframes rise{to{opacity:1;transform:none}}
+@keyframes fadein{to{opacity:1}}
 
-/* PAINS */
-.pains{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.pain{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:22px}
-.pain .ic{font-size:28px;margin-bottom:10px}.pain h3{font-size:17px;margin-bottom:6px}.pain p{font-size:14px;color:var(--muted)}
-.pain-foot{text-align:center;margin-top:32px;font-size:22px;font-weight:800;color:var(--accent2)}
+/* חצי עיגול: הפס הבהיר עולה על ה-hero ונחתך באליפסה */
+.after-hero{position:relative;z-index:2;margin-top:calc(-1 * var(--dip));-webkit-mask-image:radial-gradient(100% calc(var(--dip) * 7.46) at 50% calc(var(--dip) * -6.46),transparent calc(100% - 1px),#000 100%);mask-image:radial-gradient(100% calc(var(--dip) * 7.46) at 50% calc(var(--dip) * -6.46),transparent calc(100% - 1px),#000 100%)}
 
-/* DIFFERENTIATOR */
-.diff{background:var(--grad-soft);border:1px solid rgba(34,211,238,0.22);border-radius:24px;padding:44px}
-.diff-ftag{display:flex;justify-content:center;align-items:center;gap:7px;font-size:13px;font-weight:700;color:var(--accent2);margin-bottom:10px}
-.diff-title{font-size:clamp(24px,2.6vw,33px);font-weight:800;margin:0 0 12px;line-height:1.2;white-space:nowrap;text-align:center}
-.diff-lead{margin:0 auto 28px;text-align:center;color:var(--muted);font-size:clamp(13px,1.45vw,16px);line-height:1.6;white-space:nowrap}
-.diff-shot{border:1px solid var(--accent2);border-radius:14px;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,.5),0 0 60px rgba(59,130,246,.15)}
-.diff-shot img{width:100%;display:block}
-.diff-chips-out{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:22px}
-.chip{font-size:13.5px;background:var(--card2);border:1px solid var(--border);border-radius:999px;padding:6px 14px;color:var(--text)}
-.chip::before{content:"✓ ";color:var(--success);font-weight:800}
+/* פס הטכנולוגיות */
+.stack{background:radial-gradient(40% 120% at 90% 0%,var(--wash1),transparent 70%),var(--paper);padding:calc(var(--dip) + 22px) 0 26px;text-align:center}
+.stack .lane{-webkit-mask-image:linear-gradient(to right,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(to right,transparent,#000 12%,#000 88%,transparent)}
+.tech{display:inline-flex;align-items:center;gap:10px;margin-inline-end:clamp(40px,5vw,76px);font-family:var(--font-mono);font-weight:600;font-size:clamp(17px,1.8vw,22px);color:var(--dim);white-space:nowrap;direction:ltr}
+.tech i{width:8px;height:8px;border-radius:2px;background:var(--acc-2);opacity:.55}
 
-/* SHOWCASE */
-.show{margin-bottom:30px;background:var(--grad-soft);border:1px solid rgba(34,211,238,.22);border-radius:24px;padding:40px}
-.show:last-child{margin-bottom:0}
-.show-head{max-width:none;margin:0 auto 24px;text-align:center}
-.show-head .ftag{justify-content:center;display:flex;align-items:center;gap:7px;font-size:13px;font-weight:700;color:var(--accent2);margin-bottom:8px}
-.show-head h3{font-size:clamp(20px,2.5vw,30px);font-weight:800;margin-bottom:10px;white-space:nowrap}
-.show-head p{font-size:clamp(11px,1.3vw,16.5px);color:var(--muted);white-space:nowrap}
-.show-chips{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:16px}
-.show-shot{border:1px solid var(--accent2);border-radius:18px;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,.5),0 0 60px rgba(59,130,246,.15);background:var(--card);transition:.25s}
-.show-shot:hover{transform:translateY(-5px);box-shadow:0 36px 90px rgba(0,0,0,.62),0 0 70px rgba(59,130,246,.22)}
-.show-shot img{width:100%}
-.proj-link{display:inline-flex;align-items:center;gap:6px;margin-top:18px;color:var(--accent2);font-weight:700;font-size:14.5px}
-.proj-link:hover{text-decoration:underline}
-.show-links{text-align:center;margin-top:6px;display:flex;gap:22px;justify-content:center;flex-wrap:wrap}
+/* cards */
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.card{background:var(--panel);border:1px solid var(--edge);border-radius:var(--r);padding:26px 24px;box-shadow:0 1px 2px rgba(13,22,38,.04)}
+.card h3{font-family:var(--font-body);font-size:19px;font-weight:800;letter-spacing:0;margin-bottom:7px}
+.card p{font-size:15.5px;color:var(--dim);line-height:1.62}
+.tile{width:50px;height:50px;border-radius:14px;display:grid;place-items:center;margin-bottom:20px;background:linear-gradient(145deg,var(--acc),var(--acc-2));border:0;color:#fff;box-shadow:0 8px 20px rgba(31,95,214,.28)}
+.tile .ico{width:24px;height:24px;stroke-width:1.9}
+.band-deep .card{background:var(--deep-2);border-color:var(--deep-edge);box-shadow:none}
+.band-deep .card p{color:var(--deep-dim)}
+.band-deep .card h3{color:#fff}
+.band-deep .tile{background:rgba(111,164,255,.1);border-color:rgba(111,164,255,.24);color:var(--acc-on-deep)}
+.bridge{display:inline-flex;align-items:center;gap:10px;margin-top:36px;font-family:var(--font-head);font-size:clamp(20px,2.2vw,25px);font-weight:700;color:var(--acc-ink)}
+.bridge:hover{text-decoration:underline;text-underline-offset:5px}
+/* מניפה: שלוש הכרטיסיות מתחילות צמודות ונפתחות בגלילה */
+.fan{gap:30px}
+.fan{counter-reset:pain}
+/* מסגרת בגרדיאנט כחול-ציאן, רקע מוכחל קל ומספור במונו, כדי שהכרטיסיות לא ייבלעו ברקע הבהיר */
+.fan .card{position:relative;z-index:1;transform-origin:50% 100%;padding:44px 36px 44px;counter-increment:pain;border:1.5px solid transparent;border-radius:20px;background:linear-gradient(165deg,#f8fbff 0%,#e9f0fa 100%) padding-box,linear-gradient(150deg,rgba(31,95,214,.62),rgba(18,137,171,.42) 48%,rgba(31,95,214,.14)) border-box;box-shadow:0 2px 6px rgba(13,22,38,.05),0 22px 44px rgba(31,95,214,.13)}
+.fan .card::before{content:counter(pain,decimal-leading-zero);content:counter(pain,decimal-leading-zero) / "";position:absolute;top:24px;inset-inline-end:28px;font-family:var(--font-mono);font-size:14px;font-weight:600;letter-spacing:.6px;color:var(--acc-2)}
+.fan .card::after{content:"";position:absolute;top:0;inset-inline-start:36px;width:56px;height:3px;border-radius:0 0 3px 3px;background:linear-gradient(90deg,var(--acc),#1690b3)}
+.fan .card h3{font-size:clamp(22px,2vw,25px);margin-bottom:10px}
+.fan .card p{font-size:clamp(16.5px,1.4vw,18px)}
+.fan .pico{width:86px;height:86px;margin-bottom:24px;padding:6px;border-radius:50%;background:radial-gradient(circle,rgba(31,95,214,.1),rgba(31,95,214,0) 70%)}
+/* הכותרת של הסקשן גדולה יותר מהרגיל */
+#why .wrap{max-width:1320px}
+#why .fan{gap:34px}
+#why .sh{max-width:900px}
+#why .sh .k{font-size:15.5px}
+#why .sh h2{font-size:clamp(2rem,3.9vw,3rem)}
+#why .sh p{font-size:clamp(1.12rem,1.5vw,1.3rem);max-width:66ch}
+.fan .card:nth-child(2){z-index:2}
+@media(min-width:800px){.js .fan .card.reveal{transition:none}}
 
-/* MINI GRID */
-.mini{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-.mcard{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:22px;transition:.2s;display:block}
-.mcard:hover{transform:translateY(-4px);border-color:rgba(59,130,246,0.4)}
-.mcard .ic{font-size:26px;margin-bottom:10px}.mcard h4{font-size:16px;margin-bottom:5px}.mcard p{font-size:13px;color:var(--muted)}
-.mcard .mlink{display:inline-block;margin-top:10px;font-size:13px;color:var(--accent2);font-weight:700}
-.badge-soft{font-size:10px;font-weight:800;background:var(--card2);border:1px solid var(--border);color:var(--muted);padding:2px 7px;border-radius:6px;margin-inline-start:6px;vertical-align:middle}
-/* PORTFOLIO — category card grid */
-.cat-head{display:flex;align-items:center;gap:12px;margin:40px 0 20px}
-.cat-head:first-of-type{margin-top:8px}
-.cat-ic{font-size:24px}
-.cat-head h3{font-size:clamp(19px,2.4vw,26px);font-weight:800;white-space:nowrap}
-.verified-head{position:relative;overflow:hidden;margin:44px 0 22px;padding:18px 24px;border-radius:18px;align-items:center;
-  background:linear-gradient(160deg,rgba(16,185,129,.12),rgba(59,130,246,.09) 60%,rgba(139,92,246,.07));
-  border:1px solid rgba(16,185,129,.32);box-shadow:0 14px 40px rgba(0,0,0,.34),0 0 40px rgba(16,185,129,.10)}
-.verified-head::before{content:"";position:absolute;left:0;right:0;top:0;height:1px;
-  background:linear-gradient(90deg,transparent,rgba(52,211,153,.85),rgba(59,130,246,.75),transparent)}
-.verified-head .cat-ic{font-size:30px;line-height:1}
-.verified-head .vh-txt{display:flex;flex-direction:row;align-items:baseline;gap:14px;flex-wrap:wrap}
-.verified-head h3{font-size:clamp(21px,2.8vw,30px);line-height:1.1}
-.verified-head .cat-sub{font-size:15px;color:var(--text-2);font-weight:600;white-space:nowrap}
-@media(max-width:900px){.verified-head .cat-sub{white-space:normal}}
-.vh-badge{margin-inline-start:auto;font-size:12.5px;font-weight:800;letter-spacing:.4px;color:#6ee7b7;
-  background:rgba(16,185,129,.14);border:1px solid rgba(16,185,129,.4);border-radius:999px;padding:7px 16px;white-space:nowrap}
-@media(max-width:760px){.verified-head{padding:14px 16px}.vh-badge{display:none}}
-.cat-head h3 .veri{color:var(--accent2)}
-.cat-sub{font-size:13px;color:var(--muted);font-weight:600;white-space:nowrap}
-@media(max-width:700px){.cat-sub{display:none}}
-.cat-head .line{flex:1;height:1px;background:linear-gradient(90deg,var(--border),transparent)}
-.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.pcard{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--border);border-radius:20px;overflow:hidden;transition:.22s}
-.pcard:hover{transform:translateY(-5px);border-color:rgba(96,165,250,.55);box-shadow:0 26px 60px rgba(0,0,0,.5)}
-.pcard-img{aspect-ratio:16/9;overflow:hidden;background:var(--card2);border-bottom:1px solid var(--border)}
-.pcard-img img{width:100%;height:100%;object-fit:cover;object-position:top}
-.pcard-logo{aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;overflow:hidden;border-bottom:1px solid var(--border);background:radial-gradient(120% 100% at 50% 0%,rgba(59,130,246,.14),transparent 62%),linear-gradient(160deg,var(--card2),var(--card))}
-.pcard-logo img{width:100%;height:100%;object-fit:contain;padding:4px 8px;transition:transform .25s}
-.pcard:hover .pcard-logo img{transform:scale(1.05)}
-.pcard-emoji{aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;font-size:54px;border-bottom:1px solid var(--border);background:linear-gradient(160deg,var(--card2),var(--card))}
-.pcard-body{padding:18px 20px 20px;display:flex;flex-direction:column;flex:1}
-.pcard-tag{font-size:12px;font-weight:800;color:var(--accent2);margin-bottom:7px}
-.pcard-body h4{font-size:19px;font-weight:800;margin-bottom:6px}
-.pcard-body h4 span[dir=ltr]{unicode-bidi:isolate}
-.pcard-body p{font-size:14px;color:var(--muted);line-height:1.55;flex:1}
-.pcard-foot{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:14px}
-.pcard-foot .chip{font-size:12px;padding:4px 11px}
-.pcard-foot .chip::before{content:""}
-.pcard-more{margin-inline-start:auto;color:var(--accent2);font-weight:800;font-size:14px;white-space:nowrap}
-.pcard:hover .pcard-more{text-decoration:underline}
-.cat-more{text-align:center;margin-top:34px}
-@media(max-width:860px){ .pgrid{grid-template-columns:1fr 1fr} }
-@media(max-width:560px){ .pgrid{grid-template-columns:1fr} }
+/* שירותים: סרט נע של כרטיסים עם אייקונים מונפשים */
+.svc{background:radial-gradient(45% 55% at 82% 28%,rgba(31,95,214,.34),transparent 65%),radial-gradient(42% 52% at 12% 78%,rgba(18,137,171,.32),transparent 62%),var(--deep)}
+.drift{position:relative;overflow-x:auto;touch-action:pan-y;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 12%,#000 88%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 12%,#000 88%,transparent 100%)}
+.js .drift{overflow:hidden;cursor:grab}
+.js .drift.dragging{cursor:grabbing}
+.drift-track{display:flex;width:max-content;will-change:transform;padding-block:6px}
+.scard{flex:none;width:340px;min-height:248px;margin-inline-end:20px;padding:30px 30px 32px;border-radius:26px;background:rgba(233,239,247,.06);border:1px solid rgba(233,239,247,.15);transition:background-color .3s,border-color .3s;user-select:none}
+.scard:hover{background:rgba(233,239,247,.09);border-color:rgba(111,164,255,.45)}
+.scard h3{font-family:var(--font-body);font-size:22px;font-weight:800;letter-spacing:0;color:#fff;margin:22px 0 8px}
+.scard p{font-size:15.5px;line-height:1.62;color:rgba(233,239,247,.78)}
+.aico{width:70px;height:70px;display:block;overflow:visible;fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:2.4}
+.aico .b{stroke:#e9eff7}
+.aico .ac{stroke:#3fc4e0}
+.aico *{animation-play-state:paused}
+.drift.on .aico *{animation-play-state:running}
+/* דשבורדים: עמודות עולות ויורדות, נקודה רצה על קו המגמה */
+.a-chart .bar{fill:#6fa4ff;stroke:none;transform-box:fill-box;transform-origin:50% 100%;animation:barPulse 2.8s ease-in-out infinite}
+.a-chart .bar:nth-of-type(2){animation-delay:-.9s}
+.a-chart .bar:nth-of-type(3){animation-delay:-1.8s}
+.a-chart .trend{stroke:#3fc4e0;stroke-width:2.6;stroke-dasharray:60;animation:drawLine 2.8s ease-in-out infinite}
+.a-chart .tdot{fill:#fff;stroke:#3fc4e0;stroke-width:2;offset-path:path('M15 41 27 29 39 35 53 16');animation:runDot 2.8s ease-in-out infinite}
+@keyframes barPulse{0%,100%{transform:scaleY(.55)}50%{transform:scaleY(1)}}
+@keyframes drawLine{0%{stroke-dashoffset:60}45%,80%{stroke-dashoffset:0}100%{stroke-dashoffset:-60}}
+@keyframes runDot{0%{offset-distance:0%;opacity:0}10%{opacity:1}45%,80%{offset-distance:100%;opacity:1}100%{offset-distance:100%;opacity:0}}
+/* אוטומציה: חיצים מסתובבים וגלגל שיניים בכיוון ההפוך */
+.a-auto .spin{transform-box:view-box;transform-origin:32px 32px;animation:spin 6s linear infinite}
+.a-auto .gear{transform-box:view-box;transform-origin:32px 32px;animation:spin 3s linear infinite reverse}
+@keyframes spin{to{transform:rotate(360deg)}}
+/* תוכנה: שורות קוד שמוקלדות וסמן מהבהב */
+.a-code .dotf{fill:#3fc4e0;stroke:none}
+.a-code .ln{stroke:#6fa4ff;stroke-width:3;stroke-dasharray:26;animation:typeLine 3.6s steps(9,end) infinite backwards}
+.a-code .l2{animation-delay:.6s}
+.a-code .l3{animation-delay:1.2s}
+.a-code .cur{fill:#fff;stroke:none;animation:blink 1s steps(2,start) infinite}
+@keyframes typeLine{0%{stroke-dashoffset:26}30%,85%{stroke-dashoffset:0}100%{stroke-dashoffset:0;opacity:0}}
+@keyframes blink{to{visibility:hidden}}
+/* AI: מידע זורם בין הצמתים, והליבה פועמת */
+.a-ai .b{stroke:rgba(233,239,247,.55)}
+.a-ai .flow{stroke:#3fc4e0;stroke-width:3;stroke-dasharray:7 60;animation:flow 2.2s linear infinite}
+.a-ai .f2{animation-delay:-.7s}
+.a-ai .f3{animation-delay:-1.4s}
+.a-ai .node{fill:var(--deep);stroke:#e9eff7;stroke-width:2.4}
+.a-ai .core{fill:#3fc4e0;stroke:none;transform-box:fill-box;transform-origin:center;animation:core 2.2s ease-in-out infinite}
+@keyframes flow{to{stroke-dashoffset:-67}}
 
-/* VALUE / RESULTS */
-.value{background:linear-gradient(135deg,rgba(16,185,129,.12),rgba(59,130,246,.10));border:1px solid rgba(16,185,129,.32);border-radius:26px;padding:48px 44px;text-align:center;box-shadow:0 24px 60px rgba(0,0,0,.4),0 0 70px rgba(16,185,129,.08)}
-.value .eyebrow{align-self:center}
-.value h2{font-size:38px;font-weight:900;margin-bottom:12px}
-.value h2 .g{color:var(--success)}
-.value p{font-size:18px;color:var(--text)}.value p strong{color:var(--success)}
-.value .vrow{display:flex;gap:22px;justify-content:center;flex-wrap:wrap;margin-top:30px}
-.value .vitem{background:rgba(8,14,24,.55);border:1px solid var(--border);border-radius:18px;padding:22px 30px;min-width:220px;transition:.25s}
-.value .vitem:hover{transform:translateY(-4px);border-color:rgba(96,165,250,.5)}
-.value .vitem .vic{font-size:26px;line-height:1}
-.value .vitem b{display:block;font-size:40px;font-weight:900;color:var(--accent2);line-height:1.05;margin:6px 0 4px}
-.value .vitem .vcap{display:block;font-size:14px;color:var(--muted)}
-.value .vitem.green b{color:var(--success)}
-.value-note{font-size:13px;color:var(--muted2);margin-top:22px}
+/* אייקוני הכאבים: גדולים, בשני צבעים, ומונפשים */
+.pico{width:76px;height:76px;display:block;overflow:visible;fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:2.7;margin-bottom:20px}
+.pico .b{stroke:var(--ink)}
+.pico .ac{stroke:var(--acc)}
+.pico .ac2{stroke:#1690b3}
+.pico .thin{stroke-width:1.9}
+.pico .hub{fill:var(--panel);stroke:var(--ink);stroke-width:2.2}
+.pico *{animation-play-state:paused}
+.on .pico *{animation-play-state:running}
+/* נתונים מפוזרים: כל חלק מרחף בקצב משלו, והחיבורים מהבהבים ולא נסגרים */
+.p-scatter .lnk{stroke:#8a9ab3;stroke-width:1.8;stroke-dasharray:2.5 4;animation:lnkBlink 2.6s ease-in-out infinite}
+.p-scatter .k2{animation-delay:-.9s}.p-scatter .k3{animation-delay:-1.7s}
+.p-scatter .s1{animation:drift1 3.4s ease-in-out infinite}
+.p-scatter .s2{animation:drift2 2.8s ease-in-out infinite}
+.p-scatter .s3{animation:drift3 3.9s ease-in-out infinite}
+@keyframes lnkBlink{0%,100%{opacity:.15}50%{opacity:.9}}
+@keyframes drift1{0%,100%{transform:translate(0,0)}50%{transform:translate(-2px,3px)}}
+@keyframes drift2{0%,100%{transform:translate(0,0)}50%{transform:translate(2px,-3px)}}
+@keyframes drift3{0%,100%{transform:translate(0,0)}50%{transform:translate(1px,3px)}}
+/* תהליכים ידניים: המחוגים רצים, וטבעת מתפשטת כמו זמן שבורח */
+.p-clock .hand-m{stroke-width:3;transform-box:view-box;transform-origin:32px 35px;animation:spin 3s linear infinite}
+.p-clock .hand-h{stroke-width:3;transform-box:view-box;transform-origin:32px 35px;animation:spin 36s linear infinite}
+.p-clock .ring{stroke:var(--acc);stroke-width:2;transform-box:view-box;transform-origin:32px 35px;animation:ringOut 3s ease-out infinite}
+@keyframes ringOut{0%{transform:scale(1);opacity:.55}100%{transform:scale(1.42);opacity:0}}
+/* החלטות בלי דאטה: מחט המצפן מתנדנדת ולא מוצאת כיוון */
+.p-compass .nn{fill:var(--acc);stroke:var(--acc);stroke-width:1.2}
+.p-compass .ns{fill:#b9c7dc;stroke:#b9c7dc;stroke-width:1.2}
+.p-compass .needle{transform-box:view-box;transform-origin:30px 34px;animation:wobble 4.2s ease-in-out infinite}
+.p-compass .qm{stroke-width:2.6;animation:qmPulse 2.1s ease-in-out infinite}
+@keyframes wobble{0%,100%{transform:rotate(-38deg)}18%{transform:rotate(30deg)}34%{transform:rotate(-16deg)}52%{transform:rotate(42deg)}70%{transform:rotate(-8deg)}86%{transform:rotate(24deg)}}
+@keyframes qmPulse{0%,100%{opacity:.35;transform:translateY(0)}50%{opacity:1;transform:translateY(-2px)}}
+@keyframes core{0%,100%{transform:scale(.8);opacity:.75}50%{transform:scale(1.25);opacity:1}}
 
-/* CREATOR */
-.creator-head{text-align:center;margin-bottom:18px;display:flex;flex-direction:column;align-items:center}
-.cr-id{display:inline-flex;align-items:center;justify-content:center;gap:22px;margin-top:8px;flex-wrap:wrap}
-.cr-id img{width:154px;height:154px;object-fit:contain;flex-shrink:0;filter:drop-shadow(0 12px 32px rgba(96,165,250,.55))}
-.cr-he{font-size:34px;font-weight:900;color:#fff;line-height:1}
-.cr-en{font-size:26px;color:var(--text-2);font-weight:500;letter-spacing:.08em;direction:ltr;line-height:1}
-.cr-roles{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:30px 0 24px}
-.cr-card{border-radius:16px;padding:24px}
-.cr-card .cr-top{display:flex;align-items:center;gap:14px;margin-bottom:14px}
-.cr-ic{width:60px;height:60px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:30px;flex-shrink:0}
-.cr-title{font-size:18px;font-weight:800;color:#fff;line-height:1.2}
-.cr-card p{font-size:14px;color:var(--text-2);line-height:1.6;margin:0}
-.cr-blue{background:linear-gradient(135deg,rgba(124,167,255,.10),rgba(124,167,255,.02));border:1.5px solid rgba(124,167,255,.40)}
-.cr-blue .cr-ic{background:rgba(124,167,255,.20);border:1.5px solid rgba(124,167,255,.50)}
-.cr-purple{background:linear-gradient(135deg,rgba(192,132,252,.10),rgba(192,132,252,.02));border:1.5px solid rgba(192,132,252,.40)}
-.cr-purple .cr-ic{background:rgba(192,132,252,.20);border:1.5px solid rgba(192,132,252,.50)}
-.cr-cyan{background:linear-gradient(135deg,rgba(77,208,225,.10),rgba(77,208,225,.02));border:1.5px solid rgba(77,208,225,.40)}
-.cr-cyan .cr-ic{background:rgba(77,208,225,.20);border:1.5px solid rgba(77,208,225,.50)}
-.cr-personal{background:linear-gradient(135deg,rgba(52,211,153,.12),rgba(52,211,153,.03));border:1.5px solid rgba(52,211,153,.45);border-radius:16px;padding:22px 28px;text-align:center;position:relative}
-.cr-pill{position:absolute;top:-12px;right:50%;transform:translateX(50%);background:#34d399;color:#0b1020;padding:5px 16px;border-radius:100px;font-size:13px;font-weight:800;letter-spacing:.05em;white-space:nowrap}
-.cr-personal p{font-size:18px;color:#fff;line-height:1.7;margin:8px 0 0;font-weight:500}
-.cr-personal strong{color:#34d399}
+/* differentiator */
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:34px}
+.chip{display:inline-flex;align-items:center;gap:7px;font-size:14.5px;font-weight:600;background:var(--panel);border:1px solid var(--edge);border-radius:999px;padding:6px 14px;color:var(--ink-2)}
+.chip .ico{width:16px;height:16px;color:var(--acc-2);stroke-width:2.2}
+.shot-cap{margin-top:14px;font-size:14.5px;color:var(--dim)}
+.shot-cap b{color:var(--ink)}
 
-/* FINAL */
-.final{position:relative;overflow:hidden;aspect-ratio:1500/818;min-height:360px;border:1px solid rgba(59,130,246,0.3);border-radius:26px;text-align:center;display:flex;align-items:center;justify-content:center}
-.final-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
-.final::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,14,23,.62),rgba(10,14,23,.36) 45%,rgba(10,14,23,.75));z-index:1}
-.final-inner{position:relative;z-index:2;padding:40px 52px;width:100%}
-.final h2{font-size:35px;font-weight:800;margin-bottom:12px;text-shadow:0 2px 18px rgba(0,0,0,.85)}
-.final p{font-size:18px;color:#e6ecf7;margin-bottom:26px;text-shadow:0 1px 12px rgba(0,0,0,.8)}
-.final .row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+/* portfolio */
+.feat{display:grid;grid-template-columns:1fr 1.15fr;background:var(--panel);border:1px solid #b4c4db;border-radius:var(--r-lg);overflow:hidden;box-shadow:0 2px 4px rgba(13,22,38,.05),0 22px 48px rgba(13,22,38,.12);margin-bottom:30px}
+.screen{background:radial-gradient(100% 90% at 50% 0%,rgba(111,164,255,.14),transparent 62%),var(--deep);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.screen img{width:100%;height:100%;object-fit:contain;padding:5%;transition:transform .35s var(--ease)}
+.feat .screen{min-height:300px;position:relative;display:block}
+.feat .screen::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,var(--deep) 0,transparent 16%,transparent 84%,var(--deep) 100%),linear-gradient(180deg,var(--deep) 0,transparent 22%,transparent 78%,var(--deep) 100%)}
+.feat .tilt{inset:-12% -8%;gap:14px}
+.feat .ctile{width:clamp(160px,14vw,214px);margin-inline-end:14px}
+/* כרטיס שמחליף צילומי מסך כל 2 שניות */
+.rot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top right;padding:0;opacity:0;transition:opacity .9s ease,transform .35s var(--ease)}
+.rot img.is-on{opacity:1}
+.rdots{position:absolute;bottom:10px;inset-inline-start:12px;z-index:2;display:flex;gap:5px}
+.rdots i{width:6px;height:6px;border-radius:3px;background:rgba(255,255,255,.5);box-shadow:0 0 0 1px rgba(0,0,0,.15);transition:width .3s var(--ease),background-color .3s}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.rdots i.on{width:18px;background:#fff}
+/* סריקת רדאר על הלוגו של RUBIN MARKET, כמו בעמוד שלו: אלומת אור מסתובבת ופולס מהמרכז */
+.radar-sweep{position:absolute;z-index:2;left:51.5%;top:49.35%;width:27.04%;aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;overflow:hidden;pointer-events:none;mix-blend-mode:screen;opacity:0;transition:opacity .45s ease,transform .35s var(--ease)}
+.radar-sweep::before{content:"";position:absolute;inset:0;background:radial-gradient(circle,rgba(230,252,255,.9) 0,rgba(160,235,255,.35) 7%,rgba(160,235,255,0) 16%),conic-gradient(from 0deg,rgba(120,225,255,0) 0deg,rgba(120,225,255,0) 270deg,rgba(140,230,255,.32) 315deg,rgba(190,245,255,.7) 345deg,rgba(255,255,255,1) 358deg,rgba(120,225,255,0) 360deg);animation:radarsweep 2.6s linear infinite;animation-play-state:paused}
+.radar-sweep::after{content:"";position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle,rgba(200,248,255,0) 52%,rgba(210,250,255,.95) 62%,rgba(200,248,255,0) 71%);opacity:0;animation:radarPing 2.6s ease-out infinite;animation-play-state:paused}
+.rot.live.hold-on .radar-sweep{opacity:1}
+.rot.live.hold-on .radar-sweep::before,.rot.live.hold-on .radar-sweep::after{animation-play-state:running}
+.pcard:hover .radar-sweep{transform:translate(-50%,-50%) scale(1.035)}
+@keyframes radarsweep{to{transform:rotate(360deg)}}
+@keyframes radarPing{0%{transform:scale(.15);opacity:.9}100%{transform:scale(1);opacity:0}}
+/* מופע לכל לוגו: שכבת SVG בקואורדינטות של המסגרת. מתנגן כשהלוגו מוצג (hold-on) והכרטיס על המסך (live) */
+.fx{position:absolute;inset:0;z-index:2;width:100%;height:100%;pointer-events:none;overflow:visible;transition:opacity .9s ease,transform .35s var(--ease)}
+.rot.ready:not(.hold-on) .fx{opacity:0}
+.pcard:hover .fx{transform:scale(1.035)}
+.fx .lt{opacity:0}
+.fx [class]{transform-box:fill-box;transform-origin:center}
+/* Verifix: החלונות נדלקים קומה אחרי קומה, אור עולה במפתח, ברק על החותמת */
+.vf-cover polygon{fill:#0a1d48;opacity:0}
+.vf-flash polygon{fill:#effcff}
+.vf-flash,.vf-beam,.vf-head,.vf-glint{mix-blend-mode:screen}
+.rot.live.hold-on .vf-cover polygon{animation:vfOff .55s ease var(--d) both}
+.rot.live.hold-on .vf-flash{opacity:1}
+.fx .vf-flash polygon{opacity:0}
+.rot.live.hold-on .vf-flash polygon{animation:vfFlash .8s ease-out calc(var(--d) + .22s) both}
+.rot.live.hold-on .vf-beam{animation:vfBeam .75s cubic-bezier(.45,0,.35,1) 1.6s both}
+.rot.live.hold-on .vf-head{animation:vfHead .7s ease-out 2.2s both}
+.rot.live.hold-on .vf-glint{animation:vfGlint .75s ease-in-out 2.3s both}
+@keyframes vfOff{0%,40%{opacity:.94}52%{opacity:.35}64%{opacity:.8}100%{opacity:0}}
+@keyframes vfFlash{0%{opacity:0}22%{opacity:.85}100%{opacity:0}}
+@keyframes vfBeam{0%{opacity:0}1%{opacity:1;transform:translateY(0)}90%{opacity:1}100%{opacity:0;transform:translateY(-288px)}}
+@keyframes vfHead{0%{opacity:0;transform:scale(.5)}30%{opacity:1}100%{opacity:0;transform:scale(1.35)}}
+@keyframes vfGlint{0%{opacity:1;transform:translateX(0)}100%{opacity:1;transform:translateX(300px)}}
+/* VeriBayit: הבית מופיע לבד, והחותמת נוחתת עליו ונשארת */
+.rot.live.hold-on .vb-stamp{animation:vbStamp .6s 1s both}
+.rot.live.hold-on .vb-ink{animation:vbInk .8s ease-out 1.33s both}
+.rot.live.hold-on .vb-flash{animation:vbFlash .6s ease-out 1.3s both;mix-blend-mode:screen}
+.rot.live.hold-on>img.vb-base{animation:vbThud .4s ease-out 1.3s both}
+@keyframes vbStamp{0%{opacity:0;transform:scale(2.4) rotate(-16deg);animation-timing-function:cubic-bezier(.55,0,.9,.45)}12%{opacity:1}55%{transform:scale(.92) rotate(1.5deg);animation-timing-function:ease-out}78%{transform:scale(1.03) rotate(-.4deg)}100%{opacity:1;transform:none}}
+@keyframes vbInk{0%{opacity:0}1%{opacity:.85;transform:scale(.9);stroke-width:12}100%{opacity:0;transform:scale(1.6);stroke-width:2}}
+@keyframes vbFlash{0%{opacity:0;transform:scale(.6)}25%{opacity:.9}100%{opacity:0;transform:scale(1.2)}}
+@keyframes vbThud{0%,100%{transform:none}30%{transform:translateY(.9%) scale(.994)}60%{transform:translateY(-.3%)}}
+/* Bot Analytics: אור רץ במעלה החץ, ואז נדלקים הצמתים במוח */
+.bot-run{fill:none;stroke-linecap:round;stroke-dasharray:13 130;stroke-dashoffset:13}
+.bot-core{stroke:#f2fdff;stroke-width:9}
+.bot-halo{stroke:#38d4f5;stroke-width:26}
+.rot.live.hold-on .bot-run{animation:botRun 1.15s cubic-bezier(.5,0,.35,1) .55s both}
+.rot.live.hold-on .bot-tip{animation:vfHead .7s ease-out 1.55s both}
+.rot.live.hold-on .bot-node{animation:botNode 1s ease-in-out calc(1.75s + var(--d)) both}
+@keyframes botRun{0%{opacity:1;stroke-dashoffset:13}88%{opacity:1}100%{opacity:0;stroke-dashoffset:-100}}
+@keyframes botNode{0%{opacity:0;transform:scale(.3)}35%{opacity:1;transform:scale(1.25)}100%{opacity:0;transform:scale(1)}}
+/* תורה אורי: זריחה מאחורי הספר, קרניים שמסתובבות לאט */
+.tr-rays,.tr-sun{mix-blend-mode:screen}
+.fx .tr-rays{transform-box:view-box;transform-origin:359.6px 177.7px}
+.rot.live.hold-on .tr-rays{animation:trRays 2.8s ease-out .3s both,trSpin 16s linear infinite}
+.rot.live.hold-on .tr-sun{animation:trSun 2.6s ease-in-out .35s both}
+@keyframes trRays{0%{opacity:0}35%{opacity:1}100%{opacity:.8}}
+@keyframes trSpin{to{transform:rotate(360deg)}}
+@keyframes trSun{0%{opacity:0;transform:scale(.4)}45%{opacity:1;transform:scale(1.2)}100%{opacity:.75;transform:scale(1)}}
+/* דף הבית האישי: החלון נדלק באור חם, וברק זהב עובר על האותיות */
+.hm-win{mix-blend-mode:screen}
+.rot.live.hold-on .hm-win{animation:hmWin 1.2s ease .55s both}
+.rot.live.hold-on .hm-shine{animation:hmShine 1.1s ease-in-out 1.35s both}
+@keyframes hmWin{0%{opacity:0}18%{opacity:.95}28%{opacity:.25}42%{opacity:1}100%{opacity:.85}}
+@keyframes hmShine{0%{opacity:1;transform:translateX(0) skewX(-18deg)}100%{opacity:1;transform:translateX(807.7px) skewX(-18deg)}}
+.feat-body{padding:clamp(26px,3.4vw,44px);display:flex;flex-direction:column;justify-content:center}
+.tag{display:inline-flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:13.5px;font-weight:700;color:var(--acc-ink);margin-bottom:10px}
+.tag .ver{font-size:12px;font-weight:800;color:var(--acc-2);background:rgba(14,125,156,.09);border:1px solid rgba(14,125,156,.28);border-radius:999px;padding:1px 9px}
+.feat-body h3{font-size:clamp(26px,3vw,34px);font-weight:900;margin-bottom:10px}
+.feat-body p{color:var(--dim);font-size:16.5px;max-width:48ch}
+.feat-actions{display:flex;flex-wrap:wrap;align-items:center;gap:18px;margin-top:24px}
+.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:30px}
+/* כרטיס מערכת: מסגרת ברורה, צל, והצילום יושב בתוך "מסך" עם שוליים */
+.pcard{display:flex;flex-direction:column;background:var(--panel);border:1px solid #b4c4db;border-radius:22px;overflow:hidden;box-shadow:0 2px 4px rgba(13,22,38,.05),0 18px 40px rgba(13,22,38,.11);transition:transform .25s var(--ease),box-shadow .25s,border-color .25s}
+.pcard:hover{transform:translateY(-5px);border-color:rgba(31,95,214,.55);box-shadow:0 4px 8px rgba(13,22,38,.06),0 28px 56px rgba(13,22,38,.16)}
+.pcard .screen{margin:12px 12px 0;border-radius:14px}
+.pcard .screen::after{content:"";position:absolute;inset:0;z-index:3;border-radius:inherit;pointer-events:none;box-shadow:inset 0 0 0 1px rgba(13,22,38,.2)}
+.pcard:hover .screen img{transform:scale(1.035)}
+.pcard .screen{aspect-ratio:16/9;position:relative}
+.pbody{padding:22px 24px 24px;display:flex;flex-direction:column;flex:1}
+.pbody h3{font-family:var(--font-body);font-size:21px;font-weight:800;letter-spacing:0;margin-bottom:6px;direction:ltr;text-align:right}
+.pbody p{font-size:15.5px;color:var(--dim);line-height:1.6;flex:1}
+.pfoot{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin-top:16px}
+.mono-chip{font-family:var(--font-mono);font-size:12px;font-weight:500;color:var(--ink-2);background:var(--paper);border:1px solid var(--edge-2);border-radius:6px;padding:2px 8px}
+.pmore{margin-inline-start:auto;font-weight:800;font-size:15px;color:var(--acc-ink);white-space:nowrap}
+.pcard:hover .pmore{text-decoration:underline;text-underline-offset:4px}
+.lab-head{display:flex;align-items:baseline;flex-wrap:wrap;gap:6px 14px;margin:52px 0 16px}
+.lab-head h3{font-size:22px;font-weight:700}
+.lab-head span{font-size:15px;color:var(--dim)}
+.lab{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.lcard{display:block;border:1px solid var(--edge);border-radius:12px;padding:16px 18px;background:color-mix(in srgb,var(--panel) 60%,transparent);transition:border-color .2s,background-color .2s}
+.lcard:hover{border-color:rgba(31,95,214,.42);background:var(--panel)}
+.lcard b{display:block;font-size:16px;font-weight:800}
+.lcard .ld{display:block;font-size:14px;color:var(--dim);line-height:1.5;margin-top:3px}
+.lcard em{display:block;font-style:normal;font-size:13.5px;font-weight:700;color:var(--acc-ink);margin-top:8px}
+/* כרטיס מעבדה עם תמונה מתחלפת קטנה */
+.lmedia{display:grid;grid-template-columns:1fr min(240px,44%);gap:18px;align-items:center;padding:14px 18px 14px 14px}
+.ltext{display:block}
+.lthumb{position:relative;display:block;aspect-ratio:16/10;border-radius:10px;overflow:hidden;background:var(--deep);border:1px solid var(--edge)}
+.lthumb.rot img{object-position:center}
+.lthumb .rdots{bottom:6px;inset-inline-start:7px;gap:4px}
+.lthumb .rdots i{width:5px;height:5px}
+.lthumb .rdots i.on{width:12px}
+.gh{margin-top:26px}
 
-/* FOOTER */
-footer{border-top:1px solid var(--border);padding:40px 0;margin-top:20px}
-.foot-in{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;padding:0 26px}
-.foot-brand{display:flex;align-items:center;gap:12px}.foot-brand img{height:42px;width:auto}.foot-brand .bn{font-weight:900;font-size:20px}.foot-brand .bn .b{color:var(--accent2)}
-.foot-brand .tg{font-size:12.5px;color:var(--cyan)}
-.foot-copy{flex:1;text-align:center;color:var(--muted);font-size:14px;font-weight:600;min-width:240px}
-.foot-links{display:flex;gap:18px;font-size:14px;color:var(--muted);flex-wrap:wrap}
-.foot-links a:hover{color:var(--text)}
+/* process */
+.steps{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:18px;counter-reset:step;position:relative}
+.steps::before{content:"";position:absolute;top:27px;inset-inline-start:28px;inset-inline-end:calc((100% - 54px) / 4 - 28px);height:1px;background:linear-gradient(to left,var(--acc),var(--acc-2))}
+.step{position:relative}
+.step-n{position:relative;width:56px;height:56px;border-radius:50%;display:grid;place-items:center;background:var(--panel);border:1px solid var(--edge);font-family:var(--font-mono);font-size:17px;font-weight:600;color:var(--acc);margin-bottom:20px;box-shadow:0 0 0 6px var(--paper)}
+.step-t{display:inline-block;font-size:13px;font-weight:800;color:var(--acc-2);background:rgba(14,125,156,.09);border-radius:999px;padding:2px 10px;margin-bottom:10px}
+.step h3{font-family:var(--font-body);font-size:19px;font-weight:800;letter-spacing:0;margin-bottom:7px}
+.step p{font-size:15.5px;color:var(--dim);line-height:1.62}
 
-.reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
-.reveal.in{opacity:1;transform:none}
+/* results */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,3vw,40px)}
+.stat{border-inline-start:2px solid var(--acc-on-deep);padding-inline-start:20px}
+.stat b{display:block;font-family:var(--font-mono);font-variant-numeric:tabular-nums;font-size:clamp(36px,4.4vw,52px);font-weight:600;color:#fff;line-height:1.1}
+.stat span{display:block;margin-top:9px;font-size:16px;color:var(--deep-dim);line-height:1.5}
+.note{margin-top:34px;font-size:14px;color:var(--deep-dim)}
 
-@media(max-width:920px){
-  .hero .sub{font-size:22px;white-space:normal}
-  .hero-brand-tr{top:14px;right:14px}.hero-brand-tr img{width:76px;height:76px}
-  .hero-wordmark .wm{font-size:48px}
-  .diff{padding:28px}
-  .diff-title{white-space:normal;font-size:24px}
-  .diff-lead{white-space:normal;font-size:15px}
-  .pains{grid-template-columns:1fr 1fr}
-  .mini{grid-template-columns:1fr 1fr}
-  .cr-roles{grid-template-columns:1fr}
-  .nav-links,.nav-cta{display:none}
-  .burger{display:block}
-  .nav-links.open{display:flex;align-items:stretch;position:absolute;top:94px;inset-inline-end:14px;flex-direction:column;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:14px 18px;gap:14px;box-shadow:var(--shadow)}
-  .nav-links.open .nav-dd{flex-direction:column;align-items:stretch;width:100%}
+/* creator */
+/* שלט דיגיטלי: שני פסי טקסט מוטים שנעים בכיוונים הפוכים */
+.band.has-ribbons{padding-top:0;overflow:hidden}
+.ribbons{position:relative;height:clamp(150px,17vw,240px);margin-bottom:clamp(18px,3vw,36px);pointer-events:none}
+.ribbon{position:absolute;inset-inline:-8%}
+.ribbon-ghost{top:14%;transform:rotate(-4deg)}
+.ribbon-ghost .lane-group span{font-family:var(--font-head);font-weight:900;font-size:clamp(40px,5.4vw,70px);line-height:1.15;color:color-mix(in srgb,var(--ink) 9%,transparent);padding-inline-end:.5em;white-space:nowrap}
+.ribbon-solid{top:56%;transform:rotate(-2.5deg);background:var(--acc);box-shadow:0 18px 44px rgba(31,95,214,.28);padding-block:14px}
+.ribbon-solid .lane-group span{font-family:var(--font-mono);font-weight:600;font-size:clamp(14px,1.45vw,18px);letter-spacing:.14em;color:#fff;padding-inline-end:2.4em;white-space:nowrap}
+.creator{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(24px,3.5vw,44px);align-items:stretch}
+/* כרטיס פרופיל כהה וזוהר */
+.profile{position:relative;overflow:hidden;border-radius:28px;padding:clamp(28px,3vw,38px) clamp(24px,2.8vw,34px) 32px;color:var(--deep-ink);background:radial-gradient(80% 55% at 88% 0%,rgba(31,95,214,.5),transparent 62%),radial-gradient(70% 55% at 0% 100%,rgba(18,137,171,.38),transparent 60%),var(--deep);border:1px solid rgba(111,164,255,.28);box-shadow:0 30px 70px rgba(8,16,36,.32)}
+.profile::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;background-image:linear-gradient(var(--deep-edge) 1px,transparent 1px),linear-gradient(90deg,var(--deep-edge) 1px,transparent 1px);background-size:40px 40px;-webkit-mask-image:radial-gradient(ellipse 80% 60% at 80% 10%,#000,transparent 70%);mask-image:radial-gradient(ellipse 80% 60% at 80% 10%,#000,transparent 70%)}
+.profile>*{position:relative}
+.avatar{width:124px;height:124px;margin-bottom:22px;position:relative}
+.avatar::before{content:"";position:absolute;inset:-7px;border-radius:50%;background:conic-gradient(from 0deg,#6fa4ff,#3fc4e0,rgba(63,196,224,0) 42%,rgba(111,164,255,0) 70%,#6fa4ff);-webkit-mask:radial-gradient(farthest-side,transparent calc(100% - 3px),#000 calc(100% - 3px));mask:radial-gradient(farthest-side,transparent calc(100% - 3px),#000 calc(100% - 3px));animation:spin 6s linear infinite}
+.avatar img{width:124px;height:124px;border-radius:50%;object-fit:cover;filter:drop-shadow(0 10px 26px rgba(63,140,255,.45))}
+.pname{font-family:var(--font-head);font-size:clamp(34px,3.4vw,44px);font-weight:900;color:#fff;line-height:1.05}
+.pen{font-family:var(--font-mono);font-size:13px;letter-spacing:.2em;color:var(--acc2-on-deep);direction:ltr;text-align:right;margin-top:10px}
+.ptitle{margin-top:16px;font-size:16.5px;line-height:1.65;color:var(--deep-dim);max-width:38ch}
+.pstats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:26px;padding-top:22px;border-top:1px solid var(--deep-edge)}
+.pstat b{display:block;font-family:var(--font-mono);font-variant-numeric:tabular-nums;font-size:clamp(28px,2.6vw,36px);font-weight:600;color:#fff;line-height:1}
+.pstat span{display:block;font-size:13.5px;color:var(--deep-dim);margin-top:8px;line-height:1.4}
+.plinks{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.plink{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--deep-edge);border-radius:999px;padding:9px 16px;font-weight:700;font-size:14.5px;color:#fff;background:rgba(255,255,255,.04);transition:border-color .2s,background-color .2s}
+.plink:hover{border-color:var(--acc-on-deep);background:rgba(111,164,255,.12)}
+.plink .ico{width:18px;height:18px;color:var(--acc-on-deep)}
+/* תפקידים */
+.roles{display:flex;flex-direction:column;gap:16px;justify-content:space-between}
+.role{flex:1;display:flex;gap:20px;align-items:center;background:var(--panel);border:1px solid #bfcde2;border-radius:22px;padding:22px 24px;box-shadow:0 2px 4px rgba(13,22,38,.05),0 14px 32px rgba(13,22,38,.08);transition:border-color .25s,box-shadow .25s}
+.role:hover{border-color:rgba(31,95,214,.5);box-shadow:0 4px 8px rgba(13,22,38,.06),0 20px 44px rgba(13,22,38,.12)}
+.role h3{font-family:var(--font-body);font-size:20px;font-weight:800;letter-spacing:0;margin-bottom:5px}
+.role p{font-size:15.5px;color:var(--dim);line-height:1.6}
+.rtags{display:flex;flex-wrap:wrap;gap:6px;margin-top:11px}
+.rtags span{font-size:12.5px;font-weight:700;color:var(--acc-ink);background:var(--wash1);border:1px solid rgba(31,95,214,.2);border-radius:999px;padding:2px 11px}
+.rico{width:64px;height:64px;margin:0;flex:none}
+.r-flow .dia{fill:var(--panel)}
+.r-flow .tok{fill:#1690b3;stroke:none;offset-path:path('M18 20V32H46V44');animation:tokRun 2.8s ease-in-out infinite}
+@keyframes tokRun{0%{offset-distance:0%;opacity:0}10%{opacity:1}85%{offset-distance:100%;opacity:1}100%{offset-distance:100%;opacity:0}}
+.r-gauge .track{stroke:#d3deec;stroke-width:6}
+.r-gauge .arc{stroke:var(--acc);stroke-width:6;stroke-dasharray:138.2;animation:arcFill 3.2s ease-in-out infinite}
+.r-gauge .bar{fill:#1690b3;stroke:none;transform-box:fill-box;transform-origin:50% 100%;animation:barPulse 2.4s ease-in-out infinite}
+.r-gauge .bar:nth-of-type(2){animation-delay:-.8s}.r-gauge .bar:nth-of-type(3){animation-delay:-1.6s}
+@keyframes arcFill{0%{stroke-dashoffset:138.2}45%,80%{stroke-dashoffset:38}100%{stroke-dashoffset:138.2}}
+.r-chat .dt{fill:var(--acc);stroke:none;animation:dotType 1.4s ease-in-out infinite}
+.r-chat .dt:nth-of-type(2){animation-delay:.18s}.r-chat .dt:nth-of-type(3){animation-delay:.36s}
+.r-chat .live{fill:#1690b3;stroke:var(--panel);stroke-width:2.5;animation:livePulse 2s ease-in-out infinite}
+@keyframes dotType{0%,60%,100%{transform:translateY(0);opacity:.55}30%{transform:translateY(-5px);opacity:1}}
+@keyframes livePulse{0%,100%{opacity:1}50%{opacity:.35}}
+/* כותרת: "העסק" ו"הקוד" בצבע, עם קו בכתב יד שנמתח */
+.hl{position:relative;display:inline-block;color:var(--acc-ink)}
+.hl-b{color:var(--acc-2)}
+.ul{position:absolute;inset-inline-start:-3%;bottom:-.2em;width:106%;height:.36em;overflow:visible;pointer-events:none}
+.ul path{fill:none;stroke:currentColor;stroke-width:4;stroke-linecap:round;stroke-dasharray:100;opacity:.6}
+.js .ul path{stroke-dashoffset:100}
+.js .sh.in .ul path{animation:ulDraw .9s var(--ease) .35s forwards}
+.js .sh.in .hl-b .ul path{animation-delay:.75s}
+@keyframes ulDraw{to{stroke-dashoffset:0}}
+/* ציטוט */
+.pull{position:relative;overflow:hidden;margin:clamp(30px,4vw,48px) 0 0;padding:clamp(28px,4vw,44px) clamp(26px,4vw,52px);border-radius:26px;background:var(--panel);border:1px solid #bfcde2;box-shadow:0 2px 4px rgba(13,22,38,.05),0 18px 40px rgba(13,22,38,.09)}
+.pull::before{content:"\201D";position:absolute;top:-.22em;inset-inline-end:.06em;font-family:var(--font-head);font-size:clamp(150px,16vw,230px);line-height:1;color:var(--acc);opacity:.1;pointer-events:none}
+.pull p{position:relative;font-family:var(--font-head);font-size:clamp(24px,2.9vw,36px);font-weight:700;line-height:1.3;color:var(--ink);text-wrap:balance}
+.pull strong{color:var(--acc-ink);white-space:nowrap}
+.pull small{position:relative;display:block;margin-top:12px;font-size:17px;font-weight:600;color:var(--dim)}
+
+/* faq */
+.faq{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(28px,4vw,56px);align-items:start}
+.faq .sh{margin-bottom:0;position:sticky;top:110px}
+.qa{border-top:1px solid var(--edge)}
+.qa details{border-bottom:1px solid var(--edge)}
+.qa summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:18px;padding:20px 2px;font-size:18px;font-weight:700;color:var(--ink)}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary::after{content:"";width:12px;height:12px;flex:none;background:linear-gradient(currentColor,currentColor) center/12px 1.8px no-repeat,linear-gradient(currentColor,currentColor) center/1.8px 12px no-repeat;color:var(--acc);transition:transform .25s var(--ease)}
+.qa details[open] summary::after{transform:rotate(45deg)}
+.qa summary:hover{color:var(--acc-ink)}
+.qa details p{padding:0 2px 22px;font-size:16.5px;color:var(--dim);max-width:66ch}
+
+/* contact */
+.contact{display:grid;grid-template-columns:1fr 1.05fr;gap:clamp(30px,4.5vw,64px);align-items:start}
+.contact .sh{margin-bottom:28px}
+.direct{display:flex;flex-direction:column;gap:12px}
+.direct a{display:flex;align-items:center;gap:14px;padding:14px 18px;border:1px solid var(--deep-edge);border-radius:var(--r);background:var(--deep-2);transition:border-color .2s}
+.direct a:hover{border-color:var(--acc-on-deep)}
+.direct .tile{margin:0;width:42px;height:42px}
+.direct b{display:block;font-size:16px;color:#fff}
+.direct span{display:block;font-size:14px;color:var(--deep-dim);direction:ltr;text-align:right}
+.form{background:var(--deep-2);border:1px solid var(--deep-edge);border-radius:var(--r-lg);padding:clamp(24px,3vw,36px)}
+.form h3{font-size:24px;font-weight:700;color:#fff;margin-bottom:6px}
+.form .fsub{font-size:15px;color:var(--deep-dim);margin-bottom:22px}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.field{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
+.field label{font-size:14px;font-weight:700;color:var(--deep-ink)}
+.field label .req{color:var(--acc2-on-deep)}
+.field label .opt{font-weight:600;color:var(--deep-dim)}
+.field input,.field select,.field textarea{width:100%;background:var(--deep-3);border:1px solid var(--deep-edge);border-radius:var(--r-sm);padding:12px 14px;color:#fff;font-size:16px;transition:border-color .15s,box-shadow .15s}
+.field textarea{resize:vertical;min-height:104px}
+.field select{appearance:none;-webkit-appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--deep-dim) 50%),linear-gradient(135deg,var(--deep-dim) 50%,transparent 50%);background-position:18px 52%,13px 52%;background-size:5px 5px;background-repeat:no-repeat;padding-inline-start:36px}
+.field input::placeholder,.field textarea::placeholder{color:#6b7891}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--acc-on-deep);box-shadow:0 0 0 3px rgba(111,164,255,.22)}
+.field input[type=tel],.field input[type=email]{direction:ltr;text-align:right}
+.hp{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.form .btn{width:100%;margin-top:6px}
+.form .btn[disabled]{opacity:.6;cursor:progress}
+.priv{margin-top:14px;font-size:13.5px;color:var(--deep-dim)}
+.priv a{color:var(--deep-ink);text-decoration:underline;text-underline-offset:3px}
+.fstatus{margin-top:14px;font-size:15px;font-weight:700;min-height:1.5em}
+.fstatus.ok{color:#5fe0aa}.fstatus.err{color:#ff9aa5}.fstatus.busy{color:var(--deep-dim)}
+
+/* footer */
+.foot{background:var(--deep);color:var(--deep-dim);border-top:1px solid var(--deep-edge);padding-block:52px 34px;font-size:15px}
+.foot-grid{display:grid;grid-template-columns:1.4fr repeat(3,1fr);gap:32px}
+.foot .brand{color:#fff}
+.foot .brand .b{color:var(--acc-on-deep)}
+.foot-tag{margin-top:14px;max-width:32ch}
+.foot h4{font-size:14px;font-weight:800;color:var(--deep-ink);margin-bottom:12px}
+.foot ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.foot a:hover{color:#fff}
+.foot-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-top:40px;padding-top:22px;border-top:1px solid var(--deep-edge);font-size:14px}
+.foot-bottom nav{display:flex;gap:18px}
+.foot-note{margin-top:12px;font-size:13.5px;line-height:1.6}
+.foot-note a{text-decoration:underline;text-underline-offset:3px}
+
+/* תאורת עכבר */
+.cglow{position:fixed;top:0;left:0;width:150px;height:150px;margin:-75px 0 0 -75px;border-radius:50%;pointer-events:none;z-index:9999;opacity:0;transition:opacity .4s var(--ease);background:radial-gradient(circle,rgba(63,196,224,.24) 0,rgba(63,196,224,.08) 45%,transparent 72%);will-change:transform}
+.cglow.is-on{opacity:1}
+
+/* reveal */
+.js .reveal{opacity:0;transform:translateY(20px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.js .reveal.in{opacity:1;transform:none}
+
+@media(max-width:1280px){
+  .nav-links,.nav-cta .btn-ghost{display:none}
+  .burger{display:inline-flex}
+  .nav-cta{margin-inline-start:auto}
+  .nav-links.open{display:flex;flex-direction:column;align-items:stretch;gap:4px;position:absolute;top:72px;inset-inline:0;background:var(--panel);border-bottom:1px solid var(--edge);padding:12px var(--gutter) 20px;box-shadow:0 24px 40px rgba(13,22,38,.1);max-height:calc(100vh - 72px);overflow-y:auto}
+  .nav-links.open > a,.nav-links.open .nav-dd-btn{padding:12px 0;font-size:17px}
+  .nav-links.open .nav-dd{flex-direction:column;align-items:stretch}
   .nav-links.open .nav-dd-btn{width:100%;justify-content:flex-start}
-  .nav-links.open .nav-dd-menu{position:static;display:none;opacity:1;visibility:visible;transform:none;min-width:0;margin:11px 0 0;padding:0 11px 0 0;background:none;border:0;border-inline-start:2px solid var(--border);border-radius:0;box-shadow:none}
+  .nav-links.open .nav-dd-menu{position:static;display:none;opacity:1;visibility:visible;transform:none;min-width:0;margin:0 0 8px;padding:0 14px 0 0;border:0;border-inline-start:2px solid var(--edge);border-radius:0;box-shadow:none;background:none}
   .nav-links.open .nav-dd.open .nav-dd-menu{display:block}
-  .nav-links.open .nav-dd-menu a{padding:7px 0}
+  .nav-links.open .nav-wa-m{display:inline-flex;margin-top:10px}
 }
-@media(max-width:560px){
-  .hero .sub{font-size:18px;white-space:normal}.sec-head h2{font-size:27px}.value h2{font-size:30px}
-  .show-head h3{font-size:23px;white-space:normal}.show-head p{white-space:normal;font-size:15px}
-  .show{padding:22px}
-  .pains,.mini{grid-template-columns:1fr}
-  .hero{min-height:470px}
-  .hero-content{justify-content:flex-end;gap:14px;padding-bottom:64px}
-  .hero-wordmark{position:static;transform:none;left:auto;top:auto;width:auto;order:1}
-  .hero-wordmark .wm{font-size:40px}.hero-wordmark .wm-tag{font-size:16px}
-  .hero .sub{order:2;font-size:14px;line-height:1.45;max-width:340px;padding:8px 16px}
-  .hero-brand-tr{top:10px;right:12px}.hero-brand-tr img{width:60px;height:60px}
-  section{padding:50px 0}
-  .mini{gap:10px}
-  .mcard{padding:14px 16px}
-  .pain{padding:14px 16px}
-  .pain .ic{display:inline-block;font-size:20px;margin:0;margin-inline-end:8px;vertical-align:middle}
-  .pain h3{display:inline;font-size:15px}
-  .pain p{font-size:12.5px;margin-top:5px;line-height:1.4}
-  .value{padding:34px 22px}
-  .cr-id{flex-direction:column;gap:14px}
-  .m-hide{display:none!important}
-  .foot-in{flex-direction:column;align-items:center;text-align:center}
-  .show-chips .chip{font-size:11.5px;padding:6px 11px}
+@media(max-width:1120px){
+  .grid-4{grid-template-columns:repeat(2,1fr)}
+  .steps{grid-template-columns:repeat(2,1fr);row-gap:34px}
+  .steps::before{display:none}
+  .lab{grid-template-columns:repeat(2,1fr)}
+  .foot-grid{grid-template-columns:1fr 1fr}
 }
-@media(max-width:768px){
-  .final{aspect-ratio:auto;min-height:0}
-  .final-inner{padding:34px 22px 40px}
-  .final h2{font-size:26px}
-  .final p{font-size:16px}
-  .final .row{flex-direction:column;align-items:stretch}
-  .final .row .btn{width:100%;justify-content:center}
+@media(max-width:920px){
+  .creator,.faq,.contact{grid-template-columns:1fr}
+  .hero{flex-direction:column;align-items:stretch;padding-block:clamp(24px,4vh,56px) calc(clamp(18px,3vh,40px) + var(--dip))}
+  .hero-grid{flex:none}
+  .collage{position:relative;order:2;inset:auto;width:auto;height:auto;flex:1 1 auto;min-height:96px;max-height:220px;margin-top:clamp(14px,2.4vh,38px);-webkit-mask-image:linear-gradient(to right,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(to right,transparent,#000 12%,#000 88%,transparent)}
+  .collage::after{display:none}
+  .collage .tilt{transform:rotate(-4deg)}
+  .collage .lane:not(:first-child){display:none}
+  .faq .sh{position:static;margin-bottom:8px}
+  .grid-3{grid-template-columns:1fr}
+  .feat{grid-template-columns:1fr}
+  .feat .screen{min-height:0;aspect-ratio:16/8}
 }
-@media(min-width:561px){
-  .hero-content{justify-content:flex-end;padding-bottom:112px}
-  .hero-wordmark{position:static;transform:none;left:auto;top:auto;order:1}
-  .hero .sub{order:2;margin-top:16px}
+@media(max-width:620px){
+  body{font-size:16.5px}
+  .brand span{display:none}
+  .nav-cta .btn-solid{padding:9px 16px;font-size:14.5px}
+  .grid-4,.grid-2,.steps,.lab,.stats,.frow,.foot-grid{grid-template-columns:1fr}
+  .lmedia{grid-template-columns:1fr;gap:12px;padding:12px}.lmedia .lthumb{order:-1}
+  .scard{width:280px;min-height:0;padding:24px 24px 26px;border-radius:22px;margin-inline-end:14px}
+  .scard h3{font-size:20px;margin-top:18px}
+  .aico{width:58px;height:58px}
+  .pico{width:62px;height:62px;margin-bottom:14px}
+  .rico{width:52px;height:52px;margin:0}
+  .role{padding:18px;gap:16px}
+  .pstat span{font-size:12.5px}
+  .collage .ctile{width:150px;margin-inline-end:12px}
+  .hero-actions .btn{width:100%}
+  .proof{border-radius:14px;align-items:flex-start}
+  .proof .dot{margin-top:7px}
+  .card{padding:22px 20px}
+  .role{padding:18px}
+  .stat{padding-block:2px}
+}
+@media(max-width:920px) and (max-height:720px){
+  .collage{display:none}
+}
+/* עצירת תנועה (WCAG 2.2.2): מוצג רק כשיש JS ואין העדפת פחות תנועה */
+.motion-btn{display:none}
+.js .motion-btn{display:grid;place-items:center;position:fixed;bottom:14px;inset-inline-end:14px;z-index:150;width:34px;height:34px;padding:0;border-radius:50%;border:1px solid rgba(13,22,38,.1);background:rgba(243,247,252,.85);color:var(--dim);cursor:pointer;opacity:.75;box-shadow:0 2px 8px rgba(13,22,38,.08);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);transition:opacity .2s,background-color .2s,color .2s}
+.motion-btn:hover,.motion-btn:focus-visible{opacity:1;background:rgba(243,247,252,.92);color:var(--acc-ink)}
+.motion-btn:focus-visible{outline-color:var(--acc)}
+.motion-btn svg{width:12px;height:12px;fill:currentColor}
+.motion-btn .i-play,.motion-off .motion-btn .i-pause{display:none}
+.motion-off .motion-btn .i-play{display:block}
+.motion-off *,.motion-off *::before,.motion-off *::after{animation-play-state:paused!important}
+/* כניסות חד פעמיות וקצרות ממשיכות לרוץ גם בעצירה. אחרת, בטעינה עם עצירה שמורה, ה-hero נשאר שקוף */
+.motion-off .hero h1,.motion-off .hero-lead,.motion-off .hero-actions,.motion-off .proof,.motion-off .collage,.motion-off .sh .ul path{animation-play-state:running!important}
+.motion-btn .lbl{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+@media(prefers-reduced-motion:reduce){
+  .js .motion-btn{display:none}
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .js .reveal,.js .hero h1,.js .hero-lead,.js .hero-actions,.js .proof,.js .collage{opacity:1;transform:none}
+  .cglow{display:none}
+  .js .drift{overflow-x:auto;cursor:auto}
+  .js .ul path{stroke-dashoffset:0}
 }
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://www.rubinproject.com/#org",
+      "name": "Rubin Project",
+      "url": "https://www.rubinproject.com/",
+      "logo": "https://www.rubinproject.com/img/logo-mark.png",
+      "email": "amit@rubinproject.com",
+      "telephone": "+972-52-724-6200",
+      "areaServed": "IL",
+      "founder": {"@id": "https://www.rubinproject.com/#amit"},
+      "knowsAbout": ["Business Intelligence", "Business Process Automation", "Custom Software", "Applied AI"],
+      "sameAs": ["https://www.linkedin.com/in/amit-rubin-316b83357/", "https://github.com/amitrubin10"]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://www.rubinproject.com/#amit",
+      "name": "עמית רובין",
+      "alternateName": "Amit Rubin",
+      "jobTitle": "מוביל תהליכים עסקיים ומפתח BI ו-AI",
+      "worksFor": {"@id": "https://www.rubinproject.com/#org"},
+      "sameAs": ["https://www.linkedin.com/in/amit-rubin-316b83357/"]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.rubinproject.com/#website",
+      "url": "https://www.rubinproject.com/",
+      "name": "Rubin Project",
+      "inLanguage": "he-IL",
+      "publisher": {"@id": "https://www.rubinproject.com/#org"}
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://www.rubinproject.com/#faq",
+      "mainEntity": [
+        {"@type": "Question", "name": "כמה זמן לוקח פרויקט?", "acceptedAnswer": {"@type": "Answer", "text": "תלוי בהיקף. דשבורד ממוקד יכול לעלות לאוויר תוך שבועות ספורים, ומערכת מלאה לוקחת יותר. אחרי שיחת האפיון תקבלו הערכת זמן כתובה, ואב טיפוס ראשון מגיע בדרך כלל תוך שבועיים עד שלושה."}},
+        {"@type": "Question", "name": "כמה זה עולה?", "acceptedAnswer": {"@type": "Answer", "text": "כל פרויקט מתומחר לפי ההיקף שלו, ולכן אין מחירון. אחרי שיחת האפיון תקבלו הצעת מחיר מפורטת, לפני שאתם מתחייבים לשום דבר."}},
+        {"@type": "Question", "name": "זה יעבוד עם המערכות שכבר יש לנו?", "acceptedAnswer": {"@type": "Answer", "text": "בדרך כלל כן. רוב העבודה שלי היא בדיוק החיבור בין מערכות: ERP, קובצי אקסל, מערכות שירות, דפי בנק וקבוצות וואטסאפ. בשיחת האפיון נבדוק מה יש לכם ומה אפשר לחבר."}},
+        {"@type": "Question", "name": "מה קורה עם המידע של העסק שלי?", "acceptedAnswer": {"@type": "Answer", "text": "המידע נשאר שלכם. הגישה למערכות היא רק למה שהפרויקט צריך, וכשנדרש אפשר לבנות פתרון שרץ כולו על השרתים של הארגון, בלי שום יציאה לענן."}},
+        {"@type": "Question", "name": "אני עסק קטן. זה מתאים גם לי?", "acceptedAnswer": {"@type": "Answer", "text": "כן. חלק מהכלים השימושיים ביותר שבניתי נבנו דווקא לעסקים קטנים, כמו VeriBayit לניהול ועד בית. ההיקף נקבע לפי גודל העסק והתקציב."}},
+        {"@type": "Question", "name": "מה ההבדל בינך לבין חברת פיתוח?", "acceptedAnswer": {"@type": "Answer", "text": "חברת פיתוח מקבלת אפיון ובונה לפיו. אני מתחיל צעד אחד קודם, בהבנה של התהליך העסקי, ולכן גם האפיון יוצא מדויק יותר. ולאורך כל הדרך אתם מדברים ישירות עם מי שבונה."}},
+        {"@type": "Question", "name": "מה זה Rubin Studio?", "acceptedAnswer": {"@type": "Answer", "text": "סטודיו לבניית מצגות פרימיום לעסקים ולארגונים. כדי לתכנן מצגת, השאירו פרטים בטופס ובחרו ב-Rubin Studio."}}
+      ]
+    }
+  ]
+}
+</script>
+<script>
+// מדידה: רק באתר החי, כדי שבדיקות מקומיות לא ייכנסו לנתונים
+(function(){
+  var LIVE = /(^|\.)rubinproject\.com$/.test(location.hostname);
+  var GA4_ID = 'G-H747FKHF3H';
+  var CLARITY_ID = 'z5g16xx34y';
+  if (LIVE && GA4_ID) {
+    var s = document.createElement('script'); s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA4_ID; document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function(){ dataLayer.push(arguments); };
+    gtag('js', new Date()); gtag('config', GA4_ID);
+  }
+  if (LIVE && CLARITY_ID) {
+    (function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src='https://www.clarity.ms/tag/'+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,'clarity','script',CLARITY_ID);
+  }
+  window.rpTrack = function(name, params){
+    if (window.gtag) gtag('event', name, params || {});
+    if (window.clarity) clarity('event', name);
+  };
+})();
+</script>
 </head>
 <body>
 
-<!-- NAV -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-scatter" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="7" height="7" rx="1.6"/><rect x="14" y="5" width="6.5" height="5" rx="1.6"/><rect x="5" y="14" width="5.5" height="6.5" rx="1.6"/><path d="M14 15h6.5M14 19h4"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></symbol>
+  <symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="m15.5 8.5-2.1 4.9-4.9 2.1 2.1-4.9z"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><path d="M3 20h18"/><rect x="4.5" y="11" width="3.6" height="6"/><rect x="10.2" y="7" width="3.6" height="10"/><rect x="15.9" y="4" width="3.6" height="13"/></symbol>
+  <symbol id="i-loop" viewBox="0 0 24 24"><path d="M20 11.5a8 8 0 0 0-13.7-5.2L3.5 9"/><path d="M3.5 4.5V9H8"/><path d="M4 12.5a8 8 0 0 0 13.7 5.2L20.5 15"/><path d="M20.5 19.5V15H16"/></symbol>
+  <symbol id="i-code" viewBox="0 0 24 24"><path d="M9.5 4.5 4 10l5.5 5.5"/><path d="M14.5 8.5 20 14l-5.5 5.5"/></symbol>
+  <symbol id="i-nodes" viewBox="0 0 24 24"><circle cx="12" cy="5.5" r="2.4"/><circle cx="5.5" cy="17" r="2.4"/><circle cx="18.5" cy="17" r="2.4"/><path d="M10.4 7.3 7.2 14.9M13.6 7.3l3.2 7.6M8 17.5h8"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.2 4.2L19 7"/></symbol>
+  <symbol id="i-wa" viewBox="0 0 24 24"><path d="M20 11.6a8.1 8.1 0 0 1-12 7.1L4 20l1.3-3.8A8.1 8.1 0 1 1 20 11.6z"/><path d="M9.2 8.9c.2 2.4 2.5 4.8 5 5.4l1-1.4-1.6-1-.8.7c-.9-.4-1.7-1.2-2.1-2.1l.7-.8-1-1.6z"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2.2"/><path d="m3.6 6.6 8.4 6 8.4-6"/></symbol>
+  <symbol id="i-in" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="3"/><path d="M8 10.5V16.5M8 7.6v.1M12 16.5v-3.6a2.2 2.2 0 0 1 4.4 0v3.6M12 10.5v6"/></symbol>
+  <symbol id="i-card" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2.5"/><circle cx="8.5" cy="11" r="2.2"/><path d="M5.8 16c.6-1.6 1.6-2.3 2.7-2.3s2.1.7 2.7 2.3M14 10h4M14 13.5h3"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+</svg>
+
+<a class="skip" href="#main">דילוג לתוכן</a>
+<button class="motion-btn" id="motionBtn" type="button"><svg class="i-pause" viewBox="0 0 16 16" aria-hidden="true"><rect x="3" y="2" width="3.5" height="12" rx="1"/><rect x="9.5" y="2" width="3.5" height="12" rx="1"/></svg><svg class="i-play" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5v11a1 1 0 0 0 1.5.86l9-5.5a1 1 0 0 0 0-1.72l-9-5.5A1 1 0 0 0 4 2.5z"/></svg><span class="lbl">עצירת תנועה</span></button>
+
 <header class="nav">
   <div class="nav-in">
-    <a class="nav-logo" href="#top"><img src="img/logo-reverse.png" alt="Rubin Project"><span dir="ltr">Rubin <span class="b">Project</span></span></a>
-    <nav class="nav-links" id="navLinks">
+    <a class="brand" href="#top" aria-label="Rubin Project, לראש העמוד"><img src="img/logo-mark.webp" width="123" height="120" alt=""><span dir="ltr">Rubin <span class="b">Project</span></span></a>
+    <nav class="nav-links" id="navLinks" aria-label="ניווט ראשי">
       <a href="#services">שירותים</a>
       <a href="#portfolio">תוכנות ומוצרים</a>
-      <a href="#results">מהניסיון</a>
-      <a href="#creator">מי אני</a>
-      <div class="nav-dd" id="ebDd">
-        <button class="nav-dd-btn" id="ebBtn" type="button" aria-expanded="false" aria-haspopup="true" aria-controls="ebMenu">
-          <img src="img/evenbina-mark.png" alt="" aria-hidden="true">
+      <a href="#process">איך עובדים</a>
+      <div class="nav-dd">
+        <button class="nav-dd-btn" type="button" aria-expanded="false" aria-controls="studioMenu">
+          <span dir="ltr">Rubin Studio</span><i class="nav-dd-chev" aria-hidden="true"></i>
+        </button>
+        <div class="nav-dd-menu" id="studioMenu">
+          <div class="dd-info"><span class="dd-t">מצגות פרימיום לעסקים ולארגונים</span><span class="dd-s">עיצוב ובנייה, מהתוכן ועד המצגת המוכנה.</span></div>
+          <a href="#leadForm" data-interest="studio"><span class="dd-t">מתכננים מצגת?</span><span class="dd-s">השאירו פרטים ונקבע שיחה</span></a>
+        </div>
+      </div>
+      <div class="nav-dd">
+        <button class="nav-dd-btn" type="button" aria-expanded="false" aria-controls="ebMenu">
+          <img src="img/evenbina-mark.webp" width="153" height="120" alt="" aria-hidden="true">
           <span>אבן בינה</span>
           <i class="nav-dd-chev" aria-hidden="true"></i>
         </button>
-        <div class="nav-dd-menu" id="ebMenu" role="menu">
-          <a href="https://evenbina.co.il/" target="_blank" rel="noopener" role="menuitem">
-            <span class="dd-t">קורס AI לנוער</span>
+        <div class="nav-dd-menu" id="ebMenu">
+          <a href="https://evenbina.co.il/" target="_blank" rel="noopener">
+            <span class="dd-t">קורס פיתוח AI לנוער</span>
             <span class="dd-s">מפתחי AI צעירים · כיתות ז עד יב</span>
           </a>
         </div>
       </div>
-      <a href="#contact">יצירת קשר</a>
+      <a href="#creator">מי אני</a>
+      <a class="btn btn-ghost nav-wa-m" href="https://wa.me/972527246200?text=%D7%94%D7%99%D7%99%20%D7%A2%D7%9E%D7%99%D7%AA%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%90%D7%AA%D7%A8" target="_blank" rel="noopener"><svg class="ico"><use href="#i-wa"/></svg>וואטסאפ</a>
     </nav>
     <div class="nav-cta">
-      <a class="btn btn-ghost" href="#contact">יצירת קשר</a>
-      <a class="btn btn-primary" href="https://wa.me/972527246200" target="_blank" rel="noopener">💬 וואטסאפ</a>
+      <a class="btn btn-ghost" href="https://wa.me/972527246200?text=%D7%94%D7%99%D7%99%20%D7%A2%D7%9E%D7%99%D7%AA%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%90%D7%AA%D7%A8" target="_blank" rel="noopener" data-track="whatsapp_nav"><svg class="ico"><use href="#i-wa"/></svg>וואטסאפ</a>
+      <a class="btn btn-solid" href="#leadForm" data-interest="project" data-track="cta_nav">שיחת אפיון</a>
     </div>
-    <button class="burger" id="burger" aria-label="תפריט">☰</button>
+    <button class="burger" id="burger" type="button" aria-label="פתיחת תפריט" aria-expanded="false" aria-controls="navLinks"><svg class="ico"><use href="#i-menu"/></svg></button>
   </div>
 </header>
 <a id="top"></a>
 
-<!-- floating notes -->
-<div class="fb-col fb-left">
-  <div class="fb-inner float">💡 <b>הנתונים כבר אצלך.</b><br>אני גורם להם לדבר.</div>
-</div>
-<div class="fb-col fb-right">
-  <div class="fb-inner float" style="animation-delay:-1.8s">📊 <b>דשבורדים, אוטומציה ותוכנה</b><br>במקום אחד, בהתאמה לעסק שלך.</div>
-</div>
+<main id="main">
 
-<!-- HERO -->
 <section class="hero">
-  <img class="hero-bg" src="img/hero.jpg" alt="">
-  <div class="hero-mask"></div>
-  <div class="hero-content wrap">
-    <p class="sub">פתרונות BI, אוטומציה ותוכנה לעסקים — מתוך הבנה של התהליך העסקי</p>
-    <div class="hero-wordmark">
-      <div class="wm">Rubin <span class="b">Project</span></div>
-      <div class="wm-tag">הופכים <span class="cy">נתונים</span> להחלטות</div>
+  <div class="collage" aria-hidden="true">
+    <div class="tilt">
+      <div class="lane" data-lane data-speed="20" data-dir="1"><div class="lane-track"><div class="lane-group">
+        <span class="ctile"><img src="img/shots/h-vf-dash-dark.webp" width="440" height="275" alt="" decoding="async"></span>
+        <span class="ctile"><img src="img/shots/h-mi-sent.webp" width="440" height="275" alt="" decoding="async"></span>
+        <span class="ctile"><img src="img/shots/h-r360-1.webp" width="440" height="275" alt="" decoding="async"></span>
+        <span class="ctile"><img src="img/shots/h-vb-dash3.webp" width="440" height="275" alt="" decoding="async"></span>
+        <span class="ctile"><img src="img/shots/h-home-real.webp" width="440" height="275" alt="" decoding="async"></span>
+      </div></div></div>
+      <div class="lane" data-lane data-speed="15" data-dir="-1"><div class="lane-track"><div class="lane-group">
+        <span class="ctile"><img src="img/shots/h-bot-2.webp" width="440" height="275" alt="" decoding="async"></span>
+        <span class="ctile"><img src="img/shots/h-verifix-health.webp" width="440" height="275" alt="" decoding="async"></span>
+        <span class="ctile"><img src="img/shots/h-mi-trend.webp" width="440" height="275" alt="" decoding="async"></span>
+        <span class="ctile"><img src="img/shots/h-torah-dark.webp" width="440" height="275" alt="" decoding="async"></span>
+        <span class="ctile"><img src="img/shots/h-vf-assets.webp" width="440" height="275" alt="" decoding="async"></span>
+      </div></div></div>
+      <div class="lane" data-lane data-speed="24" data-dir="1"><div class="lane-track"><div class="lane-group">
+        <span class="ctile"><img src="img/shots/h-vb-dash2.webp" width="440" height="275" alt="" decoding="async"></span>
+        <span class="ctile"><img src="img/shots/h-r360-3.webp" width="440" height="275" alt="" decoding="async"></span>
+        <span class="ctile"><img src="img/shots/h-mi-head.webp" width="440" height="275" alt="" decoding="async"></span>
+        <span class="ctile"><img src="img/shots/h-vf-support.webp" width="440" height="275" alt="" decoding="async"></span>
+        <span class="ctile"><img src="img/shots/h-mi-map.webp" width="440" height="275" alt="" decoding="async"></span>
+      </div></div></div>
     </div>
   </div>
-</section>
-
-<!-- PAINS -->
-<section class="alt" id="why">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <span class="eyebrow">המציאות בהרבה עסקים</span>
-      <h2>הנתונים שלך שם — אבל אתה לא רואה אותם.<br><span class="cy">יש דרך אחרת.</span></h2>
-      <p>המידע מפוזר ב-Excel, בוואטסאפ ובמערכות שונות. תהליכים ידניים אוכלים שעות.<br>וההחלטות? מתקבלות על תחושה, לא על נתונים.</p>
-    </div>
-    <div class="pains reveal">
-      <div class="pain"><div class="ic">📊</div><h3>נתונים מפוזרים</h3><p>Excel פה, מערכת שם, וואטסאפ באמצע — אף פעם לא תמונה אחת ברורה.</p></div>
-      <div class="pain"><div class="ic">⏳</div><h3>תהליכים ידניים</h3><p>שעות על עבודה חוזרת שאפשר לאוטמט — זמן שאף אחד לא מקבל בחזרה.</p></div>
-      <div class="pain"><div class="ic">🤔</div><h3>החלטות בלי דאטה</h3><p>מחליטים על סמך תחושה, כי אין דשבורד שמראה את התמונה האמיתית.</p></div>
-    </div>
-    <div class="pain-foot reveal">אני בונה את זה אחרת. ↓</div>
-  </div>
-</section>
-
-<!-- DIFFERENTIATOR -->
-<section id="why-me">
-  <div class="wrap">
-    <div class="diff reveal">
-      <div class="diff-ftag">🧭 מה שמייחד אותי</div>
-      <h2 class="diff-title">קודם מבין את <span class="cy">התהליך העסקי</span> — אחר כך בונה את הכלי</h2>
-      <p class="diff-lead">20 שנה של הובלת תהליכים עסקיים. לא רק דשבורד יפה — כלי שמשרת החלטה עסקית אמיתית.</p>
-      <div class="diff-shot"><img src="img/veribayit-dashboard.png" alt="דשבורד ניהולי — תמונת מצב מלאה של העסק" loading="lazy"></div>
-    </div>
-    <div class="diff-chips-out reveal"><span class="chip">הבנת תהליך עסקי (BPM)</span><span class="chip">ניסיון ERP עמוק</span><span class="chip">פתרון מקצה-לקצה</span><span class="chip">דיוק עסקי, לא רק טכני</span></div>
-  </div>
-</section>
-
-<!-- SERVICES -->
-<section class="alt" id="services">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <span class="eyebrow">מה Rubin Project עושה</span>
-      <h2>ארבע דרכים להפוך נתונים לתוצאות</h2>
-      <p>מאפיון ועד production — בהתאמה מלאה לאיך שהעסק שלך עובד.</p>
-    </div>
-    <div class="mini">
-      <div class="mcard reveal"><div class="ic">📊</div><h4>בינה עסקית ודשבורדים</h4><p>דשבורדים ניהוליים אינטראקטיביים שמראים את התמונה ומאפשרים להחליט.</p></div>
-      <div class="mcard reveal"><div class="ic">⚙️</div><h4>אוטומציה עסקית</h4><p>הפיכת תהליכים ידניים לפייפליינים אוטומטיים שחוסכים שעות אמת.</p></div>
-      <div class="mcard reveal"><div class="ic">🧩</div><h4>תוכנה בהתאמה אישית</h4><p>מערכות מלאות שנבנות סביב איך שהעסק שלך באמת עובד.</p></div>
-      <div class="mcard reveal"><div class="ic">🤖</div><h4>AI יישומי</h4><p>צ'אטבוטים וסוכני ניתוח חכמים שמתחברים לתפעול אמיתי.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- PORTFOLIO -->
-<section id="portfolio">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <span class="eyebrow">תיק עבודות</span>
-      <h2>תוכנות ומוצרים</h2>
-      <p>לוחצים על כל פרויקט — ורואים את הסיפור המלא.</p>
-    </div>
-
-    <!-- Category: business solutions -->
-    <div class="cat-head reveal"><span class="cat-ic">🏢</span><h3>פתרונות לעסקים</h3><span class="line"></span></div>
-    <div class="pgrid">
-      <a class="pcard reveal" href="/projects/bot-analytics/">
-        <div class="pcard-logo"><img src="img/logo-bot.png" alt="Bot Analytics — ניתוח שירות מבוסס AI" loading="lazy"></div>
-        <div class="pcard-body">
-          <div class="pcard-tag">🤖 פייפליין AI</div>
-          <h4><span dir="ltr">Bot Analytics</span></h4>
-          <p>סוכני AI שהופכים דאטה גולמית של שירות לדשבורדים ניהוליים — סיווג, איכות ומגמות.</p>
-          <div class="pcard-foot"><span class="chip">AI Agents</span><span class="chip">Python</span><span class="pcard-more">לפרטים ←</span></div>
-        </div>
-      </a>
-      <a class="pcard reveal" href="/projects/rubin-market/">
-        <div class="pcard-logo"><img src="img/logo-market.png" alt="RUBIN MARKET — מודיעין שוק" loading="lazy"></div>
-        <div class="pcard-body">
-          <div class="pcard-tag">📊 מודיעין שוק</div>
-          <h4><span dir="ltr">RUBIN MARKET</span></h4>
-          <p>מהשיח בקבוצות המקצועיות לתובנה תחרותית — שביעות רצון, נושאים חוזרים ומטריצת מיצוב מול השוק.</p>
-          <div class="pcard-foot"><span class="chip">BI</span><span class="chip">NLP</span><span class="pcard-more">לפרטים ←</span></div>
-        </div>
-      </a>
-      <a class="pcard reveal" href="/projects/rubin360/">
-        <div class="pcard-logo"><img src="img/logo-rubin360.png" alt="RUBIN 360 — תוכנה בהתאמה אישית" loading="lazy"></div>
-        <div class="pcard-body">
-          <div class="pcard-tag">🛠️ בנייה בהתאמה אישית</div>
-          <h4><span dir="ltr">RUBIN 360</span></h4>
-          <p>בנוי נכון, בדיוק בשבילך — תוכנה שנבנית מה-0 עד ה-100 לפי הצרכים שלך, עם השם והלוגו שלך.</p>
-          <div class="pcard-foot"><span class="chip">מותאם אישית</span><span class="chip">0→100</span><span class="pcard-more">לפרטים ←</span></div>
-        </div>
-      </a>
-    </div>
-
-    <div class="cat-head verified-head reveal" id="verified">
-      <span class="cat-ic">✅</span>
-      <div class="vh-txt">
-        <h3>סדרת <span dir="ltr"><span class="veri">Veri</span>fied</span></h3>
-        <span class="cat-sub">מערכות מאומתות מבית Rubin Project</span>
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <h1>
+        <span class="h1-k">פתרונות BI, אוטומציה ותוכנה לעסקים</span>
+        <span class="h1-main">הנתונים כבר אצלך.<br>אני גורם להם <em>לדבר</em>.</span>
+      </h1>
+      <p class="hero-lead">דשבורדים, אוטומציות ומערכות שנבנות סביב התהליך העסקי שלך. אחרי 20 שנה של הובלת תהליכים ומערכות ERP, אני מתחיל מהבנה של העסק, ורק אחר כך כותב קוד.</p>
+      <div class="hero-actions">
+        <a class="btn btn-solid btn-lg" href="#leadForm" data-interest="project" data-track="cta_hero">קבעו שיחת אפיון</a>
+        <a class="btn btn-ghost btn-lg" href="#portfolio">ראו מה כבר רץ</a>
       </div>
-      <span class="vh-badge">אמינות · דיוק · אחריות</span>
+      <a class="proof" href="/projects/verifix/" target="_blank" rel="noopener"><span class="dot" aria-hidden="true"></span><span><b dir="ltr">Verifix</b> רצה היום בפרודקשן בחברת נמלי ישראל ←</span></a>
     </div>
-    <div class="pgrid">
-      <a class="pcard reveal" href="/projects/verifix/">
-        <div class="pcard-logo"><img src="img/logo-verifix.png" alt="Verifix — ניהול תחזוקת מבנים" loading="lazy"></div>
-        <div class="pcard-body">
-          <div class="pcard-tag">🏢 מערכת פרודקשן</div>
-          <h4><span dir="ltr">Verifix</span></h4>
-          <p>ניהול תחזוקת מבנים — קריאות שבר, אחזקה מונעת ו-SLA. רץ בפרודקשן בחברת נמלי ישראל.</p>
-          <div class="pcard-foot"><span class="chip">Next.js</span><span class="chip">SLA</span><span class="pcard-more">לפרטים ←</span></div>
+  </div>
+</section>
+
+<div class="after-hero">
+<section class="stack" aria-label="טכנולוגיות">
+  <div class="lane" data-lane data-speed="34" data-dir="1"><div class="lane-track"><div class="lane-group">
+    <span class="tech"><i></i>Python</span><span class="tech"><i></i>Next.js</span><span class="tech"><i></i>Supabase</span><span class="tech"><i></i>PostgreSQL</span><span class="tech"><i></i>Vercel</span><span class="tech"><i></i>AI Agents</span><span class="tech"><i></i>NLP</span><span class="tech"><i></i>PWA</span><span class="tech"><i></i>WhatsApp</span>
+  </div></div></div>
+</section>
+
+<section class="band band-light" id="why">
+  <div class="wrap">
+    <div class="sh reveal">
+      <span class="k">המציאות בהרבה עסקים</span>
+      <h2>הנתונים שלך שם.<br>אתה פשוט לא רואה אותם.</h2>
+      <p>המידע מפוזר בין אקסל, וואטסאפ וכמה מערכות שלא מדברות זו עם זו. תהליכים ידניים אוכלים שעות. וההחלטות מתקבלות לפי תחושה.</p>
+    </div>
+    <div class="grid-3 fan">
+      <div class="card reveal"><svg class="pico p-scatter" viewBox="0 0 64 64" aria-hidden="true"><path class="lnk k1" d="M27 19 39 14"/><path class="lnk k2" d="M17 27 25 40"/><path class="lnk k3" d="M47 26 41 40"/><g class="s1"><rect class="b" x="5" y="8" width="21" height="17" rx="3"/><path class="b thin" d="M5 14h21M5 19.5h21M12.5 8v17"/></g><g class="s2"><path class="ac" d="M41 5h15a3 3 0 0 1 3 3v9a3 3 0 0 1-3 3h-8l-5 4v-4h-2a3 3 0 0 1-3-3V8a3 3 0 0 1 3-3z"/><path class="ac" d="M45 12.5h.01M48.5 12.5h.01M52 12.5h.01"/></g><g class="s3"><ellipse class="ac2" cx="33" cy="43" rx="10" ry="3.6"/><path class="ac2" d="M23 43v11c0 2 4.5 3.6 10 3.6s10-1.6 10-3.6V43M23 48.5c0 2 4.5 3.6 10 3.6s10-1.6 10-3.6"/></g></svg><h3>נתונים מפוזרים</h3><p>אקסל פה, מערכת שם, וואטסאפ באמצע. אף פעם לא תמונה אחת ברורה.</p></div>
+      <div class="card reveal"><svg class="pico p-clock" viewBox="0 0 64 64" aria-hidden="true"><circle class="ring" cx="32" cy="35" r="20"/><circle class="b" cx="32" cy="35" r="20"/><path class="b" d="M27 9h10M32 9v6M48 17l3-3"/><path class="ac thin" d="M32 18.5v3M48.5 35h-3M32 51.5v-3M15.5 35h3"/><path class="hand-h b" d="M32 35h8"/><path class="hand-m ac" d="M32 35V22"/><circle class="hub" cx="32" cy="35" r="2.6"/></svg><h3>תהליכים ידניים</h3><p>שעות על עבודה חוזרת שאפשר להפוך לאוטומטית. זמן שאף אחד לא מקבל בחזרה.</p></div>
+      <div class="card reveal"><svg class="pico p-compass" viewBox="0 0 64 64" aria-hidden="true"><circle class="b" cx="30" cy="34" r="22"/><path class="b thin" d="M30 14v3M30 51v3M10 34h3M47 34h3"/><g class="needle"><path class="nn" d="M30 17l4.5 17h-9z"/><path class="ns" d="M30 51l4.5-17h-9z"/></g><circle class="hub" cx="30" cy="34" r="2.6"/><path class="qm ac2" d="M50 6.5a5 5 0 0 1 5 5c0 3.5-5 3.6-5 7M50 23.5h.01"/></svg><h3>החלטות בלי דאטה</h3><p>מחליטים לפי תחושה, כי אין דשבורד שמראה את התמונה האמיתית.</p></div>
+    </div>
+    <a class="bridge reveal" href="#why-me">אני בונה את זה אחרת ←</a>
+  </div>
+</section>
+</div>
+
+<section class="band band-light alt" id="why-me">
+  <div class="wrap">
+    <div class="sh reveal">
+      <span class="k">מה שמייחד אותי</span>
+      <h2>קודם מבין את התהליך העסקי. אחר כך בונה את הכלי.</h2>
+      <p>20 שנה של הובלת תהליכים עסקיים לימדו אותי ששאלה טובה שווה יותר מגרף יפה. כל כלי שאני בונה מתחיל מההחלטה העסקית שהוא צריך לשרת.</p>
+    </div>
+    <div class="chips reveal">
+      <span class="chip"><svg class="ico"><use href="#i-check"/></svg>הבנת תהליך עסקי (BPM)</span>
+      <span class="chip"><svg class="ico"><use href="#i-check"/></svg>ניסיון ERP עמוק</span>
+      <span class="chip"><svg class="ico"><use href="#i-check"/></svg>פתרון מקצה לקצה</span>
+      <span class="chip"><svg class="ico"><use href="#i-check"/></svg>דיוק עסקי</span>
+    </div>
+    <figure class="reveal">
+      <div class="frame">
+        <div class="frame-bar" aria-hidden="true"><i></i><i></i><i></i><span>verifix</span></div>
+        <img src="img/verifix-health.webp" width="1300" height="352" loading="lazy" alt="Verifix, מסך אחזקה מונעת לפי מערכות: גילוי וכיבוי אש, גנרטורים ודפיברילטורים">
+      </div>
+      <figcaption class="shot-cap"><b dir="ltr">Verifix</b>, מסך אחזקה מונעת. רצה בפרודקשן בחברת נמלי ישראל.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="band band-deep svc" id="services">
+  <div class="wrap">
+    <div class="sh reveal">
+      <span class="k">מה Rubin Project עושה</span>
+      <h2>ארבע דרכים להפוך נתונים לתוצאות</h2>
+      <p>מאפיון ועד פרודקשן, בהתאמה לאיך שהעסק שלך עובד.</p>
+    </div>
+  </div>
+  <div class="drift reveal" data-speed="55" role="region" aria-label="השירותים של Rubin Project">
+    <div class="drift-track">
+      <article class="scard">
+        <svg class="aico a-chart" viewBox="0 0 64 64" aria-hidden="true"><path class="b" d="M9 54h47M11 54V9"/><rect class="bar" x="17" y="28" width="7" height="26" rx="1.6"/><rect class="bar" x="29" y="18" width="7" height="36" rx="1.6"/><rect class="bar" x="41" y="32" width="7" height="22" rx="1.6"/><path class="trend" d="M15 41 27 29 39 35 53 16"/><circle class="tdot" r="3.2"/></svg>
+        <h3>בינה עסקית ודשבורדים</h3><p>דשבורדים ניהוליים אינטראקטיביים שמראים את התמונה ומאפשרים להחליט.</p>
+      </article>
+      <article class="scard">
+        <svg class="aico a-auto" viewBox="0 0 64 64" aria-hidden="true"><g class="spin"><path class="b" d="M50.5 25A20 20 0 0 0 16 18.5"/><path class="ac" d="M15 9.5V19h9.5"/><path class="b" d="M13.5 39A20 20 0 0 0 48 45.5"/><path class="ac" d="M49 54.5V45h-9.5"/></g><g class="gear"><circle class="ac" cx="32" cy="32" r="6"/><path class="ac" d="M32 22.5v3M32 38.5v3M22.5 32h3M38.5 32h3M25.3 25.3l2.1 2.1M36.6 36.6l2.1 2.1M38.7 25.3l-2.1 2.1M27.4 36.6l-2.1 2.1"/></g></svg>
+        <h3>אוטומציה עסקית</h3><p>תהליכים ידניים הופכים לזרימות אוטומטיות שחוסכות שעות עבודה אמיתיות.</p>
+      </article>
+      <article class="scard">
+        <svg class="aico a-code" viewBox="0 0 64 64" aria-hidden="true"><rect class="b" x="6" y="10" width="52" height="42" rx="6"/><path class="b" d="M6 20h52"/><circle class="dotf" cx="12.5" cy="15" r="1.6"/><circle class="dotf" cx="17.5" cy="15" r="1.6"/><circle class="dotf" cx="22.5" cy="15" r="1.6"/><path class="ac" d="M17 29l-5 4.5 5 4.5"/><path class="ln l1" d="M22 29h24"/><path class="ln l2" d="M22 35.5h16"/><path class="ln l3" d="M22 42h20"/><rect class="cur" x="44" y="38.5" width="2.4" height="7" rx="1"/></svg>
+        <h3>תוכנה בהתאמה אישית</h3><p>מערכות מלאות שנבנות סביב איך שהעסק שלך באמת עובד.</p>
+      </article>
+      <article class="scard">
+        <svg class="aico a-ai" viewBox="0 0 64 64" aria-hidden="true"><path class="b" d="M32 13 14 47M32 13l18 34M14 47h36M32 13v19M14 47l18-15M50 47 32 32"/><path class="flow f1" d="M32 13 14 47"/><path class="flow f2" d="M50 47 32 32"/><path class="flow f3" d="M14 47h36"/><circle class="node" cx="32" cy="13" r="5"/><circle class="node" cx="14" cy="47" r="5"/><circle class="node" cx="50" cy="47" r="5"/><circle class="core" cx="32" cy="32" r="4.5"/></svg>
+        <h3>AI יישומי</h3><p>צ'אטבוטים וסוכני ניתוח שמתחברים לתפעול האמיתי של העסק.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="band band-light alt" id="portfolio">
+  <div class="wrap">
+    <div class="sh reveal">
+      <span class="k">תיק עבודות</span>
+      <h2>מערכות שרצות אצל לקוחות</h2>
+      <p>כל אחת מהן נבנתה לבעיה עסקית אמיתית. לחצו כדי לראות את הסיפור המלא.</p>
+    </div>
+
+    <article class="feat reveal">
+      <div class="screen" role="img" aria-label="מסכי RUBIN 360: ניהול תהליכים עסקיים">
+        <div class="tilt" aria-hidden="true">
+          <div class="lane" data-lane data-speed="16" data-dir="1"><div class="lane-track"><div class="lane-group">
+            <span class="ctile"><img src="img/shots/r-r360-1.webp" width="480" height="300" alt="" loading="lazy" decoding="async"></span>
+            <span class="ctile"><img src="img/shots/r-r360-2.webp" width="480" height="300" alt="" loading="lazy" decoding="async"></span>
+            <span class="ctile"><img src="img/shots/r-r360-3.webp" width="480" height="300" alt="" loading="lazy" decoding="async"></span>
+            <span class="ctile"><img src="img/shots/r-r360-4.webp" width="480" height="300" alt="" loading="lazy" decoding="async"></span>
+          </div></div></div>
+          <div class="lane" data-lane data-speed="12" data-dir="-1"><div class="lane-track"><div class="lane-group">
+            <span class="ctile"><img src="img/shots/r-r360-3.webp" width="480" height="300" alt="" loading="lazy" decoding="async"></span>
+            <span class="ctile"><img src="img/shots/r-r360-4.webp" width="480" height="300" alt="" loading="lazy" decoding="async"></span>
+            <span class="ctile"><img src="img/shots/r-r360-1.webp" width="480" height="300" alt="" loading="lazy" decoding="async"></span>
+            <span class="ctile"><img src="img/shots/r-r360-2.webp" width="480" height="300" alt="" loading="lazy" decoding="async"></span>
+          </div></div></div>
+        </div>
+      </div>
+      <div class="feat-body">
+        <span class="tag">בנייה בהתאמה אישית</span>
+        <h3 dir="ltr" style="text-align:right">RUBIN 360</h3>
+        <p>מערכת שנבנית בשבילכם מאפס ועד פרודקשן, לפי הצרכים שלכם, עם השם והלוגו שלכם.</p>
+        <div class="feat-actions">
+          <a class="btn btn-solid" href="/projects/rubin360/" target="_blank" rel="noopener">לפרטים על RUBIN 360</a>
+          <a class="tlink" href="#leadForm" data-interest="project">דברו איתי על המערכת שלכם ←</a>
+        </div>
+      </div>
+    </article>
+
+    <div class="grid-2">
+      <a class="pcard reveal" href="/projects/verifix/" target="_blank" rel="noopener">
+        <div class="screen rot" data-delay="0">
+          <img class="is-on" data-hold="3000" src="img/shots/c-logo-verifix.webp" width="720" height="405" loading="lazy" decoding="async" alt="לוגו Verifix">
+          <svg class="fx fx-vf" viewBox="0 0 1440 810" aria-hidden="true" focusable="false">
+            <defs><linearGradient id="vfBeam" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#bff4ff" stop-opacity="0"/><stop offset=".5" stop-color="#fff"/><stop offset="1" stop-color="#bff4ff" stop-opacity="0"/></linearGradient><radialGradient id="vfGlow"><stop offset="0" stop-color="#fff"/><stop offset=".35" stop-color="#9fe9ff" stop-opacity=".8"/><stop offset="1" stop-color="#3fc4e0" stop-opacity="0"/></radialGradient><linearGradient id="vfGlint" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".9"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient><clipPath id="vfShaft"><rect x="698.8" y="329.1" width="27" height="196.2" rx="13.5"/></clipPath><clipPath id="vfSeal"><circle cx="819.7" cy="546.2" r="100.4"/></clipPath></defs>
+            <g class="vf-cover"><polygon points="565.4,509.7 564.6,529.5 515.2,541.7 515.2,521.9" style="--d:0.45s"/><polygon points="565.4,468.7 564.1,488.6 515.2,504.6 515.2,484.8" style="--d:0.69s"/><polygon points="888.6,451 900,459 900,473.8 888.6,463.7" style="--d:0.84s"/><polygon points="867.1,439.6 880.2,447.2 880.6,455.2 867.1,447.6" style="--d:0.93s"/><polygon points="565.4,427 564.1,446.8 516.5,467.5 515.2,447.2" style="--d:0.94s"/><polygon points="843.1,428.6 857.8,434.6 858.3,442.6 843.9,437.9" style="--d:1.0s"/><polygon points="888.6,412.6 900,421 899.2,438.3 889.1,433.7" style="--d:1.06s"/><polygon points="867.1,401.2 880.2,407.1 879.4,428.6 868,424" style="--d:1.13s"/><polygon points="565.4,383.9 564.1,404.2 515.2,431.2 515.2,410.9" style="--d:1.18s"/><polygon points="843.1,388.6 857.8,395.3 856.6,417.7 844.3,412.6" style="--d:1.2s"/><polygon points="888.6,375.5 900,383.9 900,402.1 889.1,397" style="--d:1.29s"/><polygon points="867.1,362.4 880.2,369.1 878.9,390.7 868,385.2" style="--d:1.37s"/><polygon points="843.9,348.9 857.8,356.1 857,378.4 843.9,371.3" style="--d:1.45s"/></g>
+            <g class="vf-flash lt"><polygon points="565.4,509.7 564.6,529.5 515.2,541.7 515.2,521.9" style="--d:0.45s"/><polygon points="565.4,468.7 564.1,488.6 515.2,504.6 515.2,484.8" style="--d:0.69s"/><polygon points="888.6,451 900,459 900,473.8 888.6,463.7" style="--d:0.84s"/><polygon points="867.1,439.6 880.2,447.2 880.6,455.2 867.1,447.6" style="--d:0.93s"/><polygon points="565.4,427 564.1,446.8 516.5,467.5 515.2,447.2" style="--d:0.94s"/><polygon points="843.1,428.6 857.8,434.6 858.3,442.6 843.9,437.9" style="--d:1.0s"/><polygon points="888.6,412.6 900,421 899.2,438.3 889.1,433.7" style="--d:1.06s"/><polygon points="867.1,401.2 880.2,407.1 879.4,428.6 868,424" style="--d:1.13s"/><polygon points="565.4,383.9 564.1,404.2 515.2,431.2 515.2,410.9" style="--d:1.18s"/><polygon points="843.1,388.6 857.8,395.3 856.6,417.7 844.3,412.6" style="--d:1.2s"/><polygon points="888.6,375.5 900,383.9 900,402.1 889.1,397" style="--d:1.29s"/><polygon points="867.1,362.4 880.2,369.1 878.9,390.7 868,385.2" style="--d:1.37s"/><polygon points="843.9,348.9 857.8,356.1 857,378.4 843.9,371.3" style="--d:1.45s"/></g>
+            <g clip-path="url(#vfShaft)"><rect class="vf-beam lt" x="685.2" y="525.3" width="54" height="91.8" fill="url(#vfBeam)"/></g>
+            <circle class="vf-head lt" cx="705.1" cy="284.7" r="63.3" fill="url(#vfGlow)"/>
+            <g clip-path="url(#vfSeal)"><g transform="rotate(18 819.7 546.2)"><rect class="vf-glint lt" x="623" y="422" width="56.9" height="248.4" fill="url(#vfGlint)"/></g></g>
+          </svg>
+          <img src="img/shots/c-vf-dash-light.webp" width="720" height="405" loading="lazy" decoding="async" alt="" aria-hidden="true">
+          <img src="img/shots/c-vf-maintenance.webp" width="720" height="405" loading="lazy" decoding="async" alt="" aria-hidden="true">
+          <img src="img/shots/c-vf-dash-dark.webp" width="720" height="405" loading="lazy" decoding="async" alt="" aria-hidden="true">
+          <img src="img/shots/c-vf-assets.webp" width="720" height="405" loading="lazy" decoding="async" alt="" aria-hidden="true">
+          <span class="rdots" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i></i></span>
+        </div>
+        <div class="pbody">
+          <span class="tag">בפרודקשן · חברת נמלי ישראל <span class="ver" dir="ltr">Verified</span></span>
+          <h3>Verifix</h3>
+          <p>ניהול תחזוקת מבנים: קריאות שבר, אחזקה מונעת ו-SLA. רצה היום בפרודקשן בחברת נמלי ישראל.</p>
+          <div class="pfoot"><span class="mono-chip">Next.js</span><span class="mono-chip">SLA</span><span class="pmore">לפרטים ←</span></div>
         </div>
       </a>
       <a class="pcard reveal" href="https://www.veribayit.com" target="_blank" rel="noopener">
-        <div class="pcard-logo"><img src="img/logo-veribayit.png" alt="VeriBayit — ניהול ועד בית" loading="lazy"></div>
-        <div class="pcard-body">
-          <div class="pcard-tag">☁️ SaaS חי</div>
-          <h4><span dir="ltr">VeriBayit</span></h4>
-          <p>SaaS לניהול ועד בית שמתחבר לדף הבנק ומזהה אוטומטית מי שילם, כמה ולמה.</p>
-          <div class="pcard-foot"><span class="chip">SaaS</span><span class="chip">אינטגרציית בנק</span><span class="pcard-more">לאתר החי ←</span></div>
+        <div class="screen rot" data-delay="500">
+          <img class="is-on vb-base" data-hold="3000" src="img/shots/c-logo-veribayit-base.webp" width="720" height="405" loading="lazy" decoding="async" alt="לוגו VeriBayit">
+          <svg class="fx fx-vb" viewBox="0 0 1440 810" aria-hidden="true" focusable="false">
+            <defs><radialGradient id="vbGlow"><stop offset="0" stop-color="#fff"/><stop offset=".4" stop-color="#8fc4ff" stop-opacity=".7"/><stop offset="1" stop-color="#1f5fd6" stop-opacity="0"/></radialGradient></defs>
+            <circle class="vb-ink lt" cx="818.6" cy="531" r="119" fill="none" stroke="#2f7bff" stroke-width="7"/>
+            <circle class="vb-flash lt" cx="818.6" cy="531" r="170" fill="url(#vbGlow)"/>
+            <image class="vb-stamp" href="img/shots/vb-stamp.webp" x="685.3" y="409" width="267.2" height="241.3"/>
+          </svg>
+          <img src="img/shots/c-vb-dash3.webp" width="720" height="405" loading="lazy" decoding="async" alt="" aria-hidden="true">
+          <img src="img/shots/c-vb-bank.webp" width="720" height="405" loading="lazy" decoding="async" alt="" aria-hidden="true">
+          <img src="img/shots/c-vb-voting.webp" width="720" height="405" loading="lazy" decoding="async" alt="" aria-hidden="true">
+          <img src="img/shots/c-vb-mobile.webp" width="720" height="405" loading="lazy" decoding="async" alt="" aria-hidden="true">
+          <img src="img/shots/c-vb-dash2.webp" width="720" height="405" loading="lazy" decoding="async" alt="" aria-hidden="true">
+          <img src="img/shots/c-vb-pay.webp" width="720" height="405" loading="lazy" decoding="async" alt="" aria-hidden="true">
+          <span class="rdots" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+        </div>
+        <div class="pbody">
+          <span class="tag">SaaS חי <span class="ver" dir="ltr">Verified</span></span>
+          <h3>VeriBayit</h3>
+          <p>ניהול ועד בית שמתחבר לדף הבנק ומזהה לבד מי שילם, כמה ועל מה.</p>
+          <div class="pfoot"><span class="mono-chip">SaaS</span><span class="mono-chip">Bank sync</span><span class="pmore">לאתר החי ←</span></div>
         </div>
       </a>
-      <a class="pcard reveal" href="https://amitrubin10.github.io/veritest-showcase/" target="_blank" rel="noopener">
-        <div class="pcard-logo"><img src="img/logo-veritest.png" alt="Veritest — ניהול בדיקות תוכנה" loading="lazy"></div>
-        <div class="pcard-body">
-          <div class="pcard-tag">🧪 קונספט</div>
-          <h4><span dir="ltr">Veritest</span></h4>
-          <p>אפיון מוצר לניהול בדיקות תוכנה (QA) — מצגת קונספט בשלב תכנון.</p>
-          <div class="pcard-foot"><span class="chip">QA</span><span class="chip">אפיון</span><span class="pcard-more">למצגת ←</span></div>
+      <a class="pcard reveal" href="/projects/bot-analytics/" target="_blank" rel="noopener">
+        <div class="screen rot" data-delay="1000">
+          <img class="is-on" data-hold="3000" src="img/shots/c-logo-bot.webp" width="720" height="405" loading="lazy" decoding="async" alt="לוגו Bot Analytics">
+          <svg class="fx fx-bot" viewBox="0 0 1440 810" aria-hidden="true" focusable="false">
+            <defs><filter id="botBlur" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="7"/></filter><radialGradient id="botO"><stop offset="0" stop-color="#fff"/><stop offset=".35" stop-color="#ffc35a" stop-opacity=".9"/><stop offset="1" stop-color="#ff9a1f" stop-opacity="0"/></radialGradient><radialGradient id="botC"><stop offset="0" stop-color="#fff"/><stop offset=".35" stop-color="#8ff3ff" stop-opacity=".9"/><stop offset="1" stop-color="#2fc8e8" stop-opacity="0"/></radialGradient></defs>
+            <path class="bot-run bot-halo lt" d="M560 450 662 355 695 382 875 215" pathLength="100" filter="url(#botBlur)"/>
+            <path class="bot-run bot-core lt" d="M560 450 662 355 695 382 875 215" pathLength="100"/>
+            <circle class="bot-tip lt" cx="872" cy="218" r="46" fill="url(#botC)"/>
+            <circle class="bot-node lt" cx="742" cy="310" r="24" fill="url(#botO)" style="--d:0s"/>
+            <circle class="bot-node lt" cx="777" cy="252" r="24" fill="url(#botC)" style="--d:0.12s"/>
+            <circle class="bot-node lt" cx="797" cy="252" r="24" fill="url(#botO)" style="--d:0.24s"/>
+            <circle class="bot-node lt" cx="795" cy="372" r="24" fill="url(#botC)" style="--d:0.36s"/>
+            <circle class="bot-node lt" cx="762" cy="410" r="24" fill="url(#botO)" style="--d:0.48s"/>
+          </svg>
+          <img src="img/shots/c-bot-1.webp" width="720" height="405" loading="lazy" decoding="async" alt="" aria-hidden="true">
+          <img src="img/shots/c-bot-2.webp" width="720" height="405" loading="lazy" decoding="async" alt="" aria-hidden="true">
+          <span class="rdots" aria-hidden="true"><i class="on"></i><i></i><i></i></span>
+        </div>
+        <div class="pbody">
+          <span class="tag">פייפליין AI</span>
+          <h3>Bot Analytics</h3>
+          <p>סוכני AI שהופכים דאטה גולמית של שירות לדשבורדים ניהוליים: סיווג, איכות ומגמות.</p>
+          <div class="pfoot"><span class="mono-chip">AI Agents</span><span class="mono-chip">Python</span><span class="pmore">לפרטים ←</span></div>
+        </div>
+      </a>
+      <a class="pcard reveal" href="/projects/rubin-market/" target="_blank" rel="noopener">
+        <div class="screen rot" data-delay="1500">
+          <img class="is-on" data-hold="3000" src="img/shots/c-logo-market.webp" width="720" height="405" loading="lazy" decoding="async" alt="לוגו RUBIN MARKET">
+          <span class="radar-sweep" aria-hidden="true"></span>
+          <img src="img/shots/c-mi-exec.webp" width="720" height="405" loading="lazy" decoding="async" alt="" aria-hidden="true">
+          <img src="img/shots/c-mi-sent.webp" width="720" height="405" loading="lazy" decoding="async" alt="" aria-hidden="true">
+          <img src="img/shots/c-mi-trend.webp" width="720" height="405" loading="lazy" decoding="async" alt="" aria-hidden="true">
+          <img src="img/shots/c-mi-opp.webp" width="720" height="405" loading="lazy" decoding="async" alt="" aria-hidden="true">
+          <span class="rdots" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i></i></span>
+        </div>
+        <div class="pbody">
+          <span class="tag">מודיעין שוק</span>
+          <h3>RUBIN MARKET</h3>
+          <p>מהשיח בקבוצות המקצועיות לתובנה תחרותית: שביעות רצון, נושאים חוזרים ומטריצת מיצוב מול השוק.</p>
+          <div class="pfoot"><span class="mono-chip">BI</span><span class="mono-chip">NLP</span><span class="pmore">לפרטים ←</span></div>
         </div>
       </a>
     </div>
 
-    <div class="cat-head reveal"><span class="cat-ic">📱</span><h3>אפליקציות ומוצרים</h3><span class="line"></span></div>
-    <div class="pgrid">
-      <a class="pcard reveal" href="/projects/torah-uri/">
-        <div class="pcard-logo"><img src="img/logo-torah.png" alt="תורה אורי — לימוד קריאה בתורה" loading="lazy"></div>
-        <div class="pcard-body">
-          <div class="pcard-tag">📱 אפליקציה · לימוד</div>
-          <h4>תורה אורי</h4>
-          <p>אפליקציה ללימוד קריאה בתורה בטעמים — השמעה, הקלטה עצמית והשוואה חכמה למקור.</p>
-          <div class="pcard-foot"><span class="chip">PWA</span><span class="chip">אופליין</span><span class="pcard-more">לפרטים ←</span></div>
-        </div>
+    <div class="lab-head reveal"><h3>מהמעבדה</h3><span>פרויקטים שבניתי לצד העבודה</span></div>
+    <div class="lab reveal">
+      <a class="lcard lmedia" href="/projects/torah-uri/" target="_blank" rel="noopener">
+        <span class="ltext"><b>תורה אורי</b><span class="ld">לימוד קריאה בתורה בטעמים, עם הקלטה עצמית והשוואה למקור.</span><em>לפרטים ←</em></span>
+        <span class="lthumb rot" data-delay="300">
+          <img class="is-on" data-hold="3000" src="img/shots/l-logo-torah.webp" width="360" height="225" loading="lazy" decoding="async" alt="לוגו תורה אורי">
+          <svg class="fx fx-tr" viewBox="0 0 720 450" aria-hidden="true" focusable="false">
+            <defs><radialGradient id="trRay" cx="359.6" cy="177.7" r="143.5" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#fff3c4"/><stop offset=".55" stop-color="#ffc847" stop-opacity=".55"/><stop offset="1" stop-color="#ffb300" stop-opacity="0"/></radialGradient><radialGradient id="trSun"><stop offset="0" stop-color="#fffbe8"/><stop offset=".4" stop-color="#ffd76a" stop-opacity=".8"/><stop offset="1" stop-color="#ffb300" stop-opacity="0"/></radialGradient><clipPath id="trDome"><path d="M252.5 177.7A107.1 107.1 0 0 1 466.8 177.7Z"/></clipPath></defs>
+            <g clip-path="url(#trDome)"><g class="tr-rays lt" fill="url(#trRay)"><polygon points="359.6,177.7 503,172.2 503,183.2"/><polygon points="359.6,177.7 496.2,221.5 492.5,231.9"/><polygon points="359.6,177.7 473,265.6 465.9,274"/><polygon points="359.6,177.7 436.1,299.1 426.5,304.6"/><polygon points="359.6,177.7 389.9,317.9 379.1,319.8"/><polygon points="359.6,177.7 340.1,319.8 329.3,317.9"/><polygon points="359.6,177.7 292.7,304.6 283.2,299.1"/><polygon points="359.6,177.7 253.3,274 246.2,265.6"/><polygon points="359.6,177.7 226.8,231.9 223,221.5"/><polygon points="359.6,177.7 216.2,183.2 216.2,172.2"/><polygon points="359.6,177.7 223,133.8 226.8,123.4"/><polygon points="359.6,177.7 246.2,89.7 253.3,81.3"/><polygon points="359.6,177.7 283.2,56.2 292.7,50.7"/><polygon points="359.6,177.7 329.3,37.4 340.1,35.5"/><polygon points="359.6,177.7 379.1,35.5 389.9,37.4"/><polygon points="359.6,177.7 426.5,50.7 436.1,56.2"/><polygon points="359.6,177.7 465.9,81.3 473,89.7"/><polygon points="359.6,177.7 492.5,123.4 496.2,133.8"/></g></g>
+            <circle class="tr-sun lt" cx="359.6" cy="171.9" r="67" fill="url(#trSun)"/>
+          </svg>
+          <img src="img/shots/l-torah-light.webp" width="360" height="225" loading="lazy" decoding="async" alt="" aria-hidden="true">
+          <img src="img/shots/l-torah-dark.webp" width="360" height="225" loading="lazy" decoding="async" alt="" aria-hidden="true">
+          <img src="img/shots/l-torah-main.webp" width="360" height="225" loading="lazy" decoding="async" alt="" aria-hidden="true">
+          <span class="rdots" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i></span>
+        </span>
       </a>
-      <a class="pcard reveal" href="/projects/homepage/">
-        <div class="pcard-logo"><img src="img/logo-home.png" alt="דף הבית האישי — MYHOME" loading="lazy"></div>
-        <div class="pcard-body">
-          <div class="pcard-tag">🏠 מוצר אישי</div>
-          <h4>דף הבית האישי</h4>
-          <p>מרכז שליטה אישי לדפדפן — כל האתרים שלך בקטגוריות, שעון, משימות ומצב כהה/בהיר.</p>
-          <div class="pcard-foot"><span class="chip">מותאם אישית</span><span class="chip">פרטי</span><span class="pcard-more">לפרטים ←</span></div>
-        </div>
+      <a class="lcard lmedia" href="/projects/homepage/" target="_blank" rel="noopener">
+        <span class="ltext"><b>דף הבית האישי</b><span class="ld">מרכז שליטה אישי לדפדפן: אתרים בקטגוריות, שעון ומשימות.</span><em>לפרטים ←</em></span>
+        <span class="lthumb rot" data-delay="1100">
+          <img class="is-on" data-hold="3000" src="img/shots/l-logo-home.webp" width="360" height="225" loading="lazy" decoding="async" alt="לוגו דף הבית האישי">
+          <svg class="fx fx-hm" viewBox="0 0 720 450" aria-hidden="true" focusable="false">
+            <defs><radialGradient id="hmWarm"><stop offset="0" stop-color="#fff6d6"/><stop offset=".4" stop-color="#ffcf6a" stop-opacity=".85"/><stop offset="1" stop-color="#ffb030" stop-opacity="0"/></radialGradient><linearGradient id="hmShine" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff8e0" stop-opacity="0"/><stop offset=".35" stop-color="#fffbea" stop-opacity=".9"/><stop offset=".5" stop-color="#fff"/><stop offset=".65" stop-color="#fffbea" stop-opacity=".9"/><stop offset="1" stop-color="#fff8e0" stop-opacity="0"/></linearGradient><mask id="hmGold"><image href="img/shots/home-gold.png" width="720" height="450"/></mask></defs>
+            <circle class="hm-win lt" cx="369.6" cy="170.7" r="46.6" fill="url(#hmWarm)"/>
+            <g mask="url(#hmGold)"><rect class="hm-shine lt" x="-181.7" y="54.3" width="155.3" height="341.7" fill="url(#hmShine)"/></g>
+          </svg>
+          <img src="img/shots/l-home-real.webp" width="360" height="225" loading="lazy" decoding="async" alt="" aria-hidden="true">
+          <img src="img/shots/l-home-light.webp" width="360" height="225" loading="lazy" decoding="async" alt="" aria-hidden="true">
+          <img src="img/shots/l-home-hero.webp" width="360" height="225" loading="lazy" decoding="async" alt="" aria-hidden="true">
+          <span class="rdots" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i></span>
+        </span>
       </a>
-      <a class="pcard reveal" href="https://amitrubin10.github.io/verifit/" target="_blank" rel="noopener">
-        <div class="pcard-logo"><img src="img/logo-verifit.png" alt="Verifit — תוכניות כושר ותזונה" loading="lazy"></div>
-        <div class="pcard-body">
-          <div class="pcard-tag">📱 PWA · דמו חי</div>
-          <h4><span dir="ltr">Verifit</span></h4>
-          <p>אפליקציית כושר ותזונה — תוכניות אישיות ומעקב, עובדת גם אופליין.</p>
-          <div class="pcard-foot"><span class="chip">PWA</span><span class="chip">דמו</span><span class="pcard-more">לדמו ←</span></div>
-        </div>
-      </a>
+      <a class="lcard" href="https://amitrubin10.github.io/verifit/" target="_blank" rel="noopener"><b dir="ltr" style="text-align:right">Verifit</b><span class="ld">אפליקציית כושר ותזונה עם תוכניות אישיות ומעקב, גם בלי חיבור.</span><em>לדמו ←</em></a>
+      <a class="lcard" href="https://amitrubin10.github.io/veritest-showcase/" target="_blank" rel="noopener"><b dir="ltr" style="text-align:right">Veritest</b><span class="ld">אפיון למערכת ניהול בדיקות תוכנה. בשלב קונספט.</span><em>למצגת ←</em></a>
     </div>
-
-    <div class="cat-more reveal">
-      <a class="btn btn-ghost" href="https://github.com/amitrubin10" target="_blank" rel="noopener">💻 כל הפרויקטים ב-GitHub ←</a>
-    </div>
+    <a class="tlink gh" href="https://github.com/amitrubin10" target="_blank" rel="noopener">כל הקוד ב-GitHub ←</a>
   </div>
 </section>
 
-<!-- RESULTS -->
-<section class="alt" id="results">
+<section class="band band-light" id="process">
   <div class="wrap">
-    <div class="value reveal">
-      <span class="eyebrow">📈 מהניסיון שלי</span>
-      <h2>20 שנה של הפיכת תהליכים <span class="g">לתוצאות</span></h2>
-      <p>כמוביל תהליכים עסקיים — הובלתי פרויקטים עם תוצאות מדידות:</p>
-      <div class="vrow">
-        <div class="vitem"><span class="vic">🤖</span><b data-val="25" data-suffix="%">0</b><span class="vcap">פחות קריאות שירות — צ'אטבוט AI שהובלתי</span></div>
-        <div class="vitem green"><span class="vic">⏳</span><b data-val="250" data-suffix=" שע׳">0</b><span class="vcap">נחסכו בשנה ללקוח — אוטומציית תהליך</span></div>
-        <div class="vitem"><span class="vic">🗓️</span><b data-val="20" data-suffix=" שנה">0</b><span class="vcap">הובלת תהליכים עסקיים ומערכות ERP</span></div>
-      </div>
+    <div class="sh reveal">
+      <span class="k">איך עובדים</span>
+      <h2>מהשיחה הראשונה ועד מערכת שרצה</h2>
+      <p>בכל שלב ברור מה קורה, כמה זמן זה ייקח ומה תקבלו בסופו.</p>
+    </div>
+    <ol class="steps">
+      <li class="step reveal"><span class="step-n" aria-hidden="true">01</span><span class="step-t">20 דקות</span><h3>שיחת אפיון</h3><p>מספרים לי מה כואב. אני שואל, מקשיב, ואומר בכנות אם אני האדם הנכון לזה.</p></li>
+      <li class="step reveal"><span class="step-n" aria-hidden="true">02</span><span class="step-t">עד שבוע</span><h3>מסמך אפיון והצעת מחיר</h3><p>מסמך שמתאר מה נבנה, איך זה משתלב בעבודה שלכם, וכמה זה יעלה.</p></li>
+      <li class="step reveal"><span class="step-n" aria-hidden="true">03</span><span class="step-t">שבועיים עד שלושה</span><h3>אב טיפוס</h3><p>גרסה ראשונה שאפשר לגעת בה, על הנתונים שלכם. מתקנים כיוון לפני הבנייה המלאה.</p></li>
+      <li class="step reveal"><span class="step-n" aria-hidden="true">04</span><span class="step-t">לפי היקף</span><h3>פרודקשן וליווי</h3><p>המערכת עולה לאוויר, ואני מלווה את ההטמעה אצלכם.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="band band-deep" id="results">
+  <div class="wrap">
+    <div class="sh reveal">
+      <span class="k">מהניסיון שלי</span>
+      <h2>20 שנה של הפיכת תהליכים לתוצאות</h2>
+      <p>פרויקטים שהובלתי כמוביל תהליכים עסקיים, עם תוצאות מדידות.</p>
+    </div>
+    <div class="stats">
+      <div class="stat reveal"><b data-val="25" data-suffix="%">25%</b><span>פחות קריאות שירות, בצ'אטבוט AI שהובלתי</span></div>
+      <div class="stat reveal"><b data-val="250" data-suffix=" שע׳">250 שע׳</b><span>נחסכו בשנה ללקוח, באוטומציה של תהליך</span></div>
+      <div class="stat reveal"><b data-val="20" data-suffix=" שנה">20 שנה</b><span>בהובלת תהליכים עסקיים ומערכות ERP</span></div>
     </div>
   </div>
 </section>
 
-<!-- CREATOR -->
-<section id="creator">
-  <div class="wrap">
-    <div class="creator-head reveal">
-      <span class="eyebrow">מי עומד מאחורי Rubin Project</span>
-      <div class="cr-id">
-        <div class="cr-he">עמית רובין</div>
-        <img src="img/ar-logo.png" alt="AR — עמית רובין">
-        <div class="cr-en">Amit Rubin</div>
-      </div>
-    </div>
-    <div class="cr-roles reveal">
-      <div class="cr-card cr-blue">
-        <div class="cr-top"><div class="cr-ic">🧭</div><div class="cr-title">מוביל תהליכים עסקיים (BPM)</div></div>
-        <p>20 שנה בחשבשבת — בית תוכנה ERP ותיק ומוביל בישראל. מבין איך עסקים באמת עובדים.</p>
-      </div>
-      <div class="cr-card cr-cyan">
-        <div class="cr-top"><div class="cr-ic">📊</div><div class="cr-title">בונה BI ואוטומציה</div></div>
-        <p>דשבורדים, אוטומציות ומערכות מלאות שרצות בפרודקשן עם משתמשים אמיתיים.</p>
-      </div>
-      <div class="cr-card cr-purple">
-        <div class="cr-top"><div class="cr-ic">🤖</div><div class="cr-title">מפתח AI יישומי</div></div>
-        <p>צ'אטבוטים וסוכני ניתוח מבוססי-LLM שמתחברים ישירות לתפעול העסקי.</p>
-      </div>
-    </div>
-    <div class="cr-personal reveal">
-      <span class="cr-pill">💡 והגישה שלי</span>
-      <p>כשאני רואה בעיה עסקית — <strong>אני בונה את הפתרון.</strong> קודם מבינים את התהליך, אחר כך את הטכנולוגיה.</p>
-    </div>
+<section class="band band-light has-ribbons" id="creator">
+  <div class="ribbons" aria-hidden="true">
+    <div class="ribbon ribbon-ghost"><div class="lane" data-lane data-speed="26" data-dir="-1"><div class="lane-track"><div class="lane-group">
+      <span>דשבורדים · אוטומציה · תוכנה בהתאמה אישית · AI יישומי ·</span>
+    </div></div></div></div>
+    <div class="ribbon ribbon-solid"><div class="lane" data-lane data-speed="42" data-dir="1"><div class="lane-track"><div class="lane-group">
+      <span dir="ltr">VERIFIX · VERIBAYIT · RUBIN 360 · RUBIN MARKET · BOT ANALYTICS ·</span>
+    </div></div></div></div>
   </div>
-</section>
-
-<!-- FINAL / CONTACT -->
-<section id="contact">
   <div class="wrap">
-    <div class="final reveal">
-      <img class="final-bg" src="img/final-bg.jpg" alt="" loading="lazy">
-      <div class="final-inner">
-        <h2>בוא נהפוך את <span style="color:#60a5fa">הנתונים שלך</span> <span style="color:#34d399">להחלטות</span></h2>
-        <p>שיחת ייעוץ ראשונית — בלי התחייבות. נבין יחד איפה הכי כדאי להתחיל.</p>
-        <div class="row">
-          <a class="btn btn-wa" href="https://wa.me/972527246200" target="_blank" rel="noopener">💬 דברו איתי בוואטסאפ</a>
-          <a class="btn btn-primary" href="mailto:amit@rubinproject.com">📧 שליחת מייל</a>
-          <a class="btn btn-ghost" href="https://www.linkedin.com/in/amit-rubin-316b83357/" target="_blank" rel="noopener">💼 LinkedIn</a>
+    <div class="sh reveal">
+      <span class="k">מי עומד מאחורי Rubin Project</span>
+      <h2>אדם אחד, שמבין גם את <span class="hl">העסק<svg class="ul" viewBox="0 0 100 12" preserveAspectRatio="none" aria-hidden="true"><path pathLength="100" d="M2 8C24 3 52 11 98 4"/></svg></span> וגם את <span class="hl hl-b">הקוד<svg class="ul" viewBox="0 0 100 12" preserveAspectRatio="none" aria-hidden="true"><path pathLength="100" d="M2 6C30 11 60 2 98 7"/></svg></span></h2>
+    </div>
+    <div class="creator">
+      <aside class="profile reveal" aria-label="עמית רובין">
+        <div class="avatar"><img src="img/amit-avatar.webp" width="372" height="372" alt="עמית רובין"></div>
+        <div class="pname">עמית רובין</div>
+        <div class="pen">AMIT RUBIN · FOUNDER</div>
+        <p class="ptitle">מוביל תהליכים עסקיים, בונה BI ואוטומציה, ומפתח AI יישומי. כל פרויקט עובר דרכי, מהשיחה הראשונה ועד שהמערכת רצה.</p>
+        <div class="pstats">
+          <div class="pstat"><b data-val="20" data-suffix="">20</b><span>שנות ניסיון בתהליכים ו-ERP</span></div>
+          <div class="pstat"><b data-val="8" data-suffix="">8</b><span>מערכות ואפליקציות שבניתי</span></div>
+          <div class="pstat"><b data-val="1" data-suffix="">1</b><span>כתובת אחת לכל הפרויקט</span></div>
+        </div>
+        <div class="plinks">
+          <a class="plink" href="https://www.linkedin.com/in/amit-rubin-316b83357/" target="_blank" rel="noopener"><svg class="ico"><use href="#i-in"/></svg>LinkedIn</a>
+          <a class="plink" href="/card/" target="_blank" rel="noopener"><svg class="ico"><use href="#i-card"/></svg>כרטיס דיגיטלי</a>
+          <a class="plink" href="https://wa.me/972527246200?text=%D7%94%D7%99%D7%99%20%D7%A2%D7%9E%D7%99%D7%AA%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%90%D7%AA%D7%A8" target="_blank" rel="noopener" data-track="whatsapp_profile"><svg class="ico"><use href="#i-wa"/></svg>וואטסאפ</a>
+        </div>
+      </aside>
+      <div class="roles">
+        <div class="role reveal">
+          <svg class="pico rico r-flow" viewBox="0 0 64 64" aria-hidden="true"><path class="b thin" d="M18 20v12h28v12"/><rect class="b" x="7" y="7" width="22" height="13" rx="3.5"/><path class="ac dia" d="M32 24.5l7.5 7.5-7.5 7.5-7.5-7.5z"/><rect class="b" x="35" y="44" width="22" height="13" rx="3.5"/><circle class="tok" r="3.4"/></svg>
+          <div><h3>מוביל תהליכים עסקיים (BPM)</h3><p>20 שנה באחד מבתי התוכנה הוותיקים והמובילים ל-ERP בישראל. מבין איך עסקים באמת עובדים.</p><div class="rtags"><span>אפיון</span><span>ERP</span><span>תהליכים</span></div></div>
+        </div>
+        <div class="role reveal">
+          <svg class="pico rico r-gauge" viewBox="0 0 64 64" aria-hidden="true"><circle class="track" cx="32" cy="32" r="22"/><circle class="arc" cx="32" cy="32" r="22" transform="rotate(-90 32 32)"/><rect class="bar" x="23" y="30" width="4.5" height="11" rx="1.2"/><rect class="bar" x="29.8" y="25" width="4.5" height="16" rx="1.2"/><rect class="bar" x="36.6" y="28" width="4.5" height="13" rx="1.2"/></svg>
+          <div><h3>בונה BI ואוטומציה</h3><p>דשבורדים, אוטומציות ומערכות מלאות שרצות בפרודקשן עם משתמשים אמיתיים.</p><div class="rtags"><span dir="ltr">Dashboards</span><span dir="ltr">Python</span><span>אוטומציה</span></div></div>
+        </div>
+        <div class="role reveal">
+          <svg class="pico rico r-chat" viewBox="0 0 64 64" aria-hidden="true"><path class="b" d="M12 11h38a6 6 0 0 1 6 6v20a6 6 0 0 1-6 6H30l-10 8v-8h-8a6 6 0 0 1-6-6V17a6 6 0 0 1 6-6z"/><circle class="dt" cx="21" cy="27" r="3.3"/><circle class="dt" cx="31" cy="27" r="3.3"/><circle class="dt" cx="41" cy="27" r="3.3"/><circle class="live" cx="55" cy="11" r="4.2"/></svg>
+          <div><h3>מפתח AI יישומי</h3><p>צ'אטבוטים וסוכני ניתוח מבוססי LLM שמתחברים ישירות לתפעול העסקי.</p><div class="rtags"><span dir="ltr">LLM</span><span dir="ltr">AI Agents</span><span dir="ltr">NLP</span></div></div>
         </div>
       </div>
     </div>
+    <blockquote class="pull reveal"><p>כשאני רואה בעיה עסקית, <strong>אני בונה את הפתרון.</strong></p><small>קודם מבינים את התהליך, אחר כך בוחרים טכנולוגיה.</small></blockquote>
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer>
-  <div class="foot-in">
-    <div class="foot-brand">
-      <img src="img/logo-reverse.png" alt="Rubin Project">
-      <div><div class="bn" dir="ltr">Rubin <span class="b">Project</span></div>
-      <div class="tg">פתרונות BI, אוטומציה ותוכנה לעסקים</div></div>
+<section class="band band-light alt" id="faq">
+  <div class="wrap faq">
+    <div class="sh reveal">
+      <span class="k">שאלות נפוצות</span>
+      <h2>מה ששואלים אותי בשיחה הראשונה</h2>
+      <p>לא מצאתם תשובה? <a class="tlink" href="#contact">שאלו אותי ישירות</a>.</p>
     </div>
-    <div class="foot-copy">הופכים נתונים להחלטות.<span class="fc-sep"> · </span><span class="fc-c">© Rubin Project</span></div>
-    <div class="foot-links">
-      <a href="#services">שירותים</a>
-      <a href="#portfolio">תוכנות ומוצרים</a>
-      <a href="/card/">כרטיס דיגיטלי</a>
-      <a href="https://evenbina.co.il/" target="_blank" rel="noopener">אבן בינה</a>
-      <a href="https://github.com/amitrubin10" target="_blank" rel="noopener">GitHub</a>
-      <a href="https://www.linkedin.com/in/amit-rubin-316b83357/" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="https://wa.me/972527246200" target="_blank" rel="noopener">וואטסאפ 052-7246200</a>
-      <a href="mailto:amit@rubinproject.com">amit@rubinproject.com</a>
+    <div class="qa reveal">
+      <details><summary>כמה זמן לוקח פרויקט?</summary><p>תלוי בהיקף. דשבורד ממוקד יכול לעלות לאוויר תוך שבועות ספורים, ומערכת מלאה לוקחת יותר. אחרי שיחת האפיון תקבלו הערכת זמן כתובה, ואב טיפוס ראשון מגיע בדרך כלל תוך שבועיים עד שלושה.</p></details>
+      <details><summary>כמה זה עולה?</summary><p>כל פרויקט מתומחר לפי ההיקף שלו, ולכן אין מחירון. אחרי שיחת האפיון תקבלו הצעת מחיר מפורטת, לפני שאתם מתחייבים לשום דבר.</p></details>
+      <details><summary>זה יעבוד עם המערכות שכבר יש לנו?</summary><p>בדרך כלל כן. רוב העבודה שלי היא בדיוק החיבור בין מערכות: ERP, קובצי אקסל, מערכות שירות, דפי בנק וקבוצות וואטסאפ. בשיחת האפיון נבדוק מה יש לכם ומה אפשר לחבר.</p></details>
+      <details><summary>מה קורה עם המידע של העסק שלי?</summary><p>המידע נשאר שלכם. הגישה למערכות היא רק למה שהפרויקט צריך, וכשנדרש אפשר לבנות פתרון שרץ כולו על השרתים של הארגון, בלי שום יציאה לענן.</p></details>
+      <details><summary>אני עסק קטן. זה מתאים גם לי?</summary><p>כן. חלק מהכלים השימושיים ביותר שבניתי נבנו דווקא לעסקים קטנים, כמו VeriBayit לניהול ועד בית. ההיקף נקבע לפי גודל העסק והתקציב.</p></details>
+      <details><summary>מה ההבדל בינך לבין חברת פיתוח?</summary><p>חברת פיתוח מקבלת אפיון ובונה לפיו. אני מתחיל צעד אחד קודם, בהבנה של התהליך העסקי, ולכן גם האפיון יוצא מדויק יותר. ולאורך כל הדרך אתם מדברים ישירות עם מי שבונה.</p></details>
+      <details><summary>מה זה Rubin Studio?</summary><p>סטודיו לבניית מצגות פרימיום לעסקים ולארגונים. כדי לתכנן מצגת, השאירו פרטים בטופס ובחרו ב-Rubin Studio.</p></details>
     </div>
+  </div>
+</section>
+
+<section class="band band-deep" id="contact">
+  <div class="wrap contact">
+    <div>
+      <div class="sh reveal">
+        <span class="k">יצירת קשר</span>
+        <h2>בואו נהפוך את הנתונים שלכם להחלטות</h2>
+        <p>שיחת אפיון של 20 דקות, בלי התחייבות. נבין יחד איפה הכי כדאי להתחיל.</p>
+      </div>
+      <div class="direct reveal">
+        <a href="https://wa.me/972527246200?text=%D7%94%D7%99%D7%99%20%D7%A2%D7%9E%D7%99%D7%AA%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%90%D7%AA%D7%A8" target="_blank" rel="noopener" data-track="whatsapp_contact"><span class="tile"><svg class="ico"><use href="#i-wa"/></svg></span><span><b>וואטסאפ</b><span>052-7246200</span></span></a>
+        <a href="mailto:amit@rubinproject.com" data-track="email_contact"><span class="tile"><svg class="ico"><use href="#i-mail"/></svg></span><span><b>מייל</b><span>amit@rubinproject.com</span></span></a>
+        <a href="https://www.linkedin.com/in/amit-rubin-316b83357/" target="_blank" rel="noopener"><span class="tile"><svg class="ico"><use href="#i-in"/></svg></span><span><b>LinkedIn</b><span>Amit Rubin</span></span></a>
+      </div>
+    </div>
+    <form class="form reveal" id="leadForm" novalidate>
+      <h3>השאירו פרטים</h3>
+      <p class="fsub">אחזור אליכם לתיאום שיחה.</p>
+      <div class="frow">
+        <div class="field"><label for="f-name">שם מלא <span class="req">*</span></label><input id="f-name" name="name" type="text" autocomplete="name" required maxlength="80"></div>
+        <div class="field"><label for="f-company">חברה או ארגון <span class="opt">(רשות)</span></label><input id="f-company" name="company" type="text" autocomplete="organization" maxlength="120"></div>
+      </div>
+      <div class="frow">
+        <div class="field"><label for="f-phone">טלפון <span class="req">*</span></label><input id="f-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required pattern="[0-9+\-\s\(\)]{9,20}" maxlength="20"></div>
+        <div class="field"><label for="f-email">מייל <span class="opt">(רשות)</span></label><input id="f-email" name="email" type="email" autocomplete="email" maxlength="120"></div>
+      </div>
+      <div class="field">
+        <label for="f-interest">במה אפשר לעזור?</label>
+        <select id="f-interest" name="interest">
+          <option value="project">פרויקט בהתאמה אישית</option>
+          <option value="studio">Rubin Studio, מצגות פרימיום</option>
+          <option value="product">אחד המוצרים</option>
+          <option value="other">משהו אחר</option>
+        </select>
+      </div>
+      <div class="field"><label for="f-message">מה כואב לכם? <span class="opt">(רשות)</span></label><textarea id="f-message" name="message" maxlength="2000" placeholder="כמה מילים על המצב היום, ומה הייתם רוצים שישתנה"></textarea></div>
+      <div class="hp" aria-hidden="true"><label for="f-website">אתר</label><input id="f-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+      <button class="btn btn-solid btn-lg" type="submit">שליחה</button>
+      <p class="fstatus" id="fStatus" role="status" aria-live="polite"></p>
+      <p class="priv">הפרטים משמשים רק כדי לחזור אליכם. פרטים נוספים ב<a href="/privacy/" target="_blank" rel="noopener">מדיניות הפרטיות</a>.</p>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="#top"><img src="img/logo-reverse.webp" width="123" height="120" alt=""><span dir="ltr">Rubin <span class="b">Project</span></span></a>
+        <p class="foot-tag">פתרונות BI, אוטומציה ותוכנה בהתאמה אישית לעסקים ולארגונים.</p>
+      </div>
+      <div>
+        <h4>האתר</h4>
+        <ul><li><a href="#services">שירותים</a></li><li><a href="#portfolio">תוכנות ומוצרים</a></li><li><a href="#process">איך עובדים</a></li><li><a href="#faq">שאלות נפוצות</a></li></ul>
+      </div>
+      <div>
+        <h4>עוד</h4>
+        <ul><li><a href="/card/" target="_blank" rel="noopener">כרטיס דיגיטלי</a></li><li><a href="https://evenbina.co.il/" target="_blank" rel="noopener">אבן בינה</a></li><li><a href="https://github.com/amitrubin10" target="_blank" rel="noopener">GitHub</a></li><li><a href="https://www.linkedin.com/in/amit-rubin-316b83357/" target="_blank" rel="noopener">LinkedIn</a></li></ul>
+      </div>
+      <div>
+        <h4>קשר</h4>
+        <ul><li><a href="https://wa.me/972527246200" target="_blank" rel="noopener" dir="ltr">052-7246200</a></li><li><a href="mailto:amit@rubinproject.com">amit@rubinproject.com</a></li></ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Rubin Project · עמית רובין</span>
+      <nav aria-label="מידע משפטי"><a href="/privacy/" target="_blank" rel="noopener">מדיניות פרטיות</a><a href="/accessibility/" target="_blank" rel="noopener">הצהרת נגישות</a></nav>
+    </div>
+    <p class="foot-note">האתר משתמש ב-Google Analytics וב-Microsoft Clarity כדי למדוד ולשפר את השימוש בו. פרטים ואפשרות לסרב ב<a href="/privacy/#analytics" target="_blank" rel="noopener">מדיניות הפרטיות</a>.</p>
   </div>
 </footer>
+<div class="cglow" id="cglow" aria-hidden="true"></div>
 
 <script>
 if('scrollRestoration' in history)history.scrollRestoration='manual';
-window.addEventListener('load',function(){if(!location.hash)window.scrollTo(0,0);});
+window.addEventListener('load',()=>{if(!location.hash)window.scrollTo(0,0);});
+
+// תפריט נייד
 const burger=document.getElementById('burger'),navLinks=document.getElementById('navLinks');
-burger&&burger.addEventListener('click',()=>navLinks.classList.toggle('open'));
-const ebDd=document.getElementById('ebDd'),ebBtn=document.getElementById('ebBtn');
-function ebSet(open){if(!ebDd)return;ebDd.classList.toggle('open',open);ebBtn.setAttribute('aria-expanded',open?'true':'false');}
-if(ebDd&&ebBtn){
-  ebBtn.addEventListener('click',e=>{e.stopPropagation();ebSet(!ebDd.classList.contains('open'));});
-  document.addEventListener('click',e=>{if(!ebDd.contains(e.target))ebSet(false);});
-  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&ebDd.classList.contains('open')){ebSet(false);ebBtn.focus();}});
-  burger&&burger.addEventListener('click',()=>ebSet(false));
-}
-navLinks&&navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>navLinks.classList.remove('open')));
-const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:0.1});
+function navSet(open){navLinks.classList.toggle('open',open);burger.setAttribute('aria-expanded',open?'true':'false');burger.setAttribute('aria-label',open?'סגירת תפריט':'פתיחת תפריט');}
+burger.addEventListener('click',()=>navSet(!navLinks.classList.contains('open')));
+navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>navSet(false)));
+
+// תפריטים נפתחים: Rubin Studio ואבן בינה
+const dds=[...document.querySelectorAll('.nav-dd')];
+function ddSet(dd,open){dd.classList.toggle('open',open);dd.querySelector('.nav-dd-btn').setAttribute('aria-expanded',open?'true':'false');}
+dds.forEach(dd=>dd.querySelector('.nav-dd-btn').addEventListener('click',e=>{e.stopPropagation();const open=!dd.classList.contains('open');dds.forEach(x=>ddSet(x,false));ddSet(dd,open);}));
+document.addEventListener('click',e=>dds.forEach(dd=>{if(!dd.contains(e.target))ddSet(dd,false);}));
+document.addEventListener('keydown',e=>{
+  if(e.key!=='Escape')return;
+  dds.forEach(dd=>{if(dd.classList.contains('open')){ddSet(dd,false);dd.querySelector('.nav-dd-btn').focus();}});
+  if(navLinks.classList.contains('open')){navSet(false);burger.focus();}
+});
+
+// קישור שנפתח בטאב חדש מודיע על כך לקורא מסך
+document.querySelectorAll('a[target="_blank"]').forEach(a=>{
+  if(a.hasAttribute('aria-label'))a.setAttribute('aria-label',a.getAttribute('aria-label')+' (נפתח בטאב חדש)');
+  else a.insertAdjacentHTML('beforeend','<span class="sr"> (נפתח בטאב חדש)</span>');
+});
+
+// קישור עם data-interest בוחר מראש את סוג הפנייה בטופס
+const interestSel=document.getElementById('f-interest');
+document.querySelectorAll('[data-interest]').forEach(a=>a.addEventListener('click',()=>{interestSel.value=a.dataset.interest;}));
+document.querySelectorAll('[data-track]').forEach(a=>a.addEventListener('click',()=>window.rpTrack(a.dataset.track)));
+
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.12,rootMargin:'0px 0px -6% 0px'});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
 // count-up stats
 (function(){
-  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   function run(el){
-    var val=parseFloat(el.getAttribute('data-val'))||0,suf=el.getAttribute('data-suffix')||'';
+    const val=parseFloat(el.dataset.val)||0,suf=el.dataset.suffix||'';
     if(reduce){el.textContent=val+suf;return;}
-    var dur=1900,start=null;
-    function ease(t){return 1-Math.pow(1-t,3);}
-    function step(ts){if(start===null)start=ts;var t=Math.min((ts-start)/dur,1);el.textContent=Math.round(val*ease(t))+suf;if(t<1)requestAnimationFrame(step);else el.textContent=val+suf;}
-    requestAnimationFrame(step);
+    const tok=el._tok=(el._tok||0)+1,dur=1900;let start=null;
+    const ease=t=>1-Math.pow(1-t,3);
+    function step(ts){if(el._tok!==tok)return;if(start===null)start=ts;const t=Math.min((ts-start)/dur,1);el.textContent=Math.round(val*ease(t))+suf;if(t<1)requestAnimationFrame(step);}
+    el.textContent='0'+suf;requestAnimationFrame(step);
   }
-  var cio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){run(e.target);cio.unobserve(e.target);}})},{threshold:0.6});
-  document.querySelectorAll('.vitem b[data-val]').forEach(function(el){cio.observe(el);});
+  // רץ מחדש בכל פעם שחוזרים לאזור, לא רק בטעינת הדף
+  const cio=new IntersectionObserver(es=>es.forEach(e=>{
+    const el=e.target;
+    if(e.intersectionRatio>=.6&&!el._seen){el._seen=true;run(el);}
+    else if(!e.isIntersecting)el._seen=false;
+  }),{threshold:[0,.6]});
+  document.querySelectorAll('.stat b[data-val], .pstat b[data-val]').forEach(el=>cio.observe(el));
 })();
+
+// הקולאז' ב-hero נמשך עד תחילת הטקסט, עם חפיפה קבועה של 44px (המרווח שעמית בחר, נמדד ב-2000px)
+(function(){
+  const hero=document.querySelector('.hero'),col=hero&&hero.querySelector('.collage');
+  if(!col)return;
+  const wide=window.matchMedia('(min-width:921px)'),texts=hero.querySelectorAll('.h1-main,.hero-lead');
+  const fit=()=>{
+    if(!wide.matches){hero.style.removeProperty('--collage-w');return;}
+    let left=Infinity;
+    texts.forEach(el=>{const r=document.createRange();r.selectNodeContents(el);[...r.getClientRects()].forEach(b=>{if(b.width)left=Math.min(left,b.left);});});
+    if(left===Infinity)return;
+    const hb=hero.getBoundingClientRect();
+    // הקולאז' מתחיל 3% משמאל לקצה (inset-inline-end:-3%)
+    hero.style.setProperty('--collage-w',Math.round(left-hb.left+hb.width*.03+44)+'px');
+  };
+  fit();window.addEventListener('resize',fit);
+  if(document.fonts)document.fonts.ready.then(fit);
+})();
+
+// טופס לידים
+(function(){
+  const LEAD_ENDPOINT='https://rubinproject-leads.vercel.app/api/lead'; // פרויקט Vercel rubinproject-leads, הקוד ב-api-leads/
+  const form=document.getElementById('leadForm'),status=document.getElementById('fStatus'),btn=form.querySelector('button[type=submit]');
+  const setStatus=(kind,msg)=>{status.className='fstatus '+kind;status.textContent=msg;};
+  form.addEventListener('submit',async e=>{
+    e.preventDefault();
+    const phone=form.elements.phone,digits=phone.value.replace(/\D/g,'').length;
+    phone.setCustomValidity(phone.value&&(digits<9||digits>15)?'phone':'');
+    if(!form.checkValidity()){
+      const bad=form.querySelector(':invalid');
+      setStatus('err',bad===phone&&phone.value?'מספר הטלפון לא נראה תקין. כתבו לפחות 9 ספרות.':'נא למלא שם וטלפון, כדי שאוכל לחזור אליכם.');
+      bad&&bad.focus();return;
+    }
+    const data=Object.fromEntries(new FormData(form).entries());
+    const qs=new URLSearchParams(location.search);
+    data.source=qs.get('utm_source')||document.referrer||'direct';
+    data.page=location.pathname;
+    if(!LEAD_ENDPOINT){setStatus('err','הטופס עדיין לא מחובר. בינתיים אפשר לכתוב לי בוואטסאפ: 052-7246200.');return;}
+    btn.disabled=true;setStatus('busy','שולח...');
+    try{
+      const r=await fetch(LEAD_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
+      const j=await r.json().catch(()=>({}));
+      if(r.ok&&j.ok){form.reset();setStatus('ok','קיבלתי, תודה. אחזור אליכם בהקדם.');window.rpTrack('generate_lead',{interest:data.interest});}
+      else setStatus('err',j.error||'השליחה לא הצליחה. נסו שוב בעוד רגע, או כתבו לי בוואטסאפ.');
+    }catch(err){
+      setStatus('err','אין חיבור לשרת כרגע. בדקו את החיבור ונסו שוב, או כתבו לי בוואטסאפ.');
+    }finally{btn.disabled=false;}
+  });
+})();
+
+// תנועה: פסים נעים, מניפה, כרטיסים מתחלפים, תאורת עכבר
+(function(){
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+
+  // עצירת תנועה: כפתור קבוע שעוצר את כל מה שזז לבד (WCAG 2.2.2). הבחירה נשמרת לביקור הבא
+  const motionBtn=document.getElementById('motionBtn'),motionLbl=motionBtn.querySelector('.lbl'),onResume=[];
+  let paused=false;
+  try{paused=localStorage.getItem('rp-motion')==='off';}catch(e){}
+  const applyMotion=()=>{
+    document.documentElement.classList.toggle('motion-off',paused);
+    motionLbl.textContent=paused?'הפעלת תנועה':'עצירת תנועה';
+    motionBtn.setAttribute('aria-label',motionLbl.textContent);
+    motionBtn.title=motionLbl.textContent;
+  };
+  applyMotion();
+  motionBtn.addEventListener('click',()=>{
+    paused=!paused;applyMotion();
+    try{localStorage.setItem('rp-motion',paused?'off':'on');}catch(e){}
+    onResume.forEach(fn=>fn());
+  });
+
+  // פסים אופקיים: מונעים ב-JS ולא באנימציית CSS, שנוטה להיעלם באייפון
+  const lanes=[...document.querySelectorAll('[data-lane]')].map(el=>{
+    const track=el.querySelector('.lane-track'),group=track.firstElementChild;
+    const lane={el,track,group,x:0,unit:0,on:false,speed:+el.dataset.speed||30,dir:el.dataset.dir==='-1'?-1:1};
+    lane.fill=()=>{
+      let n=track.children.length;
+      while(n<12&&(n<2||track.scrollWidth<el.clientWidth+group.offsetWidth*2)){
+        const c=group.cloneNode(true);c.setAttribute('aria-hidden','true');c.querySelectorAll('img').forEach(i=>{i.alt='';});track.appendChild(c);n++;
+      }
+      lane.unit=group.offsetWidth;
+    };
+    lane.fill();return lane;
+  });
+  let raf=0,last=0;
+  const tick=t=>{
+    const dt=last?Math.min(.05,(t-last)/1000):0;last=t;let any=false;
+    lanes.forEach(l=>{if(paused||!l.on||!l.unit)return;any=true;l.x=((l.x+l.dir*l.speed*dt)%l.unit+l.unit)%l.unit;l.track.style.transform=`translate3d(${l.x.toFixed(2)}px,0,0)`;});
+    if(any)raf=requestAnimationFrame(tick);else{raf=0;last=0;}
+  };
+  const kick=()=>{if(!raf&&!paused)raf=requestAnimationFrame(tick);};
+  onResume.push(kick);
+  const lio=new IntersectionObserver(es=>es.forEach(e=>{const l=lanes.find(x=>x.el===e.target);l.on=e.isIntersecting;if(l.on)kick();}),{rootMargin:'120px 0px'});
+  lanes.forEach(l=>lio.observe(l.el));
+  const refill=()=>lanes.forEach(l=>l.fill());
+  window.addEventListener('resize',refill);
+  if(document.fonts)document.fonts.ready.then(refill);
+
+  // מניפה: כשהכרטיסיות נכנסות למסך הן נפתחות מעצמן, לאט, בלי קשר לגלילה.
+  // כשגוללים חזרה אל מעליהן הן נסגרות בשקט, כדי שהאפקט ירוץ שוב בפעם הבאה
+  const fan=document.querySelector('.fan');
+  if(fan){
+    const cards=[...fan.children],wide=window.matchMedia('(min-width:800px)');
+    const fin=[{r:-3,y:14},{r:0,y:-10},{r:3,y:14}];
+    let state='';
+    const set=(open,animate)=>{
+      cards.forEach((c,i)=>{
+        const tx=open?0:cards[1].offsetLeft-c.offsetLeft;
+        const y=open?fin[i].y:(i===1?10:50),r=open?fin[i].r:0,s=open||i===1?1:.9;
+        c.style.transition=animate?'transform 1.3s cubic-bezier(.65,0,.35,1),opacity .9s ease .1s':'none';
+        c.style.transform=`translate3d(${tx}px,${y}px,0) rotate(${r}deg) scale(${s})`;
+        c.style.opacity=open||i===1?'1':'0';
+      });
+      state=open?'open':'closed';
+    };
+    const inView=()=>{const r=fan.getBoundingClientRect();return r.top<window.innerHeight*.62&&r.bottom>0;};
+    const check=()=>{
+      if(!wide.matches){cards.forEach(c=>{c.style.transition='';c.style.transform='';c.style.opacity='';});state='';return;}
+      if(!state){set(false,false);void fan.offsetWidth;}
+      if(state==='closed'&&inView())set(true,true);
+      else if(state==='open'&&fan.getBoundingClientRect().top>window.innerHeight)set(false,false);
+    };
+    window.addEventListener('scroll',check,{passive:true});
+    window.addEventListener('resize',()=>{if(state)set(state==='open',false);check();});
+    check();
+  }
+
+  // כרטיסים שמחליפים צילום מסך כל 2 שניות, רק כשהם על המסך
+  document.querySelectorAll('.rot').forEach(box=>{
+    const imgs=[...box.querySelectorAll('img')],dots=[...box.querySelectorAll('.rdots i')];
+    if(imgs.length<2)return;
+    let i=0,timer=0,wait=0,vis=false;
+    // לוגו נשאר 3 שניות (data-hold), שאר התמונות 2
+    const dur=n=>+imgs[n].dataset.hold||+box.dataset.interval||2000;
+    const show=n=>{imgs[i].classList.remove('is-on');if(dots[i])dots[i].classList.remove('on');i=n;imgs[i].classList.add('is-on');if(dots[i])dots[i].classList.add('on');box.classList.toggle('hold-on',!!imgs[i].dataset.hold);};
+    const tick=()=>{timer=setTimeout(()=>{show((i+1)%imgs.length);tick();},dur(i));};
+    const start=()=>{if(paused)return;box.classList.add('live');if(timer||wait)return;wait=setTimeout(()=>{wait=0;tick();},+box.dataset.delay||0);};
+    const stop=()=>{box.classList.remove('live');clearTimeout(wait);wait=0;clearTimeout(timer);timer=0;};
+    box.classList.add('ready');box.classList.toggle('hold-on',!!imgs[0].dataset.hold);
+    new IntersectionObserver(es=>es.forEach(e=>{vis=e.isIntersecting;if(vis)start();else stop();}),{threshold:.2}).observe(box);
+    onResume.push(()=>{if(paused)stop();else if(vis)start();});
+  });
+
+  // האייקונים המונפשים בכאבים רצים רק כשהם על המסך
+  const zio=new IntersectionObserver(es=>es.forEach(e=>e.target.classList.toggle('on',e.isIntersecting)),{rootMargin:'80px 0px'});
+  document.querySelectorAll('.fan, .roles').forEach(el=>zio.observe(el));
+
+  // סרט נע של כרטיסי השירותים: מאט ועוצר בריחוף, ואפשר לגרור ביד
+  document.querySelectorAll('.drift').forEach(gal=>{
+    const track=gal.querySelector('.drift-track'),originals=[...track.children];
+    const addSet=()=>originals.forEach(c=>{const d=c.cloneNode(true);d.setAttribute('aria-hidden','true');d.inert=true;track.appendChild(d);});
+    addSet();
+    let setW=0,x=0,vel=0,on=false,hover=false,focus=false,drag=false,startX=0,startPos=0,last=0,id=0;
+    const measure=()=>{
+      const gap=parseFloat(getComputedStyle(originals[0]).marginInlineEnd)||0;
+      setW=originals.reduce((w,c)=>w+c.getBoundingClientRect().width+gap,0);
+      while(track.children.length<originals.length*6&&track.scrollWidth<gal.clientWidth+setW*1.5)addSet();
+    };
+    measure();window.addEventListener('resize',measure);
+    const speed=+gal.dataset.speed||55;
+    const render=()=>{x=((x%setW)+setW)%setW;track.style.transform=`translate3d(${x.toFixed(2)}px,0,0)`;};
+    const tick=t=>{
+      const dt=last?Math.min(.064,(t-last)/1000):0;last=t;
+      vel+=(((hover||focus||drag||paused)?0:speed)-vel)*Math.min(1,dt*5);
+      if(!drag)x+=vel*dt;
+      render();
+      if(on)id=requestAnimationFrame(tick);else{id=0;last=0;}
+    };
+    new IntersectionObserver(es=>es.forEach(e=>{on=e.isIntersecting;gal.classList.toggle('on',on);if(on&&!id)id=requestAnimationFrame(tick);}),{rootMargin:'80px 0px'}).observe(gal);
+    gal.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse')hover=true;});
+    gal.addEventListener('pointerleave',()=>{hover=false;});
+    gal.addEventListener('focusin',()=>{focus=true;});
+    gal.addEventListener('focusout',()=>{focus=false;});
+    gal.addEventListener('pointerdown',e=>{drag=true;startX=e.clientX;startPos=x;gal.setPointerCapture(e.pointerId);gal.classList.add('dragging');});
+    gal.addEventListener('pointermove',e=>{if(drag){x=startPos+(e.clientX-startX);render();}});
+    const release=()=>{drag=false;gal.classList.remove('dragging');};
+    gal.addEventListener('pointerup',release);
+    gal.addEventListener('pointercancel',release);
+  });
+
+  // תאורת עכבר: עיגול רך שנגרר אחרי הסמן, רק במכשירים עם עכבר
+  const glow=document.getElementById('cglow');
+  if(glow&&window.matchMedia('(hover:hover) and (pointer:fine)').matches){
+    let gx=0,gy=0,tx=0,ty=0,on=false,gr=0;
+    const loop=()=>{gx+=(tx-gx)*.16;gy+=(ty-gy)*.16;glow.style.transform=`translate3d(${gx.toFixed(1)}px,${gy.toFixed(1)}px,0)`;gr=Math.abs(tx-gx)+Math.abs(ty-gy)>.3?requestAnimationFrame(loop):0;};
+    document.addEventListener('mousemove',e=>{tx=e.clientX;ty=e.clientY;if(!on){on=true;gx=tx;gy=ty;glow.classList.add('is-on');}if(!gr)gr=requestAnimationFrame(loop);},{passive:true});
+    document.documentElement.addEventListener('mouseleave',()=>{on=false;glow.classList.remove('is-on');});
+  }
+})();
+
 </script>
 </body>
 </html>
