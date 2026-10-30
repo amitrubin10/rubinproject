@@ -190,25 +190,218 @@ p{text-wrap:pretty}
 .band-deep .tile{background:rgba(111,164,255,.1);border-color:rgba(111,164,255,.24);color:var(--acc-on-deep)}
 .bridge{display:inline-flex;align-items:center;gap:10px;margin-top:36px;font-family:var(--font-head);font-size:clamp(20px,2.2vw,25px);font-weight:700;color:var(--acc-ink)}
 .bridge:hover{text-decoration:underline;text-underline-offset:5px}
-/* מניפה: שלוש הכרטיסיות מתחילות צמודות ונפתחות בגלילה */
-.fan{gap:30px}
-.fan{counter-reset:pain}
-/* מסגרת בגרדיאנט כחול-ציאן, רקע מוכחל קל ומספור במונו, כדי שהכרטיסיות לא ייבלעו ברקע הבהיר */
-.fan .card{position:relative;z-index:1;transform-origin:50% 100%;padding:44px 36px 44px;counter-increment:pain;border:1.5px solid transparent;border-radius:20px;background:linear-gradient(165deg,#f8fbff 0%,#e9f0fa 100%) padding-box,linear-gradient(150deg,rgba(31,95,214,.62),rgba(18,137,171,.42) 48%,rgba(31,95,214,.14)) border-box;box-shadow:0 2px 6px rgba(13,22,38,.05),0 22px 44px rgba(31,95,214,.13)}
-.fan .card::before{content:counter(pain,decimal-leading-zero);content:counter(pain,decimal-leading-zero) / "";position:absolute;top:24px;inset-inline-end:28px;font-family:var(--font-mono);font-size:14px;font-weight:600;letter-spacing:.6px;color:var(--acc-2)}
-.fan .card::after{content:"";position:absolute;top:0;inset-inline-start:36px;width:56px;height:3px;border-radius:0 0 3px 3px;background:linear-gradient(90deg,var(--acc),#1690b3)}
-.fan .card h3{font-size:clamp(22px,2vw,25px);margin-bottom:10px}
-.fan .card p{font-size:clamp(16.5px,1.4vw,18px)}
-.fan .pico{width:86px;height:86px;margin-bottom:24px;padding:6px;border-radius:50%;background:radial-gradient(circle,rgba(31,95,214,.1),rgba(31,95,214,0) 70%)}
 /* הכותרת של הסקשן גדולה יותר מהרגיל */
+#why{overflow-x:clip}
 #why .wrap{max-width:1320px}
-#why .fan{gap:34px}
 #why .sh{max-width:900px}
 #why .sh .k{font-size:15.5px}
 #why .sh h2{font-size:clamp(2rem,3.9vw,3rem)}
 #why .sh p{font-size:clamp(1.12rem,1.5vw,1.3rem);max-width:66ch}
-.fan .card:nth-child(2){z-index:2}
-@media(min-width:800px){.js .fan .card.reveal{transition:none}}
+/* מכאוס לדשבורד: שולחן עבודה עמוס (אקסל, וואטסאפ, מייל, ERP) שהנתונים שלו עפים אל מסך כהה, והמסך נדלק לדשבורד חי */
+.c2d-stage{position:relative;min-height:clamp(680px,56vw,780px);display:grid;place-items:center;align-content:center}
+/* המסך (mon, ולא screen, שתפוס בכרטיסי תיק העבודות): מסגרת כהה, השתקפות עדינה וצל עמוק */
+.mon{position:relative;z-index:1;width:min(960px,100%);padding:11px;border-radius:24px;background:linear-gradient(160deg,#26334b,#0b111d 58%,#151d2e);box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 34px 70px rgba(6,12,28,.42),0 8px 18px rgba(6,12,28,.22)}
+.mon::after{content:"";position:absolute;inset:0;border-radius:24px;pointer-events:none;background:linear-gradient(118deg,rgba(255,255,255,.11) 0,rgba(255,255,255,0) 30%)}
+.mon-in{position:relative;overflow:hidden;border-radius:15px;padding:18px 20px 12px;color:#e9eff7;background:radial-gradient(50% 60% at 88% 0,rgba(31,95,214,.30),transparent 70%),radial-gradient(45% 55% at 0 100%,rgba(18,137,171,.22),transparent 70%),linear-gradient(rgba(111,164,255,.045) 1px,transparent 1px) 0 0/100% 30px,#060b15}
+.scr-flash{position:absolute;inset:0;z-index:5;pointer-events:none;opacity:0;background:radial-gradient(60% 55% at 50% 40%,rgba(170,215,255,.6),rgba(63,196,224,.14) 60%,transparent)}
+.d2-head{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.d2-title{display:flex;flex-direction:column;margin-inline-end:auto;line-height:1.3}
+.d2-title b{font-family:var(--font-head);font-size:clamp(18px,1.8vw,22px);font-weight:700;color:#fff}
+.d2-title span{font-size:12.5px;color:#93a3bd}
+.d2-chips{display:flex;gap:3px;padding:3px;border-radius:999px;background:rgba(255,255,255,.05);border:1px solid rgba(111,164,255,.16)}
+.d2-chips span{font-size:12px;font-weight:700;color:#9aa7bd;padding:4px 11px;border-radius:999px}
+.d2-chips .on{background:rgba(111,164,255,.2);color:#fff}
+.d2-live{display:inline-flex;align-items:center;gap:7px;font-size:12px;color:#9aa7bd}
+.d2-live i{width:8px;height:8px;border-radius:50%;background:#2fbf86;animation:livePing 1.8s ease-out infinite}
+@keyframes livePing{0%{box-shadow:0 0 0 0 rgba(47,191,134,.6)}100%{box-shadow:0 0 0 8px rgba(47,191,134,0)}}
+.d2-live b{font-family:var(--font-mono);font-weight:600;color:#6fe3b0;letter-spacing:.6px}
+.d2-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:14px}
+.d2k{position:relative;overflow:hidden;min-height:96px;padding:12px 14px 10px;border-radius:14px;background:linear-gradient(160deg,rgba(255,255,255,.075),rgba(255,255,255,.02));border:1px solid rgba(111,164,255,.18)}
+.d2k-l{display:block;font-size:12.5px;font-weight:600;color:#9aa7bd}
+.d2k-v{display:block;font-family:var(--font-mono);font-weight:600;font-size:clamp(20px,2.1vw,27px);color:#fff;direction:ltr;text-align:right;line-height:1.25;margin-top:2px}
+.d2k-d{font-size:12px;font-weight:700;color:#9aa7bd}
+.d2k-d.up{color:#6fe3b0}.d2k-d.dn{color:#ffb38a}
+.spark{position:absolute;left:10px;bottom:10px;width:44%;height:30px;fill:none;stroke:#3fc4e0;stroke-width:2.2;stroke-linejoin:round;stroke-linecap:round;filter:drop-shadow(0 0 4px rgba(63,196,224,.6))}
+.ring{position:absolute;left:12px;top:50%;width:46px;height:46px;margin-top:-23px;transform:rotate(-90deg)}
+.ring circle{fill:none;stroke-width:5}
+.ring .rt{stroke:rgba(255,255,255,.08)}
+.ring .rv{stroke:#6fa4ff;stroke-linecap:round;stroke-dasharray:113.1;stroke-dashoffset:69.4;filter:drop-shadow(0 0 3px rgba(111,164,255,.7))}
+.d2-main{display:grid;grid-template-columns:1.7fr 1fr;gap:10px;margin-top:10px}
+.d2-chart,.d2-reg,.d2-alerts{padding:12px 14px;border-radius:14px;background:linear-gradient(160deg,rgba(255,255,255,.06),rgba(255,255,255,.015));border:1px solid rgba(111,164,255,.16)}
+.d2-ch{display:flex;justify-content:space-between;align-items:center;font-size:12.5px;font-weight:700;color:#9aa7bd}
+.area-w{position:relative}
+.d2-ch b{font-family:var(--font-mono);font-weight:600;color:#e9eff7}
+.d2-tip{position:absolute;right:-4px;top:22.5%;transform:translateY(-175%);font-family:var(--font-mono);font-size:12px;font-weight:600;color:#06111f;background:#3fc4e0;padding:2px 8px;border-radius:6px;box-shadow:0 0 14px rgba(63,196,224,.5);direction:ltr}
+.area{display:block;width:100%;height:auto;margin-top:6px;overflow:visible}
+.area .gl{stroke:rgba(255,255,255,.07);stroke-width:1;fill:none}
+.area .af{fill:url(#d2g)}
+.area .al{fill:none;stroke:#3fc4e0;stroke-width:3;stroke-linejoin:round;filter:drop-shadow(0 0 6px rgba(63,196,224,.7))}
+.area .ad{fill:#fff;stroke:#3fc4e0;stroke-width:3}
+.area .adp{fill:none;stroke:#3fc4e0;stroke-width:2;transform-box:fill-box;transform-origin:center;animation:dotPing 1.8s ease-out infinite}
+@keyframes dotPing{0%{transform:scale(1);opacity:.75}100%{transform:scale(3);opacity:0}}
+.d2-months{display:flex;justify-content:space-between;direction:ltr;font-size:11px;color:#8494ae;margin-top:4px}
+.d2-side{display:grid;gap:10px;align-content:start}
+.d2-sub{display:block;font-size:12.5px;font-weight:700;color:#9aa7bd;margin-bottom:4px}
+.rg{display:grid;grid-template-columns:40px 1fr auto;gap:8px;align-items:center;font-size:12.5px;color:#d5deeb;margin-top:8px}
+.rg i{height:7px;border-radius:4px;background:rgba(255,255,255,.07);overflow:hidden}
+.rg i b{display:block;height:100%;width:var(--w);border-radius:4px;background:linear-gradient(270deg,#3fc4e0,#1f5fd6);transform-origin:right}
+.rg em{font-style:normal;font-family:var(--font-mono);font-size:12px;color:#fff;direction:ltr}
+.al{display:flex;align-items:center;gap:8px;font-size:12.5px;color:#d5deeb;margin-top:8px}
+.al i{width:8px;height:8px;border-radius:50%;flex:none}
+.al.amb i{background:#f7b84b;box-shadow:0 0 8px rgba(247,184,75,.7)}
+.al.ok i{background:#2fbf86;box-shadow:0 0 8px rgba(47,191,134,.6)}
+.d2-note{margin-top:8px;font-size:11px;color:#8494ae;text-align:left}
+/* השולחן: מוצג רק כשהמנוע רץ. בלי JS ובפחות תנועה רואים רק את הדשבורד, שלם */
+.desk,.fxl,.pains{display:none}
+.c2d-js .desk,.c2d-js .fxl{display:block;position:absolute;inset:0;z-index:2;pointer-events:none}
+.c2d-js .fxl{z-index:4}
+.win{position:absolute;left:var(--x);top:var(--y);transform:translate(-50%,-50%) rotate(var(--rot,0deg)) scale(var(--s,1));font-family:'Segoe UI',Tahoma,Arial,sans-serif;color:#1f2329;line-height:1.35;box-shadow:0 18px 40px rgba(13,22,38,.22),0 3px 8px rgba(13,22,38,.12);will-change:transform,opacity}
+/* אקסל */
+.w-xl{--x:87%;--y:50%;--rot:2deg;--s:.8;width:470px;background:#fff;border-radius:8px;overflow:hidden;border:1px solid #c8ccd2;font-size:12px}
+.xl-title{display:flex;align-items:center;height:30px;padding:0 10px;background:#107c41;color:#fff}
+.xl-name{flex:1;text-align:center;font-weight:600;font-size:12px}
+.xl-ctl{display:flex;gap:8px}
+.xl-ctl i{width:10px;height:10px;border-radius:2px;border:1.5px solid rgba(255,255,255,.85)}
+.xl-tabs{display:flex;gap:2px;background:#f3f3f3;padding:4px 6px 0}
+.xl-tabs span{padding:4px 10px;color:#333}
+.xl-tabs .file{background:#107c41;color:#fff;border-radius:3px 3px 0 0}
+.xl-tabs .on{color:#107c41;font-weight:700;box-shadow:inset 0 -2px #107c41}
+.xl-tools{display:flex;gap:6px;align-items:center;padding:7px 8px;background:#f3f3f3;border-bottom:1px solid #d6d6d6}
+.xl-tools i{width:18px;height:16px;border-radius:3px;background:#d9dde3}
+.xl-tools i.w{width:52px}
+.xl-fx{display:flex;align-items:center;height:26px;border-bottom:1px solid #d6d6d6}
+.xl-fx .nb{width:54px;height:100%;display:grid;place-items:center;border-inline-end:1px solid #d6d6d6;color:#333}
+.xl-fx .fxs{padding:0 10px;font-style:italic;font-family:'Times New Roman',serif;color:#666;border-inline-end:1px solid #d6d6d6}
+.xl-fx .fml{flex:1;padding:0 10px;font-family:Consolas,'Courier New',monospace;color:#333;text-align:left;white-space:nowrap;overflow:hidden}
+.xl-grid{width:100%;border-collapse:collapse;table-layout:fixed}
+.xl-grid th{background:#f3f3f3;color:#555;font-weight:400;border:1px solid #dadce0;height:21px;font-size:11px}
+.xl-grid tr>th:first-child{width:28px}
+.xl-grid td{border:1px solid #e2e4e8;height:22px;padding:0 6px;white-space:nowrap;overflow:hidden;position:relative}
+.xl-grid td.n{text-align:left;direction:ltr;font-family:Calibri,'Segoe UI',Arial,sans-serif}
+.xl-grid td.h{font-weight:700;background:#e7f1ea}
+.xl-grid td.b{font-weight:700}
+.xl-grid td.err{color:#c00;font-weight:700}
+.xl-grid td.hl{background:#fff2a8}
+.xl-grid td.sel{outline:2px solid #107c41;outline-offset:-2px;overflow:visible}
+.xl-grid td.sel::after{content:"";position:absolute;left:-3px;bottom:-3px;width:6px;height:6px;background:#107c41;border:1px solid #fff}
+.xl-grid td.cm::before{content:"";position:absolute;top:0;left:0;border-top:7px solid #d0021b;border-right:7px solid transparent}
+.xl-sheets{display:flex;align-items:center;gap:2px;background:#f3f3f3;border-top:1px solid #d6d6d6;padding:0 8px;font-size:11.5px}
+.xl-sheets span{padding:5px 12px;color:#444}
+.xl-sheets .on{background:#fff;color:#107c41;font-weight:700;box-shadow:inset 0 -2px #107c41}
+.xl-sheets .add{color:#888}
+/* וואטסאפ */
+.w-wa{--x:9%;--y:52%;--rot:-3deg;--s:.92;width:258px;border-radius:12px;background:#efeae2;font-size:12.5px}
+.wa-head{display:flex;align-items:center;gap:9px;padding:9px 11px;background:#008069;color:#fff;border-radius:12px 12px 0 0}
+.wa-av{width:30px;height:30px;border-radius:50%;flex:none;display:grid;place-items:center;background:#dfe5e7;color:#54656f;font-weight:700}
+.wa-t{display:flex;flex-direction:column;line-height:1.25}
+.wa-t b{font-size:13.5px}
+.wa-t small{font-size:11px;opacity:.88}
+.wa-body{display:flex;flex-direction:column;gap:5px;padding:10px 9px 12px;background-image:radial-gradient(rgba(0,0,0,.05) 1px,transparent 1px);background-size:14px 14px}
+.wb{position:relative;max-width:88%;padding:5px 8px 16px;border-radius:8px;background:#fff;color:#111b21;box-shadow:0 1px .5px rgba(11,20,26,.13)}
+.wb.in{align-self:flex-start;border-top-right-radius:0}
+.wb.out{align-self:flex-end;background:#d9fdd3;border-top-left-radius:0}
+.wn{display:block;font-size:11.5px;color:#a5631a}
+.wn.n2{color:#1f7aa8}.wn.n3{color:#9a3fa8}
+.wb i{position:absolute;left:7px;bottom:3px;display:inline-flex;align-items:center;gap:3px;font-style:normal;font-size:10px;color:#667781}
+.tk{display:inline-block;width:16px;height:10px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 10' fill='none' stroke='%2353bdeb' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M1 5.5 3.6 8 9 2M6 8l.6.6L12 2.2'/%3E%3C/svg%3E") no-repeat center/contain}
+.wf{display:flex;align-items:center;gap:7px;background:rgba(0,0,0,.045);border-radius:6px;padding:6px 8px;margin-top:2px;font-size:12px}
+.wf em{font-style:normal;font-size:9px;font-weight:800;color:#fff;background:#107c41;border-radius:3px;padding:3px 4px}
+/* מייל */
+.w-mail{--x:31%;--y:10%;--rot:-1.5deg;width:330px;background:#fff;border-radius:8px;overflow:hidden;border:1px solid #d1d5db;font-size:12px}
+.ml-bar{display:flex;gap:7px;align-items:center;padding:6px 12px;background:#0f6cbd;color:#fff;font-weight:600}
+.ml-c{background:rgba(255,255,255,.22);border-radius:8px;padding:0 6px;font-size:11px}
+.ml-row{display:flex;gap:10px;padding:10px 12px;background:#e8f1fb;border-inline-start:3px solid #0f6cbd}
+.ml-av{width:32px;height:32px;border-radius:50%;flex:none;display:grid;place-items:center;background:#c7522a;color:#fff;font-weight:700}
+.ml-tx{flex:1;min-width:0;display:flex;flex-direction:column}
+.ml-tx b{font-size:12.5px}
+.ml-sub{font-weight:700;color:#0f6cbd;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ml-sn{color:#555;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ml-meta{display:flex;flex-direction:column;align-items:flex-end;gap:7px;font-size:11px;color:#555}
+.ml-meta i{font-style:normal}
+.flag{width:10px;height:12px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 12'%3E%3Cpath d='M1 0v12' stroke='%23c4314b' stroke-width='1.4'/%3E%3Cpath d='M1.6 1h7.4L7 3.6 9 6.2H1.6z' fill='%23c4314b'/%3E%3C/svg%3E") no-repeat center/contain}
+/* ERP */
+.w-erp{--x:34%;--y:92%;--rot:1.5deg;width:340px;background:#ece9e2;border:1px solid #9a9a9a;border-radius:3px;font-family:Tahoma,Arial,sans-serif;font-size:11.5px}
+.erp-t{padding:4px 8px;background:linear-gradient(270deg,#0a246a,#3a6ea5);color:#fff;font-weight:700}
+.erp-m{display:flex;gap:12px;padding:3px 8px;border-bottom:1px solid #b9b5ab;color:#222}
+.erp-g{width:calc(100% - 12px);margin:6px;border-collapse:collapse;background:#fff}
+.erp-g th{background:#d8d4cc;font-weight:700;text-align:start;border:1px solid #a8a49c;padding:3px 6px}
+.erp-g td{border:1px solid #d1cdc5;padding:3px 6px;white-space:nowrap}
+.erp-g tr.bad td{color:#b00020;background:#ffe9e9;font-weight:700}
+/* פרטים קטנים */
+.d-note{--x:62%;--y:8.5%;--rot:4deg;background:#fff3b0;color:#4a3b00;font-family:var(--font-body);font-weight:800;font-size:15px;padding:13px 16px;box-shadow:0 12px 24px rgba(74,59,0,.18)}
+.d-toast{--x:89%;--y:6%;display:flex;align-items:center;gap:9px;width:232px;padding:10px 12px;border-radius:14px;background:rgba(255,255,255,.94);font-size:12.5px}
+.tst-ic{width:26px;height:26px;border-radius:7px;flex:none;background:#25d366}
+.d-clock{--x:8%;--y:90%;--rot:-2deg;display:flex;flex-direction:column;align-items:center;padding:8px 14px;border-radius:12px;background:var(--deep);color:#fff;font-family:var(--font-body)}
+.d-clock b{font-family:var(--font-mono);font-size:20px;font-weight:600}
+.d-clock span{font-size:11.5px;font-weight:700;color:#ffb38a}
+/* חלקיקי המספרים בדרך למסך */
+.pt{position:absolute;left:0;top:0;padding:5px 12px;border-radius:9px;font-family:var(--font-mono);font-size:16px;font-weight:600;color:#06111f;background:#c9f4fc;box-shadow:0 0 0 1.5px rgba(63,196,224,.75),0 0 22px rgba(63,196,224,.85),0 8px 18px rgba(6,17,31,.25);white-space:nowrap;opacity:0;will-change:transform,opacity;direction:ltr}
+/* תגיות הכאב */
+.c2d-js .pains{display:block;list-style:none;position:absolute;inset:0;z-index:3;pointer-events:none}
+.pains li{position:absolute;transform:translate(-50%,-50%);display:inline-flex;align-items:center;gap:8px;white-space:nowrap;background:var(--ink);color:#fff;font-weight:800;font-size:15px;padding:8px 16px;border-radius:999px;box-shadow:0 10px 24px rgba(13,22,38,.25)}
+.pains li::before{content:"";width:8px;height:8px;border-radius:50%;background:#ff7a5c;box-shadow:0 0 0 3px rgba(255,122,92,.28)}
+.pains li:nth-child(1){left:32%;top:28%}.pains li:nth-child(2){left:66%;top:74%}.pains li:nth-child(3){left:52%;top:51%}
+/* המשפט "הופכים נתונים להחלטות" עולה מתחת למסך כשהדשבורד נבנה */
+.c2d-cap{position:relative;z-index:1;margin-top:clamp(14px,2vw,24px);text-align:center;font-family:var(--font-head);font-weight:900;font-size:clamp(1.8rem,3.4vw,2.7rem);line-height:1.15;color:var(--ink)}
+.c2d-cap em{font-style:normal;color:var(--acc-ink)}
+/* רצועת הצהרה: המשפט המוביל של העסק, בפס כהה בין שני פסים בהירים */
+.stmt-band{position:relative;overflow:hidden;background:radial-gradient(55% 90% at 85% 10%,rgba(31,95,214,.32),transparent 70%),radial-gradient(50% 80% at 10% 100%,rgba(18,137,171,.26),transparent 70%),var(--deep)}
+.stmt-band::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;background-image:linear-gradient(var(--deep-edge) 1px,transparent 1px),linear-gradient(90deg,var(--deep-edge) 1px,transparent 1px);background-size:54px 54px;-webkit-mask-image:radial-gradient(ellipse 60% 70% at 50% 50%,#000,transparent 75%);mask-image:radial-gradient(ellipse 60% 70% at 50% 50%,#000,transparent 75%)}
+.stmt{position:relative;text-align:center;max-width:1000px;margin-inline:auto;padding-block:clamp(16px,3.5vw,44px)}
+.stmt .k{justify-content:center}
+.stmt h2{font-size:clamp(2.5rem,6.4vw,5.2rem);font-weight:900;color:#fff;line-height:1.1;letter-spacing:-1px}
+.stmt .hl{color:var(--acc2-on-deep)}
+.stmt-sub{margin-top:clamp(14px,2vw,22px);font-size:clamp(1.15rem,1.9vw,1.6rem);font-weight:600;color:var(--deep-dim);text-wrap:balance}
+/* המופע מתחת למשפט: שתי שכבות SVG באותו מקום, ורק אחת מוצגת. נמוג בקצה השמאלי */
+.stfx-w{position:relative;width:min(100%,980px);height:clamp(96px,11vw,150px);margin:clamp(22px,3vw,36px) auto 0}
+.stfx{position:absolute;inset:0;width:100%;height:100%;overflow:visible;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%);mask-image:linear-gradient(90deg,transparent,#000 12%)}
+.stfx:not(.on){visibility:hidden}
+.js .stmt.in .ul path{animation:ulDraw .9s var(--ease) .35s forwards}
+/* מחשבון השעות: כרטיס בהיר עם מסגרת גרדיאנט, כדי שלא יהיו שני גושים כהים ברצף */
+.calc{display:grid;grid-template-columns:1fr 1.3fr 1fr;gap:clamp(20px,3vw,40px);align-items:center;margin-top:clamp(36px,5vw,60px);padding:clamp(24px,3vw,38px);border-radius:24px;border:1.5px solid transparent;background:linear-gradient(165deg,#f8fbff 0%,#e9f0fa 100%) padding-box,linear-gradient(150deg,rgba(31,95,214,.62),rgba(18,137,171,.42) 48%,rgba(31,95,214,.14)) border-box;box-shadow:0 2px 6px rgba(13,22,38,.05),0 22px 44px rgba(31,95,214,.13)}
+.calc h3{font-size:clamp(22px,2.2vw,28px);margin-bottom:8px}
+.calc-copy p{color:var(--dim);font-size:16px}
+.calc-ctl{display:flex;flex-direction:column;gap:18px}
+.rng{display:grid;grid-template-columns:1fr auto;gap:6px 12px;align-items:baseline}
+.rng label{font-size:15px;font-weight:600;color:var(--ink-2)}
+.rng output{font-family:var(--font-mono);font-weight:600;font-size:18px;color:var(--ink);direction:ltr}
+.rng input{grid-column:1/-1;width:100%;height:24px;margin:0;accent-color:var(--acc);cursor:pointer}
+.calc-out{display:flex;flex-direction:column;align-items:flex-start;gap:12px;padding-inline-start:clamp(0px,2vw,28px);border-inline-start:1px solid var(--edge)}
+.res b{display:block;font-family:var(--font-mono);font-weight:600;font-size:clamp(30px,3.4vw,44px);line-height:1.05;color:var(--ink);direction:ltr;text-align:right}
+.res:nth-child(2) b{color:var(--acc-ink)}
+.res span{font-size:14px;font-weight:600;color:var(--dim)}
+.calc-note{font-size:13px;color:var(--dim)}
+@media(max-width:1100px){.w-xl{--s:.68;--x:83%}.w-wa{--x:13%}.w-wa,.w-mail,.w-erp{--s:.8}.d-toast,.d-clock{display:none}}
+@media(max-width:920px){
+  .calc{grid-template-columns:1fr}
+  .calc-out{border-inline-start:0;padding-inline-start:0;border-top:1px solid var(--edge);padding-top:20px}
+  .d2-main{grid-template-columns:1fr}
+  .d2-side{grid-template-columns:1fr 1fr}
+  .w-mail,.w-erp{display:none}
+}
+@media(max-width:620px){
+  .c2d-stage{min-height:0;padding-block:clamp(120px,36vw,170px) 20px}
+  .mon{padding:7px;border-radius:18px}
+  .mon::after{border-radius:18px}
+  .mon-in{padding:12px 12px 10px}
+  .d2-chips{display:none}
+  .d2-live span{display:none}
+  .d2-kpis{grid-template-columns:1fr 1fr;gap:8px}
+  .d2k{min-height:84px;padding:10px 11px 8px}
+  .d2k-l{font-size:11.5px}
+  .d2k-v{font-size:19px}
+  .spark{width:38%;height:24px}
+  .ring{width:36px;height:36px;margin-top:-18px;left:8px}
+  .d2-side{display:none}
+  .d2-months span:nth-child(even):not(:last-child),.d2-months span:nth-child(11){visibility:hidden}
+  .d2-tip{display:none}
+  .w-xl{--x:60%;--y:12%;--s:.54}
+  .w-wa{--x:24%;--y:60%;--s:.58}
+  .d-note{--x:80%;--y:84%;font-size:13px;padding:10px 12px}
+  .pains li{font-size:13px;padding:6px 12px}
+  .pains li:nth-child(1){left:30%;top:6%}.pains li:nth-child(2){left:68%;top:40%}.pains li:nth-child(3){left:36%;top:84%}
+  .calc .btn{width:100%}
+}
 
 /* שירותים: סרט נע של כרטיסים עם אייקונים מונפשים */
 .svc{background:radial-gradient(45% 55% at 82% 28%,rgba(31,95,214,.34),transparent 65%),radial-gradient(42% 52% at 12% 78%,rgba(18,137,171,.32),transparent 62%),var(--deep)}
@@ -255,7 +448,9 @@ p{text-wrap:pretty}
 .a-ai .core{fill:#3fc4e0;stroke:none;transform-box:fill-box;transform-origin:center;animation:core 2.2s ease-in-out infinite}
 @keyframes flow{to{stroke-dashoffset:-67}}
 
-/* אייקוני הכאבים: גדולים, בשני צבעים, ומונפשים */
+@keyframes core{0%,100%{transform:scale(.8);opacity:.75}50%{transform:scale(1.25);opacity:1}}
+
+/* אייקוני SVG מונפשים בשני צבעים (משמשים את התפקידים ב"מי אני") */
 .pico{width:76px;height:76px;display:block;overflow:visible;fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:2.7;margin-bottom:20px}
 .pico .b{stroke:var(--ink)}
 .pico .ac{stroke:var(--acc)}
@@ -264,29 +459,6 @@ p{text-wrap:pretty}
 .pico .hub{fill:var(--panel);stroke:var(--ink);stroke-width:2.2}
 .pico *{animation-play-state:paused}
 .on .pico *{animation-play-state:running}
-/* נתונים מפוזרים: כל חלק מרחף בקצב משלו, והחיבורים מהבהבים ולא נסגרים */
-.p-scatter .lnk{stroke:#8a9ab3;stroke-width:1.8;stroke-dasharray:2.5 4;animation:lnkBlink 2.6s ease-in-out infinite}
-.p-scatter .k2{animation-delay:-.9s}.p-scatter .k3{animation-delay:-1.7s}
-.p-scatter .s1{animation:drift1 3.4s ease-in-out infinite}
-.p-scatter .s2{animation:drift2 2.8s ease-in-out infinite}
-.p-scatter .s3{animation:drift3 3.9s ease-in-out infinite}
-@keyframes lnkBlink{0%,100%{opacity:.15}50%{opacity:.9}}
-@keyframes drift1{0%,100%{transform:translate(0,0)}50%{transform:translate(-2px,3px)}}
-@keyframes drift2{0%,100%{transform:translate(0,0)}50%{transform:translate(2px,-3px)}}
-@keyframes drift3{0%,100%{transform:translate(0,0)}50%{transform:translate(1px,3px)}}
-/* תהליכים ידניים: המחוגים רצים, וטבעת מתפשטת כמו זמן שבורח */
-.p-clock .hand-m{stroke-width:3;transform-box:view-box;transform-origin:32px 35px;animation:spin 3s linear infinite}
-.p-clock .hand-h{stroke-width:3;transform-box:view-box;transform-origin:32px 35px;animation:spin 36s linear infinite}
-.p-clock .ring{stroke:var(--acc);stroke-width:2;transform-box:view-box;transform-origin:32px 35px;animation:ringOut 3s ease-out infinite}
-@keyframes ringOut{0%{transform:scale(1);opacity:.55}100%{transform:scale(1.42);opacity:0}}
-/* החלטות בלי דאטה: מחט המצפן מתנדנדת ולא מוצאת כיוון */
-.p-compass .nn{fill:var(--acc);stroke:var(--acc);stroke-width:1.2}
-.p-compass .ns{fill:#b9c7dc;stroke:#b9c7dc;stroke-width:1.2}
-.p-compass .needle{transform-box:view-box;transform-origin:30px 34px;animation:wobble 4.2s ease-in-out infinite}
-.p-compass .qm{stroke-width:2.6;animation:qmPulse 2.1s ease-in-out infinite}
-@keyframes wobble{0%,100%{transform:rotate(-38deg)}18%{transform:rotate(30deg)}34%{transform:rotate(-16deg)}52%{transform:rotate(42deg)}70%{transform:rotate(-8deg)}86%{transform:rotate(24deg)}}
-@keyframes qmPulse{0%,100%{opacity:.35;transform:translateY(0)}50%{opacity:1;transform:translateY(-2px)}}
-@keyframes core{0%,100%{transform:scale(.8);opacity:.75}50%{transform:scale(1.25);opacity:1}}
 
 /* differentiator */
 .chips{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:34px}
@@ -543,6 +715,7 @@ p{text-wrap:pretty}
 .foot .brand{color:#fff}
 .foot .brand .b{color:var(--acc-on-deep)}
 .foot-tag{margin-top:14px;max-width:32ch}
+.foot-slogan{display:block;margin-bottom:4px;font-family:var(--font-head);font-size:20px;font-weight:700;color:#fff}
 .foot h4{font-size:14px;font-weight:800;color:var(--deep-ink);margin-bottom:12px}
 .foot ul{list-style:none;display:flex;flex-direction:column;gap:8px}
 .foot a:hover{color:#fff}
@@ -625,7 +798,7 @@ p{text-wrap:pretty}
 .motion-off .motion-btn .i-play{display:block}
 .motion-off *,.motion-off *::before,.motion-off *::after{animation-play-state:paused!important}
 /* כניסות חד פעמיות וקצרות ממשיכות לרוץ גם בעצירה. אחרת, בטעינה עם עצירה שמורה, ה-hero נשאר שקוף */
-.motion-off .hero h1,.motion-off .hero-lead,.motion-off .hero-actions,.motion-off .proof,.motion-off .collage,.motion-off .sh .ul path{animation-play-state:running!important}
+.motion-off .hero h1,.motion-off .hero-lead,.motion-off .hero-actions,.motion-off .proof,.motion-off .collage,.motion-off .sh .ul path,.motion-off .stmt .ul path{animation-play-state:running!important}
 .motion-btn .lbl{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
 @media(prefers-reduced-motion:reduce){
   .js .motion-btn{display:none}
@@ -681,7 +854,7 @@ p{text-wrap:pretty}
         {"@type": "Question", "name": "מה קורה עם המידע של העסק שלי?", "acceptedAnswer": {"@type": "Answer", "text": "המידע נשאר שלכם. הגישה למערכות היא רק למה שהפרויקט צריך, וכשנדרש אפשר לבנות פתרון שרץ כולו על השרתים של הארגון, בלי שום יציאה לענן."}},
         {"@type": "Question", "name": "אני עסק קטן. זה מתאים גם לי?", "acceptedAnswer": {"@type": "Answer", "text": "כן. חלק מהכלים השימושיים ביותר שבניתי נבנו דווקא לעסקים קטנים, כמו VeriBayit לניהול ועד בית. ההיקף נקבע לפי גודל העסק והתקציב."}},
         {"@type": "Question", "name": "מה ההבדל בינך לבין חברת פיתוח?", "acceptedAnswer": {"@type": "Answer", "text": "חברת פיתוח מקבלת אפיון ובונה לפיו. אני מתחיל צעד אחד קודם, בהבנה של התהליך העסקי, ולכן גם האפיון יוצא מדויק יותר. ולאורך כל הדרך אתם מדברים ישירות עם מי שבונה."}},
-        {"@type": "Question", "name": "מה זה Rubin Studio?", "acceptedAnswer": {"@type": "Answer", "text": "סטודיו לבניית מצגות פרימיום לעסקים ולארגונים. כדי לתכנן מצגת, השאירו פרטים בטופס ובחרו ב-Rubin Studio."}}
+        {"@type": "Question", "name": "מה זה Rubin Studio?", "acceptedAnswer": {"@type": "Answer", "text": "סטודיו לבניית מצגות פרימיום לעסקים ולארגונים, כולל מצגות הנהלה שמתעדכנות לבד מהאקסל או מה-ERP. כל הפרטים בעמוד של Rubin Studio."}}
       ]
     }
   ]
@@ -746,6 +919,7 @@ p{text-wrap:pretty}
         </button>
         <div class="nav-dd-menu" id="studioMenu">
           <div class="dd-info"><span class="dd-t">מצגות פרימיום לעסקים ולארגונים</span><span class="dd-s">עיצוב ובנייה, מהתוכן ועד המצגת המוכנה.</span></div>
+          <a href="/studio/" target="_blank" rel="noopener"><span class="dd-t">לעמוד של Rubin Studio</span><span class="dd-s">סוגי מצגות, מצגת שמתעדכנת לבד, ואיך עובדים</span></a>
           <a href="#leadForm" data-interest="studio"><span class="dd-t">מתכננים מצגת?</span><span class="dd-s">השאירו פרטים ונקבע שיחה</span></a>
         </div>
       </div>
@@ -832,10 +1006,114 @@ p{text-wrap:pretty}
       <h2>הנתונים שלך שם.<br>אתה פשוט לא רואה אותם.</h2>
       <p>המידע מפוזר בין אקסל, וואטסאפ וכמה מערכות שלא מדברות זו עם זו. תהליכים ידניים אוכלים שעות. וההחלטות מתקבלות לפי תחושה.</p>
     </div>
-    <div class="grid-3 fan">
-      <div class="card reveal"><svg class="pico p-scatter" viewBox="0 0 64 64" aria-hidden="true"><path class="lnk k1" d="M27 19 39 14"/><path class="lnk k2" d="M17 27 25 40"/><path class="lnk k3" d="M47 26 41 40"/><g class="s1"><rect class="b" x="5" y="8" width="21" height="17" rx="3"/><path class="b thin" d="M5 14h21M5 19.5h21M12.5 8v17"/></g><g class="s2"><path class="ac" d="M41 5h15a3 3 0 0 1 3 3v9a3 3 0 0 1-3 3h-8l-5 4v-4h-2a3 3 0 0 1-3-3V8a3 3 0 0 1 3-3z"/><path class="ac" d="M45 12.5h.01M48.5 12.5h.01M52 12.5h.01"/></g><g class="s3"><ellipse class="ac2" cx="33" cy="43" rx="10" ry="3.6"/><path class="ac2" d="M23 43v11c0 2 4.5 3.6 10 3.6s10-1.6 10-3.6V43M23 48.5c0 2 4.5 3.6 10 3.6s10-1.6 10-3.6"/></g></svg><h3>נתונים מפוזרים</h3><p>אקסל פה, מערכת שם, וואטסאפ באמצע. אף פעם לא תמונה אחת ברורה.</p></div>
-      <div class="card reveal"><svg class="pico p-clock" viewBox="0 0 64 64" aria-hidden="true"><circle class="ring" cx="32" cy="35" r="20"/><circle class="b" cx="32" cy="35" r="20"/><path class="b" d="M27 9h10M32 9v6M48 17l3-3"/><path class="ac thin" d="M32 18.5v3M48.5 35h-3M32 51.5v-3M15.5 35h3"/><path class="hand-h b" d="M32 35h8"/><path class="hand-m ac" d="M32 35V22"/><circle class="hub" cx="32" cy="35" r="2.6"/></svg><h3>תהליכים ידניים</h3><p>שעות על עבודה חוזרת שאפשר להפוך לאוטומטית. זמן שאף אחד לא מקבל בחזרה.</p></div>
-      <div class="card reveal"><svg class="pico p-compass" viewBox="0 0 64 64" aria-hidden="true"><circle class="b" cx="30" cy="34" r="22"/><path class="b thin" d="M30 14v3M30 51v3M10 34h3M47 34h3"/><g class="needle"><path class="nn" d="M30 17l4.5 17h-9z"/><path class="ns" d="M30 51l4.5-17h-9z"/></g><circle class="hub" cx="30" cy="34" r="2.6"/><path class="qm ac2" d="M50 6.5a5 5 0 0 1 5 5c0 3.5-5 3.6-5 7M50 23.5h.01"/></svg><h3>החלטות בלי דאטה</h3><p>מחליטים לפי תחושה, כי אין דשבורד שמראה את התמונה האמיתית.</p></div>
+    <div class="c2d" id="c2d">
+      <p class="sr">איור: שולחן עבודה עמוס בגיליון אקסל, בצ'אט וואטסאפ, במייל ובמסך ERP. הנתונים עפים מהם אל מסך אחד, והמסך נדלק לדשבורד הנהלה חי.</p>
+      <div class="c2d-stage">
+        <div class="mon" aria-hidden="true">
+          <div class="mon-in">
+            <div class="scr-flash"></div>
+            <div class="d2-head" data-a="head">
+              <div class="d2-title"><b>דשבורד הנהלה</b><span>חברה לדוגמה · אוקטובר</span></div>
+              <div class="d2-chips"><span class="on">חודש</span><span>רבעון</span><span>שנה</span></div>
+              <div class="d2-live"><i></i><b>LIVE</b><span>מתעדכן בזמן אמת</span></div>
+            </div>
+            <div class="d2-kpis">
+              <div class="d2k" data-a="k1"><span class="d2k-l">הכנסות החודש</span><b class="d2k-v" data-k="rev">₪1.24M</b><span class="d2k-d up">▲ 14%</span><svg class="spark" viewBox="0 0 120 34"><defs><clipPath id="spc"><rect x="0" y="0" width="120" height="34"/></clipPath></defs><path clip-path="url(#spc)" d="M2 28 L16 24 L30 26 L45 18 L60 20 L75 12 L90 14 L105 8 L118 4"/></svg></div>
+              <div class="d2k" data-a="k2"><span class="d2k-l">רווח גולמי</span><b class="d2k-v" data-k="mar">38.6%</b><span class="d2k-d up">▲ 2.1 נק'</span><svg class="ring" viewBox="0 0 44 44"><circle class="rt" cx="22" cy="22" r="18"/><circle class="rv" cx="22" cy="22" r="18"/></svg></div>
+              <div class="d2k" data-a="k3"><span class="d2k-l">הזמנות פתוחות</span><b class="d2k-v" data-k="ord">312</b><span class="d2k-d dn">▼ 3 באיחור</span></div>
+              <div class="d2k" data-a="k4"><span class="d2k-l">שעות שנחסכו</span><b class="d2k-v" data-k="hrs">126</b><span class="d2k-d">מתחילת החודש</span></div>
+            </div>
+            <div class="d2-main">
+              <div class="d2-chart" data-a="chart">
+                <div class="d2-ch"><span>הכנסות, 12 חודשים</span><span>סה״כ: <b dir="ltr">₪12.0M</b></span></div>
+                <div class="area-w">
+                <svg class="area" viewBox="0 0 600 200"><defs><linearGradient id="d2g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3fc4e0" stop-opacity=".42"/><stop offset="1" stop-color="#1f5fd6" stop-opacity="0"/></linearGradient><clipPath id="d2c"><rect x="0" y="-20" width="600" height="240"/></clipPath></defs><path class="gl" d="M0 50H600M0 100H600M0 150H600"/><g clip-path="url(#d2c)"><path class="af" d="M0 200 L0.0 150.0 L54.5 135.0 L109.1 142.5 L163.6 122.5 L218.2 112.5 L272.7 120.0 L327.3 100.0 L381.8 90.0 L436.4 97.5 L490.9 75.0 L545.5 60.0 L600.0 45.0 L600 200 Z"/><path class="al" d="M0.0 150.0 L54.5 135.0 L109.1 142.5 L163.6 122.5 L218.2 112.5 L272.7 120.0 L327.3 100.0 L381.8 90.0 L436.4 97.5 L490.9 75.0 L545.5 60.0 L600.0 45.0"/></g><g class="adg" transform="translate(600 45)"><circle class="adp" r="6"/><circle class="ad" r="5"/></g></svg><span class="d2-tip" data-a="tip">₪1.24M</span></div>
+                <div class="d2-months"><span>נוב׳</span><span>דצמ׳</span><span>ינו׳</span><span>פבר׳</span><span>מרץ</span><span>אפר׳</span><span>מאי</span><span>יוני</span><span>יולי</span><span>אוג׳</span><span>ספט׳</span><span>אוק׳</span></div>
+              </div>
+              <div class="d2-side">
+                <div class="d2-reg" data-a="reg"><span class="d2-sub">לפי אזור</span><div class="rg"><span>מרכז</span><i><b style="--w:92%"></b></i><em>₪412K</em></div><div class="rg"><span>צפון</span><i><b style="--w:71%"></b></i><em>₪318K</em></div><div class="rg"><span>שרון</span><i><b style="--w:64%"></b></i><em>₪287K</em></div><div class="rg"><span>דרום</span><i><b style="--w:50%"></b></i><em>₪223K</em></div></div>
+                <div class="d2-alerts" data-a="alerts"><span class="d2-sub">התראות</span><div class="al amb"><i></i>מלאי נמוך: 3 פריטים</div><div class="al ok"><i></i>דוח החודש הופק אוטומטית</div></div>
+              </div>
+            </div>
+            <p class="d2-note">נתוני דוגמה</p>
+          </div>
+        </div>
+        <div class="desk" aria-hidden="true">
+          <div class="win w-xl">
+            <div class="xl-title"><span class="xl-name">דוח_מכירות_סופי_v7&lrm;.xlsx</span><span class="xl-ctl"><i></i><i></i><i></i></span></div>
+            <div class="xl-tabs"><span class="file">קובץ</span><span class="on">בית</span><span>הוספה</span><span>נוסחאות</span><span>נתונים</span><span>תצוגה</span></div>
+            <div class="xl-tools"><i></i><i></i><i class="w"></i><i></i><i></i><i></i><i class="w"></i><i></i></div>
+            <div class="xl-fx"><span class="nb">E7</span><span class="fxs">fx</span><span class="fml" dir="ltr">=SUMIFS(D2:D41,B2:B41,"צפון")</span></div>
+            <table class="xl-grid">
+              <tr><th></th><th>A</th><th>B</th><th>C</th><th>D</th><th>E</th><th>F</th></tr>
+              <tr><th>1</th><td class="h">אזור</td><td class="h">ינואר</td><td class="h">פברואר</td><td class="h">מרץ</td><td class="h">סה״כ</td><td></td></tr>
+              <tr><th>2</th><td>מרכז</td><td class="n">132,410</td><td class="n">141,200</td><td class="n">138,900</td><td class="n">412,510</td><td></td></tr>
+              <tr><th>3</th><td>צפון</td><td class="n">98,300</td><td class="n err">#REF!</td><td class="n">104,700</td><td class="n err">#REF!</td><td></td></tr>
+              <tr><th>4</th><td>שרון</td><td class="n hl">91,250</td><td class="n cm">95,800</td><td class="n">99,120</td><td class="n">286,170</td><td></td></tr>
+              <tr><th>5</th><td>דרום</td><td class="n">74,900</td><td class="n">71,300</td><td class="n err">#N/A</td><td class="n err">#N/A</td><td></td></tr>
+              <tr><th>6</th><td>אילת?</td><td class="n hl">12,040</td><td></td><td></td><td></td><td></td></tr>
+              <tr><th>7</th><td class="b">סה״כ</td><td class="n b">408,900</td><td class="n b">?</td><td class="n b">342,720</td><td class="n b sel">1,180,?</td><td></td></tr>
+              <tr><th>8</th><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            </table>
+            <div class="xl-sheets"><span>ינואר</span><span>פברואר</span><span class="on">גיליון1 (2)</span><span class="add">+</span></div>
+          </div>
+          <div class="win w-wa">
+            <div class="wa-head"><span class="wa-av">ה</span><span class="wa-t"><b>הנהלה ודוחות</b><small>דנה, יוסי, רונית ועוד 4</small></span></div>
+            <div class="wa-body">
+              <div class="wb in"><b class="wn">יוסי</b>מי שלח את הקובץ המעודכן?<i>09:12</i></div>
+              <div class="wb out">שלחתי אתמול, תבדוק במייל<i>09:13<s class="tk"></s></i></div>
+              <div class="wb in"><b class="wn n2">רונית</b>המספרים לא תואמים לדוח של דנה<i>09:15</i></div>
+              <div class="wb in"><b class="wn n3">דנה</b><span class="wf"><em>XLS</em>דוח_מכירות_v6&lrm;.xlsx</span><i>09:16</i></div>
+              <div class="wb out">צריך את זה עד הישיבה ב-10!!<i>09:18<s class="tk"></s></i></div>
+            </div>
+          </div>
+          <div class="win w-mail">
+            <div class="ml-bar"><span>דואר נכנס</span><span class="ml-c">37</span></div>
+            <div class="ml-row"><span class="ml-av">רכ</span><span class="ml-tx"><b>רונית, כספים</b><span class="ml-sub"><bdi dir="ltr">RE: RE: FW:</bdi> נתונים לישיבת הנהלה</span><span class="ml-sn">מצרפת שוב את הקובץ. יש בו עדיין פער מול ה-ERP</span></span><span class="ml-meta"><i>08:57</i><s class="flag"></s></span></div>
+          </div>
+          <div class="win w-erp">
+            <div class="erp-t">ERP · דוח הזמנות פתוחות</div>
+            <div class="erp-m"><span>קובץ</span><span>עריכה</span><span>דוחות</span><span>חלון</span></div>
+            <table class="erp-g">
+              <tr><th>הזמנה</th><th>לקוח</th><th>סטטוס</th><th>תאריך</th></tr>
+              <tr><td>40213</td><td>א.ב. שיווק</td><td>פתוחה</td><td>12/10</td></tr>
+              <tr class="bad"><td>40217</td><td>מ.ר. סחר</td><td>חסר נתון</td><td>14/10</td></tr>
+              <tr><td>40221</td><td>ש.ל. ייבוא</td><td>בטיפול</td><td>15/10</td></tr>
+              <tr><td>40226</td><td>ד.ג. הפצה</td><td>פתוחה</td><td>17/10</td></tr>
+            </table>
+          </div>
+          <div class="win d-note">לבדוק מול ה-ERP!</div>
+          <div class="win d-toast"><span class="tst-ic"></span><span><b>וואטסאפ</b> · 3 הודעות חדשות</span></div>
+          <div class="win d-clock"><b>07:42</b><span>עדיין אין דוח</span></div>
+        </div>
+        <div class="fxl" aria-hidden="true"></div>
+        <ul class="pains">
+          <li>נתונים מפוזרים</li>
+          <li>תהליכים ידניים</li>
+          <li>החלטות בלי דאטה</li>
+        </ul>
+        <p class="c2d-cap">הופכים נתונים <em>להחלטות</em>.</p>
+      </div>
+    </div>
+
+    <div class="calc reveal" id="calc">
+      <div class="calc-copy">
+        <span class="k">מחשבון</span>
+        <h3>החלטות מבוססות על נתונים, ולא על תחושות בטן.</h3>
+        <p>כמה שעות הולכות אצלכם על דוחות ידניים? הזיזו את שלושת הסליידרים. החישוב נעשה כאן בדפדפן, ושום דבר לא נשלח.</p>
+      </div>
+      <div class="calc-ctl">
+        <div class="rng"><label for="c-emp">עובדים שמכינים דוחות או מעבירים נתונים ידנית</label><output id="o-emp" for="c-emp">5</output><input type="range" id="c-emp" min="1" max="30" step="1" value="5"></div>
+        <div class="rng"><label for="c-hrs">שעות בשבוע לכל עובד</label><output id="o-hrs" for="c-hrs">4</output><input type="range" id="c-hrs" min="1" max="20" step="1" value="4"></div>
+        <div class="rng"><label for="c-rate">עלות שעת עבודה, כולל עלויות מעסיק</label><output id="o-rate" for="c-rate">₪120</output><input type="range" id="c-rate" min="50" max="400" step="10" value="120"></div>
+      </div>
+      <div class="calc-out">
+        <div class="res"><b id="r-hours">920</b><span>שעות בשנה</span></div>
+        <div class="res"><b id="r-cost">₪110,400</b><span>בשנה</span></div>
+        <p class="calc-note">הערכה לפי הנתונים שהזנתם בלבד, על בסיס 46 שבועות עבודה בשנה.</p>
+        <a class="btn btn-solid btn-lg" href="#leadForm" id="calcCta" data-track="calc_cta">בואו נחזיר את השעות האלה</a>
+        <p class="sr" id="calcLive" aria-live="polite"></p>
+      </div>
     </div>
     <a class="bridge reveal" href="#why-me">אני בונה את זה אחרת ←</a>
   </div>
@@ -1063,6 +1341,17 @@ p{text-wrap:pretty}
   </div>
 </section>
 
+<section class="band band-deep stmt-band" aria-labelledby="stmt-h">
+  <div class="wrap">
+    <div class="stmt reveal" data-fx="signal scatter">
+      <p class="k">מה שמנחה כל פרויקט</p>
+      <h2 id="stmt-h">הופכים נתונים <span class="hl">להחלטות<svg class="ul" viewBox="0 0 100 12" preserveAspectRatio="none" aria-hidden="true"><path pathLength="100" d="M2 8C24 3 52 11 98 4"/></svg></span>.</h2>
+      <p class="stmt-sub">החלטות מבוססות על נתונים, ולא על תחושות בטן.</p>
+      <div class="stfx-w" aria-hidden="true"><svg class="stfx"></svg><svg class="stfx"></svg></div>
+    </div>
+  </div>
+</section>
+
 <section class="band band-light" id="process">
   <div class="wrap">
     <div class="sh reveal">
@@ -1158,7 +1447,7 @@ p{text-wrap:pretty}
       <details><summary>מה קורה עם המידע של העסק שלי?</summary><p>המידע נשאר שלכם. הגישה למערכות היא רק למה שהפרויקט צריך, וכשנדרש אפשר לבנות פתרון שרץ כולו על השרתים של הארגון, בלי שום יציאה לענן.</p></details>
       <details><summary>אני עסק קטן. זה מתאים גם לי?</summary><p>כן. חלק מהכלים השימושיים ביותר שבניתי נבנו דווקא לעסקים קטנים, כמו VeriBayit לניהול ועד בית. ההיקף נקבע לפי גודל העסק והתקציב.</p></details>
       <details><summary>מה ההבדל בינך לבין חברת פיתוח?</summary><p>חברת פיתוח מקבלת אפיון ובונה לפיו. אני מתחיל צעד אחד קודם, בהבנה של התהליך העסקי, ולכן גם האפיון יוצא מדויק יותר. ולאורך כל הדרך אתם מדברים ישירות עם מי שבונה.</p></details>
-      <details><summary>מה זה Rubin Studio?</summary><p>סטודיו לבניית מצגות פרימיום לעסקים ולארגונים. כדי לתכנן מצגת, השאירו פרטים בטופס ובחרו ב-Rubin Studio.</p></details>
+      <details><summary>מה זה Rubin Studio?</summary><p>סטודיו לבניית מצגות פרימיום לעסקים ולארגונים, כולל מצגות הנהלה שמתעדכנות לבד מהאקסל או מה-ERP. כל הפרטים ב<a class="tlink" href="/studio/" target="_blank" rel="noopener">עמוד של Rubin Studio</a>.</p></details>
     </div>
   </div>
 </section>
@@ -1213,7 +1502,7 @@ p{text-wrap:pretty}
     <div class="foot-grid">
       <div>
         <a class="brand" href="#top"><img src="img/logo-reverse.webp" width="123" height="120" alt=""><span dir="ltr">Rubin <span class="b">Project</span></span></a>
-        <p class="foot-tag">פתרונות BI, אוטומציה ותוכנה בהתאמה אישית לעסקים ולארגונים.</p>
+        <p class="foot-tag"><b class="foot-slogan">הופכים נתונים להחלטות.</b>פתרונות BI, אוטומציה ותוכנה בהתאמה אישית לעסקים ולארגונים.</p>
       </div>
       <div>
         <h4>האתר</h4>
@@ -1341,7 +1630,201 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
   });
 })();
 
-// תנועה: פסים נעים, מניפה, כרטיסים מתחלפים, תאורת עכבר
+// מחשבון השעות: החישוב נעשה בדפדפן בלבד, ושום דבר לא נשלח
+(function(){
+  const $=id=>document.getElementById(id);
+  const emp=$('c-emp'),hrs=$('c-hrs'),rate=$('c-rate');
+  if(!emp)return;
+  const WEEKS=46,fmt=n=>Math.round(n).toLocaleString('he-IL');
+  const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const rh=$('r-hours'),rc=$('r-cost'),live=$('calcLive'),msg=$('f-message');
+  let shownH=0,shownC=0,raf=0,liveT=0,tk=0,used=false;
+  const calc=()=>{const h=+emp.value*+hrs.value*WEEKS;return {h,c:h*+rate.value};};
+  const paint=(h,c)=>{rh.textContent=fmt(h);rc.textContent='₪'+fmt(c);};
+  const update=()=>{
+    $('o-emp').textContent=emp.value;$('o-hrs').textContent=hrs.value;$('o-rate').textContent='₪'+rate.value;
+    const {h,c}=calc();cancelAnimationFrame(raf);
+    if(reduce){shownH=h;shownC=c;paint(h,c);}
+    else{
+      const fh=shownH,fc=shownC,t0=performance.now();
+      const step=t=>{const k=Math.min((t-t0)/350,1),e=1-Math.pow(1-k,3);shownH=fh+(h-fh)*e;shownC=fc+(c-fc)*e;paint(shownH,shownC);if(k<1)raf=requestAnimationFrame(step);};
+      raf=requestAnimationFrame(step);
+      // גיבוי: בטאב ברקע requestAnimationFrame לא רץ, והמונה היה נשאר על הערך הישן
+      const t=++tk;setTimeout(()=>{if(t===tk){cancelAnimationFrame(raf);shownH=h;shownC=c;paint(h,c);}},420);
+    }
+    // קורא מסך שומע את התוצאה רק אחרי שהסליידר נעצר, ולא בכל צעד
+    clearTimeout(liveT);liveT=setTimeout(()=>{live.textContent='כ-'+fmt(h)+' שעות בשנה, שהן כ-₪'+fmt(c)+' בשנה.';},700);
+  };
+  [emp,hrs,rate].forEach(el=>el.addEventListener('input',()=>{if(!used){used=true;if(window.rpTrack)window.rpTrack('calc_used');}update();}));
+  const first=calc();shownH=first.h;shownC=first.c;paint(first.h,first.c);
+  // הכפתור ממלא בטופס את תוצאת החישוב. אם המבקר כבר כתב משהו בעצמו, לא דורסים
+  if(msg)msg.addEventListener('input',()=>{delete msg.dataset.auto;});
+  $('calcCta').addEventListener('click',()=>{
+    const sel=$('f-interest');if(sel)sel.value='project';
+    if(msg&&(!msg.value.trim()||msg.dataset.auto==='1')){
+      msg.value='מהמחשבון באתר: '+emp.value+' עובדים, '+hrs.value+' שעות בשבוע לכל אחד, כ-'+fmt(calc().h)+' שעות בשנה.';
+      msg.dataset.auto='1';
+    }
+  });
+})();
+
+// רצועת ההצהרה: מתחת למשפט רץ פעם אחת מופע של נתונים, בשתי גרסאות שמתחלפות.
+// "מרעש לאות": קו עצבני מתיישר לקו מגמה. "פיזור": נקודות מתיישרות וקו מגמה נמתח דרכן.
+// כל כניסה של הרצועה למסך מריצה את הגרסה הבאה, וביקור חדש מתחיל מהגרסה שלא רצה בפעם האחרונה.
+// בפחות תנועה ובעצירה מוצג המצב הסופי. כפתור העצירה מתחבר דרך stmt._ctl בבלוק התנועה
+(function(){
+  const box=document.querySelector('.stmt[data-fx]');if(!box)return;
+  const RM=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const NS='http://www.w3.org/2000/svg';
+  const clamp=v=>v<0?0:v>1?1:v,seg=(t,a,b)=>clamp((t-a)/(b-a)),ease=x=>1-Math.pow(1-x,3),eio=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;
+  const lerp=(a,b,k)=>a+(b-a)*k;
+  // אקראיות קבועה, כדי שכל ריצה תיראה אותו דבר
+  const rng=s=>()=>{s|=0;s=s+0x6D2B79F5|0;let t=Math.imul(s^s>>>15,1|s);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};
+  const el=(n,a,p)=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e;};
+  const CY='63,196,224',GR='154,167,189';
+  // קו המגמה: עולה משמאל לימין, עם גלים קטנים כמו נתונים אמיתיים
+  const trend=x=>.88-.72*(x*.5+x*x*.5)+.035*Math.sin(x*11)+.02*Math.sin(x*23+1);
+  // הקו נגמר מעט לפני הקצה, כדי שהנקודה והחץ בסופו ייראו במלואם
+  const XE=.965;
+
+  // גרסה 1: מרעש לאות
+  const signal=(svg)=>{
+    let W=0,H=0,N=0,noise=[];
+    const defs=el('defs',{},svg);
+    const gid='g'+Math.random().toString(36).slice(2,7);
+    const grad=el('linearGradient',{id:gid,x1:'0',x2:'1',y1:'0',y2:'0'},defs);
+    const s1=el('stop',{offset:'0','stop-color':'rgb('+CY+')'},grad),s2=el('stop',{offset:'0','stop-color':'rgb('+CY+')'},grad);
+    const s3=el('stop',{offset:'0','stop-color':'rgb('+GR+')','stop-opacity':'.55'},grad),s4=el('stop',{offset:'1','stop-color':'rgb('+GR+')','stop-opacity':'.55'},grad);
+    const fid='f'+gid;el('feGaussianBlur',{stdDeviation:'5'},el('filter',{id:fid,x:'-10%',y:'-50%',width:'120%',height:'200%'},defs));
+    const ag='a'+gid,ar=el('linearGradient',{id:ag,x1:'0',x2:'0',y1:'0',y2:'1'},defs);
+    el('stop',{offset:'0','stop-color':'rgb('+CY+')','stop-opacity':'.32'},ar);el('stop',{offset:'1','stop-color':'rgb('+CY+')','stop-opacity':'0'},ar);
+    // המילוי מתחת לקו נמוג לפני הקצה, כדי שלא יסתיים בקיר אנכי
+    const mg='m'+gid,mgr=el('linearGradient',{id:mg,x1:'0',x2:'1',y1:'0',y2:'0'},defs);
+    el('stop',{offset:'.7','stop-color':'#fff'},mgr);el('stop',{offset:'1','stop-color':'#000'},mgr);
+    const mk='k'+gid,mask=el('mask',{id:mk,maskContentUnits:'objectBoundingBox'},defs);
+    el('rect',{x:'0',y:'0',width:'1',height:'1',fill:'url(#'+mg+')'},mask);
+    const area=el('path',{fill:'url(#'+ag+')',opacity:'0',mask:'url(#'+mk+')'},svg);
+    const glow=el('path',{fill:'none',stroke:'url(#'+gid+')','stroke-width':'5','stroke-linejoin':'round',filter:'url(#'+fid+')',opacity:'0'},svg);
+    const line=el('path',{fill:'none',stroke:'url(#'+gid+')','stroke-width':'2.4','stroke-linejoin':'round','stroke-linecap':'round'},svg);
+    const ring=el('circle',{r:'4',fill:'none',stroke:'rgb('+CY+')','stroke-width':'1.6',opacity:'0'},svg);
+    const dot=el('circle',{r:'5',fill:'#fff',stroke:'rgb('+CY+')','stroke-width':'3',opacity:'0'},svg);
+    const size=()=>{
+      W=svg.clientWidth;H=svg.clientHeight;svg.setAttribute('viewBox','0 0 '+W+' '+H);
+      N=Math.max(60,Math.round(W/7));const r=rng(7);noise=Array.from({length:N},()=>r()*2-1);
+    };
+    const END=3900;
+    const render=t=>{
+      if(!N)return;
+      const pad=H*.12,A=H*.36,pts=[],c=performance.now();
+      for(let i=0;i<N;i++){
+        const x=i/(N-1);
+        // הרעש: ערך קבוע לכל נקודה, ועליו רעד שמשתנה בזמן
+        const n=.55*noise[i]+.45*Math.sin(c/63+i*1.7)*Math.cos(c/97+i*.6)+.35*Math.sin(i/7+c/380);
+        const k=eio(seg(t,1100+x*900,2000+x*900));
+        const y0=H/2+n*A,y1=pad+trend(x)*(H-2*pad);
+        pts.push([x*W*XE,lerp(y0,y1,k)]);
+      }
+      const d='M'+pts.map(p=>p[0].toFixed(1)+' '+p[1].toFixed(1)).join(' L');
+      line.setAttribute('d',d);glow.setAttribute('d',d);
+      area.setAttribute('d',d+' L'+(W*XE).toFixed(1)+' '+H+' L0 '+H+' Z');
+      // הצבע עובר מאפור לציאן יחד עם ההתיישרות
+      const p=(t-1550)/900;
+      s2.setAttribute('offset',clamp(p-.05).toFixed(3));
+      s3.setAttribute('offset',clamp(p+.05).toFixed(3));
+      glow.setAttribute('opacity',(seg(t,1600,3000)*.75).toFixed(3));
+      area.setAttribute('opacity',ease(seg(t,2600,3400)).toFixed(3));
+      const e=pts[N-1];
+      [dot,ring].forEach(c=>{c.setAttribute('cx',e[0].toFixed(1));c.setAttribute('cy',e[1].toFixed(1));});
+      dot.setAttribute('opacity',seg(t,2800,3050).toFixed(3));
+      const q=seg(t,3000,3850);ring.setAttribute('r',(5+q*20).toFixed(1));ring.setAttribute('opacity',(q>0&&q<1?.7*(1-q):0).toFixed(3));
+    };
+    return {size,render,END};
+  };
+
+  // גרסה 2: פיזור שמתיישר לקו מגמה
+  const scatter=(svg)=>{
+    let W=0,H=0,P=[];
+    const defs=el('defs',{},svg);
+    const fid='f'+Math.random().toString(36).slice(2,7);
+    el('feGaussianBlur',{stdDeviation:'4'},el('filter',{id:fid,x:'-10%',y:'-50%',width:'120%',height:'200%'},defs));
+    const grid=el('g',{stroke:'rgba(154,167,189,.16)','stroke-width':'1','stroke-dasharray':'2 6'},svg);
+    const dots=el('g',{},svg);
+    const glow=el('path',{fill:'none',stroke:'rgb('+CY+')','stroke-width':'5',filter:'url(#'+fid+')',opacity:'0','stroke-linecap':'round'},svg);
+    const line=el('path',{fill:'none',stroke:'rgb('+CY+')','stroke-width':'2.4','stroke-linecap':'round'},svg);
+    const head=el('path',{fill:'rgb('+CY+')',opacity:'0'},svg);
+    const ring=el('circle',{r:'4',fill:'none',stroke:'rgb('+CY+')','stroke-width':'1.6',opacity:'0'},svg);
+    let len=0,pad=0;
+    const size=()=>{
+      W=svg.clientWidth;H=svg.clientHeight;svg.setAttribute('viewBox','0 0 '+W+' '+H);
+      pad=H*.12;grid.textContent='';
+      [.25,.5,.75].forEach(f=>el('line',{x1:0,x2:W,y1:(H*f).toFixed(1),y2:(H*f).toFixed(1)},grid));
+      dots.textContent='';P=[];
+      const n=W<600?30:48,r=rng(11);
+      for(let i=0;i<n;i++){
+        const xf=(i+.15+r()*.7)/n*.97,g=(r()+r()+r()-1.5)/1.5;
+        P.push({xs:.04+r()*.92,ys:.08+r()*.84,xf,yf:clamp(trend(xf)+g*.16),ph:r()*6.28,rad:2.6+r()*1.8,
+          c:el('circle',{r:'3'},dots)});
+      }
+      const pts=[];for(let i=0;i<=80;i++){const x=i/80;pts.push((x*W*XE).toFixed(1)+' '+(pad+trend(x)*(H-2*pad)).toFixed(1));}
+      const d='M'+pts.join(' L');line.setAttribute('d',d);glow.setAttribute('d',d);
+      len=line.getTotalLength();line.style.strokeDasharray=glow.style.strokeDasharray=len;
+    };
+    const END=3800;
+    const render=t=>{
+      if(!P.length)return;
+      const c=performance.now();
+      P.forEach(p=>{
+        const k=eio(seg(t,900+p.xf*700,1900+p.xf*700));
+        // בשלב הפיזור כל נקודה מרחפת מעט
+        const wob=1-k,x0=p.xs*W+Math.sin(c/520+p.ph)*9*wob,y0=p.ys*H+Math.cos(c/610+p.ph)*7*wob;
+        const x1=p.xf*W*XE,y1=pad+p.yf*(H-2*pad);
+        p.c.setAttribute('cx',lerp(x0,x1,k).toFixed(1));p.c.setAttribute('cy',lerp(y0,y1,k).toFixed(1));
+        p.c.setAttribute('r',lerp(p.rad,3.4,k).toFixed(2));
+        const rgb=[0,1,2].map(j=>Math.round(lerp(+GR.split(',')[j],+CY.split(',')[j],k)));
+        p.c.setAttribute('fill','rgba('+rgb.join(',')+','+lerp(.5,.85,k).toFixed(2)+')');
+      });
+      const dr=eio(seg(t,2300,3300));
+      line.style.strokeDashoffset=glow.style.strokeDashoffset=(len*(1-dr)).toFixed(1);
+      glow.setAttribute('opacity',(dr*.7).toFixed(3));
+      // ראש חץ בקצה הקו, בכיוון המגמה
+      const a=line.getPointAtLength(len),b=line.getPointAtLength(len-10),ang=Math.atan2(a.y-b.y,a.x-b.x),s=11;
+      const pt=(r,o)=>(a.x+Math.cos(ang+o)*r).toFixed(1)+' '+(a.y+Math.sin(ang+o)*r).toFixed(1);
+      head.setAttribute('d','M'+pt(s*.4,0)+' L'+pt(s,2.6)+' L'+pt(s,-2.6)+' Z');
+      head.setAttribute('opacity',seg(t,3150,3350).toFixed(3));
+      ring.setAttribute('cx',a.x.toFixed(1));ring.setAttribute('cy',a.y.toFixed(1));
+      const q=seg(t,3250,3800);ring.setAttribute('r',(5+q*20).toFixed(1));ring.setAttribute('opacity',(q>0&&q<1?.7*(1-q):0).toFixed(3));
+    };
+    return {size,render,END};
+  };
+
+  const FX={signal,scatter},KEY='rp-stmt-fx';
+  const svgs=[...box.querySelectorAll('.stfx')],fxs=box.dataset.fx.split(' ').map((n,i)=>FX[n](svgs[i]));
+  let cur=0,armed=true,vis=false,paused=RM,fr=0,t0=0,idle=0,wait=0;
+  try{const v=localStorage.getItem(KEY);if(v!==null)cur=(+v+1)%fxs.length;if(localStorage.getItem('rp-motion')==='off')paused=true;}catch(e){}
+  const fx=()=>fxs[cur];
+  const show=()=>svgs.forEach((s,j)=>s.classList.toggle('on',j===cur));
+  const stop=()=>{cancelAnimationFrame(idle);cancelAnimationFrame(fr);clearTimeout(wait);idle=fr=wait=0;};
+  // לפני שהמופע מתחיל, הרעש והפיזור כבר חיים בעדינות, רק כשהרצועה על המסך
+  const idleLoop=()=>{fx().render(0);idle=requestAnimationFrame(idleLoop);};
+  const kickIdle=()=>{if(!idle&&!fr&&armed&&vis&&!paused)idle=requestAnimationFrame(idleLoop);};
+  const loop=now=>{const t=now-t0;fx().render(Math.min(t,fx().END));fr=t<fx().END?requestAnimationFrame(loop):0;};
+  const ready=()=>{stop();show();armed=true;if(paused)fx().render(fx().END);else{fx().render(0);kickIdle();}};
+  const play=()=>{
+    stop();armed=false;
+    try{localStorage.setItem(KEY,cur);}catch(e){}
+    t0=performance.now();fr=requestAnimationFrame(loop);
+  };
+  fxs.forEach(f=>f.size());ready();
+  window.addEventListener('resize',()=>{fxs.forEach(f=>f.size());fx().render(armed&&!paused?0:fx().END);});
+  if(RM)return;
+  new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting&&armed&&!paused&&!wait)wait=setTimeout(play,250);}),{threshold:.55}).observe(box);
+  // כשהרצועה יוצאת לגמרי מהמסך היא מתאפסת, ובכניסה הבאה רצה הגרסה הבאה
+  new IntersectionObserver(es=>es.forEach(e=>{vis=e.isIntersecting;if(!vis&&!armed&&!paused){cur=(cur+1)%fxs.length;ready();}else if(vis)kickIdle();else{cancelAnimationFrame(idle);idle=0;}}),{threshold:0}).observe(box);
+  box._ctl={pause(on){paused=on;if(on){stop();armed=false;fx().render(fx().END);}else{ready();const r=box.getBoundingClientRect();if(r.top<innerHeight*.45&&r.bottom>innerHeight*.45)wait=setTimeout(play,250);}}};
+  box._seek=(t,i)=>{stop();if(i!==undefined){cur=i;show();}fx().render(t);};
+})();
+
+// תנועה: פסים נעים, מכאוס לדשבורד, כרטיסים מתחלפים, תאורת עכבר
 (function(){
   if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
 
@@ -1389,34 +1872,152 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
   window.addEventListener('resize',refill);
   if(document.fonts)document.fonts.ready.then(refill);
 
-  // מניפה: כשהכרטיסיות נכנסות למסך הן נפתחות מעצמן, לאט, בלי קשר לגלילה.
-  // כשגוללים חזרה אל מעליהן הן נסגרות בשקט, כדי שהאפקט ירוץ שוב בפעם הבאה
-  const fan=document.querySelector('.fan');
-  if(fan){
-    const cards=[...fan.children],wide=window.matchMedia('(min-width:800px)');
-    const fin=[{r:-3,y:14},{r:0,y:-10},{r:3,y:14}];
-    let state='';
-    const set=(open,animate)=>{
-      cards.forEach((c,i)=>{
-        const tx=open?0:cards[1].offsetLeft-c.offsetLeft;
-        const y=open?fin[i].y:(i===1?10:50),r=open?fin[i].r:0,s=open||i===1?1:.9;
-        c.style.transition=animate?'transform 1.3s cubic-bezier(.65,0,.35,1),opacity .9s ease .1s':'none';
-        c.style.transform=`translate3d(${tx}px,${y}px,0) rotate(${r}deg) scale(${s})`;
-        c.style.opacity=open||i===1?'1':'0';
+  // מכאוס לדשבורד: החלונות על השולחן מרחפים לאט. כשהבמה חוצה 60% מגובה המסך, המספרים מהאקסל עפים אל המסך,
+  // השולחן מתפנה והמסך נדלק לדשבורד. כל המופע הוא פונקציה של זמן (render), כ-4 שניות. אחר כך הדשבורד חי 3 שניות, והמופע חוזר.
+  // כשהבמה יוצאת לגמרי מהמסך, למעלה או למטה, הכול מתאפס בשקט, כדי שהמופע ירוץ שוב בכל כניסה, גם בגלילה מלמטה למעלה
+  const c2d=document.getElementById('c2d');
+  if(c2d){
+    const stage=c2d.querySelector('.c2d-stage'),fxl=c2d.querySelector('.fxl');
+    const wins=[...c2d.querySelectorAll('.win')],pains=[...c2d.querySelectorAll('.pains li')];
+    const A=k=>c2d.querySelector('[data-a="'+k+'"]');
+    const P={head:A('head'),k1:A('k1'),k2:A('k2'),k3:A('k3'),k4:A('k4'),chart:A('chart'),reg:A('reg'),alerts:A('alerts'),tip:A('tip')};
+    const flash=c2d.querySelector('.scr-flash'),spClip=c2d.querySelector('#spc rect'),arClip=c2d.querySelector('#d2c rect');
+    const ring=c2d.querySelector('.ring .rv'),bars=[...c2d.querySelectorAll('.rg i b')],dot=c2d.querySelector('.area .adg');
+    const vals=[...c2d.querySelectorAll('[data-k]')],cap=c2d.querySelector('.c2d-cap');
+    const waB=[...c2d.querySelectorAll('.wb')],erpR=[...c2d.querySelectorAll('.erp-g tr')].slice(1);
+    const area=c2d.querySelector('.area .af'),line=c2d.querySelector('.area .al'),tot=c2d.querySelector('.d2-ch b');
+    const clamp=v=>v<0?0:v>1?1:v,seg=(t,a,b)=>clamp((t-a)/(b-a)),ease=x=>1-Math.pow(1-x,3),eio=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;
+    const END=3900;
+    // נתוני הדוגמה. החיות אחרי המופע משנה אותם מעט, וכל סבב חדש מתחיל מהערכים האלה
+    const K={rev:1.24,mar:38.6,ord:312,hrs:126};
+    const F={rev:v=>'₪'+v.toFixed(2)+'M',mar:v=>v.toFixed(1)+'%',ord:v=>String(Math.round(v)),hrs:v=>String(Math.round(v))};
+    const series=[.82,.88,.85,.93,.97,.94,1.02,1.06,1.03,1.12,1.18,1.24];
+    const yOf=v=>Math.round((180-(v-.7)/.6*150)*10)/10,xOf=i=>Math.round(i*600/11*10)/10;
+    const drawSeries=()=>{
+      const pts=series.map((v,i)=>xOf(i)+' '+yOf(v)).join(' L');
+      line.setAttribute('d','M'+pts);area.setAttribute('d','M0 200 L'+pts+' L600 200 Z');
+      dot.setAttribute('transform','translate(600 '+yOf(series[11])+')');
+      tot.textContent='₪'+series.reduce((x,y)=>x+y,0).toFixed(1)+'M';
+      if(P.tip){P.tip.textContent=F.rev(K.rev);P.tip.style.top=(yOf(series[11])/2)+'%';}
+    };
+    // בסיס כל חלון (סיבוב והקטנה) נקרא מה-CSS, כי הוא משתנה בין דסקטופ לטלפון
+    const readBase=()=>wins.forEach(w=>{const cs=getComputedStyle(w);w._r=parseFloat(cs.getPropertyValue('--rot'))||0;w._s=parseFloat(cs.getPropertyValue('--s'))||1;});
+    const placeWins=()=>wins.forEach(w=>{const ex=w._ex||0;w.style.transform='translate(-50%,-50%) translate('+((w._fx||0)+(w._dx||0)*ex).toFixed(1)+'px,'+((w._fy||0)+(w._dy||0)*ex).toFixed(1)+'px) rotate('+(w._r+(w._r>=0?7:-7)*ex).toFixed(2)+'deg) scale('+(w._s*(1-.22*ex)).toFixed(3)+')';});
+    let pts=[];
+    // המספרים שעפים: נלקחים מתאי האקסל שעל המסך, ונוחתים על כרטיסי ה-KPI ועל הגרף
+    const spawn=()=>{
+      fxl.textContent='';pts=[];
+      const sr=stage.getBoundingClientRect();
+      const tg=['k1','chart','k2','reg','k3','chart','k4','k1'].map(k=>P[k]).filter(e=>e&&e.offsetParent);
+      const cells=[...c2d.querySelectorAll('.xl-grid td.n')].filter(td=>td.offsetParent&&/\d/.test(td.textContent)).slice(0,14);
+      cells.forEach((td,i)=>{
+        const a=td.getBoundingClientRect(),b=tg[i%tg.length].getBoundingClientRect(),el=document.createElement('span');
+        el.className='pt';el.textContent=td.textContent;fxl.appendChild(el);
+        const x0=a.left+a.width/2-sr.left,y0=a.top+a.height/2-sr.top;
+        const x1=b.left+b.width*(.3+(i%5)*.1)-sr.left,y1=b.top+b.height*.55-sr.top;
+        pts.push({el,x0,y0,x1,y1,cx:(x0+x1)/2+((i%3)-1)*90,cy:Math.min(y0,y1)-70-(i%4)*28,st:i*32,du:820+(i%4)*60});
       });
-      state=open?'open':'closed';
+      // בועות הוואטסאפ ותאי ה-ERP נשאבים אל מרכז המסך. המרחק מחולק בהקטנה של החלון, כי התנועה נמדדת בתוכו
+      const mr=c2d.querySelector('.mon').getBoundingClientRect(),mx=mr.left+mr.width/2,my=mr.top+mr.height*.42;
+      const toMon=(el,k)=>{const r=el.getBoundingClientRect();el._dx=(mx-(r.left+r.width/2))/k;el._dy=(my-(r.top+r.height/2))/k;};
+      const ww=c2d.querySelector('.w-wa'),we=c2d.querySelector('.w-erp');
+      waB.forEach(b=>toMon(b,ww._s||1));
+      erpR.forEach(r=>[...r.cells].forEach(td=>toMon(td,we._s||1)));
+      // כל חלון נע מעט לכיוון מרכז המסך בזמן שהוא נמוג
+      wins.forEach(w=>{const r=w.getBoundingClientRect();w._dx=((sr.left+sr.width/2)-(r.left+r.width/2))*.18;w._dy=((sr.top+sr.height/2)-(r.top+r.height/2))*.18;});
     };
-    const inView=()=>{const r=fan.getBoundingClientRect();return r.top<window.innerHeight*.62&&r.bottom>0;};
+    const show=(el,t,a,b)=>{if(!el)return;const k=ease(seg(t,a,b));el.style.opacity=k.toFixed(3);el.style.transform=k>=1?'':'translateY('+((1-k)*14).toFixed(1)+'px)';};
+    const render=t=>{
+      pts.forEach(p=>{
+        const k=seg(t,p.st,p.st+p.du),e=eio(k),u=1-e,x=u*u*p.x0+2*u*e*p.cx+e*e*p.x1,y=u*u*p.y0+2*u*e*p.cy+e*e*p.y1;
+        p.el.style.transform='translate('+x.toFixed(1)+'px,'+y.toFixed(1)+'px) translate(-50%,-50%) scale('+(1.12-.5*e).toFixed(3)+')';
+        p.el.style.opacity=(k<=0||k>=1)?0:k<.12?(k/.12).toFixed(3):k>.82?((1-k)/.18).toFixed(3):1;
+      });
+      const suck=(el,k,sc)=>{el.style.opacity=(1-k*k).toFixed(3);el.style.transform=k?'translate('+((el._dx||0)*k).toFixed(1)+'px,'+((el._dy||0)*k).toFixed(1)+'px) scale('+(1-sc*k).toFixed(3)+')':'';};
+      waB.forEach((b,i)=>suck(b,eio(seg(t,100+i*90,820+i*90)),.55));
+      erpR.forEach((r,i)=>{const k=eio(seg(t,180+i*100,900+i*100));[...r.cells].forEach(td=>suck(td,k,.5));});
+      wins.forEach((w,i)=>{const k=ease(seg(t,820+i*60,1600+i*60));w._ex=k;w.style.opacity=(1-k).toFixed(3);});
+      placeWins();
+      pains.forEach(p=>{p.style.opacity=(1-seg(t,250,650)).toFixed(3);});
+      flash.style.opacity=(t<1300?0:t<1480?(t-1300)/180*.65:Math.max(0,.65*(1-(t-1480)/450))).toFixed(3);
+      show(P.head,t,1450,1850);show(P.k1,t,1560,1960);show(P.k2,t,1660,2060);show(P.k3,t,1760,2160);show(P.k4,t,1860,2260);
+      show(P.chart,t,1800,2200);show(P.reg,t,2050,2450);show(P.alerts,t,2750,3150);
+      arClip.setAttribute('width',(eio(seg(t,1950,3250))*600).toFixed(1));
+      spClip.setAttribute('width',(eio(seg(t,1750,2650))*120).toFixed(1));
+      ring.style.strokeDashoffset=(113.1*(1-K.mar/100*ease(seg(t,1850,2950)))).toFixed(2);
+      bars.forEach((b,i)=>{b.style.transform='scaleX('+ease(seg(t,2150+i*90,2850+i*90)).toFixed(3)+')';});
+      dot.style.opacity=seg(t,3150,3350).toFixed(3);
+      if(P.tip)P.tip.style.opacity=seg(t,3250,3550).toFixed(3);
+      show(cap,t,3250,3800);
+      const c=ease(seg(t,1700,3000));vals.forEach(el=>{const k=el.dataset.k;el.textContent=F[k](K[k]*c);});
+    };
+    let built=false,done=false,vis=false,fr=0,fl=0,armT=0,t0=0,liveT=0,tw=0,cycT=0,chaosT=0;
+    // החיות אחרי המופע: כל שנייה כל המספרים זזים מעט, והגרף, העמודות והטבעת עוברים לערכים החדשים בהנפשה רכה
+    const BASE={rev:K.rev,mar:K.mar,ord:K.ord,hrs:K.hrs,ser:series.slice()},bar=bars.map(()=>1);
+    const rnd=(a,b)=>a+Math.random()*(b-a),lim=(v,a,b)=>Math.min(b,Math.max(a,v));
+    const paintLive=()=>{
+      vals.forEach(el=>{const k=el.dataset.k;el.textContent=F[k](K[k]);});
+      drawSeries();ring.style.strokeDashoffset=(113.1*(1-K.mar/100)).toFixed(2);
+      bars.forEach((b,i)=>{b.style.transform='scaleX('+bar[i].toFixed(3)+')';});
+    };
+    const tickLive=()=>{
+      const from={rev:K.rev,mar:K.mar,ord:K.ord,hrs:K.hrs,ser:series.slice(),bar:bar.slice()};
+      const to={rev:lim(K.rev+rnd(-.008,.014),1.18,1.29),mar:lim(K.mar+rnd(-.35,.35),37.4,39.9),ord:lim(K.ord+rnd(-4,4),296,330),hrs:K.hrs+rnd(0,1.4),
+        ser:BASE.ser.map(v=>lim(v+rnd(-.03,.03),.74,1.28)),bar:bars.map(()=>rnd(.86,1.06))};
+      to.ser[11]=to.rev;
+      const s0=performance.now();cancelAnimationFrame(tw);
+      const step=now=>{
+        const k=Math.min((now-s0)/800,1),e=1-Math.pow(1-k,3);
+        ['rev','mar','ord','hrs'].forEach(n=>{K[n]=from[n]+(to[n]-from[n])*e;});
+        for(let i=0;i<12;i++)series[i]=from.ser[i]+(to.ser[i]-from.ser[i])*e;
+        bars.forEach((b,i)=>{bar[i]=from.bar[i]+(to.bar[i]-from.bar[i])*e;});
+        paintLive();if(k<1)tw=requestAnimationFrame(step);
+      };
+      tw=requestAnimationFrame(step);
+    };
+    // אחרי 3 שניות של דשבורד חי המופע חוזר מעצמו, גם בלי גלילה: השולחן מתבלגן שוב, ואחרי רגע הכול נבנה מחדש.
+    // כפתור העצירה עוצר גם את הסבב הזה (WCAG 2.2.2)
+    const LIVE_MS=3000,CHAOS_MS=1600;
+    const replay=()=>{cycT=0;if(!vis||paused||!done)return;reset();chaosT=setTimeout(()=>{chaosT=0;if(vis&&!paused&&!built)build();},CHAOS_MS);};
+    const startLive=()=>{if(liveT||!done||!vis||paused)return;tickLive();liveT=setInterval(tickLive,1000);if(!cycT)cycT=setTimeout(replay,LIVE_MS);};
+    const stopLive=()=>{clearInterval(liveT);liveT=0;cancelAnimationFrame(tw);tw=0;clearTimeout(cycT);cycT=0;};
+    const finish=()=>{cancelAnimationFrame(fr);fr=0;render(END);fxl.textContent='';pts=[];done=true;startLive();};
+    const loop=now=>{const t=now-t0;if(!built)return;if(t>=END){finish();return;}render(t);fr=requestAnimationFrame(loop);};
+    const build=()=>{
+      built=true;done=false;stopLive();cancelAnimationFrame(fl);fl=0;spawn();t0=performance.now();fr=requestAnimationFrame(loop);
+      // גיבוי: בטאב ברקע requestAnimationFrame לא רץ, ואז קופצים למצב הסופי
+      setTimeout(()=>{if(built&&!done)finish();},END+700);
+    };
+    const reset=()=>{
+      built=false;done=false;cancelAnimationFrame(fr);fr=0;stopLive();fxl.textContent='';pts=[];
+      Object.assign(K,{rev:BASE.rev,mar:BASE.mar,ord:BASE.ord,hrs:BASE.hrs});BASE.ser.forEach((v,i)=>{series[i]=v;});bar.fill(1);drawSeries();
+      wins.forEach(w=>{w._ex=0;});render(0);kickFloat();
+    };
+    // ריחוף החלונות בשלב הכאוס
+    const seeds=wins.map((w,i)=>({ph:i*1.9,sp:.35+((i*37)%10)/28,ax:4+(i%3)*2,ay:5+(i%4)*2}));
+    const float=now=>{
+      wins.forEach((w,i)=>{const s=seeds[i],k=now/1000*s.sp+s.ph;w._fx=Math.sin(k)*s.ax;w._fy=Math.cos(k*.8)*s.ay;});
+      placeWins();fl=(!built&&vis&&!paused)?requestAnimationFrame(float):0;
+    };
+    const kickFloat=()=>{if(!fl&&!built&&vis&&!paused)fl=requestAnimationFrame(float);};
+    onResume.push(()=>{if(paused){stopLive();clearTimeout(chaosT);chaosT=0;}else{startLive();kickFloat();check();}});
+    c2d.classList.add('c2d-js');readBase();render(0);
+    window.addEventListener('resize',()=>{readBase();if(!built)placeWins();});
     const check=()=>{
-      if(!wide.matches){cards.forEach(c=>{c.style.transition='';c.style.transform='';c.style.opacity='';});state='';return;}
-      if(!state){set(false,false);void fan.offsetWidth;}
-      if(state==='closed'&&inView())set(true,true);
-      else if(state==='open'&&fan.getBoundingClientRect().top>window.innerHeight)set(false,false);
+      const r=stage.getBoundingClientRect(),h=window.innerHeight;
+      if(!built&&!armT&&r.top<h*.6&&r.bottom>h*.25){
+        armT=setTimeout(()=>{armT=0;const q=stage.getBoundingClientRect();if(!built&&q.top<window.innerHeight*.6&&q.bottom>0)build();},700);
+      }else if(built&&(r.top>h||r.bottom<0))reset();
     };
+    new IntersectionObserver(es=>es.forEach(e=>{vis=e.isIntersecting;if(vis){kickFloat();startLive();}else{stopLive();clearTimeout(chaosT);chaosT=0;}}),{rootMargin:'80px 0px'}).observe(stage);
     window.addEventListener('scroll',check,{passive:true});
-    window.addEventListener('resize',()=>{if(state)set(state==='open',false);check();});
     check();
+    c2d._seek=t=>{if(!pts.length&&t>0)spawn();render(t);};
   }
+
+  // רצועת ההצהרה: העצירה מציגה את המצב הסופי של המופע
+  const stmtBox=document.querySelector('.stmt[data-fx]');
+  if(stmtBox&&stmtBox._ctl)onResume.push(()=>stmtBox._ctl.pause(paused));
 
   // כרטיסים שמחליפים צילום מסך כל 2 שניות, רק כשהם על המסך
   document.querySelectorAll('.rot').forEach(box=>{
@@ -1436,7 +2037,7 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
   // האייקונים המונפשים בכאבים רצים רק כשהם על המסך
   const zio=new IntersectionObserver(es=>es.forEach(e=>e.target.classList.toggle('on',e.isIntersecting)),{rootMargin:'80px 0px'});
-  document.querySelectorAll('.fan, .roles').forEach(el=>zio.observe(el));
+  document.querySelectorAll('.roles').forEach(el=>zio.observe(el));
 
   // סרט נע של כרטיסי השירותים: מאט ועוצר בריחוף, ואפשר לגרור ביד
   document.querySelectorAll('.drift').forEach(gal=>{
