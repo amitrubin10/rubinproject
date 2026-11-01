@@ -728,6 +728,39 @@ p{text-wrap:pretty}
 .cglow{position:fixed;top:0;left:0;width:150px;height:150px;margin:-75px 0 0 -75px;border-radius:50%;pointer-events:none;z-index:9999;opacity:0;transition:opacity .4s var(--ease);background:radial-gradient(circle,rgba(63,196,224,.24) 0,rgba(63,196,224,.08) 45%,transparent 72%);will-change:transform}
 .cglow.is-on{opacity:1}
 
+/* Rubin Studio בדף הבית: טקסט מימין, ערימת שקפים אמיתיים משמאל שמתחלפת לאט. האלמוג מסמן את המותג המשני */
+.sts{--sts-coral:#d4462c;--sts-coral-ink:#b83a22;overflow-x:clip}
+.sts-in{display:grid;grid-template-columns:1fr 1.05fr;gap:clamp(32px,5vw,72px);align-items:center}
+.sts-k{color:var(--sts-coral-ink)}
+.sts h2{font-weight:700}
+.sts-brand{display:block;font-size:clamp(2.4rem,5vw,3.9rem);font-weight:900;line-height:1.05;letter-spacing:-.5px;text-align:right}
+.sts-brand b{color:var(--sts-coral-ink);font-weight:900}
+.sts-sub{display:block;margin-top:8px;font-size:var(--fs-h2)}
+.sts-txt>p{margin-top:16px;max-width:54ch;font-size:var(--fs-lead);color:var(--dim)}
+.sts-list{list-style:none;margin-top:22px;display:grid;gap:11px}
+.sts-list li{position:relative;padding-inline-start:30px;font-size:17px;color:var(--ink-2)}
+.sts-list li::before{content:"";position:absolute;inset-inline-start:0;top:.42em;width:18px;height:18px;border-radius:50%;background:var(--sts-coral) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18'%3E%3Cpath d='M5 9.4l2.6 2.6L13 6.6' fill='none' stroke='%23fff' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% no-repeat}
+.sts-list b{color:var(--ink)}
+.sts-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.sts-deck{position:relative}
+.sts-deck::before{content:"";position:absolute;inset:-8% -6%;background:radial-gradient(50% 50% at 45% 50%,rgba(212,70,44,.16),transparent 70%),radial-gradient(45% 45% at 70% 30%,rgba(31,95,214,.14),transparent 70%);pointer-events:none}
+.sts-stage{position:relative;aspect-ratio:16/11;max-width:620px;margin-inline:auto}
+.sts-sl{position:absolute;left:4%;bottom:6%;width:80%;aspect-ratio:16/9;margin:0;border-radius:12px;overflow:hidden;background:var(--deep);box-shadow:0 2px 6px rgba(13,22,38,.12),0 26px 50px rgba(13,22,38,.24);transform-origin:50% 100%;transition:transform .9s var(--ease),opacity .9s var(--ease)}
+.sts-sl img{display:block;width:100%;height:100%;object-fit:cover}
+/* מקומות בערימה: 0 מקדימה, 1 ו-2 מאחור, ושאר השקפים מוסתרים מאחורי 2 */
+.sts-sl{z-index:0;opacity:0;transform:translate(13%,-24%) rotate(5deg) scale(.86)}
+.sts-sl.p2{z-index:1;opacity:.8;transform:translate(13%,-24%) rotate(5deg) scale(.86)}
+.sts-sl.p1{z-index:2;opacity:.95;transform:translate(6%,-12%) rotate(1deg) scale(.93)}
+.sts-sl.p0{z-index:3;opacity:1;transform:rotate(-3deg)}
+.sts-sl.pout{z-index:4;opacity:0;transform:translate(-10%,12%) rotate(-8deg) scale(1.02)}
+.sts-tag{position:relative;display:block;margin-top:6px;text-align:center;font-family:var(--font-mono);font-size:12.5px;color:var(--dim)}
+@media(max-width:920px){
+  .sts-in{grid-template-columns:1fr}
+  .sts-deck{order:-1;max-width:560px;width:100%;margin-inline:auto}
+}
+@media(max-width:620px){
+  .sts-cta .btn{width:100%}
+}
 /* reveal */
 .js .reveal{opacity:0;transform:translateY(20px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
 .js .reveal.in{opacity:1;transform:none}
@@ -918,8 +951,8 @@ p{text-wrap:pretty}
           <span dir="ltr">Rubin Studio</span><i class="nav-dd-chev" aria-hidden="true"></i>
         </button>
         <div class="nav-dd-menu" id="studioMenu">
+          <a href="#studio"><span class="dd-t">מה זה Rubin Studio?</span><span class="dd-s">הסבר קצר כאן, בדף הבית</span></a>
           <a href="/studio/" target="_blank" rel="noopener"><span class="dd-t">לעמוד של Rubin Studio</span><span class="dd-s">מצגות פרימיום לעסקים ולארגונים</span></a>
-          <a href="#faq-studio" data-open-faq><span class="dd-t">מה זה Rubin Studio?</span><span class="dd-s">הסבר קצר כאן, בשאלות הנפוצות</span></a>
         </div>
       </div>
       <div class="nav-dd">
@@ -1168,6 +1201,37 @@ p{text-wrap:pretty}
         <svg class="aico a-ai" viewBox="0 0 64 64" aria-hidden="true"><path class="b" d="M32 13 14 47M32 13l18 34M14 47h36M32 13v19M14 47l18-15M50 47 32 32"/><path class="flow f1" d="M32 13 14 47"/><path class="flow f2" d="M50 47 32 32"/><path class="flow f3" d="M14 47h36"/><circle class="node" cx="32" cy="13" r="5"/><circle class="node" cx="14" cy="47" r="5"/><circle class="node" cx="50" cy="47" r="5"/><circle class="core" cx="32" cy="32" r="4.5"/></svg>
         <h3>AI יישומי</h3><p>צ'אטבוטים וסוכני ניתוח שמתחברים לתפעול האמיתי של העסק.</p>
       </article>
+    </div>
+  </div>
+</section>
+
+<section class="band band-light sts" id="studio" aria-labelledby="sts-h">
+  <div class="wrap sts-in">
+    <div class="sts-txt reveal">
+      <span class="k sts-k">קו נוסף של Rubin Project</span>
+      <h2 id="sts-h"><span class="sts-brand" dir="ltr">Rubin <b>Studio</b></span><span class="sts-sub">מצגות פרימיום לעסקים ולארגונים</span></h2>
+      <p>אותה חשיבה של נתונים ואוטומציה, על המצגות שעולות מול הנהלה, משקיעים ולקוחות: מצגת חברה, משקיעים, מכירה או כנס, בעיצוב שנראה כמו העסק שלכם.</p>
+      <ul class="sts-list">
+        <li><b>מצגת נתונים שמתעדכנת לבד</b> מהאקסל או מה-⁠ERP, בכל חודש או רבעון</li>
+        <li><b>קובץ PowerPoint פתוח</b>, שהארגון ממשיך לעבוד עליו בעצמו</li>
+        <li><b>גם PDF, קישור שנפתח בכל מכשיר ווידאו</b></li>
+        <li><b>NDA לפני שמתחילים</b>, והצעת מחיר מסודרת בכתב</li>
+      </ul>
+      <div class="sts-cta">
+        <a class="btn btn-solid btn-lg" href="/studio/" target="_blank" rel="noopener" data-track="studio_page">לעמוד של Rubin Studio</a>
+        <a class="btn btn-ghost btn-lg" href="#leadForm" data-interest="studio" data-track="studio_quote">מתכננים מצגת? דברו איתי</a>
+      </div>
+    </div>
+    <div class="sts-deck reveal" aria-hidden="true">
+      <div class="sts-stage">
+        <figure class="sts-sl p0"><img src="img/studio/deck-bank-1.webp" width="960" height="540" alt="" loading="lazy" decoding="async"></figure>
+        <figure class="sts-sl p1"><img src="img/studio/deck-tech-2.webp" width="960" height="540" alt="" loading="lazy" decoding="async"></figure>
+        <figure class="sts-sl p2"><img src="img/studio/deck-ind-1.webp" width="960" height="540" alt="" loading="lazy" decoding="async"></figure>
+        <figure class="sts-sl"><img src="img/studio/em-sl-0.webp" width="960" height="540" alt="" loading="lazy" decoding="async"></figure>
+        <figure class="sts-sl"><img src="img/studio/deck-tech-1.webp" width="960" height="540" alt="" loading="lazy" decoding="async"></figure>
+        <figure class="sts-sl"><img src="img/studio/deck-bank-3.webp" width="960" height="540" alt="" loading="lazy" decoding="async"></figure>
+      </div>
+      <span class="sts-tag">שקפי דוגמה מהמצגות של Rubin Studio</span>
     </div>
   </div>
 </section>
@@ -2025,6 +2089,17 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
   // רצועת ההצהרה: העצירה מציגה את המצב הסופי של המופע
   const stmtBox=document.querySelector('.stmt[data-fx]');
   if(stmtBox&&stmtBox._ctl)onResume.push(()=>stmtBox._ctl.pause(paused));
+
+  // Rubin Studio: השקף שמקדימה יוצא, והבא בתור עולה. כל 3.2 שניות, רק כשהסקשן על המסך
+  const stsSl=[...document.querySelectorAll('.sts-sl')];
+  if(stsSl.length>2){
+    let k=0,stsT=0,stsVis=false;
+    const place=()=>stsSl.forEach((el,i)=>{const d=(i-k+stsSl.length)%stsSl.length;el.className='sts-sl'+(d<3?' p'+d:d===stsSl.length-1?' pout':'');});
+    const step=()=>{k=(k+1)%stsSl.length;place();};
+    const run=()=>{clearInterval(stsT);stsT=0;if(stsVis&&!paused)stsT=setInterval(step,3200);};
+    new IntersectionObserver(es=>es.forEach(e=>{stsVis=e.isIntersecting;run();})).observe(document.querySelector('.sts-stage'));
+    onResume.push(run);
+  }
 
   // כרטיסים שמחליפים צילום מסך כל 2 שניות, רק כשהם על המסך
   document.querySelectorAll('.rot').forEach(box=>{
