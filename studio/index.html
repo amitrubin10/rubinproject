@@ -437,8 +437,10 @@ p{text-wrap:pretty}
 .deck-t{font-family:var(--font-head);font-weight:900;font-size:clamp(15px,4.6cqw,27px);line-height:1.1;margin-top:.5cqw;color:#fff}
 .dk-head small{display:block;font-size:max(2.2cqw,9.5px);color:rgba(238,243,250,.6);margin-top:.4cqw}
 .dk-live{display:inline-flex;align-items:center;gap:1.2cqw;flex:none;font-family:var(--font-mono);font-size:max(1.8cqw,8.5px);letter-spacing:.16em;color:#bfe9f4;border:1px solid rgba(63,196,224,.35);background:rgba(63,196,224,.08);border-radius:99px;padding:.7cqw 1.8cqw;direction:ltr}
-.dk-live i{width:6px;height:6px;border-radius:50%;background:var(--c4);animation:livePulse 1.8s infinite}
-@keyframes livePulse{0%{box-shadow:0 0 0 0 rgba(63,196,224,.6)}70%,100%{box-shadow:0 0 0 7px rgba(63,196,224,0)}}
+.dk-live i{position:relative;width:6px;height:6px;border-radius:50%;background:var(--c4)}
+/* הטבעת מתרחבת ונעלמת ב-transform וב-opacity, בלי לצייר מחדש את השקף */
+.dk-live i::after{content:"";position:absolute;inset:0;border-radius:50%;background:rgba(63,196,224,.6);animation:livePing 1.8s infinite}
+@keyframes livePing{0%{transform:scale(1);opacity:1}70%,100%{transform:scale(3.3);opacity:0}}
 .dk-body{flex:1;min-height:0;display:grid;grid-template-columns:minmax(0,1fr) 25cqw;gap:3cqw}
 .dk-chart{position:relative;min-height:0;margin-top:1.6cqw}
 .dk-grid{position:absolute;inset:0;pointer-events:none}
@@ -489,10 +491,12 @@ p{text-wrap:pretty}
 .dnode:nth-child(2) .dn-img{animation-delay:-1.6s}.dnode:nth-child(3) .dn-img{animation-delay:-3.2s}
 @keyframes dnFloat{to{transform:translateY(-7px)}}
 .dn-tags{display:flex;flex-direction:column;gap:7px;min-width:0}
-.dn-tags span{display:block;padding:4px 11px;border-radius:7px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);font-family:var(--font-mono);font-size:12px;font-weight:600;color:#dfe7f3;text-align:center;direction:ltr;animation:dnRead 3.6s ease-in-out infinite}
-.dn-tags span:nth-child(2){animation-delay:1.2s}.dn-tags span:nth-child(3){animation-delay:2.4s}
+.dn-tags span{display:block;padding:4px 11px;border-radius:7px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);font-family:var(--font-mono);font-size:12px;font-weight:600;color:#dfe7f3;text-align:center;direction:ltr;position:relative}
+/* ההדגשה היא שכבה שמופיעה ונעלמת (opacity), ולא שינוי של המסגרת, כדי שהדפדפן לא יצייר את התגית מחדש בכל פריים */
+.dn-tags span::after{content:"";position:absolute;inset:-1px;border-radius:inherit;border:1px solid rgba(255,122,92,.85);box-shadow:0 0 0 3px rgba(255,122,92,.18);opacity:0;pointer-events:none;animation:dnRead 3.6s ease-in-out infinite}
+.dn-tags span:nth-child(2)::after{animation-delay:1.2s}.dn-tags span:nth-child(3)::after{animation-delay:2.4s}
 .dn-tags .he{font-family:var(--font-body);font-size:12.5px;direction:rtl}
-@keyframes dnRead{0%,30%,100%{border-color:rgba(255,255,255,.14);box-shadow:none}10%,20%{border-color:rgba(255,122,92,.85);box-shadow:0 0 0 3px rgba(255,122,92,.18)}}
+@keyframes dnRead{0%,30%,100%{opacity:0}10%,20%{opacity:1}}
 
 /* מה מקבלים: כרטיס שמחליף מסכים, עם מופע לאייקון של כל פורמט */
 .fcard{display:flex;flex-direction:column;background:var(--panel);border:1px solid #b4c4db;border-radius:22px;overflow:hidden;box-shadow:0 2px 4px rgba(13,22,38,.05),0 18px 40px rgba(13,22,38,.11);transition:transform .25s var(--ease),box-shadow .25s,border-color .25s}
@@ -1007,8 +1011,13 @@ p{text-wrap:pretty}
 .lscr-live-layer{position:absolute;inset:0;display:none;pointer-events:none}
 .lscr.ready .lscr-live-layer{display:block}
 .lscr-clip{position:absolute;inset:0}
-.lscr-face{position:absolute;left:0;top:0;width:1920px;height:1080px;transform-origin:0 0;overflow:hidden;color:#fff;font-family:var(--font-body);direction:rtl;filter:blur(1.1px) saturate(.9) brightness(.93)}
-.lscr-face::after{content:"";position:absolute;inset:0;z-index:9;background:radial-gradient(ellipse 75% 70% at 50% 45%,transparent 50%,rgba(0,0,0,.32))}
+.lscr-face{position:absolute;left:0;top:0;width:calc(1920px * var(--lz,1));height:calc(1080px * var(--lz,1));transform-origin:0 0;overflow:hidden;color:#fff;font-family:var(--font-body);direction:rtl;backface-visibility:hidden}
+/* השקף בנוי ב-1920x1080, אבל מוקטן ב-zoom לפני העיוות, כדי שהדפדפן יצייר שכבה בגודל המסך שבתמונה ולא שכבה ענקית.
+   בלי זה, בטלפון השכבה הייתה כ-5760x3240 פיקסלים שמתעדכנת בכל פריים, וזה גרם לריצוד ולחלקים חסרים.
+   אין filter על השקף: טשטוש מכריח את הדפדפן לצייר את כל השכבה מחדש בכל פריים, ובשכבה מוקטנת הוא גם מרכך את הטקסט.
+   ההכהיה שהתאימה את השקף לתאורה בצילום עברה לשכבה השקופה שמעליו */
+.lscr-zin{position:absolute;left:0;top:0;width:1920px;height:1080px;zoom:var(--lz,1)}
+.lscr-face::after{content:"";position:absolute;inset:0;z-index:9;background:radial-gradient(ellipse 75% 70% at 50% 45%,transparent 50%,rgba(0,0,0,.32)),rgba(4,8,16,.07)}
 .lscr:not(.on) .lscr-face *{animation-play-state:paused}
 .lscr-sl{position:absolute;inset:0;z-index:2;opacity:0;visibility:hidden;transition:opacity .6s,visibility 0s .6s}
 .lscr-sl.on{opacity:1;visibility:visible;transition:opacity .6s}
@@ -1022,7 +1031,10 @@ p{text-wrap:pretty}
 .lscr-h em{font-style:normal;background:linear-gradient(120deg,#ffb36b,#ff7a5c 45%,#f3d68a);-webkit-background-clip:text;background-clip:text;color:transparent}
 .lscr-trend{display:block;width:960px;height:170px;margin-top:30px;overflow:visible}
 .lscr-trend .ar{fill:url(#lscrFill);animation:lscrArea 6s ease-in-out infinite}
-.lscr-trend .ln{fill:none;stroke:#8ae9fb;stroke-width:8;stroke-linecap:round;stroke-dasharray:100;filter:drop-shadow(0 0 8px rgba(63,196,224,.9)) drop-shadow(0 0 22px rgba(63,196,224,.5));animation:lscrDraw 6s ease-in-out infinite}
+.lscr-trend .ln,.lscr-trend .lscr-tg{fill:none;stroke:#8ae9fb;stroke-width:8;stroke-linecap:round;stroke-dasharray:100;animation:lscrDraw 6s ease-in-out infinite}
+/* הזוהר סביב הקו: שני קווים רחבים ושקופים מתחתיו, במקום drop-shadow שהיה מצייר את כל הקו מחדש בכל פריים */
+.lscr-trend .lscr-tg1{stroke:#3fc4e0;stroke-width:40;stroke-opacity:.14}
+.lscr-trend .lscr-tg2{stroke:#3fc4e0;stroke-width:20;stroke-opacity:.32}
 .lscr-trend .pt{fill:#fff;stroke:#3fc4e0;stroke-width:5;animation:lscrDot 6s ease-in-out infinite}
 .lscr-trend .pg{fill:none;stroke:#7fe4f7;stroke-width:3;transform-box:fill-box;transform-origin:center;animation:lscrPing 6s ease-out infinite}
 @keyframes lscrDraw{0%{stroke-dashoffset:100}45%,88%{stroke-dashoffset:0}100%{stroke-dashoffset:0;opacity:0}}
@@ -1052,7 +1064,8 @@ p{text-wrap:pretty}
 .lscr-s4 .lv-bars i.hi{animation:lscrPulse 2.4s ease-in-out infinite}
 @keyframes lscrPulse{50%{box-shadow:0 0 90px rgba(255,122,92,.95);filter:brightness(1.15)}}
 .lscr-live{display:inline-flex;align-items:center;gap:10px;margin-inline-start:auto;font-style:normal;font-family:var(--font-mono);font-size:24px;letter-spacing:.2em;color:#bfe9f4;border:2px solid rgba(63,196,224,.45);border-radius:99px;padding:6px 18px;direction:ltr}
-.lscr-live::before{content:"";width:12px;height:12px;border-radius:50%;background:#3fc4e0;animation:livePulse 1.8s infinite}
+.lscr-live::before{content:"";width:12px;height:12px;border-radius:50%;background:#3fc4e0;animation:liveBlink 1.8s infinite}
+@keyframes liveBlink{50%{opacity:.35}}
 .lscr-gnum{position:absolute;left:170px;top:250px;font-family:var(--font-head);font-weight:900;font-size:200px;line-height:.9;direction:ltr;background:linear-gradient(135deg,#ffb36b,#ff7a5c 45%,#d4462c);-webkit-background-clip:text;background-clip:text;color:transparent}
 .lscr-gch{position:absolute;left:170px;right:170px;bottom:200px;width:calc(100% - 340px);height:380px;overflow:visible}
 .lscr-gch .ar{fill:rgba(63,196,224,.22);animation:lscrArea 6s ease-in-out infinite}
@@ -1070,7 +1083,7 @@ p{text-wrap:pretty}
 .lscr-sheen{position:absolute;inset:0;z-index:4;background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.1) 48%,transparent 62%);transform:translateX(-120%);animation:lscrSheen 5s ease-in-out infinite}
 @keyframes lscrSheen{40%,100%{transform:translateX(120%)}}
 /* מסך בהיר ויוקרתי בתמונה B: פנינה, זכוכית אמרלד וזהב. הרקע והאיורים נוצרו במיוחד לסטודיו (studio-image-brief.md) */
-.lscr-face.lem{color:#123a2c;filter:blur(1px) saturate(.95) brightness(.97)}
+.lscr-face.lem{color:#123a2c}
 .lscr-face.lem::after{background:radial-gradient(ellipse 80% 75% at 50% 45%,transparent 55%,rgba(40,60,50,.18))}
 /* הגלים בתמונה בפינה השמאלית התחתונה, איפה שהלוגו והגרף. היפוך מעביר אותם לימין, מתחת לכרטיסים הלבנים */
 .lem-bg{transform:scaleX(-1)}
@@ -1183,7 +1196,7 @@ p{text-wrap:pretty}
 .band-light.stg-band{background:radial-gradient(45% 60% at 85% 10%,rgba(243,214,138,.22),transparent 70%),radial-gradient(40% 55% at 8% 95%,rgba(255,122,92,.12),transparent 70%),var(--paper-2,#dce6f3)}
 .stg{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,3.4vw,56px);align-items:start;max-width:1600px;margin-inline:auto;padding-inline:var(--gutter)}
 .stg-c2{display:flex;flex-direction:column;gap:clamp(22px,3vw,44px);padding-top:clamp(30px,6vw,110px)}
-.stg-card{position:relative;margin:0;aspect-ratio:16/10;border-radius:24px;overflow:hidden;background:#05080f;box-shadow:0 0 0 1px rgba(184,145,58,.35),0 0 0 8px rgba(255,255,255,.55),0 40px 90px rgba(13,22,38,.32)}
+.stg-card{position:relative;margin:0;aspect-ratio:16/10;border-radius:24px;overflow:hidden;isolation:isolate;background:#05080f;box-shadow:0 0 0 1px rgba(184,145,58,.35),0 0 0 8px rgba(255,255,255,.55),0 40px 90px rgba(13,22,38,.32)}
 .stg-c1 .stg-card{rotate:1.2deg}.stg-c2 .stg-card{rotate:-1.2deg}
 .stg-c1 .lscr{--px:.6;--py:.45}.stg-c2 .lscr{--px:.6;--py:.47}
 .stg-cap{font-family:var(--font-head);font-weight:900;font-size:clamp(2rem,4.4vw,4.4rem);line-height:1.04;letter-spacing:-.5px;color:var(--ink)}
@@ -1763,7 +1776,7 @@ p{text-wrap:pretty}
 
 <section class="band band-light alt stg-band" id="stage">
   <div class="stg">
-    <div class="stg-c1"><figure class="stg-card reveal"><div class="lscr" data-zoom="1.32" data-q="535,246 1181,297 1243,731 502,733" data-grow="1.5" data-nums="01,07,03" data-clip="polygon(36.84% 22.51%,81.67% 27.21%,85.57% 63.63%,84.25% 67.63%,34.57% 67.63%)"><img src="../img/studio-stage-a.webp" width="1448" height="1086" loading="lazy" decoding="async" alt="מציג על במת אודיטוריום, ומאחוריו על מסך ההקרנה שקף פתיחה עם הלוגו של Rubin Project והמשפט הופכים נתונים להחלטות"><div class="lscr-live-layer" aria-hidden="true"><div class="lscr-clip"><div class="lscr-face"><div class="lv-bg"><i class="lv-au a1"></i><i class="lv-au a2"></i><i class="lv-dots"></i></div><div class="lscr-sl on"><div class="lscr-orb"><i class="lscr-rb"></i><i class="lscr-ball"></i><i class="lscr-rf"></i><i class="lscr-moon"></i></div><div class="lscr-cover"><div class="lscr-brand la-up" style="--d:.1s"><img src="../img/logo-reverse.webp" width="123" height="120" alt=""><span>Rubin <b>Project</b></span></div><div class="lscr-h la-up" style="--d:.3s">הופכים נתונים <em>להחלטות</em>.</div><svg class="lscr-trend" viewBox="0 0 960 170" preserveAspectRatio="none"><defs><linearGradient id="lscrFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3fc4e0" stop-opacity=".38"/><stop offset="1" stop-color="#3fc4e0" stop-opacity="0"/></linearGradient></defs><path class="ar" d="M0 158C110 158 190 146 290 140S410 126 490 104 610 82 690 82 830 70 890 40 952 8 960 6V170H0Z"/><path class="ln" pathLength="100" d="M0 158C110 158 190 146 290 140S410 126 490 104 610 82 690 82 830 70 890 40 952 8 960 6"/><circle class="pt" cx="960" cy="6" r="10"/><circle class="pg" cx="960" cy="6" r="10"/></svg><div class="lscr-sub la-up" style="--d:.6s">פתרונות BI, אוטומציה ותוכנה לעסקים</div></div></div><div class="lscr-sl lscr-stmt"><div class="lv-big"><span class="la-blur" style="--d:.1s">מסר</span> <span class="la-blur" style="--d:.28s">אחד</span> <em class="la-blur" style="--d:.46s">ברור</em><br><span class="la-blur" style="--d:.7s">בכל</span> <span class="la-blur" style="--d:.88s">שקף.</span></div><i class="lv-gold la-draw" style="--d:1.2s"></i></div><div class="lscr-sl lscr-pad"><div class="lv-ey la-up" style="--d:.1s">WHAT WE BUILD</div><div class="lv-h la-up" style="--d:.2s">שישה סוגי מצגות</div><div class="lv-tiles"><div class="la-pop" style="--d:0.30s"><i>01</i>מצגת חברה</div><div class="la-pop" style="--d:0.40s"><i>02</i>מצגת משקיעים</div><div class="la-pop" style="--d:0.50s"><i>03</i>מצגת מכירה</div><div class="la-pop" style="--d:0.60s"><i>04</i>כנס והרצאה</div><div class="la-pop hi" style="--d:0.70s"><i>05</i>נתונים שמתעדכנים</div><div class="la-pop" style="--d:0.80s"><i>06</i>תבנית ארגונית</div></div></div><div class="lv-fr"><i></i><i></i><span class="lv-brand">RUBIN STUDIO</span><span class="lv-num">01 / 08</span></div></div></div></div></div></figure></div>
+    <div class="stg-c1"><figure class="stg-card reveal"><div class="lscr" data-zoom="1.32" data-q="535,246 1181,297 1243,731 502,733" data-grow="1.5" data-nums="01,07,03" data-clip="polygon(36.84% 22.51%,81.67% 27.21%,85.57% 63.63%,84.25% 67.63%,34.57% 67.63%)"><img src="../img/studio-stage-a.webp" width="1448" height="1086" loading="lazy" decoding="async" alt="מציג על במת אודיטוריום, ומאחוריו על מסך ההקרנה שקף פתיחה עם הלוגו של Rubin Project והמשפט הופכים נתונים להחלטות"><div class="lscr-live-layer" aria-hidden="true"><div class="lscr-clip"><div class="lscr-face"><div class="lv-bg"><i class="lv-au a1"></i><i class="lv-au a2"></i><i class="lv-dots"></i></div><div class="lscr-sl on"><div class="lscr-orb"><i class="lscr-rb"></i><i class="lscr-ball"></i><i class="lscr-rf"></i><i class="lscr-moon"></i></div><div class="lscr-cover"><div class="lscr-brand la-up" style="--d:.1s"><img src="../img/logo-reverse.webp" width="123" height="120" alt=""><span>Rubin <b>Project</b></span></div><div class="lscr-h la-up" style="--d:.3s">הופכים נתונים <em>להחלטות</em>.</div><svg class="lscr-trend" viewBox="0 0 960 170" preserveAspectRatio="none"><defs><linearGradient id="lscrFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3fc4e0" stop-opacity=".38"/><stop offset="1" stop-color="#3fc4e0" stop-opacity="0"/></linearGradient></defs><path class="ar" d="M0 158C110 158 190 146 290 140S410 126 490 104 610 82 690 82 830 70 890 40 952 8 960 6V170H0Z"/><path class="lscr-tg lscr-tg1" pathLength="100" d="M0 158C110 158 190 146 290 140S410 126 490 104 610 82 690 82 830 70 890 40 952 8 960 6"/><path class="lscr-tg lscr-tg2" pathLength="100" d="M0 158C110 158 190 146 290 140S410 126 490 104 610 82 690 82 830 70 890 40 952 8 960 6"/><path class="ln" pathLength="100" d="M0 158C110 158 190 146 290 140S410 126 490 104 610 82 690 82 830 70 890 40 952 8 960 6"/><circle class="pt" cx="960" cy="6" r="10"/><circle class="pg" cx="960" cy="6" r="10"/></svg><div class="lscr-sub la-up" style="--d:.6s">פתרונות BI, אוטומציה ותוכנה לעסקים</div></div></div><div class="lscr-sl lscr-stmt"><div class="lv-big"><span class="la-blur" style="--d:.1s">מסר</span> <span class="la-blur" style="--d:.28s">אחד</span> <em class="la-blur" style="--d:.46s">ברור</em><br><span class="la-blur" style="--d:.7s">בכל</span> <span class="la-blur" style="--d:.88s">שקף.</span></div><i class="lv-gold la-draw" style="--d:1.2s"></i></div><div class="lscr-sl lscr-pad"><div class="lv-ey la-up" style="--d:.1s">WHAT WE BUILD</div><div class="lv-h la-up" style="--d:.2s">שישה סוגי מצגות</div><div class="lv-tiles"><div class="la-pop" style="--d:0.30s"><i>01</i>מצגת חברה</div><div class="la-pop" style="--d:0.40s"><i>02</i>מצגת משקיעים</div><div class="la-pop" style="--d:0.50s"><i>03</i>מצגת מכירה</div><div class="la-pop" style="--d:0.60s"><i>04</i>כנס והרצאה</div><div class="la-pop hi" style="--d:0.70s"><i>05</i>נתונים שמתעדכנים</div><div class="la-pop" style="--d:0.80s"><i>06</i>תבנית ארגונית</div></div></div><div class="lv-fr"><i></i><i></i><span class="lv-brand">RUBIN STUDIO</span><span class="lv-num">01 / 08</span></div></div></div></div></div></figure></div>
     <div class="stg-c2"><h2 class="stg-cap reveal"><span>המצגת שלכם.</span> <span>על המסך הגדול.</span></h2><figure class="stg-card reveal"><div class="lscr" data-zoom="1.32" data-q="521,242 1229,304 1287,766 486,754" data-grow="3" data-nums=""><img src="../img/studio-stage-b.webp" width="1448" height="1086" alt="מציג מצביע על מסך ההקרנה, ועליו שקף בהיר בסגנון יוקרתי של תוצאות הרבעון" loading="lazy" decoding="async"><div class="lscr-live-layer" aria-hidden="true"><div class="lscr-face lem"><div class="lem-bg"><i class="lem-sp" style="left:120px;top:140px;--s:1.00;--d:0.0s"></i><i class="lem-sp" style="left:420px;top:90px;--s:0.70;--d:1.1s"></i><i class="lem-sp" style="left:760px;top:170px;--s:0.50;--d:2.3s"></i><i class="lem-sp" style="left:980px;top:60px;--s:0.80;--d:0.6s"></i><i class="lem-sp" style="left:1300px;top:120px;--s:0.60;--d:1.8s"></i><i class="lem-sp" style="left:1650px;top:80px;--s:0.90;--d:2.9s"></i><i class="lem-sp" style="left:1820px;top:260px;--s:0.60;--d:0.4s"></i><i class="lem-sp" style="left:90px;top:520px;--s:0.80;--d:2.1s"></i><i class="lem-sp" style="left:260px;top:860px;--s:0.60;--d:1.4s"></i><i class="lem-sp" style="left:700px;top:980px;--s:0.90;--d:3.2s"></i><i class="lem-sp" style="left:1180px;top:1010px;--s:0.50;--d:0.9s"></i><i class="lem-sp" style="left:1560px;top:940px;--s:0.70;--d:2.6s"></i><i class="lem-sp" style="left:1860px;top:700px;--s:0.80;--d:1.6s"></i><i class="lem-sp" style="left:560px;top:420px;--s:0.50;--d:3.6s"></i></div><div class="lscr-sl on lem-q3"><div class="lem-t la-up" style="--d:.1s">תוצאות הרבעון</div><i class="lem-rule la-draw" style="--d:.25s"></i><div class="lem-q la-up" style="--d:.3s">רבעון 3 · דוח לדירקטוריון · נתוני דוגמה</div><div class="lem-kp"><div class="lem-card la-up" style="--d:.45s"><span>הכנסות</span><b>12.4M ₪</b><em>▲ 12.7%</em></div><div class="lem-card la-up" style="--d:.6s"><span>רווח תפעולי</span><b>2.1M ₪</b><em>▲ 9%</em></div><div class="lem-card la-up" style="--d:.75s"><span>לקוחות פעילים</span><b>1,832</b><em>▲ 240</em></div></div><div class="lem-chart"><i class="lem-plat"></i><div class="lem-bars"><i class="lem-bar la-grow" style="--h:14%;--d:0.50s"></i><i class="lem-bar clr la-grow" style="--h:22%;--d:0.59s"></i><i class="lem-bar la-grow" style="--h:30%;--d:0.68s"></i><i class="lem-bar clr la-grow" style="--h:26%;--d:0.77s"></i><i class="lem-bar la-grow" style="--h:40%;--d:0.86s"></i><i class="lem-bar clr la-grow" style="--h:52%;--d:0.95s"></i><i class="lem-bar la-grow" style="--h:68%;--d:1.04s"></i></div><svg class="lem-trend" viewBox="0 0 700 420" preserveAspectRatio="none"><polyline points="20,380 120,340 220,300 320,316 420,236 520,190 640,90"/><circle cx="120" cy="340" r="11"/><circle cx="320" cy="316" r="11"/><circle cx="520" cy="190" r="11"/><circle cx="640" cy="90" r="11"/></svg></div><div class="lem-rec la-up" style="--d:1.3s"><b>ההמלצה להחלטה:</b> לאשר הרחבה של צוות המכירות ברבעון הבא</div></div><div class="lscr-sl lem-get"><div class="lem-t la-up" style="--d:.1s">מה מקבלים בסוף?</div><i class="lem-rule la-draw" style="--d:.25s"></i><div class="lem-card lem-big la-up" style="--d:.35s"><div class="lem-tx"><b>PowerPoint פתוח לעריכה</b><span>קובץ שהארגון ממשיך לעבוד עליו בעצמו: הגרפים, התבנית והשפה העיצובית</span></div><span class="lem-badge">הדגש שלנו</span><i class="lem-doc"><i>PPTX</i></i></div><div class="lem-sep la-up" style="--d:.6s"><span>ועוד שני פורמטים</span></div><div class="lem-card lem-sm s-a la-up" style="--d:.75s"><div class="lem-tx"><b>PDF וקישור HTML</b><span>נפתח בכל מכשיר, עם תצוגה מקדימה בוואטסאפ</span></div><i class="lem-phone"></i></div><div class="lem-card lem-sm s-b la-up" style="--d:.9s"><div class="lem-tx"><b>וידאו</b><span>לכנס, לרשתות או למסך בכניסה</span></div><i class="lem-play"></i></div></div><div class="lscr-sl lem-how"><div class="lem-t la-up" style="--d:.1s">איך עובדים איתנו</div><i class="lem-rule la-draw" style="--d:.25s"></i><div class="lem-cols"><div class="lem-col la-up" style="--d:0.35s"><i class="lem-gem lem-g-orb"></i><b>אפיון</b><span>מה המטרה</span><span>ומי בקהל</span></div><div class="lem-col la-up" style="--d:0.50s"><i class="lem-gem lem-g-bars"></i><b>תוכן ומבנה</b><span>הסיפור,</span><span>שקף אחרי שקף</span></div><div class="lem-col la-up" style="--d:0.65s"><i class="lem-gem lem-g-dia"></i><b>עיצוב</b><span>שקף דוגמה לאישור</span><span>ואז כל המצגת</span></div><div class="lem-col la-up" style="--d:0.80s"><i class="lem-gem lem-g-crown"></i><b>מסירה</b><span>PowerPoint פתוח</span><span>PDF, קישור או וידאו</span></div></div><div class="lem-foot la-up" style="--d:1s">מהבריף ועד הקובץ הפתוח</div></div><div class="lem-logo"><img src="../img/logo-mark.webp" width="123" height="120" alt=""><div><span>Rubin <b>Project</b></span><small>הופכים נתונים להחלטות</small></div></div></div></div></div></figure></div>
   </div>
 </section>
@@ -2389,10 +2402,12 @@ const X2S=(function(){
   const mul=(a,b)=>{const c=[];for(let i=0;i<3;i++)for(let j=0;j<3;j++){let s=0;for(let k=0;k<3;k++)s+=a[3*i+k]*b[3*k+j];c[3*i+j]=s;}return c;};
   const mv=(m,v)=>[m[0]*v[0]+m[1]*v[1]+m[2]*v[2],m[3]*v[0]+m[4]*v[1]+m[5]*v[2],m[6]*v[0]+m[7]*v[1]+m[8]*v[2]];
   const basis=p=>{const m=[p[0],p[2],p[4],p[1],p[3],p[5],1,1,1],v=mv(adj(m),[p[6],p[7],1]);return mul(m,[v[0],0,0,0,v[1],0,0,0,v[2]]);};
-  const W=1448,H=1086;
+  const W=1448,H=1086,ZOOM=window.CSS&&CSS.supports('zoom','.5');
   document.querySelectorAll('.lscr').forEach(el=>{
     const face=el.querySelector('.lscr-face'),clip=el.querySelector('.lscr-clip'),box=el.parentElement;
     if(!face)return;
+    // כל התוכן של השקף עובר לעטיפה פנימית שמוקטנת ב-zoom, והעיוות חל על השכבה הקטנה
+    const zin=document.createElement('div');zin.className='lscr-zin';while(face.firstChild)zin.appendChild(face.firstChild);face.appendChild(zin);
     let q=el.dataset.q.split(' ').map(s=>s.split(',').map(Number));
     const g=+el.dataset.grow||0,cx=q.reduce((a,p)=>a+p[0],0)/4,cy=q.reduce((a,p)=>a+p[1],0)/4;
     q=q.map(([x,y])=>{const d=Math.hypot(x-cx,y-cy);return [x+(x-cx)/d*g,y+(y-cy)/d*g];});
@@ -2402,7 +2417,11 @@ const X2S=(function(){
       const cs=getComputedStyle(el),px=parseFloat(cs.getPropertyValue('--px'))||.5,py=parseFloat(cs.getPropertyValue('--py'))||.5;
       const s=Math.max(cw/W,ch/H)*(+el.dataset.zoom||1),w=W*s,h=H*s;
       Object.assign(el.style,{width:w+'px',height:h+'px',left:(cw-w)*px+'px',top:(ch-h)*py+'px'});
-      const dst=q.flatMap(([x,y])=>[x*s,y*s]),src=[0,0,1920,0,1920,1080,0,1080];
+      const dst=q.flatMap(([x,y])=>[x*s,y*s]);
+      // גודל השכבה: קצת יותר מהגודל שבו המסך מוצג בפועל (כולל הקטנה של הורה, כמו הבמה של "איך עובדים"), ולא פחות מ-35%
+      const xs=dst.filter((v,i)=>!(i%2)),shown=(Math.max(...xs)-Math.min(...xs))*(box.getBoundingClientRect().width/cw||1);
+      const z=ZOOM?Math.min(1,Math.max(.35,shown*1.3/1920)):1;face.style.setProperty('--lz',z.toFixed(3));
+      const src=[0,0,1920*z,0,1920*z,1080*z,0,1080*z];
       const t=mul(basis(dst),adj(basis(src)));for(let k=0;k<9;k++)t[k]/=t[8];
       face.style.transform='matrix3d('+[t[0],t[3],0,t[6],t[1],t[4],0,t[7],0,0,1,0,t[2],t[5],0,t[8]].join(',')+')';
       el.classList.add('ready');
