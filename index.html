@@ -110,15 +110,15 @@ p{text-wrap:pretty}
 .nav-dd.open .nav-dd-chev{transform:translateY(1px) rotate(225deg)}
 .nav-dd-menu{position:absolute;top:calc(100% + 18px);inset-inline-end:0;min-width:260px;z-index:120;background:var(--panel);border:1px solid var(--edge);border-radius:var(--r);padding:8px;box-shadow:var(--shadow),0 24px 50px rgba(13,22,38,.12);opacity:0;visibility:hidden;transform:translateY(-6px);transition:opacity .18s,transform .18s,visibility .18s}
 .nav-dd.open .nav-dd-menu{opacity:1;visibility:visible;transform:none}
-.nav-dd-menu a,.dd-info{display:block;padding:10px 13px;border-radius:var(--r-sm)}
+.nav-dd-menu a{display:block;padding:10px 13px;border-radius:var(--r-sm)}
 .nav-dd-menu a{transition:background-color .15s}
 .nav-dd-menu a:hover{background:var(--wash1)}
-.dd-info{border-bottom:1px solid var(--edge-2);border-radius:0;margin-bottom:4px;padding-bottom:12px}
 .dd-t{display:block;font-size:15.5px;font-weight:700;color:var(--ink)}
 .dd-s{display:block;font-size:13.5px;color:var(--dim);margin-top:2px}
 @media(hover:hover) and (pointer:fine) and (min-width:1281px){
   .nav-dd:hover .nav-dd-menu,.nav-dd:focus-within .nav-dd-menu{opacity:1;visibility:visible;transform:none}
   .nav-dd:hover .nav-dd-chev{transform:translateY(1px) rotate(225deg)}
+  .nav-dd.dd-shut .nav-dd-menu{opacity:0;visibility:hidden}
 }
 .nav-cta{display:flex;align-items:center;gap:10px;margin-inline-start:auto}
 .nav-cta .btn{padding:10px 20px;font-size:15px}
@@ -918,9 +918,8 @@ p{text-wrap:pretty}
           <span dir="ltr">Rubin Studio</span><i class="nav-dd-chev" aria-hidden="true"></i>
         </button>
         <div class="nav-dd-menu" id="studioMenu">
-          <div class="dd-info"><span class="dd-t">מצגות פרימיום לעסקים ולארגונים</span><span class="dd-s">עיצוב ובנייה, מהתוכן ועד המצגת המוכנה.</span></div>
-          <a href="/studio/" target="_blank" rel="noopener"><span class="dd-t">לעמוד של Rubin Studio</span><span class="dd-s">סוגי מצגות, מצגת שמתעדכנת לבד, ואיך עובדים</span></a>
-          <a href="#leadForm" data-interest="studio"><span class="dd-t">מתכננים מצגת?</span><span class="dd-s">השאירו פרטים ונקבע שיחה</span></a>
+          <a href="/studio/" target="_blank" rel="noopener"><span class="dd-t">לעמוד של Rubin Studio</span><span class="dd-s">מצגות פרימיום לעסקים ולארגונים</span></a>
+          <a href="#faq-studio" data-open-faq><span class="dd-t">מה זה Rubin Studio?</span><span class="dd-s">הסבר קצר כאן, בשאלות הנפוצות</span></a>
         </div>
       </div>
       <div class="nav-dd">
@@ -1447,7 +1446,7 @@ p{text-wrap:pretty}
       <details><summary>מה קורה עם המידע של העסק שלי?</summary><p>המידע נשאר שלכם. הגישה למערכות היא רק למה שהפרויקט צריך, וכשנדרש אפשר לבנות פתרון שרץ כולו על השרתים של הארגון, בלי שום יציאה לענן.</p></details>
       <details><summary>אני עסק קטן. זה מתאים גם לי?</summary><p>כן. חלק מהכלים השימושיים ביותר שבניתי נבנו דווקא לעסקים קטנים, כמו VeriBayit לניהול ועד בית. ההיקף נקבע לפי גודל העסק והתקציב.</p></details>
       <details><summary>מה ההבדל בינך לבין חברת פיתוח?</summary><p>חברת פיתוח מקבלת אפיון ובונה לפיו. אני מתחיל צעד אחד קודם, בהבנה של התהליך העסקי, ולכן גם האפיון יוצא מדויק יותר. ולאורך כל הדרך אתם מדברים ישירות עם מי שבונה.</p></details>
-      <details><summary>מה זה Rubin Studio?</summary><p>סטודיו לבניית מצגות פרימיום לעסקים ולארגונים, כולל מצגות הנהלה שמתעדכנות לבד מהאקסל או מה-ERP. כל הפרטים ב<a class="tlink" href="/studio/" target="_blank" rel="noopener">עמוד של Rubin Studio</a>.</p></details>
+      <details id="faq-studio"><summary>מה זה Rubin Studio?</summary><p>סטודיו לבניית מצגות פרימיום לעסקים ולארגונים, כולל מצגות הנהלה שמתעדכנות לבד מהאקסל או מה-ERP. כל הפרטים ב<a class="tlink" href="/studio/" target="_blank" rel="noopener">עמוד של Rubin Studio</a>.</p></details>
     </div>
   </div>
 </section>
@@ -1546,6 +1545,14 @@ document.addEventListener('keydown',e=>{
   dds.forEach(dd=>{if(dd.classList.contains('open')){ddSet(dd,false);dd.querySelector('.nav-dd-btn').focus();}});
   if(navLinks.classList.contains('open')){navSet(false);burger.focus();}
 });
+
+// קישור לשאלה נפוצה (מהתפריט או מכתובת עם #faq-studio) פותח אותה, ולא רק גולל אליה
+function openFaq(id){const d=document.getElementById(id);if(d&&d.tagName==='DETAILS')d.open=true;}
+document.querySelectorAll('[data-open-faq]').forEach(a=>a.addEventListener('click',()=>{const id=a.getAttribute('href').slice(1);openFaq(id);const s=document.querySelector('#'+id+' summary');if(s)setTimeout(()=>s.focus({preventScroll:true}),0);}));
+// אחרי בחירה בתפריט נפתח הוא נסגר מיד, גם כשהעכבר עדיין מעליו, כדי שלא יסתיר את מה שנפתח
+dds.forEach(dd=>{dd.querySelectorAll('.nav-dd-menu a').forEach(a=>a.addEventListener('click',()=>{ddSet(dd,false);dd.classList.add('dd-shut');if(document.activeElement===a)a.blur();}));dd.addEventListener('mouseleave',()=>dd.classList.remove('dd-shut'));});
+if(location.hash)openFaq(location.hash.slice(1));
+window.addEventListener('hashchange',()=>openFaq(location.hash.slice(1)));
 
 // קישור שנפתח בטאב חדש מודיע על כך לקורא מסך
 document.querySelectorAll('a[target="_blank"]').forEach(a=>{
