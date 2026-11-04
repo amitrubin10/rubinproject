@@ -1698,7 +1698,7 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
       callback:t=>{tsToken=t;tsNeedsClick=false;tsDone();},
       'expired-callback':()=>{tsToken='';},
       'error-callback':()=>{tsToken='';tsDone();},
-      'before-interactive-callback':()=>{tsNeedsClick=true;setStatus('busy','רגע, סמנו את תיבת האימות שמעל כפתור השליחה.');}});
+      'before-interactive-callback':()=>{tsNeedsClick=true;}});
   };
   const tsLoad=()=>{
     if(document.getElementById('tsScript'))return;
@@ -1717,7 +1717,7 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
     phone.setCustomValidity(phone.value&&(digits<9||digits>15)?'phone':'');
     if(!form.checkValidity()){
       const bad=form.querySelector(':invalid');
-      setStatus('err',bad===phone&&phone.value?'מספר הטלפון לא נראה תקין. כתבו לפחות 9 ספרות.':'נא למלא שם וטלפון, כדי שאוכל לחזור אליכם.');
+      setStatus('err',bad===phone&&phone.value?'מספר הטלפון לא נראה תקין. כתבו לפחות 9 ספרות.':bad===form.elements.email?'כתובת המייל לא נראית תקינה. אפשר גם להשאיר את השדה ריק.':'נא למלא שם וטלפון, כדי שאוכל לחזור אליכם.');
       bad&&bad.focus();return;
     }
     const data=Object.fromEntries(new FormData(form).entries());
