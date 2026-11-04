@@ -709,6 +709,8 @@ p{text-wrap:pretty}
 .priv{margin-top:14px;font-size:13.5px;color:var(--deep-dim)}
 .priv a{color:var(--deep-ink);text-decoration:underline;text-underline-offset:3px}
 .fstatus{margin-top:14px;font-size:15px;font-weight:700;min-height:1.5em}
+/* תיבת האימות של Turnstile: מופיעה רק כש-Cloudflare מבקש סימון */
+.ts-box{margin:2px 0 14px}.ts-box:empty{display:none}
 .fstatus.ok{color:#5fe0aa}.fstatus.err{color:#ff9aa5}.fstatus.busy{color:var(--deep-dim)}
 
 /* footer */
@@ -1562,6 +1564,7 @@ p{text-wrap:pretty}
       </div>
       <div class="field"><label for="f-message">מה כואב לכם? <span class="opt">(רשות)</span></label><textarea id="f-message" name="message" maxlength="2000" placeholder="כמה מילים על המצב היום, ומה הייתם רוצים שישתנה"></textarea></div>
       <div class="hp" aria-hidden="true"><label for="f-website">אתר</label><input id="f-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+      <div class="ts-box" id="tsBox"></div>
       <button class="btn btn-solid btn-lg" type="submit">שליחה</button>
       <p class="fstatus" id="fStatus" role="status" aria-live="polite"></p>
       <p class="priv">הפרטים משמשים רק כדי לחזור אליכם. פרטים נוספים ב<a href="/privacy/" target="_blank" rel="noopener">מדיניות הפרטיות</a>.</p>
@@ -1686,6 +1689,28 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
   const LEAD_ENDPOINT='https://rubinproject-leads.vercel.app/api/lead'; // פרויקט Vercel rubinproject-leads, הקוד ב-api-leads/
   const form=document.getElementById('leadForm'),status=document.getElementById('fStatus'),btn=form.querySelector('button[type=submit]');
   const setStatus=(kind,msg)=>{status.className='fstatus '+kind;status.textContent=msg;};
+  // הגנה מבוטים: זמן מילוי ו-Cloudflare Turnstile. הסקריפט נטען רק כשמתקרבים לטופס
+  const T0=performance.now(),TS_SITEKEY='0x4AAAAAAFzGXHuQCk0pHOAH',tsBox=document.getElementById('tsBox');
+  let tsId=null,tsToken='',tsWait=null,tsNeedsClick=false;
+  const tsDone=()=>{if(tsWait){const w=tsWait;tsWait=null;w();}};
+  window.rpTsReady=()=>{
+    tsId=turnstile.render(tsBox,{sitekey:TS_SITEKEY,action:'lead',appearance:'interaction-only',theme:'dark','response-field':false,
+      callback:t=>{tsToken=t;tsNeedsClick=false;tsDone();},
+      'expired-callback':()=>{tsToken='';},
+      'error-callback':()=>{tsToken='';tsDone();},
+      'before-interactive-callback':()=>{tsNeedsClick=true;setStatus('busy','רגע, סמנו את תיבת האימות שמעל כפתור השליחה.');}});
+  };
+  const tsLoad=()=>{
+    if(document.getElementById('tsScript'))return;
+    const s=document.createElement('script');s.id='tsScript';s.async=true;
+    s.src='https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=rpTsReady';
+    document.head.appendChild(s);
+  };
+  if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>{if(es.some(e=>e.isIntersecting)){io.disconnect();tsLoad();}},{rootMargin:'800px 0px'});io.observe(form);}else tsLoad();
+  form.addEventListener('focusin',tsLoad,{once:true});
+  // מחכים לאסימון עד 6 שניות. בלי אסימון השרת מחליט, ובמקרה כזה המבקר מקבל הודעה ולא נזרק בשקט
+  const tsGet=()=>tsToken?Promise.resolve(tsToken):new Promise(r=>{tsLoad();tsWait=()=>r(tsToken);setTimeout(()=>{tsWait=null;r(tsToken);},6000);});
+  const tsReset=()=>{tsToken='';tsNeedsClick=false;if(tsId!==null&&window.turnstile)turnstile.reset(tsId);};
   form.addEventListener('submit',async e=>{
     e.preventDefault();
     const phone=form.elements.phone,digits=phone.value.replace(/\D/g,'').length;
@@ -1700,7 +1725,10 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
     data.source=qs.get('utm_source')||document.referrer||'direct';
     data.page=location.pathname;
     if(!LEAD_ENDPOINT){setStatus('err','הטופס עדיין לא מחובר. בינתיים אפשר לכתוב לי בוואטסאפ: 052-7246200.');return;}
+    if(tsNeedsClick&&!tsToken){setStatus('err','סמנו את תיבת האימות שמעל כפתור השליחה, ואז שלחו שוב.');return;}
     btn.disabled=true;setStatus('busy','שולח...');
+    data.t=Math.round(performance.now()-T0);
+    data.cf_token=await tsGet();
     try{
       const r=await fetch(LEAD_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
       const j=await r.json().catch(()=>({}));
@@ -1708,7 +1736,7 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
       else setStatus('err',j.error||'השליחה לא הצליחה. נסו שוב בעוד רגע, או כתבו לי בוואטסאפ.');
     }catch(err){
       setStatus('err','אין חיבור לשרת כרגע. בדקו את החיבור ונסו שוב, או כתבו לי בוואטסאפ.');
-    }finally{btn.disabled=false;}
+    }finally{btn.disabled=false;tsReset();}
   });
 })();
 
