@@ -3,531 +3,561 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VeriFix — מערכת Full-Stack לניהול ואחזקת מבנים | Rubin Project</title>
-<meta name="description" content="VeriFix — מערכת מלאה לניהול ואחזקת מבנים: פתיחת תקלה בהודעת וואטסאפ, אחזקה מונעת, קריאות שבר ו-SLA, ספר נכסים, ניהול תקציב ודוחות. רצה בפרודקשן בחברת נמלי ישראל. לא מוצר מדף — נתפרת לכל עסק.">
+<title>Verifix | מערכת לניהול ואחזקת מבנים | Rubin Project</title>
+<meta name="description" content="Verifix: מערכת full-stack לניהול ואחזקת מבנים. קריאות שבר שנפתחות מהודעת וואטסאפ, אחזקה מונעת, נכסים, תקציב ודוחות. רצה בפרודקשן בחברת נמלי ישראל.">
 <link rel="canonical" href="https://www.rubinproject.com/projects/verifix/">
-<link rel="icon" href="../../img/favicon.png">
+<link rel="icon" href="/img/favicon.png">
+<meta name="theme-color" content="#0b1220">
 <meta property="og:site_name" content="Rubin Project">
-<meta property="og:title" content="VeriFix — מערכת Full-Stack לניהול ואחזקת מבנים">
-<meta property="og:description" content="פתיחת תקלה בוואטסאפ, אחזקה מונעת, קריאות שבר ו-SLA, נכסים, תקציב ודוחות. רצה בפרודקשן בחברת נמלי ישראל. נתפרת לכל עסק.">
-<meta property="og:image" content="https://www.rubinproject.com/projects/img/vf-og.jpg?v=1">
+<meta property="og:title" content="Verifix | מערכת לניהול ואחזקת מבנים">
+<meta property="og:description" content="קריאות שבר שנפתחות מהודעת וואטסאפ, אחזקה מונעת, נכסים, תקציב ודוחות. רצה בפרודקשן בחברת נמלי ישראל.">
+<meta property="og:image" content="https://www.rubinproject.com/img/vf/og-verifix.jpg?v=1">
+<meta name="twitter:image" content="https://www.rubinproject.com/img/vf/og-verifix.jpg?v=1">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:url" content="https://www.rubinproject.com/projects/verifix/">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="he_IL">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://www.rubinproject.com/projects/img/vf-og.jpg?v=1">
-<meta name="theme-color" content="#070d1c">
+<script>document.documentElement.classList.add('js');</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700;800&family=Frank+Ruhl+Libre:wght@700;900&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/project.css">
 <style>
-:root{
-  --bg:#070d1c; --bg2:#0a1226; --card:#111b34; --card2:#16223f; --border:#243458;
-  --ink:#e9eef8; --muted:#95a3c4; --muted2:#6b7aa0;
-  --accent:#3b82f6; --accent2:#60a5fa; --cyan:#22d3ee; --teal:#2dd4bf; --green:#34d399;
-  --warn:#f59e0b; --danger:#f87171; --wa:#25d366;
-  --grad:linear-gradient(135deg,#3b82f6,#1d4ed8);
-  --grad-cy:linear-gradient(135deg,#22d3ee,#3b82f6);
-  --radius:18px;
+/* צבע המוצר: הירוק של התגיות במערכת עצמה. --prod-ink עובר AA מול שלושת הרקעים הבהירים */
+:root{--prod:#14a374;--prod-ink:#08704f;--prod-deep:#3dd6a0}
+
+/* מוואטסאפ לקריאה: טלפון עם צ'אט, וכרטיס קריאה שנבנה ממנו. כל השמות בקידומת vf- */
+.vf-flow{display:grid;grid-template-columns:minmax(0,.82fr) minmax(0,1fr);gap:clamp(22px,4vw,56px);align-items:center}
+.vf-phone{position:relative;max-width:310px;width:100%;margin-inline:auto;aspect-ratio:9/13.5;border-radius:38px;background:#05080f;border:1px solid #2a3650;padding:12px;box-shadow:var(--shadow-lg)}
+.vf-scr{position:relative;height:100%;border-radius:28px;overflow:hidden;background:#0b141a;display:flex;flex-direction:column}
+.vf-chat-h{display:flex;align-items:center;gap:10px;padding:14px 14px 12px;background:#1f2c34;color:#e9edef;font-size:14px;font-weight:700}
+.vf-chat-h i{width:30px;height:30px;border-radius:50%;background:linear-gradient(145deg,var(--prod),#1f5fd6);flex:none}
+.vf-chat-h small{display:block;font-size:11.5px;font-weight:400;color:#8696a0}
+.vf-chat{flex:1;display:flex;flex-direction:column;gap:10px;padding:16px 12px;background:#0b141a radial-gradient(circle at 20% 10%,rgba(255,255,255,.03),transparent 40%)}
+.vf-bub{max-width:84%;padding:8px 11px 6px;border-radius:12px;font-size:13.5px;line-height:1.5;color:#e9edef;transition:opacity .45s var(--ease),transform .45s var(--ease)}
+.vf-bub time{display:block;font-size:10.5px;color:#8696a0;text-align:left;margin-top:2px;font-family:var(--font-mono)}
+.vf-out{align-self:flex-start;background:#005c4b;border-top-right-radius:4px}
+.vf-in{align-self:flex-end;background:#202c33;border-top-left-radius:4px}
+.vf-photo{display:block;width:150px;height:96px;border-radius:8px;margin-bottom:6px;background:linear-gradient(160deg,#3a4a5f,#1c2635);position:relative;overflow:hidden}
+.vf-photo::before{content:"";position:absolute;inset:18% 22%;border-radius:6px;background:repeating-linear-gradient(90deg,#9fb0c5 0 3px,transparent 3px 9px);opacity:.55}
+.vf-photo::after{content:"";position:absolute;width:22px;height:22px;right:12px;bottom:10px;border-radius:50%;background:#e5534b;box-shadow:0 0 0 5px rgba(229,83,75,.25)}
+.vf-ok{font-weight:700;color:#7ff0c4}
+.vf-ticket{background:var(--panel);color:var(--ink);border-radius:20px;padding:22px 22px 18px;box-shadow:0 2px 6px rgba(2,6,16,.3),0 30px 70px rgba(2,6,16,.45);border:1px solid rgba(255,255,255,.08)}
+.vf-tk-top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px}
+.vf-tk-top b{font-size:18px;font-weight:800}
+.vf-tk-id{font-family:var(--font-mono);font-size:12.5px;color:var(--dim);direction:ltr}
+.vf-tk-rows{display:grid;grid-template-columns:auto 1fr;gap:6px 16px;font-size:14.5px;margin-bottom:16px}
+.vf-tk-rows dt{color:var(--dim)}
+.vf-tk-rows dd{font-weight:700}
+.vf-tk-steps{list-style:none;display:grid;gap:8px;padding-top:14px;border-top:1px solid var(--edge)}
+.vf-tk-steps li{display:flex;align-items:center;gap:10px;font-size:14.5px;font-weight:600;color:var(--dim);transition:color .4s}
+.vf-tk-steps li::before{content:"";width:14px;height:14px;border-radius:50%;border:2px solid var(--edge);flex:none;transition:background-color .4s,border-color .4s,box-shadow .4s}
+.vf-tk-steps li.on{color:var(--ink)}
+.vf-tk-steps li.on::before{background:var(--prod);border-color:var(--prod);box-shadow:0 0 0 4px color-mix(in srgb,var(--prod) 20%,transparent)}
+.vf-sla{display:flex;align-items:center;justify-content:space-between;margin-top:14px;padding:10px 12px;border-radius:12px;background:color-mix(in srgb,var(--prod) 9%,transparent);font-size:13.5px;font-weight:700;color:var(--prod-ink)}
+.vf-sla span{font-family:var(--font-mono);direction:ltr}
+.vf-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:clamp(28px,4vw,44px);list-style:none;counter-reset:vf}
+.vf-steps li{counter-increment:vf;position:relative;display:flex;flex-direction:column;gap:12px;align-items:center;text-align:center;font-size:15.5px;color:var(--deep-dim);--ln-y:66px;--ln-s:calc(50% + 78px);--ln-e:calc(-50% + 62px)}
+#vf-wa .chips{justify-content:center}
+.vf-steps li::before{content:counter(vf);position:absolute;top:2px;inset-inline-start:calc(50% - 64px);z-index:1;display:grid;place-items:center;width:26px;height:26px;border-radius:50%;flex:none;font-family:var(--font-mono);font-weight:600;font-size:14px;color:var(--deep);background:var(--prod-deep)}
+.vf-steps b{display:block;color:#fff;font-size:16.5px}
+.vf-note{margin-top:14px;font-size:13px;color:var(--deep-dim)}
+/* מצבי המופע: data-step על .vf-flow. בלי JS ובפחות תנועה מוצג הסוף */
+.js .vf-flow[data-step] .vf-bub{opacity:0;transform:translateY(8px)}
+.js .vf-flow[data-step] .vf-ticket{opacity:.35;transform:scale(.98);transition:opacity .5s var(--ease),transform .5s var(--ease)}
+.js .vf-flow[data-step="1"] .vf-b1,.js .vf-flow[data-step="2"] .vf-b1,.js .vf-flow[data-step="3"] .vf-b1,.js .vf-flow[data-step="4"] .vf-b1,
+.js .vf-flow[data-step="2"] .vf-b2,.js .vf-flow[data-step="3"] .vf-b2,.js .vf-flow[data-step="4"] .vf-b2,
+.js .vf-flow[data-step="3"] .vf-b3,.js .vf-flow[data-step="4"] .vf-b3{opacity:1;transform:none}
+.js .vf-flow[data-step="2"] .vf-ticket,.js .vf-flow[data-step="3"] .vf-ticket,.js .vf-flow[data-step="4"] .vf-ticket{opacity:1;transform:none}
+
+/* הבעיה, במופע קטן בראש כל כרטיסייה. ברירת המחדל היא המצב הסופי (רואים את הבעיה גם בלי תנועה),
+   והאנימציה מתחילה מחדש בכל סבב. רק transform ו-opacity */
+.vf-pain{padding-top:16px}
+/* כל הסצנה בנויה ביחידות cqw של המסגרת (container-type על .vf-sc, היחידות על הילדים),
+   ולכן היא מתכווצת כמו תמונה: אותה קומפוזיציה בכל רוחב, בלי חפיפות */
+.vf-sc{position:relative;aspect-ratio:16/9;max-width:420px;margin:0 auto 20px;border-radius:14px;overflow:hidden;background:radial-gradient(70% 90% at 80% 0%,rgba(229,83,75,.14),transparent 60%),#0f1828;border:1px solid #23314b;container-type:inline-size}
+.vf-sc > *{position:absolute;font-size:3.9cqw;font-weight:700;line-height:1.3;white-space:nowrap}
+.vf-sc-count{top:3cqw;right:3cqw;font-size:3.5cqw!important;color:#ff8f87;background:rgba(229,83,75,.14);border:1px solid rgba(229,83,75,.4);border-radius:999px;padding:.6cqw 3cqw}
+.vf-sc-i{display:inline-flex;align-items:center;gap:1.6cqw;padding:1.7cqw 3cqw;border-radius:3cqw;box-shadow:0 2cqw 5cqw rgba(0,0,0,.35)}
+.vf-sc-i .ico{width:4.4cqw;height:4.4cqw}
+.vf-sc-wa{top:12cqw;left:4cqw;background:#005c4b;color:#e9edef;border-top-left-radius:.8cqw}
+.vf-sc-call{top:24cqw;right:4cqw;background:#1d2a40;color:#cfe0ff;border:1px solid #33476b}
+.vf-sc-mail{top:37cqw;left:5cqw;background:#e9eff7;color:#2c384d;font-family:var(--font-mono);font-size:3.3cqw!important;font-weight:500}
+.vf-sc-note{top:41cqw;right:7cqw;background:#f7d774;color:#3b2f06;rotate:-4deg;border-radius:.8cqw}
+.vf-sc-task{top:4cqw;left:4cqw;right:4cqw;display:flex;flex-direction:column;gap:.6cqw;padding:2.4cqw 3.4cqw;border-radius:3cqw;background:#17233a;border:1px solid #2b3c5c;color:#e9eff7}
+.vf-sc-task small{font-size:3.2cqw;font-weight:600;color:#9aa7bd}
+.vf-sc-track{top:26cqw;left:4cqw;right:4cqw;height:1.8cqw;border-radius:2cqw;background:#22304a;overflow:hidden}
+.vf-sc-track i{position:absolute;inset:0;background:linear-gradient(90deg,#e5534b,#f0a14b);transform-origin:right;border-radius:inherit}
+.vf-sc-days{top:30.5cqw;left:4cqw;right:4cqw;display:flex;justify-content:space-between;color:#9aa7bd;font-family:var(--font-mono);font-weight:500;font-size:3.2cqw!important}
+.vf-sc-pill{top:41cqw;right:4cqw;padding:1.3cqw 3.4cqw;border-radius:999px}
+.vf-sc-plan{background:rgba(111,164,255,.14);color:#9cc0ff;border:1px solid rgba(111,164,255,.4);opacity:0}
+.vf-sc-overdue{background:rgba(229,83,75,.16);color:#ff8f87;border:1px solid rgba(229,83,75,.5)}
+.vf-sc-grid{inset:3cqw;border-radius:2.4cqw;background-color:#e9eff7;background-image:linear-gradient(#c9d6e8 1px,transparent 1px),linear-gradient(90deg,#c9d6e8 1px,transparent 1px);background-size:100% 22%,25% 100%;opacity:.95}
+.vf-sc-q{padding:1.1cqw 2.8cqw;border-radius:1.8cqw;background:#fff3d6;color:#8a5a00;border:1px solid #f0c060}
+.vf-sc-q1{top:8cqw;right:6cqw}.vf-sc-q2{top:25cqw;left:16cqw}.vf-sc-q3{top:39cqw;right:18cqw}
+.vf-sc-na{top:10cqw;left:8cqw;padding:1.1cqw 2.4cqw;border-radius:1.8cqw;background:#fde3e1;color:#c0392b;font-family:var(--font-mono);font-weight:600}
+@keyframes vf-pop{0%,4%{opacity:0;transform:scale(.6)}12%,88%{opacity:1;transform:none}96%,100%{opacity:0;transform:scale(.9)}}
+@keyframes vf-ring{0%,100%{transform:none}25%{transform:rotate(-6deg)}75%{transform:rotate(6deg)}}
+@keyframes vf-fill{0%,10%{transform:scaleX(0)}62%,100%{transform:scaleX(1)}}
+@keyframes vf-plan{0%,10%{opacity:1}58%,100%{opacity:0}}
+@keyframes vf-over{0%,60%{opacity:0;transform:scale(.8)}70%,100%{opacity:1;transform:none}}
+.js .vf-sc-calls .vf-sc-i,.js .vf-sc-calls .vf-sc-count,.js .vf-sc-sheet .vf-sc-q,.js .vf-sc-sheet .vf-sc-na{animation:vf-pop 7s var(--ease) infinite both}
+.js .vf-sc-call{animation-delay:.2s}.js .vf-sc-wa{animation-delay:.9s}.js .vf-sc-note{animation-delay:1.6s}.js .vf-sc-mail{animation-delay:2.3s}.js .vf-sc-calls .vf-sc-count{animation-delay:2.9s}
+.js .vf-sc-q1{animation-delay:.3s}.js .vf-sc-na{animation-delay:1s}.js .vf-sc-q2{animation-delay:1.7s}.js .vf-sc-q3{animation-delay:2.4s}
+.js .vf-sc-track i{animation:vf-fill 7s var(--ease) infinite}
+.js .vf-sc-plan{animation:vf-plan 7s linear infinite}
+.js .vf-sc-overdue{animation:vf-over 7s var(--ease) infinite}
+
+/* מסכים שמתחלפים בכרטיסים: כל המסגרות באותו מקום, ורק אחת מוצגת. הצילום מוצג במלואו (contain) */
+.shot-card .shot .zoomable{position:absolute;inset:0}
+.shot-card .shot img.vf-fr{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0;transition:opacity .7s var(--ease)}
+.shot-card .shot img.vf-fr.on{opacity:1}
+
+/* דשבורד בהיר וכהה */
+.vf-dash{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-items:start;gap:22px;margin-bottom:clamp(32px,4vw,48px)}
+.vf-frame{border-radius:16px;overflow:hidden;background:var(--panel);border:1px solid #b4c4db;box-shadow:0 2px 4px rgba(13,22,38,.05),0 18px 40px rgba(13,22,38,.11)}
+.vf-frame .zoomable{position:relative;aspect-ratio:16/10;overflow:hidden}
+.vf-frame .zoomable img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+.vf-frame figcaption{padding:12px 16px;font-size:14px;font-weight:700;color:var(--ink-2);background:var(--panel);border-top:1px solid var(--edge)}
+.vf-more{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:clamp(28px,4vw,40px)}
+.vf-more .card{padding:22px}
+.vf-more h3{font-size:17.5px}
+.vf-deep{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+.vf-dfig{background:var(--panel);border:1px solid #b4c4db;border-radius:20px;overflow:hidden;box-shadow:0 2px 4px rgba(13,22,38,.05),0 18px 40px rgba(13,22,38,.11)}
+.vf-dfig-wide{grid-column:1/-1}
+.vf-dfig img{width:100%;height:auto}
+/* שני האיורים הקטנים באותה מסגרת 16:10, והאיור מוצג במלואו בתוכה */
+.vf-dfig:not(.vf-dfig-wide) .zoomable{aspect-ratio:16/10;overflow:hidden;background:#071223}
+.vf-dfig:not(.vf-dfig-wide) img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+.vf-deep{align-items:stretch}
+.vf-dfig{display:flex;flex-direction:column}
+.vf-dfig figcaption{flex:1}
+.vf-dfig figcaption{padding:14px 18px 16px;font-size:15px;color:var(--dim);line-height:1.6}
+.vf-dfig figcaption b{color:var(--ink)}
+/* שכבות התנועה ב"צלילה לעומק" (data-fx, ראו project.css) */
+.vf-dfig .zoomable{position:relative}
+.vf-fx-flow{fill:none;stroke-width:4;stroke-linecap:round;stroke-dasharray:5 95;stroke-dashoffset:100;opacity:0;animation:vfFxFlow 2.8s linear infinite}
+.vf-fx-halo{stroke-width:12;stroke-dasharray:7 93;animation-name:vfFxFlowH}
+@keyframes vfFxFlow{0%{stroke-dashoffset:100;opacity:0}8%{opacity:1}92%{opacity:1}100%{stroke-dashoffset:0;opacity:0}}
+@keyframes vfFxFlowH{0%{stroke-dashoffset:100;opacity:0}8%{opacity:.3}92%{opacity:.3}100%{stroke-dashoffset:0;opacity:0}}
+.vf-fx-scan{opacity:0;animation:vfFxScan 4.6s ease-in-out infinite}
+@keyframes vfFxScan{0%{transform:translateY(150px);opacity:0}10%{opacity:1}50%{transform:translateY(420px);opacity:1}60%{opacity:0}100%{transform:translateY(150px);opacity:0}}
+.vf-fx-warn{opacity:.12;animation:vfFxWarn 1.6s ease-in-out infinite alternate}
+@keyframes vfFxWarn{to{opacity:.6}}
+.vf-fx-ring{fill:none;stroke:#ff8a65;stroke-width:2.5;opacity:0;transform-box:fill-box;transform-origin:center;animation:vfFxRing 2s ease-out infinite}
+@keyframes vfFxRing{0%{transform:scale(1);opacity:.9}100%{transform:scale(2.4);opacity:0}}
+.vf-fx-glint{opacity:0;animation:vfFxGlint 4.2s ease-in-out infinite}
+@keyframes vfFxGlint{0%{transform:translateX(0) rotate(18deg);opacity:0}6%{opacity:1}34%{transform:translateX(190px) rotate(18deg);opacity:1}40%,100%{transform:translateX(190px) rotate(18deg);opacity:0}}
+.vf-fx-glint,.vf-fx-glint2{transform-box:fill-box;transform-origin:center}
+.vf-fx-holo{opacity:0;animation:vfFxHolo 3.8s ease-in-out infinite alternate}
+@keyframes vfFxHolo{0%{transform:translateY(186px);opacity:.2}10%{opacity:1}90%{opacity:1}100%{transform:translateY(510px);opacity:.2}}
+.vf-fx-edge{fill:none;stroke:#7fefff;stroke-width:2;opacity:.1;animation:vfFxEdge 2.4s ease-in-out infinite alternate}
+@keyframes vfFxEdge{to{opacity:.55}}
+.vf-fx-tl{fill:none;stroke:#7fefff;stroke-width:2.5;opacity:0;transform-box:fill-box;transform-origin:center;animation:vfFxTl 3.6s ease-out infinite}
+@keyframes vfFxTl{0%{transform:scale(1);opacity:.95}30%{transform:scale(1.9);opacity:0}100%{opacity:0}}
+.vf-fx-row{fill:#7fefff;opacity:0;animation:vfFxRow 5s ease-in-out infinite}
+@keyframes vfFxRow{0%{transform:translateY(268px);opacity:0}8%{opacity:.22}45%{transform:translateY(388px);opacity:.22}55%,100%{transform:translateY(388px);opacity:0}}
+.vf-fx-miss{fill:#ff4d4d;opacity:.08;animation:vfFxWarn2 1.4s ease-in-out infinite alternate}
+@keyframes vfFxWarn2{to{opacity:.34}}
+.vf-fx-glint2{opacity:0;animation:vfFxGlint2 3.6s ease-in-out infinite}
+@keyframes vfFxGlint2{0%{transform:translateX(0) rotate(14deg);opacity:0}8%{opacity:1}38%{transform:translateX(160px) rotate(14deg);opacity:1}44%,100%{transform:translateX(160px) rotate(14deg);opacity:0}}
+
+.vf-note-l{margin-top:14px;font-size:13px;color:var(--dim)}
+.vf-mob{display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(22px,4vw,48px);align-items:center;margin-top:clamp(36px,5vw,56px);padding:clamp(18px,3vw,28px);background:var(--panel);border:1px solid var(--edge);border-radius:var(--r-lg)}
+.vf-mob img{width:clamp(180px,22vw,280px);height:auto;aspect-ratio:4/5;object-fit:cover;border-radius:18px;box-shadow:var(--shadow)}
+.vf-mob h3{font-size:clamp(24px,2.6vw,32px);font-weight:900;margin-bottom:8px}
+.vf-mob p{color:var(--dim);font-size:16.5px;max-width:44ch}
+.vf-custom{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:start}
+.vf-custom .sh{margin-bottom:0}
+.vf-links{display:flex;flex-wrap:wrap;gap:12px 22px;margin-top:24px}
+
+@media(max-width:920px){
+  .vf-flow,.vf-custom{grid-template-columns:1fr}
+  .vf-phone{max-width:290px}
+  .vf-steps{grid-template-columns:1fr}
+  .vf-steps li{flex-direction:row;align-items:center;text-align:start}
+  .vf-steps li::before{inset-inline-start:2px}
+  #vf-wa .chips{justify-content:flex-start}
+  .vf-more{grid-template-columns:1fr 1fr}
 }
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{font-family:'Heebo',sans-serif;background:var(--bg);color:var(--ink);line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased}
-a{color:inherit;text-decoration:none}
-img{max-width:100%;display:block}
-.wrap{max-width:1180px;margin:0 auto;padding:0 22px}
-.cy{color:var(--cyan)} .gr{color:var(--green)}
-.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
-.tag{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:800;letter-spacing:.2px;color:var(--cyan);background:rgba(34,211,238,.1);border:1px solid rgba(34,211,238,.3);padding:6px 15px;border-radius:999px;margin-bottom:16px}
-.btn{position:relative;display:inline-flex;align-items:center;gap:8px;font-family:inherit;font-size:15px;font-weight:700;padding:13px 26px;border-radius:12px;cursor:pointer;border:1px solid transparent;transition:transform .2s,box-shadow .2s,background .2s,border-color .2s;white-space:nowrap;overflow:hidden;isolation:isolate}
-.btn::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(120deg,transparent 32%,rgba(255,255,255,.4) 50%,transparent 68%);transform:translateX(-130%)}
-.btn:hover::after{animation:sweep .75s ease}
-@keyframes sweep{to{transform:translateX(130%)}}
-.btn-primary{background:var(--grad);color:#fff;box-shadow:0 8px 24px rgba(59,130,246,.42),inset 0 0 0 1px rgba(120,180,255,.35)}
-.btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 38px rgba(59,130,246,.6),0 0 24px rgba(59,130,246,.55),inset 0 0 0 1px rgba(120,180,255,.5)}
-.btn-ghost{background:transparent;color:var(--ink);border-color:var(--border)}
-.btn-ghost:hover{border-color:var(--accent);color:var(--accent2)}
-.btn-wa{background:var(--wa);color:#0a1f12}
-.btn-wa:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(37,211,102,.45)}
-.btn-lghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.4)}
-.btn-lghost:hover{border-color:#fff;background:rgba(255,255,255,.1)}
-
-/* NAV */
-header.nav{position:sticky;top:0;z-index:100;background:rgba(7,13,28,0.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
-.nav-in{display:flex;align-items:center;justify-content:space-between;gap:18px;height:72px;padding:0 30px;max-width:none}
-.nav-start{display:flex;align-items:center;gap:22px}
-.nav-logo{display:flex;align-items:center;gap:9px;font-size:19px;font-weight:900;letter-spacing:-.4px;color:#fff}
-.nav-logo img{height:44px;width:auto}
-.nav-logo .b{color:var(--accent2)}
-.nav-links{display:flex;gap:20px;font-size:14px;font-weight:600}
-.nav-links a{color:var(--muted);transition:.15s}.nav-links a:hover{color:#fff}
-.nav-cta{display:flex;gap:10px;align-items:center}
-.nav-cta .btn{padding:9px 18px;font-size:14px}
-.nav-badge{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:700;color:var(--cyan);background:rgba(34,211,238,.1);border:1px solid rgba(34,211,238,.28);padding:6px 12px;border-radius:999px;white-space:nowrap}
-.nav-badge.prod{color:#cdeafd;background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.2)}
-@media(max-width:1250px){.nav-badge{display:none}}
-
-/* HERO band (full-bleed bg) */
-.band{position:relative;overflow:hidden}
-.band-bg{position:absolute;inset:0;background-size:cover;background-position:center;opacity:.9}
-.hero{position:relative;background:#070d1c url(../img/vf-hero2.jpg) top center/100% auto no-repeat}
-.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(7,13,28,.42) 74%,var(--bg) 100%);z-index:1}
-.hero-content{position:relative;z-index:2;text-align:center;max-width:820px;margin:0 auto;padding:33vw 22px 3vw;text-shadow:0 2px 12px rgba(0,0,0,.6)}
-.hero .badge{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:800;color:#04222a;background:linear-gradient(135deg,#22d3ee,#38bdf8);padding:7px 17px;border-radius:999px;margin-bottom:22px;box-shadow:0 8px 26px rgba(34,211,238,.35)}
-.hero h1{font-size:clamp(52px,9vw,104px);font-weight:900;line-height:.98;letter-spacing:-2px;background:linear-gradient(135deg,#fff,#9fd7ff 55%,#7ef0e0);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-.hero .htag{font-size:clamp(19px,2.6vw,26px);color:var(--cyan);font-weight:800;margin-top:10px}
-.hero .lead{font-size:17.5px;color:#d7e0f2;margin:20px auto 0;max-width:680px}
-.hero .trust{display:inline-flex;align-items:center;gap:8px;margin-top:22px;font-size:14px;font-weight:700;color:#cdeafd;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);padding:8px 18px;border-radius:999px}
-.hero .row{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px;justify-content:center}
-
-/* SECTIONS */
-section{padding:56px 0}
-.alt{background:linear-gradient(180deg,var(--bg),var(--bg2))}
-.sec-head{max-width:820px;margin:0 auto 34px;text-align:center}
-.sec-head h2{font-size:clamp(26px,3.4vw,40px);font-weight:900;letter-spacing:-.6px;position:relative;padding-bottom:14px}
-.sec-head h2::after{content:"";position:absolute;left:50%;bottom:0;transform:translateX(-50%);width:60px;height:3px;border-radius:3px;background:linear-gradient(90deg,#22d3ee,#3b82f6,#8b5cf6)}
-.sec-head p{color:var(--muted);font-size:16.5px;margin-top:10px}
-
-/* PAIN */
-.pains{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:1000px;margin:0 auto}
-.pain{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:26px;text-align:center}
-.pain .ic{font-size:34px;margin-bottom:12px}
-.pain h3{font-size:18px;margin-bottom:7px}
-.pain p{font-size:14.5px;color:var(--muted)}
-.pain-foot{text-align:center;font-size:18px;font-weight:800;color:var(--cyan);margin-top:34px}
-.pain-alt{color:var(--cyan);font-size:clamp(18px,2.2vw,25px);font-weight:800;margin-top:8px}
-.pain-row{display:grid;grid-template-columns:1.12fr .88fr;gap:32px;align-items:center;max-width:1140px;margin:0 auto}
-.pain-img img{width:100%;border-radius:20px;border:1px solid var(--border);box-shadow:0 26px 64px rgba(0,0,0,.55)}
-.pain-cards{display:flex;flex-direction:column;gap:16px}
-.pain-cards .pain{display:flex;align-items:center;gap:15px;text-align:right;padding:18px 22px}
-.pain-cards .pain .ic{font-size:30px;margin:0;flex:none}
-.pain-cards .pain-txt h3{font-size:16.5px;margin-bottom:3px}
-.pain-cards .pain-txt p{font-size:13.5px;color:var(--muted)}
-
-/* KPI row */
-.kpis{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin:0 auto 30px;max-width:820px}
-.kpi{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:18px 26px;text-align:center;min-width:180px}
-.kpi b{display:block;font-size:26px;font-weight:900;color:#fff;line-height:1.1}
-.kpi b .cy{color:var(--cyan)}
-.kpi span{font-size:13.5px;color:var(--muted);font-weight:600}
-
-/* browser-framed screenshot */
-.shot{border-radius:15px;overflow:hidden;border:1px solid var(--border);box-shadow:0 28px 70px rgba(0,0,0,.6),0 0 50px rgba(59,130,246,.12);background:var(--card2)}
-.shot-bar{display:flex;align-items:center;gap:7px;padding:10px 14px;background:var(--card2);border-bottom:1px solid var(--border)}
-.shot-bar i{width:10px;height:10px;border-radius:50%;display:block}
-.shot-bar .r{background:#ff5f57}.shot-bar .y{background:#febc2e}.shot-bar .g{background:#28c840}
-.shot-bar span{margin-inline-start:11px;font-size:12px;color:var(--muted2);direction:ltr}
-.shot img{width:100%;display:block}
-.screens2{display:grid;grid-template-columns:1fr 1fr;gap:26px;max-width:1120px;margin:0 auto}
-.screens2 figcaption{margin-top:12px;text-align:center;font-size:14.5px;font-weight:700}
-.dash-main{position:relative;max-width:1090px;margin:0 auto;padding:2.5px;border-radius:20px;background:linear-gradient(135deg,#22d3ee,#3b82f6 55%,#8b5cf6);box-shadow:0 34px 84px rgba(0,0,0,.6),0 0 80px rgba(59,130,246,.18)}
-.dash-main .shot{border-radius:17px;box-shadow:none;border:none}
-.dash-sub{max-width:1000px;margin:66px auto 0;text-align:center}
-.dash-sub .tag{margin-bottom:16px}
-.dash-mob{display:flex;align-items:center;gap:44px;max-width:1020px;margin:66px auto 0}
-.dash-mob-txt{flex:1}
-.dash-mob-txt h3{font-size:26px;font-weight:800;margin:6px 0 10px}
-.dash-mob-txt p{color:#cdd8ee;font-size:16px}
-.dash-mob-img{flex:0 0 auto}
-.dash-mob-img img{width:min(330px,80vw);border-radius:24px;border:1px solid var(--border);box-shadow:0 26px 64px rgba(0,0,0,.6)}
-.dash-flow{width:100%;max-width:1040px;margin:0 auto;border-radius:18px;border:1px solid var(--border);box-shadow:0 22px 54px rgba(0,0,0,.5);display:block}
-.deep-wrap{margin-top:70px}
-.deep-wrap .sec-head{margin-bottom:12px}
-
-/* SPLIT (text + screenshot) */
-.split{display:flex;align-items:center;gap:34px;max-width:1280px;margin:0 auto;background:linear-gradient(160deg,var(--card),var(--bg2));border:1px solid var(--border);border-radius:24px;padding:28px;box-shadow:0 18px 44px rgba(0,0,0,.32)}
-.split .shot{box-shadow:0 16px 40px rgba(0,0,0,.5)}
-.split-txt{flex:0.82 1 0;min-width:0}
-.split-shot{flex:1.55 1 0;min-width:0}
-.split.rev{flex-direction:row-reverse}
-/* DEEP-DIVE infographics */
-.deepsec{background:radial-gradient(1100px 520px at 50% -4%,rgba(59,130,246,.08),transparent 62%),linear-gradient(180deg,var(--bg2),var(--bg))}
-.deep{max-width:1060px;margin:0 auto;display:flex;flex-direction:column;gap:66px}
-.deep figure{text-align:center;display:flex;flex-direction:column}
-.deep img{width:100%;border-radius:18px;border:1px solid var(--border);box-shadow:0 22px 54px rgba(0,0,0,.5)}
-.deep figcaption{order:-1;margin:0 0 14px;font-size:15.5px;font-weight:700;color:var(--ink)}
-.deep .sq{max-width:560px;margin:0 auto}
-.split-txt h3{font-size:clamp(22px,2.8vw,30px);font-weight:800;letter-spacing:-.3px;margin-bottom:12px}
-.split-txt p{color:#cdd8ee;font-size:16px;margin-bottom:16px}
-.chips{display:flex;gap:9px;flex-wrap:wrap}
-.chip{font-size:13px;background:var(--card2);border:1px solid var(--border);border-radius:999px;padding:6px 14px;color:var(--ink)}
-.chip::before{content:"✓ ";color:var(--green);font-weight:800}
-
-/* WHATSAPP highlight */
-.wa-band{background:linear-gradient(160deg,rgba(37,211,102,.1),rgba(34,211,238,.06));border:1px solid rgba(37,211,102,.28);border-radius:26px;padding:8px}
-.wa-in{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;padding:30px}
-.wa-txt .tag{color:#7ef0a6;background:rgba(37,211,102,.12);border-color:rgba(37,211,102,.35)}
-.wa-txt h2{font-size:clamp(24px,3.2vw,34px);font-weight:900;letter-spacing:-.4px;margin-bottom:12px}
-.wa-txt p{color:#d7e6dd;font-size:16.5px;margin-bottom:18px}
-.wa-steps{display:flex;flex-direction:column;gap:12px;margin-bottom:18px}
-.wa-step{display:flex;gap:13px;align-items:flex-start;font-size:15px}
-.wa-step .n{flex:none;width:30px;height:30px;border-radius:50%;background:var(--wa);color:#062712;font-weight:900;display:flex;align-items:center;justify-content:center;font-size:14px}
-.wa-step b{color:#fff}
-.wa-flow{width:100%;border-radius:18px;border:1px solid rgba(37,211,102,.28);box-shadow:0 18px 46px rgba(0,0,0,.5)}
-
-/* FEATURE GRID */
-.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:1120px;margin:0 auto}
-.feat{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:22px;transition:.2s}
-.feat:hover{border-color:rgba(96,165,250,.5);transform:translateY(-3px)}
-.feat .ic{font-size:24px;margin-bottom:9px}
-.feat h4{font-size:16.5px;margin-bottom:5px}
-.feat p{font-size:14px;color:var(--muted);line-height:1.6}
-
-/* CUSTOM highlight band */
-.custom{position:relative;max-width:1000px;margin:0 auto;border-radius:28px;overflow:hidden;background:linear-gradient(160deg,#0f1d3a,#0a1226);box-shadow:0 34px 80px rgba(0,0,0,.55)}
-.custom::before{content:"";position:absolute;inset:0;border-radius:28px;padding:1.6px;background:linear-gradient(120deg,#22d3ee,#3b82f6 45%,#8b5cf6 78%,#22d3ee);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;z-index:2}
-.custom .glow{position:absolute;top:-34%;left:50%;transform:translateX(-50%);width:78%;height:78%;background:radial-gradient(closest-side,rgba(34,211,238,.24),transparent 70%);filter:blur(24px);pointer-events:none;animation:cpulse 4.6s ease-in-out infinite}
-@keyframes cpulse{0%,100%{opacity:.5}50%{opacity:1}}
-.custom-in{position:relative;z-index:3;text-align:center;padding:52px 40px}
-.custom-emblem{width:72px;height:72px;margin:0 auto 14px;border-radius:20px;display:flex;align-items:center;justify-content:center;font-size:34px;background:linear-gradient(135deg,rgba(34,211,238,.22),rgba(139,92,246,.22));border:1px solid rgba(34,211,238,.45);box-shadow:0 12px 34px rgba(34,211,238,.3)}
-.custom .tag{margin-bottom:0}
-.custom h2{font-size:clamp(26px,3.7vw,40px);font-weight:900;letter-spacing:-.6px;margin:14px 0 16px;background:linear-gradient(135deg,#fff,#a9e8ff 58%,#c4b5ff);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-.custom p{color:#d9e2f4;font-size:17.5px;max-width:700px;margin:0 auto 24px;line-height:1.75}
-.custom .chips{justify-content:center}
-.custom .chip{background:rgba(34,211,238,.08);border-color:rgba(34,211,238,.32)}
-
-/* CREATOR */
-.creator{max-width:760px;margin:0 auto;text-align:center}
-.creator img{width:130px;height:130px;object-fit:contain;margin:0 auto 14px;filter:drop-shadow(0 14px 32px rgba(59,130,246,.5))}
-.creator h3{font-size:24px;font-weight:800}
-.creator .en{font-size:14px;color:var(--muted);letter-spacing:.14em;direction:ltr;margin-top:2px}
-.creator p{color:#cdd8ee;font-size:16px;margin-top:14px}
-
-/* CTA band */
-.cta{position:relative;background:#060b14 url(../img/vf-cta-bg.jpg) top center/100% auto no-repeat}
-.cta::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(6,11,20,.5) 58%,rgba(6,11,20,.6));z-index:1}
-.cta-content{position:relative;z-index:2;text-align:center;max-width:700px;margin:0 auto;padding:28vw 22px 13vw}
-.cta h2{font-size:clamp(26px,3.6vw,40px);font-weight:900;letter-spacing:-.6px;margin-bottom:12px}
-.cta p{color:#d7e0f2;font-size:17px;max-width:600px;margin:0 auto 26px}
-.cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-
-/* FOOTER */
-footer{border-top:1px solid var(--border);padding:40px 0;background:#060a16}
-.foot-in{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;padding:0 30px;max-width:1180px;margin:0 auto}
-.foot-brand{display:flex;align-items:center;gap:12px}
-.foot-brand img{height:42px;width:auto}
-.foot-brand .bn{font-weight:900;font-size:20px;color:#fff}.foot-brand .bn .b{color:var(--accent2)}
-.foot-brand .tg{font-size:12.5px;color:var(--cyan)}
-.foot-copy{flex:1;text-align:center;color:var(--muted);font-size:14px;font-weight:600;min-width:220px}
-.foot-links{display:flex;gap:16px;font-size:14px;color:var(--muted);flex-wrap:wrap}
-.foot-links a:hover{color:#fff}
-
-@media(max-width:900px){
-  .pains,.feat-grid{grid-template-columns:1fr 1fr}
-  .pain-row{grid-template-columns:1fr;gap:24px}
-  .screens2{grid-template-columns:1fr;max-width:560px}
-  .dash-mob{flex-direction:column;text-align:center;gap:26px}
-  .wa-in{grid-template-columns:1fr;gap:24px}
-  .nav-links{display:none}
-  .foot-in{flex-direction:column;text-align:center}
-}
-@media(max-width:720px){
-  .split,.split.rev{flex-direction:column;gap:22px;padding:22px}
-  .split-txt,.split-shot{width:100%;flex:none}
-}
-@media(max-width:560px){
-  .nav-in{padding:0 16px;gap:10px}
-  .nav-logo span{display:none}
-  .nav-cta .btn{padding:8px 13px;font-size:13px}
-  .pains,.feat-grid{grid-template-columns:1fr}
+@media(max-width:620px){
+  .vf-dash,.vf-more,.vf-deep{grid-template-columns:1fr}
+  .vf-mob{grid-template-columns:1fr;justify-items:center;text-align:center}
+  .vf-mob p{margin-inline:auto}
 }
 </style>
+<script src="/js/project.js" defer></script>
 </head>
 <body>
 
-<!-- NAV -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-wa" viewBox="0 0 24 24"><path d="M20 11.6a8.1 8.1 0 0 1-12 7.1L4 20l1.3-3.8A8.1 8.1 0 1 1 20 11.6z"/><path d="M9.2 8.9c.2 2.4 2.5 4.8 5 5.4l1-1.4-1.6-1-.8.7c-.9-.4-1.7-1.2-2.1-2.1l.7-.8-1-1.6z"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.2 4.2L19 7"/></symbol>
+  <symbol id="i-back" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M6.5 3.5h3l1.5 4-2 1.3a10 10 0 0 0 6.2 6.2l1.3-2 4 1.5v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 4.5 5.7a2 2 0 0 1 2-2.2z"/></symbol>
+  <symbol id="i-cal" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></symbol>
+  <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></symbol>
+</svg>
+
+<a class="skip" href="#main">דילוג לתוכן</a>
+<button class="motion-btn" id="motionBtn" type="button"><svg class="i-pause" viewBox="0 0 16 16" aria-hidden="true"><rect x="3" y="2" width="3.5" height="12" rx="1"/><rect x="9.5" y="2" width="3.5" height="12" rx="1"/></svg><svg class="i-play" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5v11a1 1 0 0 0 1.5.86l9-5.5a1 1 0 0 0 0-1.72l-9-5.5A1 1 0 0 0 4 2.5z"/></svg><span class="lbl">עצירת תנועה</span></button>
+
 <header class="nav">
   <div class="nav-in">
-    <div class="nav-start">
-      <a class="nav-logo" href="/"><img src="../../img/logo-reverse.png" alt="Rubin Project"><span dir="ltr">Rubin <span class="b">Project</span></span></a>
-      <nav class="nav-links">
-        <a href="#whatsapp">וואטסאפ</a>
-        <a href="#capabilities">יכולות</a>
-        <a href="#reports">דוחות</a>
-        <a href="#custom">התאמה אישית</a>
-        <a href="#contact">יצירת קשר</a>
-      </nav>
-    </div>
+    <a class="brand" href="/" aria-label="Rubin Project, לדף הבית"><img src="/img/logo-mark.webp" width="123" height="120" alt=""><span dir="ltr">Rubin <span class="b">Project</span></span></a>
+    <nav class="nav-links" id="navLinks" aria-label="ניווט בעמוד">
+      <a class="nav-back" href="/#portfolio">לכל המערכות</a>
+      <a href="#vf-wa">וואטסאפ לקריאה</a>
+      <a href="#vf-features">מה יש במערכת</a>
+      <a href="#vf-deep">צלילה לעומק</a>
+      <a href="#vf-reports">דוחות</a>
+      <a href="#vf-custom">התאמה אישית</a>
+      <a class="btn btn-ghost nav-wa-m" href="https://wa.me/972527246200?text=%D7%94%D7%99%D7%99%20%D7%A2%D7%9E%D7%99%D7%AA%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%A2%D7%9E%D7%95%D7%93%20%D7%A9%D7%9C%20Verifix" target="_blank" rel="noopener"><svg class="ico"><use href="#i-wa"/></svg>וואטסאפ</a>
+    </nav>
     <div class="nav-cta">
-      <span class="nav-badge">🏢 מערכת פרודקשן · Full-Stack</span>
-      <span class="nav-badge prod">🚢 רצה בפרודקשן · חברת נמלי ישראל</span>
-      <a class="btn btn-primary" href="https://wa.me/972527246200" target="_blank" rel="noopener">💬 וואטסאפ</a>
+      <a class="btn btn-ghost" href="https://wa.me/972527246200?text=%D7%94%D7%99%D7%99%20%D7%A2%D7%9E%D7%99%D7%AA%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%A2%D7%9E%D7%95%D7%93%20%D7%A9%D7%9C%20Verifix" target="_blank" rel="noopener" data-track="whatsapp_nav"><svg class="ico"><use href="#i-wa"/></svg>וואטסאפ</a>
+      <a class="btn btn-solid" href="/#contact" data-track="cta_nav">שיחת אפיון</a>
     </div>
+    <button class="burger" id="burger" type="button" aria-label="פתיחת תפריט" aria-expanded="false" aria-controls="navLinks"><svg class="ico"><use href="#i-menu"/></svg></button>
   </div>
 </header>
 
-<!-- HERO -->
-<header class="hero">
-  <div class="hero-content">
-    <h1 class="sr-only">VeriFix — מערכת מלאה לניהול ואחזקת מבנים</h1>
-    <div class="htag">מערכת מלאה לניהול ואחזקת מבנים</div>
-    <p class="lead">קריאות שבר, אחזקה מונעת, נכסים, תקציב ודוחות — הכול במערכת אחת. ופתיחת תקלה? מתחילה ב<strong>הודעת וואטסאפ פשוטה</strong>. מערכת full-stack שבניתי מקצה לקצה.</p>
+<main id="main">
+
+<section class="p-hero">
+  <div class="collage" aria-hidden="true">
+    <div class="tilt">
+      <div class="lane" data-lane data-speed="20" data-dir="1"><div class="lane-track"><div class="lane-group">
+        <span class="ctile"><img src="/img/shots/h-vf-dash-dark.webp" width="440" height="275" alt="" decoding="async"></span>
+        <span class="ctile"><img src="/img/vf/t-maint-light.webp" width="440" height="275" alt="" decoding="async"></span>
+        <span class="ctile"><img src="/img/vf/t-deep-asset.webp" width="440" height="275" alt="" decoding="async"></span>
+        <span class="ctile"><img src="/img/vf/t-backup.webp" width="440" height="275" alt="" decoding="async"></span>
+      </div></div></div>
+      <div class="lane" data-lane data-speed="15" data-dir="-1"><div class="lane-track"><div class="lane-group">
+        <span class="ctile"><img src="/img/vf/t-maintenance.webp" width="440" height="275" alt="" decoding="async"></span>
+        <span class="ctile"><img src="/img/shots/h-vf-support.webp" width="440" height="275" alt="" decoding="async"></span>
+        <span class="ctile"><img src="/img/vf/t-deep-health.webp" width="440" height="275" alt="" decoding="async"></span>
+        <span class="ctile"><img src="/img/shots/h-vf-assets.webp" width="440" height="275" alt="" decoding="async"></span>
+      </div></div></div>
+      <div class="lane" data-lane data-speed="24" data-dir="1"><div class="lane-track"><div class="lane-group">
+        <span class="ctile"><img src="/img/vf/t-maint-light.webp" width="440" height="275" alt="" decoding="async"></span>
+        <span class="ctile"><img src="/img/vf/t-deep-inventory.webp" width="440" height="275" alt="" decoding="async"></span>
+        <span class="ctile"><img src="/img/shots/h-vf-dash-dark.webp" width="440" height="275" alt="" decoding="async"></span>
+        <span class="ctile"><img src="/img/vf/t-maintenance.webp" width="440" height="275" alt="" decoding="async"></span>
+      </div></div></div>
+    </div>
   </div>
-</header>
-
-<!-- PAIN -->
-<section class="alt">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="tag">🧯 המציאות של מנהל אחזקה</span>
-      <h2>תחזוקה מנוהלת על טלפונים, פתקים ואקסל</h2>
-      <p class="pain-alt">יש דרך אחרת.</p>
-    </div>
-    <div class="pain-row">
-      <div class="pain-img"><img src="../img/vf-pain.jpg" alt="מנהל אחזקה עמוס — טלפונים, פתקים ואקסל, תקלות מכל הכיוונים"></div>
-      <div class="pain-cards">
-        <div class="pain"><div class="ic">📞</div><div class="pain-txt"><h3>תקלות מכל הכיוונים</h3><p>טלפון, וואטסאפ ופתקים — בלי מעקב אחיד, ובלי לדעת מה נפתח ומה נסגר.</p></div></div>
-        <div class="pain"><div class="ic">🗓️</div><div class="pain-txt"><h3>אחזקה מונעת נשכחת</h3><p>עד שמשהו נשבר — ואז זה טיפול דחוף, יקר ובלחץ.</p></div></div>
-        <div class="pain"><div class="ic">🤷</div><div class="pain-txt"><h3>אין תמונת מצב</h3><p>מי אחראי? מה בוצע? מה חורג מ-SLA? התשובות מפוזרות בכל מקום.</p></div></div>
+  <div class="p-hero-in wrap">
+    <div class="p-hero-copy">
+      <p class="p-crumb"><a href="/#portfolio">מערכות שרצות אצל לקוחות</a><svg class="ico" style="width:14px;height:14px;transform:scaleX(-1)"><use href="#i-back"/></svg><span dir="ltr">Verifix</span></p>
+      <h1><span class="p-name">Verifix</span><em>ניהול ואחזקת מבנים, במערכת אחת</em></h1>
+      <p class="p-lead">קריאות שבר, אחזקה מונעת, נכסים, תקציב ודוחות. ופתיחת תקלה מתחילה בהודעת וואטסאפ רגילה. מערכת full-stack שבניתי מקצה לקצה.</p>
+      <div class="p-actions">
+        <a class="btn btn-solid btn-lg" href="/#contact" data-track="cta_hero">שיחת אפיון</a>
+        <a class="btn btn-ghost btn-lg" href="https://wa.me/972527246200?text=%D7%94%D7%99%D7%99%20%D7%A2%D7%9E%D7%99%D7%AA%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%A2%D7%9E%D7%95%D7%93%20%D7%A9%D7%9C%20Verifix" target="_blank" rel="noopener" data-track="whatsapp_hero"><svg class="ico"><use href="#i-wa"/></svg>וואטסאפ</a>
       </div>
-    </div>
-    <div class="pain-foot">אז בניתי את זה אחרת. ↓</div>
-  </div>
-</section>
-
-<!-- DASHBOARD -->
-<section>
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="tag">📊 ככה זה נראה</span>
-      <h2>דשבורד אחד שמרכז את כל התחזוקה</h2>
-      <p>קריאות פתוחות, משימות מונעות, מד בריאות מבנה, ביצוע לפי מערכת ותקציב — במבט אחד.</p>
-    </div>
-    <div class="kpis">
-      <div class="kpi"><b>עשרות</b><span>מבנים בניהול</span></div>
-      <div class="kpi"><b>מאות</b><span>משימות ותקלות</span></div>
-      <div class="kpi"><b class="cy">SLA</b><span>במעקב מלא</span></div>
-    </div>
-    <!-- main dark dashboard (enlarged, no caption) -->
-    <div class="dash-main">
-      <div class="shot"><div class="shot-bar"><i class="r"></i><i class="y"></i><i class="g"></i><span>verifix — דשבורד</span></div><img src="../img/vf-dash-dark.jpg" alt="VeriFix — דשבורד המערכת"></div>
-    </div>
-
-    <!-- files -> smart objects -->
-    <div class="dash-sub">
-      <span class="tag">🗂️ מיפוי קבצים לאובייקטים חכמים</span>
-      <img class="dash-flow" src="../img/vf-files32.jpg" alt="מיפוי קבצים לאובייקטים חכמים — Excel, PDF ומסמכים הופכים אוטומטית לנכסים מנוהלים במערכת">
-    </div>
-
-    <!-- deep dive -->
-    <div class="deep-wrap">
-      <div class="sec-head">
-        <span class="tag">🔍 צלילה לעומק</span>
-        <h2>לא רק מסכים — תמונת מצב שמדברת</h2>
-        <p>ככה המערכת הופכת נתונים לתובנה: מפת תקינות, כרטיס נכס מלא, בקרה חכמה ומלאי מבוקר.</p>
-      </div>
-      <div class="deep">
-        <figure>
-          <img src="../img/vf-info-health.jpg" alt="מפת תקינות קומתית חכמה — מבנה עם סטטוס לכל קומה, התראות ורגולציה">
-          <figcaption>🏢 מפת תקינות קומתית — כל מבנה קומה-קומה, עם התראות פגי-תוקף ודוחות רגולטוריים</figcaption>
-        </figure>
-        <figure>
-          <img src="../img/vf-info-asset.jpg" alt="כרטיס נכס דיגיטלי — Drill-Down לתעודת זהות, היסטוריה, דוחות וספקים">
-          <figcaption>📇 כרטיס נכס דיגיטלי (Drill-Down) — קליק על נכס פותח עולם שלם: זהות, היסטוריה, דוחות וספקים</figcaption>
-        </figure>
-        <figure class="sq">
-          <img src="../img/vf-info-inventory.jpg" alt="בקרת מלאי וציוד — כמות בפועל מול נדרש לכל פריט">
-          <figcaption>🧰 בקרת מלאי וציוד — כמות בפועל מול נדרש, לכל פריט, עם סטטוס תקינות</figcaption>
-        </figure>
-      </div>
-    </div>
-
-    <!-- also light mode -->
-    <div class="dash-sub">
-      <span class="tag">☀️ גם במסך בהיר — לבחירתכם</span>
-      <div class="shot"><div class="shot-bar"><i class="r"></i><i class="y"></i><i class="g"></i><span>verifix — מסך בהיר</span></div><img src="../img/vf-light9.jpg" alt="VeriFix — מסך בהיר (אחזקה מונעת)"></div>
-    </div>
-
-    <!-- also mobile -->
-    <div class="dash-mob">
-      <div class="dash-mob-txt">
-        <span class="tag">📱 גם דרך הנייד</span>
-        <h3>כל המערכת בכיס</h3>
-        <p>צופים בדשבורד, פותחים קריאות ומקבלים עדכונים — ישירות מהטלפון, בכל מקום ובכל זמן.</p>
-      </div>
-      <div class="dash-mob-img"><img src="../img/vf-mobile.jpg" alt="VeriFix — צפייה וניהול מהנייד"></div>
+      <p class="proof"><span class="dot" aria-hidden="true"></span><span><b>רצה היום בפרודקשן</b> בחברת נמלי ישראל</span></p>
     </div>
   </div>
 </section>
 
-<!-- WHATSAPP highlight -->
-<section class="alt" id="whatsapp">
+<section class="stack after-hero" aria-label="הטכנולוגיות שעליהן Verifix בנויה">
+  <div class="lane" data-lane data-speed="34" data-dir="1"><div class="lane-track"><div class="lane-group">
+    <span class="tech"><i></i>Next.js</span><span class="tech"><i></i>React</span><span class="tech"><i></i>TypeScript</span><span class="tech"><i></i>Prisma</span><span class="tech"><i></i>PostgreSQL</span><span class="tech"><i></i>Supabase</span><span class="tech"><i></i>Vercel</span><span class="tech"><i></i>WhatsApp Cloud API</span><span class="tech"><i></i>Resend</span><span class="tech"><i></i>Recharts</span><span class="tech"><i></i>jsPDF</span><span class="tech"><i></i>2FA</span>
+  </div></div></div>
+</section>
+
+<section class="band band-light">
   <div class="wrap">
-    <div class="wa-band">
-      <div class="wa-in">
-        <div class="wa-txt">
-          <span class="tag">🟢 החידוש הגדול</span>
-          <h2>המשתמש שולח הודעת וואטסאפ — נפתחת קריאה. אוטומטית.</h2>
-          <p>בלי אפליקציה ובלי הדרכה. שולחים הודעת וואטסאפ רגילה על התקלה — והמערכת פותחת קריאה לבד.</p>
-          <div class="wa-steps">
-            <div class="wa-step"><span class="n">1</span><div><b>שולחים וואטסאפ</b> — הודעה רגילה על התקלה, מהטלפון של כל אחד.</div></div>
-            <div class="wa-step"><span class="n">2</span><div><b>נפתחת קריאה אוטומטית</b> במערכת — משויכת למבנה הנכון.</div></div>
-            <div class="wa-step"><span class="n">3</span><div><b>מצרפים תמונה של התקלה</b> — פשוט מצלמים מהטלפון ושולחים.</div></div>
+    <div class="sh reveal">
+      <span class="k">המציאות של מנהל אחזקה</span>
+      <h2>תחזוקה שמנוהלת בטלפונים, <em>בפתקים ובאקסל</em></h2>
+    </div>
+    <div class="grid-3">
+      <article class="card vf-pain reveal"><div class="vf-sc vf-sc-calls" data-scene aria-hidden="true">
+        <span class="vf-sc-count">17 פניות פתוחות</span>
+        <span class="vf-sc-i vf-sc-call"><svg class="ico"><use href="#i-phone"/></svg>שיחה נכנסת · קומה 4</span>
+        <span class="vf-sc-i vf-sc-wa">המזגן בחדר 12 לא עובד!!</span>
+        <span class="vf-sc-i vf-sc-note">נזילה בקומה 2</span>
+        <span class="vf-sc-i vf-sc-mail" dir="ltr">RE: RE: FW</span>
+      </div><h3>תקלות מכל הכיוונים</h3><p>טלפון, וואטסאפ ופתקים, בלי מעקב אחד ובלי לדעת מה נפתח ומה נסגר.</p></article>
+      <article class="card vf-pain reveal"><div class="vf-sc vf-sc-late" data-scene aria-hidden="true">
+        <span class="vf-sc-task"><b>בדיקת גנרטור שנתית</b><small>תוכנן ל-01.03</small></span>
+        <span class="vf-sc-track"><i></i></span>
+        <span class="vf-sc-days"><span>היום</span><span>15.04</span></span>
+        <span class="vf-sc-pill vf-sc-plan">מתוכנן</span>
+        <span class="vf-sc-pill vf-sc-overdue">באיחור 45 יום</span>
+      </div><h3>אחזקה מונעת שנשכחת</h3><p>עד שמשהו נשבר. ואז זה טיפול דחוף, יקר ובלחץ.</p></article>
+      <article class="card vf-pain reveal"><div class="vf-sc vf-sc-sheet" data-scene aria-hidden="true">
+        <span class="vf-sc-grid" data-bg></span>
+        <span class="vf-sc-q vf-sc-q1">מי אחראי?</span>
+        <span class="vf-sc-q vf-sc-q2">בוצע?</span>
+        <span class="vf-sc-q vf-sc-q3">חורג מה-SLA?</span>
+        <span class="vf-sc-na" dir="ltr">#N/A</span>
+      </div><h3>אין תמונת מצב</h3><p>מי אחראי? מה בוצע? מה חורג מה-SLA? התשובות מפוזרות בכל מקום.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="band band-deep" id="vf-wa">
+  <div class="wrap">
+    <div class="sh reveal">
+      <span class="k">החידוש הגדול</span>
+      <h2>שולחים וואטסאפ. <em>הקריאה נפתחת לבד.</em></h2>
+      <p>בלי אפליקציה ובלי הדרכה. הודעת וואטסאפ רגילה על התקלה, והמערכת פותחת קריאה, משייכת אותה למבנה הנכון ומצרפת את התמונה.</p>
+    </div>
+    <div class="vf-flow reveal" id="vfFlow">
+      <div class="vf-phone" aria-hidden="true">
+        <div class="vf-scr">
+          <div class="vf-chat-h"><i></i><span>מוקד אחזקה<small>חשבון עסקי</small></span></div>
+          <div class="vf-chat">
+            <div class="vf-bub vf-out vf-b1">המזגן בחדר הישיבות בקומה 3 לא מקרר<time>09:41</time></div>
+            <div class="vf-bub vf-out vf-b2"><span class="vf-photo"></span>זה המצב עכשיו<time>09:41</time></div>
+            <div class="vf-bub vf-in vf-b3"><span class="vf-ok">נפתחה קריאה 1284.</span> נעדכן אותך כשהיא תטופל.<time>09:41</time></div>
           </div>
-          <div class="chips"><span class="chip">וואטסאפ רשמי (Meta)</span><span class="chip">פתיחה אוטומטית</span><span class="chip">צירוף תמונה מהטלפון</span><span class="chip">גם טופס ייעודי</span><span class="chip">בלי התקנה</span></div>
-        </div>
-        <div class="wa-shot">
-          <img class="wa-flow" src="../img/vf-wa-flow.jpg" alt="פתיחת קריאה דרך WhatsApp עסקי — שליחת הודעה, בוט חכם, פתיחת קריאה אוטומטית במערכת, ועדכוני סטטוס בצ'אט">
         </div>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- CAPABILITIES -->
-<section id="capabilities">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="tag">🧩 היכולות</span>
-      <h2>כל מחזור החיים של התחזוקה — במערכת אחת</h2>
-    </div>
-
-    <!-- אחזקה מונעת -->
-    <div class="split" style="margin-bottom:56px">
-      <div class="split-txt">
-        <span class="tag">🗓️ אחזקה מונעת</span>
-        <h3>תחזוקה שקורית לפני שמשהו נשבר</h3>
-        <p>תוכניות תחזוקה מחזוריות שמתוזמנות אוטומטית לפי נכס ותדירות — עם תזכורות שיוצרות את המשימה הבאה בזמן, כדי ששום דבר לא ייפול בין הכיסאות.</p>
-        <div class="chips"><span class="chip">תזמון אוטומטי</span><span class="chip">תזכורות</span><span class="chip">לפי נכס ותדירות</span><span class="chip">סטטוס וביצוע</span></div>
-      </div>
-      <div class="split-shot"><div class="shot"><div class="shot-bar"><i class="r"></i><i class="y"></i><i class="g"></i><span>verifix — אחזקה מונעת</span></div><img src="../img/vf-maintenance.jpg" alt="VeriFix — אחזקה מונעת"></div></div>
-    </div>
-
-    <!-- ספר נכסים -->
-    <div class="split rev" style="margin-bottom:56px">
-      <div class="split-txt">
-        <span class="tag">📦 נכסים וספקים</span>
-        <h3>כל נכס, מערכת וספק — מתועד ומחובר</h3>
-        <p>ספר נכסים מלא עם תמונות והיסטוריה לכל מבנה ומערכת, וספר ספקים עם שיוך לקריאות ומעקב ביצוע. הכול מקושר — מהתקלה ועד הנכס והספק שטיפל.</p>
-        <div class="chips"><span class="chip">ספר נכסים</span><span class="chip">ספר ספקים</span><span class="chip">תמונות והיסטוריה</span><span class="chip">שיוך לקריאות</span></div>
-      </div>
-      <div class="split-shot"><div class="shot"><div class="shot-bar"><i class="r"></i><i class="y"></i><i class="g"></i><span>verifix — ספר נכסים</span></div><img src="../img/vf-assets.jpg" alt="VeriFix — ספר נכסים"></div></div>
-    </div>
-
-    <!-- גיבוי -->
-    <div class="split" style="margin-bottom:56px">
-      <div class="split-txt">
-        <span class="tag">💾 גיבוי וייצוא</span>
-        <h3>כל הנתונים שלכם — בגיבוי בלחיצה</h3>
-        <p>ייצוא גיבוי מלא של כל נתוני המערכת לקובץ אחד — מבנים, נכסים, קריאות, אחזקה מונעת, ספקים, תקציב ומשתמשים — ושחזור בקלות בכל רגע.</p>
-        <div class="chips"><span class="chip">גיבוי מלא</span><span class="chip">ייצוא בלחיצה</span><span class="chip">שחזור מקובץ</span></div>
-      </div>
-      <div class="split-shot"><div class="shot"><div class="shot-bar"><i class="r"></i><i class="y"></i><i class="g"></i><span>verifix — גיבוי וייצוא</span></div><img src="../img/vf-backup.jpg" alt="VeriFix — גיבוי וייצוא נתונים"></div></div>
-    </div>
-
-    <!-- תמיכה -->
-    <div class="split rev">
-      <div class="split-txt">
-        <span class="tag">🛟 תמיכה ועזרה</span>
-        <h3>מרכז עזרה מובנה — לכל שאלה</h3>
-        <p>מדריכים מובנים וחיפוש לכל נושא: קריאות שבר, אחזקה מונעת, דוחות, ספקים, וואטסאפ וטפסים ועוד — כדי שכל משתמש יסתדר לבד, מהיום הראשון.</p>
-        <div class="chips"><span class="chip">מדריכים לכל נושא</span><span class="chip">חיפוש חכם</span><span class="chip">התחלה מהירה</span></div>
-      </div>
-      <div class="split-shot"><div class="shot"><div class="shot-bar"><i class="r"></i><i class="y"></i><i class="g"></i><span>verifix — תמיכה ועזרה</span></div><img src="../img/vf-support.jpg" alt="VeriFix — מרכז תמיכה ועזרה"></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- MORE CAPABILITIES grid -->
-<section class="alt">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="tag">⚙️ עוד במערכת</span>
-      <h2>הכול מחובר — מהתקלה ועד התקציב</h2>
-    </div>
-    <div class="feat-grid">
-      <div class="feat"><div class="ic">🔧</div><h4>קריאות שבר + SLA</h4><p>פתיחה מוואטסאפ או מטופס, שיוך ואחריות, סגירה ומדידת עמידה ב-SLA.</p></div>
-      <div class="feat"><div class="ic">📝</div><h4>טופס פתיחת קריאה</h4><p>מי שמעדיף — טופס ייעודי לפתיחת קריאה, עם צירוף תמונה של התקלה.</p></div>
-      <div class="feat"><div class="ic">⏰</div><h4>תזכורות</h4><p>למשימות מונעות, לקריאות פתוחות ולחריגות — כדי ששום דבר לא נשכח.</p></div>
-      <div class="feat"><div class="ic">💰</div><h4>ניהול תקציב</h4><p>מוקצה מול בפועל לפי קטגוריה ומבנה — עם זיהוי חריגות.</p></div>
-      <div class="feat"><div class="ic">🏙️</div><h4>ריבוי מבנים</h4><p>עשרות מבנים במקביל, עם מעבר מהיר וסינון לכל אתר.</p></div>
-      <div class="feat"><div class="ic">👥</div><h4>משתמשים והרשאות</h4><p>מנהל, משתמש רגיל וקבלנים — כל אחד רואה בדיוק את מה שצריך.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- REPORTS -->
-<section id="reports">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="tag">📈 דוחות</span>
-      <h2>דוחות מקצועיים — מוכנים להצגה</h2>
-      <p>מגוון רחב של דוחות מדויקים, מוכנים לייצוא ולהדפסה — להציג בביטחון מול ההנהלה.</p>
-    </div>
-    <div class="feat-grid">
-      <div class="feat"><div class="ic">🗓️</div><h4>דוח אחזקה מונעת</h4><p>מה תוכנן, מה בוצע ומה באיחור — לכל נכס ומערכת.</p></div>
-      <div class="feat"><div class="ic">🔧</div><h4>דוח קריאות שבר + SLA</h4><p>כל התקלות, זמני הטיפול והעמידה ביעדי ה-SLA.</p></div>
-      <div class="feat"><div class="ic">📦</div><h4>דוח ספר נכסים</h4><p>רשימת הנכסים והמערכות המלאה, עם מצב והיסטוריה.</p></div>
-      <div class="feat"><div class="ic">💰</div><h4>דוח תקציב</h4><p>מוקצה מול בפועל, פילוח קטגוריות וחריגות.</p></div>
-      <div class="feat"><div class="ic">📊</div><h4>ועוד דוחות רבים</h4><p>ספקים, ביצוע לפי מבנה ועוד — לפי מה שהעסק צריך.</p></div>
-      <div class="feat"><div class="ic">📤</div><h4>ייצוא והדפסה</h4><p>כל דוח ל-PDF/הדפסה בלחיצה — מוכן לישיבה.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- CUSTOM (key message) -->
-<section class="alt" id="custom">
-  <div class="wrap">
-    <div class="custom">
-      <div class="glow"></div>
-      <div class="custom-in">
-        <div class="custom-emblem">🧩</div>
-        <span class="tag">✨ הכי חשוב</span>
-        <h2>לא מוצר מדף — מערכת שנתפרת לעסק שלכם</h2>
-        <p>VeriFix אינה תוכנה גנרית. כל עסק יכול להזמין מערכת שמותאמת בדיוק לתהליכי העבודה שלו — השדות, המסכים, הדוחות וההרשאות שלכם. אתם מתארים איך אתם עובדים, ואני בונה את הכלי שמשרת בדיוק את זה.</p>
-        <div class="chips"><span class="chip">מותאם לתהליך שלכם</span><span class="chip">שדות ומסכים משלכם</span><span class="chip">דוחות בהתאמה</span><span class="chip">הרשאות לפי תפקיד</span><span class="chip">מהאפיון ועד ה-production</span></div>
+      <div>
+        <div class="vf-ticket" role="img" aria-label="דוגמה לקריאה שנפתחה מהודעת וואטסאפ: מבנה, קומה, מערכת, סטטוס ומעקב SLA">
+          <div class="vf-tk-top"><b>קריאת שבר</b><span class="vf-tk-id">#1284</span></div>
+          <dl class="vf-tk-rows">
+            <dt>מבנה</dt><dd>בניין המשרדים, קומה 3</dd>
+            <dt>מערכת</dt><dd>מיזוג אוויר</dd>
+            <dt>מקור</dt><dd>וואטסאפ, עם תמונה</dd>
+          </dl>
+          <ol class="vf-tk-steps">
+            <li data-s="2">נפתחה אוטומטית</li>
+            <li data-s="3">שויכה לטכנאי</li>
+            <li data-s="4">טופלה ונסגרה</li>
+          </ol>
+          <div class="vf-sla">עמידה ב-SLA<span>02:14:00</span></div>
+        </div>
+        <p class="vf-note">דוגמה להמחשה. השמות והמספרים אינם נתונים של לקוח.</p>
       </div>
     </div>
+    <ol class="vf-steps">
+      <li class="reveal"><i class="pp-ln" aria-hidden="true"><b></b><b></b></i><span class="pp-st-ic"><img class="pp-gi-img" src="/img/vf/ic-message-160.webp" srcset="/img/vf/ic-message-160.webp 160w, /img/vf/ic-message-240.webp 240w, /img/vf/ic-message-320.webp 320w" sizes="132px" width="160" height="160" alt="" loading="lazy" decoding="async"></span><span><b>שולחים וואטסאפ</b>הודעה רגילה על התקלה, מהטלפון של כל אחד.</span></li>
+      <li class="reveal"><i class="pp-ln" aria-hidden="true"><b></b><b></b></i><span class="pp-st-ic"><img class="pp-gi-img" src="/img/vf/ic-ticket-160.webp" srcset="/img/vf/ic-ticket-160.webp 160w, /img/vf/ic-ticket-240.webp 240w, /img/vf/ic-ticket-320.webp 320w" sizes="132px" width="160" height="160" alt="" loading="lazy" decoding="async"></span><span><b>נפתחת קריאה</b>אוטומטית במערכת, משויכת למבנה הנכון.</span></li>
+      <li class="reveal"><span class="pp-st-ic"><img class="pp-gi-img" src="/img/vf/ic-photo-160.webp" srcset="/img/vf/ic-photo-160.webp 160w, /img/vf/ic-photo-240.webp 240w, /img/vf/ic-photo-320.webp 320w" sizes="132px" width="160" height="160" alt="" loading="lazy" decoding="async"></span><span><b>מצרפים תמונה</b>מצלמים את התקלה ושולחים באותה שיחה.</span></li>
+    </ol>
+    <div class="chips reveal"><span class="chip">וואטסאפ רשמי של Meta</span><span class="chip">פתיחה אוטומטית</span><span class="chip">צירוף תמונה מהטלפון</span><span class="chip">גם טופס ייעודי</span><span class="chip">בלי התקנה</span></div>
   </div>
 </section>
 
-<!-- WHO'S BEHIND -->
-<section>
+<section class="band band-light" id="vf-features">
   <div class="wrap">
-    <div class="sec-head" style="margin-bottom:24px"><span class="tag">👤 מי עומד מאחורי המערכת</span></div>
-    <div class="creator">
-      <img src="../../img/ar-logo.png" alt="עמית רובין — Amit Rubin">
-      <h3>עמית רובין</h3>
-      <div class="en">AMIT RUBIN</div>
-      <p>20 שנה של הובלת תהליכים עסקיים ומערכות ERP. אני בונה מערכות מלאות שרצות בפרודקשן עם משתמשים אמיתיים — קודם מבין את התהליך העסקי, ואז בונה את הכלי שמשרת אותו. VeriFix היא בדיוק זה: מערכת full-stack שנבנתה מקצה לקצה.</p>
+    <div class="sh reveal">
+      <span class="k">מה יש במערכת</span>
+      <h2>כל מחזור החיים של התחזוקה, <em>במערכת אחת</em></h2>
+    </div>
+    <div class="grid-2">
+      <article class="shot-card reveal">
+        <div class="shot" data-cycle style="background:#0d1525"><button class="zoomable" type="button" aria-label="הגדלה של המסך המוצג"><img class="vf-fr on" src="/img/vf/maintenance-640.webp" data-full="/img/vf/maintenance-1280.webp" width="640" height="400" alt="מסך אחזקה מונעת ב-Verifix: מערכות כמו גילוי אש, גנרטורים ומיזוג, עם מספר המשימות וכמה באיחור" loading="lazy" decoding="async"><img class="vf-fr" src="/img/vf/maint-light-640.webp" data-full="/img/vf/maint-light-1166.webp" width="640" height="400" alt="מסך האחזקה המונעת בעיצוב בהיר, עם הלוגו של חברת נמלי ישראל" loading="lazy" decoding="async"></button></div>
+        <div class="shot-body"><h3>אחזקה מונעת</h3><p>תוכניות אחזקה מחזוריות שמתוזמנות לבד לפי נכס ותדירות, עם תזכורות שפותחות את המשימה הבאה בזמן.</p><div class="chips"><span class="chip">תזמון אוטומטי</span><span class="chip">תזכורות</span><span class="chip">סטטוס וביצוע</span></div></div>
+      </article>
+      <article class="shot-card reveal">
+        <div class="shot" data-cycle style="background:#0b1220"><button class="zoomable" type="button" aria-label="הגדלה של המסך המוצג"><img class="vf-fr on" src="/img/vf/assets-640.webp" data-full="/img/vf/assets-1280.webp" width="640" height="400" alt="ספר הנכסים ב-Verifix: כרטיס לכל מערכת עם תמונה ומספר הנכסים" loading="lazy" decoding="async"><img class="vf-fr" src="/img/vf/deep-asset-640.webp?v=3" data-full="/img/vf/deep-asset-1280.webp?v=3" width="640" height="400" alt="איור המחשה: כרטיס נכס דיגיטלי עם זהות, היסטוריה, דוחות וספקים" loading="lazy" decoding="async"></button></div>
+        <div class="shot-body"><h3>נכסים וספקים</h3><p>ספר נכסים עם תמונות והיסטוריה לכל מבנה ומערכת, וספר ספקים שמקושר לקריאות. מהתקלה ועד הנכס והספק שטיפל בה.</p><div class="chips"><span class="chip">ספר נכסים</span><span class="chip">ספר ספקים</span><span class="chip">שיוך לקריאות</span></div></div>
+      </article>
+      <article class="shot-card reveal">
+        <div class="shot" data-cycle style="background:#0b1220"><button class="zoomable" type="button" aria-label="הגדלה של המסך המוצג"><img class="vf-fr on" src="/img/vf/backup-640.webp" data-full="/img/vf/backup-1280.webp" width="640" height="400" alt="מסך הגיבוי ב-Verifix: ייצוא גיבוי מלא ושחזור מקובץ" loading="lazy" decoding="async"><img class="vf-fr" src="/img/vf/reports-640.webp" data-full="/img/vf/reports-1280.webp" width="640" height="400" alt="מסך הדוחות ב-Verifix: סינון לפי סטטוס, מבנה ותאריך, ופתיחת דוח להדפסה או לייצוא PDF" loading="lazy" decoding="async"></button></div>
+        <div class="shot-body"><h3>גיבוי וייצוא</h3><p>גיבוי מלא של כל נתוני המערכת לקובץ אחד, ושחזור מקובץ בכל רגע. וכל דוח נפתח להדפסה או לייצוא PDF.</p><div class="chips"><span class="chip">גיבוי בלחיצה</span><span class="chip">שחזור מקובץ</span></div></div>
+      </article>
+      <article class="shot-card reveal">
+        <div class="shot" style="background:#0b1220"><button class="zoomable" type="button" aria-label="הגדלה של המסך"><img class="vf-fr on" src="/img/vf/support-640.webp" data-full="/img/vf/support-1280.webp" width="640" height="400" alt="מרכז העזרה של Verifix: מדריכים לפי נושא וחיפוש" loading="lazy" decoding="async"></button></div>
+        <div class="shot-body"><h3>מרכז עזרה מובנה</h3><p>מדריכים וחיפוש לכל נושא, מקריאות ועד דוחות, כדי שכל משתמש יסתדר לבד מהיום הראשון.</p><div class="chips"><span class="chip">מדריך לכל נושא</span><span class="chip">חיפוש</span></div></div>
+      </article>
+    </div>
+    <div class="vf-more">
+      <article class="card reveal"><span class="pp-gi"><img class="pp-gi-img" src="/img/vf/ic-sla-160.webp" srcset="/img/vf/ic-sla-160.webp 160w, /img/vf/ic-sla-240.webp 240w" sizes="84px" width="160" height="160" alt="" loading="lazy" decoding="async"></span><h3>קריאות שבר ו-SLA</h3><p>פתיחה מוואטסאפ או מטופס, שיוך ואחריות, סגירה ומדידת עמידה ב-SLA.</p></article>
+      <article class="card reveal"><span class="pp-gi"><img class="pp-gi-img" src="/img/vf/ic-form-160.webp" srcset="/img/vf/ic-form-160.webp 160w, /img/vf/ic-form-240.webp 240w" sizes="84px" width="160" height="160" alt="" loading="lazy" decoding="async"></span><h3>טופס פתיחת קריאה</h3><p>למי שמעדיף טופס, עם צירוף תמונה של התקלה.</p></article>
+      <article class="card reveal"><span class="pp-gi"><img class="pp-gi-img" src="/img/vf/ic-reminders-160.webp" srcset="/img/vf/ic-reminders-160.webp 160w, /img/vf/ic-reminders-240.webp 240w" sizes="84px" width="160" height="160" alt="" loading="lazy" decoding="async"></span><h3>תזכורות</h3><p>למשימות מונעות, לקריאות פתוחות ולחריגות, כדי ששום דבר לא נשכח.</p></article>
+      <article class="card reveal"><span class="pp-gi"><img class="pp-gi-img" src="/img/vf/ic-budget-160.webp" srcset="/img/vf/ic-budget-160.webp 160w, /img/vf/ic-budget-240.webp 240w" sizes="84px" width="160" height="160" alt="" loading="lazy" decoding="async"></span><h3>ניהול תקציב</h3><p>מוקצה מול בפועל לפי קטגוריה ומבנה, עם זיהוי חריגות.</p></article>
+      <article class="card reveal"><span class="pp-gi"><img class="pp-gi-img" src="/img/vf/ic-buildings-160.webp" srcset="/img/vf/ic-buildings-160.webp 160w, /img/vf/ic-buildings-240.webp 240w" sizes="84px" width="160" height="160" alt="" loading="lazy" decoding="async"></span><h3>ריבוי מבנים</h3><p>עשרות מבנים במקביל, עם מעבר מהיר וסינון לכל אתר.</p></article>
+      <article class="card reveal"><span class="pp-gi"><img class="pp-gi-img" src="/img/vf/ic-users-160.webp" srcset="/img/vf/ic-users-160.webp 160w, /img/vf/ic-users-240.webp 240w" sizes="84px" width="160" height="160" alt="" loading="lazy" decoding="async"></span><h3>משתמשים והרשאות</h3><p>מנהל, משתמש וקבלן. כל אחד רואה בדיוק את מה שהוא צריך.</p></article>
     </div>
   </div>
 </section>
 
-<!-- CTA -->
-<section class="cta" id="contact">
-  <div class="cta-content">
-    <h2>רוצים מערכת כזו לעסק שלכם?</h2>
-    <p>מנהלים תחזוקה, נכסים או תפעול? נבנה יחד מערכת שמתאימה בדיוק לכם — קריאות, אחזקה מונעת, SLA, תקציב ודוחות. דברו איתי ונתחיל מאפיון קצר.</p>
-    <div class="cta-row">
-      <a class="btn btn-wa" href="https://wa.me/972527246200?text=%D7%94%D7%99%D7%99%20%D7%A2%D7%9E%D7%99%D7%AA%2C%20%D7%A8%D7%90%D7%99%D7%AA%D7%99%20%D7%90%D7%AA%20VeriFix%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A4%D7%A8%D7%98%D7%99%D7%9D" target="_blank" rel="noopener">💬 וואטסאפ</a>
-      <a class="btn btn-primary" href="mailto:amit@rubinproject.com?subject=VeriFix — פנייה מהאתר">📧 מייל</a>
-      <a class="btn btn-lghost" href="https://github.com/amitrubin10/verifix-showcase" target="_blank" rel="noopener">↗ הפרויקט ב-GitHub</a>
+<section class="band band-light alt" id="vf-deep">
+  <div class="wrap">
+    <div class="sh reveal">
+      <span class="k">צלילה לעומק</span>
+      <h2>לא רק מסכים. <em>תמונת מצב שמדברת.</em></h2>
+      <p>ככה המערכת הופכת נתונים לתובנה: מפת תקינות, כרטיס נכס מלא ומלאי מבוקר.</p>
+    </div>
+    <div class="vf-deep">
+      <figure class="vf-dfig vf-dfig-wide reveal"><button class="zoomable" type="button" data-full="/img/vf/deep-health-1280.webp" data-cap="מפת תקינות קומתית" aria-label="הגדלה: מפת תקינות קומתית"><img src="/img/vf/deep-health-640.webp" srcset="/img/vf/deep-health-640.webp 640w, /img/vf/deep-health-1280.webp 1280w" sizes="(max-width:620px) 92vw, 1100px" width="640" height="303" alt="מפת תקינות קומתית של מבנה, עם אחוזי ביצוע של בדיקות חירום, שנתיות ושוטפות, והתראה על בדיקה שפג תוקפה" loading="lazy" decoding="async"><svg class="vf-fx" data-fx viewBox="0 0 1278 605" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><defs><clipPath id="vfFxBld"><polygon points="468,126 640,90 774,148 774,416 640,472 468,412"/></clipPath><clipPath id="vfFxLens"><circle cx="1096" cy="400" r="66"/></clipPath><linearGradient id="vfFxBeam" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5dffc0" stop-opacity="0"/><stop offset=".5" stop-color="#b8ffe4" stop-opacity=".85"/><stop offset="1" stop-color="#5dffc0" stop-opacity="0"/></linearGradient><radialGradient id="vfFxRed"><stop offset="0" stop-color="#ff3b3b" stop-opacity=".9"/><stop offset="1" stop-color="#ff3b3b" stop-opacity="0"/></radialGradient><linearGradient id="vfFxGlint" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".55"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient></defs><path class="vf-fx-flow vf-fx-halo" d="M337 200 H392 Q400 200 400 208 V259 Q400 267 408 267 H462" pathLength="100" stroke="#9eeaff" style="animation-delay:0s"/><path class="vf-fx-flow" d="M337 200 H392 Q400 200 400 208 V259 Q400 267 408 267 H462" pathLength="100" stroke="#9eeaff" style="animation-delay:0s"/><path class="vf-fx-flow vf-fx-halo" d="M337 200 H392 Q400 200 400 208 V259 Q400 267 408 267 H462" pathLength="100" stroke="#9eeaff" style="animation-delay:-1.4s"/><path class="vf-fx-flow" d="M337 200 H392 Q400 200 400 208 V259 Q400 267 408 267 H462" pathLength="100" stroke="#9eeaff" style="animation-delay:-1.4s"/><path class="vf-fx-flow vf-fx-halo" d="M302 467 H392 Q400 467 400 459 V298 Q400 290 408 290 H462" pathLength="100" stroke="#ff8f8f" style="animation-delay:0s"/><path class="vf-fx-flow" d="M302 467 H392 Q400 467 400 459 V298 Q400 290 408 290 H462" pathLength="100" stroke="#ff8f8f" style="animation-delay:0s"/><path class="vf-fx-flow vf-fx-halo" d="M302 467 H392 Q400 467 400 459 V298 Q400 290 408 290 H462" pathLength="100" stroke="#ff8f8f" style="animation-delay:-1.4s"/><path class="vf-fx-flow" d="M302 467 H392 Q400 467 400 459 V298 Q400 290 408 290 H462" pathLength="100" stroke="#ff8f8f" style="animation-delay:-1.4s"/><path class="vf-fx-flow vf-fx-halo" d="M785 338 H947 Q955 338 955 330 V163 Q955 155 963 155 H1027" pathLength="100" stroke="#9eeaff" style="animation-delay:0s"/><path class="vf-fx-flow" d="M785 338 H947 Q955 338 955 330 V163 Q955 155 963 155 H1027" pathLength="100" stroke="#9eeaff" style="animation-delay:0s"/><path class="vf-fx-flow vf-fx-halo" d="M785 338 H947 Q955 338 955 330 V163 Q955 155 963 155 H1027" pathLength="100" stroke="#9eeaff" style="animation-delay:-1.4s"/><path class="vf-fx-flow" d="M785 338 H947 Q955 338 955 330 V163 Q955 155 963 155 H1027" pathLength="100" stroke="#9eeaff" style="animation-delay:-1.4s"/><path class="vf-fx-flow vf-fx-halo" d="M902 338 V412 Q902 420 910 420 H995" pathLength="100" stroke="#9eeaff" style="animation-delay:0s"/><path class="vf-fx-flow" d="M902 338 V412 Q902 420 910 420 H995" pathLength="100" stroke="#9eeaff" style="animation-delay:0s"/><path class="vf-fx-flow vf-fx-halo" d="M902 338 V412 Q902 420 910 420 H995" pathLength="100" stroke="#9eeaff" style="animation-delay:-1.4s"/><path class="vf-fx-flow" d="M902 338 V412 Q902 420 910 420 H995" pathLength="100" stroke="#9eeaff" style="animation-delay:-1.4s"/><g clip-path="url(#vfFxBld)"><rect class="vf-fx-scan" x="460" y="-22" width="320" height="44" fill="url(#vfFxBeam)"/></g><ellipse class="vf-fx-warn" cx="640" cy="318" rx="160" ry="46" fill="url(#vfFxRed)"/><circle class="vf-fx-ring" cx="905" cy="222" r="17"/><circle class="vf-fx-ring" cx="905" cy="222" r="17" style="animation-delay:-1s"/><g clip-path="url(#vfFxLens)"><rect class="vf-fx-glint" x="990" y="320" width="34" height="170" fill="url(#vfFxGlint)" transform="rotate(18 1007 405)"/></g></svg></button><figcaption><b>מפת תקינות קומתית.</b> כל מבנה קומה אחרי קומה, עם התראות על בדיקות שפג תוקפן ודוחות רגולטוריים.</figcaption></figure>
+      <figure class="vf-dfig reveal"><button class="zoomable" type="button" data-full="/img/vf/deep-asset-1280.webp?v=3" data-cap="כרטיס נכס דיגיטלי" aria-label="הגדלה: כרטיס נכס דיגיטלי"><img src="/img/vf/deep-asset-640.webp?v=3" srcset="/img/vf/deep-asset-640.webp?v=3 640w, /img/vf/deep-asset-1280.webp?v=3 1280w" sizes="(max-width:620px) 92vw, 640px" width="640" height="310" alt="כרטיס נכס דיגיטלי של גנרטור: תעודת זהות, היסטוריית טיפולים, ארכיון דוחות וניהול ספקים" loading="lazy" decoding="async"><svg class="vf-fx" data-fx viewBox="0 0 1251 606" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><defs><clipPath id="vfFxFrame"><rect x="436" y="184" width="400" height="328" rx="8"/></clipPath><linearGradient id="vfFxHolo" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6fe9ff" stop-opacity="0"/><stop offset=".55" stop-color="#b8f6ff" stop-opacity=".5"/><stop offset="1" stop-color="#6fe9ff" stop-opacity="0"/></linearGradient></defs><g clip-path="url(#vfFxFrame)"><rect class="vf-fx-holo" x="430" y="-14" width="412" height="28" fill="url(#vfFxHolo)"/></g><rect class="vf-fx-edge" x="432" y="180" width="408" height="336" rx="10"/><circle class="vf-fx-tl" cx="80" cy="405" r="16" style="animation-delay:0s"/><circle class="vf-fx-tl" cx="80" cy="455" r="16" style="animation-delay:1.2s"/><circle class="vf-fx-tl" cx="80" cy="505" r="16" style="animation-delay:2.4s"/></svg></button><figcaption><b>כרטיס נכס דיגיטלי.</b> לחיצה על נכס פותחת את כל מה שידוע עליו: זהות, היסטוריה, דוחות וספקים.</figcaption></figure>
+      <figure class="vf-dfig reveal"><button class="zoomable" type="button" data-full="/img/vf/deep-inventory-420.webp" data-cap="בקרת מלאי וציוד" aria-label="הגדלה: בקרת מלאי וציוד"><img src="/img/vf/deep-inventory-420.webp" width="420" height="417" alt="בקרת מלאי של ערכת עזרה ראשונה: כמות נדרשת מול כמות בפועל, וסטטוס תקינות לכל פריט" loading="lazy" decoding="async"><svg class="vf-fx" data-fx viewBox="0 0 420 417" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><defs><clipPath id="vfFxHolo2"><polygon points="182,24 300,16 300,118 182,128"/></clipPath><linearGradient id="vfFxGl2" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".5"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient></defs><rect class="vf-fx-row" x="16" y="-13" width="384" height="26" rx="4"/><rect class="vf-fx-miss" x="16" y="337" width="384" height="25" rx="4"/><g clip-path="url(#vfFxHolo2)"><rect class="vf-fx-glint2" x="150" y="10" width="26" height="130" fill="url(#vfFxGl2)" transform="rotate(14 163 75)"/></g></svg></button><figcaption><b>בקרת מלאי וציוד.</b> כמות בפועל מול נדרש לכל פריט, עם סטטוס תקינות.</figcaption></figure>
+    </div>
+    <p class="vf-note-l">איורי המחשה של יכולות המערכת.</p>
+  </div>
+</section>
+
+<section class="band band-light" id="vf-reports">
+  <div class="wrap">
+    <div class="sh reveal">
+      <span class="k">דשבורד ודוחות</span>
+      <h2>תמונת מצב אחת, <em>ודוחות שמוכנים לישיבה</em></h2>
+      <p>קריאות פתוחות, משימות מונעות, מד בריאות מבנה, ביצוע לפי מערכת ותקציב. במסך כהה או בהיר. המספרים כאן מהמסכים שבצילום.</p>
+    </div>
+    <div data-tour>
+    <div class="pp-kpis reveal" aria-label="מספרים מהמסכים שבצילום">
+      <div class="pp-kpi" style="--c:#1f3a5f"><small>מערכות במעקב</small><b data-count="10">10</b><span>דפיברילטורים, UPS, מיזוג ועוד</span></div>
+      <div class="pp-kpi" style="--c:#08704f"><small>משימות אחזקה מונעת</small><b data-count="46" data-delay="120">46</b><span>מתוזמנות, עם סטטוס לכל אחת</span></div>
+      <div class="pp-kpi" style="--c:#1f3a5f"><small>קטגוריות תקציב</small><b data-count="9" data-delay="240">9</b><span>מוקצה מול בפועל, לכל קטגוריה</span></div>
+      <div class="pp-kpi" style="--c:#08704f"><small>מודולים במערכת</small><b data-count="8" data-delay="360">8</b><span>מקריאות שבר ועד דוחות</span></div>
+    </div>
+    <div class="vf-dash">
+      <figure class="vf-frame reveal"><button class="zoomable" style="background:#0b1220" type="button" data-full="/img/vf/dash-dark-1280.webp" data-cap="הדשבורד של Verifix במסך כהה: מד בריאות מבנה וביצוע לפי מערכת" aria-label="הגדלה: הדשבורד של Verifix במסך כהה: מד בריאות מבנה וביצוע לפי מערכת"><i class="pp-zone" data-i="1" style="left:44%;top:13.2%;width:41.4%;height:15.1%" aria-hidden="true"></i><i class="pp-zone" data-i="3" style="left:1.5%;top:61.7%;width:83.9%;height:30.6%" aria-hidden="true"></i><img src="/img/vf/dash-dark-640.webp" srcset="/img/vf/dash-dark-640.webp 640w, /img/vf/dash-dark-1280.webp 1280w" sizes="(max-width:620px) 92vw, 46vw" width="640" height="341" alt="הדשבורד של Verifix במסך כהה: מד בריאות מבנה וביצוע לפי מערכת" loading="lazy" decoding="async"></button><figcaption>מסך כהה</figcaption></figure>
+      <figure class="vf-frame reveal"><button class="zoomable" style="background:#eef3f9" type="button" data-full="/img/vf/maint-light-1166.webp" data-cap="מסך האחזקה המונעת של Verifix בעיצוב בהיר, עם הלוגו של חברת נמלי ישראל" aria-label="הגדלה: מסך האחזקה המונעת של Verifix בעיצוב בהיר, עם הלוגו של חברת נמלי ישראל"><i class="pp-zone" data-i="0" style="left:5.8%;top:31.5%;width:70.4%;height:66.9%" aria-hidden="true"></i><i class="pp-zone" data-i="2" style="left:78.9%;top:31.8%;width:15.8%;height:4.4%" aria-hidden="true"></i><img src="/img/vf/maint-light-640.webp" srcset="/img/vf/maint-light-640.webp 640w, /img/vf/maint-light-1166.webp 1166w" sizes="(max-width:620px) 92vw, 46vw" width="640" height="441" alt="מסך האחזקה המונעת של Verifix בעיצוב בהיר, עם הלוגו של חברת נמלי ישראל" loading="lazy" decoding="async"></button><figcaption>מסך בהיר</figcaption></figure>
+    </div>
+    <ul class="checks grid-2 reveal">
+      <li data-tour-i="0"><svg class="ico"><use href="#i-check"/></svg><span><i class="pp-tn" aria-hidden="true">1</i><b>דוח אחזקה מונעת:</b> מה תוכנן, מה בוצע ומה באיחור, לכל נכס ומערכת.</span></li>
+      <li data-tour-i="1"><svg class="ico"><use href="#i-check"/></svg><span><i class="pp-tn" aria-hidden="true">2</i><b>דוח קריאות שבר ו-SLA:</b> כל התקלות, זמני הטיפול והעמידה ביעדים.</span></li>
+      <li data-tour-i="2"><svg class="ico"><use href="#i-check"/></svg><span><i class="pp-tn" aria-hidden="true">3</i><b>דוח ספר נכסים:</b> כל הנכסים והמערכות, עם מצב והיסטוריה.</span></li>
+      <li data-tour-i="3"><svg class="ico"><use href="#i-check"/></svg><span><i class="pp-tn" aria-hidden="true">4</i><b>דוח תקציב:</b> מוקצה מול בפועל, לפי קטגוריה, עם חריגות.</span></li>
+      <li><svg class="ico"><use href="#i-check"/></svg><span><b>ייצוא והדפסה:</b> כל דוח ל-PDF בלחיצה, מוכן לישיבה.</span></li>
+      <li><svg class="ico"><use href="#i-check"/></svg><span><b>ועוד:</b> ספקים, ביצוע לפי מבנה, ומה שהעסק צריך.</span></li>
+    </ul>
+    </div>
+    <div class="vf-mob reveal">
+      <img src="/img/vf/mobile-420.webp" srcset="/img/vf/mobile-420.webp 420w, /img/vf/mobile-720.webp 720w" sizes="(max-width:620px) 70vw, 300px" width="420" height="525" alt="משתמש מחזיק טלפון ובו הדשבורד של Verifix" loading="lazy" decoding="async">
+      <div>
+        <span class="k">גם מהנייד</span>
+        <h3>כל המערכת בכיס</h3>
+        <p>צופים בדשבורד, פותחים קריאות ומקבלים עדכונים, ישירות מהטלפון, בכל מקום ובכל זמן.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer>
-  <div class="foot-in">
-    <div class="foot-brand">
-      <img src="../../img/logo-reverse.png" alt="Rubin Project">
-      <div><div class="bn" dir="ltr">Rubin <span class="b">Project</span></div>
-      <div class="tg">פתרונות BI, אוטומציה ותוכנה לעסקים</div></div>
+<section class="band band-deep stmt-band" aria-labelledby="vf-stmt-h">
+  <div class="wrap">
+    <div class="stmt reveal" data-sgo>
+      <p class="k">בכל מקום</p>
+      <h2 id="vf-stmt-h">תמונת המצב מגיעה לכל מי <span class="pp-hl">שאחראי<svg class="pp-ul" viewBox="0 0 100 12" preserveAspectRatio="none" aria-hidden="true"><path pathLength="100" d="M2 8C24 3 52 11 98 4"/></svg></span>.</h2>
+      <div class="sgo" aria-hidden="true">
+        <div class="sgo-src"><img src="/img/vf/sgo-dash.webp" width="960" height="540" alt="" loading="lazy" decoding="async"></div>
+        <div class="sgo-dev sgo-lap"><div class="sgo-scr"><img class="sgo-img" src="/img/studio/sgo-lap.webp" width="760" height="452" alt="" loading="lazy" decoding="async"><div class="sgo-win"><i class="sgo-ui sgo-on"></i><img class="sgo-c sgo-on" src="/img/vf/sgo-dash.webp" width="960" height="540" alt="" loading="lazy" decoding="async"></div></div><span>במחשב</span></div>
+        <div class="sgo-dev sgo-ph"><div class="sgo-scr"><img class="sgo-img" src="/img/studio/sgo-ph.webp" width="360" height="730" alt="" loading="lazy" decoding="async"><div class="sgo-win"><i class="sgo-ui sgo-on"></i><div class="sgo-bub sgo-on"><img class="sgo-c" src="/img/vf/sgo-dash.webp" width="960" height="540" alt="" loading="lazy" decoding="async"><i></i></div></div></div><span>בטלפון</span></div>
+        <div class="sgo-dev sgo-bk"><div class="sgo-scr"><img class="sgo-img" src="/img/studio/sgo-bk.webp" width="760" height="449" alt="" loading="lazy" decoding="async"><div class="sgo-win"><img class="sgo-c sgo-on" src="/img/vf/sgo-dash.webp" width="960" height="540" alt="" loading="lazy" decoding="async"></div></div><span>דוח מודפס לישיבה</span></div>
+        <div class="sgo-dev sgo-tv"><div class="sgo-scr"><img class="sgo-img" src="/img/studio/sgo-tv.webp" width="900" height="506" alt="" loading="lazy" decoding="async"><div class="sgo-win"><img class="sgo-c sgo-on" src="/img/vf/sgo-dash.webp" width="960" height="540" alt="" loading="lazy" decoding="async"></div></div><span>על המסך בחדר הישיבות</span></div>
+        <i class="sgo-fly"><img src="/img/vf/sgo-dash.webp" width="960" height="540" alt="" loading="lazy" decoding="async"></i>
+        <i class="sgo-fly"><img src="/img/vf/sgo-dash.webp" width="960" height="540" alt="" loading="lazy" decoding="async"></i>
+        <i class="sgo-fly"><img src="/img/vf/sgo-dash.webp" width="960" height="540" alt="" loading="lazy" decoding="async"></i>
+        <i class="sgo-fly"><img src="/img/vf/sgo-dash.webp" width="960" height="540" alt="" loading="lazy" decoding="async"></i>
+      </div>
     </div>
-    <div class="foot-copy">הופכים נתונים להחלטות. · © Rubin Project</div>
-    <div class="foot-links">
-      <a href="/">דף הבית</a>
-      <a href="/#portfolio">תיק עבודות</a>
-      <a href="/card/">כרטיס דיגיטלי</a>
-      <a href="https://wa.me/972527246200" target="_blank" rel="noopener">וואטסאפ</a>
-      <a href="mailto:amit@rubinproject.com">amit@rubinproject.com</a>
+  </div>
+</section>
+
+<section class="band band-light alt" id="vf-custom">
+  <div class="wrap vf-custom">
+    <div class="sh reveal">
+      <span class="k">הכי חשוב</span>
+      <h2>לא מוצר מדף. <em>מערכת שנתפרת לעסק.</em></h2>
+      <p>Verifix נבנתה לפי תהליך העבודה של הלקוח: השדות, המסכים, הדוחות וההרשאות. אתם מתארים איך אתם עובדים, ואני בונה את הכלי שמשרת בדיוק את זה, מהאפיון ועד מערכת שרצה בפרודקשן.</p>
+      <div class="vf-links">
+        <a class="tlink" href="/projects/rubin360/">איך בונים מערכת כזו: RUBIN 360 ←</a>
+        <a class="tlink" href="https://github.com/amitrubin10/verifix-showcase" target="_blank" rel="noopener">הפרויקט ב-GitHub ←</a>
+      </div>
     </div>
+    <ul class="checks card reveal">
+      <li><svg class="ico"><use href="#i-check"/></svg><span>מותאם לתהליך שלכם, לא לתבנית</span></li>
+      <li><svg class="ico"><use href="#i-check"/></svg><span>שדות, מסכים ודוחות משלכם</span></li>
+      <li><svg class="ico"><use href="#i-check"/></svg><span>הרשאות לפי תפקיד</span></li>
+      <li><svg class="ico"><use href="#i-check"/></svg><span>נבנתה על ידי עמית רובין, אחרי 20 שנה של הובלת תהליכים עסקיים ומערכות ERP</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="band band-deep p-end">
+  <div class="wrap">
+    <div class="sh reveal">
+      <span class="k">הצעד הבא</span>
+      <h2>רוצים מערכת כזו <em>לעסק שלכם?</em></h2>
+      <p>מנהלים תחזוקה, נכסים או תפעול? נבנה יחד מערכת שמתאימה לכם בדיוק. מתחילים בשיחת אפיון קצרה.</p>
+    </div>
+    <div class="p-end-actions reveal">
+      <a class="btn btn-solid btn-lg" href="/#contact" data-track="cta_end">לשיחת אפיון</a>
+      <a class="btn btn-ghost btn-lg" href="https://wa.me/972527246200?text=%D7%94%D7%99%D7%99%20%D7%A2%D7%9E%D7%99%D7%AA%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%A2%D7%9E%D7%95%D7%93%20%D7%A9%D7%9C%20Verifix" target="_blank" rel="noopener" data-track="whatsapp_end"><svg class="ico"><use href="#i-wa"/></svg>וואטסאפ</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="/"><img src="/img/logo-reverse.webp" width="123" height="120" alt=""><span dir="ltr">Rubin <span class="b">Project</span></span></a>
+        <p class="foot-tag"><b class="foot-slogan">הופכים נתונים להחלטות.</b>פתרונות BI, אוטומציה ותוכנה בהתאמה אישית לעסקים ולארגונים.</p>
+      </div>
+      <div>
+        <h4>האתר</h4>
+        <ul><li><a href="/#services">שירותים</a></li><li><a href="/#portfolio">תוכנות ומוצרים</a></li><li><a href="/#process">איך עובדים</a></li><li><a href="/#faq">שאלות נפוצות</a></li></ul>
+      </div>
+      <div>
+        <h4>עוד</h4>
+        <ul><li><a href="/card/" target="_blank" rel="noopener">כרטיס דיגיטלי</a></li><li><a href="https://evenbina.co.il/" target="_blank" rel="noopener">אבן בינה</a></li><li><a href="https://github.com/amitrubin10" target="_blank" rel="noopener">GitHub</a></li><li><a href="https://www.linkedin.com/in/amit-rubin-316b83357/" target="_blank" rel="noopener">LinkedIn</a></li></ul>
+      </div>
+      <div>
+        <h4>קשר</h4>
+        <ul><li><a href="https://wa.me/972527246200" target="_blank" rel="noopener" dir="ltr">052-7246200</a></li><li><a href="mailto:amit@rubinproject.com">amit@rubinproject.com</a></li></ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Rubin Project · עמית רובין</span>
+      <nav aria-label="מידע משפטי"><a href="/privacy/" target="_blank" rel="noopener">מדיניות פרטיות</a><a href="/accessibility/" target="_blank" rel="noopener">הצהרת נגישות</a></nav>
+    </div>
+    <p class="foot-note">האתר משתמש ב-Google Analytics וב-Microsoft Clarity כדי למדוד ולשפר את השימוש בו. פרטים ואפשרות לסרב ב<a href="/privacy/#analytics" target="_blank" rel="noopener">מדיניות הפרטיות</a>.</p>
   </div>
 </footer>
+<aside class="dock" id="dock" aria-label="קיצור לשיחת אפיון" inert><span>רוצים מערכת כזו?</span><a class="btn" href="/#contact" data-track="cta_dock">בואו נדבר</a></aside>
+<dialog class="lb" id="lb" aria-label="תצוגה מוגדלת"><button class="lb-close" type="button" aria-label="סגירה">×</button><div class="lb-body"></div></dialog>
+<div class="cglow" id="cglow" aria-hidden="true"></div>
+
 <script>
-  if('scrollRestoration' in history) history.scrollRestoration='manual';
-  window.addEventListener('load',function(){ if(!location.hash) window.scrollTo(0,0); });
+// מסכים שמתחלפים בכרטיסי "מה יש במערכת": כל 2.8 שניות, רק כשהכרטיס על המסך. נעצר בכפתור העצירה ובפחות תנועה
+document.addEventListener('DOMContentLoaded',function(){
+  const M=window.rpMotion||{reduce:false,paused:false,onChange(){}};
+  document.querySelectorAll('.shot[data-cycle]').forEach((shot,k)=>{
+    const fr=[...shot.querySelectorAll('.vf-fr')];if(fr.length<2)return;
+    let i=0,timer=0,inView=false;
+    const step=()=>{fr[i].classList.remove('on');i=(i+1)%fr.length;fr[i].classList.add('on');};
+    const run=()=>{if(timer||M.reduce||M.paused||!inView)return;timer=setInterval(step,2800);};
+    const stop=()=>{clearInterval(timer);timer=0;};
+    // הכרטיסים מתחלפים בהפרש קטן זה מזה, ולא כולם יחד
+    new IntersectionObserver(es=>{inView=es[0].isIntersecting;if(inView)setTimeout(run,k*700);else stop();},{threshold:.3}).observe(shot);
+    M.onChange(p=>{if(p)stop();else run();});
+  });
+});
+
+// מוואטסאפ לקריאה: ההודעות מופיעות אחת אחרי השנייה, הקריאה נבנית ועוברת שלבים, ואז הכול חוזר.
+// רץ רק כשהסקשן על המסך. בעצירה ובפחות תנועה מוצג המצב הסופי.
+// מחכים ל-DOMContentLoaded, כי project.js נטען עם defer ומגדיר את window.rpMotion רק אז
+document.addEventListener('DOMContentLoaded',function(){
+  const flow=document.getElementById('vfFlow');
+  if(!flow||!('IntersectionObserver' in window))return;
+  const steps=[...flow.querySelectorAll('.vf-tk-steps li')];
+  const M=window.rpMotion||{reduce:false,paused:false,onChange(){}};
+  const show=s=>{flow.dataset.step=s;steps.forEach(li=>li.classList.toggle('on',s>=+li.dataset.s));};
+  // זמן כל שלב במילישניות. השלב האחרון נשאר על המסך יותר זמן
+  const T=[700,1300,1300,1500,1700,3200];
+  let step=0,timer=0,inView=false;
+  const stop=()=>{clearTimeout(timer);timer=0;};
+  const next=()=>{step=(step+1)%T.length;show(Math.min(step,4));timer=setTimeout(next,T[step]);};
+  const start=()=>{if(timer||M.reduce||M.paused||!inView)return;step=0;show(0);timer=setTimeout(next,T[0]);};
+  if(M.reduce||M.paused)show(4);else show(0);
+  new IntersectionObserver(es=>{inView=es[0].isIntersecting;if(inView)start();else stop();},{threshold:.35}).observe(flow);
+  M.onChange(p=>{if(p){stop();show(4);}else start();});
+});
 </script>
 </body>
 </html>

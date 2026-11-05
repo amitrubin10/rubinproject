@@ -1,0 +1,373 @@
+/* ============================================================
+   עמודי הפרויקטים (landing/projects/*): המסגרת המשותפת
+   הערכים מועתקים מדף הבית (index.html). שינוי כאן חל על כל עמודי הפרויקטים.
+   כל עמוד מגדיר את צבע המוצר שלו ב-:root:
+     --prod (גרפיקה), --prod-ink (טקסט על רקע בהיר, AA), --prod-deep (על רקע כהה)
+   CSS שייחודי לעמוד אחד נכתב בעמוד עצמו, תחת קידומת של המוצר.
+   ============================================================ */
+:root{
+  --paper:#e8eff8; --paper-2:#dce6f3; --panel:#f3f7fc; --edge:#c9d6e8; --edge-2:#d9e3f0;
+  --ink:#0d1626; --ink-2:#2c384d; --dim:#526077;
+  --deep:#0b1220; --deep-2:#111a2c; --deep-3:#17233a; --deep-ink:#e9eff7; --deep-dim:#9aa7bd; --deep-edge:#22304a;
+  --acc:#1f5fd6; --acc-ink:#1a4fb4; --acc-2:#08637f;
+  --acc-on-deep:#6fa4ff; --acc2-on-deep:#3fc4e0;
+  --wash1:rgba(31,95,214,.09); --wash2:rgba(18,137,171,.09);
+  --live:#2fbf86;
+  --prod:#1f5fd6; --prod-ink:#1a4fb4; --prod-deep:#6fa4ff;
+  --r-sm:10px; --r:16px; --r-lg:24px;
+  --shadow:0 1px 2px rgba(13,22,38,.05),0 14px 34px rgba(13,22,38,.07);
+  --shadow-lg:0 2px 6px rgba(2,6,16,.4),0 34px 80px rgba(2,6,16,.5);
+  --maxw:1200px; --gutter:clamp(18px,4.5vw,44px);
+  --fs-h2:clamp(1.75rem,3.3vw,2.5rem); --fs-lead:clamp(1.06rem,1.35vw,1.2rem);
+  --font-head:'Frank Ruhl Libre',Georgia,'Times New Roman',serif;
+  --font-body:'Assistant','Segoe UI',system-ui,-apple-system,sans-serif;
+  --font-mono:'JetBrains Mono','Assistant',ui-monospace,Consolas,monospace;
+  --ease:cubic-bezier(.22,1,.36,1);
+  --dip:clamp(22px,3.4vw,50px);
+  --nav-h:72px; --peek:34px;
+  --edge-x:clamp(var(--gutter),7vw,200px);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{font-family:var(--font-body);font-size:17px;line-height:1.7;background:var(--paper);color:var(--ink);overflow-x:hidden;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+a{color:inherit;text-decoration:none}
+img,svg{display:block;max-width:100%}
+/* בלי זה, תמונה עם width/height ב-HTML שמוקטנת ב-max-width שומרת על הגובה המקורי ומתעוותת */
+img{height:auto}
+button{font:inherit;color:inherit}
+h1,h2,h3{font-family:var(--font-head);line-height:1.18;text-wrap:balance;letter-spacing:-.2px}
+p{text-wrap:pretty}
+.ico{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;flex:none}
+:focus-visible{outline:2px solid var(--acc);outline-offset:3px;border-radius:6px}
+.band-deep :focus-visible,.p-hero :focus-visible{outline-color:var(--acc-on-deep)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.skip{position:absolute;top:-80px;inset-inline-start:16px;z-index:300;background:var(--ink);color:#fff;padding:10px 18px;border-radius:var(--r-sm);font-weight:700;transition:top .2s}
+.skip:focus{top:12px}
+.wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter)}
+
+/* פסים */
+.band{position:relative;padding-block:clamp(66px,8vw,108px)}
+.band-light{background:radial-gradient(42% 46% at 92% 6%,var(--wash1),transparent 64%),radial-gradient(38% 42% at 4% 96%,var(--wash2),transparent 62%),var(--paper)}
+.band-light.alt{background:radial-gradient(46% 60% at 4% 0%,var(--wash1),transparent 66%),radial-gradient(40% 50% at 96% 100%,var(--wash2),transparent 62%),var(--paper-2)}
+.band-deep{background:radial-gradient(50% 70% at 90% 0%,color-mix(in srgb,var(--prod) 14%,transparent),transparent 66%),var(--deep);color:var(--deep-ink)}
+
+/* כותרות סקשן */
+.sh{max-width:800px;margin-bottom:clamp(32px,4vw,48px)}
+.k{display:inline-flex;align-items:center;gap:10px;font-size:14px;font-weight:700;color:var(--prod-ink);margin-bottom:14px}
+.k::before{content:"";width:24px;height:2px;border-radius:2px;background:currentColor}
+.band-deep .k,.p-hero .k{color:var(--prod-deep)}
+.sh h2{font-size:var(--fs-h2);font-weight:700}
+.sh p{margin-top:14px;max-width:62ch;font-size:var(--fs-lead);color:var(--dim)}
+.band-deep .sh p{color:var(--deep-dim)}
+.sh h2 em{font-style:normal;color:var(--prod-ink)}
+.band-deep .sh h2 em{color:var(--prod-deep)}
+
+/* כפתורים */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;border-radius:999px;font-weight:800;font-size:15.5px;padding:12px 24px;border:1px solid transparent;cursor:pointer;white-space:nowrap;transition:transform .2s var(--ease),box-shadow .2s,background-color .2s,border-color .2s,color .2s}
+.btn .ico{width:19px;height:19px}
+.btn-solid{background:var(--acc);color:#fff;box-shadow:0 6px 18px rgba(31,95,214,.28)}
+.btn-solid:hover{background:var(--acc-ink);transform:translateY(-1px);box-shadow:0 10px 26px rgba(31,95,214,.36)}
+.btn-ghost{background:transparent;color:var(--ink);border-color:var(--edge)}
+.btn-ghost:hover{border-color:var(--acc);color:var(--acc-ink)}
+.btn-lg{font-size:16.5px;padding:15px 30px}
+.band-deep .btn-solid,.p-hero .btn-solid{background:var(--acc-on-deep);color:var(--deep);box-shadow:0 8px 26px rgba(111,164,255,.25)}
+.band-deep .btn-solid:hover,.p-hero .btn-solid:hover{background:#8db8ff}
+.band-deep .btn-ghost,.p-hero .btn-ghost{color:var(--deep-ink);border-color:var(--deep-edge)}
+.band-deep .btn-ghost:hover,.p-hero .btn-ghost:hover{border-color:var(--acc-on-deep);color:#fff}
+.tlink{display:inline-flex;align-items:center;gap:6px;font-weight:800;color:var(--acc-ink)}
+.tlink:hover{text-decoration:underline;text-underline-offset:4px}
+.band-deep .tlink{color:var(--acc-on-deep)}
+
+/* ניווט: אותו עיצוב כמו בדף הבית. הפריטים מובילים לסקשנים של העמוד */
+.nav{position:sticky;top:0;z-index:100;background:color-mix(in srgb,var(--panel) 86%,transparent);backdrop-filter:saturate(1.4) blur(14px);-webkit-backdrop-filter:saturate(1.4) blur(14px);border-bottom:1px solid var(--edge)}
+.nav-in{display:flex;align-items:center;gap:26px;height:72px;max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter)}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:19px;letter-spacing:-.3px;color:var(--ink);flex:none}
+.brand img{width:41px;height:40px}
+.brand .b{color:var(--acc)}
+.nav-links{display:flex;align-items:center;gap:24px;font-size:15.5px;font-weight:600;white-space:nowrap}
+.nav-links > a{color:var(--ink-2);transition:color .15s}
+.nav-links > a{position:relative}
+.nav-links > a:hover,.nav-links > a.is-cur{color:var(--acc-ink)}
+.nav-links > a.is-cur::after{content:"";position:absolute;inset-inline:0;bottom:-8px;height:2px;border-radius:2px;background:var(--prod)}
+.nav-back{display:inline-flex;align-items:center;gap:6px}
+.nav-cta{display:flex;align-items:center;gap:10px;margin-inline-start:auto}
+.nav-cta .btn{padding:10px 20px;font-size:15px}
+.burger{display:none;background:none;border:1px solid var(--edge);border-radius:12px;width:46px;height:46px;cursor:pointer;align-items:center;justify-content:center;color:var(--ink)}
+.nav-wa-m{display:none}
+@media(min-width:921px){.nav-in{max-width:none;padding-inline:var(--edge-x)}}
+
+/* Hero של עמוד פרויקט: טקסט מימין, ומשמאל קולאז' של צילומי מסך אמיתיים בשורות מוטות שנעות, כמו בדף הבית ובדף הסטודיו */
+.p-hero{position:relative;overflow:hidden;background:radial-gradient(52% 70% at 88% 6%,color-mix(in srgb,var(--prod) 20%,transparent),transparent 64%),radial-gradient(60% 80% at 6% 100%,rgba(31,95,214,.18),transparent 62%),var(--deep);color:var(--deep-ink);padding-block:clamp(36px,6vh,96px) calc(clamp(36px,6vh,96px) + var(--dip));min-height:calc(100svh - var(--nav-h) - var(--peek));display:flex;align-items:center}
+.p-hero::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.55;background-image:linear-gradient(var(--deep-edge) 1px,transparent 1px),linear-gradient(90deg,var(--deep-edge) 1px,transparent 1px);background-size:54px 54px;-webkit-mask-image:radial-gradient(ellipse 70% 80% at 30% 30%,#000,transparent 72%);mask-image:radial-gradient(ellipse 70% 80% at 30% 30%,#000,transparent 72%)}
+.p-hero-in{position:relative;z-index:2;width:100%}
+.p-hero-copy{max-width:600px}
+@media(min-width:921px){.p-hero-in.wrap{max-width:none;padding-inline-start:var(--edge-x)}}
+.p-crumb{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:700;color:var(--deep-dim);margin-bottom:18px}
+.p-crumb a:hover{color:#fff;text-decoration:underline;text-underline-offset:3px}
+.p-hero h1{font-weight:900;color:#fff;font-size:clamp(2.4rem,min(5.4vw,8.6vh),4.4rem);line-height:1.06;letter-spacing:-.8px}
+.p-hero h1 .p-name{display:block;direction:ltr;text-align:right}
+.p-hero h1 em{display:block;font-style:normal;font-size:.56em;line-height:1.2;margin-top:10px;color:var(--prod-deep);letter-spacing:-.3px}
+.p-lead{margin-top:clamp(12px,2.4vh,20px);max-width:46ch;font-size:clamp(16.5px,1.45vw,19.5px);color:var(--deep-dim)}
+.p-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:clamp(18px,3.4vh,30px)}
+.proof{display:inline-flex;align-items:center;gap:10px;margin-top:clamp(14px,3vh,26px);font-size:14.5px;font-weight:600;color:var(--deep-ink);padding:8px 14px 8px 16px;border:1px solid var(--deep-edge);border-radius:999px;background:rgba(255,255,255,.03)}
+.proof .dot{width:8px;height:8px;border-radius:50%;background:var(--live);box-shadow:0 0 0 4px rgba(47,191,134,.18);flex:none}
+.proof b{color:#fff}
+.collage{position:absolute;z-index:1;top:-8%;bottom:-8%;inset-inline-end:-3%;width:var(--collage-w,60%);pointer-events:none;-webkit-mask-image:linear-gradient(to right,#000 38%,transparent 94%);mask-image:linear-gradient(to right,#000 38%,transparent 94%)}
+.collage::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,var(--deep) 0,transparent 20%,transparent 80%,var(--deep) 100%)}
+.tilt{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;gap:18px;transform:rotate(-8deg) scale(1.1)}
+.lane{overflow:hidden}
+.lane-track{display:flex;width:max-content;will-change:transform}
+.lane-group{display:flex;align-items:center;flex:none}
+.ctile{flex:none;width:clamp(190px,18vw,262px);aspect-ratio:16/10;margin-inline-end:18px;border-radius:12px;overflow:hidden;background:var(--deep-2);border:1px solid color-mix(in srgb,var(--prod-deep) 22%,transparent);box-shadow:0 18px 42px rgba(0,0,0,.5)}
+.ctile img{width:100%;height:100%;object-fit:cover;opacity:.9}
+.js .p-hero-copy > *{opacity:0;transform:translateY(16px);animation:rise .8s var(--ease) forwards}
+.js .p-hero-copy > :nth-child(2){animation-delay:.08s}.js .p-hero-copy > :nth-child(3){animation-delay:.16s}.js .p-hero-copy > :nth-child(4){animation-delay:.24s}.js .p-hero-copy > :nth-child(5){animation-delay:.32s}
+.js .collage{opacity:0;animation:fadein 1.6s .25s var(--ease) forwards}
+@keyframes rise{to{opacity:1;transform:none}}
+@keyframes fadein{to{opacity:1}}
+
+/* חצי עיגול: הפס הבהיר עולה על ה-hero ונחתך באליפסה */
+.after-hero{position:relative;z-index:2;margin-top:calc(-1 * var(--dip));-webkit-mask-image:radial-gradient(100% calc(var(--dip) * 7.46) at 50% calc(var(--dip) * -6.46),transparent calc(100% - 1px),#000 100%);mask-image:radial-gradient(100% calc(var(--dip) * 7.46) at 50% calc(var(--dip) * -6.46),transparent calc(100% - 1px),#000 100%)}
+.after-hero.band{padding-top:calc(clamp(66px,8vw,108px) + var(--dip))}
+
+/* פס נע של הטכנולוגיות, מתחת ל-hero */
+.stack{background:radial-gradient(40% 120% at 90% 0%,var(--wash1),transparent 70%),var(--paper);padding:calc(var(--dip) + 22px) 0 26px;text-align:center}
+.stack .lane{-webkit-mask-image:linear-gradient(to right,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(to right,transparent,#000 12%,#000 88%,transparent)}
+.tech{display:inline-flex;align-items:center;gap:10px;margin-inline-end:clamp(40px,5vw,76px);font-family:var(--font-mono);font-weight:600;font-size:clamp(17px,1.8vw,22px);color:#526077;white-space:nowrap;direction:ltr}
+.tech i{width:8px;height:8px;border-radius:2px;background:var(--prod);opacity:.7}
+.tech:nth-child(2n) i{background:var(--acc)}
+
+/* כרטיסים */
+.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{background:var(--panel);border:1px solid var(--edge);border-radius:var(--r);padding:26px 24px;box-shadow:0 1px 2px rgba(13,22,38,.04)}
+.card h3{font-family:var(--font-body);font-size:19px;font-weight:800;letter-spacing:0;margin-bottom:7px}
+.card p{font-size:15.5px;color:var(--dim);line-height:1.62}
+.tile{width:50px;height:50px;border-radius:14px;display:grid;place-items:center;margin-bottom:20px;background:linear-gradient(145deg,var(--prod),var(--acc));color:#fff;box-shadow:0 8px 20px color-mix(in srgb,var(--prod) 30%,transparent)}
+.tile .ico{width:24px;height:24px;stroke-width:1.9}
+.band-deep .card{background:var(--deep-2);border-color:var(--deep-edge);box-shadow:none}
+.band-deep .card p{color:var(--deep-dim)}
+.band-deep .card h3{color:#fff}
+/* כרטיס עם צילום מסך: הצילום יושב בתוך "מסך" עם שוליים, כמו בתיק העבודות בדף הבית */
+.shot-card{display:flex;flex-direction:column;background:var(--panel);border:1px solid #b4c4db;border-radius:22px;overflow:hidden;box-shadow:0 2px 4px rgba(13,22,38,.05),0 18px 40px rgba(13,22,38,.11)}
+.shot-card .shot{margin:12px 12px 0;border-radius:14px;overflow:hidden;background:var(--deep);aspect-ratio:16/10;position:relative}
+.shot-card .shot img{width:100%;height:100%;object-fit:cover;object-position:top center}
+.shot-card .shot::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;box-shadow:inset 0 0 0 1px rgba(13,22,38,.2)}
+.shot-body{padding:22px 24px 24px}
+.shot-body h3{font-family:var(--font-body);font-size:20px;font-weight:800;letter-spacing:0;margin-bottom:6px}
+.shot-body p{font-size:15.5px;color:var(--dim);line-height:1.6}
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px}
+.chip{font-size:13px;font-weight:700;color:var(--prod-ink);background:color-mix(in srgb,var(--prod) 9%,transparent);border:1px solid color-mix(in srgb,var(--prod) 28%,transparent);border-radius:999px;padding:2px 11px}
+.band-deep .chip{color:var(--prod-deep);background:color-mix(in srgb,var(--prod-deep) 8%,transparent);border-color:color-mix(in srgb,var(--prod-deep) 30%,transparent)}
+.checks{list-style:none;display:grid;gap:10px}
+.checks li{display:flex;gap:10px;align-items:flex-start}
+.checks .ico{width:20px;height:20px;margin-top:4px;color:var(--prod-ink);stroke-width:2.2}
+.band-deep .checks .ico{color:var(--prod-deep)}
+
+/* סיום: פס כהה עם קריאה לפעולה */
+.p-end{text-align:center}
+.p-end .sh{margin-inline:auto}
+.p-end .sh p{margin-inline:auto}
+.p-end-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:12px}
+
+/* תמונה שאפשר להגדיל בלחיצה */
+.zoomable{display:block;width:100%;padding:0;border:0;background:none;cursor:zoom-in;position:relative}
+.zoomable::after{content:"";position:absolute;inset-block-start:10px;inset-inline-start:10px;width:34px;height:34px;border-radius:50%;background:rgba(11,18,32,.7) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round'%3E%3Ccircle cx='10.5' cy='10.5' r='6'/%3E%3Cpath d='m15 15 5 5M10.5 8v5M8 10.5h5'/%3E%3C/svg%3E") center/18px no-repeat;opacity:0;transition:opacity .2s}
+.zoomable:hover::after,.zoomable:focus-visible::after{opacity:1}
+.lb{border:0;padding:0;background:transparent;max-width:none;max-height:none;width:100%;height:100%;margin:0;display:none;place-items:center}
+.lb[open]{display:grid}
+.lb::backdrop{background:rgba(5,9,18,.88);backdrop-filter:blur(4px)}
+.lb-body{width:min(1280px,calc(100vw - 32px));display:grid;justify-items:center}
+.lb-body img{max-width:100%;max-height:calc(100vh - 130px);width:auto;height:auto;border-radius:14px;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+.lb-close{position:fixed;top:16px;inset-inline-end:16px;width:46px;height:46px;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:rgba(11,18,32,.7);color:#fff;cursor:pointer;display:grid;place-items:center;font-size:26px;line-height:1;z-index:2}
+.lb-close:focus-visible{outline:2px solid #fff;outline-offset:3px}
+.lb-cap{margin-top:14px;text-align:center;color:#c9d3e3;font-size:15px}
+/* גלולה צפה "בואו נדבר": מופיעה אחרי ה-hero ומתחבאת בסקשן הסיום */
+.dock{position:fixed;z-index:140;bottom:16px;left:50%;display:flex;align-items:center;gap:14px;padding:8px;padding-inline-start:20px;border-radius:999px;background:rgba(11,18,32,.92);color:#e9eff7;border:1px solid color-mix(in srgb,var(--prod-deep) 35%,transparent);box-shadow:0 16px 40px rgba(2,6,16,.35);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);font-weight:700;font-size:15px;white-space:nowrap;opacity:0;visibility:hidden;transform:translate(-50%,24px);transition:opacity .35s var(--ease),transform .45s var(--ease),visibility 0s .45s}
+.dock.show{opacity:1;visibility:visible;transform:translate(-50%,0);transition:opacity .35s var(--ease),transform .45s var(--ease),visibility 0s}
+.dock .btn{padding:9px 20px;font-size:15px;background:var(--acc-on-deep);color:var(--deep);box-shadow:none}
+.dock .btn:hover{background:#8db8ff}
+@media(max-width:620px){.dock span{display:none}.dock{padding-inline-start:8px}}
+/* תאורת עכבר: עיגול רך שנגרר אחרי הסמן, בצבע המוצר */
+.cglow{position:fixed;top:0;left:0;width:150px;height:150px;margin:-75px 0 0 -75px;border-radius:50%;pointer-events:none;z-index:9999;opacity:0;transition:opacity .4s var(--ease);background:radial-gradient(circle,color-mix(in srgb,var(--prod-deep) 26%,transparent) 0,rgba(63,196,224,.08) 45%,transparent 72%);will-change:transform}
+.cglow.is-on{opacity:1}
+
+/* פוטר: זהה לדף הבית */
+.foot{background:var(--deep);color:var(--deep-dim);border-top:1px solid var(--deep-edge);padding-block:52px 34px;font-size:15px}
+.foot-grid{display:grid;grid-template-columns:1.4fr repeat(3,1fr);gap:32px}
+.foot .brand{color:#fff}
+.foot .brand .b{color:var(--acc-on-deep)}
+.foot-tag{margin-top:14px;max-width:32ch}
+.foot-slogan{display:block;margin-bottom:4px;font-family:var(--font-head);font-size:20px;font-weight:700;color:#fff}
+.foot h4{font-size:14px;font-weight:800;color:var(--deep-ink);margin-bottom:12px}
+.foot ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.foot a:hover{color:#fff}
+.foot-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-top:40px;padding-top:22px;border-top:1px solid var(--deep-edge);font-size:14px}
+.foot-bottom nav{display:flex;gap:18px}
+.foot-note{margin-top:12px;font-size:13.5px;line-height:1.6}
+.foot-note a{text-decoration:underline;text-underline-offset:3px}
+
+/* חשיפה בגלילה */
+.js .reveal{opacity:0;transform:translateY(20px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.js .reveal.in{opacity:1;transform:none}
+
+@media(max-width:1280px){
+  .nav-links,.nav-cta .btn-ghost{display:none}
+  .burger{display:inline-flex}
+  .nav-cta{margin-inline-start:auto}
+  .nav-links.open{display:flex;flex-direction:column;align-items:stretch;gap:0;position:absolute;top:72px;inset-inline:0;background:var(--panel);border-bottom:1px solid var(--edge);padding:12px var(--gutter) 20px;box-shadow:0 24px 40px rgba(13,22,38,.1);max-height:calc(100vh - 72px);overflow-y:auto}
+  .nav-links.open > a{padding:12px 0;font-size:17px}
+  .nav-links.open > a:not(.btn){border-bottom:1px solid var(--edge)}
+  .nav-links.open > a.is-cur::after{display:none}
+  .nav-links.open .nav-wa-m{display:inline-flex;margin-top:14px;background:#16803C;border-color:#16803C;color:#fff}
+  .nav-links.open .nav-wa-m:hover,.nav-links.open .nav-wa-m:focus-visible{background:#12692F;border-color:#12692F;color:#fff}
+}
+@media(max-width:1120px){
+  .foot-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:920px){
+  .p-hero{flex-direction:column;align-items:stretch;padding-block:clamp(24px,4vh,56px) calc(clamp(18px,3vh,40px) + var(--dip))}
+  .p-hero-copy{max-width:none}
+  .collage{position:relative;order:2;inset:auto;width:auto;height:auto;flex:1 1 auto;min-height:96px;max-height:220px;margin-top:clamp(14px,2.4vh,38px);-webkit-mask-image:linear-gradient(to right,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(to right,transparent,#000 12%,#000 88%,transparent)}
+  .collage::after{display:none}
+  .collage .tilt{transform:rotate(-4deg)}
+  .collage .lane:not(:first-child){display:none}
+  .grid-3{grid-template-columns:1fr}
+}
+@media(max-width:620px){
+  body{font-size:16.5px}
+  .brand span{display:none}
+  .nav-cta .btn-solid{padding:9px 16px;font-size:14.5px}
+  .grid-2,.foot-grid{grid-template-columns:1fr}
+  .p-actions{gap:8px}
+  .p-actions .btn{flex:1 1 auto;padding:12px 16px;font-size:15.5px}
+  .proof{border-radius:14px;align-items:flex-start}
+  .proof .dot{margin-top:7px}
+  .card{padding:22px 20px}
+  .collage .ctile{width:150px;margin-inline-end:12px}
+}
+/* בטלפון נמוך מאוד הקולאז' יורד, כדי שהטקסט והחצי עיגול ייכנסו במסך הראשון (כמו בדף הבית) */
+@media(max-width:920px) and (max-height:640px){.collage{display:none}}
+
+/* עצירת תנועה (WCAG 2.2.2): כמו בדף הבית, ובאותו מפתח localStorage (rp-motion) */
+.motion-btn{display:none}
+.js .motion-btn{display:grid;place-items:center;position:fixed;bottom:14px;inset-inline-end:14px;z-index:150;width:34px;height:34px;padding:0;border-radius:50%;border:1px solid rgba(13,22,38,.1);background:rgba(243,247,252,.85);color:var(--dim);cursor:pointer;opacity:.75;box-shadow:0 2px 8px rgba(13,22,38,.08);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);transition:opacity .2s,background-color .2s,color .2s}
+.motion-btn:hover,.motion-btn:focus-visible{opacity:1;background:rgba(243,247,252,.92);color:var(--acc-ink)}
+.motion-btn svg{width:12px;height:12px;fill:currentColor}
+.motion-btn .i-play,.motion-off .motion-btn .i-pause{display:none}
+.motion-off .motion-btn .i-play{display:block}
+.motion-off *,.motion-off *::before,.motion-off *::after{animation-play-state:paused!important}
+/* כניסות חד פעמיות ממשיכות לרוץ גם בעצירה, אחרת ה-hero נטען שקוף */
+.motion-off .p-hero-copy > *,.motion-off .collage{animation-play-state:running!important}
+.motion-btn .lbl{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+@media(prefers-reduced-motion:reduce){
+  .js .motion-btn{display:none}
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .js .reveal,.js .p-hero-copy > *,.js .collage{opacity:1;transform:none}
+  .cglow{display:none}
+}
+
+/* ============================================================
+   מופעים משותפים נוספים (2026-11-05, מ-Bot Analytics). כל עמוד פרויקט מקבל אותם רק מהוספת HTML.
+   ראו project-pages-playbook.md, סעיף 3: מה נכנס לכל סקשן.
+   ============================================================ */
+
+/* קו בכתב יד מתחת למילה בכותרת: <span class="pp-hl">מילה<svg class="pp-ul" viewBox="0 0 100 12" preserveAspectRatio="none" aria-hidden="true"><path pathLength="100" d="M2 8C24 3 52 11 98 4"/></svg></span>
+   נמתח כשהאב מקבל .in (חשיפה בגלילה). כניסה חד פעמית, ולכן ממשיכה גם בעצירה */
+.pp-hl{position:relative;display:inline-block;white-space:nowrap}
+.pp-ul{position:absolute;inset-inline:-2%;bottom:-.14em;width:104%;height:.3em;overflow:visible;pointer-events:none}
+.pp-ul path{fill:none;stroke:var(--prod-deep);stroke-width:4.5;stroke-linecap:round;stroke-dasharray:100;stroke-dashoffset:0}
+.band-light .pp-ul path{stroke:var(--prod)}
+.js .pp-ul path{stroke-dashoffset:100}
+.js .in .pp-ul path{animation:ppUl .9s var(--ease) .35s forwards}
+@keyframes ppUl{to{stroke-dashoffset:0}}
+.motion-off .pp-ul path{animation-play-state:running!important}
+
+/* רצועת סלוגן כהה עם "יוצא לדרך": פריט אחד שעף לארבעה מכשירים אמיתיים (תמונות של דף הסטודיו, /img/studio/sgo-*).
+   מלבן המסך בכל תמונה נמדד ב-tools/prep_devices.py. המיקומים מחושבים ב-project.js */
+.stmt-band{position:relative;overflow:hidden;background:radial-gradient(55% 90% at 85% 10%,color-mix(in srgb,var(--prod-deep) 22%,transparent),transparent 70%),radial-gradient(50% 80% at 10% 100%,rgba(31,95,214,.3),transparent 70%),var(--deep)}
+.stmt-band::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;background-image:linear-gradient(var(--deep-edge) 1px,transparent 1px),linear-gradient(90deg,var(--deep-edge) 1px,transparent 1px);background-size:54px 54px;-webkit-mask-image:radial-gradient(ellipse 60% 70% at 50% 50%,#000,transparent 75%);mask-image:radial-gradient(ellipse 60% 70% at 50% 50%,#000,transparent 75%)}
+.stmt{position:relative;text-align:center;max-width:1080px;margin-inline:auto;padding-block:clamp(16px,3.5vw,44px)}
+.stmt .k{justify-content:center}
+.stmt h2{font-size:clamp(2rem,5vw,4.2rem);font-weight:900;color:#fff;line-height:1.12;letter-spacing:-1px;text-wrap:balance}
+.stmt .pp-hl{color:var(--prod-deep)}
+.sgo{position:relative;width:min(100%,1000px);height:clamp(300px,31vw,380px);margin:clamp(26px,3.4vw,44px) auto 0}
+@media(max-width:640px){.sgo{height:470px}}
+.sgo-src,.sgo-fly{position:absolute;left:0;top:0;aspect-ratio:16/9;transform-origin:0 0;will-change:transform,opacity}
+.sgo-src img,.sgo-fly img{display:block;width:100%;height:100%;border-radius:inherit}
+.sgo-src{border-radius:8px;box-shadow:0 0 0 1px rgba(255,255,255,.2),0 20px 50px rgba(0,0,0,.5),0 0 60px color-mix(in srgb,var(--prod-deep) 30%,transparent)}
+.sgo-fly{border-radius:5px;box-shadow:0 0 22px color-mix(in srgb,var(--prod-deep) 70%,transparent);opacity:0}
+.sgo-dev{position:absolute;left:0;top:0;display:flex;flex-direction:column;align-items:center;gap:10px}
+.sgo-dev span{font-size:clamp(12px,1.25vw,15px);font-weight:700;color:#c9d3e3;text-align:center;opacity:.35}
+.sgo-scr{position:relative}
+.sgo-img{display:block;width:100%;height:auto}
+.sgo-win{position:absolute;left:var(--sx);top:var(--sy);width:var(--sw);height:var(--sh);overflow:hidden}
+.sgo-on{opacity:0}
+.sgo-win img{position:absolute;display:block;height:auto}
+.sgo-lap .sgo-win{--sx:7.74%;--sy:5.54%;--sw:84.61%;--sh:85.18%}
+.sgo-lap .sgo-ui{position:absolute;inset:0;background:linear-gradient(#3a3f47 0 7%,#2a2e35 7%)}
+.sgo-lap .sgo-win img{left:8%;width:84%;top:14%;box-shadow:0 2px 6px rgba(0,0,0,.5)}
+.sgo-ph .sgo-win{--sx:3.39%;--sy:1.24%;--sw:93.07%;--sh:97.6%;border-radius:13%/6.4%}
+.sgo-ph .sgo-ui{position:absolute;inset:0;background:linear-gradient(#1f2c34 0 9%,#0b141a 9%)}
+.sgo-bub{position:absolute;right:7%;left:15%;top:46%;padding:4%;border-radius:6px 1px 6px 6px;background:#005c4b}
+.sgo-bub img{position:static;width:100%;border-radius:3px}
+.sgo-bub i{display:block;height:3px;margin-top:5px;width:70%;border-radius:2px;background:rgba(255,255,255,.55)}
+.sgo-bk .sgo-win{--sx:2.14%;--sy:0.36%;--sw:91.57%;--sh:98.07%}
+.sgo-bk .sgo-win img{left:8%;width:84%;top:12%;box-shadow:0 0 0 1px rgba(0,0,0,.08)}
+.sgo-tv .sgo-img{border-radius:8px;box-shadow:0 0 0 1px rgba(255,255,255,.14),0 16px 34px rgba(0,0,0,.45)}
+.sgo-tv .sgo-win{--sx:22.31%;--sy:9.88%;--sw:55.44%;--sh:52.07%}
+.sgo-tv .sgo-win img{left:50%;top:0;width:auto;height:100%;translate:-50% 0;aspect-ratio:16/9}
+
+/* כרטיסי מספרים שרצים, בעיצוב של הדשבורד:
+   <div class="pp-kpis"><div class="pp-kpi" style="--c:#hex"><small>שם</small><b data-count="4695" data-sep>4,695</b><span>הסבר</span></div></div>
+   הטקסט ב-HTML הוא הערך הסופי, ולכן בלי JS ובפחות תנועה הוא מה שמוצג. data-dec, data-pre, data-suf, data-sep */
+.pp-kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-bottom:clamp(18px,2.4vw,26px)}
+.pp-kpi{display:flex;flex-direction:column;gap:4px;padding:18px 20px;border-radius:14px;background:#fff;border:1px solid #d6dfeb;border-top:4px solid var(--c,var(--acc));box-shadow:0 2px 4px rgba(13,22,38,.04),0 12px 28px rgba(13,22,38,.08)}
+.pp-kpi small{font-size:13.5px;font-weight:700;color:var(--dim)}
+.pp-kpi b{font-family:var(--font-head);font-size:clamp(28px,3vw,38px);font-weight:900;line-height:1.1;color:var(--c,var(--ink));font-variant-numeric:tabular-nums;unicode-bidi:plaintext;text-align:start}
+.pp-kpi span{font-size:13px;color:var(--dim)}
+@media(max-width:920px){.pp-kpis{grid-template-columns:1fr 1fr}}
+
+/* סיור על צילום אמיתי: <div data-tour> שעוטף את הצילומים ואת הרשימה. בכפתור ההגדלה של כל צילום, מלבן אזור
+   <i class="pp-zone" data-i="0" style="left:..%;top:..%;width:..%;height:..%" aria-hidden="true"></i> סביב רכיב שלם בצילום,
+   ושורות [data-tour-i] ברשימה עם <i class="pp-tn">1</i>. האזור מקבל מסגרת רק כשהוא פעיל, ואין שום סימון קבוע על הנתונים
+   (עמית: מספרים על הצילום "מפריעים לתצוגה של הדשבורד"). מתקדם לבד כשהסקשן על המסך, נעצר בכפתור העצירה, וריחוף על שורה בוחר אותה */
+.pp-zone{position:absolute;z-index:2;border:2px solid var(--prod-deep);border-radius:10px;box-shadow:0 0 0 4px color-mix(in srgb,var(--prod-deep) 22%,transparent),0 0 26px color-mix(in srgb,var(--prod-deep) 40%,transparent);opacity:0;pointer-events:none;transition:opacity .45s var(--ease)}
+.pp-zone.on{opacity:1}
+[data-tour-i]{border-radius:10px;padding:6px 8px;margin:-6px -8px;transition:background .35s}
+[data-tour-i].on{background:color-mix(in srgb,var(--prod) 16%,transparent)}
+.pp-tn{display:inline-grid;place-items:center;min-width:20px;height:20px;margin-inline-end:6px;border-radius:50%;font-family:var(--font-mono);font-size:11.5px;font-style:normal;font-weight:600;color:var(--deep);background:var(--prod-deep);vertical-align:1px}
+
+/* זרימה בין שלבים: <i class="pp-ln" aria-hidden="true"><b></b><b></b></i> בתוך כל שלב חוץ מהאחרון (position:relative על השלב).
+   קו מקווקו דק ושתי נקודות קטנות שנעות לשלב הבא. הקו משני לאייקונים, ולכן דק ושקוף (עמית: "הזרימה בולטת יותר מהאייקונים"). המיקום במשתנים: --ln-y גובה, --ln-s תחילת הקו, --ln-e סוף הקו, --ln-gap הרווח בין השלבים.
+   שלבים ממורכזים מתחת להדגמה (ברירת המחדל מ-2026-11-05, בקשת עמית), אייקון 132px: --ln-s:calc(50% + 78px); --ln-e:calc(-50% + 62px) */
+.pp-ln{position:absolute;top:var(--ln-y,42px);inset-inline-start:var(--ln-s,98px);inset-inline-end:var(--ln-e,calc(-1 * var(--ln-gap,16px) + 6px));height:0;border-top:1px dashed color-mix(in srgb,var(--prod-deep) 28%,transparent);pointer-events:none}
+.pp-ln b{position:absolute;inset:-3px 0 auto 0;height:5px;opacity:.75;animation:ppPkt 3.2s linear infinite}
+.pp-ln b+b{animation-delay:-1.6s}
+.pp-ln b::before{content:"";position:absolute;inset-inline-start:0;top:0;width:5px;height:5px;border-radius:50%;background:var(--prod-deep);box-shadow:0 0 5px color-mix(in srgb,var(--prod-deep) 60%,transparent)}
+@keyframes ppPkt{0%{transform:translateX(0);opacity:0}15%{opacity:.75}85%{opacity:.75}100%{transform:translateX(-100%);opacity:0}}
+@media(max-width:920px){.pp-ln{display:none}}
+@media(prefers-reduced-motion:reduce){.pp-ln b{display:none}.js .pp-ul path{stroke-dashoffset:0}}
+
+/* אייקוני זכוכית (משותף, 2026-11-05): עמית מייצר או tools/gen_image.py, ואחר כך images.py cutout ל-160, 240 ו-320.
+   כרטיס קטן: <span class="pp-gi"><img class="pp-gi-img" ... sizes="84px"></span>. שלב במופע החתימה: <span class="pp-st-ic"> (132px),
+   כדי שהאייקון יהיה גדול מקו הזרימה. צפים לאט כמו בדף הסטודיו, נעצרים בכפתור העצירה, סטטיים בפחות תנועה */
+.pp-gi{display:block;width:84px;height:84px;margin-bottom:12px}
+/* display:block ולא grid: בתוך grid הגובה 100% של התמונה נמדד מול שורה אוטומטית, ואייקון גבוה (טלפון) גולש מתחת לתיבה */
+.pp-st-ic{display:block;flex:none;width:132px;height:132px}
+.pp-gi .pp-gi-img,.pp-st-ic .pp-gi-img{width:100%;height:100%;max-height:100%;object-fit:contain;object-position:center;filter:drop-shadow(0 10px 14px rgba(13,22,38,.18));animation:ppFloat 5s ease-in-out infinite alternate}
+.band-deep .pp-gi-img{filter:drop-shadow(0 10px 18px rgba(0,0,0,.45))}
+:nth-child(3n+2) > .pp-gi > .pp-gi-img,:nth-child(3n+2) > .pp-st-ic > .pp-gi-img{animation-delay:-1.7s}
+:nth-child(3n) > .pp-gi > .pp-gi-img,:nth-child(3n) > .pp-st-ic > .pp-gi-img{animation-delay:-3.4s}
+@keyframes ppFloat{from{transform:translateY(0)}to{transform:translateY(-7px)}}
+@media(max-width:620px){.pp-st-ic{width:96px;height:96px;flex:none}}
+@media(prefers-reduced-motion:reduce){.pp-gi-img{animation:none}}
+
+/* שכבת תנועה מעל איור או צילום (2026-11-05, Verifix): <svg data-fx viewBox="0 0 W H" preserveAspectRatio="xMidYMid meet"> בתוך כפתור ההגדלה.
+   meet מתנהג כמו object-fit:contain, ולכן הקואורדינטות הן הפיקסלים של התמונה המקורית גם כשהיא בתוך מסגרת ביחס אחר.
+   האנימציות רצות רק כשהשכבה על המסך (project.js מוסיף .on), נעצרות בכפתור העצירה, ובפחות תנועה כל מה שזז נעלם.
+   רק transform, opacity ו-stroke-dashoffset, בלי filter, כדי שהטלפון לא יצייר את השכבה מחדש בכל פריים */
+svg[data-fx]{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;mix-blend-mode:screen}
+svg[data-fx]:not(.on) *{animation-play-state:paused!important}
+@media(prefers-reduced-motion:reduce){svg[data-fx]{display:none}}

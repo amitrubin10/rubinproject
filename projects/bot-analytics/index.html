@@ -3,654 +3,574 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bot Analytics — ניתוח שירות מבוסס AI | Rubin Project</title>
-<meta name="description" content="Bot Analytics — פייפליין של סוכני AI שהופך דאטה גולמית של שירות לדשבורדים ניהוליים: סיווג נושאים, מדדי איכות, מגמות ושיעורי טיפול. דמו חי.">
+<title>Bot Analytics | ניתוח שירות מבוסס AI | Rubin Project</title>
+<meta name="description" content="Bot Analytics: חמישה סוכני AI שמסווגים ומנקדים כל שיחה של בוט שירות, ומוציאים דשבורד ניהולי שבועי: נושאים, איכות מענה, מגמות ושיעורי טיפול.">
 <link rel="canonical" href="https://www.rubinproject.com/projects/bot-analytics/">
-<link rel="icon" href="../../img/favicon.png">
+<link rel="icon" href="/img/favicon.png">
+<meta name="theme-color" content="#0b1220">
 <meta property="og:site_name" content="Rubin Project">
-<meta property="og:title" content="Bot Analytics — ניתוח שירות מבוסס AI">
-<meta property="og:description" content="סוכני AI שהופכים דאטה גולמית של שירות לדשבורדים ניהוליים — סיווג, איכות ומגמות. דמו חי.">
-<meta property="og:image" content="https://www.rubinproject.com/projects/img/bot-og.jpg?v=3">
+<meta property="og:title" content="Bot Analytics | ניתוח שירות מבוסס AI">
+<meta property="og:description" content="חמישה סוכני AI שהופכים אלפי שיחות בוט לדשבורד ניהולי שבועי: על מה פונים, איפה הבוט נופל ומה משתפר.">
+<meta property="og:image" content="https://www.rubinproject.com/img/ba/og-bot.jpg?v=1">
+<meta name="twitter:image" content="https://www.rubinproject.com/img/ba/og-bot.jpg?v=1">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:url" content="https://www.rubinproject.com/projects/bot-analytics/">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="he_IL">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://www.rubinproject.com/projects/img/bot-og.jpg?v=3">
-<meta name="theme-color" content="#0c1119">
+<script>document.documentElement.classList.add('js');</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700;800&family=Frank+Ruhl+Libre:wght@700;900&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/project.css">
 <style>
-:root{
-  /* Bot Analytics — clean light dashboard, multi-color KPI accents */
-  --bg:#f4f7fc; --bg2:#ffffff; --card:#ffffff; --card2:#eef3fa; --border:#e0e7f1;
-  --ink:#16233f; --muted:#5c6577; --muted2:#8a93a8;
-  --accent:#2563eb; --accent2:#3b82f6; --blue:#2563eb; --orange:#ef9d0b; --green:#16a34a; --red:#e11d48; --violet:#8b5cf6;
-  --grad:linear-gradient(135deg,#2563eb,#1e40af);
-  --radius:18px;
+/* צבע המוצר: ענבר זהב, מהנקודות בלוגו ומהכרטיס הכתום בדשבורד. --prod-ink עובר AA מול שלושת הרקעים הבהירים */
+:root{--prod:#e09a12;--prod-ink:#8a5600;--prod-deep:#f5b93a}
+
+/* מופע החתימה: שיחות נכנסות שמתמיינות לנושאים, ומדדי האיכות מתעדכנים. כל השמות בקידומת ba- */
+.ba-demo{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);gap:clamp(18px,3vw,34px);align-items:stretch}
+.ba-pane{background:#0f1828;border:1px solid #23314b;border-radius:20px;padding:clamp(16px,2.4vw,24px);box-shadow:0 30px 70px rgba(2,6,16,.45)}
+.ba-pane-h{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px;font-size:14px;font-weight:700;color:#cfd9ea}
+.ba-live{display:inline-flex;align-items:center;gap:7px;font-family:var(--font-mono);font-size:12px;font-weight:600;color:var(--prod-deep);direction:ltr}
+.ba-live::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--prod-deep)}
+.ba-feed{list-style:none;display:grid;gap:10px;min-height:356px;align-content:start}
+.ba-conv{background:#17233a;border:1px solid #2b3c5c;border-radius:14px;padding:12px 14px;transition:opacity .45s var(--ease),transform .45s var(--ease)}
+.ba-conv p{font-size:15px;font-weight:600;color:#e9eff7;line-height:1.45}
+.ba-conv p::before{content:"לקוח: ";color:#8b9ab3;font-weight:700}
+.ba-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:9px}
+.ba-tag{font-size:12.5px;font-weight:700;border-radius:999px;padding:2px 10px;transition:opacity .35s var(--ease),transform .35s var(--ease)}
+.ba-topic{color:#cfe0ff;background:rgba(111,164,255,.12);border:1px solid rgba(111,164,255,.35)}
+.ba-ok{color:#7fe3a8;background:rgba(47,191,134,.12);border:1px solid rgba(47,191,134,.4)}
+.ba-fail{color:#ff8f87;background:rgba(229,83,75,.14);border:1px solid rgba(229,83,75,.45)}
+.ba-redir{color:#ffd27a;background:rgba(245,185,58,.12);border:1px solid rgba(245,185,58,.4)}
+.js .ba-conv.is-new{opacity:0;transform:translateY(-12px)}
+.js .ba-conv.is-out{opacity:0;transform:translateY(10px)}
+.js .ba-conv:not(.is-tag) .ba-topic,.js .ba-conv:not(.is-judged) .ba-v{opacity:0;transform:scale(.8)}
+.ba-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:18px}
+.ba-kpi{background:#17233a;border:1px solid #2b3c5c;border-radius:14px;padding:12px}
+.ba-kpi small{display:block;font-size:12.5px;font-weight:600;color:#9aa7bd}
+.ba-kpi b{display:block;font-family:var(--font-mono);font-size:clamp(20px,2.2vw,26px);font-weight:600;color:#fff;direction:ltr;text-align:right;margin-top:2px}
+.ba-kpi.ba-k-ok b{color:#7fe3a8}
+.ba-kpi.ba-k-red b{color:var(--prod-deep)}
+.ba-bars{list-style:none;display:grid;gap:12px}
+.ba-bars li{display:grid;grid-template-columns:1fr auto;gap:4px 10px;font-size:14px;font-weight:600;color:#cfd9ea}
+.ba-bars li b{font-family:var(--font-mono);font-weight:600;color:#fff}
+.ba-bar{grid-column:1/-1;height:10px;border-radius:6px;background:#22304a;overflow:hidden}
+.ba-bar i{display:block;height:100%;border-radius:inherit;background:linear-gradient(270deg,var(--prod-deep),#d97706);transform-origin:right;transition:transform .7s var(--ease)}
+.ba-bars li.is-hit{color:#fff}
+.ba-bars li.is-hit .ba-bar i{background:linear-gradient(270deg,#ffe2a3,var(--prod-deep))}
+.ba-note{margin-top:14px;font-size:13px;color:var(--deep-dim)}
+.ba-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:clamp(28px,4vw,44px);list-style:none;counter-reset:ba}
+.ba-steps li{counter-increment:ba;position:relative;display:flex;flex-direction:column;gap:12px;align-items:center;text-align:center;font-size:15.5px;color:var(--deep-dim);--ln-y:66px;--ln-s:calc(50% + 78px);--ln-e:calc(-50% + 62px)}
+#ba-sort .chips{justify-content:center}
+.ba-steps li::before{content:counter(ba);position:absolute;top:2px;inset-inline-start:calc(50% - 64px);z-index:1;display:grid;place-items:center;width:26px;height:26px;border-radius:50%;flex:none;font-family:var(--font-mono);font-weight:600;font-size:13px;color:var(--deep);background:var(--prod-deep)}
+.ba-steps b{display:block;color:#fff;font-size:16.5px}
+
+/* הבעיה, במופע קטן בראש כל כרטיסייה. כל המידות ביחידות cqw של המסגרת, וברירת המחדל היא המצב הסופי */
+.ba-pain{padding-top:16px}
+.ba-sc{position:relative;aspect-ratio:16/9;max-width:420px;margin:0 auto 20px;border-radius:14px;overflow:hidden;background:radial-gradient(70% 90% at 80% 0%,rgba(229,83,75,.14),transparent 60%),#0f1828;border:1px solid #23314b;container-type:inline-size}
+.ba-sc > *{position:absolute;font-size:3.7cqw;font-weight:700;line-height:1.3;white-space:nowrap}
+.ba-sc-count{top:3cqw;right:3cqw;font-size:3.4cqw!important;color:#ff8f87;background:rgba(229,83,75,.14);border:1px solid rgba(229,83,75,.4);border-radius:999px;padding:.6cqw 3cqw}
+.ba-sc-log{left:4cqw;right:4cqw;display:flex;align-items:center;gap:2cqw;padding:1.3cqw 2.6cqw;border-radius:2cqw;background:#17233a;border:1px solid #2b3c5c;color:#e9eff7;font-weight:600}
+.ba-sc-log time{font-family:var(--font-mono);font-size:3cqw;font-weight:500;color:#8b9ab3;direction:ltr}
+.ba-sc-log.bot{color:#9cc0ff}
+.ba-sc-l1{top:12.5cqw}.ba-sc-l2{top:22cqw}.ba-sc-l3{top:31.5cqw}.ba-sc-l4{top:41cqw}
+.ba-sc-bub{display:inline-flex;align-items:center;gap:2cqw;padding:1.6cqw 3cqw;border-radius:3cqw;background:#202c33;color:#e9edef;box-shadow:0 2cqw 5cqw rgba(0,0,0,.35)}
+.ba-sc-bub em{font-style:normal;font-size:3.2cqw;color:#ffd27a;background:rgba(245,185,58,.14);border:1px solid rgba(245,185,58,.45);border-radius:999px;padding:.2cqw 2cqw}
+.ba-sc-b1{top:5cqw;right:4cqw}.ba-sc-b2{top:21cqw;left:4cqw}.ba-sc-b3{top:37cqw;right:9cqw}
+.ba-sc-ans{top:5cqw;right:4cqw;padding:1.6cqw 3cqw;border-radius:3cqw;background:#1d2a40;color:#cfe0ff;border:1px solid #33476b}
+.ba-sc-ans::before{content:"בוט: ";color:#8b9ab3}
+.ba-sc-pill{top:20cqw;padding:1.2cqw 3.4cqw;border-radius:999px}
+.ba-sc-yes{right:8cqw;color:#7fe3a8;background:rgba(47,191,134,.12);border:1px solid rgba(47,191,134,.45)}
+.ba-sc-no{left:8cqw;color:#ff8f87;background:rgba(229,83,75,.14);border:1px solid rgba(229,83,75,.5)}
+.ba-sc-meter{top:34cqw;left:4cqw;right:4cqw;display:flex;flex-direction:column;gap:1.4cqw;color:#9aa7bd;font-weight:600}
+.ba-sc-meter span{display:flex;justify-content:space-between}
+.ba-sc-meter span b{font-family:var(--font-mono);color:#ff8f87}
+.ba-sc-meter i{display:block;height:2.2cqw;border-radius:2cqw;background:repeating-linear-gradient(135deg,#2b3c5c 0 2cqw,#22304a 2cqw 4cqw)}
+@keyframes ba-pop{0%,4%{opacity:0;transform:scale(.6)}12%,88%{opacity:1;transform:none}96%,100%{opacity:0;transform:scale(.9)}}
+@keyframes ba-blink{0%,100%{opacity:1}50%{opacity:.35}}
+.js .ba-sc-flood > *,.js .ba-sc-topics > *,.js .ba-sc-ans{animation:ba-pop 7s var(--ease) infinite both}
+.js .ba-sc-l1{animation-delay:.2s}.js .ba-sc-l2{animation-delay:.8s}.js .ba-sc-l3{animation-delay:1.4s}.js .ba-sc-l4{animation-delay:2s}.js .ba-sc-flood .ba-sc-count{animation-delay:2.6s}
+.js .ba-sc-b1{animation-delay:.3s}.js .ba-sc-b2{animation-delay:1.1s}.js .ba-sc-b3{animation-delay:1.9s}
+.js .ba-sc-yes{animation:ba-blink 1.6s ease-in-out infinite}
+.js .ba-sc-no{animation:ba-blink 1.6s ease-in-out .8s infinite}
+
+/* מסכים שמתחלפים בכרטיסים: כל המסגרות באותו מקום, ורק אחת מוצגת. הצילום מוצג במלואו (contain) */
+.shot-card .shot .zoomable{position:absolute;inset:0}
+.shot-card .shot img.ba-fr{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center;opacity:0;transition:opacity .7s var(--ease)}
+.shot-card .shot img.ba-fr.on{opacity:1}
+.ba-more{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:clamp(28px,4vw,40px)}
+.ba-more .card{padding:22px}
+.ba-more h3{font-size:17.5px}
+
+/* צלילה לעומק: אינפוגרפיקה רחבה, ומתחתיה שני כרטיסים באותו גובה */
+.ba-deep{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;align-items:stretch}
+/* פיצול ההעברות לנציג: פס אחד של "כשל" שמתפצל להפניה נכונה וכשל אמיתי. רץ פעם אחת בכניסה (מעבר, לא אנימציה) */
+.ba-split{grid-column:1/-1;display:grid;gap:clamp(16px,2vw,22px);padding:clamp(20px,3vw,34px);background:var(--panel);border:1px solid #b4c4db;border-radius:20px;box-shadow:0 2px 4px rgba(13,22,38,.05),0 18px 40px rgba(13,22,38,.11)}
+.ba-sp-k{font-family:var(--font-mono);font-size:12.5px;font-weight:600;letter-spacing:.04em;color:var(--dim)}
+.ba-sp-row{display:grid;grid-template-columns:minmax(170px,230px) 1fr;grid-template-areas:"lab bar" "lab leg";column-gap:clamp(16px,2.4vw,30px);row-gap:8px;align-items:center}
+.ba-sp-lab{grid-area:lab;display:flex;flex-direction:column;gap:2px}
+.ba-sp-lab b{font-size:17px;font-weight:800}
+.ba-sp-lab span{font-size:14.5px;color:var(--dim);line-height:1.45}
+.ba-sp-bar{grid-area:bar;display:flex;height:26px;border-radius:8px;background:#dfe7f2;overflow:hidden}
+.ba-sp-bar i{display:block;height:100%;width:var(--w);transition:width 1.1s var(--ease)}
+.ba-sp-all{background:#8593a8}
+.ba-sp-ok{background:#1f8a5b}
+.ba-sp-bad{background:#c0392b;transition-delay:.55s}
+.ba-sp-row:not(.ba-sp-raw) .ba-sp-ok{transition-delay:.4s}
+.ba-sp-leg{grid-area:leg;list-style:none;display:flex;flex-wrap:wrap;gap:6px 18px;font-size:14.5px;color:var(--ink-2)}
+.ba-sp-leg li{display:inline-flex;align-items:center;gap:7px}
+.ba-sp-leg li::before{content:"";width:10px;height:10px;border-radius:3px;background:var(--c)}
+.ba-sp-leg b{font-family:var(--font-mono);font-weight:600;color:var(--ink)}
+.ba-sp-l-all{--c:#8593a8}.ba-sp-l-rest{--c:#dfe7f2}.ba-sp-l-rest::before{box-shadow:inset 0 0 0 1px #b4c4db}.ba-sp-l-ok{--c:#1f8a5b}.ba-sp-l-bad{--c:#c0392b}
+.ba-split figcaption{padding-top:14px;border-top:1px solid #d3deec;font-size:15.5px;color:var(--dim);line-height:1.6}
+.ba-split figcaption b{color:var(--ink)}
+/* לפני הכניסה הפסים ריקים. בלי JS ובפחות תנועה מוצג המצב הסופי */
+.js .ba-split:not(.in) .ba-sp-bar i{width:0}
+@media (prefers-reduced-motion:reduce){.js .ba-split .ba-sp-bar i,.js .ba-split:not(.in) .ba-sp-bar i{width:var(--w);transition:none}}
+.ba-case{display:flex;flex-direction:column;gap:10px;padding:clamp(20px,2.6vw,28px);border-radius:20px;background:var(--panel);border:1px solid #b4c4db;box-shadow:0 2px 4px rgba(13,22,38,.05),0 18px 40px rgba(13,22,38,.11);border-top:4px solid var(--ba-c)}
+.ba-case-ok{--ba-c:#1f8a5b}
+.ba-case-bad{--ba-c:#c0392b}
+.ba-case .ba-case-k{font-size:13.5px;font-weight:800;color:var(--ba-c)}
+.ba-case h3{font-size:clamp(20px,2vw,24px);font-weight:800}
+.ba-case p{color:var(--dim);font-size:16px}
+.ba-case blockquote{margin-top:auto;padding:12px 14px;border-radius:12px;background:color-mix(in srgb,var(--ba-c) 8%,transparent);font-size:15px;font-weight:700;color:var(--ink-2)}
+.ba-case blockquote span{display:block;margin-top:4px;font-size:13.5px;color:var(--ba-c)}
+.ba-note-l{margin-top:14px;font-size:13px;color:var(--dim)}
+
+/* הדשבורד האמיתי: שתי מסגרות 16:10 באותו גובה */
+.ba-dash{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-items:start;gap:22px;margin-bottom:clamp(32px,4vw,48px)}
+.ba-frame{border-radius:16px;overflow:hidden;background:var(--panel);border:1px solid #b4c4db;box-shadow:0 2px 4px rgba(13,22,38,.05),0 18px 40px rgba(13,22,38,.11)}
+.ba-frame .zoomable{position:relative;aspect-ratio:16/10;overflow:hidden;background:#eceff3}
+.ba-frame .zoomable img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+.ba-frame figcaption{padding:12px 16px;font-size:14px;font-weight:700;color:var(--ink-2);background:var(--panel);border-top:1px solid var(--edge)}
+.ba-custom{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:start}
+.ba-custom .sh{margin-bottom:0}
+.ba-links{display:flex;flex-wrap:wrap;gap:12px 22px;margin-top:24px}
+
+@media(max-width:920px){
+  .ba-demo,.ba-custom{grid-template-columns:1fr}
+  .ba-steps{grid-template-columns:1fr}
+  .ba-steps li{flex-direction:row;align-items:center;text-align:start}
+  .ba-steps li::before{inset-inline-start:2px}
+  #ba-sort .chips{justify-content:flex-start}
+  .ba-more{grid-template-columns:1fr 1fr}
+  .ba-feed{min-height:0}
 }
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{font-family:'Heebo',sans-serif;color:var(--ink);line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased;
-  background:
-    radial-gradient(820px 520px at 90% -4%,rgba(37,99,235,.08),transparent 60%),
-    radial-gradient(720px 520px at 2% 12%,rgba(139,92,246,.06),transparent 60%),
-    var(--bg);
-  background-attachment:fixed}
-a{color:inherit;text-decoration:none}
-img{max-width:100%;display:block}
-.wrap{max-width:1160px;margin:0 auto;padding:0 22px}
-.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
-.eyebrow{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:700;letter-spacing:.3px;color:var(--accent);background:rgba(37,99,235,.09);border:1px solid rgba(37,99,235,.22);padding:6px 14px;border-radius:999px;margin-bottom:16px}
-.btn{position:relative;display:inline-flex;align-items:center;gap:8px;font-family:inherit;font-size:15px;font-weight:700;padding:13px 26px;border-radius:12px;cursor:pointer;border:1px solid transparent;transition:transform .2s,box-shadow .2s,background .2s,border-color .2s;white-space:nowrap;overflow:hidden;isolation:isolate}
-.btn::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(120deg,transparent 32%,rgba(255,255,255,.4) 50%,transparent 68%);transform:translateX(-130%)}
-.btn:hover::after{animation:sweep .75s ease}
-@keyframes sweep{to{transform:translateX(130%)}}
-.btn-primary{background:linear-gradient(135deg,#3b82f6,#2563eb 55%,#1e40af);color:#fff;box-shadow:0 8px 24px rgba(37,99,235,.42),inset 0 0 0 1px rgba(120,180,255,.35)}
-.btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 38px rgba(37,99,235,.6),0 0 24px rgba(59,130,246,.55),inset 0 0 0 1px rgba(120,180,255,.5)}
-.btn-ghost{background:#fff;color:var(--accent);border-color:var(--border)}
-.btn-ghost:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:0 10px 26px rgba(37,99,235,.18)}
-.btn-wa{background:#25d366;color:#0a1f12;box-shadow:0 8px 22px rgba(37,211,102,.32)}
-.btn-wa:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(37,211,102,.5),0 0 20px rgba(37,211,102,.4)}
-.btn-lghost{background:rgba(120,170,255,.06);color:#eaf1ff;border-color:rgba(120,170,255,.5);box-shadow:inset 0 0 0 1px rgba(120,170,255,.12)}
-.btn-lghost:hover{border-color:#7cc0ff;background:rgba(59,130,246,.16);transform:translateY(-2px);box-shadow:0 0 24px rgba(59,130,246,.45),inset 0 0 0 1px rgba(120,170,255,.3)}
-/* live pulse dot */
-.livedot{width:8px;height:8px;border-radius:50%;background:#4ade80;flex-shrink:0;box-shadow:0 0 0 0 rgba(74,222,128,.7);animation:livepulse 1.9s infinite}
-@keyframes livepulse{0%{box-shadow:0 0 0 0 rgba(74,222,128,.6)}70%{box-shadow:0 0 0 9px rgba(74,222,128,0)}100%{box-shadow:0 0 0 0 rgba(74,222,128,0)}}
-
-/* NAV (dark) */
-header.nav{position:sticky;top:0;z-index:100;background:rgba(12,17,25,0.94);backdrop-filter:blur(14px);border-bottom:1px solid #26314c}
-.nav-in{display:flex;align-items:center;justify-content:space-between;gap:18px;height:74px;padding:0 32px;max-width:none}
-.nav-start{display:flex;align-items:center;gap:24px}
-.nav-logo{display:flex;align-items:center;gap:9px;font-size:20px;font-weight:900;letter-spacing:-.4px;color:#fff}
-.nav-logo img{height:48px;width:auto}
-.nav-logo .b{color:#60a5fa}
-.nav-links{display:flex;gap:22px;font-size:14px;font-weight:500}
-.nav-links a{color:#aeb6c6;transition:.15s}.nav-links a:hover{color:#fff}
-.nav-cta{display:flex;gap:10px}
-.nav-cta .btn{padding:9px 18px;font-size:14px}
-
-/* HERO — dark technological */
-.phero{position:relative;text-align:center;padding:52px 0 40px;overflow:hidden;border-bottom:1px solid #16233f;
-  background:
-    radial-gradient(920px 460px at 50% -12%,rgba(37,99,235,.34),transparent 62%),
-    radial-gradient(680px 420px at 88% 118%,rgba(34,211,238,.16),transparent 60%),
-    radial-gradient(620px 420px at 6% 110%,rgba(139,92,246,.16),transparent 60%),
-    linear-gradient(160deg,#0a1122 0%,#0e1c39 55%,#12294f 100%)}
-.phero::before{content:"";position:absolute;inset:0;pointer-events:none;
-  background-image:linear-gradient(rgba(120,160,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(120,160,255,.07) 1px,transparent 1px);
-  background-size:46px 46px;
-  -webkit-mask-image:radial-gradient(circle at 50% 34%,#000,transparent 78%);mask-image:radial-gradient(circle at 50% 34%,#000,transparent 78%)}
-.phero .wrap{position:relative;z-index:1}
-/* breathing glow behind the logo */
-.phero::after{content:"";position:absolute;left:50%;top:2%;width:560px;height:560px;max-width:90vw;transform:translateX(-50%);border-radius:50%;pointer-events:none;
-  background:radial-gradient(circle,rgba(37,99,235,.4),rgba(34,211,238,.12) 45%,transparent 66%);filter:blur(10px);animation:breathe 7s ease-in-out infinite}
-@keyframes breathe{0%,100%{opacity:.55;transform:translateX(-50%) scale(1)}50%{opacity:.9;transform:translateX(-50%) scale(1.12)}}
-/* brand plate — centered, animated gradient ring */
-.logo-card{position:relative;display:block;width:max-content;max-width:88vw;background:#f1f2f6;border-radius:22px;padding:26px 34px;margin:4px auto;
-  box-shadow:0 24px 60px rgba(0,0,0,.45),0 0 80px rgba(37,99,235,.35)}
-.logo-card::before{content:"";position:absolute;inset:-2px;border-radius:24px;padding:2px;pointer-events:none;
-  background:linear-gradient(135deg,#22d3ee,#3b82f6,#8b5cf6,#22d3ee);background-size:300% 300%;
-  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;
-  animation:ringhue 6s linear infinite}
-@keyframes ringhue{0%{background-position:0% 50%}100%{background-position:300% 50%}}
-.logo-card img{width:min(340px,72vw);height:auto;display:block;position:relative}
-/* badge — centered under the logo */
-.phero .badge{display:inline-flex;align-items:center;gap:9px;font-size:13px;font-weight:800;color:#eaf1ff;background:rgba(59,130,246,.14);border:1px solid rgba(120,170,255,.4);padding:7px 18px;border-radius:999px;margin-top:16px;box-shadow:0 8px 26px rgba(37,99,235,.28),inset 0 0 0 1px rgba(120,170,255,.1);backdrop-filter:blur(6px)}
-.phero .lead{font-size:17px;color:#cdd8ef;margin:20px auto 0;max-width:620px}
-.phero .row{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px;justify-content:center}
-.kpirow{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:32px}
-.kpi{min-width:130px;background:rgba(255,255,255,.045);border:1px solid rgba(120,160,255,.2);border-radius:14px;padding:14px 20px;backdrop-filter:blur(5px);transition:.2s}
-.kpi:hover{border-color:rgba(120,160,255,.45);box-shadow:0 0 22px rgba(37,99,235,.25);transform:translateY(-2px)}
-.kpi b{display:block;font-size:30px;font-weight:900;line-height:1}
-.kpi.b1 b{color:#60a5fa;text-shadow:0 0 20px rgba(96,165,250,.6)}
-.kpi.b2 b{color:#4ade80;text-shadow:0 0 20px rgba(74,222,128,.55)}
-.kpi.b3 b{color:#fbbf24;text-shadow:0 0 20px rgba(251,191,36,.55)}
-.kpi.b4 b{color:#a78bfa;text-shadow:0 0 20px rgba(167,139,250,.55)}
-.kpi.b5 b{color:#22d3ee;text-shadow:0 0 20px rgba(34,211,238,.5)}
-.kpi span{font-size:13px;color:#9fb0d0;font-weight:600}
-
-/* BROWSER-FRAMED SHOT */
-.shotwrap{padding:26px 0 20px}
-.shot{max-width:1020px;margin:0 auto;border-radius:16px;overflow:hidden;border:1px solid var(--border);
-  box-shadow:0 26px 60px rgba(22,35,63,.16)}
-.shot-bar{display:flex;align-items:center;gap:7px;padding:11px 15px;background:#e9eef6;border-bottom:1px solid var(--border)}
-.shot-bar i{width:11px;height:11px;border-radius:50%;display:block}
-.shot-bar .r{background:#ff5f57}.shot-bar .y{background:#febc2e}.shot-bar .g{background:#28c840}
-.shot-bar span{margin-inline-start:12px;font-size:12px;color:var(--muted2);direction:ltr}
-.shot img{width:100%;display:block;background:#fff}
-.shot-cap{text-align:center;color:var(--muted);font-size:13.5px;margin-top:14px}
-
-/* SECTIONS */
-section{padding:46px 0}
-.alt{background:var(--bg2);position:relative}
-.alt::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.6;
-  background-image:linear-gradient(rgba(37,99,235,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(37,99,235,.045) 1px,transparent 1px);
-  background-size:40px 40px;
-  -webkit-mask-image:linear-gradient(180deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(180deg,transparent,#000 12%,#000 88%,transparent)}
-.alt .wrap{position:relative;z-index:1}
-.sec-head{max-width:780px;margin:0 auto 30px;text-align:center}
-.sec-head h2{font-size:clamp(24px,3vw,34px);font-weight:800;letter-spacing:-.4px;color:var(--ink);position:relative;padding-bottom:14px}
-.sec-head h2::after{content:"";position:absolute;left:50%;bottom:0;transform:translateX(-50%);width:58px;height:3px;border-radius:3px;background:linear-gradient(90deg,#22d3ee,#3b82f6,#8b5cf6)}
-.sec-head p{color:var(--muted);font-size:16px;margin-top:8px}
-
-/* CHALLENGE / SOLUTION */
-.cs{display:grid;grid-template-columns:1fr 1fr;gap:22px;max-width:960px;margin:0 auto}
-.csbox{background:#fff;border:1px solid var(--border);border-radius:18px;padding:26px;box-shadow:0 6px 18px rgba(22,35,63,.05)}
-.csbox.chal{border-top:3px solid var(--red)}
-.csbox.sol{border-top:3px solid var(--green)}
-.csbox h3{font-size:19px;font-weight:800;margin-bottom:12px;display:flex;align-items:center;gap:9px}
-.csbox.chal h3{color:#be123c}.csbox.sol h3{color:#15803d}
-.csbox ul{list-style:none;display:flex;flex-direction:column;gap:10px}
-.csbox li{position:relative;padding-inline-start:26px;font-size:15px;color:#3f4a63}
-.csbox.chal li::before{content:"✕";position:absolute;inset-inline-start:0;color:var(--red);font-weight:800}
-.csbox.sol li::before{content:"✓";position:absolute;inset-inline-start:0;color:var(--green);font-weight:800}
-/* image + text rows */
-.cs-row{display:flex;gap:26px;align-items:center;max-width:1000px;margin:0 auto}
-.cs-row.rev{flex-direction:row-reverse}
-.cs-row .cs-img{flex:1.2 1 0;border-radius:18px;padding:2.5px;background:linear-gradient(135deg,#22d3ee,#3b82f6 52%,#8b5cf6);box-shadow:0 18px 44px rgba(22,35,63,.2),0 0 34px rgba(59,130,246,.12)}
-.cs-row .cs-img img{width:100%;height:auto;display:block;border-radius:15px}
-.cs-row .csbox{flex:1 1 0}
-@media(max-width:760px){.cs-row,.cs-row.rev{flex-direction:column}}
-/* gradient window frame (dashboards) */
-.gframe{position:relative;max-width:1040px;margin:0 auto;border-radius:18px;padding:2.5px;background:linear-gradient(135deg,#22d3ee,#3b82f6 52%,#8b5cf6);box-shadow:0 26px 62px rgba(22,35,63,.24),0 0 46px rgba(59,130,246,.15)}
-.gframe-bar{display:flex;align-items:center;gap:7px;padding:11px 15px;background:#0f2747;border-radius:15px 15px 0 0}
-.gframe-bar i{width:11px;height:11px;border-radius:50%;display:block}
-.gframe-bar .r{background:#ff5f57}.gframe-bar .y{background:#febc2e}.gframe-bar .g{background:#28c840}
-.gframe-bar span{margin-inline-start:12px;font-size:12px;color:#9fb3d4;direction:ltr}
-.gframe-in{overflow:hidden;border-radius:0 0 15px 15px;background:#fff}
-.gframe-in img{width:100%;display:block}
-/* liked closing statement */
-.statement{max-width:900px;margin:0 auto;text-align:center;background:linear-gradient(160deg,rgba(37,99,235,.07),rgba(139,92,246,.07));border:1px solid rgba(37,99,235,.22);border-radius:22px;padding:42px 32px;box-shadow:0 10px 30px rgba(22,35,63,.06)}
-.statement h2{font-size:clamp(23px,3.2vw,33px);font-weight:900;color:var(--ink);margin-bottom:10px;letter-spacing:-.4px}
-.statement p{color:#3f4a63;font-size:16.5px;max-width:640px;margin:0 auto}
-/* generic photo gradient frame */
-.pframe{max-width:1000px;margin:0 auto;border-radius:18px;padding:2.5px;background:linear-gradient(135deg,#22d3ee,#3b82f6 52%,#8b5cf6);box-shadow:0 20px 50px rgba(22,35,63,.2),0 0 34px rgba(59,130,246,.12)}
-.pframe img{width:100%;height:auto;display:block;border-radius:15px}
-/* ===== FUTURISTIC TECH PANELS (dark) ===== */
-.techpanel{position:relative;max-width:920px;margin:0 auto;border-radius:24px;padding:1.5px;
-  background:linear-gradient(135deg,#22d3ee,#3b82f6 45%,#8b5cf6 70%,#22d3ee);background-size:300% 300%;
-  box-shadow:0 30px 74px rgba(9,16,32,.4),0 0 56px rgba(37,99,235,.22);animation:tphue 8s linear infinite}
-@keyframes tphue{0%{background-position:0% 50%}100%{background-position:300% 50%}}
-.techpanel-in{position:relative;overflow:hidden;border-radius:22px;padding:44px 38px;text-align:center;
-  background:radial-gradient(780px 360px at 50% -14%,rgba(37,99,235,.26),transparent 62%),linear-gradient(160deg,#0a1428,#0e1c39 60%,#12294f)}
-.techpanel-in::before{content:"";position:absolute;inset:0;pointer-events:none;
-  background-image:linear-gradient(rgba(120,160,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(120,160,255,.07) 1px,transparent 1px);
-  background-size:38px 38px;-webkit-mask-image:radial-gradient(circle at 50% 16%,#000,transparent 80%);mask-image:radial-gradient(circle at 50% 16%,#000,transparent 80%)}
-.techpanel-in::after{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:linear-gradient(90deg,transparent,rgba(34,211,238,.8),rgba(139,92,246,.8),transparent)}
-.techpanel-in>*{position:relative;z-index:1}
-.techpanel-in .k{font-size:clamp(23px,3.2vw,33px);font-weight:900;color:#fff;letter-spacing:-.4px}
-.techpanel-in .k .cy{color:#22d3ee;text-shadow:0 0 22px rgba(34,211,238,.6)}
-.techpanel-in h2{font-size:clamp(23px,3.2vw,33px);font-weight:900;color:#fff;letter-spacing:-.4px;margin-bottom:10px}
-.techpanel-in>p{color:#cdd8ef;font-size:16.5px;margin:10px auto 0;max-width:640px}
-.techpanel-in .chips{margin-top:22px}
-.techpanel-in .chip{background:rgba(255,255,255,.06);border:1px solid rgba(120,160,255,.3);color:#dbe4fb}
-
-/* quote form (dark) */
-.quotebox{text-align:right}
-.qgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
-.quotebox label{display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:700;color:#dbe4fb}
-.quotebox input,.quotebox select,.quotebox textarea{font-family:inherit;font-size:15px;font-weight:400;padding:11px 13px;border:1px solid rgba(120,160,255,.28);border-radius:10px;background:rgba(255,255,255,.05);color:#eaf1ff;transition:.15s}
-.quotebox input::placeholder,.quotebox textarea::placeholder{color:#8a9ac0}
-.quotebox select option{color:#0f2747}
-.quotebox input:focus,.quotebox select:focus,.quotebox textarea:focus{outline:none;border-color:#22d3ee;box-shadow:0 0 0 3px rgba(34,211,238,.2);background:rgba(255,255,255,.09)}
-.quotebox textarea{resize:vertical}
-.qfull{margin-bottom:18px}
-.qrow{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
-@media(max-width:600px){.qgrid{grid-template-columns:1fr}}
-
-/* card hover glows (subtle, futuristic) */
-.stage,.diffbox{transition:transform .2s,box-shadow .2s,border-color .2s}
-.stage:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(22,35,63,.1),0 0 20px rgba(59,130,246,.14);border-color:rgba(59,130,246,.38)}
-.diffbox:hover{transform:translateY(-2px);box-shadow:0 16px 34px rgba(22,35,63,.12),0 0 20px rgba(59,130,246,.12)}
-.dashget li{transition:transform .18s,box-shadow .18s,border-color .18s}
-.dashget li:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(22,35,63,.08);border-color:rgba(59,130,246,.32)}
-
-/* FEATURES with KPI-colored tops */
-.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.feat{background:#fff;border:1px solid var(--border);border-top:3px solid var(--accent);border-radius:14px;padding:22px;box-shadow:0 6px 18px rgba(22,35,63,.05);transition:.2s}
-.feat:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(22,35,63,.1)}
-.feat.t-blue{border-top-color:var(--blue)}.feat.t-orange{border-top-color:var(--orange)}
-.feat.t-green{border-top-color:var(--green)}.feat.t-red{border-top-color:var(--red)}.feat.t-violet{border-top-color:var(--violet)}
-.feat .ic{font-size:25px;margin-bottom:9px}
-.feat h4{font-size:16.5px;margin-bottom:5px;color:var(--ink)}
-.feat p{font-size:14px;color:var(--muted);line-height:1.6}
-.feat.hl{grid-column:1/-1;border-top:3px solid var(--blue);background:linear-gradient(135deg,rgba(37,99,235,.05),rgba(139,92,246,.06));display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:center;padding:28px}
-.feat.hl:hover{transform:none}
-.feat.hl .big{font-size:44px}
-.feat.hl h4{font-size:20px}
-.feat.hl h4 .pill{font-size:11px;font-weight:800;background:var(--grad);color:#fff;padding:2px 9px;border-radius:999px;margin-inline-start:8px;vertical-align:middle}
-.feat.hl p{font-size:15px;color:#3f4a63}
-
-/* TECH / TRUST */
-.chips{display:flex;gap:9px;flex-wrap:wrap;justify-content:center;margin-top:6px}
-.chip{font-size:13.5px;background:#fff;border:1px solid var(--border);border-radius:999px;padding:7px 15px;color:var(--ink)}
-.trust{max-width:820px;margin:0 auto;text-align:center;background:linear-gradient(160deg,rgba(37,99,235,.06),rgba(139,92,246,.06));border:1px solid rgba(37,99,235,.2);border-radius:22px;padding:36px 30px}
-.trust .k{font-size:clamp(23px,3.2vw,31px);font-weight:900;color:var(--ink)}
-.trust .k .cy{color:var(--accent)}
-.trust p{color:#3f4a63;font-size:16px;margin-top:8px}
-
-/* CTA (dark blue band) */
-.cta{position:relative;overflow:hidden;background:radial-gradient(760px 340px at 50% -10%,rgba(37,99,235,.4),transparent 60%),linear-gradient(160deg,#12285a,#0b1630 70%,#12294f);border:1px solid rgba(120,160,255,.32);border-radius:26px;padding:52px 34px;text-align:center;box-shadow:0 30px 70px rgba(9,16,32,.42),0 0 56px rgba(37,99,235,.22);color:#fff}
-.cta::before{content:"";position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(120,160,255,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(120,160,255,.08) 1px,transparent 1px);background-size:40px 40px;-webkit-mask-image:radial-gradient(circle at 50% 0%,#000,transparent 78%);mask-image:radial-gradient(circle at 50% 0%,#000,transparent 78%)}
-.cta::after{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:linear-gradient(90deg,transparent,rgba(34,211,238,.8),rgba(139,92,246,.8),transparent)}
-.cta>*{position:relative;z-index:1}
-.cta h2{font-size:clamp(24px,3.4vw,34px);font-weight:900;margin-bottom:10px;color:#fff}
-.cta p{color:#dbe4fb;font-size:16.5px;max-width:580px;margin:0 auto 26px}
-.cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-
-/* FOOTER (dark) */
-footer{border-top:1px solid #26314c;padding:40px 0;background:#0c1119}
-.foot-in{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;padding:0 32px;max-width:1160px;margin:0 auto}
-.foot-brand{display:flex;align-items:center;gap:12px}
-.foot-brand img{height:42px;width:auto}
-.foot-brand .bn{font-weight:900;font-size:20px;color:#fff}.foot-brand .bn .b{color:#60a5fa}
-.foot-brand .tg{font-size:12.5px;color:#22d3ee}
-.foot-copy{flex:1;text-align:center;color:#8b95a8;font-size:14px;font-weight:600;min-width:220px}
-.foot-links{display:flex;gap:16px;font-size:14px;color:#8b95a8;flex-wrap:wrap}
-.foot-links a:hover{color:#fff}
-
-@media(max-width:860px){
-  .feat-grid{grid-template-columns:1fr 1fr}
-  .feat.hl{grid-template-columns:1fr;text-align:center}
-  .cs{grid-template-columns:1fr}
-  .nav-links{display:none}
-  .foot-in{flex-direction:column;text-align:center}
+@media(max-width:620px){
+  .ba-dash,.ba-more,.ba-deep{grid-template-columns:1fr}
+  .ba-sp-row{grid-template-columns:1fr;grid-template-areas:"lab" "bar" "leg"}
+  .ba-kpis{grid-template-columns:1fr 1fr}
+  .ba-kpis .ba-kpi:first-child{grid-column:1/-1}
 }
-@media(max-width:560px){
-  .nav-in{padding:0 16px;gap:10px}
-  .nav-logo span{display:none}
-  .nav-logo img{height:42px}
-  .nav-cta .btn{padding:8px 14px;font-size:13px}
-}
-@media(max-width:520px){ .feat-grid{grid-template-columns:1fr} }
-
-/* production line under hero */
-.prodline{display:inline-flex;align-items:center;gap:9px;margin-top:24px;font-size:13.5px;font-weight:700;color:#e6ecfa;background:rgba(255,255,255,.05);border:1px solid rgba(120,170,255,.24);border-radius:999px;padding:9px 20px;backdrop-filter:blur(6px);box-shadow:0 8px 24px rgba(0,0,0,.28)}
-.prodline .dot{width:8px;height:8px;border-radius:50%;background:#4ade80;flex-shrink:0;box-shadow:0 0 0 0 rgba(74,222,128,.6);animation:livepulse 1.9s infinite}
-/* generic viz image */
-.viz{max-width:1020px;margin:0 auto;border-radius:18px;overflow:hidden;border:1px solid var(--border);box-shadow:0 26px 60px rgba(22,35,63,.16);background:#0b1020}
-.viz img{width:100%;display:block}
-.viz-cap{text-align:center;color:var(--muted);font-size:13.5px;margin:14px auto 0;max-width:780px;line-height:1.6}
-/* pain / decisions image band with overlay */
-.painband{position:relative;max-width:1020px;margin:0 auto;border-radius:18px;overflow:hidden;border:1px solid var(--border);box-shadow:0 20px 50px rgba(22,35,63,.16)}
-.painband img{width:100%;display:block}
-.painband .ov{position:absolute;inset:0;background:linear-gradient(90deg,rgba(9,16,32,.9),rgba(9,16,32,.55) 45%,rgba(9,16,32,.05));display:flex;align-items:center}
-.painband .ov .in{padding:0 6%;max-width:64%;color:#fff}
-.painband .ov h3{font-size:clamp(18px,2.5vw,28px);font-weight:900;margin-bottom:8px;line-height:1.15;text-shadow:0 2px 12px rgba(0,0,0,.55)}
-.painband .ov p{font-size:15px;color:#e3e9f7;text-shadow:0 2px 10px rgba(0,0,0,.5)}
-@media(max-width:640px){.painband .ov{background:linear-gradient(180deg,rgba(9,16,32,.55),rgba(9,16,32,.9))}.painband .ov .in{max-width:100%}}
-/* pipeline stage cards */
-.pipe{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin:6px 0 4px}
-.stage{background:#fff;border:1px solid var(--border);border-radius:14px;padding:18px 14px;text-align:center;box-shadow:0 6px 18px rgba(22,35,63,.05)}
-.stage .n{width:30px;height:30px;border-radius:50%;background:var(--grad);color:#fff;font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center;margin:0 auto 10px}
-.stage .si{font-size:23px;margin-bottom:6px}
-.stage h4{font-size:14.5px;color:var(--ink);margin-bottom:4px}
-.stage p{font-size:12.5px;color:var(--muted);line-height:1.5}
-@media(max-width:900px){.pipe{grid-template-columns:1fr 1fr}}
-@media(max-width:520px){.pipe{grid-template-columns:1fr}}
-/* differentiator */
-.diff{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:960px;margin:0 auto}
-.diffbox{border-radius:18px;padding:24px;border:1px solid var(--border);background:#fff;box-shadow:0 6px 18px rgba(22,35,63,.05)}
-.diffbox.good{border-top:3px solid var(--green)}
-.diffbox.bad{border-top:3px solid var(--red)}
-.diffbox .lbl{display:inline-block;font-size:12.5px;font-weight:800;padding:3px 12px;border-radius:999px;margin-bottom:10px}
-.diffbox.good .lbl{background:#dcfce7;color:#15803d}
-.diffbox.bad .lbl{background:#ffe4e6;color:#be123c}
-.diffbox h4{font-size:17px;margin-bottom:8px;color:var(--ink)}
-.diffbox p{font-size:14.5px;color:#3f4a63}
-.diffbox .ex{margin-top:12px;font-size:13px;color:var(--muted);background:var(--card2);border-radius:10px;padding:10px 12px}
-@media(max-width:760px){.diff{grid-template-columns:1fr}}
-/* dashboard what-you-get */
-.dashget{display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:960px;margin:0 auto;list-style:none}
-.dashget li{display:flex;gap:11px;align-items:flex-start;background:#fff;border:1px solid var(--border);border-radius:12px;padding:14px 16px;font-size:14px;color:#3f4a63;line-height:1.55}
-.dashget li b{color:var(--ink)}
-.dashget .di{font-size:19px;line-height:1.3;flex-shrink:0}
-@media(max-width:760px){.dashget{grid-template-columns:1fr}}
 </style>
+<script src="/js/project.js" defer></script>
 </head>
 <body>
 
-<!-- NAV -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-wa" viewBox="0 0 24 24"><path d="M20 11.6a8.1 8.1 0 0 1-12 7.1L4 20l1.3-3.8A8.1 8.1 0 1 1 20 11.6z"/><path d="M9.2 8.9c.2 2.4 2.5 4.8 5 5.4l1-1.4-1.6-1-.8.7c-.9-.4-1.7-1.2-2.1-2.1l.7-.8-1-1.6z"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.2 4.2L19 7"/></symbol>
+  <symbol id="i-back" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></symbol>
+</svg>
+
+<a class="skip" href="#main">דילוג לתוכן</a>
+<button class="motion-btn" id="motionBtn" type="button"><svg class="i-pause" viewBox="0 0 16 16" aria-hidden="true"><rect x="3" y="2" width="3.5" height="12" rx="1"/><rect x="9.5" y="2" width="3.5" height="12" rx="1"/></svg><svg class="i-play" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5v11a1 1 0 0 0 1.5.86l9-5.5a1 1 0 0 0 0-1.72l-9-5.5A1 1 0 0 0 4 2.5z"/></svg><span class="lbl">עצירת תנועה</span></button>
+
 <header class="nav">
   <div class="nav-in">
-    <div class="nav-start">
-      <a class="nav-logo" href="/"><img src="../../img/logo-reverse.png" alt="Rubin Project"><span dir="ltr">Rubin <span class="b">Project</span></span></a>
-      <nav class="nav-links">
-        <a href="/#services">שירותים</a>
-        <a href="/#portfolio">תיק עבודות</a>
-        <a href="/#creator">מי אני</a>
-        <a href="/#contact">יצירת קשר</a>
-      </nav>
-    </div>
+    <a class="brand" href="/" aria-label="Rubin Project, לדף הבית"><img src="/img/logo-mark.webp" width="123" height="120" alt=""><span dir="ltr">Rubin <span class="b">Project</span></span></a>
+    <nav class="nav-links" id="navLinks" aria-label="ניווט בעמוד">
+      <a class="nav-back" href="/#portfolio">לכל המערכות</a>
+      <a href="#ba-sort">מיון בזמן אמת</a>
+      <a href="#ba-features">מה יש במערכת</a>
+      <a href="#ba-deep">צלילה לעומק</a>
+      <a href="#ba-reports">הדשבורד</a>
+      <a href="#ba-custom">התאמה אישית</a>
+      <a class="btn btn-ghost nav-wa-m" href="https://wa.me/972527246200?text=%D7%94%D7%99%D7%99%20%D7%A2%D7%9E%D7%99%D7%AA%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%A2%D7%9E%D7%95%D7%93%20%D7%A9%D7%9C%20Bot%20Analytics" target="_blank" rel="noopener"><svg class="ico"><use href="#i-wa"/></svg>וואטסאפ</a>
+    </nav>
     <div class="nav-cta">
-      <a class="btn btn-primary" href="https://wa.me/972527246200" target="_blank" rel="noopener">💬 וואטסאפ</a>
+      <a class="btn btn-ghost" href="https://wa.me/972527246200?text=%D7%94%D7%99%D7%99%20%D7%A2%D7%9E%D7%99%D7%AA%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%A2%D7%9E%D7%95%D7%93%20%D7%A9%D7%9C%20Bot%20Analytics" target="_blank" rel="noopener" data-track="whatsapp_nav"><svg class="ico"><use href="#i-wa"/></svg>וואטסאפ</a>
+      <a class="btn btn-solid" href="/#contact" data-track="cta_nav">שיחת אפיון</a>
     </div>
+    <button class="burger" id="burger" type="button" aria-label="פתיחת תפריט" aria-expanded="false" aria-controls="navLinks"><svg class="ico"><use href="#i-menu"/></svg></button>
   </div>
 </header>
 
-<!-- HERO -->
-<header class="phero">
-  <div class="wrap">
-    <h1 class="sr-only">Bot Analytics — ניתוח שירות מבוסס AI</h1>
-    <div class="logo-card"><img src="../img/bot-logo.jpg" alt="Bot Analytics — ניתוח שירות מבוסס AI"></div>
-    <div><span class="badge"><span class="livedot"></span> פייפליין AI · דמו חי</span></div>
-    <p class="lead">פייפליין של סוכני AI שהופך <strong>דאטה גולמית של שירות</strong> — שיחות בוט ופניות לקוחות — לדשבורדים ניהוליים: סיווג נושאים, מדדי איכות, מגמות ושיעורי טיפול. במקום ערימת לוגים, תמונת מצב שאפשר להחליט לפיה.</p>
-    <div class="row">
-      <a class="btn btn-primary" href="https://amitrubin10.github.io/bot-analytics-pipeline/" target="_blank" rel="noopener">▶ לדמו החי</a>
-      <a class="btn btn-lghost" href="#quote">רוצים כזה לעסק?</a>
-    </div>
-    <div class="kpirow">
-      <div class="kpi b1"><b data-val="3366" data-dec="0" data-sep="1">0</b><span>סך קריאות בבוט</span></div>
-      <div class="kpi b2"><b data-val="77.3" data-dec="1" data-suffix="%">0</b><span>אחוז הצלחה (מענה תקין)</span></div>
-      <div class="kpi b3"><b data-val="42" data-dec="0" data-suffix="%">0</b><span>טופלו בבוט ללא נציג</span></div>
-      <div class="kpi b4"><b data-val="13" data-dec="0">0</b><span>נושאים מסווגים</span></div>
-      <div class="kpi b5"><b data-val="5" data-dec="0">0</b><span>סוכני AI בשרשרת</span></div>
-    </div>
-    <div class="prodline"><span class="dot"></span> רץ בפרודקשן · מוקד השירות של חברת ERP מובילה בישראל</div>
-  </div>
-</header>
+<main id="main">
 
-<!-- DASHBOARD what you get (payoff first) -->
-<section class="alt">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="eyebrow">התוצאה</span>
-      <h2>דשבורד ניהולי אחד — כל מה שצריך להחלטה</h2>
-      <p>קובץ HTML עצמאי, כל הגרפים ב-SVG טהור (בלי ספריות), מתפרסם בקישור קבוע ומתעדכן מדי שבוע.</p>
+<section class="p-hero">
+  <div class="collage" aria-hidden="true">
+    <div class="tilt">
+      <div class="lane" data-lane data-speed="20" data-dir="1"><div class="lane-track"><div class="lane-group">
+        <span class="ctile"><img src="/img/ba/t-kpi.webp" width="440" height="275" alt="" decoding="async"></span>
+        <span class="ctile"><img src="/img/ba/t-pipe.webp" width="440" height="275" alt="" decoding="async"></span>
+        <span class="ctile"><img src="/img/ba/t-topics.webp" width="440" height="275" alt="" decoding="async"></span>
+        <span class="ctile"><img src="/img/ba/t-trends4.webp" width="440" height="275" alt="" decoding="async"></span>
+      </div></div></div>
+      <div class="lane" data-lane data-speed="15" data-dir="-1"><div class="lane-track"><div class="lane-group">
+        <span class="ctile"><img src="/img/ba/t-funnel.webp" width="440" height="275" alt="" decoding="async"></span>
+        <span class="ctile"><img src="/img/ba/t-flow.webp" width="440" height="275" alt="" decoding="async"></span>
+        <span class="ctile"><img src="/img/ba/t-kpi2.webp" width="440" height="275" alt="" decoding="async"></span>
+        <span class="ctile"><img src="/img/ba/t-trend.webp" width="440" height="275" alt="" decoding="async"></span>
+      </div></div></div>
+      <div class="lane" data-lane data-speed="24" data-dir="1"><div class="lane-track"><div class="lane-group">
+        <span class="ctile"><img src="/img/ba/t-trend.webp" width="440" height="275" alt="" decoding="async"></span>
+        <span class="ctile"><img src="/img/ba/t-funnel.webp" width="440" height="275" alt="" decoding="async"></span>
+        <span class="ctile"><img src="/img/ba/t-kpi.webp" width="440" height="275" alt="" decoding="async"></span>
+        <span class="ctile"><img src="/img/ba/t-pipe.webp" width="440" height="275" alt="" decoding="async"></span>
+      </div></div></div>
     </div>
-    <div class="viz"><img src="../img/bot-boardroom.jpg" alt="צוות ניהול בוחן דשבורד תובנות AI בזמן אמת"></div>
-    <div class="viz-cap" style="margin-bottom:24px">תובנות בזמן אמת — כל השיחות מסווגות ומנוקדות, בתמונת מצב אחת שאפשר להחליט לפיה.</div>
-    <ul class="dashget">
-      <li><span class="di">📇</span><div><b>כרטיסי KPI</b> — היקף, שיעורי טיפול, אחוז הצלחה, כשלים והפניות — כל אחד עם היסטוריית 4 שבועות.</div></li>
-      <li><span class="di">🔻</span><div><b>משפך פנייה</b> — ממשתמשי הבוט, דרך מה שנסגר לבד, ועד פירוט האיכות של מה שהוסלם לנציג.</div></li>
-      <li><span class="di">📊</span><div><b>גרפי התפלגות</b> — נושאים מובילים, ואיפה הבוט מצליח מול איפה כדאי להשקיע באימון.</div></li>
-      <li><span class="di">📈</span><div><b>מגמות 4 שבועות</b> — גרף ניצוץ לכל מדד: האם הבוט משתפר לאורך זמן.</div></li>
-      <li><span class="di">🗂️</span><div><b>טבלאות אינטראקטיביות</b> — כל שיחה בעייתית לפי נושא; בלחיצה נפתחת התשובה המלאה.</div></li>
-      <li><span class="di">🔁</span><div><b>דפוסי שאלה חוזרים</b> — אשכולות חודשיים + המלצות אימון ממוקדות.</div></li>
+  </div>
+  <div class="p-hero-in wrap">
+    <div class="p-hero-copy">
+      <p class="p-crumb"><a href="/#portfolio">מערכות שרצות אצל לקוחות</a><svg class="ico" style="width:14px;height:14px;transform:scaleX(-1)"><use href="#i-back"/></svg><span dir="ltr">Bot Analytics</span></p>
+      <h1><span class="p-name">Bot Analytics</span><em>ניתוח שירות מבוסס AI</em></h1>
+      <p class="p-lead">חמישה סוכני AI קוראים כל שיחה של בוט השירות, מסווגים אותה ומנקדים את המענה. בסוף השבוע יוצא דשבורד ניהולי אחד: על מה פונים, איפה הבוט נופל ומה משתפר.</p>
+      <div class="p-actions">
+        <a class="btn btn-solid btn-lg" href="/#contact" data-track="cta_hero">שיחת אפיון</a>
+        <a class="btn btn-ghost btn-lg" href="https://wa.me/972527246200?text=%D7%94%D7%99%D7%99%20%D7%A2%D7%9E%D7%99%D7%AA%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%A2%D7%9E%D7%95%D7%93%20%D7%A9%D7%9C%20Bot%20Analytics" target="_blank" rel="noopener" data-track="whatsapp_hero"><svg class="ico"><use href="#i-wa"/></svg>וואטסאפ</a>
+      </div>
+      <p class="proof"><span class="dot" aria-hidden="true"></span><span><b>רץ בפרודקשן</b> במוקד השירות של אחד מבתי התוכנה הוותיקים והמובילים ל-ERP בישראל</span></p>
+    </div>
+  </div>
+</section>
+
+<section class="stack after-hero" aria-label="הטכנולוגיות שעליהן Bot Analytics בנויה">
+  <div class="lane" data-lane data-speed="34" data-dir="1"><div class="lane-track"><div class="lane-group">
+    <span class="tech"><i></i>Python</span><span class="tech"><i></i>Claude Code</span><span class="tech"><i></i>סוכני AI מקבילים</span><span class="tech"><i></i>שיפוט סמנטי</span><span class="tech"><i></i>openpyxl</span><span class="tech"><i></i>python-docx</span><span class="tech"><i></i>Chart.js</span><span class="tech"><i></i>SVG</span><span class="tech"><i></i>HTML בקובץ יחיד</span><span class="tech"><i></i>Markdown</span>
+  </div></div></div>
+</section>
+
+<section class="band band-light">
+  <div class="wrap">
+    <div class="sh reveal">
+      <span class="k">המציאות של מנהל שירות</span>
+      <h2>אלפי שיחות בוט, <em>ואף אחד לא קורא אותן</em></h2>
+    </div>
+    <div class="grid-3">
+      <article class="card ba-pain reveal"><div class="ba-sc ba-sc-flood" data-scene aria-hidden="true">
+        <span class="ba-sc-count">אלפי שיחות בחודש</span>
+        <span class="ba-sc-log ba-sc-l1"><time>10:21</time>איך מפיקים דוח מע"מ?</span>
+        <span class="ba-sc-log bot ba-sc-l2"><time>10:21</time>אני מעביר אותך לנציג</span>
+        <span class="ba-sc-log ba-sc-l3"><time>10:22</time>שוב לא עובד!!</span>
+        <span class="ba-sc-log ba-sc-l4"><time>10:24</time>שכחתי את הסיסמה</span>
+      </div><h3>ערימת לוגים</h3><p>אלפי שיחות ופניות בחודש. לקרוא אותן ביד זה בלתי אפשרי, ולכן אף אחד לא קורא.</p></article>
+      <article class="card ba-pain reveal"><div class="ba-sc ba-sc-topics" data-scene aria-hidden="true">
+        <span class="ba-sc-bub ba-sc-b1">שגיאה בהתחברות<em>נושא?</em></span>
+        <span class="ba-sc-bub ba-sc-b2">איך שולחים חשבונית<em>נושא?</em></span>
+        <span class="ba-sc-bub ba-sc-b3">חידוש המנוי<em>נושא?</em></span>
+      </div><h3>על מה פונים?</h3><p>לא ברור מה הנושאים המובילים, ואיפה הלקוחות נתקעים שוב ושוב.</p></article>
+      <article class="card ba-pain reveal"><div class="ba-sc ba-sc-qa" data-scene aria-hidden="true">
+        <span class="ba-sc-ans">אני מעביר אותך לנציג</span>
+        <span class="ba-sc-pill ba-sc-yes">הפניה נכונה?</span>
+        <span class="ba-sc-pill ba-sc-no">כשל?</span>
+        <span class="ba-sc-meter"><span>איכות המענה<b>?</b></span><i></i></span>
+      </div><h3>אין מדד לאיכות</h3><p>אין דרך לדעת אם הבוט עונה טוב, ואם השינוי של החודש שעבר שיפר משהו.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="band band-deep" id="ba-sort">
+  <div class="wrap">
+    <div class="sh reveal">
+      <span class="k">החידוש הגדול</span>
+      <h2>כל שיחה מקבלת נושא וציון. <em>אוטומטית.</em></h2>
+      <p>הסוכנים מבינים את כוונת הלקוח, לא רק מילות מפתח. כל שיחה מסווגת לנושא אחד, ותשובת הבוט מקבלת ציון: תקינה, כשל, או הפניה נכונה לנציג. המדדים מתעדכנים בהתאם.</p>
+    </div>
+    <div class="ba-demo reveal" id="baDemo">
+      <div class="ba-pane" aria-hidden="true">
+        <div class="ba-pane-h"><span>שיחות נכנסות</span><span class="ba-live">LIVE</span></div>
+        <ol class="ba-feed" id="baFeed"></ol>
+      </div>
+      <div class="ba-pane" role="img" aria-label="דוגמה לדשבורד שמתעדכן: מספר השיחות שנותחו, אחוז המענה התקין, הפניות נכונות לנציג, והתפלגות לפי ארבעה נושאים">
+        <div class="ba-kpis">
+          <div class="ba-kpi"><small>שיחות שנותחו</small><b id="baTotal">0</b></div>
+          <div class="ba-kpi ba-k-ok"><small>מענה תקין</small><b id="baOk">0%</b></div>
+          <div class="ba-kpi ba-k-red"><small>הפניות נכונות</small><b id="baRedir">0</b></div>
+        </div>
+        <div class="ba-pane-h"><span>התפלגות נושאים</span></div>
+        <ul class="ba-bars" id="baBars"></ul>
+      </div>
+    </div>
+    <p class="ba-note">דוגמה להמחשה. השאלות והמספרים אינם נתונים של לקוח.</p>
+    <ol class="ba-steps">
+      <li class="reveal"><i class="pp-ln" aria-hidden="true"><b></b><b></b></i><span class="pp-st-ic"><img class="pp-gi-img" src="/img/ba/ic-inbox-160.webp" srcset="/img/ba/ic-inbox-160.webp 160w, /img/ba/ic-inbox-240.webp 240w, /img/ba/ic-inbox-320.webp 320w" sizes="132px" width="160" height="160" alt="" loading="lazy" decoding="async"></span><span><b>השיחות נכנסות</b>הדוח הגולמי של הבוט, כמו שהוא, בלי הכנה.</span></li>
+      <li class="reveal"><i class="pp-ln" aria-hidden="true"><b></b><b></b></i><span class="pp-st-ic"><img class="pp-gi-img" src="/img/ba/ic-sort-160.webp" srcset="/img/ba/ic-sort-160.webp 160w, /img/ba/ic-sort-240.webp 240w, /img/ba/ic-sort-320.webp 320w" sizes="132px" width="160" height="160" alt="" loading="lazy" decoding="async"></span><span><b>סיווג וציון</b>נושא לכל שיחה, וציון לכל תשובה, עם הסיבה.</span></li>
+      <li class="reveal"><span class="pp-st-ic"><img class="pp-gi-img" src="/img/ba/ic-dashboard-160.webp" srcset="/img/ba/ic-dashboard-160.webp 160w, /img/ba/ic-dashboard-240.webp 240w, /img/ba/ic-dashboard-320.webp 320w" sizes="132px" width="160" height="160" alt="" loading="lazy" decoding="async"></span><span><b>דשבורד שבועי</b>קובץ אחד עם המדדים, המגמות והשיחות הבעייתיות.</span></li>
+    </ol>
+    <div class="chips reveal"><span class="chip">הבנת כוונה</span><span class="chip">סוכנים מקבילים</span><span class="chip">מאות שיחות בדקות</span><span class="chip">סיבה לכל ציון</span></div>
+  </div>
+</section>
+
+<section class="band band-light" id="ba-features">
+  <div class="wrap">
+    <div class="sh reveal">
+      <span class="k">מה יש במערכת</span>
+      <h2>מהדאטה הגולמית <em>לתמונת מצב שמחליטים לפיה</em></h2>
+      <p>צילומי מסך מהדשבורד שרץ אצל הלקוח, ומהאיורים שמסבירים את הפייפליין.</p>
+    </div>
+    <div class="grid-2">
+      <article class="shot-card reveal">
+        <div class="shot" data-cycle style="background:#eceff3"><button class="zoomable" type="button" aria-label="הגדלה של המסך המוצג"><img class="ba-fr on" src="/img/ba/kpi-640.webp" data-full="/img/ba/kpi-1280.webp" width="640" height="325" alt="כרטיסי KPI בדשבורד השבועי: סך קריאות, קריאות בבוט, שיעור סגירה בבוט, אחוז הצלחה ותשובות שגויות" loading="lazy" decoding="async"><img class="ba-fr" src="/img/ba/kpi2-640.webp" data-full="/img/ba/kpi2-1280.webp" width="640" height="277" alt="כרטיסי KPI משבוע אחר, עם הנושא המוביל בבעיות" loading="lazy" decoding="async"></button></div>
+        <div class="shot-body"><h3>כרטיסי KPI</h3><p>היקף, שיעור טיפול בבוט, אחוז הצלחה, כשלים והפניות. לכל מדד היסטוריה של ארבעה שבועות.</p><div class="chips"><span class="chip">היקף</span><span class="chip">שיעור טיפול</span><span class="chip">אחוז הצלחה</span></div></div>
+      </article>
+      <article class="shot-card reveal">
+        <div class="shot" data-cycle style="background:#eceff3"><button class="zoomable" type="button" aria-label="הגדלה של המסך המוצג"><img class="ba-fr on" src="/img/ba/funnel-640.webp" data-full="/img/ba/funnel-1280.webp" width="640" height="220" alt="משפך איכות המענה: משתמשי הבוט, מה נסגר בבוט, מה נפתח לנציג, ופירוט לתקינות, לא תקינות והפניות נכונות" loading="lazy" decoding="async"><img class="ba-fr" src="/img/ba/trends4-640.webp" data-full="/img/ba/trends4-1280.webp" width="640" height="178" alt="סקירת מנהלים: מגמה של ארבעה שבועות לכל מדד מרכזי" loading="lazy" decoding="async"></button></div>
+        <div class="shot-body"><h3>משפך איכות המענה</h3><p>מכל משתמשי הבוט, דרך מה שנסגר לבד, ועד פירוט האיכות של מה שהגיע לנציג. ולצידו סקירת מנהלים של ארבעה שבועות.</p><div class="chips"><span class="chip">משפך פנייה</span><span class="chip">סקירת מנהלים</span></div></div>
+      </article>
+      <article class="shot-card reveal">
+        <div class="shot" data-cycle style="background:#eceff3"><button class="zoomable" type="button" aria-label="הגדלה של המסך המוצג"><img class="ba-fr on" src="/img/ba/topics-640.webp" data-full="/img/ba/topics-1280.webp" width="640" height="452" alt="התפלגות נושאים: מספר השיחות בכל נושא, מהנושא המוביל ומטה" loading="lazy" decoding="async"><img class="ba-fr" src="/img/ba/trend-640.webp" data-full="/img/ba/trend-1280.webp" width="640" height="393" alt="מגמת איכות הבוט בארבעה שבועות: אחוז הצלחה, תשובות שגויות והפניות נכונות" loading="lazy" decoding="async"></button></div>
+        <div class="shot-body"><h3>נושאים ומגמות</h3><p>על מה באמת פונים, ואיך האיכות זזה משבוע לשבוע. ככה רואים אם האימון של הבוט עובד.</p><div class="chips"><span class="chip">נושאים מובילים</span><span class="chip">מגמת איכות</span></div></div>
+      </article>
+      <article class="shot-card reveal">
+        <div class="shot" data-cycle style="background:#000b29"><button class="zoomable" type="button" aria-label="הגדלה של המסך המוצג"><img class="ba-fr on" src="/img/ba/pipe-640.webp" data-full="/img/ba/pipe-1280.webp" width="640" height="360" alt="איור: חמישה סוכני AI בשרשרת אחת, ממקורות הדאטה הגולמית ועד דשבורד ניהולי" loading="lazy" decoding="async"><img class="ba-fr" src="/img/ba/flow-640.webp" data-full="/img/ba/flow-1280.webp" width="640" height="360" alt="איור: כל סוכן מתמחה בשלב אחר, ויחד הם הופכים דאטה גולמית לתובנה ניהולית" loading="lazy" decoding="async"></button></div>
+        <div class="shot-body"><h3>חמישה סוכנים בשרשרת</h3><p>מיצוי הנתונים, סיווג הנושא, ניקוד האיכות, זיהוי מגמות ובניית הדשבורד. הפלט של כל סוכן הוא הקלט של הבא.</p><div class="chips"><span class="chip">פייפליין</span><span class="chip">רץ כל שבוע</span></div></div>
+      </article>
+    </div>
+    <div class="ba-more">
+      <article class="card reveal"><span class="pp-gi"><img class="pp-gi-img" src="/img/ba/ic-topics-160.webp" srcset="/img/ba/ic-topics-160.webp 160w, /img/ba/ic-topics-240.webp 240w" sizes="84px" width="160" height="160" alt="" loading="lazy" decoding="async"></span><h3>סיווג נושאים</h3><p>כל פנייה מתויגת לנושא אחד, לפי כללי עדיפות קבועים.</p></article>
+      <article class="card reveal"><span class="pp-gi"><img class="pp-gi-img" src="/img/ba/ic-score-160.webp" srcset="/img/ba/ic-score-160.webp 160w, /img/ba/ic-score-240.webp 240w" sizes="84px" width="160" height="160" alt="" loading="lazy" decoding="async"></span><h3>ניקוד איכות מענה</h3><p>כל תשובה: תקינה, לא תקינה או לא ניתן לקבוע, עם סיבה מרשימה סגורה.</p></article>
+      <article class="card reveal"><span class="pp-gi"><img class="pp-gi-img" src="/img/ba/ic-route-160.webp" srcset="/img/ba/ic-route-160.webp 160w, /img/ba/ic-route-240.webp 240w" sizes="84px" width="160" height="160" alt="" loading="lazy" decoding="async"></span><h3>הפניה נכונה מול כשל</h3><p>הבחנה בין העברה רצויה לנציג לבין פער אמיתי בבסיס הידע.</p></article>
+      <article class="card reveal"><span class="pp-gi"><img class="pp-gi-img" src="/img/ba/ic-funnel-160.webp" srcset="/img/ba/ic-funnel-160.webp 160w, /img/ba/ic-funnel-240.webp 240w" sizes="84px" width="160" height="160" alt="" loading="lazy" decoding="async"></span><h3>משפך פנייה</h3><p>מכל משתמשי הבוט ועד מה שהגיע לנציג, ובאיזו איכות.</p></article>
+      <article class="card reveal"><span class="pp-gi"><img class="pp-gi-img" src="/img/ba/ic-table-160.webp" srcset="/img/ba/ic-table-160.webp 160w, /img/ba/ic-table-240.webp 240w" sizes="84px" width="160" height="160" alt="" loading="lazy" decoding="async"></span><h3>טבלאות לפי נושא</h3><p>כל שיחה בעייתית זמינה, ובלחיצה נפתחת תשובת הבוט המלאה.</p></article>
+      <article class="card reveal"><span class="pp-gi"><img class="pp-gi-img" src="/img/ba/ic-repeat-160.webp" srcset="/img/ba/ic-repeat-160.webp 160w, /img/ba/ic-repeat-240.webp 240w" sizes="84px" width="160" height="160" alt="" loading="lazy" decoding="async"></span><h3>שאלות שחוזרות</h3><p>אשכולות חודשיים של שאלות חוזרות, עם המלצות אימון ממוקדות.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="band band-light alt" id="ba-deep">
+  <div class="wrap">
+    <div class="sh reveal">
+      <span class="k">צלילה לעומק</span>
+      <h2>לא כל "מעביר אותך לנציג" <em>הוא כישלון</em></h2>
+      <p>המערכת מבדילה בין העברה שהיא בדיוק ההתנהגות הרצויה, לבין פער אמיתי שדורש אימון. ההבדל הזה משנה את כל תמונת האיכות.</p>
+    </div>
+    <div class="ba-deep">
+      <figure class="ba-split reveal" aria-labelledby="baSpCap">
+        <p class="ba-sp-k">שבוע לדוגמה · 1,000 שיחות</p>
+        <div class="ba-sp-row ba-sp-raw">
+          <div class="ba-sp-lab"><b>בלי הבחנה</b><span>כל העברה לנציג נספרת ככשל</span></div>
+          <div class="ba-sp-bar" role="img" aria-label="40 אחוז מהשיחות נספרות ככשל"><i class="ba-sp-all" style="--w:40%"></i></div>
+          <ul class="ba-sp-leg"><li class="ba-sp-l-all"><b>40%</b> כשל</li><li class="ba-sp-l-rest"><b>60%</b> נסגרו בבוט</li></ul>
+        </div>
+        <div class="ba-sp-row">
+          <div class="ba-sp-lab"><b>עם Bot Analytics</b><span>כל העברה נבדקת לפי סוג השאלה</span></div>
+          <div class="ba-sp-bar" role="img" aria-label="24 אחוז הפניה נכונה ו-16 אחוז כשל אמיתי"><i class="ba-sp-ok" style="--w:24%"></i><i class="ba-sp-bad" style="--w:16%"></i></div>
+          <ul class="ba-sp-leg"><li class="ba-sp-l-ok"><b>24%</b> הפניה נכונה</li><li class="ba-sp-l-bad"><b>16%</b> כשל אמיתי</li></ul>
+        </div>
+        <figcaption id="baSpCap"><b>הכשל האמיתי קטן פי 2.5 מהמספר הגולמי.</b> וכל שיחה בו היא שאלה שאפשר ללמד את הבוט לענות עליה.</figcaption>
+      </figure>
+      <article class="ba-case ba-case-ok reveal">
+        <span class="ba-case-k">✓ הפניה נכונה</span>
+        <h3>שאלה מחוץ לתחום של הבוט</h3>
+        <p>התקנה, חיוב, תלונת שירות או גישה לנתונים של לקוח מסוים. כאן ההעברה לנציג היא ההתנהגות הרצויה, ולא נספרת ככשל.</p>
+        <blockquote>"תחזרו אליי לגבי חידוש המנוי"<span>הפניה נכונה</span></blockquote>
+      </article>
+      <article class="ba-case ba-case-bad reveal">
+        <span class="ba-case-k">✕ כשל אמיתי</span>
+        <h3>שאלה שהבוט אמור לדעת</h3>
+        <p>איך עושים פעולה, קוד שגיאה מסוים או תקלה תפעולית. "לא יודע" כאן הוא פער בבסיס הידע, והוא נכנס לרשימת האימון.</p>
+        <blockquote>"מה המשמעות של שגיאה 403?"<span>כשל שדורש אימון</span></blockquote>
+      </article>
+    </div>
+    <p class="ba-note-l">המספרים להמחשה בלבד. הדוגמאות בכרטיסים כלליות.</p>
+  </div>
+</section>
+
+<section class="band band-light" id="ba-reports">
+  <div class="wrap">
+    <div class="sh reveal">
+      <span class="k">הדשבורד האמיתי</span>
+      <h2>וזה לא הדמיה. <em>זה הדשבורד שרץ אצל הלקוח.</em></h2>
+      <p>קובץ HTML אחד בכל שבוע, שנפתח בכל דפדפן ומוכן לישיבת ההנהלה. המספרים כאן הם מהשבוע שבצילום, 2-6.8.2026.</p>
+    </div>
+    <div data-tour>
+    <div class="pp-kpis reveal" aria-label="המספרים מהשבוע שבצילום">
+      <div class="pp-kpi" style="--c:#1f3a5f"><small>סך קריאות בטבלת שירות</small><b data-count="4695" data-sep>4,695</b><span>פניות לשירות בתקופה</span></div>
+      <div class="pp-kpi" style="--c:#a8650f"><small>סך קריאות בבוט</small><b data-count="2134" data-sep data-delay="120">2,134</b><span>עברו דרך הבוט</span></div>
+      <div class="pp-kpi" style="--c:#2e7d32"><small>שיעור סגירה בבוט</small><b data-count="74.4" data-dec="1" data-suf="%" data-delay="240">74.4%</b><span>נסגרו בלי נציג</span></div>
+      <div class="pp-kpi" style="--c:#2e7d32"><small>אחוז הצלחה תפעולי</small><b data-count="87.6" data-dec="1" data-suf="%" data-delay="360">87.6%</b><span>מענה תקין או הפניה נכונה</span></div>
+    </div>
+    <div class="ba-dash">
+      <figure class="ba-frame reveal"><button class="zoomable" type="button" data-full="/img/ba/dash-full-1280.webp" data-cap="הדוח השבועי: כרטיסי KPI, התפלגות נושאים ומגמת איכות" aria-label="הגדלה: הדוח השבועי"><i class="pp-zone" data-i="0" style="left:0.5%;top:20.6%;width:99%;height:59.4%" aria-hidden="true"></i><i class="pp-zone" data-i="2" style="left:50.8%;top:89.4%;width:48.7%;height:10.6%" aria-hidden="true"></i><i class="pp-zone" data-i="3" style="left:0.5%;top:89.4%;width:48.8%;height:10.6%" aria-hidden="true"></i><img src="/img/ba/dash-full-640.webp" srcset="/img/ba/dash-full-640.webp 640w, /img/ba/dash-full-1280.webp 1280w" sizes="(max-width:620px) 92vw, 46vw" width="640" height="400" alt="הדוח השבועי של Bot Analytics: כרטיסי KPI, התפלגות נושאים ומגמת איכות" loading="lazy" decoding="async"></button><figcaption>דוח שבועי</figcaption></figure>
+      <figure class="ba-frame reveal"><button class="zoomable" type="button" data-full="/img/ba/dash2-1280.webp" data-cap="משפך איכות המענה וסקירת מנהלים" aria-label="הגדלה: משפך איכות המענה וסקירת מנהלים"><i class="pp-zone" data-i="1" style="left:0.6%;top:1.2%;width:98.9%;height:52.6%" aria-hidden="true"></i><img src="/img/ba/dash2-640.webp" srcset="/img/ba/dash2-640.webp 640w, /img/ba/dash2-1280.webp 1280w" sizes="(max-width:620px) 92vw, 46vw" width="640" height="401" alt="משפך איכות המענה וסקירת מנהלים של ארבעה שבועות" loading="lazy" decoding="async"></button><figcaption>איכות מענה וסקירת מנהלים</figcaption></figure>
+    </div>
+    <ul class="checks grid-2 reveal">
+      <li data-tour-i="0"><svg class="ico"><use href="#i-check"/></svg><span><i class="pp-tn" aria-hidden="true">1</i><b>כרטיסי KPI:</b> היקף, שיעורי טיפול, אחוז הצלחה, כשלים והפניות.</span></li>
+      <li data-tour-i="1"><svg class="ico"><use href="#i-check"/></svg><span><i class="pp-tn" aria-hidden="true">2</i><b>משפך פנייה:</b> מהבוט, דרך מה שנסגר לבד, ועד מה שהגיע לנציג.</span></li>
+      <li data-tour-i="2"><svg class="ico"><use href="#i-check"/></svg><span><i class="pp-tn" aria-hidden="true">3</i><b>גרפי התפלגות:</b> הנושאים המובילים, ואיפה כדאי להשקיע באימון.</span></li>
+      <li data-tour-i="3"><svg class="ico"><use href="#i-check"/></svg><span><i class="pp-tn" aria-hidden="true">4</i><b>מגמות של ארבעה שבועות:</b> האם הבוט משתפר לאורך זמן.</span></li>
+      <li><svg class="ico"><use href="#i-check"/></svg><span><b>טבלאות לפי נושא:</b> כל שיחה בעייתית, עם התשובה המלאה.</span></li>
+      <li><svg class="ico"><use href="#i-check"/></svg><span><b>שאלות שחוזרות:</b> אשכולות חודשיים והמלצות אימון.</span></li>
+    </ul>
+    </div>
+  </div>
+</section>
+
+<section class="band band-deep stmt-band" aria-labelledby="ba-stmt-h">
+  <div class="wrap">
+    <div class="stmt reveal" data-sgo>
+      <p class="k">כל שבוע</p>
+      <h2 id="ba-stmt-h">הדוח מגיע לכל מי <span class="pp-hl">שמחליט<svg class="pp-ul" viewBox="0 0 100 12" preserveAspectRatio="none" aria-hidden="true"><path pathLength="100" d="M2 8C24 3 52 11 98 4"/></svg></span>.</h2>
+      <div class="sgo" aria-hidden="true">
+        <div class="sgo-src"><img src="/img/ba/sgo-dash.webp" width="960" height="540" alt="" loading="lazy" decoding="async"></div>
+        <div class="sgo-dev sgo-lap"><div class="sgo-scr"><img class="sgo-img" src="/img/studio/sgo-lap.webp" width="760" height="452" alt="" loading="lazy" decoding="async"><div class="sgo-win"><i class="sgo-ui sgo-on"></i><img class="sgo-c sgo-on" src="/img/ba/sgo-dash.webp" width="960" height="540" alt="" loading="lazy" decoding="async"></div></div><span>במחשב</span></div>
+        <div class="sgo-dev sgo-ph"><div class="sgo-scr"><img class="sgo-img" src="/img/studio/sgo-ph.webp" width="360" height="730" alt="" loading="lazy" decoding="async"><div class="sgo-win"><i class="sgo-ui sgo-on"></i><div class="sgo-bub sgo-on"><img class="sgo-c" src="/img/ba/sgo-dash.webp" width="960" height="540" alt="" loading="lazy" decoding="async"><i></i></div></div></div><span>בטלפון</span></div>
+        <div class="sgo-dev sgo-bk"><div class="sgo-scr"><img class="sgo-img" src="/img/studio/sgo-bk.webp" width="760" height="449" alt="" loading="lazy" decoding="async"><div class="sgo-win"><img class="sgo-c sgo-on" src="/img/ba/sgo-dash.webp" width="960" height="540" alt="" loading="lazy" decoding="async"></div></div><span>מודפס לישיבה</span></div>
+        <div class="sgo-dev sgo-tv"><div class="sgo-scr"><img class="sgo-img" src="/img/studio/sgo-tv.webp" width="900" height="506" alt="" loading="lazy" decoding="async"><div class="sgo-win"><img class="sgo-c sgo-on" src="/img/ba/sgo-dash.webp" width="960" height="540" alt="" loading="lazy" decoding="async"></div></div><span>על המסך בחדר הישיבות</span></div>
+        <i class="sgo-fly"><img src="/img/ba/sgo-dash.webp" width="960" height="540" alt="" loading="lazy" decoding="async"></i>
+        <i class="sgo-fly"><img src="/img/ba/sgo-dash.webp" width="960" height="540" alt="" loading="lazy" decoding="async"></i>
+        <i class="sgo-fly"><img src="/img/ba/sgo-dash.webp" width="960" height="540" alt="" loading="lazy" decoding="async"></i>
+        <i class="sgo-fly"><img src="/img/ba/sgo-dash.webp" width="960" height="540" alt="" loading="lazy" decoding="async"></i>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band band-light alt" id="ba-custom">
+  <div class="wrap ba-custom">
+    <div class="sh reveal">
+      <span class="k">הכי חשוב</span>
+      <h2>לא מוצר מדף. <em>פייפליין שנבנה סביב הדאטה שלכם.</em></h2>
+      <p>יש לכם בוט, מוקד שירות או CRM? אותה גישה מתחברת לכל מקור שירות. הנושאים, כללי הציון והמדדים נקבעים לפי העסק שלכם, והדשבורד מראה מה קורה באמת.</p>
+      <div class="ba-links">
+        <a class="tlink" href="/projects/rubin360/">איך בונים מערכת כזו: RUBIN 360 ←</a>
+      </div>
+    </div>
+    <ul class="checks card reveal">
+      <li><svg class="ico"><use href="#i-check"/></svg><span>נושאים וכללי ציון לפי התחום שלכם</span></li>
+      <li><svg class="ico"><use href="#i-check"/></svg><span>בוט, מוקד שירות או CRM</span></li>
+      <li><svg class="ico"><use href="#i-check"/></svg><span>דשבורד שבועי בלי עבודה ידנית</span></li>
+      <li><svg class="ico"><use href="#i-check"/></svg><span>נבנה על ידי עמית רובין, אחרי 20 שנה של הובלת תהליכים עסקיים ומערכות ERP</span></li>
     </ul>
   </div>
 </section>
 
-<!-- REAL PRODUCT (live at a client) -->
-<section>
+<section class="band band-deep p-end">
   <div class="wrap">
-    <div class="sec-head">
-      <span class="eyebrow">🏢 מותקן בפרודקשן</span>
-      <h2>וזה לא הדמיה — הדשבורד האמיתי, אצל לקוח</h2>
-      <p>המערכת רצה מדי שבוע אצל חברת ERP מובילה בישראל. אלה צילומי מסך מהדשבורד החי.</p>
+    <div class="sh reveal">
+      <span class="k">הצעד הבא</span>
+      <h2>רוצים לדעת מה קורה <em>בשירות שלכם?</em></h2>
+      <p>יש לכם בוט, מוקד או שירות לקוחות? נחבר פייפליין כזה לדאטה שלכם, ותקבלו דשבורד שמראה מה עובד ומה נופל. מתחילים בשיחת אפיון קצרה.</p>
     </div>
-    <div class="gframe">
-      <div class="gframe-bar"><i class="r"></i><i class="y"></i><i class="g"></i><span>דשבורד ניהולי · דוח שבועי</span></div>
-      <div class="gframe-in"><img src="../img/bot-live1.jpg" alt="דשבורד ניהולי חי — דוח קריאות בוט שבועי: כרטיסי KPI, התפלגות נושאים ומגמת איכות"></div>
-    </div>
-    <div class="viz-cap" style="margin-bottom:30px">דוח קריאות שבועי מלא — כרטיסי KPI, התפלגות נושאים ומגמת איכות ל-4 שבועות.</div>
-    <div class="gframe">
-      <div class="gframe-bar"><i class="r"></i><i class="y"></i><i class="g"></i><span>איכות מענה · סקירת מנהלים</span></div>
-      <div class="gframe-in"><img src="../img/bot-live2.jpg" alt="משפך איכות המענה וסקירת מנהלים ל-4 שבועות — מהדשבורד החי"></div>
-    </div>
-    <div class="viz-cap">משפך איכות המענה + סקירת מנהלים — מגמה לכל מדד לאורך זמן.</div>
-  </div>
-</section>
-
-<!-- PIPELINE VISUAL -->
-<div class="shotwrap">
-  <div class="wrap">
-    <div class="viz"><img src="../img/bot-pipeline.jpg" alt="חמישה סוכני AI בשרשרת: מיצוי נתונים, סיווג נושאים, ניקוד איכות, זיהוי מגמות ובניית דשבורד ניהולי"></div>
-    <div class="viz-cap">מהדאטה הגולמית של השירות — שיחות בוט, פניות ולוגים — ועד דשבורד ניהולי אחד שאפשר להחליט לפיו.</div>
-  </div>
-</div>
-
-<!-- CHALLENGE -->
-<section>
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="eyebrow">האתגר והפתרון</span>
-      <h2>מלוגים גולמיים — לתובנות ניהוליות</h2>
-    </div>
-    <!-- BEFORE: pain image + לפני -->
-    <div class="cs-row">
-      <div class="cs-img"><img src="../img/bot-pain.jpg" alt="מוקד שירות עמוס — אלפי פניות ביום, ניתוח ידני בלתי אפשרי"></div>
-      <div class="csbox chal">
-        <h3>⚠️ לפני</h3>
-        <ul>
-          <li>אלפי שיחות בוט ופניות — בלי דרך לנתח אותן</li>
-          <li>לא ברור על מה הלקוחות פונים ואיפה נופלים</li>
-          <li>אין מדד לאיכות המענה או לשיעור הטיפול</li>
-          <li>קריאת לוגים ידנית — בלתי אפשרי בקנה מידה</li>
-        </ul>
-      </div>
-    </div>
-    <div class="viz-cap" style="margin:16px auto 36px"><strong style="color:var(--ink)">אלפי פניות בחודש — לנתח אותן ידנית זה בלתי אפשרי.</strong> ערימות לוגים, בלי דרך לדעת על מה פונים, איפה נופלים, ומה איכות המענה באמת.</div>
-    <!-- AFTER: solution image + עם Bot Analytics -->
-    <div class="cs-row rev">
-      <div class="cs-img"><img src="../img/bot-result.jpg" alt="דשבורד ניהולי בזמן אמת — KPI, נושאים מובילים, מגמות ומשפך טיפול"></div>
-      <div class="csbox sol">
-        <h3>✅ עם Bot Analytics</h3>
-        <ul>
-          <li>סוכני AI מסווגים ומנקדים כל שיחה — אוטומטית</li>
-          <li>נושאים מובילים, נקודות כשל ומגמות — ברור לעין</li>
-          <li>מדדי איכות ושיעורי טיפול, מדי שבוע</li>
-          <li>דשבורד ניהולי שמתעדכן לבד — בלי עבודה ידנית</li>
-        </ul>
-      </div>
+    <div class="p-end-actions reveal">
+      <a class="btn btn-solid btn-lg" href="/#contact" data-track="cta_end">לשיחת אפיון</a>
+      <a class="btn btn-ghost btn-lg" href="https://wa.me/972527246200?text=%D7%94%D7%99%D7%99%20%D7%A2%D7%9E%D7%99%D7%AA%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%A2%D7%9E%D7%95%D7%93%20%D7%A9%D7%9C%20Bot%20Analytics" target="_blank" rel="noopener" data-track="whatsapp_end"><svg class="ico"><use href="#i-wa"/></svg>וואטסאפ</a>
     </div>
   </div>
 </section>
 
-<!-- STAGES -->
-<section class="alt">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="eyebrow">איך זה עובד</span>
-      <h2>הפייפליין — שלב אחר שלב</h2>
-      <p>חמישה סוכנים, כל אחד מתמחה בשלב אחד. הפלט של אחד הוא הקלט של הבא.</p>
-    </div>
-    <div class="pipe">
-      <div class="stage"><div class="n">1</div><div class="si">🧲</div><h4>מיצוי הנתונים</h4><p>איסוף וניקוי הדוח הגולמי — כל שיחה מסודרת ומוכנה לניתוח.</p></div>
-      <div class="stage"><div class="n">2</div><div class="si">🏷️</div><h4>סיווג נושאים</h4><p>כל פנייה מתויגת לנושא אחד — כדי לראות על מה באמת פונים.</p></div>
-      <div class="stage"><div class="n">3</div><div class="si">✔️</div><h4>ניקוד איכות</h4><p>כל תשובה: תקין / לא תקין / לא ניתן לקבוע — עם סיבה.</p></div>
-      <div class="stage"><div class="n">4</div><div class="si">🎯</div><h4>תחום ומגמות</h4><p>הפניה נכונה לנציג מול כשל אמיתי, ומגמות לאורך זמן.</p></div>
-      <div class="stage"><div class="n">5</div><div class="si">📊</div><h4>בניית הדשבורד</h4><p>KPI, משפך, גרפים וטבלאות — קובץ אחד, קישור קבוע.</p></div>
-    </div>
-    <div class="viz" style="margin-top:26px"><img src="../img/bot-flow.jpg" alt="זרימה מקצה לקצה: דאטה גולמית מרובת מקורות → חמישה סוכני AI → דשבורד ניהולי"></div>
-    <div class="viz-cap">הסיווג הוא <strong>שיפוט סמנטי פר-שיחה</strong> (הבנת כוונה — לא מילות-מפתח), מבוזר ל<strong>סוכנים מקבילים</strong>: מאות שיחות מנותחות תוך דקות, בדיוק גבוה.</div>
-  </div>
-</section>
+</main>
 
-<!-- DIFFERENTIATOR -->
-<section>
+<footer class="foot">
   <div class="wrap">
-    <div class="sec-head">
-      <span class="eyebrow">מה שהופך את זה למדויק</span>
-      <h2>הפניה נכונה לנציג — או כשל אמיתי?</h2>
-      <p>לא כל "אני מעביר אותך לנציג" הוא כישלון. המערכת מבדילה סמנטית בין השניים — וזה משנה לגמרי את תמונת האיכות.</p>
-    </div>
-    <div class="diff">
-      <div class="diffbox good">
-        <span class="lbl">✓ הפניה נכונה</span>
-        <h4>שאלה מחוץ-לתחום</h4>
-        <p>הבוט לא אמור לדעת — התקנה, חיוב, תלונת שירות, גישה לנתונים ספציפיים. הפנייה לנציג היא בדיוק ההתנהגות הרצויה, ולא נספרת ככשל.</p>
-        <div class="ex">דוגמה: "תחזרו אליי לגבי חידוש המנוי" ← הפניה נכונה ✓</div>
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="/"><img src="/img/logo-reverse.webp" width="123" height="120" alt=""><span dir="ltr">Rubin <span class="b">Project</span></span></a>
+        <p class="foot-tag"><b class="foot-slogan">הופכים נתונים להחלטות.</b>פתרונות BI, אוטומציה ותוכנה בהתאמה אישית לעסקים ולארגונים.</p>
       </div>
-      <div class="diffbox bad">
-        <span class="lbl">✕ כשל אמיתי</span>
-        <h4>שאלה בתחום</h4>
-        <p>הבוט אמור היה לענות — "איך עושים X", קוד שגיאה ספציפי, תקלה תפעולית. "לא יודע" כאן הוא פער בבסיס הידע שדורש אימון.</p>
-        <div class="ex">דוגמה: "מה המשמעות של שגיאה 403?" ← כשל שדורש אימון ✕</div>
+      <div>
+        <h4>האתר</h4>
+        <ul><li><a href="/#services">שירותים</a></li><li><a href="/#portfolio">תוכנות ומוצרים</a></li><li><a href="/#process">איך עובדים</a></li><li><a href="/#faq">שאלות נפוצות</a></li></ul>
+      </div>
+      <div>
+        <h4>עוד</h4>
+        <ul><li><a href="/card/" target="_blank" rel="noopener">כרטיס דיגיטלי</a></li><li><a href="https://evenbina.co.il/" target="_blank" rel="noopener">אבן בינה</a></li><li><a href="https://github.com/amitrubin10" target="_blank" rel="noopener">GitHub</a></li><li><a href="https://www.linkedin.com/in/amit-rubin-316b83357/" target="_blank" rel="noopener">LinkedIn</a></li></ul>
+      </div>
+      <div>
+        <h4>קשר</h4>
+        <ul><li><a href="https://wa.me/972527246200" target="_blank" rel="noopener" dir="ltr">052-7246200</a></li><li><a href="mailto:amit@rubinproject.com">amit@rubinproject.com</a></li></ul>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- FEATURES -->
-<section class="alt">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="eyebrow">היכולות</span>
-      <h2>מה המערכת יודעת לעשות</h2>
-      <p>שכבת ניתוח שלמה מעל הדאטה הגולמית של השירות.</p>
+    <div class="foot-bottom">
+      <span>© 2026 Rubin Project · עמית רובין</span>
+      <nav aria-label="מידע משפטי"><a href="/privacy/" target="_blank" rel="noopener">מדיניות פרטיות</a><a href="/accessibility/" target="_blank" rel="noopener">הצהרת נגישות</a></nav>
     </div>
-    <div class="feat-grid">
-      <div class="feat hl">
-        <div class="big">🧠</div>
-        <div>
-          <h4>5 סוכני AI בשרשרת אחת<span class="pill">הליבה</span></h4>
-          <p>כל סוכן מתמחה בשלב — מיצוי הנתונים, סיווג הנושא, ניקוד איכות, סיווג תחום ומגמות, ובניית הדשבורד. יחד הם הופכים דאטה גולמית לתובנה ניהולית, אוטומטית ובאופן חוזר מדי שבוע.</p>
-        </div>
-      </div>
-      <div class="feat t-blue"><div class="ic">🏷️</div><h4>סיווג נושאים</h4><p>כל פנייה מתויגת לנושא אחד לפי כללי עדיפות — כדי לראות על מה באמת פונים.</p></div>
-      <div class="feat t-green"><div class="ic">✔️</div><h4>ניקוד איכות מענה</h4><p>כל תשובה מסווגת תקין / לא תקין / לא ניתן לקבוע — עם סיבה מרשימה סגורה.</p></div>
-      <div class="feat t-violet"><div class="ic">🎯</div><h4>הפניה נכונה מול כשל</h4><p>הבחנה סמנטית בין הסלמה רצויה לנציג לבין פער אמיתי בבסיס הידע.</p></div>
-      <div class="feat t-orange"><div class="ic">🔻</div><h4>משפך פנייה</h4><p>מכלל משתמשי הבוט, דרך מה שנסגר לבד, ועד פירוט האיכות של מה שהוסלם.</p></div>
-      <div class="feat t-blue"><div class="ic">📈</div><h4>מגמות 4 שבועות</h4><p>גרף ניצוץ לכל מדד — האם הבוט משתפר, ואיפה יש הידרדרות.</p></div>
-      <div class="feat t-green"><div class="ic">🗂️</div><h4>טבלאות לפי נושא</h4><p>כל שיחה בעייתית זמינה; בלחיצה נפתחת תשובת הבוט המלאה.</p></div>
-      <div class="feat t-red"><div class="ic">🔁</div><h4>דפוסי שאלה חוזרים</h4><p>אשכולות חודשיים של שאלות שחוזרות — עם המלצות אימון ממוקדות.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- TRUST -->
-<section>
-  <div class="wrap">
-    <div class="techpanel"><div class="techpanel-in">
-      <div class="k">יש <span class="cy">דמו חי</span> — אפשר להתנסות עכשיו</div>
-      <p>הפייפליין רץ על נתוני דוגמה ומייצר את הדשבורד המלא בזמן אמת. אותה גישה מתחברת גם למקורות שירות אמיתיים — בוט, מוקד או CRM.</p>
-      <div class="chips">
-        <span class="chip">Python</span><span class="chip">סוכני LLM מקבילים</span><span class="chip">שיפוט סמנטי</span><span class="chip">פייפליין נתונים</span><span class="chip">SVG טהור · קובץ יחיד</span><span class="chip">דמו חי</span>
-      </div>
-    </div></div>
-  </div>
-</section>
-
-<!-- STATEMENT (the liked line) -->
-<section class="alt">
-  <div class="wrap">
-    <div class="techpanel"><div class="techpanel-in">
-      <h2>מ‘תחושות בטן’ — להחלטות מבוססות נתונים</h2>
-      <p>ישירות מהמוקד ללוח ההנהלה: מה עובד, מה נופל, ואיפה כדאי להשקיע.</p>
-    </div></div>
-    <div class="pframe" style="margin-top:28px"><img src="../img/bot-decisions.jpg" alt="הנהלה מקבלת החלטות על בסיס דשבורד תובנות AI"></div>
-  </div>
-</section>
-
-<!-- QUOTE FORM -->
-<section id="quote">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="eyebrow">💬 הצעת מחיר</span>
-      <h2>רוצים כזה לעסק? קבלו הצעת מחיר</h2>
-      <p>שלחו כמה פרטים ואחזור אליכם עם הצעה מותאמת — בלי התחייבות.</p>
-    </div>
-    <div class="techpanel"><form class="quotebox techpanel-in" onsubmit="return sendQuote(event)">
-      <div class="qgrid">
-        <label>שם מלא <input type="text" id="q-name" required placeholder="השם שלכם"></label>
-        <label>שם העסק <input type="text" id="q-biz" placeholder="שם החברה / העסק"></label>
-        <label>טלפון <input type="tel" id="q-phone" placeholder="050-0000000"></label>
-        <label>מקור השירות
-          <select id="q-src">
-            <option value="בוט">בוט</option>
-            <option value="מוקד שירות">מוקד שירות</option>
-            <option value="CRM">CRM</option>
-            <option value="אחר">אחר</option>
-          </select>
-        </label>
-      </div>
-      <label class="qfull">מה תרצו לנתח? <textarea id="q-msg" rows="3" placeholder="ספרו בקצרה על הצורך — כמות פניות, מקורות, מה חשוב לכם למדוד..."></textarea></label>
-      <div class="qrow">
-        <button type="submit" class="btn btn-primary">📩 שליחה בוואטסאפ</button>
-        <button type="button" class="btn btn-lghost" onclick="sendQuoteMail()">✉️ שליחה במייל</button>
-      </div>
-    </form></div>
-  </div>
-</section>
-
-<!-- CTA -->
-<section id="contact">
-  <div class="wrap">
-    <div class="cta">
-      <h2>יש לכם בוט, מוקד או שירות לקוחות?</h2>
-      <p>אפשר לחבר פייפליין כמו Bot Analytics לדאטה שלכם ולקבל דשבורד ניהולי שמראה מה קורה באמת. דברו איתי ונבנה את זה סביב הצורך.</p>
-      <div class="cta-row">
-        <a class="btn btn-wa" href="https://wa.me/972527246200?text=%D7%94%D7%99%D7%99%20%D7%A2%D7%9E%D7%99%D7%AA%2C%20%D7%A8%D7%90%D7%99%D7%AA%D7%99%20%D7%90%D7%AA%20Bot%20Analytics%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A4%D7%A8%D7%98%D7%99%D7%9D" target="_blank" rel="noopener">💬 וואטסאפ</a>
-        <a class="btn btn-lghost" href="https://amitrubin10.github.io/bot-analytics-pipeline/" target="_blank" rel="noopener">▶ לדמו החי</a>
-        <a class="btn btn-lghost" href="https://github.com/amitrubin10/bot-analytics-pipeline" target="_blank" rel="noopener">↗ GitHub</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <div class="foot-in">
-    <div class="foot-brand">
-      <img src="../../img/logo-reverse.png" alt="Rubin Project">
-      <div><div class="bn" dir="ltr">Rubin <span class="b">Project</span></div>
-      <div class="tg">פתרונות BI, אוטומציה ותוכנה לעסקים</div></div>
-    </div>
-    <div class="foot-copy">הופכים נתונים להחלטות. · © Rubin Project</div>
-    <div class="foot-links">
-      <a href="/">דף הבית</a>
-      <a href="/#portfolio">תיק עבודות</a>
-      <a href="/card/">כרטיס דיגיטלי</a>
-      <a href="https://wa.me/972527246200" target="_blank" rel="noopener">וואטסאפ</a>
-      <a href="mailto:amit@rubinproject.com">amit@rubinproject.com</a>
-    </div>
+    <p class="foot-note">האתר משתמש ב-Google Analytics וב-Microsoft Clarity כדי למדוד ולשפר את השימוש בו. פרטים ואפשרות לסרב ב<a href="/privacy/#analytics" target="_blank" rel="noopener">מדיניות הפרטיות</a>.</p>
   </div>
 </footer>
+<aside class="dock" id="dock" aria-label="קיצור לשיחת אפיון" inert><span>רוצים דשבורד כזה?</span><a class="btn" href="/#contact" data-track="cta_dock">בואו נדבר</a></aside>
+<dialog class="lb" id="lb" aria-label="תצוגה מוגדלת"><button class="lb-close" type="button" aria-label="סגירה">×</button><div class="lb-body"></div></dialog>
+<div class="cglow" id="cglow" aria-hidden="true"></div>
+
 <script>
-  if('scrollRestoration' in history) history.scrollRestoration='manual';
-  window.addEventListener('load',function(){ if(!location.hash) window.scrollTo(0,0); });
-</script>
-<script>
-(function(){
-  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  function fmt(v,dec,sep){
-    var s=v.toFixed(dec);
-    if(sep){var p=s.split('.');p[0]=p[0].replace(/\B(?=(\d{3})+(?!\d))/g,',');s=p.join('.');}
-    return s;
-  }
-  function run(el){
-    var val=parseFloat(el.getAttribute('data-val'))||0,
-        dec=parseInt(el.getAttribute('data-dec')||'0',10),
-        sep=el.getAttribute('data-sep')==='1',
-        suf=el.getAttribute('data-suffix')||'';
-    if(reduce){el.textContent=fmt(val,dec,sep)+suf;return;}
-    var dur=1900,start=null;
-    function ease(t){return 1-Math.pow(1-t,3);}
-    function step(ts){
-      if(start===null)start=ts;
-      var t=Math.min((ts-start)/dur,1);
-      el.textContent=fmt(val*ease(t),dec,sep)+suf;
-      if(t<1)requestAnimationFrame(step); else el.textContent=fmt(val,dec,sep)+suf;
-    }
-    requestAnimationFrame(step);
-  }
-  window.addEventListener('load',function(){
-    document.querySelectorAll('.kpi b[data-val]').forEach(run);
+// מסכים שמתחלפים בכרטיסי "מה יש במערכת": כל 2.8 שניות, רק כשהכרטיס על המסך. נעצר בכפתור העצירה ובפחות תנועה
+document.addEventListener('DOMContentLoaded',function(){
+  const M=window.rpMotion||{reduce:false,paused:false,onChange(){}};
+  document.querySelectorAll('.shot[data-cycle]').forEach((shot,k)=>{
+    const fr=[...shot.querySelectorAll('.ba-fr')];if(fr.length<2)return;
+    let i=0,timer=0,inView=false;
+    const step=()=>{fr[i].classList.remove('on');i=(i+1)%fr.length;fr[i].classList.add('on');};
+    const run=()=>{if(timer||M.reduce||M.paused||!inView)return;timer=setInterval(step,2800);};
+    const stop=()=>{clearInterval(timer);timer=0;};
+    new IntersectionObserver(es=>{inView=es[0].isIntersecting;if(inView)setTimeout(run,k*700);else stop();},{threshold:.3}).observe(shot);
+    M.onChange(p=>{if(p)stop();else run();});
   });
-})();
-</script>
-<script>
-  function qval(id){var e=document.getElementById(id);return e?e.value.trim():'';}
-  function quoteText(){
-    var n=qval('q-name'),b=qval('q-biz'),p=qval('q-phone'),s=qval('q-src'),m=qval('q-msg');
-    var t='היי עמית, אשמח להצעת מחיר ל-Bot Analytics.\n';
-    if(n)t+='שם: '+n+'\n';
-    if(b)t+='עסק: '+b+'\n';
-    if(p)t+='טלפון: '+p+'\n';
-    if(s)t+='מקור השירות: '+s+'\n';
-    if(m)t+='פרטים: '+m+'\n';
-    return t;
-  }
-  function sendQuote(ev){
-    ev.preventDefault();
-    window.open('https://wa.me/972527246200?text='+encodeURIComponent(quoteText()),'_blank','noopener');
-    return false;
-  }
-  function sendQuoteMail(){
-    window.location.href='mailto:amit@rubinproject.com?subject='+encodeURIComponent('הצעת מחיר — Bot Analytics')+'&body='+encodeURIComponent(quoteText());
-  }
+});
+
+// מופע החתימה: שיחה נכנסת לראש הרשימה, מקבלת נושא, ואז ציון. הבר של הנושא והמדדים מתעדכנים.
+// רץ רק כשהסקשן על המסך. בעצירה ובפחות תנועה מוצג מצב מלא: ארבע שיחות עם נושא וציון.
+// מחכים ל-DOMContentLoaded, כי project.js נטען עם defer ומגדיר את window.rpMotion רק אז
+document.addEventListener('DOMContentLoaded',function(){
+  const demo=document.getElementById('baDemo');if(!demo)return;
+  const feed=document.getElementById('baFeed'),barsEl=document.getElementById('baBars');
+  const elTotal=document.getElementById('baTotal'),elOk=document.getElementById('baOk'),elRedir=document.getElementById('baRedir');
+  const M=window.rpMotion||{reduce:false,paused:false,onChange(){}};
+  // נתוני דוגמה בלבד. v: ok תקינה, fail כשל, redir הפניה נכונה לנציג
+  const TOPICS=['התחברות והרשאות','דוחות ומע"מ','מסמכים ודיוור','חיוב ומנויים'];
+  const CONV=[
+    {q:'שכחתי את הסיסמה למערכת',t:0,v:'ok'},
+    {q:'איך מפיקים דוח מע"מ דו חודשי?',t:1,v:'ok'},
+    {q:'תחזרו אליי לגבי חידוש המנוי',t:3,v:'redir'},
+    {q:'מה המשמעות של שגיאה 403?',t:0,v:'fail'},
+    {q:'איך שולחים חשבונית ללקוח במייל?',t:2,v:'ok'},
+    {q:'הדוח השנתי יוצא ריק',t:1,v:'fail'},
+    {q:'איך מוסיפים משתמש חדש?',t:0,v:'ok'},
+    {q:'רוצה לשדרג את החבילה',t:3,v:'redir'},
+    {q:'החתימה הדיגיטלית לא מופיעה',t:2,v:'ok'}
+  ];
+  const VL={ok:['ba-ok','תקינה'],fail:['ba-fail','כשל, לאימון'],redir:['ba-redir','הפניה נכונה']};
+  const BASE={counts:[38,27,21,14],total:412,ok:338,judged:388,redir:24};
+  let S,idx;
+  const reset=()=>{S={counts:BASE.counts.slice(),total:BASE.total,ok:BASE.ok,judged:BASE.judged,redir:BASE.redir};idx=0;};
+  barsEl.innerHTML=TOPICS.map(t=>`<li><span>${t}</span><b>0</b><span class="ba-bar"><i></i></span></li>`).join('');
+  const bars=[...barsEl.children];
+  const render=hit=>{
+    const max=Math.max(...S.counts)*1.15;
+    bars.forEach((li,i)=>{li.querySelector('b').textContent=S.counts[i];li.querySelector('i').style.transform=`scaleX(${(S.counts[i]/max).toFixed(3)})`;li.classList.toggle('is-hit',i===hit);});
+    elTotal.textContent=S.total.toLocaleString('en-US');
+    elOk.textContent=Math.round(S.ok/S.judged*100)+'%';
+    elRedir.textContent=S.redir;
+  };
+  const card=c=>{
+    const li=document.createElement('li');li.className='ba-conv';
+    li.innerHTML=`<p>${c.q}</p><div class="ba-tags"><span class="ba-tag ba-topic">${TOPICS[c.t]}</span><span class="ba-tag ba-v ${VL[c.v][0]}">${VL[c.v][1]}</span></div>`;
+    return li;
+  };
+  const count=c=>{S.counts[c.t]++;S.total++;if(c.v==='redir')S.redir++;else{S.judged++;if(c.v==='ok')S.ok++;}};
+  // מצב מלא, בלי תנועה: ארבע השיחות האחרונות של הסבב, עם נושא וציון
+  const full=()=>{reset();feed.innerHTML='';CONV.forEach(count);CONV.slice(-4).reverse().forEach(c=>{const li=card(c);li.classList.add('is-tag','is-judged');feed.append(li);});render(-1);};
+  let timers=[],loop=0,inView=false;
+  const later=(fn,ms)=>timers.push(setTimeout(fn,ms));
+  const stop=()=>{timers.forEach(clearTimeout);timers=[];clearTimeout(loop);loop=0;};
+  const tick=()=>{
+    if(idx>=CONV.length){reset();feed.innerHTML='';render(-1);}
+    const c=CONV[idx++],li=card(c);li.classList.add('is-new');feed.prepend(li);
+    requestAnimationFrame(()=>requestAnimationFrame(()=>li.classList.remove('is-new')));
+    const extra=[...feed.children].slice(4);extra.forEach(o=>{o.classList.add('is-out');later(()=>o.remove(),450);});
+    later(()=>li.classList.add('is-tag'),650);
+    later(()=>{li.classList.add('is-judged');count(c);render(c.t);},1300);
+    loop=setTimeout(tick,2300);
+  };
+  const start=()=>{if(loop||M.reduce||M.paused||!inView)return;reset();feed.innerHTML='';render(-1);tick();};
+  full();
+  if(!('IntersectionObserver' in window))return;
+  new IntersectionObserver(es=>{inView=es[0].isIntersecting;if(inView)start();else{stop();full();}},{threshold:.3}).observe(demo);
+  M.onChange(p=>{if(p){stop();full();}else start();});
+});
 </script>
 </body>
 </html>
