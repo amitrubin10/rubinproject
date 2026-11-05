@@ -3,661 +3,686 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>מודיעין שוק — מקבוצות וואטסאפ לתובנות תחרותיות | Rubin Project</title>
-<meta name="description" content="מערכת מודיעין שוק שמנתחת שיח בקבוצות מקצועיות והופכת אותו לתובנות תחרותיות להנהלה — שביעות רצון, נושאים חוזרים, מגמות לאורך זמן ומטריצת מיצוב מול השוק.">
+<title>RUBIN MARKET | מודיעין שוק מקבוצות וואטסאפ | Rubin Project</title>
+<meta name="description" content="RUBIN MARKET: מערכת שקוראת את השיח בקבוצות המקצועיות של הענף ומתרגמת אותו למודיעין תחרותי להנהלה: שביעות רצון מול המתחרים, נושאים חוזרים, מגמות ומפת מיצוב.">
 <link rel="canonical" href="https://www.rubinproject.com/projects/rubin-market/">
-<link rel="icon" href="../../img/favicon.png">
+<link rel="icon" href="/img/favicon.png">
+<meta name="theme-color" content="#0b1220">
 <meta property="og:site_name" content="Rubin Project">
-<meta property="og:title" content="מודיעין שוק — מהשיח ברשת לתובנה תחרותית">
-<meta property="og:description" content="ניתוח שיח בקבוצות מקצועיות → מודיעין תחרותי להנהלה: שביעות רצון, נושאים חוזרים, מגמות ומטריצת מיצוב.">
-<meta property="og:image" content="https://www.rubinproject.com/projects/img/market-intel-og.jpg?v=1">
+<meta property="og:title" content="RUBIN MARKET | מודיעין שוק מקבוצות וואטסאפ">
+<meta property="og:description" content="השוק מדבר עליכם בקבוצות המקצועיות. RUBIN MARKET הופכת את השיח למודיעין תחרותי להנהלה.">
+<meta property="og:image" content="https://www.rubinproject.com/img/mk/og-market-2.jpg?v=1">
+<meta name="twitter:image" content="https://www.rubinproject.com/img/mk/og-market-2.jpg?v=1">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:url" content="https://www.rubinproject.com/projects/rubin-market/">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="he_IL">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://www.rubinproject.com/projects/img/market-intel-og.jpg?v=1">
-<meta name="theme-color" content="#0a1020">
+<script>document.documentElement.classList.add('js');</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700;800&family=Frank+Ruhl+Libre:wght@700;900&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/project.css">
 <style>
-:root{
-  --bg:#0a1020; --bg2:#0d1526; --card:#111a30; --card2:#16223c; --border:#26334f;
-  --ink:#e9edf6; --muted:#97a3bf; --muted2:#6b7794;
-  --accent:#3b82f6; --accent2:#60a5fa; --cyan:#22d3ee; --violet:#8b5cf6; --green:#22c55e; --amber:#fbbf24;
-  --grad:linear-gradient(135deg,#3b82f6,#1e40af);
-  --radius:18px;
+/* צבע המוצר: תכלת הרדאר מהלוגו (בחירת עמית, 2026-11-05). --prod-ink עובר AA מול שלושת הרקעים הבהירים */
+:root{--prod:#1d8eb0;--prod-ink:#166f8a;--prod-deep:#2ec5f2}
+
+/* הלוגו ליד שם המוצר ב-hero */
+/* project.css מגדיר את השם כ-block בכיוון ltr ומיושר לימין. כאן flex, כדי שהלוגו והשם יישבו בשורה אחת */
+
+/* מופע החתימה: הודעות מהקבוצות, רדאר במרכז, ותובנות שמתעדכנות. כל השמות בקידומת mk- */
+.mk-demo{display:grid;grid-template-columns:minmax(0,1fr) clamp(200px,22vw,290px) minmax(0,1fr);gap:clamp(16px,2.4vw,30px);align-items:center}
+.mk-pane{align-self:stretch;background:#0f1828;border:1px solid #23314b;border-radius:20px;padding:clamp(16px,2.2vw,22px);box-shadow:0 30px 70px rgba(2,6,16,.45)}
+.mk-pane-h{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px;font-size:14px;font-weight:700;color:#cfd9ea}
+.mk-live{display:inline-flex;align-items:center;gap:7px;font-family:var(--font-mono);font-size:12px;font-weight:600;color:var(--prod-deep);direction:ltr}
+.mk-live::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--prod-deep)}
+.mk-feed{list-style:none;display:grid;gap:10px;min-height:372px;align-content:start}
+.mk-msg{background:#17233a;border:1px solid #2b3c5c;border-radius:14px 14px 14px 4px;padding:10px 13px;transition:opacity .45s var(--ease),transform .45s var(--ease)}
+.mk-msg small{display:block;font-size:12px;font-weight:700;color:#7fd8f2;margin-bottom:3px}
+.mk-msg p{font-size:14.5px;font-weight:600;color:#e9eff7;line-height:1.45}
+.mk-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.mk-tag{font-size:12px;font-weight:700;border-radius:999px;padding:2px 9px;transition:opacity .35s var(--ease),transform .35s var(--ease)}
+.mk-sys{color:#cfe0ff;background:rgba(111,164,255,.12);border:1px solid rgba(111,164,255,.35)}
+.mk-pos{color:#7fe3a8;background:rgba(47,191,134,.12);border:1px solid rgba(47,191,134,.4)}
+.mk-neg{color:#ff8f87;background:rgba(229,83,75,.14);border:1px solid rgba(229,83,75,.45)}
+.mk-neu{color:#c9d3e3;background:rgba(201,211,227,.08);border:1px solid rgba(201,211,227,.3)}
+.js .mk-msg.is-new{opacity:0;transform:translateY(-12px)}
+.js .mk-msg.is-out{opacity:0;transform:translateY(10px)}
+.js .mk-msg:not(.is-read) .mk-tag{opacity:0;transform:scale(.8)}
+.mk-radar{position:relative;width:100%;aspect-ratio:1;border-radius:50%}
+.mk-radar img{width:100%;height:100%}
+.mk-sweep{position:absolute;left:16.6%;top:11.1%;width:72.8%;height:72.8%;border-radius:50%;background:conic-gradient(from 0deg,rgba(46,197,242,0) 0deg,rgba(46,197,242,.34) 50deg,rgba(46,197,242,0) 62deg);mix-blend-mode:screen;animation:mkSweep 4s linear infinite}
+@keyframes mkSweep{to{transform:rotate(360deg)}}
+.mk-ping{position:absolute;left:33%;top:27.5%;width:40%;height:40%;border-radius:50%;border:2px solid var(--prod-deep);opacity:0}
+.mk-ping.go{animation:mkPing 1.1s ease-out}
+@keyframes mkPing{from{transform:scale(.6);opacity:.9}to{transform:scale(1.9);opacity:0}}
+.mk-radar-cap{margin-top:10px;text-align:center;font-family:var(--font-mono);font-size:12.5px;font-weight:600;color:#9aa7bd}
+.mk-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px}
+.mk-kpi{background:#17233a;border:1px solid #2b3c5c;border-radius:14px;padding:11px}
+.mk-kpi small{display:block;font-size:12px;font-weight:600;color:#9aa7bd}
+.mk-kpi b{display:block;font-family:var(--font-mono);font-size:clamp(19px,2vw,24px);font-weight:600;color:#fff;direction:ltr;text-align:right;margin-top:2px}
+.mk-kpi.mk-k-alert b{color:#ff8f87}
+.mk-bars{list-style:none;display:grid;gap:11px}
+.mk-bars li{display:grid;grid-template-columns:1fr auto;gap:4px 10px;font-size:14px;font-weight:600;color:#cfd9ea}
+.mk-bars li b{font-family:var(--font-mono);font-weight:600;color:#fff;direction:ltr}
+.mk-bar{grid-column:1/-1;height:9px;border-radius:6px;background:#22304a;overflow:hidden}
+.mk-bar i{display:block;height:100%;border-radius:inherit;background:linear-gradient(270deg,var(--prod-deep),#1d8eb0);transform-origin:right;transition:transform .7s var(--ease)}
+.mk-bars li.is-hit{color:#fff}
+.mk-bars li.is-hit .mk-bar i{background:linear-gradient(270deg,#b6efff,var(--prod-deep))}
+.mk-alert{display:flex;gap:8px;align-items:flex-start;margin-top:14px;padding:10px 12px;border-radius:12px;font-size:13.5px;font-weight:700;color:#ffd0cc;background:rgba(229,83,75,.12);border:1px solid rgba(229,83,75,.4);transition:opacity .4s var(--ease),transform .4s var(--ease)}
+.mk-alert::before{content:"";flex:none;width:8px;height:8px;margin-top:6px;border-radius:50%;background:#ff6b61}
+.js .mk-alert:not(.on){opacity:0;transform:translateY(6px)}
+.mk-note{margin-top:14px;font-size:13px;color:var(--deep-dim)}
+.mk-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:clamp(28px,4vw,44px);list-style:none;counter-reset:mk}
+.mk-steps li{counter-increment:mk;position:relative;display:flex;flex-direction:column;gap:16px;align-items:center;text-align:center;font-size:15.5px;line-height:1.7;color:var(--deep-dim);--ln-y:66px;--ln-s:calc(50% + 78px);--ln-e:calc(-50% + 62px)}
+#mk-radar .chips{justify-content:center;margin-top:clamp(30px,3.6vw,44px)}
+.mk-steps li::before{content:counter(mk);position:absolute;top:2px;inset-inline-start:calc(50% - 64px);z-index:1;display:grid;place-items:center;width:26px;height:26px;border-radius:50%;font-family:var(--font-mono);font-weight:600;font-size:13px;color:var(--deep);background:var(--prod-deep)}
+.mk-steps b{display:block;color:#fff;font-size:17px;line-height:1.35;margin-bottom:8px}
+
+/* הבעיה, במופע קטן בראש כל כרטיסייה. כל המידות ביחידות cqw, וברירת המחדל היא המצב הסופי */
+.mk-pain{padding-top:16px}
+.mk-sc{position:relative;aspect-ratio:16/9;max-width:420px;margin:0 auto 20px;border-radius:14px;overflow:hidden;background:radial-gradient(70% 90% at 80% 0%,rgba(229,83,75,.14),transparent 60%),#0f1828;border:1px solid #23314b;container-type:inline-size}
+.mk-sc > *{position:absolute;font-size:3.6cqw;font-weight:700;line-height:1.3;white-space:nowrap}
+.mk-sc-card{display:flex;flex-direction:column;align-items:center;gap:1cqw;width:24cqw;padding:2.4cqw 0;border-radius:2.6cqw;background:#17233a;border:1px solid #2b3c5c;color:#cfd9ea;font-weight:700}
+.mk-sc-card b{font-family:var(--font-mono);font-size:7cqw;color:#ff8f87;line-height:1}
+.mk-sc-c1{top:13cqw;right:5cqw}.mk-sc-c2{top:13cqw;right:38cqw}.mk-sc-c3{top:13cqw;left:5cqw}
+.mk-sc-q{top:4cqw;left:0;right:0;text-align:center;color:#9aa7bd;font-weight:700}
+.mk-sc-road{left:5cqw;right:5cqw;display:flex;align-items:center;justify-content:space-between;gap:2cqw;padding:1.3cqw 2.6cqw;border-radius:2cqw;background:#17233a;border:1px solid #2b3c5c;color:#e9eff7;font-weight:600}
+.mk-sc-road em{font-style:normal;font-size:3cqw;color:#ffd27a;background:rgba(245,185,58,.14);border:1px solid rgba(245,185,58,.45);border-radius:999px;padding:.1cqw 2cqw}
+.mk-sc-r1{top:4cqw}.mk-sc-r2{top:14cqw}.mk-sc-r3{top:24cqw}
+.mk-sc-meter{top:36cqw;left:5cqw;right:5cqw;display:flex;flex-direction:column;gap:1.4cqw;color:#9aa7bd;font-weight:600}
+.mk-sc-meter span{display:flex;justify-content:space-between}
+.mk-sc-meter span b{font-family:var(--font-mono);color:#ff8f87}
+.mk-sc-meter i{display:block;height:2.2cqw;border-radius:2cqw;background:repeating-linear-gradient(135deg,#2b3c5c 0 2cqw,#22304a 2cqw 4cqw)}
+/* "יותר מדי רעש": צ'אט של קבוצת וואטסאפ במצב כהה, כמו שהוא נראה באמת. הודעות נכנסות, שם השולח בצבע ושעה בפינה */
+.mk-sc.mk-sc-noise{background:radial-gradient(circle at 20% 30%,rgba(255,255,255,.018) 0 .35cqw,transparent .45cqw) 0 0/5cqw 5cqw,#0b141a;border-color:#1f2c34}
+.mk-wa-head{top:0;left:0;right:0;height:10cqw;display:flex;align-items:center;gap:2cqw;padding:0 3cqw;background:#202c33;color:#e9edef}
+.mk-wa-head > span{display:flex;flex-direction:column;line-height:1.2;flex:1}
+.mk-wa-head b{font-size:3.3cqw;font-weight:700}
+.mk-wa-head small{font-size:2.4cqw;font-weight:400;color:#8696a0}
+.mk-wa-av{flex:none;width:6.4cqw;height:6.4cqw;border-radius:50%;background:radial-gradient(circle at 50% 38%,#cfd8dc 0 1.1cqw,transparent 1.2cqw),radial-gradient(ellipse at 50% 95%,#cfd8dc 0 2.2cqw,transparent 2.3cqw),#6b7c85}
+.mk-wa-head em{font-style:normal;flex:none;min-width:5.2cqw;height:5.2cqw;display:grid;place-items:center;padding:0 1.2cqw;border-radius:999px;background:#00a884;color:#0b141a;font-size:2.7cqw;font-weight:800;font-family:var(--font-mono)}
+.mk-wa-msg{right:3cqw;max-width:74cqw;display:flex;flex-direction:column;padding:1.1cqw 2.4cqw 1.1cqw 11.5cqw;border-radius:1.6cqw 0 1.6cqw 1.6cqw;background:#202c33;color:#e9edef;font-size:3.1cqw!important;font-weight:400!important;line-height:1.3;box-shadow:0 .3cqw .6cqw rgba(0,0,0,.25)}
+.mk-wa-msg::before{content:"";position:absolute;top:0;right:-1.4cqw;border-top:1.6cqw solid #202c33;border-right:1.6cqw solid transparent}
+.mk-wa-msg b{font-size:2.6cqw;font-weight:700}
+.mk-wa-msg time{position:absolute;left:2.2cqw;bottom:1cqw;font-size:2.2cqw;color:#8696a0;font-family:var(--font-mono)}
+.mk-wa-m1{top:12cqw}.mk-wa-m2{top:22.6cqw}.mk-wa-m3{top:33.2cqw}.mk-wa-m4{top:43.8cqw}
+@keyframes mk-wa-in{0%,3%{opacity:0;transform:translateY(2cqw)}10%,90%{opacity:1;transform:none}97%,100%{opacity:0}}
+.js .mk-sc-noise .mk-wa-msg{animation:mk-wa-in 7s var(--ease) infinite both}
+.js .mk-wa-m1{animation-delay:.2s}.js .mk-wa-m2{animation-delay:.9s}.js .mk-wa-m3{animation-delay:1.6s}.js .mk-wa-m4{animation-delay:2.3s}
+@keyframes mk-pop{0%,4%{opacity:0;transform:scale(.6)}12%,88%{opacity:1;transform:none}96%,100%{opacity:0;transform:scale(.9)}}
+@keyframes mk-blink{0%,100%{opacity:1}50%{opacity:.35}}
+.js .mk-sc-gut .mk-sc-road{animation:mk-pop 7s var(--ease) infinite both}
+.js .mk-sc-r1{animation-delay:.2s}.js .mk-sc-r2{animation-delay:.8s}.js .mk-sc-r3{animation-delay:1.4s}
+.js .mk-sc-card b{animation:mk-blink 1.6s ease-in-out infinite}
+.js .mk-sc-c2 b{animation-delay:.5s}.js .mk-sc-c3 b{animation-delay:1s}
+
+/* מסכים שמתחלפים בכרטיסים: כל המסגרות באותו מקום, ורק אחת מוצגת. הצילום מוצג במלואו (contain) */
+.shot-card .shot .zoomable{position:absolute;inset:0}
+.shot-card .shot img.mk-fr{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center;opacity:0;transition:opacity .7s var(--ease)}
+.shot-card .shot img.mk-fr.on{opacity:1}
+.mk-more{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:clamp(28px,4vw,40px)}
+.mk-more .card{padding:22px}
+.mk-more h3{font-size:17.5px}
+
+/* צלילה לעומק: מטריצת יכולות לדוגמה, וכרטיס "מודיעין, לא מעקב" */
+.mk-deep{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:22px;align-items:stretch}
+.mk-mx{position:relative;padding:clamp(18px,2.6vw,30px);background:var(--panel);border:1px solid #b4c4db;border-radius:20px;box-shadow:0 2px 4px rgba(13,22,38,.05),0 18px 40px rgba(13,22,38,.11)}
+.mk-mx-k{font-family:var(--font-mono);font-size:12.5px;font-weight:600;letter-spacing:.04em;color:var(--dim);margin-bottom:14px}
+.mk-mx table{width:100%;border-collapse:separate;border-spacing:0 6px;font-size:14.5px}
+.mk-mx th{font-size:13px;font-weight:800;color:var(--ink-2);text-align:center;padding:0 4px 4px}
+.mk-mx th:first-child,.mk-mx td:first-child{text-align:start;font-weight:700;color:var(--ink);white-space:nowrap;padding-inline-end:10px}
+.mk-mx th.mk-you{color:var(--prod-ink)}
+.mk-mx td{text-align:center;padding:4px}
+.mk-lv{display:inline-flex;gap:3px;vertical-align:middle}
+.mk-lv i{width:7px;height:16px;border-radius:2px;background:#d3deec;transition:background .5s var(--ease)}
+.js .mk-mx:not(.in) .mk-lv i{background:#d3deec!important}
+.mk-lv[data-v="1"] i:nth-child(-n+1),.mk-lv[data-v="2"] i:nth-child(-n+2),.mk-lv[data-v="3"] i:nth-child(-n+3),.mk-lv[data-v="4"] i:nth-child(-n+4),.mk-lv[data-v="5"] i:nth-child(-n+5){background:#5d6f8a}
+.mk-you .mk-lv[data-v="1"] i:nth-child(-n+1),.mk-you .mk-lv[data-v="2"] i:nth-child(-n+2),.mk-you .mk-lv[data-v="3"] i:nth-child(-n+3),.mk-you .mk-lv[data-v="4"] i:nth-child(-n+4),.mk-you .mk-lv[data-v="5"] i:nth-child(-n+5){background:var(--prod)}
+.mk-mx td.mk-you{background:color-mix(in srgb,var(--prod) 8%,transparent);border-radius:8px}
+/* פער: מסגרת אדומה סביב התא, שנדלקת אחרי שהפסים מתמלאים. בלי טקסט בתוך התא, כדי שלא יעלה על הפסים בטלפון */
+.mk-mx td.mk-you.mk-gap{transition:box-shadow .4s var(--ease) 1.2s,background .4s var(--ease) 1.2s}
+.mk-mx.in td.mk-gap,html:not(.js) .mk-mx td.mk-gap{box-shadow:inset 0 0 0 2px rgba(192,57,43,.6);background:rgba(192,57,43,.08)}
+@media(prefers-reduced-motion:reduce){.mk-mx td.mk-gap{box-shadow:inset 0 0 0 2px rgba(192,57,43,.6);background:rgba(192,57,43,.08)}}
+.mk-mx tr:nth-child(2) i{transition-delay:.1s}.mk-mx tr:nth-child(3) i{transition-delay:.25s}.mk-mx tr:nth-child(4) i{transition-delay:.4s}.mk-mx tr:nth-child(5) i{transition-delay:.55s}.mk-mx tr:nth-child(6) i{transition-delay:.7s}.mk-mx tr:nth-child(7) i{transition-delay:.85s}
+/* במחשב ובטאבלט התמונה, והטבלה נשארת לקוראי מסך. בטלפון התוויות בתמונה קטנות מדי, ולכן מוצגת הטבלה */
+.mk-mx-img{position:relative;display:block;width:100%;padding:0;border:0;border-radius:14px;overflow:hidden;background:#0b1220;cursor:zoom-in}
+.mk-mx-img img{display:block;width:100%;height:auto}
+/* שכבת התנועה על המטריצה: קרן אור שעוברת על המשטח, והפערים האדומים פועמים */
+.mk-fx-beam{animation:mkFxBeam 5.5s ease-in-out infinite}
+@keyframes mkFxBeam{0%{transform:translateX(0) skewX(-18deg)}55%,100%{transform:translateX(2200px) skewX(-18deg)}}
+.mk-fx-gap{opacity:.15;animation:mkFxGap 1.8s ease-in-out infinite alternate}
+.mk-fx-gap2{animation-delay:.9s}
+@keyframes mkFxGap{to{opacity:.75}}
+@media(min-width:621px){.mk-mx table{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}}
+@media(max-width:620px){.mk-mx-img{display:none}}
+.mk-mx figcaption{margin-top:12px;padding-top:12px;border-top:1px solid #d3deec;font-size:15px;color:var(--dim);line-height:1.6}
+.mk-mx figcaption b{color:var(--ink)}
+.mk-priv{display:flex;flex-direction:column;gap:12px;padding:clamp(20px,2.6vw,28px);border-radius:20px;background:var(--deep);color:var(--deep-ink);border:1px solid var(--deep-edge);box-shadow:0 18px 40px rgba(13,22,38,.18)}
+.mk-priv .k{color:var(--prod-deep);margin-bottom:0}
+.mk-priv h3{font-size:clamp(20px,2vw,24px);font-weight:800;color:#fff}
+.mk-priv p{color:var(--deep-dim);font-size:15.5px}
+.mk-priv .chips{margin-top:auto}
+.mk-note-l{margin-top:14px;font-size:13px;color:var(--dim)}
+@media(prefers-reduced-motion:reduce){.mk-sweep{animation:none}.js .mk-mx:not(.in) .mk-lv i{background:revert!important}}
+
+/* הדשבורד האמיתי: שתי מסגרות רחבות באותו גובה */
+.mk-dash{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-items:start;gap:22px;margin-bottom:clamp(32px,4vw,48px)}
+.mk-frame{border-radius:16px;overflow:hidden;background:var(--panel);border:1px solid #b4c4db;box-shadow:0 2px 4px rgba(13,22,38,.05),0 18px 40px rgba(13,22,38,.11)}
+.mk-frame .zoomable{position:relative;display:block;width:100%;overflow:hidden;background:#0f1d33}
+.mk-frame .zoomable img{display:block;width:100%;height:auto}
+.mk-frame figcaption{padding:12px 16px;font-size:14px;font-weight:700;color:var(--ink-2);background:var(--panel);border-top:1px solid var(--edge)}
+.mk-custom{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:start}
+.mk-custom .sh{margin-bottom:0}
+.mk-links{display:flex;flex-wrap:wrap;gap:12px 22px;margin-top:24px}
+
+@media(max-width:1100px){
+  .mk-demo{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+  .mk-radar-box{grid-column:1/-1;order:-1;width:min(240px,60%);justify-self:center}
 }
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{font-family:'Heebo',sans-serif;color:var(--ink);line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased;
-  background:
-    radial-gradient(820px 520px at 90% -4%,rgba(37,99,235,.12),transparent 60%),
-    radial-gradient(720px 520px at 2% 12%,rgba(139,92,246,.09),transparent 60%),
-    var(--bg);
-  background-attachment:fixed}
-a{color:inherit;text-decoration:none}
-img{max-width:100%;display:block}
-.wrap{max-width:1160px;margin:0 auto;padding:0 22px}
-.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
-.eyebrow{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:700;letter-spacing:.3px;color:var(--accent2);background:rgba(59,130,246,.12);border:1px solid rgba(59,130,246,.32);padding:6px 14px;border-radius:999px;margin-bottom:16px}
-.btn{position:relative;display:inline-flex;align-items:center;gap:8px;font-family:inherit;font-size:15px;font-weight:700;padding:13px 26px;border-radius:12px;cursor:pointer;border:1px solid transparent;transition:transform .2s,box-shadow .2s,background .2s,border-color .2s;white-space:nowrap;overflow:hidden;isolation:isolate}
-.btn::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(120deg,transparent 32%,rgba(255,255,255,.4) 50%,transparent 68%);transform:translateX(-130%)}
-.btn:hover::after{animation:sweep .75s ease}
-@keyframes sweep{to{transform:translateX(130%)}}
-.btn-primary{background:linear-gradient(135deg,#3b82f6,#2563eb 55%,#1e40af);color:#fff;box-shadow:0 8px 24px rgba(37,99,235,.42),inset 0 0 0 1px rgba(120,180,255,.35)}
-.btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 38px rgba(37,99,235,.6),0 0 24px rgba(59,130,246,.55),inset 0 0 0 1px rgba(120,180,255,.5)}
-.btn-wa{background:#25d366;color:#0a1f12;box-shadow:0 8px 22px rgba(37,211,102,.32)}
-.btn-wa:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(37,211,102,.5),0 0 20px rgba(37,211,102,.4)}
-.btn-lghost{background:rgba(120,170,255,.06);color:#eaf1ff;border-color:rgba(120,170,255,.5);box-shadow:inset 0 0 0 1px rgba(120,170,255,.12)}
-.btn-lghost:hover{border-color:#7cc0ff;background:rgba(59,130,246,.16);transform:translateY(-2px);box-shadow:0 0 24px rgba(59,130,246,.45)}
-.livedot{width:8px;height:8px;border-radius:50%;background:#4ade80;flex-shrink:0;box-shadow:0 0 0 0 rgba(74,222,128,.7);animation:livepulse 1.9s infinite}
-@keyframes livepulse{0%{box-shadow:0 0 0 0 rgba(74,222,128,.6)}70%{box-shadow:0 0 0 9px rgba(74,222,128,0)}100%{box-shadow:0 0 0 0 rgba(74,222,128,0)}}
-
-/* NAV */
-header.nav{position:sticky;top:0;z-index:100;background:rgba(10,16,32,0.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
-.nav-in{display:flex;align-items:center;justify-content:space-between;gap:18px;height:74px;padding:0 32px;max-width:none}
-.nav-start{display:flex;align-items:center;gap:24px}
-.nav-logo{display:flex;align-items:center;gap:9px;font-size:20px;font-weight:900;letter-spacing:-.4px;color:#fff}
-.nav-logo img{height:48px;width:auto}
-.nav-logo .b{color:var(--accent2)}
-.nav-links{display:flex;gap:22px;font-size:14px;font-weight:500}
-.nav-links a{color:var(--muted);transition:.15s}.nav-links a:hover{color:#fff}
-.nav-cta{display:flex;gap:10px}
-.nav-cta .btn{padding:9px 18px;font-size:14px}
-.nav-badge{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:800;color:#dbe4fb;background:rgba(59,130,246,.14);border:1px solid rgba(120,170,255,.35);padding:9px 15px;border-radius:999px;white-space:nowrap}
-@media(max-width:1150px){.nav-badge{display:none}}
-
-/* HERO */
-.phero{position:relative;text-align:center;padding:28px 0 36px;overflow:hidden;border-bottom:1px solid var(--border);
-  background:
-    radial-gradient(920px 460px at 50% -12%,rgba(37,99,235,.32),transparent 62%),
-    radial-gradient(680px 420px at 88% 118%,rgba(34,211,238,.14),transparent 60%),
-    radial-gradient(620px 420px at 6% 110%,rgba(139,92,246,.16),transparent 60%),
-    linear-gradient(160deg,#0a1020 0%,#0c1730 55%,#10203e 100%)}
-.phero::before{content:"";position:absolute;inset:0;pointer-events:none;
-  background-image:linear-gradient(rgba(120,160,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(120,160,255,.07) 1px,transparent 1px);
-  background-size:46px 46px;
-  -webkit-mask-image:radial-gradient(circle at 50% 34%,#000,transparent 78%);mask-image:radial-gradient(circle at 50% 34%,#000,transparent 78%)}
-.phero .wrap{position:relative;z-index:1}
-.phero .badge{display:inline-flex;align-items:center;gap:9px;font-size:13px;font-weight:800;color:#eaf1ff;background:rgba(59,130,246,.14);border:1px solid rgba(120,170,255,.4);padding:7px 18px;border-radius:999px;margin-bottom:8px;box-shadow:0 8px 26px rgba(37,99,235,.28);backdrop-filter:blur(6px)}
-.hook{margin:0 auto 4px;max-width:max(430px,min(1020px,calc(100vw - 880px)))}
-.hook-q{font-size:clamp(17px,2.2vw,24px);font-weight:900;color:#fff;line-height:1.35;letter-spacing:-.3px}
-.hook-q .hl{color:#22d3ee;text-shadow:0 0 24px rgba(34,211,238,.55)}
-.hook-q .sep{color:#5b7099;font-weight:400;margin:0 4px}
-.hook-q2{font-size:clamp(13px,1.3vw,16px);font-weight:700;color:#cdd8ef;line-height:1.45;margin-top:6px;white-space:nowrap}
-.logo-plate{position:relative;width:min(304px,68vw);margin:0 auto;border-radius:20px;overflow:hidden;
-  border:1px solid rgba(255,255,255,.9);
-  box-shadow:0 22px 58px rgba(0,0,0,.55),0 0 60px rgba(37,99,235,.32)}
-.logo-plate img{width:100%;display:block}
-/* light that travels along the logo's own elliptical ring */
-.logo-plate .orbit{position:absolute;left:51.5%;top:51.4%;width:59.8%;height:23.4%;
-  transform:translate(-50%,-50%) rotate(-17.5deg);
-  border-radius:50%;overflow:hidden;pointer-events:none;
-  -webkit-mask:radial-gradient(closest-side,transparent 0 86%,#000 92%,#000 100%);
-          mask:radial-gradient(closest-side,transparent 0 86%,#000 92%,#000 100%);
-  filter:drop-shadow(0 0 5px rgba(56,189,248,.95)) drop-shadow(0 0 12px rgba(34,211,238,.6))}
-.logo-plate .orbit i{position:absolute;inset:-50%;display:block;
-  background:conic-gradient(from 0deg,
-    rgba(180,245,255,0) 0deg,
-    rgba(180,245,255,0) 292deg,
-    rgba(120,225,255,.32) 322deg,
-    rgba(225,250,255,.92) 347deg,
-    rgba(120,225,255,.28) 355deg,
-    rgba(180,245,255,0) 360deg);
-  animation:ringtravel 4.6s linear infinite}
-@keyframes ringtravel{to{transform:rotate(360deg)}}
-@media(prefers-reduced-motion:reduce){.logo-plate .orbit i{animation:none}}
-.mi-logo{position:absolute;right:max(-300px,calc(10px - (100vw - 1160px)/2));bottom:-34px;width:384px;filter:drop-shadow(0 14px 40px rgba(37,99,235,.42));animation:logofloat 6.5s ease-in-out infinite}
-.mi-logo img{width:100%;display:block;animation:logopulse 6.5s ease-in-out infinite}
-.mi-logo::after{content:"";position:absolute;inset:-30%;pointer-events:none;background:conic-gradient(from 0deg,rgba(120,225,255,0) 0deg,rgba(120,225,255,0) 300deg,rgba(150,235,255,.22) 340deg,rgba(190,245,255,.4) 353deg,rgba(120,225,255,0) 360deg);animation:radarsweep 4.2s linear infinite;mix-blend-mode:screen}
-@keyframes logofloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
-@keyframes logopulse{0%,100%{filter:brightness(1) saturate(1)}50%{filter:brightness(1.14) saturate(1.12)}}
-@keyframes radarsweep{to{transform:rotate(360deg)}}
-@media(prefers-reduced-motion:reduce){.mi-logo,.mi-logo img,.mi-logo::after{animation:none}}
-.lockup{position:relative;min-height:250px;display:flex;align-items:center;justify-content:center;margin:0 auto}
-.lock-txt{text-align:center}
-@media(max-width:1400px){.lockup{min-height:0;flex-direction:column;gap:16px;padding-top:4px}.mi-logo{position:static;transform:none;bottom:auto;width:min(230px,54vw);margin:0 auto}.phero .lead{max-width:840px}.hook{max-width:1020px}}
-.wordmark{font-size:clamp(30px,4.6vw,52px);font-weight:900;line-height:.95;letter-spacing:-2px;margin-top:0;background:linear-gradient(135deg,#fff,#a9c7ff 55%,#8b5cf6);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;filter:drop-shadow(0 8px 40px rgba(59,130,246,.4))}
-.dashget{display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:980px;margin:0 auto;list-style:none}
-.dashget li{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(160deg,var(--card),var(--card2));border:1px solid var(--border);border-radius:13px;padding:15px 17px;font-size:14.5px;color:var(--muted);line-height:1.55;transition:.18s}
-.dashget li:hover{transform:translateY(-2px);border-color:rgba(120,160,255,.42);box-shadow:0 12px 28px rgba(0,0,0,.34)}
-.dashget li b{color:#fff}
-.dashget .di{font-size:20px;line-height:1.3;flex-shrink:0}
-@media(max-width:760px){.dashget{grid-template-columns:1fr}}
-.tagline{font-size:clamp(15px,1.9vw,20px);font-weight:800;color:#fff;margin-top:6px}
-.tagline .cy{color:var(--cyan);text-shadow:0 0 22px rgba(34,211,238,.55)}
-.phero .lead{font-size:15px;color:#cdd8ef;margin:2px auto 0;line-height:1.58;max-width:max(430px,min(840px,calc(100vw - 880px)))}
-.phero .row{display:flex;gap:12px;flex-wrap:wrap;margin-top:12px;justify-content:center}
-.statrow{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:16px}
-.stat{min-width:184px;background:rgba(255,255,255,.05);border:1px solid rgba(120,160,255,.24);border-radius:16px;padding:18px 28px;backdrop-filter:blur(5px);transition:.2s}
-.stat:hover{border-color:rgba(120,160,255,.45);box-shadow:0 0 22px rgba(37,99,235,.25);transform:translateY(-2px)}
-.stat b{display:block;font-size:36px;font-weight:900;line-height:1.05}
-.stat.s1 b{color:#60a5fa;text-shadow:0 0 20px rgba(96,165,250,.6)}
-.stat.s2 b{color:#22d3ee;text-shadow:0 0 20px rgba(34,211,238,.55)}
-.stat.s3 b{color:#a78bfa;text-shadow:0 0 20px rgba(167,139,250,.55)}
-.stat span{font-size:14px;color:#9fb0d0;font-weight:600}
-
-/* SECTIONS */
-section{padding:56px 0}
-.alt{background:linear-gradient(180deg,var(--bg),var(--bg2))}
-.sec-head{max-width:820px;margin:0 auto 34px;text-align:center}
-.sec-head h2{font-size:clamp(25px,3.2vw,36px);font-weight:800;letter-spacing:-.5px;color:#fff;position:relative;padding-bottom:14px}
-.sec-head h2::after{content:"";position:absolute;left:50%;bottom:0;transform:translateX(-50%);width:60px;height:3px;border-radius:3px;background:linear-gradient(90deg,#22d3ee,#3b82f6,#8b5cf6)}
-.sec-head p{color:var(--muted);font-size:16.5px;margin-top:10px}
-
-/* VALUE cards */
-.vgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.vcard{position:relative;background:linear-gradient(160deg,var(--card),var(--card2));border:1px solid var(--border);border-radius:16px;padding:26px 22px;transition:transform .2s,box-shadow .2s,border-color .2s;overflow:hidden}
-.vcard::before{content:"";position:absolute;left:0;right:0;top:0;height:2px;background:linear-gradient(90deg,transparent,var(--c,#3b82f6),transparent);opacity:.75}
-.vcard:hover{transform:translateY(-4px);border-color:rgba(120,160,255,.45);box-shadow:0 20px 44px rgba(0,0,0,.4),0 0 26px rgba(59,130,246,.16)}
-.vcard .ic{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;background:rgba(59,130,246,.14);border:1px solid rgba(120,160,255,.28);margin-bottom:14px}
-.vcard h4{font-size:17.5px;font-weight:800;color:#fff;margin-bottom:7px}
-.vcard p{font-size:14.5px;color:var(--muted);line-height:1.6}
-@media(max-width:860px){.vgrid{grid-template-columns:1fr 1fr}}
-@media(max-width:560px){.vgrid{grid-template-columns:1fr}}
-
-/* PROCESS */
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:1060px;margin:0 auto}
-.step{position:relative;background:linear-gradient(160deg,var(--card),var(--card2));border:1px solid var(--border);border-radius:16px;padding:24px 22px;transition:.2s}
-.step:hover{transform:translateY(-3px);border-color:rgba(120,160,255,.45);box-shadow:0 16px 36px rgba(0,0,0,.38),0 0 22px rgba(59,130,246,.14)}
-.step .n{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#3b82f6,#1e40af);color:#fff;font-weight:900;font-size:15px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;box-shadow:0 0 18px rgba(59,130,246,.5)}
-.step h4{font-size:16.5px;font-weight:800;color:#fff;margin-bottom:5px}
-.step p{font-size:14px;color:var(--muted);line-height:1.55}
-@media(max-width:860px){.steps{grid-template-columns:1fr 1fr}}
-@media(max-width:560px){.steps{grid-template-columns:1fr}}
-
-/* CASE STUDY */
-.case-intro{max-width:960px;margin:0 auto 30px;border-radius:22px;padding:1.5px;
-  background:linear-gradient(135deg,#22d3ee,#3b82f6 45%,#8b5cf6 70%,#22d3ee);background-size:300% 300%;
-  box-shadow:0 26px 62px rgba(0,0,0,.45),0 0 46px rgba(37,99,235,.2);animation:tphue 8s linear infinite}
-@keyframes tphue{0%{background-position:0% 50%}100%{background-position:300% 50%}}
-.case-in{position:relative;overflow:hidden;border-radius:20px;padding:34px 32px;
-  background:radial-gradient(700px 340px at 50% -14%,rgba(37,99,235,.24),transparent 62%),linear-gradient(160deg,#0a1428,#0e1c39 60%,#12294f);
-  display:flex;gap:28px;align-items:center}
-.case-in::after{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:linear-gradient(90deg,transparent,rgba(34,211,238,.8),rgba(139,92,246,.8),transparent)}
-.case-in>*{position:relative;z-index:1}
-.case-logo{flex-shrink:0;width:150px;border-radius:16px;overflow:hidden;border:1px solid rgba(120,160,255,.35);box-shadow:0 14px 34px rgba(0,0,0,.5),0 0 26px rgba(37,99,235,.3)}
-.case-logo img{width:100%;display:block}
-.case-txt h3{font-size:clamp(20px,2.6vw,27px);font-weight:900;color:#fff;margin-bottom:10px}
-.case-txt p{color:#cdd8ef;font-size:16px;margin-bottom:10px}
-.case-txt p:last-child{margin-bottom:0}
-.case-txt .hl{color:var(--cyan);font-weight:700}
-.case-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
-@media(max-width:720px){.case-in{flex-direction:column;text-align:center}.case-row{justify-content:center}}
-
-/* framed shots */
-.gframe{position:relative;max-width:1040px;margin:0 auto;border-radius:18px;padding:2.5px;background:linear-gradient(135deg,#22d3ee,#3b82f6 52%,#8b5cf6);box-shadow:0 26px 62px rgba(0,0,0,.5),0 0 46px rgba(59,130,246,.15)}
-.gframe-bar{display:flex;align-items:center;gap:7px;padding:11px 15px;background:#0f2747;border-radius:15px 15px 0 0}
-.gframe-bar i{width:11px;height:11px;border-radius:50%;display:block}
-.gframe-bar .r{background:#ff5f57}.gframe-bar .y{background:#febc2e}.gframe-bar .g{background:#28c840}
-.gframe-bar span{margin-inline-start:12px;font-size:12px;color:#9fb3d4;direction:ltr}
-.gframe-in{overflow:hidden;border-radius:0 0 15px 15px;background:#0a1020}
-.gframe-in img{width:100%;display:block}
-.censor-note{display:flex;gap:14px;align-items:flex-start;max-width:1040px;margin:0 auto;background:linear-gradient(160deg,rgba(251,191,36,.12),rgba(239,68,68,.08));border:1px solid rgba(251,191,36,.42);border-radius:16px;padding:18px 22px;font-size:15px;color:#e9edf6;line-height:1.6;box-shadow:0 10px 30px rgba(0,0,0,.3)}
-.censor-note b{color:#fbbf24}
-.censor-note .ci{font-size:22px;line-height:1.3;flex-shrink:0}
-.trend-wrap{position:relative}
-.trend-svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}
-.trend-dot{fill:rgba(125,225,255,.35);filter:drop-shadow(0 0 10px rgba(56,189,248,1))}
-.trend-dot-core{fill:#eafaff;filter:drop-shadow(0 0 8px rgba(125,225,255,1))}
-@media(prefers-reduced-motion:reduce){.trend-svg{display:none}}
-/* ===== RUBIN MARKET scene (logo animated like the hero) ===== */
-.rubin-scene{position:relative;max-width:1040px;margin:30px auto 0;border-radius:18px;overflow:hidden;
-  border:1px solid var(--border);box-shadow:0 26px 62px rgba(0,0,0,.5),0 0 44px rgba(59,130,246,.14)}
-.rs-base{width:100%;display:block}
-.rs-logo{position:absolute;left:27.871%;top:13.071%;width:10.885%;aspect-ratio:152/167;display:block;pointer-events:none}
-.rs-logo img{width:100%;display:block}
-.rs-logo::after{content:"";position:absolute;inset:-26%;pointer-events:none;background:conic-gradient(from 0deg,rgba(120,225,255,0) 0deg,rgba(120,225,255,0) 300deg,rgba(150,235,255,.26) 340deg,rgba(200,248,255,.5) 353deg,rgba(120,225,255,0) 360deg);animation:radarsweep 4.2s linear infinite;mix-blend-mode:screen}
-/* counting KPI numbers on the dashboard screen */
-.rubin-scene{container-type:inline-size}
-.rs-num{position:absolute;display:flex;align-items:center;justify-content:center;
-  color:#eef3fb;font-weight:600;letter-spacing:.2px;white-space:nowrap;
-  transform:rotate(-3.1deg);text-shadow:0 1px 3px rgba(0,0,0,.55)}
-.rs-num.k1{left:62.9%;top:13.9%;width:3.8%;height:2.6%;font-size:1.91cqw}
-.rs-num.k2{left:71.0%;top:12.9%;width:2.4%;height:2.3%;font-size:1.66cqw}
-.rs-num.k3{left:79.2%;top:12.2%;width:3.9%;height:2.8%;font-size:2.08cqw}
-@media(prefers-reduced-motion:reduce){.rs-logo::after{animation:none}}
-/* ===== animated "market noise" scene ===== */
-.noise-scene{position:relative;max-width:1040px;margin:34px auto 0;border-radius:18px;overflow:hidden;
-  border:1px solid var(--border);box-shadow:0 26px 62px rgba(0,0,0,.5),0 0 44px rgba(59,130,246,.14)}
-.ns-base{width:100%;display:block}
-.ns-bub{position:absolute;opacity:0;will-change:transform,opacity;
-  filter:drop-shadow(0 10px 22px rgba(0,0,0,.5))}
-.noise-scene.play .ns-bub{animation-name:bubin;animation-duration:.62s;animation-timing-function:cubic-bezier(.18,.9,.28,1.3);animation-fill-mode:forwards}
-@keyframes bubin{
-  0%{opacity:0;transform:translate3d(14px,16px,0) scale(.82)}
-  60%{opacity:1}
-  100%{opacity:1;transform:translate3d(0,0,0) scale(1)}
+@media(max-width:920px){
+  .mk-demo,.mk-custom,.mk-deep{grid-template-columns:1fr}
+  .mk-radar-box{grid-column:auto}
+  .mk-steps{grid-template-columns:1fr}
+  .mk-steps li{flex-direction:row;align-items:center;text-align:start}
+  .mk-steps li::before{inset-inline-start:2px}
+  #mk-radar .chips{justify-content:flex-start}
+  .mk-more{grid-template-columns:1fr 1fr}
+  .mk-feed{min-height:0}
 }
-.ns-bub.b1{left:29.167%;top:3.223%;width:20.833%;animation-delay:0.50s}
-.ns-bub.b2{left:51.693%;top:1.562%;width:19.206%;animation-delay:1.50s}
-.ns-bub.b3{left:43.555%;top:17.969%;width:19.466%;animation-delay:2.50s}
-.ns-bub.b4{left:52.148%;top:31.055%;width:18.424%;animation-delay:3.50s}
-.ns-bub.b5{left:16.471%;top:61.621%;width:19.857%;animation-delay:5.50s}
-.ns-bub.b6{left:16.471%;top:76.074%;width:19.987%;animation-delay:6.50s}
-.ns-bub.b7{left:47.591%;top:68.164%;width:21.094%;animation-delay:4.50s}
-@media(prefers-reduced-motion:reduce){.ns-bub{opacity:1!important;animation:none!important;transform:none!important}}
-.viz-cap{text-align:center;color:var(--muted);font-size:13.5px;margin:14px auto 0;max-width:800px;line-height:1.6}
-
-/* WHITE LABEL band */
-.wl{position:relative;max-width:960px;margin:0 auto;border-radius:24px;padding:1.5px;
-  background:linear-gradient(135deg,#22d3ee,#3b82f6 45%,#8b5cf6 70%,#22d3ee);background-size:300% 300%;
-  box-shadow:0 30px 74px rgba(0,0,0,.5),0 0 56px rgba(37,99,235,.22);animation:tphue 8s linear infinite}
-.wl-in{position:relative;overflow:hidden;border-radius:22px;padding:44px 38px;text-align:center;
-  background:radial-gradient(780px 360px at 50% -14%,rgba(37,99,235,.26),transparent 62%),linear-gradient(160deg,#0a1428,#0e1c39 60%,#12294f)}
-.wl-in::after{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:linear-gradient(90deg,transparent,rgba(34,211,238,.8),rgba(139,92,246,.8),transparent)}
-.wl-in>*{position:relative;z-index:1}
-.wl-emblem{font-size:40px;margin-bottom:10px}
-.wl-in h2{font-size:clamp(24px,3.4vw,34px);font-weight:900;color:#fff;letter-spacing:-.5px;margin-bottom:12px}
-.wl-in p{color:#cdd8ef;font-size:16.5px;max-width:700px;margin:0 auto}
-.wl-in .tags{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:20px}
-.wl-in .tags span{font-size:13.5px;background:rgba(255,255,255,.06);border:1px solid rgba(120,160,255,.3);color:#dbe4fb;border-radius:999px;padding:7px 15px}
-
-/* QUOTE FORM */
-.techpanel{position:relative;max-width:920px;margin:0 auto;border-radius:24px;padding:1.5px;
-  background:linear-gradient(135deg,#22d3ee,#3b82f6 45%,#8b5cf6 70%,#22d3ee);background-size:300% 300%;
-  box-shadow:0 30px 74px rgba(0,0,0,.5),0 0 56px rgba(37,99,235,.22);animation:tphue 8s linear infinite}
-.techpanel-in{position:relative;overflow:hidden;border-radius:22px;padding:38px 34px;
-  background:radial-gradient(780px 360px at 50% -14%,rgba(37,99,235,.24),transparent 62%),linear-gradient(160deg,#0a1428,#0e1c39 60%,#12294f)}
-.techpanel-in::after{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:linear-gradient(90deg,transparent,rgba(34,211,238,.8),rgba(139,92,246,.8),transparent)}
-.techpanel-in>*{position:relative;z-index:1}
-.qgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
-.quotebox label{display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:700;color:#dbe4fb}
-.quotebox input,.quotebox select,.quotebox textarea{font-family:inherit;font-size:15px;font-weight:400;padding:11px 13px;border:1px solid rgba(120,160,255,.28);border-radius:10px;background:rgba(255,255,255,.05);color:#eaf1ff;transition:.15s}
-.quotebox input::placeholder,.quotebox textarea::placeholder{color:#8a9ac0}
-.quotebox select option{color:#0f2747}
-.quotebox input:focus,.quotebox select:focus,.quotebox textarea:focus{outline:none;border-color:#22d3ee;box-shadow:0 0 0 3px rgba(34,211,238,.2);background:rgba(255,255,255,.09)}
-.quotebox textarea{resize:vertical}
-.qfull{margin-bottom:18px}
-.qrow{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
-@media(max-width:600px){.qgrid{grid-template-columns:1fr}}
-
-/* CTA */
-.cta{position:relative;overflow:hidden;background:radial-gradient(760px 340px at 50% -10%,rgba(37,99,235,.4),transparent 60%),linear-gradient(160deg,#12285a,#0b1630 70%,#12294f);border:1px solid rgba(120,160,255,.32);border-radius:26px;padding:52px 34px;text-align:center;box-shadow:0 30px 70px rgba(0,0,0,.5),0 0 56px rgba(37,99,235,.22);color:#fff}
-.cta::before{content:"";position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(120,160,255,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(120,160,255,.08) 1px,transparent 1px);background-size:40px 40px;-webkit-mask-image:radial-gradient(circle at 50% 0%,#000,transparent 78%);mask-image:radial-gradient(circle at 50% 0%,#000,transparent 78%)}
-.cta::after{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:linear-gradient(90deg,transparent,rgba(34,211,238,.8),rgba(139,92,246,.8),transparent)}
-.cta>*{position:relative;z-index:1}
-.cta h2{font-size:clamp(24px,3.4vw,34px);font-weight:900;margin-bottom:10px;color:#fff}
-.cta p{color:#cdd8ef;font-size:16.5px;max-width:600px;margin:0 auto 26px}
-.cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-
-/* FOOTER */
-footer{border-top:1px solid var(--border);padding:40px 0;background:#080d18}
-.foot-in{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;padding:0 32px;max-width:1160px;margin:0 auto}
-.foot-brand{display:flex;align-items:center;gap:12px}
-.foot-brand img{height:42px;width:auto}
-.foot-brand .bn{font-weight:900;font-size:20px;color:#fff}.foot-brand .bn .b{color:var(--accent2)}
-.foot-brand .tg{font-size:12.5px;color:var(--cyan)}
-.foot-copy{flex:1;text-align:center;color:var(--muted);font-size:14px;font-weight:600;min-width:220px}
-.foot-links{display:flex;gap:16px;font-size:14px;color:var(--muted);flex-wrap:wrap}
-.foot-links a:hover{color:#fff}
-
-@media(max-width:1000px){.hook-q2{white-space:normal}}
-@media(max-width:860px){.nav-links{display:none}.foot-in{flex-direction:column;text-align:center}}
-@media(max-width:560px){.nav-in{padding:0 16px;gap:10px}.nav-logo span{display:none}.nav-logo img{height:42px}.nav-cta .btn{padding:8px 14px;font-size:13px}}
+@media(max-width:620px){
+  .mk-dash,.mk-more{grid-template-columns:1fr}
+  .mk-kpis{grid-template-columns:1fr 1fr}
+  .mk-kpis .mk-kpi:first-child{grid-column:1/-1}
+  .mk-mx table{font-size:13px}
+  .mk-lv i{width:5px;height:13px}
+}
+/* הלוגו של המוצר מעל שורת הפירורים ב-hero. קטן יותר במסך נמוך, כדי שה-hero ייכנס במסך הראשון */
+.mk-herologo{position:relative;display:block;width:clamp(60px,calc(64px + (100svh - 657px) * .4),150px);height:auto;aspect-ratio:1;margin:0 0 4px auto}
+@media(min-width:921px){.p-hero{padding-top:clamp(10px,2vh,40px)}.p-hero-copy{max-width:680px}.p-hero-copy .p-lead{max-width:62ch}}
+.mk-herologo img{display:block;width:100%;height:auto}
+/* בטלפון אין מקום לשורה נוספת: הלוגו בפינה השמאלית של שורת הפירורים, והפריט "RUBIN MARKET" שבה (שחוזר בכותרת מתחת) מוסתר */
+@media(max-width:920px){.p-hero-copy{position:relative}.mk-herologo{position:absolute;left:0;top:-10px;width:56px;margin:0}.p-crumb > :nth-last-child(-n+2){display:none}}
+.p-hero h1 .p-name{font-size:.9em}
+/* סלוגן ב-hero */
+.mk-tagline{margin:-4px 0 14px;font-size:clamp(18px,1.6vw,23px);font-weight:700;color:#cfe3f5}
+.mk-tagline b{color:var(--prod-deep)}
+/* שולחן מוצף (גם תמונת הסיום): הרוחב מוגבל כך שכל התמונה נכנסת בגובה המסך מתחת לניווט.
+   שולחן מוצף: הודעות שקופצות מעל הצילום, בלולאה. בעצירה ובפחות תנועה כולן מוצגות */
+.mk-ns{position:relative;max-width:1160px;max-width:min(1160px,calc((100svh - var(--nav-h) - 32px) * 1.5));margin:0 auto clamp(30px,4vw,48px);border-radius:18px;overflow:hidden;container-type:inline-size;box-shadow:0 2px 4px rgba(13,22,38,.06),0 26px 60px rgba(13,22,38,.22)}
+.mk-ns > img{display:block;width:100%;height:auto}
+.mk-ns-layer{position:absolute;inset:0;pointer-events:none}
+.mk-nb{position:absolute;width:max(23.5cqw,196px);display:grid;grid-template-columns:auto minmax(0,1fr) auto;grid-template-areas:"ic nm tm" "ic tx bd";align-items:center;column-gap:1cqw;row-gap:.15cqw;padding:.95cqw 1.2cqw;border-radius:1.3cqw;background:rgba(250,251,252,.95);box-shadow:0 .5cqw 1.6cqw rgba(0,0,0,.42);color:#111b21;line-height:1.25}
+.mk-nb i{grid-area:ic;width:3.3cqw;height:3.3cqw;border-radius:50%;background:#25d366;position:relative}
+.mk-nb i::after{content:"";position:absolute;inset:27%;border-radius:45% 45% 45% 8%;background:#fff}
+.mk-nb b{grid-area:nm;font-size:max(12px,1.4cqw);font-weight:700;white-space:nowrap}
+.mk-nb small{grid-area:tx;font-size:max(10px,1.12cqw);color:#54656f;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mk-nb time{grid-area:tm;font-size:max(9px,.95cqw);color:#1fa855;font-weight:700;justify-self:end}
+.mk-nb em{grid-area:bd;justify-self:end;font-style:normal;min-width:1.9cqw;height:1.9cqw;padding:0 .5cqw;border-radius:1cqw;background:#25d366;color:#fff;font-size:1.05cqw;font-weight:800;display:grid;place-items:center}
+.mk-nb1{left:24%;top:2%}.mk-nb2{left:51%;top:4.5%}.mk-nb3{left:46.5%;top:21%}.mk-nb4{left:48%;top:37%}.mk-nb5{left:50.5%;top:58%}.mk-nb6{left:3%;top:65%}.mk-nb7{left:6%;top:81%}
+@keyframes mk-nb-in{0%{opacity:0;transform:translateY(1.2cqw) scale(.86)}5%{opacity:1;transform:none}80%{opacity:1;transform:none}88%,100%{opacity:0;transform:translateY(-.6cqw)}}
+.js .mk-nb{opacity:0;animation:mk-nb-in 10s var(--ease) infinite both}
+.js .mk-nb1{animation-delay:.3s}.js .mk-nb2{animation-delay:1s}.js .mk-nb3{animation-delay:1.7s}.js .mk-nb4{animation-delay:2.4s}.js .mk-nb5{animation-delay:3.1s}.js .mk-nb6{animation-delay:3.8s}.js .mk-nb7{animation-delay:4.5s}
+.motion-off .mk-nb{animation:none!important;opacity:1}
+@media(prefers-reduced-motion:reduce){.js .mk-nb{animation:none;opacity:1}}
+@media(max-width:700px){.mk-nb{width:34cqw;padding:1.3cqw 1.6cqw}.mk-nb b{font-size:2.3cqw}.mk-nb small{font-size:1.9cqw}.mk-nb time{font-size:1.6cqw}.mk-nb i{width:4.6cqw;height:4.6cqw}.mk-nb em{min-width:3cqw;height:3cqw;font-size:1.7cqw}.mk-nb3,.mk-nb4,.mk-nb7{display:none}.mk-nb1{left:3%;top:2%}.mk-nb2{left:46%;top:3%}.mk-nb5{left:44%;top:56%}.mk-nb6{left:3%;top:64%}}
+/* נקודה זוהרת שרצה לאורך קו המגמה (בדופק ובמסך בתמונת הסיום) */
+.mk-trace{position:absolute;inset:0;pointer-events:none}
+.mk-trace i{position:absolute;left:0;top:0;width:12px;height:12px;margin:-6px 0 0 -6px;border-radius:50%;background:#e9fbff;box-shadow:0 0 0 3px rgba(46,197,242,.55),0 0 16px 6px rgba(46,197,242,.65);opacity:0;will-change:transform}
+.mk-trace.on i{opacity:1}
+.mk-trace-win i{width:8px;height:8px;margin:-4px 0 0 -4px}
+/* תמונת הסיום: מנהל מול המסכים, ורדאר שסורק על הלוגו */
+.mk-win{position:relative;max-width:1160px;max-width:min(1160px,calc((100svh - var(--nav-h) - 32px) * 1.777));margin:0 auto clamp(28px,3.5vw,44px);border-radius:18px;overflow:hidden;border:1px solid rgba(110,170,230,.22);box-shadow:0 30px 70px rgba(0,0,0,.45)}
+.mk-win > img{display:block;width:100%;height:auto}
+.mk-win-sweep{position:absolute;left:38.36%;top:19.46%;width:5.4%;aspect-ratio:1;border-radius:50%;transform:translate(-50%,-50%);background:conic-gradient(from 0deg,rgba(120,225,255,0) 0deg,rgba(120,225,255,0) 290deg,rgba(150,235,255,.3) 340deg,rgba(210,248,255,.62) 356deg,rgba(120,225,255,0) 360deg);mix-blend-mode:screen;pointer-events:none;animation:mk-win-sw 4.2s linear infinite}
+@keyframes mk-win-sw{to{transform:translate(-50%,-50%) rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){.mk-win-sweep{display:none}}
 </style>
+<script src="/js/project.js" defer></script>
 </head>
 <body>
 
-<!-- NAV -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-wa" viewBox="0 0 24 24"><path d="M20 11.6a8.1 8.1 0 0 1-12 7.1L4 20l1.3-3.8A8.1 8.1 0 1 1 20 11.6z"/><path d="M9.2 8.9c.2 2.4 2.5 4.8 5 5.4l1-1.4-1.6-1-.8.7c-.9-.4-1.7-1.2-2.1-2.1l.7-.8-1-1.6z"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.2 4.2L19 7"/></symbol>
+  <symbol id="i-back" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></symbol>
+</svg>
+
+<a class="skip" href="#main">דילוג לתוכן</a>
+<button class="motion-btn" id="motionBtn" type="button"><svg class="i-pause" viewBox="0 0 16 16" aria-hidden="true"><rect x="3" y="2" width="3.5" height="12" rx="1"/><rect x="9.5" y="2" width="3.5" height="12" rx="1"/></svg><svg class="i-play" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5v11a1 1 0 0 0 1.5.86l9-5.5a1 1 0 0 0 0-1.72l-9-5.5A1 1 0 0 0 4 2.5z"/></svg><span class="lbl">עצירת תנועה</span></button>
+
 <header class="nav">
   <div class="nav-in">
-    <div class="nav-start">
-      <a class="nav-logo" href="/"><img src="../../img/logo-reverse.png" alt="Rubin Project"><span dir="ltr">Rubin <span class="b">Project</span></span></a>
-      <nav class="nav-links">
-        <a href="/#services">שירותים</a>
-        <a href="/#portfolio">תיק עבודות</a>
-        <a href="/#creator">מי אני</a>
-        <a href="/#contact">יצירת קשר</a>
-      </nav>
-    </div>
+    <a class="brand" href="/" aria-label="Rubin Project, לדף הבית"><img src="/img/logo-mark.webp" width="123" height="120" alt=""><span dir="ltr">Rubin <span class="b">Project</span></span></a>
+    <nav class="nav-links" id="navLinks" aria-label="ניווט בעמוד">
+      <a class="nav-back" href="/#portfolio">לכל המערכות</a>
+      <a href="#mk-radar">רדאר השיח</a>
+      <a href="#mk-features">מה יש במערכת</a>
+      <a href="#mk-deep">צלילה לעומק</a>
+      <a href="#mk-reports">הדשבורד</a>
+      <a href="#mk-custom">התאמה אישית</a>
+      <a class="btn btn-ghost nav-wa-m" href="https://wa.me/972527246200?text=%D7%94%D7%99%D7%99%20%D7%A2%D7%9E%D7%99%D7%AA%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%A2%D7%9E%D7%95%D7%93%20%D7%A9%D7%9C%20RUBIN%20MARKET" target="_blank" rel="noopener"><svg class="ico"><use href="#i-wa"/></svg>וואטסאפ</a>
+    </nav>
     <div class="nav-cta">
-      <span class="nav-badge">🏢 נבנה עבור חברת ERP מובילה</span>
-      <a class="btn btn-primary" href="https://wa.me/972527246200" target="_blank" rel="noopener">💬 וואטסאפ</a>
+      <a class="btn btn-ghost" href="https://wa.me/972527246200?text=%D7%94%D7%99%D7%99%20%D7%A2%D7%9E%D7%99%D7%AA%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%A2%D7%9E%D7%95%D7%93%20%D7%A9%D7%9C%20RUBIN%20MARKET" target="_blank" rel="noopener" data-track="whatsapp_nav"><svg class="ico"><use href="#i-wa"/></svg>וואטסאפ</a>
+      <a class="btn btn-solid" href="/#contact" data-track="cta_nav">שיחת אפיון</a>
     </div>
+    <button class="burger" id="burger" type="button" aria-label="פתיחת תפריט" aria-expanded="false" aria-controls="navLinks"><svg class="ico"><use href="#i-menu"/></svg></button>
   </div>
 </header>
 
-<!-- HERO -->
-<header class="phero">
-  <div class="wrap">
-    <span class="badge"><span class="livedot"></span> מודיעין שוק</span>
-    <h1 class="sr-only">מודיעין שוק — מהשיח בקבוצות המקצועיות לתובנה תחרותית להנהלה</h1>
-    <div class="hook">
-      <p class="hook-q">השוק מדבר עליך <span class="hl">בקבוצות מקצועיות</span> — אתה שומע?</p>
-      <p class="hook-q2">אלפי הודעות בחודש על המוצר שלך ועל המתחרים. בפנים יש מודיעין עסקי — אם יודעים לחלץ אותו.</p>
+<main id="main">
+
+<section class="p-hero">
+  <div class="collage" aria-hidden="true">
+    <div class="tilt">
+      <div class="lane" data-lane data-speed="20" data-dir="1"><div class="lane-track"><div class="lane-group">
+        <span class="ctile"><img src="/img/mk/t2-head.webp" width="440" height="275" alt="" decoding="async"></span>
+        <span class="ctile"><img src="/img/mk/t2-pie.webp" width="440" height="275" alt="" decoding="async"></span>
+        <span class="ctile"><img src="/img/mk/t2-spot.webp" width="440" height="275" alt="" decoding="async"></span>
+        <span class="ctile"><img src="/img/mk/t2-trend.webp" width="440" height="275" alt="" decoding="async"></span>
+      </div></div></div>
+      <div class="lane" data-lane data-speed="15" data-dir="-1"><div class="lane-track"><div class="lane-group">
+        <span class="ctile"><img src="/img/mk/t2-trend.webp" width="440" height="275" alt="" decoding="async"></span>
+        <span class="ctile"><img src="/img/mk/t2-insights.webp" width="440" height="275" alt="" decoding="async"></span>
+        <span class="ctile"><img src="/img/mk/t2-head.webp" width="440" height="275" alt="" decoding="async"></span>
+        <span class="ctile"><img src="/img/mk/t2-lists.webp" width="440" height="275" alt="" decoding="async"></span>
+      </div></div></div>
+      <div class="lane" data-lane data-speed="24" data-dir="1"><div class="lane-track"><div class="lane-group">
+        <span class="ctile"><img src="/img/mk/t2-spot.webp" width="440" height="275" alt="" decoding="async"></span>
+        <span class="ctile"><img src="/img/mk/t2-lists.webp" width="440" height="275" alt="" decoding="async"></span>
+        <span class="ctile"><img src="/img/mk/t2-pie.webp" width="440" height="275" alt="" decoding="async"></span>
+        <span class="ctile"><img src="/img/mk/t2-insights.webp" width="440" height="275" alt="" decoding="async"></span>
+      </div></div></div>
     </div>
-    <div class="lockup">
-      <div class="mi-logo"><img src="../img/mi-logo.png" alt="RUBIN MARKET"></div>
-      <div class="lock-txt">
-        <div class="wordmark" dir="ltr">RUBIN MARKET</div>
-        <div class="tagline">מהשיח ברשת — <span class="cy">לבינה עסקית</span></div>
+  </div>
+  <div class="p-hero-in wrap">
+    <div class="p-hero-copy">
+      <span class="mk-herologo"><img src="/img/mk/logo-radar-240.webp?v=2" width="240" height="240" alt="RUBIN MARKET"><i class="mk-sweep" aria-hidden="true"></i></span>
+      <p class="p-crumb"><a href="/#portfolio">מערכות שרצות אצל לקוחות</a><svg class="ico" style="width:14px;height:14px;transform:scaleX(-1)"><use href="#i-back"/></svg><span dir="ltr">RUBIN MARKET</span></p>
+      <h1><span class="p-name" dir="ltr">RUBIN MARKET</span><em>מודיעין שוק תחרותי</em></h1>
+      <p class="mk-tagline">מהשיח ברשת <b>לבינה עסקית</b></p>
+      <p class="p-lead">המערכת קוראת את השיח בקבוצות הוואטסאפ המקצועיות של הענף, ומתרגמת אותו למודיעין להנהלה: שביעות רצון מול המתחרים, נושאים חוזרים ומגמות.</p>
+      <div class="p-actions">
+        <a class="btn btn-solid btn-lg" href="/#contact" data-track="cta_hero">שיחת אפיון</a>
+        <a class="btn btn-ghost btn-lg" href="https://wa.me/972527246200?text=%D7%94%D7%99%D7%99%20%D7%A2%D7%9E%D7%99%D7%AA%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%A2%D7%9E%D7%95%D7%93%20%D7%A9%D7%9C%20RUBIN%20MARKET" target="_blank" rel="noopener" data-track="whatsapp_hero"><svg class="ico"><use href="#i-wa"/></svg>וואטסאפ</a>
+      </div>
+      <p class="proof"><span class="dot" aria-hidden="true"></span><span><b>נבנה עבור</b> אחד מבתי התוכנה הוותיקים והמובילים ל-ERP בישראל</span></p>
+    </div>
+  </div>
+</section>
+
+<section class="stack after-hero" aria-label="הטכנולוגיות שעליהן RUBIN MARKET בנויה">
+  <div class="lane" data-lane data-speed="34" data-dir="1"><div class="lane-track"><div class="lane-group">
+    <span class="tech"><i></i>Python</span><span class="tech"><i></i>JavaScript</span><span class="tech"><i></i>WhatsApp Web</span><span class="tech"><i></i>Bookmarklet</span><span class="tech"><i></i>Claude Code</span><span class="tech"><i></i>סוכני AI</span><span class="tech"><i></i>ניתוח סמנטי</span><span class="tech"><i></i>ניתוח סנטימנט</span><span class="tech"><i></i>עיבוד מצטבר</span><span class="tech"><i></i>SVG</span><span class="tech"><i></i>HTML בקובץ יחיד</span><span class="tech"><i></i>JSON</span>
+  </div></div></div>
+</section>
+
+<section class="band band-light">
+  <div class="wrap">
+    <div class="sh reveal">
+      <span class="k">המודיעין כבר קיים</span>
+      <h2>השוק מדבר עליכם, <em>ואף אחד לא מספיק לקרוא</em></h2>
+    </div>
+    <figure class="mk-ns reveal">
+      <img src="/img/mk/noise-1400.webp" srcset="/img/mk/noise-800.webp 800w, /img/mk/noise-1400.webp 1400w" sizes="(max-width:1240px) 94vw, 1160px" width="1400" height="933" alt="מנהל מול מסך וטלפון מלאים בהודעות מקבוצות וואטסאפ של הענף" loading="lazy" decoding="async">
+      <div class="mk-ns-layer" aria-hidden="true">
+        <span class="mk-nb mk-nb1"><i></i><b>קבוצת סוכנים</b><small>רון: מתי יוצא המחירון?</small><time>10:15</time><em>24</em></span>
+        <span class="mk-nb mk-nb2"><i></i><b>שיחות לקוחות</b><small>נועה: לקוח שואל על החיבור לבנק</small><time>10:16</time><em>17</em></span>
+        <span class="mk-nb mk-nb3"><i></i><b>שוק ותחרות</b><small>גיל: מערכת E הורידה מחיר</small><time>10:17</time><em>13</em></span>
+        <span class="mk-nb mk-nb4"><i></i><b>קבוצת מוצר</b><small>שירן: עוד בקשה לאפליקציה</small><time>10:18</time><em>9</em></span>
+        <span class="mk-nb mk-nb5"><i></i><b>מכירות ארצי</b><small>תמר: לידים חמים מהכנס</small><time>10:19</time><em>13</em></span>
+        <span class="mk-nb mk-nb6"><i></i><b>שיווק</b><small>ליאת: הקמפיין עלה היום</small><time>10:20</time><em>8</em></span>
+        <span class="mk-nb mk-nb7"><i></i><b>קהילת משתמשים</b><small>מיכל: יש למישהו השוואה?</small><time>10:21</time><em>22</em></span>
+      </div>
+    </figure>
+    <div class="grid-3">
+      <article class="card mk-pain reveal"><div class="mk-sc mk-sc-noise" data-scene aria-hidden="true">
+        <span class="mk-wa-head"><i class="mk-wa-av"></i><span><b>קהילת משתמשים</b><small>מיכל, יוסי, רונית ועוד 1,245</small></span><em>142</em></span>
+        <span class="mk-wa-msg mk-wa-m1"><b style="color:#53bdeb">מיכל</b>מישהו כבר עבר למערכת אחרת?<time>10:21</time></span>
+        <span class="mk-wa-msg mk-wa-m2"><b style="color:#e26ab6">יוסי</b>שוב תקלה אחרי העדכון האחרון<time>10:22</time></span>
+        <span class="mk-wa-msg mk-wa-m3"><b style="color:#f7c34f">רונית</b>מה קורה עם החיבור לבנק? מחכה שבוע<time>10:23</time></span>
+        <span class="mk-wa-msg mk-wa-m4"><b style="color:#06cf9c">אבי</b>המחיר עלה שוב, אני שוקל לעבור<time>10:24</time></span>
+      </div><h3>יותר מדי רעש</h3><p>אלפי הודעות בחודש בעשרות קבוצות. לעקוב ביד בלתי אפשרי, ובטח לא לאורך זמן.</p></article>
+      <article class="card mk-pain reveal"><div class="mk-sc mk-sc-blind" data-scene aria-hidden="true">
+        <span class="mk-sc-q">מה אומרים על המתחרים?</span>
+        <span class="mk-sc-card mk-sc-c1"><b>?</b>מערכת A</span>
+        <span class="mk-sc-card mk-sc-c2"><b>?</b>מערכת B</span>
+        <span class="mk-sc-card mk-sc-c3"><b>?</b>מערכת C</span>
+      </div><h3>עיוורון תחרותי</h3><p>לא ידוע מה אומרים על המתחרים, איפה הם חזקים, ועל מה הלקוחות שלהם מתלוננים.</p></article>
+      <article class="card mk-pain reveal"><div class="mk-sc mk-sc-gut" data-scene aria-hidden="true">
+        <span class="mk-sc-road mk-sc-r1">פיצ'ר חדש לרבעון<em>ניחוש</em></span>
+        <span class="mk-sc-road mk-sc-r2">שיפור בשירות<em>ניחוש</em></span>
+        <span class="mk-sc-road mk-sc-r3">חיבור לבנקים<em>ניחוש</em></span>
+        <span class="mk-sc-meter"><span>מה השוק באמת מבקש<b>?</b></span><i></i></span>
+      </div><h3>החלטות בתחושת בטן</h3><p>תעדוף הפיתוח נקבע בלי בסיס מדיד למה שהשוק מבקש, ולמה לקוחות עוברים למתחרה.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="band band-deep" id="mk-radar">
+  <div class="wrap">
+    <div class="sh reveal">
+      <span class="k">החידוש הגדול</span>
+      <h2>כל הודעה עוברת ברדאר. <em>התובנות יוצאות לבד.</em></h2>
+      <p>סוכני AI קוראים כל הודעה בקבוצות, מזהים על איזו מערכת מדברים ומה הטון, ומעדכנים את תמונת השוק: שביעות רצון, נושאים חמים, והתרעה כשמשהו מתחיל לבעור.</p>
+    </div>
+    <div class="mk-demo reveal" id="mkDemo">
+      <div class="mk-pane" aria-hidden="true">
+        <div class="mk-pane-h"><span>הודעות מהקבוצות</span><span class="mk-live">LIVE</span></div>
+        <ol class="mk-feed" id="mkFeed"></ol>
+      </div>
+      <div class="mk-radar-box" aria-hidden="true">
+        <div class="mk-radar"><img src="/img/mk/logo-radar-480.webp?v=2" width="480" height="480" alt="" loading="lazy" decoding="async"><i class="mk-sweep"></i><i class="mk-ping" id="mkPing"></i></div>
+        <p class="mk-radar-cap">RUBIN MARKET</p>
+      </div>
+      <div class="mk-pane" role="img" aria-label="דוגמה לתמונת שוק שמתעדכנת: מספר ההודעות שנותחו, מערכות במעקב, התרעות, ושביעות רצון לכל מערכת">
+        <div class="mk-kpis">
+          <div class="mk-kpi"><small>הודעות שנותחו</small><b id="mkTotal">0</b></div>
+          <div class="mk-kpi"><small>מערכות במעקב</small><b>4</b></div>
+          <div class="mk-kpi mk-k-alert"><small>התרעות</small><b id="mkAlerts">0</b></div>
+        </div>
+        <div class="mk-pane-h"><span>שביעות רצון לפי מערכת</span></div>
+        <ul class="mk-bars" id="mkBars"></ul>
+        <p class="mk-alert" id="mkAlert">התרעה: עלייה בתלונות שירות על מערכת B</p>
       </div>
     </div>
-    <p class="lead">מערכת שמנתחת את השיח בקבוצות המקצועיות בענף ומתרגמת אותו למודיעין תחרותי להנהלה: שביעות רצון מול המתחרים, נושאים חוזרים, מגמות לאורך זמן — ומטריצת מיצוב שמראה איפה אתה מוביל ואיפה נשארו פערים.</p>
-    <div class="row">
-      <a class="btn btn-primary" href="#quote">✨ רוצה מודיעין כזה</a>
-      <a class="btn btn-lghost" href="#layers">איך זה עובד?</a>
-    </div>
-    <div class="statrow">
-      <div class="stat s1"><b data-val="10000">0</b><span>אלפי הודעות מנותחות</span></div>
-      <div class="stat s2"><b data-val="20">0</b><span>קבוצות שיח במקביל</span></div>
-      <div class="stat s3"><b data-val="5">0</b><span>שכבות מודיעין</span></div>
-    </div>
-  </div>
-</header>
-
-<!-- PROBLEM -->
-<section>
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="eyebrow">🎯 הבעיה</span>
-      <h2>המודיעין הכי שווה כבר קיים — ואף אחד לא קורא אותו</h2>
-      <p>בקבוצות המקצועיות של הענף הלקוחות מדברים בגלוי: מה עובד, מה מעצבן, ולמה עוברים למתחרה. זה מחקר שוק חי — אבל אף אחד לא מספיק לקרוא אלפי הודעות.</p>
-    </div>
-    <div class="vgrid">
-      <div class="vcard" style="--c:#ef4444"><div class="ic">🌊</div><h4>יותר מדי רעש</h4><p>אלפי הודעות בחודש בעשרות קבוצות — בלתי אפשרי לעקוב ידנית, ובטח לא לאורך זמן.</p></div>
-      <div class="vcard" style="--c:#fbbf24"><div class="ic">🕶️</div><h4>עיוורון תחרותי</h4><p>לא באמת ידוע מה אומרים על המתחרים, איפה הם חזקים, ואיפה הלקוחות שלהם מתלוננים.</p></div>
-      <div class="vcard" style="--c:#8b5cf6"><div class="ic">🤷</div><h4>החלטות בתחושת בטן</h4><p>החלטות מוצר ותעדוף פיתוח מתקבלים בלי בסיס מדיד למה שהשוק באמת מבקש.</p></div>
-    </div>
-
-    <div class="noise-scene" id="noiseScene">
-      <img class="ns-base" src="../img/mi-noise-base.jpg" alt="מנהל מוצף בהודעות מקבוצות מקצועיות">
-      <img class="ns-bub b1" src="../img/mi-bub1.png" alt="">
-      <img class="ns-bub b2" src="../img/mi-bub2.png" alt="">
-      <img class="ns-bub b3" src="../img/mi-bub3.png" alt="">
-      <img class="ns-bub b4" src="../img/mi-bub4.png" alt="">
-      <img class="ns-bub b7" src="../img/mi-bub7.png" alt="">
-      <img class="ns-bub b5" src="../img/mi-bub5.png" alt="">
-      <img class="ns-bub b6" src="../img/mi-bub6.png" alt="">
-    </div>
-    <div class="viz-cap">כל יום נכתבות אלפי הודעות על המוצר שלך ועל המתחרים — בזמן שאתה מנסה פשוט לעקוב.</div>
-
+    <p class="mk-note">דוגמה להמחשה. ההודעות, הקבוצות והמספרים אינם נתונים של לקוח.</p>
+    <ol class="mk-steps">
+      <li class="reveal"><i class="pp-ln" aria-hidden="true"><b></b><b></b></i><span class="pp-st-ic"><img class="pp-gi-img" src="/img/mk/ic-collect-160.webp" srcset="/img/mk/ic-collect-160.webp 160w, /img/mk/ic-collect-240.webp 240w, /img/mk/ic-collect-320.webp 320w" sizes="132px" width="160" height="160" alt="" loading="lazy" decoding="async"></span><span><b>איסוף מהקבוצות</b>ייצוא השיח מהקבוצות המקצועיות, בצורה מסודרת וחוזרת.</span></li>
+      <li class="reveal"><i class="pp-ln" aria-hidden="true"><b></b><b></b></i><span class="pp-st-ic"><img class="pp-gi-img" src="/img/mk/ic-analyze-160.webp" srcset="/img/mk/ic-analyze-160.webp 160w, /img/mk/ic-analyze-240.webp 240w, /img/mk/ic-analyze-320.webp 320w" sizes="132px" width="160" height="160" alt="" loading="lazy" decoding="async"></span><span><b>ניתוח סמנטי</b>מערכת, נושא, טון ורמת חשיבות לכל הודעה, רק על מה שחדש.</span></li>
+      <li class="reveal"><span class="pp-st-ic"><img class="pp-gi-img" src="/img/mk/ic-dashboard-160.webp" srcset="/img/mk/ic-dashboard-160.webp 160w, /img/mk/ic-dashboard-240.webp 240w, /img/mk/ic-dashboard-320.webp 320w" sizes="132px" width="160" height="160" alt="" loading="lazy" decoding="async"></span><span><b>דשבורד להנהלה</b>קובץ אחד שמתעדכן, עם תובנות, מגמות ומפת מיצוב.</span></li>
+    </ol>
+    <div class="chips reveal"><span class="chip">ייצוא מוואטסאפ Web</span><span class="chip">ניתוח רק של החדש</span><span class="chip">טון לכל מערכת</span><span class="chip">תובנות מצרפיות</span></div>
   </div>
 </section>
 
-<!-- TWO LAYERS -->
-<section class="alt" id="layers">
+<section class="band band-light" id="mk-features">
   <div class="wrap">
-    <div class="sec-head">
-      <span class="eyebrow">🧩 המבנה</span>
-      <h2>שתי שכבות מודיעין שעובדות יחד</h2>
-      <p>שכבה שמנתחת את השיח בזמן אמת, ושכבה שממקמת אותך מול השוק.</p>
+    <div class="sh reveal">
+      <span class="k">מה יש במערכת</span>
+      <h2>מהשיח בקבוצות <em>לתמונת שוק שמחליטים לפיה</em></h2>
+      <p>צילומי מסך מהדשבורד שנבנה עבור הלקוח, עם נתוני דמה: שמות המערכות, הקהילות, הציטוטים והתובנות הוחלפו, והמבנה, הגרפים והחישובים נשארו.</p>
     </div>
-    <div class="steps" style="grid-template-columns:1fr 1fr;max-width:900px">
-      <div class="step"><div class="n">1</div><h4>דשבורד פולס — מה השוק אומר</h4><p>מנתח את השיח בקבוצות המקצועיות ומתרגם אותו לתובנות: שביעות רצון לכל מערכת, נושאים חוזרים, נקודות כאב, סיכונים והזדמנויות — ומגמות לאורך זמן.</p></div>
-      <div class="step"><div class="n">2</div><h4>מרכז מיפוי תחרותי — איפה אתה עומד</h4><p>מטריצת יכולות שמעמידה את המוצר שלך מול המערכות המרכזיות בשוק לאורך צירי הליבה — ומראה בדיוק איפה אתה מוביל ואיפה נשארו פערים.</p></div>
+    <div class="grid-2">
+      <article class="shot-card reveal">
+        <div class="shot" data-cycle style="background:#eef1f5"><button class="zoomable" type="button" aria-label="הגדלה של המסך המוצג"><img class="mk-fr on" src="/img/mk/d-head-640.webp" data-full="/img/mk/d-head-1280.webp" width="640" height="278" alt="ראש הדשבורד: הודעות שנותחו, קהילות במעקב, שביעות רצון ודירוג תחרותי, בנתוני דמה" loading="lazy" decoding="async"><img class="mk-fr" src="/img/mk/d-insights-640.webp" data-full="/img/mk/d-insights-1280.webp" width="640" height="200" alt="תקציר מנהלים: שש תובנות חוצות קבוצות, בנתוני דמה" loading="lazy" decoding="async"></button></div>
+        <div class="shot-body"><h3>מדדי מפתח ותקציר מנהלים</h3><p>כמה הודעות נותחו, כמה קהילות במעקב, שביעות רצון ודירוג תחרותי. ומתחת, התובנות של התקופה לפי חשיבות.</p><div class="chips"><span class="chip">מדדי מפתח</span><span class="chip">תקציר מנהלים</span></div></div>
+      </article>
+      <article class="shot-card reveal">
+        <div class="shot" style="background:#0f1d33"><button class="zoomable" type="button" aria-label="הגדלה של המסך"><img class="mk-fr on" src="/img/mk/d-pie-640.webp" data-full="/img/mk/d-pie-1280.webp" width="640" height="351" alt="שביעות רצון לפי מערכת: פילוח של שש מערכות, ודוגמאות מהשיח, בנתוני דמה" loading="lazy" decoding="async"></button></div>
+        <div class="shot-body"><h3>שביעות רצון לפי מערכת</h3><p>ציון לכל מערכת בשוק, כולל שלכם, על בסיס מה שלקוחות כותבים. עם דוגמאות שמסבירות את הציון.</p><div class="chips"><span class="chip">סנטימנט</span><span class="chip">השוואה</span></div></div>
+      </article>
+      <article class="shot-card reveal">
+        <div class="shot" data-cycle style="background:#eef1f5"><button class="zoomable" type="button" aria-label="הגדלה של המסך המוצג"><img class="mk-fr on" src="/img/mk/d-lists-640.webp" data-full="/img/mk/d-lists-1280.webp" width="640" height="183" alt="הזדמנויות מיידיות מול סיכונים ואיומים, בנתוני דמה" loading="lazy" decoding="async"><img class="mk-fr" src="/img/mk/d-trend-640.webp" data-full="/img/mk/d-trend-1280.webp" width="640" height="264" alt="דופק הפעילות: הודעות בשבוע בכל הקהילות, לאורך 17 שבועות" loading="lazy" decoding="async"></button></div>
+        <div class="shot-body"><h3>הזדמנויות, סיכונים ודופק</h3><p>שתי רשימות פעולה, ומגמה שבועית של עוצמת השיח שמראה כל קפיצה חריגה.</p><div class="chips"><span class="chip">הזדמנויות</span><span class="chip">מגמה שבועית</span></div></div>
+      </article>
+      <article class="shot-card reveal">
+        <div class="shot" data-cycle style="background:#eef1f5"><button class="zoomable" type="button" aria-label="הגדלה של המסך המוצג"><img class="mk-fr on" src="/img/mk/d-spot-640.webp" data-full="/img/mk/d-spot-1280.webp" width="640" height="176" alt="המתחרים בשוק במבט אחד: שביעות רצון לכל מערכת, בנתוני דמה" loading="lazy" decoding="async"><img class="mk-fr" src="/img/mk/d-table-640.webp" data-full="/img/mk/d-table-1280.webp" width="640" height="217" alt="מפת הקבוצות: חמש קהילות, מספר הודעות ותקופה, בנתוני דמה" loading="lazy" decoding="async"></button></div>
+        <div class="shot-body"><h3>המתחרים במבט אחד</h3><p>כרטיס לכל מערכת בשוק עם ציון ומספר העמדות בעד ונגד, ולצדו מפת הקהילות שמהן נאסף השיח.</p><div class="chips"><span class="chip">השוואה</span><span class="chip">מקורות</span></div></div>
+      </article>
     </div>
-
-    <div class="rubin-scene" id="rubinScene">
-      <img class="rs-base" src="../img/mi-rubin-base.jpg" alt="מנהל צופה בדשבורד RUBIN MARKET על מסכים מרובים">
-      <span class="rs-logo"><img src="../img/mi-rubin-logo.png" alt=""></span>
-      <span class="rs-num k1" data-val="18392">0</span>
-      <span class="rs-num k2" data-val="152">0</span>
-      <span class="rs-num k3" data-val="2784">0</span>
-    </div>
-    <div class="viz-cap">שתי השכבות מתלכדות למסך אחד — מה השוק אומר, ואיפה אתה עומד מולו.</div>
-
-  </div>
-</section>
-
-<!-- LAYER 1 -->
-<section>
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="eyebrow">📡 שכבה 1 · פולס</span>
-      <h2>דופק השוק — על מה מדברים, ואיך זה משתנה</h2>
-      <p>כל קבוצה מנוטרת ומנותחת: נפח שיח, סנטימנט, נושאים חוזרים ומגמה שבועית לאורך חודשים.</p>
-    </div>
-    <div class="gframe">
-      <div class="gframe-bar"><i class="r"></i><i class="y"></i><i class="g"></i><span>דופק פעילות — מגמה שבועית</span></div>
-      <div class="gframe-in trend-wrap"><img src="../img/mi-trend.jpg" alt="גרף מגמה שבועית של נפח השיח בקבוצות המקצועיות">
-        <svg class="trend-svg" viewBox="0 0 1300 387" preserveAspectRatio="none" aria-hidden="true">
-          <path id="trendPath" d="M 150.0 239.0 L 166.0 206.0 L 182.0 173.0 L 198.0 141.0 L 214.0 106.0 L 230.0 118.0 L 246.0 131.0 L 262.0 145.0 L 278.0 158.0 L 294.0 167.0 L 310.0 170.0 L 326.0 174.0 L 342.0 177.0 L 358.0 179.0 L 374.0 180.0 L 390.0 181.0 L 406.0 181.0 L 422.0 180.0 L 438.0 186.0 L 454.0 191.0 L 470.0 196.0 L 486.0 201.0 L 502.0 211.0 L 518.0 222.0 L 534.0 234.0 L 550.0 246.0 L 566.0 249.0 L 582.0 237.0 L 598.0 226.0 L 614.0 214.0 L 630.0 202.0 L 646.0 206.0 L 662.0 209.0 L 678.0 212.0 L 694.0 214.0 L 710.0 230.0 L 726.0 252.0 L 742.0 273.0 L 758.0 295.0 L 774.0 310.0 L 790.0 318.0 L 806.0 326.0 L 822.0 334.0 L 877.0 332.0 L 893.0 328.0 L 909.0 324.0 L 925.0 319.0 L 941.0 313.0 L 957.0 308.0 L 973.0 299.0 L 989.0 267.0 L 1005.0 233.0 L 1021.0 199.0 L 1037.0 162.0 L 1053.0 158.0 L 1069.0 159.0 L 1085.0 160.0 L 1101.0 161.0 L 1117.0 170.0 L 1133.0 196.0 L 1149.0 222.0 L 1165.0 248.0 L 1179.0 270.0" fill="none" stroke="rgba(120,220,255,.35)" stroke-width="2"/>
-          <circle class="trend-dot" r="7"><animateMotion dur="7s" repeatCount="indefinite" rotate="auto"><mpath href="#trendPath"/></animateMotion></circle>
-          <circle class="trend-dot-core" r="3"><animateMotion dur="7s" repeatCount="indefinite" rotate="auto"><mpath href="#trendPath"/></animateMotion></circle>
-        </svg></div>
-    </div>
-    <div class="viz-cap">עוצמת השיח לאורך זמן — מזהה קפיצות חריגות (השקה, תקלה, שינוי רגולציה) ברגע שהן קורות.</div>
-    <div class="vgrid" style="margin-top:32px">
-      <div class="vcard" style="--c:#22c55e"><div class="ic">😊</div><h4>שביעות רצון מדידה</h4><p>ציון סנטימנט לכל מערכת בשוק — כולל שלך — על בסיס מה שלקוחות אמיתיים כותבים.</p></div>
-      <div class="vcard" style="--c:#3b82f6"><div class="ic">🔁</div><h4>נושאים חוזרים</h4><p>מה חוזר שוב ושוב: תקלות, בקשות לפיצ׳רים, שאלות תמיכה — ממוין לפי שכיחות.</p></div>
-      <div class="vcard" style="--c:#ef4444"><div class="ic">⚠️</div><h4>סיכונים והזדמנויות</h4><p>איתור מוקדם של גל נטישה, איום מחיר או חלון הזדמנות — לפני שזה מגיע לדוחות.</p></div>
+    <div class="mk-more">
+      <article class="card reveal"><span class="pp-gi"><img class="pp-gi-img" src="/img/mk/ic-sentiment-160.webp" srcset="/img/mk/ic-sentiment-160.webp 160w, /img/mk/ic-sentiment-240.webp 240w" sizes="84px" width="160" height="160" alt="" loading="lazy" decoding="async"></span><h3>שביעות רצון מדידה</h3><p>ציון טון לכל מערכת בשוק, על בסיס מה שלקוחות אמיתיים כותבים.</p></article>
+      <article class="card reveal"><span class="pp-gi"><img class="pp-gi-img" src="/img/mk/ic-topics-160.webp" srcset="/img/mk/ic-topics-160.webp 160w, /img/mk/ic-topics-240.webp 240w" sizes="84px" width="160" height="160" alt="" loading="lazy" decoding="async"></span><h3>נושאים חוזרים</h3><p>תקלות, בקשות לפיצ'רים ושאלות תמיכה, ממוינים לפי שכיחות.</p></article>
+      <article class="card reveal"><span class="pp-gi"><img class="pp-gi-img" src="/img/mk/ic-risk-160.webp" srcset="/img/mk/ic-risk-160.webp 160w, /img/mk/ic-risk-240.webp 240w" sizes="84px" width="160" height="160" alt="" loading="lazy" decoding="async"></span><h3>סיכונים והזדמנויות</h3><p>זיהוי מוקדם של גל נטישה, איום מחיר או חלון הזדמנות.</p></article>
+      <article class="card reveal"><span class="pp-gi"><img class="pp-gi-img" src="/img/mk/ic-matrix-160.webp" srcset="/img/mk/ic-matrix-160.webp 160w, /img/mk/ic-matrix-240.webp 240w" sizes="84px" width="160" height="160" alt="" loading="lazy" decoding="async"></span><h3>מטריצת יכולות</h3><p>המוצר שלכם מול המערכות המרכזיות, לאורך צירי הליבה.</p></article>
+      <article class="card reveal"><span class="pp-gi"><img class="pp-gi-img" src="/img/mk/ic-trend-160.webp" srcset="/img/mk/ic-trend-160.webp 160w, /img/mk/ic-trend-240.webp 240w" sizes="84px" width="160" height="160" alt="" loading="lazy" decoding="async"></span><h3>מדידה לאורך זמן</h3><p>האם המהלכים עובדים: מגמת שביעות רצון ונוכחות לאורך חודשים.</p></article>
+      <article class="card reveal"><span class="pp-gi"><img class="pp-gi-img" src="/img/mk/ic-profile-160.webp" srcset="/img/mk/ic-profile-160.webp 160w, /img/mk/ic-profile-240.webp 240w" sizes="84px" width="160" height="160" alt="" loading="lazy" decoding="async"></span><h3>פרופיל מתחרים</h3><p>חוזקות, חולשות ופערים לכל מערכת מרכזית בענף.</p></article>
     </div>
   </div>
 </section>
 
-<!-- LAYER 2 -->
-<section class="alt">
+<section class="band band-light alt" id="mk-deep">
   <div class="wrap">
-    <div class="sec-head">
-      <span class="eyebrow">🗺️ שכבה 2 · מיפוי תחרותי</span>
-      <h2>מטריצת יכולות — איפה אתה מול השוק</h2>
-      <p>המוצר שלך מול המערכות המרכזיות בענף, לאורך צירי הליבה: קליטת מסמכים ו-AI, בנקאות פתוחה, דיווחי רשויות, API, ענן, ניהול משרד, תכנון מס וגבייה.</p>
+    <div class="sh reveal">
+      <span class="k">צלילה לעומק</span>
+      <h2>שתי שכבות: <em>מה השוק אומר, ואיפה אתם עומדים</em></h2>
+      <p>שכבה אחת מקשיבה לשיח ומודדת אותו. השנייה מעמידה את המוצר שלכם מול המתחרים לאורך צירי הליבה, ומראה בדיוק איפה נשאר פער.</p>
     </div>
-    <div class="gframe">
-      <div class="gframe-bar"><i class="r"></i><i class="y"></i><i class="g"></i><span>מטריצת יכולות — מיצוב מול השוק</span></div>
-      <div class="gframe-in"><img src="../img/mi-matrix.jpg" alt="מטריצת יכולות המשווה בין המערכות בשוק לאורך יכולות הליבה"></div>
+    <div class="mk-deep">
+      <figure class="mk-mx reveal" aria-labelledby="mkMxCap">
+        <p class="mk-mx-k">מטריצת יכולות לדוגמה</p>
+        <button class="zoomable mk-mx-img" type="button" data-full="/img/mk/matrix-1536.webp" data-cap="מטריצת יכולות לדוגמה: המוצר שלכם מול שלוש מערכות, לאורך שישה צירים" aria-label="הגדלה: מטריצת יכולות"><img src="/img/mk/matrix-960.webp" srcset="/img/mk/matrix-960.webp 960w, /img/mk/matrix-1536.webp 1536w" sizes="(max-width:920px) 92vw, 680px" width="960" height="640" alt="" loading="lazy" decoding="async"><svg data-fx viewBox="0 0 1536 1024" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><defs><clipPath id="mkMxPlate"><polygon points="378,148 1492,228 1384,926 40,830"/></clipPath><linearGradient id="mkMxBeam" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#2ec5f2" stop-opacity="0"/><stop offset=".5" stop-color="#7fe3ff" stop-opacity=".42"/><stop offset="1" stop-color="#2ec5f2" stop-opacity="0"/></linearGradient><radialGradient id="mkMxGap"><stop offset="0" stop-color="#ff6b5e" stop-opacity=".95"/><stop offset="1" stop-color="#ff6b5e" stop-opacity="0"/></radialGradient></defs><g clip-path="url(#mkMxPlate)"><rect class="mk-fx-beam" x="-420" y="100" width="300" height="900" fill="url(#mkMxBeam)" transform="skewX(-18)"/></g><ellipse class="mk-fx-gap" cx="1005" cy="492" rx="100" ry="42" fill="url(#mkMxGap)"/><ellipse class="mk-fx-gap mk-fx-gap2" cx="940" cy="708" rx="100" ry="42" fill="url(#mkMxGap)"/></svg></button>
+        <table>
+          <thead><tr><th scope="col">ציר</th><th scope="col" class="mk-you">המוצר שלכם</th><th scope="col">מערכת A</th><th scope="col">מערכת B</th><th scope="col">מערכת C</th></tr></thead>
+          <tbody>
+            <tr><td>AI ואוטומציה</td><td class="mk-you"><span class="mk-lv" data-v="4" role="img" aria-label="4 מתוך 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="mk-lv" data-v="3" role="img" aria-label="3 מתוך 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="mk-lv" data-v="2" role="img" aria-label="2 מתוך 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="mk-lv" data-v="2" role="img" aria-label="2 מתוך 5"><i></i><i></i><i></i><i></i><i></i></span></td></tr>
+            <tr><td>אינטגרציות ו-API</td><td class="mk-you mk-gap"><span class="mk-lv" data-v="2" role="img" aria-label="2 מתוך 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="mk-lv" data-v="2" role="img" aria-label="2 מתוך 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="mk-lv" data-v="4" role="img" aria-label="4 מתוך 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="mk-lv" data-v="3" role="img" aria-label="3 מתוך 5"><i></i><i></i><i></i><i></i><i></i></span></td></tr>
+            <tr><td>ענן ונגישות</td><td class="mk-you"><span class="mk-lv" data-v="4" role="img" aria-label="4 מתוך 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="mk-lv" data-v="4" role="img" aria-label="4 מתוך 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="mk-lv" data-v="2" role="img" aria-label="2 מתוך 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="mk-lv" data-v="3" role="img" aria-label="3 מתוך 5"><i></i><i></i><i></i><i></i><i></i></span></td></tr>
+            <tr><td>חוויית משתמש</td><td class="mk-you mk-gap"><span class="mk-lv" data-v="2" role="img" aria-label="2 מתוך 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="mk-lv" data-v="3" role="img" aria-label="3 מתוך 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="mk-lv" data-v="4" role="img" aria-label="4 מתוך 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="mk-lv" data-v="2" role="img" aria-label="2 מתוך 5"><i></i><i></i><i></i><i></i><i></i></span></td></tr>
+            <tr><td>שירות ותמיכה</td><td class="mk-you"><span class="mk-lv" data-v="5" role="img" aria-label="5 מתוך 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="mk-lv" data-v="4" role="img" aria-label="4 מתוך 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="mk-lv" data-v="2" role="img" aria-label="2 מתוך 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="mk-lv" data-v="4" role="img" aria-label="4 מתוך 5"><i></i><i></i><i></i><i></i><i></i></span></td></tr>
+            <tr><td>עומק מקצועי</td><td class="mk-you"><span class="mk-lv" data-v="5" role="img" aria-label="5 מתוך 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="mk-lv" data-v="3" role="img" aria-label="3 מתוך 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="mk-lv" data-v="4" role="img" aria-label="4 מתוך 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="mk-lv" data-v="3" role="img" aria-label="3 מתוך 5"><i></i><i></i><i></i><i></i><i></i></span></td></tr>
+          </tbody>
+        </table>
+        <figcaption id="mkMxCap"><b>שלושה יתרונות ברורים, ושני פערים</b> (מסומנים באדום). מה שהשוק מבקש בקבוצות, מול מה שקיים היום במוצר.</figcaption>
+      </figure>
+      <article class="mk-priv reveal">
+        <span class="k">מודיעין, לא מעקב</span>
+        <h3>תובנות מצרפיות, בלי פרטים מזהים</h3>
+        <p>הניתוח נעשה על שיח מקצועי, והתוצאה היא תמונה ברמת המערכת והנושא. בדשבורד שמוצג כאן כל השמות, הציטוטים והתובנות הוחלפו בנתוני דמה.</p>
+        <div class="chips"><span class="chip">תובנות מצרפיות</span><span class="chip">בלי פרטים מזהים</span><span class="chip">שיח מקצועי</span></div>
+      </article>
     </div>
-    <div class="viz-cap" style="margin-bottom:32px">כל יכולת מנוקדת לכל מערכת בשוק — כך רואים במבט אחד היכן אתה מוביל, והיכן נשאר פער לסגור.<br><strong style="color:var(--ink)">בתצוגה זו שמות החברה והמתחרים הוחלפו בשמות גנריים לשמירה על סודיות.</strong></div>
-    <div class="gframe">
-      <div class="gframe-bar"><i class="r"></i><i class="y"></i><i class="g"></i><span>מפת מיצוב</span></div>
-      <div class="gframe-in"><img src="../img/mi-map.jpg" alt="מפת מיצוב — עומק פונקציונלי מול בשלות טכנולוגית"></div>
-    </div>
-    <div class="viz-cap">מפת מיצוב דו-צירית: עומק מקצועי מול בשלות טכנולוגית (ענן, API, AI) — התמונה שממנה נגזר סדר העדיפויות בפיתוח.</div>
+    <p class="mk-note-l">המטריצה להמחשה בלבד. הצירים והציונים אינם נתונים של לקוח.</p>
   </div>
 </section>
 
-<!-- OUTCOME -->
-<section>
+<section class="band band-light" id="mk-reports">
   <div class="wrap">
-    <div class="sec-head">
-      <span class="eyebrow">📈 מה זה נותן</span>
-      <h2>מהשיח — להחלטות הנהלה</h2>
+    <div class="sh reveal">
+      <span class="k">הדשבורד האמיתי</span>
+      <h2>זה לא מוקאפ. <em>זה הדשבורד שנבנה עבור הלקוח.</em></h2>
+      <p>קובץ HTML אחד שמתעדכן מכל ייצוא חדש, וגרפים ב-SVG. נפח השיח והתקופה אמיתיים, 12.4.2026 עד 9.8.2026. השמות, הציטוטים והציונים הוחלפו בנתוני דמה, כדי לא לחשוף מידע של הלקוח.</p>
     </div>
-    <ul class="dashget">
-      <li><span class="di">🎯</span><div><b>תעדוף פיתוח מבוסס נתונים</b> — במה להשקיע קודם כדי לסגור פער אמיתי מול השוק, ולא לפי תחושה.</div></li>
-      <li><span class="di">🛡️</span><div><b>התרעה מוקדמת</b> — זיהוי גל תלונות, איום תחרותי או מהלך מחיר של מתחרה בזמן אמת.</div></li>
-      <li><span class="di">💬</span><div><b>קול הלקוח האותנטי</b> — מה לקוחות אומרים כשהם לא מדברים איתך, בלי סקרים ובלי הטיה.</div></li>
-      <li><span class="di">🧭</span><div><b>מיצוב ברור</b> — איפה אתה מוביל, איפה אתה מאחור, ומה הסיפור השיווקי שנשען על זה.</div></li>
-      <li><span class="di">📊</span><div><b>מדידה לאורך זמן</b> — האם המהלכים עובדים: מגמת שביעות רצון ונוכחות לאורך חודשים.</div></li>
-      <li><span class="di">🕵️</span><div><b>פרופיל מתחרים</b> — חוזקות, חולשות ופערים לכל מערכת מרכזית בענף.</div></li>
+    <div data-tour>
+    <div class="pp-kpis reveal" aria-label="המספרים מהתקופה שבצילום">
+      <div class="pp-kpi" style="--c:#1f3a5f"><small>הודעות שנותחו</small><b data-count="6725" data-sep>6,725</b><span>מכל הקהילות</span></div>
+      <div class="pp-kpi" style="--c:#166f8a"><small>קהילות במעקב</small><b data-count="5" data-delay="120">5</b><span>קבוצות מקצועיות</span></div>
+      <div class="pp-kpi" style="--c:#1f3a5f"><small>מערכות בהשוואה</small><b data-count="6" data-delay="240">6</b><span>שביעות רצון לכל אחת</span></div>
+      <div class="pp-kpi" style="--c:#166f8a"><small>שבועות של שיח</small><b data-count="17" data-delay="360">17</b><span>מגמה לאורך התקופה</span></div>
+    </div>
+    <div class="mk-dash">
+      <figure class="mk-frame reveal"><button class="zoomable" type="button" data-full="/img/mk/d-pie-1280.webp" data-cap="שביעות רצון לפי מערכת, ודוגמאות מהשיח (נתוני דמה)" aria-label="הגדלה: שביעות רצון לפי מערכת"><i class="pp-zone" data-i="0" style="left:56.6%;top:14.2%;width:41%;height:32%" aria-hidden="true"></i><i class="pp-zone" data-i="1" style="left:1.6%;top:56.9%;width:96.9%;height:38.4%" aria-hidden="true"></i><img src="/img/mk/d-pie-640.webp" srcset="/img/mk/d-pie-640.webp 640w, /img/mk/d-pie-1280.webp 1280w" sizes="(max-width:620px) 92vw, 46vw" width="640" height="351" alt="שביעות רצון לפי מערכת: פילוח של שש מערכות ושש דוגמאות מהשיח, בנתוני דמה" loading="lazy" decoding="async"></button><figcaption>שביעות רצון לפי מערכת</figcaption></figure>
+      <figure class="mk-frame reveal"><button class="zoomable" type="button" data-full="/img/mk/d-trend-1280.webp" data-cap="דופק הפעילות: הודעות בשבוע בכל הקהילות" aria-label="הגדלה: דופק הפעילות"><i class="pp-zone" data-i="2" style="left:76%;top:26%;width:17%;height:46%" aria-hidden="true"></i><img src="/img/mk/d-trend-640.webp" srcset="/img/mk/d-trend-640.webp 640w, /img/mk/d-trend-1280.webp 1280w" sizes="(max-width:620px) 92vw, 46vw" width="640" height="264" alt="גרף הודעות בשבוע לאורך 17 שבועות, עם קפיצה חדה בסוף יולי" loading="lazy" decoding="async"><span class="mk-trace" data-pts="6.03,54.21 12.05,24.38 18.06,36.73 24.08,39.85 30.11,40.22 36.12,44.84 42.14,55.63 48.16,44.84 54.18,47.48 60.20,66.95 66.22,73.87 72.23,70.95 78.26,65.90 84.28,35.00 90.29,36.02 96.31,59.83" aria-hidden="true"><i></i></span></button><figcaption>עוצמת השיח לאורך זמן: מזהה קפיצות חריגות (השקה, תקלה, שינוי רגולציה) כבר בעדכון הבא.</figcaption></figure>
+    </div>
+    <ul class="checks grid-2 reveal">
+      <li data-tour-i="0"><svg class="ico"><use href="#i-check"/></svg><span><i class="pp-tn" aria-hidden="true">1</i><b>שביעות רצון לפי מערכת:</b> פילוח ויזואלי, וגודל הפלח לפי רמת שביעות הרצון.</span></li>
+      <li data-tour-i="1"><svg class="ico"><use href="#i-check"/></svg><span><i class="pp-tn" aria-hidden="true">2</i><b>דוגמאות מתוך השיח:</b> מה שמסביר כל ציון, בעד ונגד.</span></li>
+      <li data-tour-i="2"><svg class="ico"><use href="#i-check"/></svg><span><i class="pp-tn" aria-hidden="true">3</i><b>דופק שבועי:</b> עוצמת השיח לאורך זמן. קפיצה כמו בסוף יולי מסמנת אירוע שכדאי לבדוק.</span></li>
+      <li><svg class="ico"><use href="#i-check"/></svg><span><b>תקציר מנהלים:</b> התובנות של התקופה, לפי חשיבות אסטרטגית.</span></li>
+      <li><svg class="ico"><use href="#i-check"/></svg><span><b>הזדמנויות וסיכונים:</b> שתי רשימות פעולה, מה לעשות קודם.</span></li>
+      <li><svg class="ico"><use href="#i-check"/></svg><span><b>המתחרים במבט אחד:</b> ציון לכל מערכת, עם מספר העמדות בעד ונגד.</span></li>
+    </ul>
+    </div>
+  </div>
+</section>
+
+<section class="band band-deep stmt-band" aria-labelledby="mk-stmt-h">
+  <div class="wrap">
+    <div class="stmt reveal" data-sgo>
+      <p class="k">בכל עדכון</p>
+      <h2 id="mk-stmt-h">תמונת השוק מגיעה לכל מי <span class="pp-hl">שמחליט<svg class="pp-ul" viewBox="0 0 100 12" preserveAspectRatio="none" aria-hidden="true"><path pathLength="100" d="M2 8C24 3 52 11 98 4"/></svg></span>.</h2>
+      <div class="sgo" aria-hidden="true">
+        <div class="sgo-src"><img src="/img/mk/sgo-dash2.webp" width="960" height="540" alt="" loading="lazy" decoding="async"></div>
+        <div class="sgo-dev sgo-lap"><div class="sgo-scr"><img class="sgo-img" src="/img/studio/sgo-lap.webp" width="760" height="452" alt="" loading="lazy" decoding="async"><div class="sgo-win"><i class="sgo-ui sgo-on"></i><img class="sgo-c sgo-on" src="/img/mk/sgo-dash2.webp" width="960" height="540" alt="" loading="lazy" decoding="async"></div></div><span>במחשב</span></div>
+        <div class="sgo-dev sgo-ph"><div class="sgo-scr"><img class="sgo-img" src="/img/studio/sgo-ph.webp" width="360" height="730" alt="" loading="lazy" decoding="async"><div class="sgo-win"><i class="sgo-ui sgo-on"></i><div class="sgo-bub sgo-on"><img class="sgo-c" src="/img/mk/sgo-dash2.webp" width="960" height="540" alt="" loading="lazy" decoding="async"><i></i></div></div></div><span>בטלפון</span></div>
+        <div class="sgo-dev sgo-bk"><div class="sgo-scr"><img class="sgo-img" src="/img/studio/sgo-bk.webp" width="760" height="449" alt="" loading="lazy" decoding="async"><div class="sgo-win"><img class="sgo-c sgo-on" src="/img/mk/sgo-dash2.webp" width="960" height="540" alt="" loading="lazy" decoding="async"></div></div><span>מודפס לישיבה</span></div>
+        <div class="sgo-dev sgo-tv"><div class="sgo-scr"><img class="sgo-img" src="/img/studio/sgo-tv.webp" width="900" height="506" alt="" loading="lazy" decoding="async"><div class="sgo-win"><img class="sgo-c sgo-on" src="/img/mk/sgo-dash2.webp" width="960" height="540" alt="" loading="lazy" decoding="async"></div></div><span>על המסך בחדר הישיבות</span></div>
+        <i class="sgo-fly"><img src="/img/mk/sgo-dash2.webp" width="960" height="540" alt="" loading="lazy" decoding="async"></i>
+        <i class="sgo-fly"><img src="/img/mk/sgo-dash2.webp" width="960" height="540" alt="" loading="lazy" decoding="async"></i>
+        <i class="sgo-fly"><img src="/img/mk/sgo-dash2.webp" width="960" height="540" alt="" loading="lazy" decoding="async"></i>
+        <i class="sgo-fly"><img src="/img/mk/sgo-dash2.webp" width="960" height="540" alt="" loading="lazy" decoding="async"></i>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band band-light alt" id="mk-custom">
+  <div class="wrap mk-custom">
+    <div class="sh reveal">
+      <span class="k">הכי חשוב</span>
+      <h2>לא מוצר מדף. <em>מודיעין שנבנה סביב הענף שלכם.</em></h2>
+      <p>הקבוצות, המערכות שמשווים, צירי המטריצה והמדדים נקבעים לפי השוק שלכם. אותה גישה עובדת גם על קהילות לקוחות, פורומים וסקרים פתוחים.</p>
+      <div class="mk-links">
+        <a class="tlink" href="/projects/rubin360/">איך בונים מערכת כזו: RUBIN 360 ←</a>
+      </div>
+    </div>
+    <ul class="checks card reveal">
+      <li><svg class="ico"><use href="#i-check"/></svg><span>הקבוצות והמתחרים לפי הענף שלכם</span></li>
+      <li><svg class="ico"><use href="#i-check"/></svg><span>צירי השוואה שאתם קובעים</span></li>
+      <li><svg class="ico"><use href="#i-check"/></svg><span>דשבורד שמתעדכן בלי עבודה ידנית</span></li>
+      <li><svg class="ico"><use href="#i-check"/></svg><span>נבנה על ידי עמית רובין, אחרי 20 שנה של הובלת תהליכים עסקיים ומערכות ERP</span></li>
     </ul>
   </div>
 </section>
 
-
-<!-- REAL DASHBOARD (censored) -->
-<section id="dashboard">
+<section class="band band-deep p-end">
   <div class="wrap">
-    <div class="sec-head">
-      <span class="eyebrow">🖥️ מתוך המערכת</span>
-      <h2>הדשבורד שנבנה עבור חברה מובילה במשק</h2>
-      <p>אלה מסכים אמיתיים מתוך דשבורד המודיעין — תקציר מנהלים, שביעות רצון מול המתחרים, הזדמנויות וסיכונים.</p>
+    <div class="sh reveal">
+      <span class="k">הצעד הבא</span>
+      <h2>השוק שלכם כבר מדבר. <em>בואו נקשיב.</em></h2>
+      <p>נבנה לכם מערכת מודיעין שהופכת את השיח בענף לתובנות שאפשר להחליט לפיהן. מתחילים בשיחת אפיון קצרה.</p>
     </div>
-
-    <div class="censor-note">
-      <span class="ci">🔒</span>
-      <div><b>שימו לב — הנתונים עברו צנזורה.</b> כל שמות החברות, המתחרים והלוגואים הוסרו והוחלפו בשמות גנריים («מערכת A», «System B» וכו׳) כדי לא לחשוף את הלקוח או את השוק. המבנה, המדדים והיכולות מוצגים כפי שהם.</div>
-    </div>
-
-    <div class="gframe" style="margin-top:26px">
-      <div class="gframe-bar"><i class="r"></i><i class="y"></i><i class="g"></i><span>ראש הדשבורד — מדדי מפתח</span></div>
-      <div class="gframe-in"><img src="../img/mi-dash-head.jpg" alt="ראש דשבורד המודיעין — מדדי מפתח ומסנני מערכות"></div>
-    </div>
-    <div class="viz-cap" style="margin-bottom:30px">תמונת מצב מיידית: היקף ההודעות שנותחו, מספר הקהילות במעקב, שביעות הרצון והדירוג התחרותי.</div>
-
-    <div class="gframe">
-      <div class="gframe-bar"><i class="r"></i><i class="y"></i><i class="g"></i><span>תקציר מנהלים — תובנות חוצות-קבוצות</span></div>
-      <div class="gframe-in"><img src="../img/mi-dash-exec.jpg" alt="תקציר מנהלים — תובנות חוצות קבוצות"></div>
-    </div>
-    <div class="viz-cap" style="margin-bottom:30px">התובנות המרכזיות של התקופה, מדורגות לפי חשיבות אסטרטגית — מה שמנהל צריך לדעת בדקה אחת.</div>
-
-    <div class="gframe">
-      <div class="gframe-bar"><i class="r"></i><i class="y"></i><i class="g"></i><span>שביעות רצון לפי מערכת</span></div>
-      <div class="gframe-in"><img src="../img/mi-dash-sent.jpg" alt="שביעות רצון לפי מערכת — פילוח ויזואלי ודוגמאות מהשיח"></div>
-    </div>
-    <div class="viz-cap" style="margin-bottom:30px">ציון שביעות רצון לכל מערכת בשוק, עם דוגמאות מייצגות מהשיח שמסבירות את הציון.</div>
-
-    <div class="gframe">
-      <div class="gframe-bar"><i class="r"></i><i class="y"></i><i class="g"></i><span>הזדמנויות מיידיות מול סיכונים ואיומים</span></div>
-      <div class="gframe-in"><img src="../img/mi-dash-opp.jpg" alt="הזדמנויות מיידיות מול סיכונים ואיומים"></div>
-    </div>
-    <div class="viz-cap">שתי רשימות פעולה: איפה יש חלון הזדמנות עכשיו, ומה מאיים — כדי לדעת במה לטפל קודם.</div>
-  </div>
-</section>
-
-<!-- HOW BUILT -->
-<section class="alt">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="eyebrow">⚙️ איך זה נבנה</span>
-      <h2>פייפליין אוטומטי — מהודעות לדשבורד</h2>
-    </div>
-    <div class="steps">
-      <div class="step"><div class="n">1</div><h4>איסוף</h4><p>ייצוא השיח מהקבוצות המקצועיות הרלוונטיות, בצורה מסודרת וחוזרת.</p></div>
-      <div class="step"><div class="n">2</div><h4>סינון וניקוי</h4><p>סינון רעש, כפילויות והודעות לא רלוונטיות — נשאר רק מה שנושא ערך מודיעיני.</p></div>
-      <div class="step"><div class="n">3</div><h4>ניתוח סמנטי</h4><p>סוכני AI מסווגים כל הודעה: מערכת, נושא, סנטימנט ורמת חשיבות.</p></div>
-      <div class="step"><div class="n">4</div><h4>צבירה מצטברת</h4><p>כל הרצה מנתחת רק את החדש ומתמזגת לתמונה המלאה — בלי לעבד פעמיים.</p></div>
-      <div class="step"><div class="n">5</div><h4>הצלבה תחרותית</h4><p>הצלבת התובנות מול מטריצת היכולות — מה השוק מבקש מול מה שקיים.</p></div>
-      <div class="step"><div class="n">6</div><h4>דשבורד להנהלה</h4><p>קובץ HTML עצמאי, גרפים ב-SVG טהור, שמתעדכן ומתפרסם בקישור קבוע.</p></div>
+    <figure class="mk-win reveal">
+      <img src="/img/mk/win-1400.webp" srcset="/img/mk/win-800.webp 800w, /img/mk/win-1400.webp 1400w" sizes="(max-width:1240px) 94vw, 1160px" width="1400" height="788" alt="מנהל מחייך מול חמישה מסכים: מסך הפתיחה של RUBIN MARKET, דופק הפעילות, שיחה בקבוצה, שביעות רצון לפי מערכת ומטריצת יכולות" loading="lazy" decoding="async">
+      <i class="mk-win-sweep" aria-hidden="true"></i>
+      <span class="mk-trace mk-trace-win" data-pts="54.49,24.56 57.02,14.04 59.59,18.18 62.21,19.12 64.88,19.09 67.60,20.59 70.38,24.38 73.21,20.28 76.08,21.11 79.02,28.28 82.02,30.83 85.07,29.65 88.19,27.62 91.38,15.42 94.62,15.61 97.94,24.90" aria-hidden="true"><i></i></span>
+    </figure>
+    <div class="p-end-actions reveal">
+      <a class="btn btn-solid btn-lg" href="/#contact" data-track="cta_end">לשיחת אפיון</a>
+      <a class="btn btn-ghost btn-lg" href="https://wa.me/972527246200?text=%D7%94%D7%99%D7%99%20%D7%A2%D7%9E%D7%99%D7%AA%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%A2%D7%9E%D7%95%D7%93%20%D7%A9%D7%9C%20RUBIN%20MARKET" target="_blank" rel="noopener" data-track="whatsapp_end"><svg class="ico"><use href="#i-wa"/></svg>וואטסאפ</a>
     </div>
   </div>
 </section>
 
-<!-- PRIVACY NOTE -->
-<section>
-  <div class="wrap">
-    <div class="wl"><div class="wl-in">
-      <div class="wl-emblem">🔒</div>
-      <h2>מודיעין — לא מעקב</h2>
-      <p>הניתוח נעשה על <strong>שיח מקצועי פומבי</strong> ומופק כתובנות מצרפיות ברמת המערכת והנושא. הדשבורד מוצג כאן בגרסה מעוקרת: שמות החברה והמתחרים הוחלפו בשמות גנריים, ולא מוצגים ציטוטים או פרטים מזהים.</p>
-      <div class="tags"><span>תובנות מצרפיות</span><span>ללא פרטים מזהים</span><span>מקורות פומביים</span></div>
-    </div></div>
-  </div>
-</section>
+</main>
 
-<!-- QUOTE FORM -->
-<section class="alt" id="quote">
+<footer class="foot">
   <div class="wrap">
-    <div class="sec-head">
-      <span class="eyebrow">💬 הצעת מחיר</span>
-      <h2>רוצים מודיעין שוק על הענף שלכם?</h2>
-      <p>שלחו כמה פרטים ואחזור אליכם עם הצעה מותאמת — בלי התחייבות.</p>
-    </div>
-    <div class="techpanel"><form class="quotebox techpanel-in" onsubmit="return sendQuote(event)">
-      <div class="qgrid">
-        <label>שם מלא <input type="text" id="q-name" required placeholder="השם שלכם"></label>
-        <label>שם החברה <input type="text" id="q-biz" placeholder="שם החברה"></label>
-        <label>טלפון <input type="tel" id="q-phone" placeholder="050-0000000"></label>
-        <label>מה מעניין אתכם?
-          <select id="q-src">
-            <option value="מודיעין תחרותי">מודיעין תחרותי על המתחרים</option>
-            <option value="קול הלקוח">קול הלקוח על המוצר שלנו</option>
-            <option value="מיפוי ומיצוב">מיפוי ומיצוב מול השוק</option>
-            <option value="הכול">הכול</option>
-          </select>
-        </label>
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="/"><img src="/img/logo-reverse.webp" width="123" height="120" alt=""><span dir="ltr">Rubin <span class="b">Project</span></span></a>
+        <p class="foot-tag"><b class="foot-slogan">הופכים נתונים להחלטות.</b>פתרונות BI, אוטומציה ותוכנה בהתאמה אישית לעסקים ולארגונים.</p>
       </div>
-      <label class="qfull">על איזה ענף או שוק? <textarea id="q-msg" rows="3" placeholder="ספרו בקצרה על הענף, המתחרים ומה חשוב לכם לדעת..."></textarea></label>
-      <div class="qrow">
-        <button type="submit" class="btn btn-primary">📩 שליחה בוואטסאפ</button>
-        <button type="button" class="btn btn-lghost" onclick="sendQuoteMail()">✉️ שליחה במייל</button>
+      <div>
+        <h4>האתר</h4>
+        <ul><li><a href="/#services">שירותים</a></li><li><a href="/#portfolio">תוכנות ומוצרים</a></li><li><a href="/#process">איך עובדים</a></li><li><a href="/#faq">שאלות נפוצות</a></li></ul>
       </div>
-    </form></div>
-  </div>
-</section>
-
-<!-- CTA -->
-<section id="contact">
-  <div class="wrap">
-    <div class="cta">
-      <h2>השוק שלכם כבר מדבר. בואו נקשיב.</h2>
-      <p>אבנה לכם מערכת מודיעין שהופכת את השיח בענף לתובנות שאפשר להחליט לפיהן.</p>
-      <div class="cta-row">
-        <a class="btn btn-wa" href="https://wa.me/972527246200?text=%D7%94%D7%99%D7%99%20%D7%A2%D7%9E%D7%99%D7%AA%2C%20%D7%A8%D7%90%D7%99%D7%AA%D7%99%20%D7%90%D7%AA%20%D7%9E%D7%95%D7%93%D7%99%D7%A2%D7%99%D7%9F%20%D7%94%D7%A9%D7%95%D7%A7%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A4%D7%A8%D7%98%D7%99%D7%9D" target="_blank" rel="noopener">💬 וואטסאפ</a>
-        <a class="btn btn-lghost" href="#quote">📩 הצעת מחיר</a>
+      <div>
+        <h4>עוד</h4>
+        <ul><li><a href="/card/" target="_blank" rel="noopener">כרטיס דיגיטלי</a></li><li><a href="https://evenbina.co.il/" target="_blank" rel="noopener">אבן בינה</a></li><li><a href="https://github.com/amitrubin10" target="_blank" rel="noopener">GitHub</a></li><li><a href="https://www.linkedin.com/in/amit-rubin-316b83357/" target="_blank" rel="noopener">LinkedIn</a></li></ul>
+      </div>
+      <div>
+        <h4>קשר</h4>
+        <ul><li><a href="https://wa.me/972527246200" target="_blank" rel="noopener" dir="ltr">052-7246200</a></li><li><a href="mailto:amit@rubinproject.com">amit@rubinproject.com</a></li></ul>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <div class="foot-in">
-    <div class="foot-brand">
-      <img src="../../img/logo-reverse.png" alt="Rubin Project">
-      <div><div class="bn" dir="ltr">Rubin <span class="b">Project</span></div>
-      <div class="tg">פתרונות BI, אוטומציה ותוכנה לעסקים</div></div>
+    <div class="foot-bottom">
+      <span>© 2026 Rubin Project · עמית רובין</span>
+      <nav aria-label="מידע משפטי"><a href="/privacy/" target="_blank" rel="noopener">מדיניות פרטיות</a><a href="/accessibility/" target="_blank" rel="noopener">הצהרת נגישות</a></nav>
     </div>
-    <div class="foot-copy">הופכים נתונים להחלטות. · © Rubin Project</div>
-    <div class="foot-links">
-      <a href="/">דף הבית</a>
-      <a href="/#portfolio">תיק עבודות</a>
-      <a href="/card/">כרטיס דיגיטלי</a>
-      <a href="https://wa.me/972527246200" target="_blank" rel="noopener">וואטסאפ</a>
-      <a href="mailto:amit@rubinproject.com">amit@rubinproject.com</a>
-    </div>
+    <p class="foot-note">האתר משתמש ב-Google Analytics וב-Microsoft Clarity כדי למדוד ולשפר את השימוש בו. פרטים ואפשרות לסרב ב<a href="/privacy/#analytics" target="_blank" rel="noopener">מדיניות הפרטיות</a>.</p>
   </div>
 </footer>
+<aside class="dock" id="dock" aria-label="קיצור לשיחת אפיון" inert><span>רוצים מודיעין כזה?</span><a class="btn" href="/#contact" data-track="cta_dock">בואו נדבר</a></aside>
+<dialog class="lb" id="lb" aria-label="תצוגה מוגדלת"><button class="lb-close" type="button" aria-label="סגירה">×</button><div class="lb-body"></div></dialog>
+<div class="cglow" id="cglow" aria-hidden="true"></div>
+
 <script>
-  if('scrollRestoration' in history) history.scrollRestoration='manual';
-  window.addEventListener('load',function(){ if(!location.hash) window.scrollTo(0,0); });
-</script>
-<script>
-(function(){
-  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  function fmt(v,sep){var s=String(Math.round(v));return sep?s.replace(/\B(?=(\d{3})+(?!\d))/g,','):s;}
-  function run(el){
-    var val=parseFloat(el.getAttribute('data-val'))||0,suf=el.getAttribute('data-suffix')||'',sep=val>=1000;
-    if(reduce){el.textContent=fmt(val,sep)+suf;return;}
-    var dur=1900,start=null;
-    el._tok=(el._tok||0)+1; var tok=el._tok;
-    function ease(t){return 1-Math.pow(1-t,3);}
-    function step(ts){if(el._tok!==tok)return;if(start===null)start=ts;var t=Math.min((ts-start)/dur,1);el.textContent=fmt(val*ease(t),sep)+suf;if(t<1)requestAnimationFrame(step);else el.textContent=fmt(val,sep)+suf;}
-    requestAnimationFrame(step);
-  }
-  function boot(){
-    var els=document.querySelectorAll('.stat b[data-val]');
-    var sc=document.getElementById('rubinScene');
-    var nums=sc?sc.querySelectorAll('.rs-num[data-val]'):[];
-    if(!('IntersectionObserver' in window)){
-      els.forEach(run); Array.prototype.forEach.call(nums,run); return;
-    }
-    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){run(e.target);io.unobserve(e.target);}})},{threshold:0.5});
-    els.forEach(function(el){io.observe(el);});
-    if(sc&&nums.length){
-      var io2=new IntersectionObserver(function(es){es.forEach(function(e){
-        if(e.isIntersecting){Array.prototype.forEach.call(nums,run);}
-        else{Array.prototype.forEach.call(nums,function(n){n._tok=(n._tok||0)+1;n.textContent='0';});}
-      })},{threshold:0.35});
-      io2.observe(sc);
-    }
-  }
-  window.addEventListener('load',boot);
-  window.addEventListener('load',function(){
-    var sc=document.getElementById('noiseScene'); if(!sc)return;
-    if(!('IntersectionObserver' in window)){sc.classList.add('play');return;}
-    var o=new IntersectionObserver(function(es){es.forEach(function(e){
-      if(e.isIntersecting){e.target.classList.remove('play');void e.target.offsetWidth;e.target.classList.add('play');}
-      else{e.target.classList.remove('play');}})},{threshold:0.35});
-    o.observe(sc);
+// מסכים שמתחלפים בכרטיסי "מה יש במערכת": כל 2.8 שניות, רק כשהכרטיס על המסך. נעצר בכפתור העצירה ובפחות תנועה
+document.addEventListener('DOMContentLoaded',function(){
+  const M=window.rpMotion||{reduce:false,paused:false,onChange(){}};
+  document.querySelectorAll('.shot[data-cycle]').forEach((shot,k)=>{
+    const fr=[...shot.querySelectorAll('.mk-fr')];if(fr.length<2)return;
+    let i=0,timer=0,inView=false;
+    const step=()=>{fr[i].classList.remove('on');i=(i+1)%fr.length;fr[i].classList.add('on');};
+    const run=()=>{if(timer||M.reduce||M.paused||!inView)return;timer=setInterval(step,2800);};
+    const stop=()=>{clearInterval(timer);timer=0;};
+    new IntersectionObserver(es=>{inView=es[0].isIntersecting;if(inView)setTimeout(run,k*700);else stop();},{threshold:.3}).observe(shot);
+    M.onChange(p=>{if(p)stop();else run();});
   });
-})();
-function qval(id){var e=document.getElementById(id);return e?e.value.trim():'';}
-function quoteText(){
-  var n=qval('q-name'),b=qval('q-biz'),p=qval('q-phone'),s=qval('q-src'),m=qval('q-msg');
-  var t='היי עמית, אשמח להצעת מחיר למערכת מודיעין שוק.\n';
-  if(n)t+='שם: '+n+'\n';
-  if(b)t+='חברה: '+b+'\n';
-  if(p)t+='טלפון: '+p+'\n';
-  if(s)t+='מעניין: '+s+'\n';
-  if(m)t+='פרטים: '+m+'\n';
-  return t;
-}
-function sendQuote(ev){ev.preventDefault();window.open('https://wa.me/972527246200?text='+encodeURIComponent(quoteText()),'_blank','noopener');return false;}
-function sendQuoteMail(){window.location.href='mailto:amit@rubinproject.com?subject='+encodeURIComponent('הצעת מחיר — מודיעין שוק')+'&body='+encodeURIComponent(quoteText());}
+});
+
+// נקודה שרצה לאורך קו מגמה: data-pts הן נקודות הגרף באחוזים מהתמונה. 7 שניות לסיבוב, רק כשהגרף על המסך.
+// בעצירה הנקודה נעצרת במקומה, ובפחות תנועה היא מוסתרת
+document.addEventListener('DOMContentLoaded',function(){
+  const M=window.rpMotion||{reduce:false,paused:false,onChange(){}};
+  if(M.reduce||!('IntersectionObserver' in window))return;
+  document.querySelectorAll('.mk-trace[data-pts]').forEach(tr=>{
+    const P=tr.dataset.pts.trim().split(/\s+/).map(q=>q.split(',').map(Number));
+    const seg=[];let tot=0;
+    for(let k=1;k<P.length;k++){const l=Math.hypot(P[k][0]-P[k-1][0],(P[k][1]-P[k-1][1])*.5);seg.push(l);tot+=l;}
+    const dot=tr.querySelector('i');let raf=0,t0=0,el=0,inView=false;
+    const place=f=>{let d=f*tot,k=0;while(k<seg.length-1&&d>seg[k]){d-=seg[k];k++;}const u=seg[k]?d/seg[k]:0;
+      const x=P[k][0]+(P[k+1][0]-P[k][0])*u,y=P[k][1]+(P[k+1][1]-P[k][1])*u;
+      dot.style.transform=`translate(${x*tr.clientWidth/100}px,${y*tr.clientHeight/100}px)`;};
+    const frame=ts=>{if(!t0)t0=ts-el;el=ts-t0;place((el%7000)/7000);raf=requestAnimationFrame(frame);};
+    const run=()=>{if(raf||M.paused||!inView)return;t0=0;raf=requestAnimationFrame(frame);};
+    const stop=()=>{cancelAnimationFrame(raf);raf=0;};
+    place(0);tr.classList.add('on');
+    new IntersectionObserver(es=>{inView=es[0].isIntersecting;if(inView)run();else stop();},{threshold:.2}).observe(tr);
+    M.onChange(p=>{if(p)stop();else run();});
+  });
+});
+
+// מופע החתימה: הודעה נכנסת מקבוצה, הרדאר מאתר אותה, היא מקבלת מערכת וטון, ושביעות הרצון מתעדכנת.
+// אחרי תלונה שנייה על מערכת B עולה התרעה. רץ רק כשהסקשן על המסך. בעצירה ובפחות תנועה מוצג מצב מלא.
+// מחכים ל-DOMContentLoaded, כי project.js נטען עם defer ומגדיר את window.rpMotion רק אז
+document.addEventListener('DOMContentLoaded',function(){
+  const demo=document.getElementById('mkDemo');if(!demo)return;
+  const feed=document.getElementById('mkFeed'),barsEl=document.getElementById('mkBars'),ping=document.getElementById('mkPing');
+  const elTotal=document.getElementById('mkTotal'),elAlerts=document.getElementById('mkAlerts'),alert=document.getElementById('mkAlert');
+  const M=window.rpMotion||{reduce:false,paused:false,onChange(){}};
+  // נתוני דוגמה בלבד. s מערכת, v טון: pos חיובי, neg שלילי, neu ניטרלי
+  const SYS=['מערכת A','מערכת B','מערכת C','מערכת D'];
+  const MSG=[
+    {g:'קהילת משתמשים',q:'מישהו עבר ממערכת B? איך התמיכה אצלם?',s:1,v:'neu'},
+    {g:'פורום מקצועי',q:'הקליטה האוטומטית של A חוסכת לי שעה ביום',s:0,v:'pos'},
+    {g:'קבוצת מנהלים',q:'שלושה ימים אני מחכה לתשובה מהשירות של B',s:1,v:'neg'},
+    {g:'קהילת משתמשים',q:'המחיר של מערכת C עלה שוב החודש',s:2,v:'neg'},
+    {g:'פורום מקצועי',q:'יש למערכת D חיבור ישיר לבנק? חסר לי',s:3,v:'neu'},
+    {g:'קבוצת מנהלים',q:'הדוחות החדשים של A פשוט מעולים',s:0,v:'pos'},
+    {g:'קהילת משתמשים',q:'שוב לא עונים לי בשירות של B',s:1,v:'neg'},
+    {g:'פורום מקצועי',q:'עברנו ל-C, הממשק הרבה יותר נוח',s:2,v:'pos'}
+  ];
+  const VL={pos:['mk-pos','חיובי'],neg:['mk-neg','שלילי'],neu:['mk-neu','ניטרלי']};
+  const BASE={pos:[34,22,28,19],neg:[9,14,10,8],total:2380};
+  let S,idx;
+  const reset=()=>{S={pos:BASE.pos.slice(),neg:BASE.neg.slice(),total:BASE.total,bNeg:0,alerts:0};idx=0;alert.classList.remove('on');};
+  barsEl.innerHTML=SYS.map(t=>`<li><span>${t}</span><b>0%</b><span class="mk-bar"><i></i></span></li>`).join('');
+  const bars=[...barsEl.children];
+  const render=hit=>{
+    bars.forEach((li,i)=>{const p=S.pos[i]/(S.pos[i]+S.neg[i]);li.querySelector('b').textContent=Math.round(p*100)+'%';li.querySelector('i').style.transform=`scaleX(${p.toFixed(3)})`;li.classList.toggle('is-hit',i===hit);});
+    elTotal.textContent=S.total.toLocaleString('en-US');elAlerts.textContent=S.alerts;
+  };
+  const card=m=>{
+    const li=document.createElement('li');li.className='mk-msg';
+    li.innerHTML=`<small>${m.g}</small><p>${m.q}</p><div class="mk-tags"><span class="mk-tag mk-sys">${SYS[m.s]}</span><span class="mk-tag ${VL[m.v][0]}">${VL[m.v][1]}</span></div>`;
+    return li;
+  };
+  const count=m=>{S.total++;if(m.v==='pos')S.pos[m.s]++;if(m.v==='neg'){S.neg[m.s]++;if(m.s===1&&++S.bNeg===2){S.alerts++;alert.classList.add('on');}}};
+  const full=()=>{reset();feed.innerHTML='';MSG.forEach(count);MSG.slice(-4).reverse().forEach(m=>{const li=card(m);li.classList.add('is-read');feed.append(li);});render(-1);};
+  let timers=[],loop=0,inView=false;
+  const later=(fn,ms)=>timers.push(setTimeout(fn,ms));
+  const stop=()=>{timers.forEach(clearTimeout);timers=[];clearTimeout(loop);loop=0;};
+  const tick=()=>{
+    if(idx>=MSG.length){reset();feed.innerHTML='';render(-1);}
+    const m=MSG[idx++],li=card(m);li.classList.add('is-new');feed.prepend(li);
+    requestAnimationFrame(()=>requestAnimationFrame(()=>li.classList.remove('is-new')));
+    [...feed.children].slice(4).forEach(o=>{o.classList.add('is-out');later(()=>o.remove(),450);});
+    later(()=>{ping.classList.remove('go');void ping.offsetWidth;ping.classList.add('go');},500);
+    later(()=>{li.classList.add('is-read');count(m);render(m.s);},1200);
+    loop=setTimeout(tick,2400);
+  };
+  const start=()=>{if(loop||M.reduce||M.paused||!inView)return;reset();feed.innerHTML='';render(-1);tick();};
+  full();
+  if(!('IntersectionObserver' in window))return;
+  new IntersectionObserver(es=>{inView=es[0].isIntersecting;if(inView)start();else{stop();full();}},{threshold:.3}).observe(demo);
+  M.onChange(p=>{if(p){stop();full();}else start();});
+});
 </script>
 </body>
 </html>
