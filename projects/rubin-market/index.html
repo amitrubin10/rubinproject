@@ -120,8 +120,6 @@
 
 /* מסכים שמתחלפים בכרטיסים: כל המסגרות באותו מקום, ורק אחת מוצגת. הצילום מוצג במלואו (contain) */
 .shot-card .shot .zoomable{position:absolute;inset:0}
-.shot-card .shot img.mk-fr{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center;opacity:0;transition:opacity .7s var(--ease)}
-.shot-card .shot img.mk-fr.on{opacity:1}
 .mk-more{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:clamp(28px,4vw,40px)}
 .mk-more .card{padding:22px}
 .mk-more h3{font-size:17.5px}
@@ -198,12 +196,6 @@
   .mk-mx table{font-size:13px}
   .mk-lv i{width:5px;height:13px}
 }
-/* הלוגו של המוצר מעל שורת הפירורים ב-hero. קטן יותר במסך נמוך, כדי שה-hero ייכנס במסך הראשון */
-.mk-herologo{position:relative;display:block;width:clamp(60px,calc(64px + (100svh - 657px) * .4),150px);height:auto;aspect-ratio:1;margin:0 0 4px auto}
-@media(min-width:921px){.p-hero{padding-top:clamp(10px,2vh,40px)}.p-hero-copy{max-width:680px}.p-hero-copy .p-lead{max-width:62ch}}
-.mk-herologo img{display:block;width:100%;height:auto}
-/* בטלפון אין מקום לשורה נוספת: הלוגו בפינה השמאלית של שורת הפירורים, והפריט "RUBIN MARKET" שבה (שחוזר בכותרת מתחת) מוסתר */
-@media(max-width:920px){.p-hero-copy{position:relative}.mk-herologo{position:absolute;left:0;top:-10px;width:56px;margin:0}.p-crumb > :nth-last-child(-n+2){display:none}}
 .p-hero h1 .p-name{font-size:.9em}
 /* סלוגן ב-hero */
 .mk-tagline{margin:-4px 0 14px;font-size:clamp(18px,1.6vw,23px);font-weight:700;color:#cfe3f5}
@@ -300,7 +292,7 @@
   </div>
   <div class="p-hero-in wrap">
     <div class="p-hero-copy">
-      <span class="mk-herologo"><img src="/img/mk/logo-radar-240.webp?v=2" width="240" height="240" alt="RUBIN MARKET"><i class="mk-sweep" aria-hidden="true"></i></span>
+      <span class="p-herologo"><img src="/img/mk/logo-radar-240.webp?v=2" width="240" height="240" alt="RUBIN MARKET"><i class="mk-sweep" aria-hidden="true"></i></span>
       <p class="p-crumb"><a href="/#portfolio">מערכות שרצות אצל לקוחות</a><svg class="ico" style="width:14px;height:14px;transform:scaleX(-1)"><use href="#i-back"/></svg><span dir="ltr">RUBIN MARKET</span></p>
       <h1><span class="p-name" dir="ltr">RUBIN MARKET</span><em>מודיעין שוק תחרותי</em></h1>
       <p class="mk-tagline">מהשיח ברשת <b>לבינה עסקית</b></p>
@@ -408,19 +400,19 @@
     </div>
     <div class="grid-2">
       <article class="shot-card reveal">
-        <div class="shot" data-cycle style="background:#eef1f5"><button class="zoomable" type="button" aria-label="הגדלה של המסך המוצג"><img class="mk-fr on" src="/img/mk/d-head-640.webp" data-full="/img/mk/d-head-1280.webp" width="640" height="278" alt="ראש הדשבורד: הודעות שנותחו, קהילות במעקב, שביעות רצון ודירוג תחרותי, בנתוני דמה" loading="lazy" decoding="async"><img class="mk-fr" src="/img/mk/d-insights-640.webp" data-full="/img/mk/d-insights-1280.webp" width="640" height="200" alt="תקציר מנהלים: שש תובנות חוצות קבוצות, בנתוני דמה" loading="lazy" decoding="async"></button></div>
+        <div class="shot" data-cycle style="background:#eef1f5"><button class="zoomable" type="button" aria-label="הגדלה של המסך המוצג"><img class="p-fr on" src="/img/mk/d-head-640.webp" data-full="/img/mk/d-head-1280.webp" width="640" height="278" alt="ראש הדשבורד: הודעות שנותחו, קהילות במעקב, שביעות רצון ודירוג תחרותי, בנתוני דמה" loading="lazy" decoding="async"><img class="p-fr" src="/img/mk/d-insights-640.webp" data-full="/img/mk/d-insights-1280.webp" width="640" height="200" alt="תקציר מנהלים: שש תובנות חוצות קבוצות, בנתוני דמה" loading="lazy" decoding="async"></button></div>
         <div class="shot-body"><h3>מדדי מפתח ותקציר מנהלים</h3><p>כמה הודעות נותחו, כמה קהילות במעקב, שביעות רצון ודירוג תחרותי. ומתחת, התובנות של התקופה לפי חשיבות.</p><div class="chips"><span class="chip">מדדי מפתח</span><span class="chip">תקציר מנהלים</span></div></div>
       </article>
       <article class="shot-card reveal">
-        <div class="shot" style="background:#0f1d33"><button class="zoomable" type="button" aria-label="הגדלה של המסך"><img class="mk-fr on" src="/img/mk/d-pie-640.webp" data-full="/img/mk/d-pie-1280.webp" width="640" height="351" alt="שביעות רצון לפי מערכת: פילוח של שש מערכות, ודוגמאות מהשיח, בנתוני דמה" loading="lazy" decoding="async"></button></div>
+        <div class="shot" style="background:#0f1d33"><button class="zoomable" type="button" aria-label="הגדלה של המסך"><img class="p-fr on" src="/img/mk/d-pie-640.webp" data-full="/img/mk/d-pie-1280.webp" width="640" height="351" alt="שביעות רצון לפי מערכת: פילוח של שש מערכות, ודוגמאות מהשיח, בנתוני דמה" loading="lazy" decoding="async"></button></div>
         <div class="shot-body"><h3>שביעות רצון לפי מערכת</h3><p>ציון לכל מערכת בשוק, כולל שלכם, על בסיס מה שלקוחות כותבים. עם דוגמאות שמסבירות את הציון.</p><div class="chips"><span class="chip">סנטימנט</span><span class="chip">השוואה</span></div></div>
       </article>
       <article class="shot-card reveal">
-        <div class="shot" data-cycle style="background:#eef1f5"><button class="zoomable" type="button" aria-label="הגדלה של המסך המוצג"><img class="mk-fr on" src="/img/mk/d-lists-640.webp" data-full="/img/mk/d-lists-1280.webp" width="640" height="183" alt="הזדמנויות מיידיות מול סיכונים ואיומים, בנתוני דמה" loading="lazy" decoding="async"><img class="mk-fr" src="/img/mk/d-trend-640.webp" data-full="/img/mk/d-trend-1280.webp" width="640" height="264" alt="דופק הפעילות: הודעות בשבוע בכל הקהילות, לאורך 17 שבועות" loading="lazy" decoding="async"></button></div>
+        <div class="shot" data-cycle style="background:#eef1f5"><button class="zoomable" type="button" aria-label="הגדלה של המסך המוצג"><img class="p-fr on" src="/img/mk/d-lists-640.webp" data-full="/img/mk/d-lists-1280.webp" width="640" height="183" alt="הזדמנויות מיידיות מול סיכונים ואיומים, בנתוני דמה" loading="lazy" decoding="async"><img class="p-fr" src="/img/mk/d-trend-640.webp" data-full="/img/mk/d-trend-1280.webp" width="640" height="264" alt="דופק הפעילות: הודעות בשבוע בכל הקהילות, לאורך 17 שבועות" loading="lazy" decoding="async"></button></div>
         <div class="shot-body"><h3>הזדמנויות, סיכונים ודופק</h3><p>שתי רשימות פעולה, ומגמה שבועית של עוצמת השיח שמראה כל קפיצה חריגה.</p><div class="chips"><span class="chip">הזדמנויות</span><span class="chip">מגמה שבועית</span></div></div>
       </article>
       <article class="shot-card reveal">
-        <div class="shot" data-cycle style="background:#eef1f5"><button class="zoomable" type="button" aria-label="הגדלה של המסך המוצג"><img class="mk-fr on" src="/img/mk/d-spot-640.webp" data-full="/img/mk/d-spot-1280.webp" width="640" height="176" alt="המתחרים בשוק במבט אחד: שביעות רצון לכל מערכת, בנתוני דמה" loading="lazy" decoding="async"><img class="mk-fr" src="/img/mk/d-table-640.webp" data-full="/img/mk/d-table-1280.webp" width="640" height="217" alt="מפת הקבוצות: חמש קהילות, מספר הודעות ותקופה, בנתוני דמה" loading="lazy" decoding="async"></button></div>
+        <div class="shot" data-cycle style="background:#eef1f5"><button class="zoomable" type="button" aria-label="הגדלה של המסך המוצג"><img class="p-fr on" src="/img/mk/d-spot-640.webp" data-full="/img/mk/d-spot-1280.webp" width="640" height="176" alt="המתחרים בשוק במבט אחד: שביעות רצון לכל מערכת, בנתוני דמה" loading="lazy" decoding="async"><img class="p-fr" src="/img/mk/d-table-640.webp" data-full="/img/mk/d-table-1280.webp" width="640" height="217" alt="מפת הקבוצות: חמש קהילות, מספר הודעות ותקופה, בנתוני דמה" loading="lazy" decoding="async"></button></div>
         <div class="shot-body"><h3>המתחרים במבט אחד</h3><p>כרטיס לכל מערכת בשוק עם ציון ומספר העמדות בעד ונגד, ולצדו מפת הקהילות שמהן נאסף השיח.</p><div class="chips"><span class="chip">השוואה</span><span class="chip">מקורות</span></div></div>
       </article>
     </div>
@@ -592,20 +584,6 @@
 <div class="cglow" id="cglow" aria-hidden="true"></div>
 
 <script>
-// מסכים שמתחלפים בכרטיסי "מה יש במערכת": כל 2.8 שניות, רק כשהכרטיס על המסך. נעצר בכפתור העצירה ובפחות תנועה
-document.addEventListener('DOMContentLoaded',function(){
-  const M=window.rpMotion||{reduce:false,paused:false,onChange(){}};
-  document.querySelectorAll('.shot[data-cycle]').forEach((shot,k)=>{
-    const fr=[...shot.querySelectorAll('.mk-fr')];if(fr.length<2)return;
-    let i=0,timer=0,inView=false;
-    const step=()=>{fr[i].classList.remove('on');i=(i+1)%fr.length;fr[i].classList.add('on');};
-    const run=()=>{if(timer||M.reduce||M.paused||!inView)return;timer=setInterval(step,2800);};
-    const stop=()=>{clearInterval(timer);timer=0;};
-    new IntersectionObserver(es=>{inView=es[0].isIntersecting;if(inView)setTimeout(run,k*700);else stop();},{threshold:.3}).observe(shot);
-    M.onChange(p=>{if(p)stop();else run();});
-  });
-});
-
 // נקודה שרצה לאורך קו מגמה: data-pts הן נקודות הגרף באחוזים מהתמונה. 7 שניות לסיבוב, רק כשהגרף על המסך.
 // בעצירה הנקודה נעצרת במקומה, ובפחות תנועה היא מוסתרת
 document.addEventListener('DOMContentLoaded',function(){

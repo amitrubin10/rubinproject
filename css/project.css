@@ -371,3 +371,41 @@ p{text-wrap:pretty}
 svg[data-fx]{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;mix-blend-mode:screen}
 svg[data-fx]:not(.on) *{animation-play-state:paused!important}
 @media(prefers-reduced-motion:reduce){svg[data-fx]{display:none}}
+
+/* ═══ לוגו המוצר ב-hero (המתכונת, סעיף 3). מבנה:
+   <span class="p-herologo [p-hl-tile]" [data-loop="7000"] [data-lit-delay="1500"]><img alt="שם המוצר"><svg aria-hidden="true">שכבת המופע</svg></span>
+   כילד ראשון של .p-hero-copy. project.js מוסיף .in בכל כניסה למסך (מופע הכניסה רץ מחדש בכל חזרה ל-hero), ו-.lit בלולאה כל data-loop.
+   ה-keyframes של המופע בעמוד, תחת הקידומת שלו. p-hl-tile: סמל באריח לבן מעוגל (לוגו שמעוצב לרקע לבן) */
+.p-herologo{position:relative;display:block;width:clamp(60px,calc(64px + (100svh - 657px) * .4),150px);aspect-ratio:1;margin:0 0 2px auto}
+.p-herologo>img{display:block;width:100%;height:100%}
+.p-herologo>svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
+.p-herologo>svg [class]{transform-box:fill-box;transform-origin:center}
+.p-herologo.p-hl-tile{border-radius:18%;overflow:hidden;box-shadow:0 10px 26px rgba(0,0,0,.35)}
+@media(min-width:921px){.p-hero:has(.p-herologo){padding-top:clamp(10px,2vh,40px)}.p-hero-copy:has(.p-herologo){max-width:680px}.p-hero-copy:has(.p-herologo) .p-lead{max-width:62ch}}
+@media(max-width:920px){.p-hero-copy:has(.p-herologo){position:relative}.p-herologo{position:absolute;left:0;top:-10px;width:56px;margin:0}.p-herologo.p-hl-tile{border-radius:14px}.p-hero-copy:has(.p-herologo) .p-crumb>:nth-last-child(-n+2){display:none}}
+/* העצירה עוצרת גם את הלוגו, למרות שילדי .p-hero-copy ממשיכים לרוץ בעצירה */
+.motion-off .p-herologo *{animation:none!important}
+@media(prefers-reduced-motion:reduce){.p-herologo *{animation:none!important}}
+
+/* ═══ מסכים מתחלפים בכרטיס (.shot[data-cycle]): כל מסגרת היא img.p-fr, או .p-frw שעוטף צילום עם שכבת ספירה ביחס של הצילום (--ar).
+   מסגרת עם מופע מקבלת data-hold במילישניות (6500), כדי שלא תתחלף באמצע הספירה. צילום קבוע עם שכבת ספירה: .p-still */
+.shot-card .shot img.p-fr{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center;opacity:0;transition:opacity .7s var(--ease)}
+.shot-card .shot .p-frw{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);aspect-ratio:var(--ar);container-type:inline-size;opacity:0;transition:opacity .7s var(--ease)}
+.shot-card .shot .p-frw.wide{width:100%}
+.shot-card .shot .p-frw.tall{height:100%}
+.shot-card .shot .p-fr.on{opacity:1}
+.shot-card .shot .p-frw img,.shot-card .shot .p-still img{position:static;display:block;width:100%;height:100%;object-fit:fill}
+.shot-card .shot .p-still{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);aspect-ratio:var(--ar);container-type:inline-size}
+
+/* ═══ שכבת ספירה על צילום (.p-ov), נבנית ב-tools/pp_overlay.py: טלאים בצבע הרקע מסתירים את הערכים האפויים ומונים עד אליהם,
+   פסים (.p-cbar) ועוגה (.p-cring) נחשפים, ובסוף השכבה נעלמת וחושפת את הצילום. בעצירה ובפחות תנועה מוצג הצילום עצמו */
+.p-ov{display:none;position:absolute;inset:0;pointer-events:none;transition:opacity .45s var(--ease)}
+.js .p-ov{display:block}
+.p-ov.done{opacity:0}
+.p-cn{position:absolute;display:flex;align-items:center;direction:ltr;font-weight:800;font-size:var(--fs);line-height:1;letter-spacing:-.01em;font-variant-numeric:tabular-nums}
+.p-cbar{position:absolute;border-radius:999px;transform-origin:left center;transition:transform 2.4s var(--ease) var(--d)}
+.p-ov.go .p-cbar{transform:scaleX(0)}
+@property --p-a{syntax:'<angle>';inherits:false;initial-value:0deg}
+.p-cring{position:absolute;border-radius:50%;--p-a:0deg;background:conic-gradient(transparent 0deg var(--p-a),var(--bg,#FEFEFE) var(--p-a) 360deg);-webkit-mask:radial-gradient(closest-side,transparent 57.5%,#000 58.5%);mask:radial-gradient(closest-side,transparent 57.5%,#000 58.5%);transition:--p-a 2.8s var(--ease)}
+.p-ov.go .p-cring{--p-a:360deg}
+@media(prefers-reduced-motion:reduce){.js .p-ov{display:none}}

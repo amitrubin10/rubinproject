@@ -270,3 +270,60 @@ window.rpMotion=(function(){
   const io=new IntersectionObserver(es=>es.forEach(e=>e.target.classList.toggle('on',e.isIntersecting)),{rootMargin:'80px'});
   els.forEach(el=>io.observe(el));
 })();
+
+// לוגו המוצר ב-hero (.p-herologo): .in בטעינה ומחדש בכל חזרה ל-hero, אחרי שהלוגו יצא לגמרי מהמסך, כדי שמופע הכניסה ירוץ שוב.
+// .lit בלולאה כל data-loop מילישניות, הראשון אחרי data-lit-delay (1500). גלילה קטנה לא מפעילה מחדש. נעצר בכפתור העצירה ובפחות תנועה
+(function(){
+  const lg=document.querySelector('.p-herologo');if(!lg)return;
+  const M=window.rpMotion,loop=+lg.dataset.loop||0,first=+(lg.dataset.litDelay||1500);
+  let t=0,shown=true;
+  const lite=()=>{lg.classList.remove('lit');void lg.offsetWidth;lg.classList.add('lit');t=setTimeout(lite,loop);};
+  const start=()=>{clearTimeout(t);if(!loop||M.reduce||M.paused||!shown)return;t=setTimeout(lite,first);};
+  const enter=()=>{lg.classList.remove('in','lit');void lg.offsetWidth;lg.classList.add('in');start();};
+  enter();
+  if('IntersectionObserver' in window)new IntersectionObserver(es=>{const v=es[0].isIntersecting;if(v===shown)return;shown=v;
+    if(v)enter();else{clearTimeout(t);lg.classList.remove('lit');}},{threshold:0}).observe(lg);
+  M.onChange(p=>{clearTimeout(t);if(p)lg.classList.remove('lit');else start();});
+})();
+
+// מסכים מתחלפים בכרטיסים (.shot[data-cycle] .p-fr): כל מסגרת data-hold מילישניות (ברירת מחדל 2800), רק כשהכרטיס על המסך.
+// הכרטיסים מתחלפים בהפרש של 0.7 שניות זה מזה. נעצר בכפתור העצירה ובפחות תנועה
+(function(){
+  const M=window.rpMotion;
+  document.querySelectorAll('.shot[data-cycle]').forEach((shot,k)=>{
+    const fr=[...shot.querySelectorAll('.p-fr')];if(fr.length<2)return;
+    let i=0,timer=0,inView=false;
+    const step=()=>{fr[i].classList.remove('on');i=(i+1)%fr.length;fr[i].classList.add('on');};
+    const run=()=>{if(timer||M.reduce||M.paused||!inView)return;const tick=()=>{timer=setTimeout(()=>{step();tick();},+fr[i].dataset.hold||2800);};tick();};
+    const stop=()=>{clearTimeout(timer);timer=0;};
+    if(!('IntersectionObserver' in window))return;
+    new IntersectionObserver(es=>{inView=es[0].isIntersecting;if(inView)setTimeout(run,k*700);else stop();},{threshold:.3}).observe(shot);
+    M.onChange(p=>{if(p)stop();else run();});
+  });
+})();
+
+// שכבות ספירה על צילומים (.p-ov): המספרים רצים, פסים ועוגה נחשפים, ובסוף השכבה נעלמת וחושפת את הצילום.
+// על מסגרת מתחלפת (.p-frw): רץ כשהמסגרת מוצגת. על צילום קבוע: בכל כניסה לכרטיס. מתאפס ביציאה. בעצירה ובפחות תנועה מוצג המצב הסופי
+(function(){
+  const M=window.rpMotion;
+  document.querySelectorAll('.p-ov').forEach(fx=>{
+    const host=fx.parentElement,frame=host.classList.contains('p-frw')?host:null;
+    const ns=[...fx.querySelectorAll('.p-cn')];
+    const fmt=(el,v)=>{const d=+el.dataset.dec;let t=d?v.toFixed(d):String(Math.round(v));if(el.hasAttribute('data-sep'))t=Number(t).toLocaleString('en-US');el.textContent=t+(el.dataset.suf||'');};
+    let raf=0,tm=0,played=false,inView=false;
+    const reset=()=>{cancelAnimationFrame(raf);clearTimeout(tm);fx.classList.remove('go','done');ns.forEach(el=>fmt(el,0));played=false;};
+    const finish=()=>{cancelAnimationFrame(raf);clearTimeout(tm);ns.forEach(el=>fmt(el,+el.dataset.to));fx.classList.add('go','done');played=true;};
+    const play=()=>{if(played)return;played=true;if(M.reduce||M.paused){finish();return;}
+      void fx.offsetWidth;fx.classList.add('go');const t0=performance.now(),D=2800;
+      const step=t=>{const k=Math.min(1,(t-t0)/D),e=1-Math.pow(1-k,3);ns.forEach(el=>fmt(el,+el.dataset.to*e));if(k<1)raf=requestAnimationFrame(step);else tm=setTimeout(()=>fx.classList.add('done'),700);};
+      raf=requestAnimationFrame(step);};
+    const active=()=>!frame||frame.classList.contains('on');
+    const check=()=>{if(inView&&active())play();else if(!active())setTimeout(()=>{if(!active())reset();},800);};
+    reset();
+    if(!('IntersectionObserver' in window)){finish();return;}
+    new IntersectionObserver(es=>{const e=es[0];inView=e.intersectionRatio>=.45;if(!e.isIntersecting){reset();return;}check();},{threshold:[0,.45]}).observe(frame?frame.closest('.shot'):host);
+    if(frame)new MutationObserver(check).observe(frame,{attributes:true,attributeFilter:['class']});
+    // בהפעלה מחדש: שכבה שלא על המסך מתאפסת, כדי שתספור כשיגיעו אליה
+    M.onChange(p=>{if(p)finish();else if(!inView||!active())reset();});
+  });
+})();
