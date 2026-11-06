@@ -149,7 +149,7 @@ window.rpMotion=(function(){
   const body=dlg.querySelector('.lb-body');let opener=null;
   document.querySelectorAll('.zoomable').forEach(btn=>btn.addEventListener('click',()=>{
     // בכרטיס עם מסכים מתחלפים מוגדל המסך שמוצג עכשיו (img.on), בגרסה הגדולה שלו (data-full)
-    const img=btn.querySelector('img.on')||btn.querySelector('img');
+    const img=btn.querySelector('img.on')||btn.querySelector('.on img')||btn.querySelector('img');
     body.innerHTML='';
     const big=document.createElement('img');big.src=img.dataset.full||btn.dataset.full||img.currentSrc||img.src;big.alt=img.alt;body.appendChild(big);
     const cap=btn.dataset.cap||img.alt;

@@ -164,6 +164,43 @@
   .ba-kpis{grid-template-columns:1fr 1fr}
   .ba-kpis .ba-kpi:first-child{grid-column:1/-1}
 }
+/* לוגו המוצר: הסמל באריח לבן מעל שורת הפירורים, כמו ב-RUBIN MARKET, עם המופע של דף הבית בלולאה. הגודל לפי גובה המסך.
+   בטלפון: האריח בפינה השמאלית של שורת הפירורים */
+.ba-herologo{position:relative;display:block;width:clamp(60px,calc(64px + (100svh - 657px) * .4),150px);aspect-ratio:1;margin:0 0 2px auto;border-radius:18%;overflow:hidden;box-shadow:0 10px 26px rgba(0,0,0,.35)}
+.ba-herologo img{display:block;width:100%;height:100%}
+@media(min-width:921px){.p-hero{padding-top:clamp(10px,2vh,40px)}.p-hero-copy{max-width:680px}.p-hero-copy .p-lead{max-width:62ch}}
+.ba-lfx{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.ba-lfx [class]{transform-box:fill-box;transform-origin:center}
+.ba-lrun{fill:none;stroke-linecap:round;stroke-dasharray:13 130;stroke-dashoffset:13;opacity:0;animation:baLRun 5s linear infinite}
+.ba-lcore{stroke:#f2fdff;stroke-width:14.5}
+.ba-lhalo{stroke:#38d4f5;stroke-width:42;stroke-opacity:.45}
+@keyframes baLRun{0%,11%{opacity:0;stroke-dashoffset:13}12%{opacity:1;stroke-dashoffset:10}33%{opacity:1;stroke-dashoffset:-80}34%,100%{opacity:0;stroke-dashoffset:-100}}
+.ba-ltip{opacity:0;animation:baLTip 5s ease-out infinite}
+@keyframes baLTip{0%,31%{opacity:0;transform:scale(.5)}36%{opacity:1}45%,100%{opacity:0;transform:scale(1.35)}}
+.ba-lnode{opacity:0;animation:baLNode 5s ease-in-out var(--d) infinite}
+@keyframes baLNode{0%,35%{opacity:0;transform:scale(.3)}42%{opacity:1;transform:scale(1.25)}55%,100%{opacity:0;transform:scale(1)}}
+@media(prefers-reduced-motion:reduce){.ba-lfx{display:none}}
+@media(max-width:920px){.p-hero-copy{position:relative}.ba-herologo{position:absolute;left:0;top:-10px;width:56px;margin:0;border-radius:14px}}
+/* תמונת מצב השירות: המספרים רצים, העוגה נצבעת והפסים של איכות ההעברות גדלים, פעם אחת בכל כניסה לכרטיס.
+   שכבה מעל התמונה: טלאים בצבע הרקע שמסתירים את הערכים ומונים עד אליהם, ובסוף נעלמים וחושפים את התמונה */
+.shot-card .shot .ba-svc{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);aspect-ratio:1672/941;container-type:inline-size}
+.shot-card .shot .ba-svc img{position:static;display:block;width:100%;height:100%;object-fit:fill}
+.ba-ov{display:none;position:absolute;inset:0;pointer-events:none;transition:opacity .45s var(--ease)}
+.js .ba-ov{display:block}
+.ba-ov.done{opacity:0}
+/* מסגרת מתחלפת עם שכבת מופע: עוטפת את הצילום ביחס שלו, כדי שהשכבה תשב בדיוק על הערכים */
+.shot-card .shot .ba-frw{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);aspect-ratio:var(--ar);container-type:inline-size;opacity:0;transition:opacity .7s var(--ease)}
+.shot-card .shot .ba-frw.wide{width:100%}
+.shot-card .shot .ba-frw.tall{height:100%}
+.shot-card .shot .ba-frw.on{opacity:1}
+.shot-card .shot .ba-frw img{display:block;width:100%;height:100%;object-fit:fill}
+.ba-cn{position:absolute;display:flex;align-items:center;direction:ltr;font-weight:800;font-size:var(--fs);line-height:1;letter-spacing:-.01em;font-variant-numeric:tabular-nums}
+.ba-cbar{position:absolute;border-radius:999px;transform-origin:left center;transition:transform 2.4s var(--ease) var(--d)}
+.ba-ov.go .ba-cbar{transform:scaleX(0)}
+@property --ba-a{syntax:'<angle>';inherits:false;initial-value:0deg}
+.ba-cring{position:absolute;border-radius:50%;--ba-a:0deg;background:conic-gradient(transparent 0deg var(--ba-a),#FEFEFE var(--ba-a) 360deg);-webkit-mask:radial-gradient(closest-side,transparent 57.5%,#000 58.5%);mask:radial-gradient(closest-side,transparent 57.5%,#000 58.5%);transition:--ba-a 2.8s var(--ease)}
+.ba-ov.go .ba-cring{--ba-a:360deg}
+@media(prefers-reduced-motion:reduce){.js .ba-ov{display:none}}
 </style>
 <script src="/js/project.js" defer></script>
 </head>
@@ -206,26 +243,29 @@
     <div class="tilt">
       <div class="lane" data-lane data-speed="20" data-dir="1"><div class="lane-track"><div class="lane-group">
         <span class="ctile"><img src="/img/ba/t-kpi.webp" width="440" height="275" alt="" decoding="async"></span>
-        <span class="ctile"><img src="/img/ba/t-pipe.webp" width="440" height="275" alt="" decoding="async"></span>
+        <span class="ctile"><img src="/img/ba/t-svc.webp" width="440" height="275" alt="" decoding="async"></span>
+        <span class="ctile"><img src="/img/ba/t-logo.webp" width="440" height="275" alt="" decoding="async"></span>
         <span class="ctile"><img src="/img/ba/t-topics.webp" width="440" height="275" alt="" decoding="async"></span>
         <span class="ctile"><img src="/img/ba/t-trends4.webp" width="440" height="275" alt="" decoding="async"></span>
       </div></div></div>
       <div class="lane" data-lane data-speed="15" data-dir="-1"><div class="lane-track"><div class="lane-group">
         <span class="ctile"><img src="/img/ba/t-funnel.webp" width="440" height="275" alt="" decoding="async"></span>
-        <span class="ctile"><img src="/img/ba/t-flow.webp" width="440" height="275" alt="" decoding="async"></span>
+        <span class="ctile"><img src="/img/ba/t-svc-bars.webp" width="440" height="275" alt="" decoding="async"></span>
         <span class="ctile"><img src="/img/ba/t-kpi2.webp" width="440" height="275" alt="" decoding="async"></span>
         <span class="ctile"><img src="/img/ba/t-trend.webp" width="440" height="275" alt="" decoding="async"></span>
       </div></div></div>
       <div class="lane" data-lane data-speed="24" data-dir="1"><div class="lane-track"><div class="lane-group">
         <span class="ctile"><img src="/img/ba/t-trend.webp" width="440" height="275" alt="" decoding="async"></span>
         <span class="ctile"><img src="/img/ba/t-funnel.webp" width="440" height="275" alt="" decoding="async"></span>
+        <span class="ctile"><img src="/img/ba/t-logo.webp" width="440" height="275" alt="" decoding="async"></span>
         <span class="ctile"><img src="/img/ba/t-kpi.webp" width="440" height="275" alt="" decoding="async"></span>
-        <span class="ctile"><img src="/img/ba/t-pipe.webp" width="440" height="275" alt="" decoding="async"></span>
+        <span class="ctile"><img src="/img/ba/t-svc-pie.webp" width="440" height="275" alt="" decoding="async"></span>
       </div></div></div>
     </div>
   </div>
   <div class="p-hero-in wrap">
     <div class="p-hero-copy">
+      <span class="ba-herologo"><img src="/img/ba/mark-320.webp" srcset="/img/ba/mark-224.webp 224w, /img/ba/mark-320.webp 320w" sizes="150px" width="320" height="320" alt="Bot Analytics"><svg class="ba-lfx" viewBox="0 0 600 600" aria-hidden="true" focusable="false"><defs><radialGradient id="baLO"><stop offset="0" stop-color="#fff"/><stop offset=".35" stop-color="#ffc35a" stop-opacity=".9"/><stop offset="1" stop-color="#ff9a1f" stop-opacity="0"/></radialGradient><radialGradient id="baLC"><stop offset="0" stop-color="#fff"/><stop offset=".35" stop-color="#8ff3ff" stop-opacity=".9"/><stop offset="1" stop-color="#2fc8e8" stop-opacity="0"/></radialGradient></defs><path class="ba-lrun ba-lhalo" d="M45.9 491.3 209.8 338.7 262.8 382.1 551.9 113.8" pathLength="100"/><path class="ba-lrun ba-lcore" d="M45.9 491.3 209.8 338.7 262.8 382.1 551.9 113.8" pathLength="100"/><circle class="ba-ltip" cx="547.1" cy="118.6" r="74" fill="url(#baLC)"/><circle class="ba-lnode" cx="338.3" cy="266.4" r="38.6" fill="url(#baLO)" style="--d:0s"/><circle class="ba-lnode" cx="394.5" cy="173.3" r="38.6" fill="url(#baLC)" style="--d:.12s"/><circle class="ba-lnode" cx="426.6" cy="173.3" r="38.6" fill="url(#baLO)" style="--d:.24s"/><circle class="ba-lnode" cx="423.4" cy="366" r="38.6" fill="url(#baLC)" style="--d:.36s"/><circle class="ba-lnode" cx="370.4" cy="427.1" r="38.6" fill="url(#baLO)" style="--d:.48s"/></svg></span>
       <p class="p-crumb"><a href="/#portfolio">מערכות שרצות אצל לקוחות</a><svg class="ico" style="width:14px;height:14px;transform:scaleX(-1)"><use href="#i-back"/></svg><span dir="ltr">Bot Analytics</span></p>
       <h1><span class="p-name">Bot Analytics</span><em>ניתוח שירות מבוסס AI</em></h1>
       <p class="p-lead">חמישה סוכני AI קוראים כל שיחה של בוט השירות, מסווגים אותה ומנקדים את המענה. בסוף השבוע יוצא דשבורד ניהולי אחד: על מה פונים, איפה הבוט נופל ומה משתפר.</p>
@@ -310,11 +350,11 @@
     <div class="sh reveal">
       <span class="k">מה יש במערכת</span>
       <h2>מהדאטה הגולמית <em>לתמונת מצב שמחליטים לפיה</em></h2>
-      <p>צילומי מסך מהדשבורד שרץ אצל הלקוח, ומהאיורים שמסבירים את הפייפליין.</p>
+      <p>צילומי מסך מהדשבורד שרץ אצל הלקוח, והסיכום השבועי שלו.</p>
     </div>
     <div class="grid-2">
       <article class="shot-card reveal">
-        <div class="shot" data-cycle style="background:#eceff3"><button class="zoomable" type="button" aria-label="הגדלה של המסך המוצג"><img class="ba-fr on" src="/img/ba/kpi-640.webp" data-full="/img/ba/kpi-1280.webp" width="640" height="325" alt="כרטיסי KPI בדשבורד השבועי: סך קריאות, קריאות בבוט, שיעור סגירה בבוט, אחוז הצלחה ותשובות שגויות" loading="lazy" decoding="async"><img class="ba-fr" src="/img/ba/kpi2-640.webp" data-full="/img/ba/kpi2-1280.webp" width="640" height="277" alt="כרטיסי KPI משבוע אחר, עם הנושא המוביל בבעיות" loading="lazy" decoding="async"></button></div>
+        <div class="shot" data-cycle style="background:#eceff3"><button class="zoomable" type="button" aria-label="הגדלה של המסך המוצג"><span class="ba-fr ba-frw wide on" style="--ar:1280/650" data-hold="6500"><img src="/img/ba/kpi-640.webp" data-full="/img/ba/kpi-1280.webp" width="640" height="325" alt="כרטיסי KPI בדשבורד השבועי: סך קריאות, קריאות בבוט, שיעור סגירה בבוט, אחוז הצלחה ותשובות שגויות" loading="lazy" decoding="async"><span class="ba-ov" aria-hidden="true"><span class="ba-cn" data-to="4695" data-dec="0" data-sep style="left:92.344%;top:31.385%;width:5.859%;height:4.154%;--fs:1.835cqw;color:#2A3A55;background:#FFFFFF;justify-content:flex-end;padding:.06em 0.391cqw 0">0</span><span class="ba-cn" data-to="2134" data-dec="0" data-sep style="left:58.984%;top:31.231%;width:5.859%;height:4.154%;--fs:1.835cqw;color:#D2975A;background:#FFFFFF;justify-content:flex-end;padding:.06em 0.391cqw 0">0</span><span class="ba-cn" data-to="1440" data-dec="0" data-sep style="left:25.781%;top:31.385%;width:5.703%;height:4.154%;--fs:1.835cqw;color:#293A56;background:#FFFFFF;justify-content:flex-end;padding:.06em 0.391cqw 0">0</span><span class="ba-cn" data-to="74.4" data-dec="1" data-suf="%" style="left:91.953%;top:57.385%;width:6.172%;height:4.154%;--fs:1.835cqw;color:#559D55;background:#FFFFFF;justify-content:flex-end;padding:.06em 0.391cqw 0">0</span><span class="ba-cn" data-to="25.2" data-dec="1" data-suf="%" style="left:58.672%;top:57.385%;width:6.172%;height:4.154%;--fs:1.835cqw;color:#559657;background:#FFFFFF;justify-content:flex-end;padding:.06em 0.391cqw 0">0</span><span class="ba-cn" data-to="87.6" data-dec="1" data-suf="%" style="left:25.312%;top:57.385%;width:6.094%;height:4.154%;--fs:1.835cqw;color:#569756;background:#FFFFFF;justify-content:flex-end;padding:.06em 0.391cqw 0">0</span><span class="ba-cn" data-to="545" data-dec="0" style="left:60.781%;top:80.923%;width:4.062%;height:4.154%;--fs:1.835cqw;color:#2A3B55;background:#FFFFFF;justify-content:flex-end;padding:.06em 0.391cqw 0">0</span><span class="ba-cn" data-to="67" data-dec="0" style="left:28.594%;top:80.923%;width:2.891%;height:4.154%;--fs:1.835cqw;color:#B8433C;background:#FFFFFF;justify-content:flex-end;padding:.06em 0.391cqw 0">0</span></span></span><span class="ba-fr ba-frw wide" style="--ar:965/418" data-hold="6500"><img src="/img/ba/kpi2-640.webp" data-full="/img/ba/kpi2-1280.webp" width="640" height="277" alt="כרטיסי KPI משבוע אחר, עם הנושא המוביל בבעיות" loading="lazy" decoding="async"><span class="ba-ov" aria-hidden="true"><span class="ba-cn" data-to="6029" data-dec="0" data-sep style="left:79.275%;top:12.679%;width:7.461%;height:6.220%;--fs:2.295cqw;color:#1F3B5A;background:#FFFFFF;justify-content:center;padding:.06em 0.518cqw 0">0</span><span class="ba-cn" data-to="3366" data-dec="0" data-sep style="left:46.010%;top:12.679%;width:7.461%;height:6.220%;--fs:2.295cqw;color:#DF954D;background:#FFFFFF;justify-content:center;padding:.06em 0.518cqw 0">0</span><span class="ba-cn" data-to="836" data-dec="0" style="left:13.990%;top:12.440%;width:5.181%;height:6.220%;--fs:2.295cqw;color:#1F3B57;background:#FFFFFF;justify-content:center;padding:.06em 0.518cqw 0">0</span><span class="ba-cn" data-to="75.2" data-dec="1" data-suf="%" style="left:78.860%;top:44.976%;width:8.187%;height:6.220%;--fs:2.295cqw;color:#2B9E57;background:#FFFFFF;justify-content:center;padding:.06em 0.518cqw 0">0</span><span class="ba-cn" data-to="42.0" data-dec="1" data-suf="%" style="left:45.492%;top:44.976%;width:8.394%;height:6.220%;--fs:2.295cqw;color:#29A055;background:#FFFFFF;justify-content:center;padding:.06em 0.518cqw 0">0</span><span class="ba-cn" data-to="77.3" data-dec="1" data-suf="%" style="left:12.435%;top:44.976%;width:8.187%;height:6.220%;--fs:2.295cqw;color:#2A9D56;background:#FFFFFF;justify-content:center;padding:.06em 0.518cqw 0">0</span><span class="ba-cn" data-to="189" data-dec="0" style="left:80.518%;top:80.622%;width:4.870%;height:6.220%;--fs:2.295cqw;color:#CF3132;background:#FFFFFF;justify-content:center;padding:.06em 0.518cqw 0">0</span></span></span></button></div>
         <div class="shot-body"><h3>כרטיסי KPI</h3><p>היקף, שיעור טיפול בבוט, אחוז הצלחה, כשלים והפניות. לכל מדד היסטוריה של ארבעה שבועות.</p><div class="chips"><span class="chip">היקף</span><span class="chip">שיעור טיפול</span><span class="chip">אחוז הצלחה</span></div></div>
       </article>
       <article class="shot-card reveal">
@@ -322,12 +362,12 @@
         <div class="shot-body"><h3>משפך איכות המענה</h3><p>מכל משתמשי הבוט, דרך מה שנסגר לבד, ועד פירוט האיכות של מה שהגיע לנציג. ולצידו סקירת מנהלים של ארבעה שבועות.</p><div class="chips"><span class="chip">משפך פנייה</span><span class="chip">סקירת מנהלים</span></div></div>
       </article>
       <article class="shot-card reveal">
-        <div class="shot" data-cycle style="background:#eceff3"><button class="zoomable" type="button" aria-label="הגדלה של המסך המוצג"><img class="ba-fr on" src="/img/ba/topics-640.webp" data-full="/img/ba/topics-1280.webp" width="640" height="452" alt="התפלגות נושאים: מספר השיחות בכל נושא, מהנושא המוביל ומטה" loading="lazy" decoding="async"><img class="ba-fr" src="/img/ba/trend-640.webp" data-full="/img/ba/trend-1280.webp" width="640" height="393" alt="מגמת איכות הבוט בארבעה שבועות: אחוז הצלחה, תשובות שגויות והפניות נכונות" loading="lazy" decoding="async"></button></div>
+        <div class="shot" data-cycle style="background:#eceff3"><button class="zoomable" type="button" aria-label="הגדלה של המסך המוצג"><span class="ba-fr ba-frw tall on" style="--ar:723/511" data-hold="6500"><img src="/img/ba/topics-640.webp" data-full="/img/ba/topics-1280.webp" width="640" height="452" alt="התפלגות נושאים: מספר השיחות בכל נושא, מהנושא המוביל ומטה" loading="lazy" decoding="async"><span class="ba-ov" aria-hidden="true"><span class="ba-cn" data-to="132" data-dec="0" style="left:2.766%;top:17.417%;width:3.734%;height:2.740%;--fs:1.578cqw;color:#2E3856;background:#FFFFFF;justify-content:flex-start;padding:.06em 0.415cqw 0">0</span><span class="ba-cn" data-to="97" data-dec="0" style="left:2.766%;top:26.614%;width:2.628%;height:2.740%;--fs:1.578cqw;color:#2E3856;background:#FFFFFF;justify-content:flex-start;padding:.06em 0.415cqw 0">0</span><span class="ba-cn" data-to="55" data-dec="0" style="left:2.766%;top:36.008%;width:2.628%;height:2.740%;--fs:1.578cqw;color:#2E3856;background:#FFFFFF;justify-content:flex-start;padding:.06em 0.415cqw 0">0</span><span class="ba-cn" data-to="52" data-dec="0" style="left:2.766%;top:45.205%;width:2.628%;height:2.740%;--fs:1.578cqw;color:#2E3856;background:#FFFFFF;justify-content:flex-start;padding:.06em 0.415cqw 0">0</span><span class="ba-cn" data-to="45" data-dec="0" style="left:2.766%;top:54.599%;width:2.628%;height:2.740%;--fs:1.578cqw;color:#2E3856;background:#FFFFFF;justify-content:flex-start;padding:.06em 0.415cqw 0">0</span><span class="ba-cn" data-to="40" data-dec="0" style="left:2.766%;top:63.796%;width:2.628%;height:2.740%;--fs:1.578cqw;color:#2E3856;background:#FFFFFF;justify-content:flex-start;padding:.06em 0.415cqw 0">0</span><span class="ba-cn" data-to="39" data-dec="0" style="left:2.766%;top:73.190%;width:2.628%;height:2.740%;--fs:1.578cqw;color:#2E3856;background:#FFFFFF;justify-content:flex-start;padding:.06em 0.415cqw 0">0</span><span class="ba-cn" data-to="30" data-dec="0" style="left:2.766%;top:82.387%;width:2.628%;height:2.740%;--fs:1.578cqw;color:#2E3856;background:#FFFFFF;justify-content:flex-start;padding:.06em 0.415cqw 0">0</span><span class="ba-cn" data-to="28" data-dec="0" style="left:2.766%;top:91.781%;width:2.628%;height:2.740%;--fs:1.578cqw;color:#2E3856;background:#FFFFFF;justify-content:flex-start;padding:.06em 0.415cqw 0">0</span><span class="ba-cbar" style="left:3.043%;top:21.331%;width:92.808%;height:2.740%;background:#F1F5F9;--d:0.25s"></span><span class="ba-cbar" style="left:27.524%;top:30.724%;width:68.326%;height:2.740%;background:#F1F5F9;--d:0.47s"></span><span class="ba-cbar" style="left:56.985%;top:39.922%;width:38.866%;height:2.740%;background:#F1F5F9;--d:0.69s"></span><span class="ba-cbar" style="left:59.059%;top:49.315%;width:36.791%;height:2.740%;background:#F1F5F9;--d:0.91s"></span><span class="ba-cbar" style="left:63.900%;top:58.513%;width:31.950%;height:2.740%;background:#F1F5F9;--d:1.13s"></span><span class="ba-cbar" style="left:67.497%;top:67.906%;width:28.354%;height:2.740%;background:#F1F5F9;--d:1.35s"></span><span class="ba-cbar" style="left:68.188%;top:76.908%;width:27.663%;height:2.935%;background:#F1F5F9;--d:1.57s"></span><span class="ba-cbar" style="left:74.274%;top:86.301%;width:21.577%;height:2.935%;background:#F1F5F9;--d:1.79s"></span><span class="ba-cbar" style="left:75.934%;top:95.695%;width:19.917%;height:2.740%;background:#F1F5F9;--d:2.01s"></span></span></span><img class="ba-fr" src="/img/ba/trend-640.webp" data-full="/img/ba/trend-1280.webp" width="640" height="393" alt="מגמת איכות הבוט בארבעה שבועות: אחוז הצלחה, תשובות שגויות והפניות נכונות" loading="lazy" decoding="async"></button></div>
         <div class="shot-body"><h3>נושאים ומגמות</h3><p>על מה באמת פונים, ואיך האיכות זזה משבוע לשבוע. ככה רואים אם האימון של הבוט עובד.</p><div class="chips"><span class="chip">נושאים מובילים</span><span class="chip">מגמת איכות</span></div></div>
       </article>
       <article class="shot-card reveal">
-        <div class="shot" data-cycle style="background:#000b29"><button class="zoomable" type="button" aria-label="הגדלה של המסך המוצג"><img class="ba-fr on" src="/img/ba/pipe-640.webp" data-full="/img/ba/pipe-1280.webp" width="640" height="360" alt="איור: חמישה סוכני AI בשרשרת אחת, ממקורות הדאטה הגולמית ועד דשבורד ניהולי" loading="lazy" decoding="async"><img class="ba-fr" src="/img/ba/flow-640.webp" data-full="/img/ba/flow-1280.webp" width="640" height="360" alt="איור: כל סוכן מתמחה בשלב אחר, ויחד הם הופכים דאטה גולמית לתובנה ניהולית" loading="lazy" decoding="async"></button></div>
-        <div class="shot-body"><h3>חמישה סוכנים בשרשרת</h3><p>מיצוי הנתונים, סיווג הנושא, ניקוד האיכות, זיהוי מגמות ובניית הדשבורד. הפלט של כל סוכן הוא הקלט של הבא.</p><div class="chips"><span class="chip">פייפליין</span><span class="chip">רץ כל שבוע</span></div></div>
+        <div class="shot" style="background:#EEF2F8"><button class="zoomable" type="button" aria-label="הגדלה של המסך"><span class="ba-svc"><img class="ba-svc-img" src="/img/ba/svc-640.webp" srcset="/img/ba/svc-640.webp 640w, /img/ba/svc-1280.webp 1280w" sizes="(max-width:620px) 92vw, 560px" data-full="/img/ba/svc-1672.webp" width="640" height="360" alt="תמונת מצב השירות, 2 עד 6 באוגוסט 2026: 2,134 קריאות בוט, 1,589 נסגרו ללא נציג (74.4%), 545 הועברו לנציג, מתוכן 418 תקינות, 67 לא תקינות ו-60 הפניות נכונות" loading="lazy" decoding="async"><span class="ba-ov" aria-hidden="true"><span class="ba-cring" style="left:48.056%;top:44.368%;width:21.770%;height:38.682%"></span><span class="ba-cn" data-to="2134" data-dec="0" data-sep style="left:78.828%;top:26.461%;width:10.586%;height:6.376%;--fs:3.693cqw;color:#1C304E;background:#FEFEFE;justify-content:flex-end;padding:.06em 0.419cqw 0">0</span><span class="ba-cn" data-to="1589" data-dec="0" data-sep style="left:46.292%;top:26.461%;width:10.108%;height:6.376%;--fs:3.693cqw;color:#579C4A;background:#FEFEFE;justify-content:flex-end;padding:.06em 0.419cqw 0">0</span><span class="ba-cn" data-to="545" data-dec="0" style="left:17.225%;top:26.461%;width:7.177%;height:6.376%;--fs:3.693cqw;color:#3F688D;background:#FEFEFE;justify-content:flex-end;padding:.06em 0.419cqw 0">0</span><span class="ba-cn" data-to="1589" data-dec="0" data-sep style="left:74.701%;top:53.241%;width:7.476%;height:4.782%;--fs:2.650cqw;color:#539647;background:#FEFEFE;justify-content:flex-end;padding:.06em 0.359cqw 0">0</span><span class="ba-cn" data-to="545" data-dec="0" style="left:76.854%;top:65.356%;width:5.323%;height:4.782%;--fs:2.650cqw;color:#3F678B;background:#FEFEFE;justify-content:flex-end;padding:.06em 0.359cqw 0">0</span><span class="ba-cn" data-to="74.4" data-dec="1" data-suf="%" style="left:54.067%;top:58.555%;width:11.005%;height:6.482%;--fs:4.255cqw;color:#367C36;background:#FEFEFE;justify-content:center;padding:.06em 0.239cqw 0;border-radius:40%">0</span><span class="ba-cn" data-to="418" data-dec="0" style="left:2.632%;top:53.666%;width:3.529%;height:3.401%;--fs:1.767cqw;color:#1C304E;background:#FEFEFE;justify-content:flex-start;padding:.06em 0.299cqw 0">0</span><span class="ba-cn" data-to="67" data-dec="0" style="left:2.691%;top:60.786%;width:2.452%;height:3.401%;--fs:1.767cqw;color:#1C304E;background:#FEFEFE;justify-content:flex-start;padding:.06em 0.299cqw 0">0</span><span class="ba-cn" data-to="60" data-dec="0" style="left:2.691%;top:68.013%;width:2.572%;height:3.401%;--fs:1.767cqw;color:#1C304E;background:#FEFEFE;justify-content:flex-start;padding:.06em 0.299cqw 0">0</span><span class="ba-cbar" style="left:9.749%;top:54.091%;width:20.096%;height:2.763%;background:#E9EDF2;--d:0.3s"></span><span class="ba-cbar" style="left:25.837%;top:61.211%;width:4.067%;height:2.763%;background:#E9EDF2;--d:0.6s"></span><span class="ba-cbar" style="left:26.136%;top:68.438%;width:3.708%;height:2.763%;background:#E9EDF2;--d:0.9s"></span></span></span></button></div>
+        <div class="shot-body"><h3>תמונת מצב השירות</h3><p>המסך שההנהלה רואה ראשון: כמה פניות הגיעו לבוט, כמה נסגרו בלי נציג, ובאיזו איכות טופלו אלה שהועברו. השבוע של 2 עד 6 באוגוסט 2026.</p><div class="chips"><span class="chip">סגירה בבוט</span><span class="chip">איכות ההעברות</span></div></div>
       </article>
     </div>
     <div class="ba-more">
@@ -504,8 +544,8 @@ document.addEventListener('DOMContentLoaded',function(){
     const fr=[...shot.querySelectorAll('.ba-fr')];if(fr.length<2)return;
     let i=0,timer=0,inView=false;
     const step=()=>{fr[i].classList.remove('on');i=(i+1)%fr.length;fr[i].classList.add('on');};
-    const run=()=>{if(timer||M.reduce||M.paused||!inView)return;timer=setInterval(step,2800);};
-    const stop=()=>{clearInterval(timer);timer=0;};
+    const run=()=>{if(timer||M.reduce||M.paused||!inView)return;const tick=()=>{timer=setTimeout(()=>{step();tick();},+fr[i].dataset.hold||2800);};tick();};
+    const stop=()=>{clearTimeout(timer);timer=0;};
     new IntersectionObserver(es=>{inView=es[0].isIntersecting;if(inView)setTimeout(run,k*700);else stop();},{threshold:.3}).observe(shot);
     M.onChange(p=>{if(p)stop();else run();});
   });
@@ -570,6 +610,32 @@ document.addEventListener('DOMContentLoaded',function(){
   if(!('IntersectionObserver' in window))return;
   new IntersectionObserver(es=>{inView=es[0].isIntersecting;if(inView)start();else{stop();full();}},{threshold:.3}).observe(demo);
   M.onChange(p=>{if(p){stop();full();}else start();});
+});
+</script>
+<script>
+// מופעים על צילומי הדשבורד (.ba-ov): המספרים רצים, פסים ועוגה נחשפים, ובסוף השכבה נעלמת וחושפת את הצילום.
+// על מסגרת מתחלפת: רץ כשהמסגרת מוצגת. על צילום קבוע: בכל כניסה לכרטיס. מתאפס ביציאה. בעצירה ובפחות תנועה מוצג המצב הסופי
+document.addEventListener('DOMContentLoaded',function(){
+  const M=window.rpMotion||{reduce:false,paused:false,onChange(){}};
+  document.querySelectorAll('.ba-ov').forEach(fx=>{
+    const host=fx.parentElement,frame=host.classList.contains('ba-frw')?host:null;
+    const ns=[...fx.querySelectorAll('.ba-cn')];
+    const fmt=(el,v)=>{const d=+el.dataset.dec;let t=d?v.toFixed(d):String(Math.round(v));if(el.hasAttribute('data-sep'))t=Number(t).toLocaleString('en-US');el.textContent=t+(el.dataset.suf||'');};
+    let raf=0,tm=0,played=false,inView=false;
+    const reset=()=>{cancelAnimationFrame(raf);clearTimeout(tm);fx.classList.remove('go','done');ns.forEach(el=>fmt(el,0));played=false;};
+    const finish=()=>{cancelAnimationFrame(raf);clearTimeout(tm);ns.forEach(el=>fmt(el,+el.dataset.to));fx.classList.add('go','done');played=true;};
+    const play=()=>{if(played)return;played=true;if(M.reduce||M.paused){finish();return;}
+      void fx.offsetWidth;fx.classList.add('go');const t0=performance.now(),D=2800;
+      const step=t=>{const k=Math.min(1,(t-t0)/D),e=1-Math.pow(1-k,3);ns.forEach(el=>fmt(el,+el.dataset.to*e));if(k<1)raf=requestAnimationFrame(step);else tm=setTimeout(()=>fx.classList.add('done'),700);};
+      raf=requestAnimationFrame(step);};
+    const active=()=>!frame||frame.classList.contains('on');
+    const check=()=>{if(inView&&active())play();else if(!active())setTimeout(()=>{if(!active())reset();},800);};
+    reset();
+    if(!('IntersectionObserver' in window)){finish();return;}
+    new IntersectionObserver(es=>{const e=es[0];inView=e.intersectionRatio>=.45;if(!e.isIntersecting){reset();return;}check();},{threshold:[0,.45]}).observe(frame?frame.closest('.shot'):host);
+    if(frame)new MutationObserver(check).observe(frame,{attributes:true,attributeFilter:['class']});
+    M.onChange(p=>{if(p)finish();});
+  });
 });
 </script>
 </body>

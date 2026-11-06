@@ -187,6 +187,36 @@
   .vf-mob{grid-template-columns:1fr;justify-items:center;text-align:center}
   .vf-mob p{margin-inline:auto}
 }
+/* לוגו המוצר מעל שורת הפירורים, כמו ב-Bot Analytics וב-RUBIN MARKET. קודם רק הבניינים, אחר כך החותמת נוחתת (כמו VeriBayit בדף הבית),
+   ואז החלונות נדלקים, אור עולה במפתח וברק עובר על החותמת (כמו Verifix בדף הבית), בלולאה כל 7 שניות */
+.vf-herologo{position:relative;display:block;width:clamp(60px,calc(64px + (100svh - 657px) * .4),150px);aspect-ratio:1;margin:0 0 2px auto}
+.vf-herologo img{display:block;width:100%;height:100%}
+@media(min-width:921px){.p-hero{padding-top:clamp(10px,2vh,40px)}.p-hero-copy{max-width:680px}.p-hero-copy .p-lead{max-width:62ch}}
+.vf-lg-fx{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
+.vf-lg-fx [class]{transform-box:fill-box;transform-origin:center}
+.vf-lg-cover polygon{fill:#0a1d48;opacity:0}
+.vf-lg-flash polygon{fill:#effcff;opacity:0}
+.vf-lg-flash,.vf-lg-beam,.vf-lg-head,.vf-lg-glint,.vf-lg-sflash{mix-blend-mode:screen}
+.vf-lg-beam,.vf-lg-head,.vf-lg-glint,.vf-lg-ink,.vf-lg-sflash{opacity:0}
+.js .vf-herologo.in .vf-lg-stamp{animation:vlgStamp .7s .7s both}
+.js .vf-herologo.in .vf-lg-ink{animation:vlgInk .8s ease-out 1.06s both}
+.js .vf-herologo.in .vf-lg-sflash{animation:vlgSF .6s ease-out 1.03s both}
+.vf-herologo.lit .vf-lg-cover polygon{animation:vlgOff .55s ease var(--d) both}
+.vf-herologo.lit .vf-lg-flash polygon{animation:vlgFlash .8s ease-out calc(var(--d) + .22s) both}
+.vf-herologo.lit .vf-lg-beam{animation:vlgBeam .75s cubic-bezier(.45,0,.35,1) 1.6s both}
+.vf-herologo.lit .vf-lg-head{animation:vlgHead .7s ease-out 2.2s both}
+.vf-herologo.lit .vf-lg-glint{animation:vlgGlint .75s ease-in-out 2.3s both}
+@keyframes vlgStamp{0%{opacity:0;transform:scale(1.8) rotate(-16deg);animation-timing-function:cubic-bezier(.55,0,.9,.45)}12%{opacity:1}55%{transform:scale(.92) rotate(1.5deg);animation-timing-function:ease-out}78%{transform:scale(1.03) rotate(-.4deg)}100%{opacity:1;transform:none}}
+@keyframes vlgInk{0%{opacity:0}1%{opacity:.85;transform:scale(.9);stroke-width:12}100%{opacity:0;transform:scale(1.6);stroke-width:2}}
+@keyframes vlgSF{0%{opacity:0;transform:scale(.6)}25%{opacity:.9}100%{opacity:0;transform:scale(1.2)}}
+@keyframes vlgOff{0%,40%{opacity:.94}52%{opacity:.35}64%{opacity:.8}100%{opacity:0}}
+@keyframes vlgFlash{0%{opacity:0}22%{opacity:.85}100%{opacity:0}}
+@keyframes vlgBeam{0%{opacity:0}1%{opacity:1;transform:translateY(0)}90%{opacity:1}100%{opacity:0;transform:translateY(-288px)}}
+@keyframes vlgHead{0%{opacity:0;transform:scale(.5)}30%{opacity:1}100%{opacity:0;transform:scale(1.35)}}
+@keyframes vlgGlint{0%{opacity:1;transform:translateX(0)}100%{opacity:1;transform:translateX(300px)}}
+.motion-off .vf-herologo *{animation:none!important}
+@media(prefers-reduced-motion:reduce){.vf-herologo *{animation:none!important}}
+@media(max-width:920px){.p-hero-copy{position:relative}.vf-herologo{position:absolute;left:0;top:-10px;width:56px;margin:0}}
 </style>
 <script src="/js/project.js" defer></script>
 </head>
@@ -252,6 +282,7 @@
   </div>
   <div class="p-hero-in wrap">
     <div class="p-hero-copy">
+      <span class="vf-herologo"><img src="/img/vf/logo-base-320.webp" srcset="/img/vf/logo-base-160.webp 160w, /img/vf/logo-base-320.webp 320w" sizes="150px" width="320" height="320" alt="Verifix"><svg class="vf-lg-fx" viewBox="446.7 142.8 529.2 529.2" aria-hidden="true" focusable="false"><defs><linearGradient id="vlgBeam" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#bff4ff" stop-opacity="0"/><stop offset=".5" stop-color="#fff"/><stop offset="1" stop-color="#bff4ff" stop-opacity="0"/></linearGradient><radialGradient id="vlgGlow"><stop offset="0" stop-color="#fff"/><stop offset=".35" stop-color="#9fe9ff" stop-opacity=".8"/><stop offset="1" stop-color="#3fc4e0" stop-opacity="0"/></radialGradient><linearGradient id="vlgGlint" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".9"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient><radialGradient id="vlgSF"><stop offset="0" stop-color="#fff"/><stop offset=".4" stop-color="#8fc4ff" stop-opacity=".7"/><stop offset="1" stop-color="#1f5fd6" stop-opacity="0"/></radialGradient><clipPath id="vlgShaft"><rect x="698.8" y="329.1" width="27" height="196.2" rx="13.5"/></clipPath><clipPath id="vlgSeal"><circle cx="819.7" cy="546.2" r="100.4"/></clipPath></defs><g class="vf-lg-cover"><polygon points="565.4,509.7 564.6,529.5 515.2,541.7 515.2,521.9" style="--d:0.45s"/><polygon points="565.4,468.7 564.1,488.6 515.2,504.6 515.2,484.8" style="--d:0.69s"/><polygon points="888.6,451 900,459 900,473.8 888.6,463.7" style="--d:0.84s"/><polygon points="867.1,439.6 880.2,447.2 880.6,455.2 867.1,447.6" style="--d:0.93s"/><polygon points="565.4,427 564.1,446.8 516.5,467.5 515.2,447.2" style="--d:0.94s"/><polygon points="843.1,428.6 857.8,434.6 858.3,442.6 843.9,437.9" style="--d:1.0s"/><polygon points="888.6,412.6 900,421 899.2,438.3 889.1,433.7" style="--d:1.06s"/><polygon points="867.1,401.2 880.2,407.1 879.4,428.6 868,424" style="--d:1.13s"/><polygon points="565.4,383.9 564.1,404.2 515.2,431.2 515.2,410.9" style="--d:1.18s"/><polygon points="843.1,388.6 857.8,395.3 856.6,417.7 844.3,412.6" style="--d:1.2s"/><polygon points="888.6,375.5 900,383.9 900,402.1 889.1,397" style="--d:1.29s"/><polygon points="867.1,362.4 880.2,369.1 878.9,390.7 868,385.2" style="--d:1.37s"/><polygon points="843.9,348.9 857.8,356.1 857,378.4 843.9,371.3" style="--d:1.45s"/></g><g class="vf-lg-flash"><polygon points="565.4,509.7 564.6,529.5 515.2,541.7 515.2,521.9" style="--d:0.45s"/><polygon points="565.4,468.7 564.1,488.6 515.2,504.6 515.2,484.8" style="--d:0.69s"/><polygon points="888.6,451 900,459 900,473.8 888.6,463.7" style="--d:0.84s"/><polygon points="867.1,439.6 880.2,447.2 880.6,455.2 867.1,447.6" style="--d:0.93s"/><polygon points="565.4,427 564.1,446.8 516.5,467.5 515.2,447.2" style="--d:0.94s"/><polygon points="843.1,428.6 857.8,434.6 858.3,442.6 843.9,437.9" style="--d:1.0s"/><polygon points="888.6,412.6 900,421 899.2,438.3 889.1,433.7" style="--d:1.06s"/><polygon points="867.1,401.2 880.2,407.1 879.4,428.6 868,424" style="--d:1.13s"/><polygon points="565.4,383.9 564.1,404.2 515.2,431.2 515.2,410.9" style="--d:1.18s"/><polygon points="843.1,388.6 857.8,395.3 856.6,417.7 844.3,412.6" style="--d:1.2s"/><polygon points="888.6,375.5 900,383.9 900,402.1 889.1,397" style="--d:1.29s"/><polygon points="867.1,362.4 880.2,369.1 878.9,390.7 868,385.2" style="--d:1.37s"/><polygon points="843.9,348.9 857.8,356.1 857,378.4 843.9,371.3" style="--d:1.45s"/></g><g clip-path="url(#vlgShaft)"><rect class="vf-lg-beam" x="685.2" y="525.3" width="54" height="91.8" fill="url(#vlgBeam)"/></g><circle class="vf-lg-head" cx="705.1" cy="284.7" r="63.3" fill="url(#vlgGlow)"/><image class="vf-lg-stamp" href="/img/vf/logo-seal-240.webp" x="699.9" y="433.1" width="235.5" height="208.9"/><circle class="vf-lg-ink" cx="819.7" cy="546.2" r="104" fill="none" stroke="#2f7bff" stroke-width="7"/><circle class="vf-lg-sflash" cx="819.7" cy="546.2" r="150" fill="url(#vlgSF)"/><g clip-path="url(#vlgSeal)"><g transform="rotate(18 819.7 546.2)"><rect class="vf-lg-glint" x="623" y="422" width="56.9" height="248.4" fill="url(#vlgGlint)"/></g></g></svg></span>
       <p class="p-crumb"><a href="/#portfolio">מערכות שרצות אצל לקוחות</a><svg class="ico" style="width:14px;height:14px;transform:scaleX(-1)"><use href="#i-back"/></svg><span dir="ltr">Verifix</span></p>
       <h1><span class="p-name">Verifix</span><em>ניהול ואחזקת מבנים, במערכת אחת</em></h1>
       <p class="p-lead">קריאות שבר, אחזקה מונעת, נכסים, תקציב ודוחות. ופתיחת תקלה מתחילה בהודעת וואטסאפ רגילה. מערכת full-stack שבניתי מקצה לקצה.</p>
@@ -557,6 +588,22 @@ document.addEventListener('DOMContentLoaded',function(){
   if(M.reduce||M.paused)show(4);else show(0);
   new IntersectionObserver(es=>{inView=es[0].isIntersecting;if(inView)start();else stop();},{threshold:.35}).observe(flow);
   M.onChange(p=>{if(p){stop();show(4);}else start();});
+});
+</script>
+<script>
+// לוגו Verifix ב-hero: החותמת נוחתת, ואז החלונות נדלקים בלולאה כל 7 שניות.
+// כשהלוגו יוצא לגמרי מהמסך הוא מתאפס, ובכל חזרה ל-hero החותמת נוחתת מחדש. נעצר בכפתור העצירה ובפחות תנועה
+document.addEventListener('DOMContentLoaded',function(){
+  const lg=document.querySelector('.vf-herologo');if(!lg)return;
+  const M=window.rpMotion||{reduce:false,paused:false,onChange(){}};
+  let t=0,shown=true;
+  const lite=()=>{lg.classList.remove('lit');void lg.offsetWidth;lg.classList.add('lit');t=setTimeout(lite,7000);};
+  const start=()=>{clearTimeout(t);if(M.reduce||M.paused||!shown)return;t=setTimeout(lite,1500);};
+  const enter=()=>{lg.classList.remove('in','lit');void lg.offsetWidth;lg.classList.add('in');start();};
+  enter();
+  if('IntersectionObserver' in window)new IntersectionObserver(es=>{const v=es[0].isIntersecting;if(v===shown)return;shown=v;
+    if(v)enter();else{clearTimeout(t);lg.classList.remove('lit');}},{threshold:0}).observe(lg);
+  M.onChange(p=>{clearTimeout(t);if(p)lg.classList.remove('lit');else start();});
 });
 </script>
 </body>
