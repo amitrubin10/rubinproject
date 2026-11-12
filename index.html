@@ -737,9 +737,8 @@ p{text-wrap:pretty}
 .sts-in{display:grid;grid-template-columns:1fr 1.05fr;gap:clamp(32px,5vw,72px);align-items:center}
 .sts-k{color:var(--sts-coral-ink)}
 .sts h2{font-weight:700}
-.sts-brand{display:block;font-size:clamp(2.4rem,5vw,3.9rem);font-weight:900;line-height:1.05;letter-spacing:-.5px;text-align:right}
-.sts-brand b{color:var(--sts-coral-ink);font-weight:900}
-.sts-sub{display:block;margin-top:8px;font-size:var(--fs-h2)}
+/* לוגו הניאון השקוף במקום הכותרת הנראית. הטקסט נשאר ב-h2 לקוראי מסך ולמנועי חיפוש */
+.sts-bn{display:block;width:100%;max-width:560px;height:auto;margin-top:6px}
 .sts-txt>p{margin-top:16px;max-width:54ch;font-size:var(--fs-lead);color:var(--dim)}
 .sts-list{list-style:none;margin-top:22px;display:grid;gap:11px}
 .sts-list li{position:relative;padding-inline-start:30px;font-size:17px;color:var(--ink-2)}
@@ -1349,7 +1348,7 @@ p{text-wrap:pretty}
   <div class="wrap sts-in">
     <div class="sts-txt reveal">
       <span class="k sts-k">קו נוסף של Rubin Project</span>
-      <h2 id="sts-h"><span class="sts-brand" dir="ltr">Rubin <b>Studio</b></span><span class="sts-sub">מצגות פרימיום לעסקים ולארגונים</span></h2>
+      <h2 id="sts-h"><img class="sts-bn" src="img/studio/logo-neon-1100.webp" srcset="img/studio/logo-neon-640.webp 640w, img/studio/logo-neon-1100.webp 1100w" sizes="(max-width: 920px) 92vw, 560px" width="1100" height="325" loading="lazy" decoding="async" alt=""><span class="sr"><span dir="ltr">Rubin Studio</span>: מצגות פרימיום לעסקים ולארגונים</span></h2>
       <p>אותה חשיבה של נתונים ואוטומציה, על המצגות שעולות מול הנהלה, משקיעים ולקוחות: מצגת חברה, משקיעים, מכירה או כנס, בעיצוב שנראה כמו העסק שלכם.</p>
       <ul class="sts-list">
         <li><b>מצגת נתונים שמתעדכנת לבד</b> מהאקסל או מה-⁠ERP, בכל חודש או רבעון</li>

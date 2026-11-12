@@ -145,6 +145,9 @@ p{text-wrap:pretty}
 .h1-k{display:flex;align-items:center;gap:10px;font-family:var(--font-body);font-size:clamp(15px,1.3vw,17px);font-weight:700;letter-spacing:0;color:var(--c2);margin-bottom:16px}
 .h1-k::before{content:"";width:26px;height:3px;border-radius:2px;background:currentColor;flex:none}
 .h1-k span{direction:ltr;display:inline-block}
+/* לוגו הזכוכית השקוף במקום שורת הפתיחה. הגובה לפי גובה המסך, כדי שה-hero ימשיך להיכנס במסך הראשון */
+.h1-bn{display:block;margin-bottom:clamp(10px,1.8vh,20px)}
+.h1-bn img{display:block;height:clamp(60px,11.5vh,128px);width:auto;max-width:100%}
 .h1-main{display:block;font-size:clamp(2.2rem,min(3.9vw,7.6vh),4.1rem);line-height:1.08;letter-spacing:-.8px}
 .hero .hl{color:var(--c2)}
 .hero .ul{bottom:-.16em;height:.32em}
@@ -1267,6 +1270,9 @@ p{text-wrap:pretty}
 /* contact */
 .contact{display:grid;grid-template-columns:1fr 1.05fr;gap:clamp(30px,4.5vw,64px);align-items:start}
 .contact .sh{margin-bottom:28px}
+/* לוגו הניאון השקוף מעל ערוצי הקשר */
+.ct-bn{max-width:640px;margin:0 0 18px}
+.ct-bn img{display:block;width:100%;height:auto}
 .direct{display:flex;flex-direction:column;gap:12px}
 .direct a{display:flex;align-items:center;gap:14px;padding:14px 18px;border:1px solid var(--deep-edge);border-radius:var(--r);background:var(--deep-2);transition:border-color .2s}
 .direct a:hover{border-color:var(--acc-on-deep)}
@@ -1551,7 +1557,7 @@ p{text-wrap:pretty}
   <div class="wrap hero-grid">
     <div class="hero-copy">
       <h1>
-        <span class="h1-k"><span>Rubin Studio</span> · מצגות פרימיום לעסקים ולארגונים</span>
+        <span class="h1-bn"><img src="../img/studio/logo-glass-960.webp" srcset="../img/studio/logo-glass-520.webp 520w, ../img/studio/logo-glass-960.webp 960w" sizes="(max-width: 620px) 280px, 460px" width="960" height="270" decoding="async" alt=""></span><span class="sr" dir="ltr">Rubin Studio</span>
         <span class="h1-main">מצגת שמשכנעת היום,<br>ו<span class="hl">מתעדכנת<svg class="ul" viewBox="0 0 100 12" preserveAspectRatio="none" aria-hidden="true"><path d="M2 8.5C22 3.5 48 2.5 98 6.5" pathLength="100"/></svg></span> בחודש הבא.</span>
       </h1>
       <p class="hero-lead">החומר כבר אצלכם: נתונים, טיוטות ומסמכים. אני מוציא ממנו מסר אחד, בונה סביבו סיפור ומעצב מצגת בשפה של הארגון. ואם המספרים משתנים כל חודש, המצגת מתעדכנת איתם.</p>
@@ -2039,6 +2045,7 @@ p{text-wrap:pretty}
         <h2>בואו נתכנן את המצגת הבאה</h2>
         <p>שיחה קצרה, בלי התחייבות. נבין מה המצגת צריכה להשיג, ותקבלו הצעת מחיר בכתב.</p>
       </div>
+      <figure class="ct-bn reveal"><img src="../img/studio/logo-neon-1100.webp" srcset="../img/studio/logo-neon-640.webp 640w, ../img/studio/logo-neon-1100.webp 1100w" sizes="(max-width: 920px) 92vw, 560px" width="1100" height="325" loading="lazy" decoding="async" alt="Rubin Studio: מצגות פרימיום לעסקים ולארגונים"></figure>
       <div class="direct reveal">
         <a href="https://wa.me/972527246200?text=%D7%94%D7%99%D7%99%20%D7%A2%D7%9E%D7%99%D7%AA%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%A2%D7%9E%D7%95%D7%93%20Rubin%20Studio" target="_blank" rel="noopener" data-track="whatsapp_contact"><span class="tile"><svg class="ico"><use href="#i-wa"/></svg></span><span><b>וואטסאפ</b><span>052-7246200</span></span></a>
         <a href="mailto:amit@rubinproject.com" data-track="email_contact"><span class="tile"><svg class="ico"><use href="#i-mail"/></svg></span><span><b>מייל</b><span>amit@rubinproject.com</span></span></a>
